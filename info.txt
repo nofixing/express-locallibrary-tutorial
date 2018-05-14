@@ -1,0 +1,2 @@
+SET DEBUG=express-locallibrary-tutorial:* & npm run devstart
+mongodb://nofixing:1qaz%40wsx@ds147454.mlab.com:47454/local_library
