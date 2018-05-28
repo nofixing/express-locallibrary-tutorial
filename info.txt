@@ -2,3 +2,9 @@ SET DEBUG=express-locallibrary-tutorial:* & npm run devstart
 mongodb://nofixing:1qaz%40wsx@ds147454.mlab.com:47454/local_library
 https://infinite-beach-96975.herokuapp.com/catalog
 https://dashboard.heroku.com/apps/infinite-beach-96975
+
+Creating a Heroku remote
+heroku git:remote -a infinite-beach-96975 (existing app)
+
+Deploying code
+git push heroku master
