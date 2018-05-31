@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1 #{title}: #{story.title}
+  
+  p #[strong Content:] #{story.content}
+  p #[strong Genre:] 
+    each val in story.genre
+      a(href=val.url) #{val.name}
+      |, 
+  
+  hr
+  p
+    a(href=story.url+'/delete') Delete Story
+  p
+    a(href=story.url+'/update') Update Story

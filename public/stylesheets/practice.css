@@ -1,0 +1,109 @@
+#jb_content {
+    height: 100%;
+    top: 50px;
+    padding: 0 20px 20px 20px;
+    margin-bottom: 20px;
+    float: left;
+    border: 0px solid #bcbcbc;
+    overflow-x: hidden;
+    overflow-y: auto; /* prevents scroll bar flash */
+    line-height: 1.6;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.3em;
+    word-spacing: 2px;
+    text-indent: 3%;
+}
+#jb_txtEditor {
+    height: 100%;
+    position: fixed;
+    top: 50px;
+    left: 33%;
+    padding: 0;
+    margin-bottom: 20px;
+    float: left;
+    border: 0px solid #bcbcbc;
+    overflow-x: hidden;
+    overflow-y: auto; /* prevents scroll bar flash */
+}
+#jb_sidebar {
+    position: fixed;
+    top: 40px;
+    right: 0;
+    padding: 0px 0px 20px 20px;
+    margin-bottom: 20px;
+    float: right;
+    border: 0px solid #bcbcbc;
+}
+.standalone-container {
+    margin: 0 auto;
+    width: 100%;
+}
+#snow-container {
+    height: 750px;
+}
+.ql-showHtml:after {
+    content: "[SRC]";
+}
+.ql-clearContents:after {
+    content: "[Clear]";
+}
+.ql-opnFile:after {
+    content: "[File]";
+}
+#header_center {
+    height: 60px;
+    padding-left: 0px;
+    margin: 0px auto;
+    margin-bottom: 0px;
+    vertical-align:middle;
+    border: 0px solid #bcbcbc;
+    text-align: center;
+}
+#dic_frame {
+    width: 100%;
+    min-height: 800px;
+    border: 0px solid black;
+}
+body {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 13px;
+}
+#dicType {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 12px;
+}
+
+#navbar {
+    height: 35px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display:block;
+    transition: top 0.2s ease-in-out;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-size: 1em;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 9px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {background-color: #111;}
+
+ul.topnav li a.active {background-color: #4CAF50;}
+
+ul.topnav li.right {float: right;}
