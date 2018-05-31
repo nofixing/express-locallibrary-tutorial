@@ -64,9 +64,9 @@ exports.book_detail = function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.book==null) { // No results.
-            var err = new Error('Book not found');
-            err.status = 404;
-            return next(err);
+            var eor = new Error('Book not found');
+            eor.status = 404;
+            return next(eor);
         }
         // Successful, so render.
         res.render('book_detail', { title: 'Title', book:  results.book, book_instances: results.book_instance } );
@@ -238,9 +238,9 @@ exports.book_update_get = function(req, res, next) {
         }, function(err, results) {
             if (err) { return next(err); }
             if (results.book==null) { // No results.
-                var err = new Error('Book not found');
-                err.status = 404;
-                return next(err);
+                var eor = new Error('Book not found');
+                eor.status = 404;
+                return next(eor);
             }
             // Success.
             // Mark our selected genres as checked.

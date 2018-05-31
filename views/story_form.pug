@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= title
+
+  form(method='POST' action='' name='storyForm')
+    div.form-group
+      label(for='title') Title:
+      input#title.form-control(type='text', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
+    
+    div.form-group
+      <div class="standalone-container">
+        <div id="snow-container" spellcheck="false"></div>
+      </div>
+
+    div.form-group
+      label Genre:
+      div
+        for genre in genres
+          div(style='display: inline; padding-right:10px;')
+            input.checkbox-input(type='checkbox', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
+            label(for=genre._id) #{genre.name}
+    button.btn.btn-primary(type='submit', onclick=`storyPost();`) Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg
+
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+  <script src="/js/quill_setting.js"></script>

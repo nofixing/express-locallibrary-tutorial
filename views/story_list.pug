@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  
+  ul
+  each story in story_list
+    li 
+      a(href=story.url) #{story.title}
+
+  else
+    li There are no storys.
