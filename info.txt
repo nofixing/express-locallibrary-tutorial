@@ -10,3 +10,4 @@ Deploying code
 git push heroku master
 
 https://github.com/Createdd/authenticationIntro
+https://github.com/treehouse-projects/javascript-authentication-with-express-and-mongo
