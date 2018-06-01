@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
 
-  form(method='POST' action='' name='storyForm')
+  form(method='POST' action='' id='storyForm' name='storyForm')
     div.form-group
       label(for='title') Title:
       input#title.form-control(type='text', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
@@ -12,6 +12,7 @@ block content
       <div class="standalone-container">
         <div id="snow-container" spellcheck="false"></div>
       </div>
+      input#content.form-control(type='hidden', name='content' value='')
 
     div.form-group
       label Genre:
@@ -20,7 +21,7 @@ block content
           div(style='display: inline; padding-right:10px;')
             input.checkbox-input(type='checkbox', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
             label(for=genre._id) #{genre.name}
-    button.btn.btn-primary(type='submit', onclick=`storyPost();`) Submit
+    button.btn.btn-primary(type='submit', onclick='storyPost();') Submit
 
   if errors 
     ul

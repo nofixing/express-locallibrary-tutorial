@@ -1,6 +1,9 @@
 var Story = require('../models/story');
 var Genre = require('../models/genre');
 
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
+
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
@@ -36,6 +39,8 @@ exports.story_detail = function(req, res, next) {
             return next(eor);
         }
         // Successful, so render.
+        results.story.content = entities.decode(results.story.content);
+        console.log(results.story.content);
         res.render('story_detail', { title: 'Title', story:  results.story } );
     });
 

@@ -190,3 +190,11 @@ function ReadingPractice() {
     $('#jb_txtEditor').css('display', 'block');
     $('#jb_sidebar').css('display', 'block');
 }
+
+function storyPost() {
+
+    var frm = document.getElementById("storyForm");
+    frm.content.value = document.querySelector('#snow-container').children[0].innerHTML;
+    frm.submit();		
+
+}

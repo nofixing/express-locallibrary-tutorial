@@ -1,16 +1,62 @@
-extends layout
+doctype html
+html(lang='en')
+  head
+    title= story.title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Libre+Franklin')
+    link(rel="stylesheet", href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel="stylesheet", href='https://cdn.quilljs.com/1.3.6/quill.snow.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    script(src='/js/practice.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/practice.css')
+  body
+    header(id='navbar')
+      ul(class='topnav')
+        li 
+          a(href='#none' onclick='ReadingOnly();') Reading Only
+        li 
+          a(href='#none' onclick='ReadingPractice();') Reading Practice
+        li 
+          a(href=story.url+'/delete') Delete Story
+        li 
+          a(href=story.url+'/update') Update Story
+        li 
+          a(href='/') Home
+    div(class='container-fluid')
+      div(id='jb_content' class='col-lg-4') !{story.content}
+      div(id='jb_txtEditor' class='col-lg-4')
+        div(class='standalone-container')
+          div(id='snow-container' spellcheck='false')
+          <br><span>파일명: </span><input type="text" id="fileName">
+          <button type="button" value="save" id="save">Save</button><br/>
+          <span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>
+      div(id='jb_sidebar' class='col-lg-4')
+        div(id='header_center')
+          h1(style='text-align:center;' id='docTitle')
+        <span>dictionary : </span>
+        <select name="dicType" id="dicType" style="margin-right: 5px;">
+          <option value="3">english korea</option>
+          <option value="4">Daum Dictionary</option>
+          <option value="2">english english</option>
+          <option value="1">Merriam Webster</option>  
+        <input type="text" id="searchWord" name="searchWord" style="width:150px" />
+        | &nbsp;&nbsp;&nbsp;
+        <input type="button" id="searchWordButton" value="Search"/>
+        | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
+        <input type="checkbox" id="myCheck"> 
+        | Image Search   
+        | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <iframe id="dic_frame" src="http://c.merriam-webster.com/coredictionary/"></iframe>
 
-block content
-  h1 #{title}: #{story.title}
+    <div id="img_layer" style="display:none;position:fixed;left:34%;top:60px;width:500px;height:95%;overflow:auto;background:#fff;">
+      <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">닫기</button>
+      <div id="show_img"></div>
+      <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">닫기</button>
+    </div>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="/js/quill_setting.js"></script>
   
-  p #[strong Content:] #{story.content}
-  p #[strong Genre:] 
-    each val in story.genre
-      a(href=val.url) #{val.name}
-      |, 
-  
-  hr
-  p
-    a(href=story.url+'/delete') Delete Story
-  p
-    a(href=story.url+'/update') Update Story
