@@ -10,6 +10,11 @@ var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
 
 
+router.all('/*', function(req, res, next) {
+    console.log('just try');
+    next();
+  });
+
 /// BOOK ROUTES ///
 
 // GET catalog home page.
