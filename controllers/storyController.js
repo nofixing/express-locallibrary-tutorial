@@ -12,7 +12,7 @@ var async = require('async');
 // Display list of all storys.
 exports.story_list = function(req, res, next) {
 
-  Story.find({}, 'title ')
+  Story.find({user: req.session.userId}, 'title ')
     .exec(function (err, list_storys) {
       if (err) { return next(err); }
       // Successful, so render
@@ -92,7 +92,8 @@ exports.story_create_post = [
         var story = new Story(
           { title: req.body.title,
             content: req.body.content,
-            genre: req.body.genre
+            genre: req.body.genre,
+            user: req.session.userId
            });
 
         if (!errors.isEmpty()) {

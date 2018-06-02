@@ -11,6 +11,9 @@ var catalog = require('./routes/catalog'); // Import routes for "catalog" area o
 var compression = require('compression');
 var helmet = require('helmet');
 
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
 // Create the Express application object
 var app = express();
 
@@ -25,6 +28,15 @@ mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+// use sessions for tracking logins
+app.use(session({
+  secret: 'I love you',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,7 +54,7 @@ app.use(compression()); // Compress all routes
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/user', users);
 app.use('/catalog', catalog); // Add catalog routes to middleware chain.
 
 // Catch 404 and forward to error handler

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var mid = require('../middleware');
 
 // Require our controllers.
 var book_controller = require('../controllers/bookController');
@@ -10,10 +10,9 @@ var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
 
 
-router.all('/*', function(req, res, next) {
-    console.log('just try');
+router.all('/story/*', mid.requiresLogin, function(req, res, next) {
     next();
-  });
+});
 
 /// BOOK ROUTES ///
 
@@ -68,7 +67,7 @@ router.post('/story/:id/update', story_controller.story_update_post);
 router.get('/story/:id', story_controller.story_detail);
 
 // GET request for list of all Book.
-router.get('/storys', story_controller.story_list);
+router.get('/stories', story_controller.story_list);
 
 /// AUTHOR ROUTES ///
 
