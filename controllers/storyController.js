@@ -40,7 +40,7 @@ exports.story_detail = function(req, res, next) {
         }
         // Successful, so render.
         results.story.content = entities.decode(results.story.content);
-        console.log(results.story.content);
+        //console.log(results.story.content);
         res.render('story_detail', { title: 'Title', story:  results.story } );
     });
 
@@ -140,9 +140,10 @@ exports.story_delete_get = function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.story==null) { // No results.
-            res.redirect('/catalog/storys');
+            res.redirect('/catalog/stories');
         }
         // Successful, so render.
+        results.story.content = entities.decode(results.story.content);
         res.render('story_delete', { title: 'Delete Story', story: results.story } );
     });
 
@@ -164,7 +165,7 @@ exports.story_delete_post = function(req, res, next) {
         Story.findByIdAndRemove(req.body.id, function deleteStory(err) {
             if (err) { return next(err); }
             // Success - got to storys list.
-            res.redirect('/catalog/storys');
+            res.redirect('/catalog/stories');
         });
     });
 
@@ -197,6 +198,7 @@ exports.story_update_get = function(req, res, next) {
                 }
             }
         }
+        results.story.content = entities.decode(results.story.content);
         res.render('story_form', { title: 'Update Story', genres:results.genres, story: results.story });
     });
 

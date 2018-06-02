@@ -14,6 +14,13 @@ router.all('/story/*', mid.requiresLogin, function(req, res, next) {
     next();
 });
 
+router.all('/*', function(req, res, next) {
+    if (req.session && req.session.userId) {
+        res.locals.user = true;
+    }
+    next();
+});
+
 /// BOOK ROUTES ///
 
 // GET catalog home page.
