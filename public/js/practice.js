@@ -198,3 +198,23 @@ function storyPost() {
     frm.submit();		
 
 }
+
+function storyNewPost() {
+
+    var frm = document.getElementById("storyForm");
+
+    var orgText = "<!doctype html>";
+        orgText += "<html>";
+        orgText += "  <head>";
+        orgText += "    <title>"+$('#title').val()+"</title>";
+        orgText += "    <link href='https://cdn.quilljs.com/1.3.6/quill.snow.css' type='text/css' rel='stylesheet'>";
+        orgText += "  </head>";
+        orgText += "  <body>";
+        orgText += document.querySelector('#snow-container').children[0].innerHTML;
+        orgText += "  </body>";
+        orgText += "</html>";
+
+    frm.content.value = orgText;
+    frm.submit();		
+
+}

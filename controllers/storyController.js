@@ -46,6 +46,29 @@ exports.story_detail = function(req, res, next) {
 
 };
 
+exports.story_iframe = function(req, res, next) {
+
+    async.parallel({
+        story: function(callback) {
+
+            Story.findById(req.params.id)
+              .populate('genre')
+              .exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        if (results.story==null) { // No results.
+            var eor = new Error('Story not found');
+            eor.status = 404;
+            return next(eor);
+        }
+        // Successful, so render.
+        results.story.content = entities.decode(results.story.content);
+        res.render('story_iframe', { story:  results.story } );
+    });
+
+};
+
 // Display story create form on GET.
 exports.story_create_get = function(req, res, next) {
 
