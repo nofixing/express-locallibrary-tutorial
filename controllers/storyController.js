@@ -9,14 +9,14 @@ const { sanitizeBody } = require('express-validator/filter');
 
 var async = require('async');
 
-// Display list of all storys.
+// Display list of all stories.
 exports.story_list = function(req, res, next) {
 
   Story.find({user: req.session.userId}, 'title ')
-    .exec(function (err, list_storys) {
+    .exec(function (err, list_stories) {
       if (err) { return next(err); }
       // Successful, so render
-      res.render('story_list', { title: 'Story List', story_list:  list_storys});
+      res.render('story_list', { title: 'Story List', story_list:  list_stories});
     });
 
 };
@@ -114,7 +114,9 @@ exports.story_create_post = [
         // Create a Story object with escaped and trimmed data.
         var story = new Story(
           { title: req.body.title,
+            author: req.body.author,
             content: req.body.content,
+            reference: req.body.reference,
             genre: req.body.genre,
             user: req.session.userId
            });
@@ -184,10 +186,10 @@ exports.story_delete_post = function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err); }
         // Success
-        // Delete object and redirect to the list of storys.
+        // Delete object and redirect to the list of stories.
         Story.findByIdAndRemove(req.body.id, function deleteStory(err) {
             if (err) { return next(err); }
-            // Success - got to storys list.
+            // Success - got to stories list.
             res.redirect('/catalog/stories');
         });
     });
@@ -260,7 +262,9 @@ exports.story_update_post = [
         // Create a Story object with escaped/trimmed data and old id.
         var story = new Story(
           { title: req.body.title,
+            author: req.body.author,
             content: req.body.content,
+            reference: req.body.reference,
             genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
             _id:req.params.id // This is required, or a new ID will be assigned!
            });
@@ -288,10 +292,10 @@ exports.story_update_post = [
         }
         else {
             // Data from form is valid. Update the record.
-            Story.findByIdAndUpdate(req.params.id, story, {}, function (err,thestory) {
+            Story.findByIdAndUpdate(req.params.id, story, {}, function (err,theStory) {
                 if (err) { return next(err); }
                    // Successful - redirect to story detail page.
-                   res.redirect(thestory.url);
+                   res.redirect(theStory.url);
                 });
         }
     }

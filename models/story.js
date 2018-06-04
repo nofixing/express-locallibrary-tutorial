@@ -4,9 +4,10 @@ var Schema = mongoose.Schema;
 
 var StorySchema = new Schema({
     title: {type: String, required: true},
+    author: {type: String},
     user: { type: Schema.ObjectId, ref: 'User' },
     content: {type: String, required: true},
-    references: [{type: String}],
+    reference: {type: String},
     genre: [{ type: Schema.ObjectId, ref: 'Genre' }]
 });
 

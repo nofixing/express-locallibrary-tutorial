@@ -1,7 +1,7 @@
 doctype html
 html(lang='en')
   head
-    title= story.title
+    <title>!{story.title}</title>
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel="stylesheet", href='https://fonts.googleapis.com/css?family=Libre+Franklin')
@@ -35,13 +35,16 @@ html(lang='en')
           <span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>
       div(id='jb_sidebar' class='col-lg-4')
         div(id='header_center')
-          h1(style='text-align:center;' id='docTitle')
+          h3(style='text-align:center;' id='docTitle')
+          | by #{story.author}<br/>
+          | reference: #{story.reference}
         <span>dictionary : </span>
         <select name="dicType" id="dicType" style="margin-right: 5px;">
           <option value="3">english korea</option>
           <option value="4">Daum Dictionary</option>
           <option value="2">english english</option>
           <option value="1">Merriam Webster</option>  
+        <input type="hidden" id="story_id" name="story_id" value="#{story._id}" />
         <input type="text" id="searchWord" name="searchWord" style="width:150px" />
         | &nbsp;&nbsp;&nbsp;
         <input type="button" id="searchWordButton" value="Search"/>

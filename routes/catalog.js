@@ -4,7 +4,8 @@ var mid = require('../middleware');
 
 // Require our controllers.
 var book_controller = require('../controllers/bookController');
-var story_controller = require('../controllers/storyController'); 
+var story_controller = require('../controllers/storyController');
+var word_controller = require('../controllers/wordController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
@@ -77,6 +78,34 @@ router.get('/story/:id/iframe', story_controller.story_iframe);
 
 // GET request for list of all Book.
 router.get('/stories', story_controller.story_list);
+
+/// WORD ROUTES ///
+
+// GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
+router.get('/word/create', word_controller.word_create_get);
+
+// POST request for creating Book.
+router.post('/word/create', word_controller.word_create_post);
+
+// GET request to delete Book.
+router.get('/word/:id/delete', word_controller.word_delete_get);
+
+// POST request to delete Book.
+router.post('/word/:id/delete', word_controller.word_delete_post);
+
+// GET request to update Book.
+router.get('/word/:id/update', word_controller.word_update_get);
+
+// POST request to update Book.
+router.post('/word/:id/update', word_controller.word_update_post);
+
+// GET request for one Book.
+router.get('/word/:id', word_controller.word_detail);
+
+router.get('/word/:id/iframe', word_controller.word_iframe);
+
+// GET request for list of all Book.
+router.get('/words', word_controller.word_list);
 
 /// AUTHOR ROUTES ///
 
