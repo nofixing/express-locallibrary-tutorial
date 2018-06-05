@@ -1,5 +1,6 @@
 var Story = require('../models/story');
 var Genre = require('../models/genre');
+var Word = require('../models/word');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -26,10 +27,14 @@ exports.story_detail = function(req, res, next) {
 
     async.parallel({
         story: function(callback) {
-
             Story.findById(req.params.id)
               .populate('genre')
               .exec(callback);
+        },
+        words: function(callback) {
+            //console.log("user:"+req.session.userId+"/story:"+req.params.id);
+            Word.find({user: req.session.userId, story: req.params.id}, {title: 1})
+                .exec(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
@@ -38,8 +43,17 @@ exports.story_detail = function(req, res, next) {
             eor.status = 404;
             return next(eor);
         }
+        var txt = entities.decode(results.story.content);
+        //console.log(txt);
+        var highlightHtml = '<span style="color:blue;">$1</span>';
+        console.log(results.words.length);
+        for (let i = 0; i < results.words.length; i++) {
+            //console.log(results.words[i]);
+            //console.log(results.words[i].title);
+            txt = txt.replace(new RegExp('(' + results.words[i].title + ')', 'gi'), highlightHtml);
+        }
+        results.story.content = txt;
         // Successful, so render.
-        results.story.content = entities.decode(results.story.content);
         //console.log(results.story.content);
         res.render('story_detail', { title: 'Title', story:  results.story } );
     });
@@ -50,7 +64,6 @@ exports.story_iframe = function(req, res, next) {
 
     async.parallel({
         story: function(callback) {
-
             Story.findById(req.params.id)
               .populate('genre')
               .exec(callback);

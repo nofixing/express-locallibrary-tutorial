@@ -78,7 +78,15 @@ exports.word_create_post = [
     // Process request after validation and sanitization.
     (req, res, next) => {
         
-
+        var isThere = false;
+        Word.find({user: req.session.userId}, {story: req.body.story_id}, {title: req.body.title})
+          .exec(function (err, results) {
+            if (results!=null) { // No results.
+                console.log('already exists');
+                isThere = true;
+            }
+          });
+        
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
@@ -90,19 +98,12 @@ exports.word_create_post = [
             content: req.body.content
            });
 
-        if (!errors.isEmpty()) {
-            // There are errors. Render form again with sanitized values/error messages.
-            //res.render('word_form', { title: 'Create Word', word: word, errors: errors.array() });
-            //return;
-            res.send(req.body);
-        }
-        else {
-            // Data from form is valid. Save word.
+        if (errors.isEmpty() && isThere) {
             word.save(function (err) {
                 if (err) { return next(err); }
                    // Successful - redirect to new word record.
                    //res.redirect(word.url);
-                   res.send(req.body);
+                   return next();
                 });
         }
     }
