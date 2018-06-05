@@ -73,7 +73,10 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: 'http://localhost:3000/catalog/memo/create'
+            url: 'http://localhost:3000/catalog/memo/create',
+            success : function(data) {
+                alert('saved');
+            }
         });
         /*
         if($.trim($('#fileName').val()) == "") {
