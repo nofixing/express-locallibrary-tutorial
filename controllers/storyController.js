@@ -1,6 +1,7 @@
 var Story = require('../models/story');
 var Genre = require('../models/genre');
 var Word = require('../models/word');
+var Memo = require('../models/memo');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -36,6 +37,11 @@ exports.story_detail = function(req, res, next) {
             Word.find({user: req.session.userId, story: req.params.id}, {title: 1})
                 .exec(callback);
         },
+        memo: function(callback) {
+            //console.log("user:"+req.session.userId+"/story:"+req.params.id);
+            Memo.find({user: req.session.userId, story: req.params.id}, {content: 1})
+                .exec(callback);
+        },
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.story==null) { // No results.
@@ -44,9 +50,8 @@ exports.story_detail = function(req, res, next) {
             return next(eor);
         }
         var txt = entities.decode(results.story.content);
-        //console.log(txt);
         var highlightHtml = '<span style="color:blue;">$1</span>';
-        console.log(results.words.length);
+        //console.log(results.words.length);
         for (let i = 0; i < results.words.length; i++) {
             //console.log(results.words[i]);
             //console.log(results.words[i].title);
@@ -55,7 +60,7 @@ exports.story_detail = function(req, res, next) {
         results.story.content = txt;
         // Successful, so render.
         //console.log(results.story.content);
-        res.render('story_detail', { title: 'Title', story:  results.story } );
+        res.render('story_detail', { title: 'Title', story:  results.story, memo: results.memo[0].content } );
     });
 
 };

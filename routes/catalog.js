@@ -6,6 +6,7 @@ var mid = require('../middleware');
 var book_controller = require('../controllers/bookController');
 var story_controller = require('../controllers/storyController');
 var word_controller = require('../controllers/wordController');
+var memo_controller = require('../controllers/memoController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
@@ -106,6 +107,34 @@ router.get('/word/:id/iframe', word_controller.word_iframe);
 
 // GET request for list of all Book.
 router.get('/words', word_controller.word_list);
+
+/// MEMO ROUTES ///
+
+// GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
+router.get('/memo/create', memo_controller.memo_create_get);
+
+// POST request for creating Book.
+router.post('/memo/create', memo_controller.memo_create_post);
+
+// GET request to delete Book.
+router.get('/memo/:id/delete', memo_controller.memo_delete_get);
+
+// POST request to delete Book.
+router.post('/memo/:id/delete', memo_controller.memo_delete_post);
+
+// GET request to update Book.
+router.get('/memo/:id/update', memo_controller.memo_update_get);
+
+// POST request to update Book.
+router.post('/memo/:id/update', memo_controller.memo_update_post);
+
+// GET request for one Book.
+router.get('/memo/:id', memo_controller.memo_detail);
+
+router.get('/memo/:id/iframe', memo_controller.memo_iframe);
+
+// GET request for list of all Book.
+router.get('/memos', memo_controller.memo_list);
 
 /// AUTHOR ROUTES ///
 

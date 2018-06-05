@@ -65,6 +65,17 @@ $(function(){
 
     $("#save").click(function(){
         
+        var data = {};
+        data.story_id = $( "#story_id" ).val();
+        data.content = document.querySelector('#snow-container').children[0].innerHTML;
+        console.log('save click');
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: 'http://localhost:3000/catalog/memo/create'
+        });
+        /*
         if($.trim($('#fileName').val()) == "") {
             alert('파일명을 입력해 주세요.');
             return;
@@ -115,7 +126,7 @@ $(function(){
         catch(err) {
             window.navigator.msSaveBlob(textFileAsBlob, $('#fileName').val()+'.html'); 
         }
-        
+        */
     });
 
 });

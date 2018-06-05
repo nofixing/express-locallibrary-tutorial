@@ -78,15 +78,6 @@ exports.word_create_post = [
     // Process request after validation and sanitization.
     (req, res, next) => {
         
-        var isThere = false;
-        Word.find({user: req.session.userId}, {story: req.body.story_id}, {title: req.body.title})
-          .exec(function (err, results) {
-            if (results!=null) { // No results.
-                console.log('already exists');
-                isThere = true;
-            }
-          });
-        
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
@@ -98,14 +89,21 @@ exports.word_create_post = [
             content: req.body.content
            });
 
-        if (errors.isEmpty() && isThere) {
-            word.save(function (err) {
-                if (err) { return next(err); }
-                   // Successful - redirect to new word record.
-                   //res.redirect(word.url);
-                   return next();
-                });
-        }
+        Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
+           .exec(function (err, results) {
+             console.log(results);
+             if (results.length > 0) { // No results.
+                 console.log('already exists');
+             } else {
+                 console.log('word insert');
+                 word.save(function (err) {
+                    if (err) { return next(err); }
+                       // Successful - redirect to new word record.
+                       //res.redirect(word.url);
+                       return next();
+                    });
+             }
+           });
     }
 ];
 

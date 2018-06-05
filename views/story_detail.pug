@@ -30,9 +30,9 @@ html(lang='en')
       div(id='jb_txtEditor' class='col-lg-4')
         div(class='standalone-container')
           div(id='snow-container' spellcheck='false')
-          <br><span>파일명: </span><input type="text" id="fileName">
-          <button type="button" value="save" id="save">Save</button><br/>
-          <span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>
+          <!--<br><span>파일명: </span><input type="text" id="fileName">-->
+          <br/><button type="button" value="save" id="save">Save</button>
+          <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div(id='jb_sidebar' class='col-lg-4')
         div(id='header_center')
           h3(style='text-align:center;' id='docTitle')
@@ -45,6 +45,7 @@ html(lang='en')
           <option value="2">english english</option>
           <option value="1">Merriam Webster</option>  
         <input type="hidden" id="story_id" name="story_id" value="#{story._id}" />
+        <input type="hidden" id="memo" name="memo" value="#{memo}" />
         <input type="text" id="searchWord" name="searchWord" style="width:150px" />
         | &nbsp;&nbsp;&nbsp;
         <input type="button" id="searchWordButton" value="Search"/>
