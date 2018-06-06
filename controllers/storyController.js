@@ -194,6 +194,7 @@ exports.story_delete_get = function(req, res, next) {
         }
         // Successful, so render.
         results.story.content = entities.decode(results.story.content);
+        results.story.title = entities.decode(results.story.title);
         res.render('story_delete', { title: 'Delete Story', story: results.story } );
     });
 
