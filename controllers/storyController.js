@@ -58,9 +58,15 @@ exports.story_detail = function(req, res, next) {
             txt = txt.replace(new RegExp('(' + results.words[i].title + ')', 'gi'), highlightHtml);
         }
         results.story.content = txt;
+        var memo = '';
+        var memo_id = '';
+        if(results.memo.length > 0) {
+            memo = results.memo[0].content;
+            memo_id = results.memo[0]._id;
+        }
         // Successful, so render.
         //console.log(results.story.content);
-        res.render('story_detail', { title: 'Title', story:  results.story, memo: results.memo[0].content } );
+        res.render('story_detail', { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, hostname: req.headers.host } );
     });
 
 };

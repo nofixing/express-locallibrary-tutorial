@@ -24,12 +24,12 @@ $(function(){
         var data = {};
         data.title = selectText;
         data.story_id = $( "#story_id" ).val();
-        
+        //alert('hostname['+$('#hostname').val()+']');
         $.ajax({
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: 'http://localhost:3000/catalog/word/create'
+            url: 'http://'+$('#hostname').val()+'/catalog/word/create'
         });
     });
     $( "#searchWordButton" ).click(function() {
@@ -68,12 +68,13 @@ $(function(){
         var data = {};
         data.story_id = $( "#story_id" ).val();
         data.content = document.querySelector('#snow-container').children[0].innerHTML;
+        data.memo_id = $('#memo_id').val();
         console.log('save click');
         $.ajax({
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: 'http://localhost:3000/catalog/memo/create',
+            url: 'http://'+$('#hostname').val()+'/catalog/memo/create',
             success : function(data) {
                 alert('saved');
             }

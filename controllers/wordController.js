@@ -91,7 +91,7 @@ exports.word_create_post = [
 
         Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
            .exec(function (err, results) {
-             console.log(results);
+             //console.log(results);
              if (results.length > 0) { // No results.
                  console.log('already exists');
              } else {

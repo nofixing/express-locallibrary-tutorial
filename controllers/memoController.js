@@ -73,25 +73,30 @@ exports.memo_create_post = [
     // Process request after validation and sanitization.
     (req, res, next) => {
         
-        Memo.deleteMany({user: req.session.userId, story: req.body.story_id})
-          .exec(function (err, results) {
-          });
-        
-        // Create a Memo object with escaped and trimmed data.
         var memo = new Memo(
-          { user: req.session.userId,
-            story: req.body.story_id,
-            content: req.body.content
-           });
-
-        memo.save(function (err) {
-        if (err) { return next(err); }
-            // Successful - redirect to new memo record.
-            //res.redirect(memo.url);
-            console.log('memo insert success');
-            //return next();
-            res.send('saved');
-        });
+            { _id: req.body.memo_id,
+              user: req.session.userId,
+              story: req.body.story_id,
+              content: req.body.content
+             });
+        console.log('req.body.memo_id:'+req.body.memo_id);
+        if(req.body.memo_id.length > 0) {
+            console.log('Memo Update call');
+            Memo.findOneAndUpdate(req.body.memo_id, memo, {}, function (err) {
+                if (err) { console.log(err);return next(err); }
+                    // Successful - redirect to memo detail page.
+                    res.send(req.body);
+                });
+        } else {
+            memo.save(function (err) {
+                if (err) { return next(err); }
+                    // Successful - redirect to new memo record.
+                    //res.redirect(memo.url);
+                    console.log('memo insert success');
+                    //return next();
+                    res.send(req.body);
+                });
+        }
     }
 ];
 
@@ -191,10 +196,10 @@ exports.memo_update_post = [
         }
         else {
             // Data from form is valid. Update the record.
-            Memo.findByIdAndUpdate(req.params.id, memo, {}, function (err,theMemo) {
+            Memo.findByIdAndUpdate(req.params.id, memo, {}, function (err, Memo) {
                 if (err) { return next(err); }
                    // Successful - redirect to memo detail page.
-                   res.redirect(theMemo.url);
+                   res.redirect(Memo.url);
                 });
         }
     }
