@@ -41,8 +41,8 @@ html(lang='en')
         <span>dictionary : </span>
         <select name="dicType" id="dicType" style="margin-right: 5px;">
           <option value="3">english korea</option>
-          <option value="4">Daum Dictionary</option>
-          <option value="2">english english</option>
+          <!--<option value="4">Daum Dictionary</option>-->
+          <!--<option value="2">english english</option>-->
           <option value="1">Merriam Webster</option>  
         <input type="hidden" id="story_id" name="story_id" value="#{story._id}" />
         <input type="hidden" id="memo" name="memo" value="#{memo}" />
@@ -55,7 +55,7 @@ html(lang='en')
         <input type="checkbox" id="myCheck"> 
         | Image Search   
         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <iframe id="dic_frame" src="http://c.merriam-webster.com/coredictionary/"></iframe>
+        <iframe id="dic_frame" src="https://c.merriam-webster.com/coredictionary/"></iframe>
 
     <div id="img_layer" style="display:none;position:fixed;left:34%;top:60px;width:500px;height:95%;overflow:auto;background:#fff;">
       <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">닫기</button>

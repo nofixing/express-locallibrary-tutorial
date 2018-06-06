@@ -6,7 +6,7 @@ block content
   form(method='POST' action='' id='storyForm' name='storyForm')
     div.form-group
       label(for='title') Title:
-      <input id='title' class='form-control' type='text' placeholder='Name of story' name='title' required='true' value='!{story.title}'>
+      input#title.form-control(type='text', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
     
     div.form-group
       <div class="standalone-container">

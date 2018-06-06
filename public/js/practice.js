@@ -25,11 +25,13 @@ $(function(){
         data.title = selectText;
         data.story_id = $( "#story_id" ).val();
         //alert('hostname['+$('#hostname').val()+']');
+        var httpType = 'https://';
+        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
         $.ajax({
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: 'http://'+$('#hostname').val()+'/catalog/word/create'
+            url: httpType+$('#hostname').val()+'/catalog/word/create'
         });
     });
     $( "#searchWordButton" ).click(function() {
@@ -70,11 +72,13 @@ $(function(){
         data.content = document.querySelector('#snow-container').children[0].innerHTML;
         data.memo_id = $('#memo_id').val();
         console.log('save click');
+        var httpType = 'https://';
+        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
         $.ajax({
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: 'http://'+$('#hostname').val()+'/catalog/memo/create',
+            url: httpType+$('#hostname').val()+'/catalog/memo/create',
             success : function(data) {
                 alert('saved');
             }
@@ -174,7 +178,7 @@ function dicSearch() {
             dicAddr = "http://learnersdictionary.com/definition/"+selectText;
         }
     } else if ($("#dicType").val() == "3") {
-        dicAddr = "http://c.merriam-webster.com/coredictionary/"+selectText;
+        dicAddr = "https://c.merriam-webster.com/coredictionary/"+selectText;
     } else if ($("#dicType").val() == "4") {
         dicAddr = "http://small.dic.daum.net/search.do?q="+selectText+"&dic=eng";
     }
@@ -193,7 +197,7 @@ function wordList() {
         }
     });
     if ( isThere ) return;
-    if (wordArray.length == 0) {
+    if (wordArray.length == 0 && $("#memo").val() == "") {
         document.querySelector('#snow-container').children[0].innerHTML = "<strong>"+selectText+"</strong>";
     } else {
         document.querySelector('#snow-container').children[0].innerHTML = html + "<strong>"+selectText+"</strong>";

@@ -34,8 +34,9 @@ var toolbarOptions = [
     theme: 'snow'
   });
   var memo = $('#memo').val();
-  console.log(memo);
-  quill.clipboard.dangerouslyPasteHTML(memo);
+  if(typeof memo != 'undefined') {
+    quill.clipboard.dangerouslyPasteHTML(memo);
+  }
   
   var txtArea = document.createElement('textarea');
   txtArea.style.cssText = "width: 100%;margin: 0;background: rgb(255, 255, 255);box-sizing: border-box;color: rgb(0, 0, 0);"+

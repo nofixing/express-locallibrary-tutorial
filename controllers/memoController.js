@@ -73,21 +73,27 @@ exports.memo_create_post = [
     // Process request after validation and sanitization.
     (req, res, next) => {
         
-        var memo = new Memo(
-            { _id: req.body.memo_id,
-              user: req.session.userId,
-              story: req.body.story_id,
-              content: req.body.content
-             });
+        var memo;
         console.log('req.body.memo_id:'+req.body.memo_id);
         if(req.body.memo_id.length > 0) {
             console.log('Memo Update call');
-            Memo.findOneAndUpdate(req.body.memo_id, memo, {}, function (err) {
+            memo = new Memo(
+                { _id: req.body.memo_id,
+                  user: req.session.userId,
+                  story: req.body.story_id,
+                  content: req.body.content
+                 });
+            Memo.findByIdAndUpdate(req.body.memo_id, memo, {}, function (err) {
                 if (err) { console.log(err);return next(err); }
                     // Successful - redirect to memo detail page.
                     res.send(req.body);
                 });
         } else {
+            memo = new Memo(
+                { user: req.session.userId,
+                  story: req.body.story_id,
+                  content: req.body.content
+                 });
             memo.save(function (err) {
                 if (err) { return next(err); }
                     // Successful - redirect to new memo record.

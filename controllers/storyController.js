@@ -58,6 +58,7 @@ exports.story_detail = function(req, res, next) {
             txt = txt.replace(new RegExp('(' + results.words[i].title + ')', 'gi'), highlightHtml);
         }
         results.story.content = txt;
+        results.story.reference = entities.decode(results.story.reference);
         var memo = '';
         var memo_id = '';
         if(results.memo.length > 0) {
