@@ -2,6 +2,7 @@ var Book = require('../models/book');
 var Author = require('../models/author');
 var Genre = require('../models/genre');
 var BookInstance = require('../models/bookinstance');
+var Story = require('../models/story');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
@@ -25,6 +26,9 @@ exports.index = function(req, res) {
         },
         genre_count: function(callback) {
             Genre.count(callback);
+        },
+        story_count: function(callback) {
+            Story.find({user: req.session.userId}).count(callback);
         },
     }, function(err, results) {
         res.render('index', { title: 'Local Library Home', error: err, data: results });
