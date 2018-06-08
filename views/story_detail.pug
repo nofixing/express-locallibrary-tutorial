@@ -24,17 +24,39 @@ html(lang='en')
         li 
           a(href=story.url+'/update') Update Story
         li 
+          a(href='#none' onclick='showWordLayer();') Word List
+        li 
+          a(href='#none' onclick='hideWordLayer();') Memo Edit
+        li 
           a(href='/') Home
     div(class='container-fluid')
-      div(id='jb_content' class='col-lg-4') !{story.content}
-      div(id='jb_txtEditor' class='col-lg-4')
-        div(class='standalone-container')
-          div(id='snow-container' spellcheck='false')
+      div#jb_content.col-lg-4 !{story.content}
+      div#jb_txtEditor.col-lg-4
+        div.standalone-container
+          div#snow-container
           <!--<br><span>파일명: </span><input type="text" id="fileName">-->
           <br/><button type="button" value="save" id="save">Save</button>
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
-      div(id='jb_sidebar' class='col-lg-4')
-        div(id='header_center')
+      div#word_container.col-lg-4
+        <button type="button" id="wordSave">Save</button>&nbsp;&nbsp;&nbsp;checked words only will be saved or deleted.&nbsp;&nbsp;&nbsp;<button type="button" id="wordDelete">Delete</button>
+        table(class='table table-striped table-bordered table-hover table-condensed')
+          thead
+            tr
+              th(style='text-align: center;')
+                input#checkall(type='checkbox')
+              th Title
+              th Content
+          tbody
+            each word, i in word_list
+              tr
+                td(style='text-align: center;') 
+                  input#chk(type='checkbox' value=word._id)
+                td
+                  input#ipt(type='text' value=word.title)
+                td
+                  textarea#txt(rows='4' cols='50' value=word.content)
+      div#jb_sidebar.col-lg-4
+        div#header_center
           h3(style='text-align:center;' id='docTitle')
           | by #{story.author}<br/>
           | reference: #{story.reference}

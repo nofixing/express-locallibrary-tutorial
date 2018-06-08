@@ -137,6 +137,34 @@ $(function(){
         */
     });
 
+    $("#checkall").click(function(){
+        $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+
+
+    $('input:checkbox:not(#checkall)').click(function(){
+        if ($("#checkall").prop('checked') && this.checked == false) {
+            $("#checkall").prop('checked', false);
+        }
+            
+        if (this.checked == true) {
+            CheckSelectAll();
+        }
+            
+    });
+
+
+    function CheckSelectAll() {
+        var flag = true;
+        $('input:checkbox:not(#checkall)').each(function () {
+            if (this.checked == false) {
+                flag = false;
+                return false;
+            }
+        });
+        $("#checkall").prop('checked', flag);
+    }
+
 });
 
 function search() {
@@ -248,3 +276,40 @@ function storyNewPost() {
     frm.submit();		
 
 }
+
+function showWordLayer() {
+    $('#word_container').css('display', 'block');
+    $('#jb_txtEditor').css('display', 'none');
+}
+
+function hideWordLayer() {
+    $('#word_container').css('display', 'none');
+    $('#jb_txtEditor').css('display', 'block');
+}
+
+$("#wordSave").bind('click', function(){
+    console.log('update start');
+    $('#chk').each(function(idx) {
+        if (this.checked == true) {
+            console.log(idx+":"+this.val());
+            var data = {};
+            data.id = this.val();
+            data.story_id = $( "#story_id" ).val();
+            data.title = $('#ipt')[idx].val();
+            data.content = $('#txt')[idx].val();
+            console.log("ipt:"+$('#ipt')[idx].val());
+            console.log("txt:"+$('#txt')[idx].val());
+            var httpType = 'https://';
+            if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                url: httpType+$('#hostname').val()+'/catalog/word/update',
+                success : function(data) {
+                }
+            });
+        }
+    });
+    alert('SAVED');
+});

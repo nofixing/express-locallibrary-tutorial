@@ -98,7 +98,7 @@ router.post('/word/:id/delete', word_controller.word_delete_post);
 router.get('/word/:id/update', word_controller.word_update_get);
 
 // POST request to update Book.
-router.post('/word/:id/update', word_controller.word_update_post);
+router.post('/word/update', word_controller.word_update_post);
 
 // GET request for one Book.
 router.get('/word/:id', word_controller.word_detail);

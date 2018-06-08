@@ -67,7 +67,7 @@ exports.story_detail = function(req, res, next) {
         }
         // Successful, so render.
         //console.log(results.story.content);
-        res.render('story_detail', { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, hostname: req.headers.host } );
+        res.render('story_detail', { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host } );
     });
 
 };

@@ -193,7 +193,7 @@ exports.word_update_post = [
             user: req.session.userId,
             story: req.body.story_id,
             content: req.body.content,
-            _id:req.params.id // This is required, or a new ID will be assigned!
+            _id:req.body.id // This is required, or a new ID will be assigned!
            });
 
         if (!errors.isEmpty()) {
@@ -203,10 +203,11 @@ exports.word_update_post = [
         }
         else {
             // Data from form is valid. Update the record.
-            Word.findByIdAndUpdate(req.params.id, word, {}, function (err,theWord) {
+            Word.findByIdAndUpdate(req.body.id, word, {}, function (err, theWord) {
                 if (err) { return next(err); }
                    // Successful - redirect to word detail page.
-                   res.redirect(theWord.url);
+                   //res.redirect(theWord.url);
+                   return next();
                 });
         }
     }
