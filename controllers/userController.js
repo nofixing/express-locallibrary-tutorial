@@ -79,7 +79,7 @@ exports.registration_post = function (req, res, next) {
     req.body.name &&
     req.body.password &&
     req.body.confirmPassword) {
-
+    console.log('name:'+req.body.name);
     // confirm that user typed same password twice
     if (req.body.password !== req.body.confirmPassword) {
       var err = new Error('Passwords do not match.');
@@ -99,10 +99,11 @@ exports.registration_post = function (req, res, next) {
     // use schema's `create` method to insert document into Mongo
     User.create(userData, function (error, user) {
       if (error) {
+        console.log(error);
         return next(error);
       } else {
         req.session.userId = user._id;
-
+        /*
         var nodemailer = require('nodemailer');
 
         var transporter = nodemailer.createTransport({
@@ -130,7 +131,7 @@ exports.registration_post = function (req, res, next) {
             console.log('Email sent: ' + info.response);
           }
         });
-
+        */
         return res.redirect('/');
       }
     });
