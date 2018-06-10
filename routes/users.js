@@ -36,4 +36,6 @@ router.get('/registration', mid.loggedOut, function(req, res, next) {
 // POST request for registrating User.
 router.post('/registration', user_controller.registration_post);
 
+router.get('/verifyemail', user_controller.verifyemail);
+
 module.exports = router;

@@ -16,6 +16,10 @@ $(function(){
         prevScrollpos = currentScrollPos;
     }
 
+    if('#{cert}' == 'OK') {
+        alert('Now you are our member!. create Story now.');
+    }
+
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
     $( "#jb_content" ).bind('dblclick', function(e){
         search();
@@ -165,6 +169,49 @@ $(function(){
         $("#checkall").prop('checked', flag);
     }
 
+    $('#wordSave').click(function(){
+        $('.wList').each(function(idx) {
+            if ($(this).prop('checked')) {
+                var data = {};
+                data.id = $(this).val();
+                data.story_id = $( "#story_id" ).val();
+                data.title = $('.ipt')[idx].value;
+                data.content = $('.txt')[idx].value;
+                var httpType = 'https://';
+                if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+                $.ajax({
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    url: httpType+$('#hostname').val()+'/catalog/word/update',
+                    success : function(data) {
+                    }
+                });
+            }
+        });
+        alert('SAVED');
+    });
+
+    $('#wordDelete').click(function(){
+        $('.wList').each(function(idx) {
+            if ($(this).prop('checked')) {
+                var data = {};
+                data.id = $(this).val();
+                var httpType = 'https://';
+                if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+                $.ajax({
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    url: httpType+$('#hostname').val()+'/catalog/word/delete',
+                    success : function(data) {
+                    }
+                });
+            }
+        });
+        alert('DELETED');
+    });
+
 });
 
 function search() {
@@ -238,6 +285,7 @@ function ReadingOnly() {
     $('#jb_content').addClass('col-lg-12');
     $('#jb_content').css('padding', '0 25% 0 25%');
     $('#jb_txtEditor').css('display', 'none');
+    $('#word_container').css('display', 'none');
     $('#jb_sidebar').css('display', 'none');
 }
 
@@ -254,6 +302,14 @@ function storyPost() {
     var frm = document.getElementById("storyForm");
     frm.content.value = document.querySelector('#snow-container').children[0].innerHTML;
     frm.submit();		
+
+}
+
+function userPost() {
+
+    var frm = document.getElementById("userForm");
+    alert("We will send email to your email address to authenticate your email.\nTo be our member. you need to check our email.");
+    frm.submit();	
 
 }
 
@@ -278,38 +334,13 @@ function storyNewPost() {
 }
 
 function showWordLayer() {
+    ReadingPractice();
     $('#word_container').css('display', 'block');
     $('#jb_txtEditor').css('display', 'none');
 }
 
 function hideWordLayer() {
+    ReadingPractice();
     $('#word_container').css('display', 'none');
     $('#jb_txtEditor').css('display', 'block');
 }
-
-$("#wordSave").bind('click', function(){
-    console.log('update start');
-    $('#chk').each(function(idx) {
-        if (this.checked == true) {
-            console.log(idx+":"+this.val());
-            var data = {};
-            data.id = this.val();
-            data.story_id = $( "#story_id" ).val();
-            data.title = $('#ipt')[idx].val();
-            data.content = $('#txt')[idx].val();
-            console.log("ipt:"+$('#ipt')[idx].val());
-            console.log("txt:"+$('#txt')[idx].val());
-            var httpType = 'https://';
-            if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-            $.ajax({
-                type: 'POST',
-                data: JSON.stringify(data),
-                contentType: 'application/json',
-                url: httpType+$('#hostname').val()+'/catalog/word/update',
-                success : function(data) {
-                }
-            });
-        }
-    });
-    alert('SAVED');
-});

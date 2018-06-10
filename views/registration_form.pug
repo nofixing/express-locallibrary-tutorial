@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
 
-  form(method='POST' action='')
+  form(method='POST' action='' id='userForm' name='userForm')
     div.form-group
       label(for='name') Name:
       input#name.form-control(type='text', placeholder='first and last' name='name')
@@ -16,4 +16,4 @@ block content
     div.form-group
       label(for='pw2') Confirm Password:
       input#pw2.form-control(type='password' name='confirmPassword')
-    button.btn.btn-primary(type='submit') Submit
+    button.btn.btn-primary(type='submit', onclick='userPost();') Submit

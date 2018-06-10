@@ -130,21 +130,10 @@ exports.word_delete_get = function(req, res, next) {
 // Handle word delete on POST.
 exports.word_delete_post = function(req, res, next) {
 
-    // Assume the post has valid id (ie no validation/sanitization).
-
-    async.parallel({
-        word: function(callback) {
-            Word.findById(req.params.id).exec(callback);
-        },
-    }, function(err, results) {
+    Word.findByIdAndRemove(req.body.id, function deleteWord(err) {
         if (err) { return next(err); }
-        // Success
-        // Delete object and redirect to the list of words.
-        Word.findByIdAndRemove(req.body.id, function deleteWord(err) {
-            if (err) { return next(err); }
-            // Success - got to words list.
-            res.redirect('/catalog/words');
-        });
+        // Success - got to words list.
+        //res.redirect('/catalog/words');
     });
 
 };
@@ -172,44 +161,23 @@ exports.word_update_get = function(req, res, next) {
 
 
 // Handle word update on POST.
-exports.word_update_post = [
+exports.word_update_post = function(req, res, next) {
 
-    // Validate fields.
-    body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
-
-    // Sanitize fields.
-    sanitizeBody('title').trim().escape(),
-    sanitizeBody('content').trim().escape(),
-
-    // Process request after validation and sanitization.
-    (req, res, next) => {
-
-        // Extract the validation errors from a request.
-        const errors = validationResult(req);
-
-        // Create a Word object with escaped/trimmed data and old id.
-        var word = new Word(
-          { title: req.body.title,
-            user: req.session.userId,
-            story: req.body.story_id,
-            content: req.body.content,
-            _id:req.body.id // This is required, or a new ID will be assigned!
-           });
-
-        if (!errors.isEmpty()) {
-            // There are errors. Render form again with sanitized values/error messages.
-            res.render('word_form', { title: 'Update Word', word: word, errors: errors.array() });
-            return;
-        }
-        else {
-            // Data from form is valid. Update the record.
-            Word.findByIdAndUpdate(req.body.id, word, {}, function (err, theWord) {
-                if (err) { return next(err); }
-                   // Successful - redirect to word detail page.
-                   //res.redirect(theWord.url);
-                   return next();
-                });
-        }
-    }
-];
+    //console.log('word update call');
+    var word = new Word(
+      { title: req.body.title,
+        user: req.session.userId,
+        story: req.body.story_id,
+        content: req.body.content,
+        _id:req.body.id // This is required, or a new ID will be assigned!
+       });
+    //console.log('word update start');
+    // Data from form is valid. Update the record.
+    Word.findByIdAndUpdate(req.body.id, word, {}, function (err, theWord) {
+        if (err) { console.log(err); return next(err); }
+           // Successful - redirect to word detail page.
+           //res.redirect(theWord.url);
+           //console.log('word update success');
+        });
+};
 

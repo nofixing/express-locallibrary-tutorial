@@ -17,12 +17,22 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  randomstring: {
+    type: String,
+    trim: true
+  },
+  certyn: {
+    type: String,
+    trim: true
   }
 });
 
 //authenticate input against database
 UserSchema.statics.authenticate = function (email, password, callback) {
-  User.findOne({ email: email })
+  User.findOne({
+      email: email
+    })
     .exec(function (err, user) {
       if (err) {
         return callback(err);

@@ -92,7 +92,7 @@ router.post('/word/create', word_controller.word_create_post);
 router.get('/word/:id/delete', word_controller.word_delete_get);
 
 // POST request to delete Book.
-router.post('/word/:id/delete', word_controller.word_delete_post);
+router.post('/word/delete', word_controller.word_delete_post);
 
 // GET request to update Book.
 router.get('/word/:id/update', word_controller.word_update_get);

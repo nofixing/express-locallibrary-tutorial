@@ -34,7 +34,7 @@ exports.story_detail = function(req, res, next) {
         },
         words: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
-            Word.find({user: req.session.userId, story: req.params.id}, {title: 1})
+            Word.find({user: req.session.userId, story: req.params.id}).collation({locale: 'en' }).sort({title: 1})
                 .exec(callback);
         },
         memo: function(callback) {
@@ -54,7 +54,7 @@ exports.story_detail = function(req, res, next) {
         //console.log(results.words.length);
         for (let i = 0; i < results.words.length; i++) {
             //console.log(results.words[i]);
-            //console.log(results.words[i].title);
+            //console.log(results.words[i].content);
             txt = txt.replace(new RegExp('(' + results.words[i].title + ')', 'gi'), highlightHtml);
         }
         results.story.content = txt;
