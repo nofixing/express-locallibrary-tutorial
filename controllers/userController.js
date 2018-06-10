@@ -52,15 +52,22 @@ exports.login_post = function (req, res, next) {
 
 };
 
+exports.emailcheck = function (req, res, next) {
+
+  User.find({email: req.body.email})
+    .exec(function (err, user) {
+      if (err) { return next(err); }
+      if (user.length > 0){
+        console.log('email:'+user[0].email);
+        req.body.emailThere = 'Y';
+        res.send(req.body);
+      }
+    });
+
+};
+
 exports.registration_post = function (req, res, next) {
 
-  var exists = User.find({email: req.body.email}).limit(1).size();
-  if (exists > 0) {
-    var err = new Error('email already exists.');
-      err.status = 400;
-      return next(err);
-  }
-  
   var randomstring = require("randomstring");
 
   if (req.body.email &&

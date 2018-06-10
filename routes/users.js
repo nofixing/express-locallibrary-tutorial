@@ -30,11 +30,13 @@ router.get('/logout', function(req, res, next) {
 
 // GET /register
 router.get('/registration', mid.loggedOut, function(req, res, next) {
-  return res.render('registration_form', { title: 'Sign Up' });
+  return res.render('registration_form', { title: 'Sign Up', hostname: req.headers.host });
 });
 
 // POST request for registrating User.
 router.post('/registration', user_controller.registration_post);
+
+router.post('/emailcheck', user_controller.emailcheck);
 
 router.get('/verifyemail', user_controller.verifyemail);
 

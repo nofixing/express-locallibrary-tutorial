@@ -308,8 +308,28 @@ function storyPost() {
 function userPost() {
 
     var frm = document.getElementById("userForm");
-    alert("We will send email to your email address to authenticate your email.\nTo be our member. you need to check our email.");
-    frm.submit();	
+    var isThere = false;
+    var data = {};
+    data.email = frm.email.value;
+    data.emailThere = '';
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/user/emailcheck',
+        success : function(data) {
+
+            if(data.emailThere == 'Y') {
+                alert('Oops email already exists.');
+            } else {
+                alert("We will send email to your email address to authenticate your email.\nTo be our member. you need to check our email.");
+                frm.submit();
+            }
+
+        }
+    });
 
 }
 

@@ -16,4 +16,5 @@ block content
     div.form-group
       label(for='pw2') Confirm Password:
       input#pw2.form-control(type='password' name='confirmPassword')
-    button.btn.btn-primary(type='submit', onclick='userPost();') Submit
+    <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
+    button.btn.btn-primary(type='submit', onclick='userPost();return false;') Submit
