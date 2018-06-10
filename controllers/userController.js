@@ -103,7 +103,7 @@ exports.registration_post = function (req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
-        /*
+        
         var nodemailer = require('nodemailer');
 
         var transporter = nodemailer.createTransport({
@@ -131,7 +131,7 @@ exports.registration_post = function (req, res, next) {
             console.log('Email sent: ' + info.response);
           }
         });
-        */
+        
         return res.redirect('/');
       }
     });
