@@ -54,6 +54,13 @@ exports.login_post = function (req, res, next) {
 
 exports.registration_post = function (req, res, next) {
 
+  var exists = User.find({email: req.body.email}).limit(1).size();
+  if (exists > 0) {
+    var err = new Error('email already exists.');
+      err.status = 400;
+      return next(err);
+  }
+  
   var randomstring = require("randomstring");
 
   if (req.body.email &&
