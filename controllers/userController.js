@@ -61,6 +61,9 @@ exports.emailcheck = function (req, res, next) {
         console.log('email:'+user[0].email);
         req.body.emailThere = 'Y';
         res.send(req.body);
+      } else {
+        req.body.emailThere = 'N';
+        res.send(req.body);
       }
     });
 
@@ -68,6 +71,8 @@ exports.emailcheck = function (req, res, next) {
 
 exports.registration_post = function (req, res, next) {
 
+  console.log('registration_post call');
+  
   var randomstring = require("randomstring");
 
   if (req.body.email &&
@@ -109,8 +114,6 @@ exports.registration_post = function (req, res, next) {
         });
 
         var emlCont = 'To complete the email verification process, click the following link.<br/>';
-        var httpType = 'https://';
-        if ( req.headers.host.indexOf('localhost') > -1 ) httpType = 'http://';
         emlCont += '<a href="'+req.headers.host+'/user/verifyemail?code='+user._id+'|'+user.randomstring+'">Click</a>';
         
         var mailOptions = {
@@ -143,8 +146,11 @@ exports.registration_post = function (req, res, next) {
 exports.verifyemail = function (req, res, next) {
 
   var code = req.params.code;
+  console.log('code:'+code);
   var id = code.substring(0, code.indexOf("|"));
+  console.log('id:'+id);
   var randomstring = code.substring(code.indexOf("|")+1);
+  console.log('randomstring:'+randomstring);
   
   User.find({_id: id, randomstring: randomstring})
     .exec(function (err, user) {

@@ -319,6 +319,7 @@ function userPost() {
         data: JSON.stringify(data),
         contentType: 'application/json',
         url: httpType+$('#hostname').val()+'/user/emailcheck',
+        async: false,
         success : function(data) {
 
             if(data.emailThere == 'Y') {
