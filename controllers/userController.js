@@ -146,7 +146,7 @@ exports.registration_post = function (req, res, next) {
 
 exports.verifyemail = function (req, res, next) {
 
-  var code = req.params.code;
+  var code = req.query.code;
   console.log('code:'+code);
   var id = code.substring(0, code.indexOf("|"));
   console.log('id:'+id);
