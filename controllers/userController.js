@@ -110,7 +110,7 @@ exports.registration_post = function (req, res, next) {
           service: 'gmail',
           auth: {
             user: 'nofixing@gmail.com',
-            pass: 'asdfqwer!@#$'
+            pass: 'nlrgkuedjqopymvi'
           }
         });
 
