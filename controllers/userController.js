@@ -102,7 +102,7 @@ exports.registration_post = function (req, res, next) {
         console.log(error);
         return next(error);
       } else {
-        req.session.userId = user._id;
+        //req.session.userId = user._id;
         
         var nodemailer = require('nodemailer');
 
