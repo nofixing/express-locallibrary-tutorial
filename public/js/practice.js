@@ -16,10 +16,6 @@ $(function(){
         prevScrollpos = currentScrollPos;
     }
 
-    if('#{cert}' == 'OK') {
-        alert('Now you are our member!. create Story now.');
-    }
-
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
     $( "#jb_content" ).bind('dblclick', function(e){
         search();

@@ -1,19 +1,23 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #[em Story Library], Good practice.
 
-  p This is my new project start point!
-
-
-  h1 Dynamic content
-
-  if error
-    p Error getting dynamic content.
+  if cert == 'OK'
+    h1 Now you are our member! Log in and create Story now.
   else
+    h1= title
+    p Welcome to #[em Story Library], Good practice.
 
-    p The library has the following record counts:
+    p This is my new project start point!
 
-    ul
-      li #[strong Stories:] !{data.story_count}
+
+    h1 Dynamic content  
+  
+    if error
+      p Error getting dynamic content.
+    else
+
+      p The library has the following record counts:
+
+      ul
+        li #[strong Stories:] !{data.story_count}
