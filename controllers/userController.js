@@ -156,8 +156,8 @@ exports.verifyemail = function (req, res, next) {
   User.find({_id: id, randomstring: randomstring})
     .exec(function (err, user) {
       if (err) { return next(err); }
-      user.certyn = 'Y';
-      User.findByIdAndUpdate(id, user, {}, function (err,theUser) {
+      var newvalues = { $set: {certyn: "Y"} };
+      User.findByIdAndUpdate(id, newvalues, {}, function (err,theUser) {
         if (err) { return next(err); }
            // Successful - redirect to story detail page.
            req.session.userId = user._id;

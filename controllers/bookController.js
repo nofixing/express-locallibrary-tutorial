@@ -31,7 +31,7 @@ exports.index = function(req, res) {
             Story.find({user: req.session.userId}).count(callback);
         },
     }, function(err, results) {
-        var cert = req.params.cert;
+        var cert = req.query.cert;
         res.render('index', { title: 'Local Library Home', error: err, data: results, cert: cert });
     });
 };
