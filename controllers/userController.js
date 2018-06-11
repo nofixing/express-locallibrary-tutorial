@@ -114,14 +114,14 @@ exports.registration_post = function (req, res, next) {
           }
         });
 
-        var emlCont = '<h3>To complete the email verification process, click the following link.</h3><br/>';
-        emlCont += '<a href="'+req.headers.host+'/user/verifyemail?code='+user._id+'|'+user.randomstring+'">Click</a>';
+        var emlCont = 'To complete the email verification process, click the following link.  ';
+        emlCont += 'https://'+req.headers.host+'/user/verifyemail?code='+user._id+'|'+user.randomstring;
         
         var mailOptions = {
           from: 'nofixing@gmail.com',
           to: req.body.email,
           subject: 'myStory Email Verification',
-          html: emlCont
+          text: emlCont
         };
 
         transporter.sendMail(mailOptions, function(error, info){
