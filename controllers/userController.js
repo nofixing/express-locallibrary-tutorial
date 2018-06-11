@@ -148,9 +148,9 @@ exports.verifyemail = function (req, res, next) {
 
   var code = req.query.code;
   console.log('code:'+code);
-  var id = code.substring(0, code.indexOf("%7C"));
+  var id = code.substring(0, code.indexOf("|"));
   console.log('id:'+id);
-  var randomstring = code.substring(code.indexOf("%7C")+3);
+  var randomstring = code.substring(code.indexOf("|")+1);
   console.log('randomstring:'+randomstring);
   
   User.find({_id: id, randomstring: randomstring})
