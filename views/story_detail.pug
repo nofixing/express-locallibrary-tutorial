@@ -39,7 +39,7 @@ html(lang='en')
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div#word_container.col-lg-4
         <button type="button" id="wordSave">Save</button>&nbsp;&nbsp;&nbsp;checked words only will be saved or deleted.&nbsp;&nbsp;&nbsp;
-        <button type="button" id="wordDelete">Delete</button>
+        <button type="button" id="wordDelete">Delete</button>&nbsp;&nbsp;&nbsp;
         table(class='table table-striped table-bordered table-hover table-condensed' style='margin-top: 10px;')
           thead
             tr
@@ -56,6 +56,7 @@ html(lang='en')
                   input(type='text' size='20' maxlength='30' class='ipt' value=word.title)
                 td
                   textarea(class='txt' rows='3' cols='50') #{word.content}
+        <button type="button" id="wordAdd">Add</button>&nbsp;&nbsp;&nbsp;after add, you must save before leaving.
       div#jb_sidebar.col-lg-4
         div#header_center
           h3(style='text-align:center;' id='docTitle')

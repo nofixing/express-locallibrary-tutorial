@@ -172,13 +172,31 @@ exports.word_update_post = function(req, res, next) {
         content: req.body.content,
         _id:req.body.id // This is required, or a new ID will be assigned!
        });
+    var newWord = new Word(
+        { title: req.body.title,
+          user: req.session.userId,
+          story: req.body.story_id,
+          content: req.body.content
+         });
     //console.log('word update start');
-    // Data from form is valid. Update the record.
-    Word.findByIdAndUpdate(req.body.id, word, {}, function (err, theWord) {
-        if (err) { console.log(err); return next(err); }
-           // Successful - redirect to word detail page.
-           //res.redirect(theWord.url);
-           //console.log('word update success');
+    Word.findById({_id: req.body.id})
+        .exec(function (err, results) {
+          //console.log(results);
+          if (results.length > 0) {
+            Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
+                if (err) { console.log(err); return next(err); }
+                });
+          } else {
+              console.log('word insert');
+              newWord.save(function (err, theWord) {
+                 if (err) { return next(err); }
+                     // Successful - redirect to new word record.
+                     //res.redirect(word.url);
+                     req.body.id = theWord._id;
+                     res.send(req.body);
+                 });
+          }
         });
+
 };
 

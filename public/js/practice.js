@@ -189,6 +189,7 @@ $(function(){
                     contentType: 'application/json',
                     url: httpType+$('#hostname').val()+'/catalog/word/update',
                     success : function(data) {
+                        $(this).val(data.id);
                     }
                 });
             }
@@ -214,6 +215,13 @@ $(function(){
             }
         });
         alert('DELETED');
+    });
+
+    $('#wordAdd').click(function(){
+        var markup = "<tr><td style='text-align: center;'><input type='checkbox' class='wList' value=''></td>";
+        markup += "<td><input type='text' size='20' maxlength='30' class='ipt' value=''></td>";
+        markup += "<td><textarea class='txt' rows='3' cols='50'></textarea></td></tr>";
+        $(".wtd").append(markup);
     });
 
 });
