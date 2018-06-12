@@ -182,7 +182,7 @@ exports.word_update_post = function(req, res, next) {
     Word.findById({_id: req.body.id})
         .exec(function (err, results) {
           //console.log(results);
-          if (results.length > 0) {
+          if (results != null && results.length > 0) {
             Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
                 if (err) { console.log(err); return next(err); }
                 });
