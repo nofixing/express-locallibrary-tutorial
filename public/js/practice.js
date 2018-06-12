@@ -24,14 +24,22 @@ $(function(){
         var data = {};
         data.title = selectText;
         data.story_id = $( "#story_id" ).val();
-        //alert('hostname['+$('#hostname').val()+']');
+        data.word_id = '';
         var httpType = 'https://';
         if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
         $.ajax({
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: httpType+$('#hostname').val()+'/catalog/word/create'
+            url: httpType+$('#hostname').val()+'/catalog/word/create',
+            success : function(data) {
+    
+                var markup = "<tr><td style='text-align: center;'><input type='checkbox' class='wList' value='"+data.word_id+"'></td>";
+                markup += "<td><input type='text' size='20' maxlength='30' class='ipt' value='"+data.title+"'></td>";
+                markup += "<td><textarea class='txt' rows='3' cols='50'></textarea></td></tr>";
+                $(".wtd").append(markup);
+    
+            }
         });
     });
     $( "#searchWordButton" ).click(function() {
@@ -138,11 +146,11 @@ $(function(){
     });
 
     $("#checkall").click(function(){
-        $('input:checkbox').not(this).prop('checked', this.checked);
+        $('.wList').not(this).prop('checked', this.checked);
     });
 
 
-    $('input:checkbox:not(#checkall)').click(function(){
+    $('.wList:not(#checkall)').click(function(){
         if ($("#checkall").prop('checked') && this.checked == false) {
             $("#checkall").prop('checked', false);
         }
@@ -156,7 +164,7 @@ $(function(){
 
     function CheckSelectAll() {
         var flag = true;
-        $('input:checkbox:not(#checkall)').each(function () {
+        $('.wList:not(#checkall)').each(function () {
             if (this.checked == false) {
                 flag = false;
                 return false;
@@ -226,9 +234,10 @@ function search() {
         wordList();
         
         var nNd = document.createElement("span");
+        nNd.setAttribute("class", "sbue");
         var w = getSelection().getRangeAt(0);
         w.surroundContents(nNd);
-        $('span').css({"color":"blue"});
+        $('.sbue').css({"color":"blue"});
     }
     
 

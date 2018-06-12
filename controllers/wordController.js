@@ -96,11 +96,12 @@ exports.word_create_post = [
                  console.log('already exists');
              } else {
                  console.log('word insert');
-                 word.save(function (err) {
+                 word.save(function (err, theWord) {
                     if (err) { return next(err); }
-                       // Successful - redirect to new word record.
-                       //res.redirect(word.url);
-                       return next();
+                        // Successful - redirect to new word record.
+                        //res.redirect(word.url);
+                        req.body.word_id = theWord._id;
+                        res.send(req.body);
                     });
              }
            });
