@@ -47,7 +47,7 @@ var toolbarOptions = [
   htmlEditor.appendChild(txtArea);
   
   var myEditor = document.querySelector('#snow-container');
-  quill.on('text-change', (delta, oldDelta, source) => {
+  quill.on('text-change', function(delta, oldDelta, source){
     var html = myEditor.children[0].innerHTML;
     txtArea.value = html;
   });
@@ -78,7 +78,7 @@ var toolbarOptions = [
     input.click();
   
     // Listen upload local image and save to server
-    input.onchange = () => {
+    input.onchange(function(){
       const file = input.files[0];
   
       var reader = new FileReader();
@@ -90,5 +90,5 @@ var toolbarOptions = [
       });
       
       reader.readAsText(file);
-    };
-  }
+    });
+  };
