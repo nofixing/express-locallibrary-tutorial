@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var GenreSchema = new Schema({
-    name: {type: String, required: true, min: 3, max: 100}
+    name: {type: String, required: true, min: 3, max: 100},
+    user: { type: Schema.ObjectId, ref: 'User' }
 });
 
 // Virtual for this genre instance URL.

@@ -92,4 +92,4 @@ var toolbarOptions = [
       
       reader.readAsText(file);
     });
-  };
+  }

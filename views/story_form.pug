@@ -5,6 +5,18 @@ block content
 
   form(method='POST' action='' id='storyForm' name='storyForm')
     div.form-group
+      label(for='book') Book:
+      select#book.form-control(type='select', placeholder='Select book' name='book' required='true' )
+        for book in books
+          if story
+            if story.book
+              option(value=book._id selected=(book._id.toString()==story.book._id.toString() ? 'selected' : false) ) #{book.title}
+            else
+              option(value=book._id) #{book.title}
+          else
+            option(value=book._id) #{book.title}
+        option(value='') story only
+    div.form-group
       label(for='title') Title:
       input#title.form-control(type='text', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
     

@@ -6,6 +6,7 @@ var StorySchema = new Schema({
     title: {type: String, required: true},
     author: {type: String},
     user: { type: Schema.ObjectId, ref: 'User' },
+    book: { type: Schema.ObjectId, ref: 'Book' },
     content: {type: String, required: true},
     reference: {type: String},
     genre: [{ type: Schema.ObjectId, ref: 'Genre' }]

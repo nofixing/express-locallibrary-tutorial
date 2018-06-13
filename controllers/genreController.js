@@ -8,7 +8,7 @@ const { sanitizeBody } = require('express-validator/filter');
 // Display list of all Genre.
 exports.genre_list = function(req, res, next) {
 
-  Genre.find()
+  Genre.find({user: req.session.userId})
     .sort([['name', 'ascending']])
     .exec(function (err, list_genres) {
       if (err) { return next(err); }
@@ -29,7 +29,7 @@ exports.genre_detail = function(req, res, next) {
         },
 
         genre_books: function(callback) {
-          Book.find({ 'genre': req.params.id })
+          Book.find({ 'genre': req.params.id, 'user': req.session.userId })
           .exec(callback);
         },
 
@@ -68,7 +68,7 @@ exports.genre_create_post = [
 
         // Create a genre object with escaped and trimmed data.
         var genre = new Genre(
-          { name: req.body.name }
+          { name: req.body.name, user:req.session.userId }
         );
 
 
@@ -80,7 +80,7 @@ exports.genre_create_post = [
         else {
             // Data from form is valid.
             // Check if Genre with same name already exists.
-            Genre.findOne({ 'name': req.body.name })
+            Genre.findOne({ 'name': req.body.name, 'user': req.session.userId })
                 .exec( function(err, found_genre) {
                      if (err) { return next(err); }
 
@@ -111,7 +111,7 @@ exports.genre_delete_get = function(req, res, next) {
             Genre.findById(req.params.id).exec(callback);
         },
         genre_books: function(callback) {
-            Book.find({ 'genre': req.params.id }).exec(callback);
+            Book.find({ 'genre': req.params.id, 'user': req.session.userId }).exec(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
@@ -132,7 +132,7 @@ exports.genre_delete_post = function(req, res, next) {
             Genre.findById(req.params.id).exec(callback);
         },
         genre_books: function(callback) {
-            Book.find({ 'genre': req.params.id }).exec(callback);
+            Book.find({ 'genre': req.params.id, 'user': req.session.userId }).exec(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
@@ -189,7 +189,7 @@ exports.genre_update_post = [
     // Create a genre object with escaped and trimmed data (and the old id!)
         var genre = new Genre(
           {
-          name: req.body.name,
+          name: req.body.name, user: req.session.userId,
           _id: req.params.id
           }
         );

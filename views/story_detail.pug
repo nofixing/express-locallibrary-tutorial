@@ -15,6 +15,10 @@ html(lang='en')
   body
     header(id='navbar')
       ul(class='topnav')
+        li
+          select#story.form-control(type='select', placeholder='Select story' name='story' onchange='goThatStory();')
+            for story in story_list
+              option(value=story._id) !{story.title}
         li 
           a(href='#none' onclick='ReadingOnly();') Reading Only
         li 

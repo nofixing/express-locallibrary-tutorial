@@ -2,6 +2,7 @@ var Story = require('../models/story');
 var Genre = require('../models/genre');
 var Word = require('../models/word');
 var Memo = require('../models/memo');
+var Book = require('../models/book');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -44,10 +45,17 @@ exports.story_detail = function(req, res, next) {
         },
     }, function(err, results) {
         if (err) { return next(err); }
+        var story_list;
         if (results.story==null) { // No results.
             var eor = new Error('Story not found');
             eor.status = 404;
             return next(eor);
+        } else {
+            Story.find({book: results.story.book}, {title: 1})
+                .exec(function (err, stories) {
+                if (err) { console.log(err);return next(err); }
+                story_list = stories;
+            });
         }
         var txt = entities.decode(results.story.content);
         var highlightHtml = '<span class="hgt" style="color:blue;">$1</span>';
@@ -67,7 +75,8 @@ exports.story_detail = function(req, res, next) {
         }
         // Successful, so render.
         //console.log(results.story.content);
-        res.render('story_detail', { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host } );
+        res.render('story_detail', 
+        { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host, story_list: story_list } );
     });
 
 };
@@ -99,12 +108,15 @@ exports.story_create_get = function(req, res, next) {
 
     // Get all authors and genres, which we can use for adding to our story.
     async.parallel({
+        books: function(callback) {
+            Book.find(callback);
+        },
         genres: function(callback) {
             Genre.find(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
-        res.render('story_form', { title: 'Create Story',genres:results.genres });
+        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres });
     });
 
 };
@@ -143,7 +155,8 @@ exports.story_create_post = [
             content: req.body.content,
             reference: req.body.reference,
             genre: req.body.genre,
-            user: req.session.userId
+            user: req.session.userId,
+            book: req.body.book
            });
 
         if (!errors.isEmpty()) {
@@ -151,6 +164,9 @@ exports.story_create_post = [
 
             // Get all authors and genres for form.
             async.parallel({
+                books: function(callback) {
+                    Book.find(callback);
+                },
                 genres: function(callback) {
                     Genre.find(callback);
                 },
@@ -163,7 +179,7 @@ exports.story_create_post = [
                         results.genres[i].checked='true';
                     }
                 }
-                res.render('story_form', { title: 'Create Story',genres:results.genres, story: story, errors: errors.array() });
+                res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, story: story, errors: errors.array() });
             });
             return;
         }
@@ -227,11 +243,16 @@ exports.story_update_get = function(req, res, next) {
 
     // Get story, authors and genres for form.
     async.parallel({
+        books: function(callback) {
+            Book.find({user: req.session.userId}, 'title ')
+            .exec(callback);
+        },
         story: function(callback) {
             Story.findById(req.params.id).populate('genre').exec(callback);
         },
         genres: function(callback) {
-            Genre.find(callback);
+            Genre.find({user: req.session.userId}, 'name ')
+                .exec(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
@@ -250,7 +271,7 @@ exports.story_update_get = function(req, res, next) {
             }
         }
         results.story.content = entities.decode(results.story.content);
-        res.render('story_form', { title: 'Update Story', genres:results.genres, story: results.story });
+        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story });
     });
 
 };
@@ -292,6 +313,7 @@ exports.story_update_post = [
             content: req.body.content,
             reference: req.body.reference,
             genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
+            book: req.body.book,
             _id:req.params.id // This is required, or a new ID will be assigned!
            });
 
@@ -300,6 +322,9 @@ exports.story_update_post = [
 
             // Get all authors and genres for form
             async.parallel({
+                books: function(callback) {
+                    Book.find(callback);
+                },
                 genres: function(callback) {
                     Genre.find(callback);
                 },
@@ -312,7 +337,7 @@ exports.story_update_post = [
                         results.genres[i].checked='true';
                     }
                 }
-                res.render('story_form', { title: 'Update Story',genres:results.genres, story: story, errors: errors.array() });
+                res.render('story_form', { title: 'Update Story',books:results.books,genres:results.genres, story: story, errors: errors.array() });
             });
             return;
         }

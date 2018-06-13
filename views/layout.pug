@@ -18,7 +18,11 @@ html(lang='en')
           block sidebar
             ul(class='sidebar-nav')
               li 
+                a(href='/catalog/books') All books
+              li 
                 a(href='/catalog/stories') All stories
+              li 
+                a(href='/catalog/genres') All genres
               li 
                 hr
             if user
@@ -31,7 +35,11 @@ html(lang='en')
                 a(href='/user/registration') Registration
             end
               li 
+                a(href='/catalog/book/create') Create new book
+              li 
                 a(href='/catalog/story/create') Create new story
+              li 
+                a(href='/catalog/genre/create') Create new genre
                 
         div(class='col-sm-10')
           block content
