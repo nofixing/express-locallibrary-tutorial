@@ -47,6 +47,7 @@ var toolbarOptions = [
   htmlEditor.appendChild(txtArea);
   
   var myEditor = document.querySelector('#snow-container');
+  txtArea.value = myEditor.children[0].innerHTML;
   quill.on('text-change', function(delta, oldDelta, source){
     var html = myEditor.children[0].innerHTML;
     txtArea.value = html;
@@ -56,7 +57,7 @@ var toolbarOptions = [
   customButton.addEventListener('click', function () {
     if (txtArea.style.display === '') {
       var html = txtArea.value;
-      self.quill.pasteHTML(html);
+      self.quill.clipboard.dangerouslyPasteHTML(html);
     }
     txtArea.style.display = txtArea.style.display === 'none' ? '' : 'none';
   });

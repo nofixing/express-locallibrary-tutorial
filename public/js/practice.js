@@ -14,7 +14,7 @@ $(function(){
             $('#navbar').css("top","-40px");
         }
         prevScrollpos = currentScrollPos;
-    }
+    };
 
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
     $( "#jb_content" ).bind('dblclick', function(e){
@@ -214,6 +214,11 @@ $(function(){
                 });
             }
         });
+        $('.wList').each(function(){
+            if($(this).prop('checked')){
+                $(this).parents("tr").remove();
+            }
+        });
         alert('DELETED');
     });
 
@@ -300,6 +305,7 @@ function ReadingOnly() {
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
     $('#jb_sidebar').css('display', 'none');
+    $('.hgt').css('color', 'black');
 }
 
 function ReadingPractice() {
@@ -308,6 +314,7 @@ function ReadingPractice() {
     $('#jb_content').css('padding', '0 20px 20px 20px');
     $('#jb_txtEditor').css('display', 'block');
     $('#jb_sidebar').css('display', 'block');
+    $('.hgt').css('color', 'blue');
 }
 
 function storyPost() {
