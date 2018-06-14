@@ -4,6 +4,9 @@ var Genre = require('../models/genre');
 var BookInstance = require('../models/bookinstance');
 var Story = require('../models/story');
 
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
+
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
@@ -69,6 +72,10 @@ exports.book_detail = function(req, res, next) {
             eor.status = 404;
             return next(eor);
         }
+        for (let i = 0; i < results.book.genre.length; i++) {
+            results.book.genre[i].name = entities.decode(results.book.genre[i].name);
+        }
+        results.book.summary = entities.decode(results.book.summary);
         // Successful, so render.
         res.render('book_detail', { title: 'Title', book:  results.book, stories: results.stories } );
     });
@@ -174,6 +181,7 @@ exports.book_delete_get = function(req, res, next) {
         if (results.book==null) { // No results.
             res.redirect('/catalog/books');
         }
+        results.book.summary = entities.decode(results.book.summary);
         // Successful, so render.
         res.render('book_delete', { title: 'Delete Book', book: results.book } );
     });
@@ -228,9 +236,11 @@ exports.book_update_get = function(req, res, next) {
                 eor.status = 404;
                 return next(eor);
             }
+            results.book.summary = entities.decode(results.book.summary);
             // Success.
             // Mark our selected genres as checked.
             for (var all_g_iter = 0; all_g_iter < results.genres.length; all_g_iter++) {
+                results.genres[all_g_iter].name = entities.decode(results.genres[all_g_iter].name);
                 for (var book_g_iter = 0; book_g_iter < results.book.genre.length; book_g_iter++) {
                     if (results.genres[all_g_iter]._id.toString()==results.book.genre[book_g_iter]._id.toString()) {
                         results.genres[all_g_iter].checked='true';

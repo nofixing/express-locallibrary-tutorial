@@ -121,6 +121,9 @@ exports.story_create_get = function(req, res, next) {
         },
     }, function(err, results) {
         if (err) { return next(err); }
+        for (let i = 0; i < results.genres.length; i++) {
+            results.genres[i].name = entities.decode(results.genres[i].name);
+        }
         res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres });
     });
 

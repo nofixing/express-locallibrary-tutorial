@@ -39,7 +39,7 @@ var toolbarOptions = [
   }
   
   var txtArea = document.createElement('textarea');
-  txtArea.style.cssText = "width: 100%;margin: 0;background: rgb(255, 255, 255);box-sizing: border-box;color: rgb(0, 0, 0);"+
+  txtArea.style.cssText = "width: 100%;height: 750px;margin: 0;background: rgb(255, 255, 255);box-sizing: border-box;color: rgb(0, 0, 0);"+
   "font-size: 13px;outline: none;padding: 20px;line-height: 24px;font-family: Consolas, Menlo, Monaco, &quot;Courier New&quot;, monospace;"+
   "position: absolute;top: 0;bottom: 0;border: none;display:none";
   
@@ -55,9 +55,17 @@ var toolbarOptions = [
   
   var customButton = document.querySelector('.ql-showHtml');
   customButton.addEventListener('click', function () {
+    var tContent = txtArea.value;
+    var find = '<p><br></p>';
+    var re = new RegExp(find, 'g');
+    tContent = tContent.replace(re, '');
+    txtArea.value = tContent;
     if (txtArea.style.display === '') {
       var html = txtArea.value;
       self.quill.clipboard.dangerouslyPasteHTML(html);
+      customButton.style.cssText = "font-weight: normal;";
+    } else {
+      customButton.style.cssText = "font-weight: bold;";
     }
     txtArea.style.display = txtArea.style.display === 'none' ? '' : 'none';
   });
