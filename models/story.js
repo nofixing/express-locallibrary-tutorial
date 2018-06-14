@@ -9,7 +9,7 @@ var StorySchema = new Schema({
     book: { type: Schema.ObjectId, ref: 'Book' },
     content: {type: String, required: true},
     reference: {type: String},
-    genre: [{ type: Schema.ObjectId, ref: 'Genre' }]
+    genre: [{ type: Schema.ObjectId, ref: 'Genre', required: true }]
 });
 
 // Virtual for this story instance URL.

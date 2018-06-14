@@ -15,13 +15,23 @@ var async = require('async');
 // Display list of all stories.
 exports.story_list = function(req, res, next) {
 
-  Story.find({user: req.session.userId}, 'title ')
+  Story.find({user: req.session.userId, book: null}).collation({locale: 'en' }).sort({title: 1})
     .exec(function (err, list_stories) {
       if (err) { return next(err); }
       // Successful, so render
       res.render('story_list', { title: 'Story List', story_list:  list_stories});
     });
 
+};
+
+exports.story_list_ajax = function(req, res, next) {
+
+    Story.find({book: req.body.book}, 'title ')
+      .exec(function (err, list_stories) {
+        if (err) { return next(err); }
+        res.send(list_stories);
+      });
+  
 };
 
 // Display detail page for a specific story.
@@ -45,17 +55,10 @@ exports.story_detail = function(req, res, next) {
         },
     }, function(err, results) {
         if (err) { return next(err); }
-        var story_list;
         if (results.story==null) { // No results.
             var eor = new Error('Story not found');
             eor.status = 404;
             return next(eor);
-        } else {
-            Story.find({book: results.story.book}, {title: 1})
-                .exec(function (err, stories) {
-                if (err) { console.log(err);return next(err); }
-                story_list = stories;
-            });
         }
         var txt = entities.decode(results.story.content);
         var highlightHtml = '<span class="hgt" style="color:blue;">$1</span>';
@@ -76,7 +79,7 @@ exports.story_detail = function(req, res, next) {
         // Successful, so render.
         //console.log(results.story.content);
         res.render('story_detail', 
-        { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host, story_list: story_list } );
+        { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host } );
     });
 
 };
@@ -109,10 +112,12 @@ exports.story_create_get = function(req, res, next) {
     // Get all authors and genres, which we can use for adding to our story.
     async.parallel({
         books: function(callback) {
-            Book.find(callback);
+            Book.find({user: req.session.userId}, 'title ')
+                .exec(callback);
         },
         genres: function(callback) {
-            Genre.find(callback);
+            Genre.find({user: req.session.userId}, 'name ')
+                .exec(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
@@ -137,6 +142,7 @@ exports.story_create_post = [
     // Validate fields.
     body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
+    body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
   
     // Sanitize fields.
     sanitizeBody('*').trim().escape(),
@@ -155,9 +161,18 @@ exports.story_create_post = [
             content: req.body.content,
             reference: req.body.reference,
             genre: req.body.genre,
-            user: req.session.userId,
-            book: req.body.book
+            book: req.body.book,
+            user: req.session.userId
            });
+
+        var storyOnly = new Story(
+            { title: req.body.title,
+              author: req.body.author,
+              content: req.body.content,
+              reference: req.body.reference,
+              genre: req.body.genre,
+              user: req.session.userId
+             });
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/error messages.
@@ -165,10 +180,12 @@ exports.story_create_post = [
             // Get all authors and genres for form.
             async.parallel({
                 books: function(callback) {
-                    Book.find(callback);
+                    Book.find({user: req.session.userId}, 'title ')
+                        .exec(callback);
                 },
                 genres: function(callback) {
-                    Genre.find(callback);
+                    Genre.find({user: req.session.userId}, 'name ')
+                        .exec(callback);
                 },
             }, function(err, results) {
                 if (err) { return next(err); }
@@ -184,12 +201,24 @@ exports.story_create_post = [
             return;
         }
         else {
-            // Data from form is valid. Save story.
-            story.save(function (err) {
-                if (err) { return next(err); }
-                   // Successful - redirect to new story record.
-                   res.redirect(story.url);
-                });
+            if (req.body.book == '') {
+
+                storyOnly.save(function (err) {
+                    if (err) { console.log(err); return next(err); }
+                       // Successful - redirect to new story record.
+                       res.redirect(storyOnly.url);
+                    });
+
+            } else {
+
+                story.save(function (err) {
+                    if (err) { console.log(err); return next(err); }
+                       // Successful - redirect to new story record.
+                       res.redirect(story.url);
+                    });
+                
+            }
+                
         }
     }
 ];
@@ -323,10 +352,12 @@ exports.story_update_post = [
             // Get all authors and genres for form
             async.parallel({
                 books: function(callback) {
-                    Book.find(callback);
+                    Book.find({user: req.session.userId}, 'title ')
+                        .exec(callback);
                 },
                 genres: function(callback) {
-                    Genre.find(callback);
+                    Genre.find({user: req.session.userId}, 'name ')
+                        .exec(callback);
                 },
             }, function(err, results) {
                 if (err) { return next(err); }

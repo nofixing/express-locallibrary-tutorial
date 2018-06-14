@@ -229,6 +229,28 @@ $(function(){
         $(".wtd").append(markup);
     });
 
+    var sList = $('#story').val();
+    var bVa = $("#book").val();
+    if(typeof sList != 'undefined' && typeof bVa != 'undefined' && bVa != '') {
+        var data = {};
+        data.book = bVa;
+        var httpType = 'https://';
+        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: httpType+$('#hostname').val()+'/catalog/stories_ajax',
+            success : function(stories) {
+                $.each(stories, function(i, story){
+					$('#story').append($("<option></option>")
+                    .attr("value",story._id)
+                    .text(story.title));
+				});
+            }
+        });
+    }
+
 });
 
 function search() {
@@ -384,4 +406,10 @@ function hideWordLayer() {
     ReadingPractice();
     $('#word_container').css('display', 'none');
     $('#jb_txtEditor').css('display', 'block');
+}
+
+function goThatStory() {
+
+    document.location.href = '/catalog/story/'+$("#story").val();
+
 }

@@ -6,8 +6,11 @@ block content
   p #[strong Author:] #{book.author}
   p #[strong Summary:] #{book.summary}
   p #[strong Stories:]
+  ul
   for story in stories
-    a(href=story.url) !{story.title}
+    li
+      a(href=story.url) !{story.title}
+  <br>
   p #[strong Genre:] 
     each val in book.genre
       a(href=val.url) #{val.name}

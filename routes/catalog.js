@@ -16,6 +16,14 @@ router.all('/story/*', mid.requiresLogin, function(req, res, next) {
     next();
 });
 
+router.all('/book/*', mid.requiresLogin, function(req, res, next) {
+    next();
+});
+
+router.all('/genre/*', mid.requiresLogin, function(req, res, next) {
+    next();
+});
+
 router.all('/*', function(req, res, next) {
     if (req.session && req.session.userId) {
         res.locals.user = true;
@@ -79,6 +87,8 @@ router.get('/story/:id/iframe', story_controller.story_iframe);
 
 // GET request for list of all Book.
 router.get('/stories', story_controller.story_list);
+
+router.post('/stories_ajax', story_controller.story_list_ajax);
 
 /// WORD ROUTES ///
 

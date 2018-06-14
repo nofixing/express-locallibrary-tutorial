@@ -40,7 +40,7 @@ exports.index = function(req, res) {
 // Display list of all books.
 exports.book_list = function(req, res, next) {
 
-  Book.find({user: req.session.userId}, 'title author ')
+  Book.find({user: req.session.userId}).collation({locale: 'en' }).sort({title: 1})
     .exec(function (err, list_books) {
       if (err) { return next(err); }
       // Successful, so render
@@ -59,7 +59,7 @@ exports.book_detail = function(req, res, next) {
               .exec(callback);
         },
         stories: function(callback) {
-            Story.find({book:req.params.id}, 'title ')
+            Story.find({book:req.params.id}).collation({locale: 'en' }).sort({title: 1})
               .exec(callback);
         },
     }, function(err, results) {
