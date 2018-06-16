@@ -124,7 +124,7 @@ exports.story_create_get = function(req, res, next) {
         for (let i = 0; i < results.genres.length; i++) {
             results.genres[i].name = entities.decode(results.genres[i].name);
         }
-        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres });
+        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, hostname: req.headers.host });
     });
 
 };
@@ -139,16 +139,16 @@ exports.story_create_post = [
             else
             req.body.genre=new Array(req.body.genre);
         }
+        console.log(req.body.genre);
         next();
     },
-
+    
     // Validate fields.
     body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
     body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
   
     // Sanitize fields.
-    sanitizeBody('*').trim().escape(),
     sanitizeBody('genre.*').trim().escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
@@ -195,11 +195,13 @@ exports.story_create_post = [
 
                 // Mark our selected genres as checked.
                 for (let i = 0; i < results.genres.length; i++) {
+                    results.genres[i].name = entities.decode(results.genres[i].name);
                     if (story.genre.indexOf(results.genres[i]._id) > -1) {
                         results.genres[i].checked='true';
                     }
                 }
-                res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, story: story, errors: errors.array() });
+                story.content = entities.decode(story.content);
+                res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, story: story, hostname: req.headers.host, errors: errors.array() });
             });
             return;
         }
@@ -240,6 +242,9 @@ exports.story_delete_get = function(req, res, next) {
         if (results.story==null) { // No results.
             res.redirect('/catalog/stories');
         }
+        for (var i = 0; i < results.story.genre.length; i++) {
+            results.story.genre[i].name = entities.decode(results.story.genre[i].name);
+        }
         // Successful, so render.
         results.story.content = entities.decode(results.story.content);
         results.story.title = entities.decode(results.story.title);
@@ -255,16 +260,24 @@ exports.story_delete_post = function(req, res, next) {
 
     async.parallel({
         story: function(callback) {
-            Story.findById(req.params.id).populate('genre').exec(callback);
+            Story.findById(req.body.id).populate('genre').exec(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
         // Success
+        var aul = '';
+        if (results.story.book != '') {
+            console.log("There is book");
+            aul = '/catalog/book/'+results.story.book;
+        } else {
+            console.log("There is no book");
+            aul = '/catalog/stories';
+        }
         // Delete object and redirect to the list of stories.
         Story.findByIdAndRemove(req.body.id, function deleteStory(err) {
             if (err) { return next(err); }
             // Success - got to stories list.
-            res.redirect('/catalog/stories');
+            res.redirect(aul);
         });
     });
 
@@ -296,6 +309,7 @@ exports.story_update_get = function(req, res, next) {
         // Success.
         // Mark our selected genres as checked.
         for (var all_g_iter = 0; all_g_iter < results.genres.length; all_g_iter++) {
+            results.genres[all_g_iter].name = entities.decode(results.genres[all_g_iter].name);
             for (var story_g_iter = 0; story_g_iter < results.story.genre.length; story_g_iter++) {
                 if (results.genres[all_g_iter]._id.toString()==results.story.genre[story_g_iter]._id.toString()) {
                     results.genres[all_g_iter].checked='true';
@@ -303,7 +317,7 @@ exports.story_update_get = function(req, res, next) {
             }
         }
         results.story.content = entities.decode(results.story.content);
-        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story });
+        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story, hostname: req.headers.host });
     });
 
 };
@@ -326,6 +340,7 @@ exports.story_update_post = [
     // Validate fields.
     body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
+    body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
 
     // Sanitize fields.
     sanitizeBody('title').trim().escape(),
@@ -367,10 +382,12 @@ exports.story_update_post = [
 
                 // Mark our selected genres as checked.
                 for (let i = 0; i < results.genres.length; i++) {
+                    results.genres[i].name = entities.decode(results.genres[i].name);
                     if (story.genre.indexOf(results.genres[i]._id) > -1) {
                         results.genres[i].checked='true';
                     }
                 }
+                story.content = entities.decode(story.content);
                 res.render('story_form', { title: 'Update Story',books:results.books,genres:results.genres, story: story, errors: errors.array() });
             });
             return;

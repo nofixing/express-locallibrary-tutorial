@@ -2,6 +2,9 @@ var Genre = require('../models/genre');
 var Book = require('../models/book');
 var async = require('async');
 
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
+
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 
@@ -13,6 +16,9 @@ exports.genre_list = function(req, res, next) {
     .exec(function (err, list_genres) {
       if (err) { return next(err); }
       // Successful, so render.
+      for (let i = 0; i < list_genres.length; i++) {
+        list_genres[i].name = entities.decode(list_genres[i].name);
+      }
       res.render('genre_list', { title: 'Genre List', list_genres:  list_genres});
     });
 
@@ -36,10 +42,11 @@ exports.genre_detail = function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.genre==null) { // No results.
-            var err = new Error('Genre not found');
-            err.status = 404;
-            return next(err);
+            var ere = new Error('Genre not found');
+            ere.status = 404;
+            return next(ere);
         }
+        results.genre.name = entities.decode(results.genre.name);
         // Successful, so render.
         res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books } );
     });
@@ -119,6 +126,7 @@ exports.genre_delete_get = function(req, res, next) {
             res.redirect('/catalog/genres');
         }
         // Successful, so render.
+        results.genre.name = entities.decode(results.genre.name);
         res.render('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books } );
     });
 
@@ -161,11 +169,12 @@ exports.genre_update_get = function(req, res, next) {
     Genre.findById(req.params.id, function(err, genre) {
         if (err) { return next(err); }
         if (genre==null) { // No results.
-            var err = new Error('Genre not found');
-            err.status = 404;
-            return next(err);
+            var ere = new Error('Genre not found');
+            ere.status = 404;
+            return next(ere);
         }
         // Success.
+        genre.name = entities.decode(genre.name);
         res.render('genre_form', { title: 'Update Genre', genre: genre });
     });
 

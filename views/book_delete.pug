@@ -13,7 +13,20 @@ block content
 
   hr
   
-  p Do you really want to delete this Book?
+  if stories.length
+  
+    p #[strong Delete the following stories before attempting to delete this Book.]
+  
+    div(style='margin-left:20px;margin-top:20px')
+
+      h4 Stories
+    
+        each story in stories
+          p
+            a(href=story.url) #{story.title}
+
+  else
+    p Do you really want to delete this Book?
     
     form(method='POST' action='')
       div.form-group

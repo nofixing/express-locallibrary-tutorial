@@ -60,6 +60,8 @@ router.get('/book/:id', book_controller.book_detail);
 // GET request for list of all Book.
 router.get('/books', book_controller.book_list);
 
+router.post('/book_ajax', book_controller.book_ajax);
+
 /// STORY ROUTES ///
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).

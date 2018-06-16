@@ -31,7 +31,7 @@ exports.index = function(req, res) {
             Genre.find({user: req.session.userId}).count(callback);
         },
         story_count: function(callback) {
-            Story.find({user: req.session.userId}).count(callback);
+            Story.find({user: req.session.userId, book: null}).count(callback);
         },
     }, function(err, results) {
         var cert = req.query.cert;
@@ -51,6 +51,17 @@ exports.book_list = function(req, res, next) {
     });
 
 };
+
+exports.book_ajax = function(req, res, next) {
+
+    Book.findById(req.body.id)
+      .populate('genre')
+      .exec(function (err, book) {
+        if (err) { return next(err); }
+        res.send(book);
+      });
+  
+  };
 
 // Display detail page for a specific book.
 exports.book_detail = function(req, res, next) {
@@ -93,6 +104,9 @@ exports.book_create_get = function(req, res, next) {
         },
     }, function(err, results) {
         if (err) { console.log(err); return next(err); }
+        for (let i = 0; i < results.genres.length; i++) {
+            results.genres[i].name = entities.decode(results.genres[i].name);
+        }
         res.render('book_form', { title: 'Create Book',genres:results.genres });
     });
 
@@ -115,6 +129,7 @@ exports.book_create_post = [
     body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('author', 'Author must not be empty.').isLength({ min: 1 }).trim(),
     body('summary', 'Summary must not be empty.').isLength({ min: 1 }).trim(),
+    body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
 
     // Sanitize fields.
     sanitizeBody('*').trim().escape(),
@@ -141,7 +156,8 @@ exports.book_create_post = [
             // Get all authors and genres for form.
             async.parallel({
                 genres: function(callback) {
-                    Genre.find(callback);
+                    Genre.find({user: req.session.userId}, 'name ')
+                        .exec(callback);
                 },
             }, function(err, results) {
                 if (err) { return next(err); }
@@ -151,6 +167,7 @@ exports.book_create_post = [
                     if (book.genre.indexOf(results.genres[i]._id) > -1) {
                         results.genres[i].checked='true';
                     }
+                    results.genres[i].name = entities.decode(results.genres[i].name);
                 }
                 res.render('book_form', { title: 'Create Book', genres:results.genres, book: book, errors: errors.array() });
             });
@@ -174,7 +191,10 @@ exports.book_delete_get = function(req, res, next) {
 
     async.parallel({
         book: function(callback) {
-            Book.findById(req.params.id).populate('author').populate('genre').exec(callback);
+            Book.findById(req.params.id).populate('genre').exec(callback);
+        },
+        stories: function(callback) {
+            Story.find({ 'book': req.params.id }).exec(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
@@ -182,8 +202,11 @@ exports.book_delete_get = function(req, res, next) {
             res.redirect('/catalog/books');
         }
         results.book.summary = entities.decode(results.book.summary);
+        for (let i = 0; i < results.book.genre.length; i++) {
+            results.book.genre[i].name = entities.decode(results.book.genre[i].name);
+        }
         // Successful, so render.
-        res.render('book_delete', { title: 'Delete Book', book: results.book } );
+        res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories } );
     });
 
 };
@@ -191,18 +214,22 @@ exports.book_delete_get = function(req, res, next) {
 // Handle book delete on POST.
 exports.book_delete_post = function(req, res, next) {
 
-    // Assume the post has valid id (ie no validation/sanitization).
-
     async.parallel({
         book: function(callback) {
-            Book.findById(req.params.id).populate('author').populate('genre').exec(callback);
+            Book.findById(req.params.id).populate('genre').exec(callback);
+        },
+        stories: function(callback) {
+            Story.find({ 'book': req.params.id }).exec(callback);
         },
     }, function(err, results) {
         if (err) { return next(err); }
         // Success
-        if (results.book_bookinstances.length > 0) {
+        if (results.stories.length > 0) {
             // Book has book_instances. Render in same way as for GET route.
-            res.render('book_delete', { title: 'Delete Book', book: results.book } );
+            for (let i = 0; i < results.book.genre.length; i++) {
+                results.book.genre[i].name = entities.decode(results.book.genre[i].name);
+            }
+            res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories } );
             return;
         }
         else {
@@ -271,6 +298,7 @@ exports.book_update_post = [
     body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('author', 'Author must not be empty.').isLength({ min: 1 }).trim(),
     body('summary', 'Summary must not be empty.').isLength({ min: 1 }).trim(),
+    body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
 
     // Sanitize fields.
     sanitizeBody('title').trim().escape(),

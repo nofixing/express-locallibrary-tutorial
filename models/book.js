@@ -7,7 +7,7 @@ var BookSchema = new Schema({
     author: { type: String, required: true},
     summary: {type: String, required: true},
     user: { type: Schema.ObjectId, ref: 'User' },
-    genre: [{ type: Schema.ObjectId, ref: 'Genre' }]
+    genre: [{ type: Schema.ObjectId, ref: 'Genre', required: true }]
 });
 
 // Virtual for this book instance URL.
