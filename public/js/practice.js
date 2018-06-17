@@ -350,6 +350,7 @@ function ReadingPractice() {
     $('#jb_content').addClass('col-lg-4');
     $('#jb_content').css('padding', '0 20px 20px 20px');
     $('#jb_txtEditor').css('display', 'block');
+    $('#word_container').css('display', 'none');
     $('#jb_sidebar').removeClass('col-lg-6');
     $('#jb_sidebar').addClass('col-lg-4');
     $('#jb_sidebar').css('display', 'block');
