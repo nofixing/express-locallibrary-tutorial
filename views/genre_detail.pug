@@ -16,6 +16,16 @@ block content
 
     else
       p This genre has no books.
+
+    h4 Stories
+    
+    dl
+    each story in genre_stories
+      dt 
+        a(href=story.url) #{story.title}
+
+    else
+      p This genre has no stories.
       
   hr
   p

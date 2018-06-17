@@ -61,7 +61,7 @@ exports.story_detail = function(req, res, next) {
             return next(eor);
         }
         var txt = entities.decode(results.story.content);
-        var highlightHtml = '<span class="hgt" style="color:blue;">$1</span>';
+        var highlightHtml = '<span class="hgt" style="color:black;">$1</span>';
         //console.log(results.words.length);
         for (let i = 0; i < results.words.length; i++) {
             //console.log(results.words[i]);

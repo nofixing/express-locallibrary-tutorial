@@ -1,5 +1,6 @@
 var Genre = require('../models/genre');
 var Book = require('../models/book');
+var Story = require('../models/story');
 var async = require('async');
 
 const Entities = require('html-entities').AllHtmlEntities;
@@ -39,6 +40,11 @@ exports.genre_detail = function(req, res, next) {
           .exec(callback);
         },
 
+        genre_stories: function(callback) {
+            Story.find({ 'genre': req.params.id, 'user': req.session.userId })
+            .exec(callback);
+        },
+
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.genre==null) { // No results.
@@ -48,7 +54,7 @@ exports.genre_detail = function(req, res, next) {
         }
         results.genre.name = entities.decode(results.genre.name);
         // Successful, so render.
-        res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books } );
+        res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books, genre_stories: results.genre_stories } );
     });
 
 };

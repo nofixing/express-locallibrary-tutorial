@@ -1,7 +1,7 @@
 #jb_content {
     height: 100%;
     top: 50px;
-    padding: 0 20px 20px 20px;
+    padding: 0 25% 0 25%;
     margin-bottom: 20px;
     float: left;
     border: 0px solid #bcbcbc;
@@ -13,6 +13,7 @@
     word-spacing: 2px;
     text-indent: 3%;
 }
+.hgt {color: black;}
 #jb_txtEditor {
     height: 100%;
     position: fixed;
@@ -25,7 +26,7 @@
     overflow-x: hidden;
     overflow-y: auto; /* prevents scroll bar flash */
     z-index: 1;
-    display: block;
+    display: none;
 }
 #word_container {
     height: 90%;
@@ -49,6 +50,8 @@
     margin-bottom: 20px;
     float: right;
     border: 0px solid #bcbcbc;
+    text-align: center;
+    display: none;
 }
 .standalone-container {
     margin: 0 auto;

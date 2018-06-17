@@ -21,6 +21,8 @@ html(lang='en')
         li 
           a(href='#none' onclick='ReadingOnly();') Reading Only
         li 
+          a(href='#none' onclick='ReadingSearch();') Reading Search 
+        li 
           a(href='#none' onclick='ReadingPractice();') Reading Practice
         li 
           a(href=story.url+'/delete') Delete Story
@@ -33,7 +35,7 @@ html(lang='en')
         li 
           a(href='/') Home
     div(class='container-fluid')
-      div#jb_content.col-lg-4 !{story.content}
+      div#jb_content.col-lg-12 !{story.content}
       div#jb_txtEditor.col-lg-4
         div.standalone-container
           div#snow-container

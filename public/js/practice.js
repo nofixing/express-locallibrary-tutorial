@@ -322,6 +322,7 @@ function wordList() {
 
 function ReadingOnly() {
     $('#jb_content').removeClass('col-lg-4');
+    $('#jb_content').removeClass('col-lg-6');
     $('#jb_content').addClass('col-lg-12');
     $('#jb_content').css('padding', '0 25% 0 25%');
     $('#jb_txtEditor').css('display', 'none');
@@ -330,11 +331,27 @@ function ReadingOnly() {
     $('.hgt').css('color', 'black');
 }
 
+function ReadingSearch() {
+    $('#jb_content').removeClass('col-lg-4');
+    $('#jb_content').removeClass('col-lg-12');
+    $('#jb_content').addClass('col-lg-6');
+    $('#jb_content').css('padding', '0 20px 20px 20px');
+    $('#jb_txtEditor').css('display', 'none');
+    $('#word_container').css('display', 'none');
+    $('#jb_sidebar').removeClass('col-lg-4');
+    $('#jb_sidebar').addClass('col-lg-6');
+    $('#jb_sidebar').css('display', 'block');
+    $('.hgt').css('color', 'black');
+}
+
 function ReadingPractice() {
     $('#jb_content').removeClass('col-lg-12');
+    $('#jb_content').removeClass('col-lg-6');
     $('#jb_content').addClass('col-lg-4');
     $('#jb_content').css('padding', '0 20px 20px 20px');
     $('#jb_txtEditor').css('display', 'block');
+    $('#jb_sidebar').removeClass('col-lg-6');
+    $('#jb_sidebar').addClass('col-lg-4');
     $('#jb_sidebar').css('display', 'block');
     $('.hgt').css('color', 'blue');
 }
@@ -342,6 +359,11 @@ function ReadingPractice() {
 function storyPost() {
 
     var frm = document.getElementById("storyForm");
+    var tContent = txtArea.value;
+    var find = '<p><br></p>';
+    var re = new RegExp(find, 'g');
+    tContent = tContent.replace(re, '');
+    document.querySelector('#snow-container').children[0].innerHTML = tContent;
     frm.content.value = document.querySelector('#snow-container').children[0].innerHTML;
     frm.submit();		
 

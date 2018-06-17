@@ -182,12 +182,13 @@ exports.word_update_post = function(req, res, next) {
     Word.findById({_id: req.body.id})
         .exec(function (err, results) {
           //console.log(results);
-          if (results != null && results.length > 0) {
+          if (results != null) {
+            //console.log('word update');
             Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
                 if (err) { console.log(err); return next(err); }
                 });
           } else {
-              console.log('word insert');
+              //console.log('word insert');
               newWord.save(function (err, theWord) {
                  if (err) { return next(err); }
                      // Successful - redirect to new word record.
