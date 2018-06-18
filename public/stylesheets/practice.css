@@ -1,6 +1,6 @@
 #jb_content {
     height: 100%;
-    top: 50px;
+    top: 70px;
     padding: 0 10% 0 10%;
     margin-bottom: 20px;
     float: left;
@@ -17,7 +17,7 @@
 #jb_txtEditor {
     height: 100%;
     position: fixed;
-    top: 50px;
+    top: 70px;
     left: 33%;
     padding: 0;
     margin-bottom: 20px;
@@ -31,7 +31,7 @@
 #word_container {
     height: 90%;
     position: fixed;
-    top: 50px;
+    top: 70px;
     left: 33%;
     padding: 0;
     margin-bottom: 20px;
@@ -44,7 +44,7 @@
 }
 #jb_sidebar {
     position: fixed;
-    top: 40px;
+    top: 60px;
     right: 0;
     padding: 0px 0px 20px 20px;
     margin-bottom: 20px;
@@ -89,7 +89,6 @@
 }
 
 #navbar {
-    height: 35px;
     position: fixed;
     top: 0;
     left: 0;
@@ -102,10 +101,11 @@
 ul.topnav {
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 11px 0 0 0;
     overflow: hidden;
     background-color: #333;
     font-size: 1em;
+    height: 56px;
 }
 
 ul.topnav li {float: left; padding-right: 20px;}
