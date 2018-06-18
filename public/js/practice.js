@@ -242,17 +242,27 @@ $(function(){
             contentType: 'application/json',
             url: httpType+$('#hostname').val()+'/catalog/stories_ajax',
             success : function(stories) {
+                
                 $.each(stories, function(i, story){
-					$('#story').append($("<option></option>")
-                    .attr("value",story._id)
-                    .text(story.title));
-				});
+                    if($('#story_id').val() == story._id){
+                        $('#story').append($("<option></option>")
+                        .attr("value",story._id)
+                        .attr("selected", "selected")
+                        .text(story.title));
+                    } else {
+                        $('#story').append($("<option></option>")
+                        .attr("value",story._id)
+                        .text(story.title));
+                    }
+                });
             }
         });
     }
 
     $("#story").on('change', function() {
-        document.location.href = '/catalog/story/'+$("#story").val();
+        if ( $("#story").val() != '' ) {
+            document.location.href = '/catalog/story/'+$("#story").val();
+        }
     });
 
     $("#menu").on('change', function() {
@@ -350,7 +360,7 @@ function ReadingOnly() {
     $('#jb_content').removeClass('col-lg-4');
     $('#jb_content').removeClass('col-lg-6');
     $('#jb_content').addClass('col-lg-12');
-    $('#jb_content').css('padding', '0 25% 0 25%');
+    $('#jb_content').css('padding', '0 10% 0 10%');
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
     $('#jb_sidebar').css('display', 'none');
@@ -456,3 +466,4 @@ function hideWordLayer() {
     $('#word_container').css('display', 'none');
     $('#jb_txtEditor').css('display', 'block');
 }
+

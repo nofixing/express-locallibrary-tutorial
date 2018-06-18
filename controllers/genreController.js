@@ -53,6 +53,9 @@ exports.genre_detail = function(req, res, next) {
             return next(ere);
         }
         results.genre.name = entities.decode(results.genre.name);
+        for (let i = 0; i < results.genre_books.length; i++) {
+            results.genre_books[i].summary = entities.decode(results.genre_books[i].summary);
+        }
         // Successful, so render.
         res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books, genre_stories: results.genre_stories } );
     });
