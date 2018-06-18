@@ -1,7 +1,7 @@
 #jb_content {
     height: 100%;
     top: 50px;
-    padding: 0 25% 0 25%;
+    padding: 0 10% 0 10%;
     margin-bottom: 20px;
     float: left;
     border: 0px solid #bcbcbc;
@@ -108,7 +108,7 @@ ul.topnav {
     font-size: 1em;
 }
 
-ul.topnav li {float: left;}
+ul.topnav li {float: left; padding-right: 20px;}
 
 ul.topnav li a {
     display: block;

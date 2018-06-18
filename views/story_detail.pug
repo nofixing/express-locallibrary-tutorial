@@ -17,23 +17,19 @@ html(lang='en')
       ul(class='topnav')
         li
           select#story.form-control(type='select', placeholder='Select story' name='story' onchange='goThatStory();')
-            option(value='') select story
-        li 
-          a(href='#none' onclick='ReadingOnly();') Reading Only
-        li 
-          a(href='#none' onclick='ReadingSearch();') Reading Search 
-        li 
-          a(href='#none' onclick='ReadingPractice();') Reading Practice
-        li 
-          a(href=story.url+'/delete') Delete Story
-        li 
-          a(href=story.url+'/update') Update Story
-        li 
-          a(href='#none' onclick='showWordLayer();') Word List
-        li 
-          a(href='#none' onclick='hideWordLayer();') Memo Edit
-        li 
-          a(href='/') Home
+            option(value='') Select Story
+        li
+          select#menu.form-control(type='select', placeholder='Select Memu' name='menu' onchange='goThatMemu();')
+            option(value='') Select Menu
+            option(value='0') Home
+            option(value='1') Reading Only
+            option(value='2') Reading Search
+            option(value='3') Reading Practice
+            option(value='4') Delete Story
+            option(value='5') Update Story
+            option(value='6') Word List
+            option(value='7') Memo Edit
+            option(value='8') Create Story
     div(class='container-fluid')
       div#jb_content.col-lg-12 !{story.content}
       div#jb_txtEditor.col-lg-4

@@ -11,7 +11,7 @@ $(function(){
         if (prevScrollpos > currentScrollPos) {
             $('#navbar').css("top","0");
         } else {
-            $('#navbar').css("top","-40px");
+            $('#navbar').css("top","-35px");
         }
         prevScrollpos = currentScrollPos;
     };
@@ -434,5 +434,29 @@ function hideWordLayer() {
 function goThatStory() {
 
     document.location.href = '/catalog/story/'+$("#story").val();
+
+}
+
+function goThatMemu() {
+
+    if( $("#menu").val() == "0" ) {
+        document.location.href = '/';
+    } else if( $("#menu").val() == "1" ) {
+        ReadingOnly();
+    } else if( $("#menu").val() == "2" ) {
+        ReadingSearch();
+    } else if( $("#menu").val() == "3" ) {
+        ReadingPractice();
+    } else if( $("#menu").val() == "4" ) {
+        document.location.href = '/catalog/story/'+$("#story_id").val()+'/delete';
+    } else if( $("#menu").val() == "5" ) {
+        document.location.href = '/catalog/story/'+$("#story_id").val()+'/update';
+    } else if( $("#menu").val() == "6" ) {
+        showWordLayer();
+    }  else if( $("#menu").val() == "7" ) {
+        hideWordLayer();
+    }  else if( $("#menu").val() == "8" ) {
+        document.location.href = '/catalog/story/create?book='+$("#book").val();
+    }
 
 }
