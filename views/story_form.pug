@@ -12,9 +12,15 @@ block content
             if story.book
               option(value=book._id selected=(book._id.toString()==story.book._id.toString() ? 'selected' : false) ) #{book.title}
             else
-              option(value=book._id) #{book.title}
+              if bok
+                option(value=book._id selected=(book._id.toString()==bok.toString() ? 'selected' : false) ) #{book.title}
+              else
+                option(value=book._id) #{book.title}
           else
-            option(value=book._id) #{book.title}
+            if bok
+              option(value=book._id selected=(book._id.toString()==bok.toString() ? 'selected' : false) ) #{book.title}
+            else
+              option(value=book._id) #{book.title}
         if !story
           option(value='') story only
         else

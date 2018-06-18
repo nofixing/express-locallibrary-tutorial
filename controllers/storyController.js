@@ -124,7 +124,8 @@ exports.story_create_get = function(req, res, next) {
         for (let i = 0; i < results.genres.length; i++) {
             results.genres[i].name = entities.decode(results.genres[i].name);
         }
-        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, hostname: req.headers.host });
+        var bok = req.query.book;
+        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, bok: bok, hostname: req.headers.host });
     });
 
 };
