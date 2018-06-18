@@ -7,14 +7,14 @@ $(function(){
 
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function() {
-        var currentScrollPos = window.pageYOffset;
+    var currentScrollPos = window.pageYOffset;
         if (prevScrollpos > currentScrollPos) {
-            $('#navbar').css("top","0");
+        document.getElementById("navbar").style.top = "0";
         } else {
-            $('#navbar').css("top","-35px");
+        document.getElementById("navbar").style.top = "-210px";
         }
         prevScrollpos = currentScrollPos;
-    };
+    }
 
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
     $( "#jb_content" ).bind('dblclick', function(e){
