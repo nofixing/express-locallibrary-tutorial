@@ -73,7 +73,7 @@ exports.book_detail = function(req, res, next) {
               .exec(callback);
         },
         stories: function(callback) {
-            Story.find({book:req.params.id}).collation({locale: 'en' }).sort({title: 1})
+            Story.find({book:req.params.id}).collation({locale: 'en' }).sort({order: 1})
               .exec(callback);
         },
     }, function(err, results) {

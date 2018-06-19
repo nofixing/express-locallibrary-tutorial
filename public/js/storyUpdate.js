@@ -10,6 +10,7 @@ $( document ).ready(function() {
     $("#book").change(function() {
         if ( $("#book").val() != "" ) {
             book_ajax();
+            $(".boko").css("display", "block");
         } else {
             $("#author").val("");
             $('.gne').each(function () {
@@ -38,6 +39,7 @@ $( document ).ready(function() {
                     });
                 });
                 $(".stro").css("display", "none");
+                $(".boko").css("display", "block");
             }
         });
 

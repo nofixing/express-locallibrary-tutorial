@@ -26,7 +26,7 @@ exports.story_list = function(req, res, next) {
 
 exports.story_list_ajax = function(req, res, next) {
 
-    Story.find({book: req.body.book}, 'title ')
+    Story.find({book: req.body.book}, 'title ').collation({locale: 'en' }).sort({order: 1})
       .exec(function (err, list_stories) {
         if (err) { return next(err); }
         res.send(list_stories);
@@ -166,7 +166,8 @@ exports.story_create_post = [
             reference: req.body.reference,
             genre: req.body.genre,
             book: req.body.book,
-            user: req.session.userId
+            user: req.session.userId,
+            order: req.body.order
            });
 
         var storyOnly = new Story(
@@ -175,7 +176,8 @@ exports.story_create_post = [
               content: req.body.content,
               reference: req.body.reference,
               genre: req.body.genre,
-              user: req.session.userId
+              user: req.session.userId,
+              order: req.body.order
              });
 
         if (!errors.isEmpty()) {
@@ -362,6 +364,7 @@ exports.story_update_post = [
             reference: req.body.reference,
             genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
             book: req.body.book,
+            order: req.body.order,
             _id:req.params.id // This is required, or a new ID will be assigned!
            });
 

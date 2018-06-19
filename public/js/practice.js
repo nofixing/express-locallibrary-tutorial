@@ -1,6 +1,6 @@
 var selectText = "";
 var wordArray = [];
-var dicAddr = "http://c.merriam-webster.com/coredictionary/";
+var dicAddr = "https://c.merriam-webster.com/coredictionary/";
 $(function(){
     var showData = $('#show_img');
     $.support.cors = true;
@@ -229,9 +229,8 @@ $(function(){
         $(".wtd").append(markup);
     });
 
-    var sList = $('#story').val();
     var bVa = $("#book").val();
-    if(typeof sList != 'undefined' && typeof bVa != 'undefined' && bVa != '') {
+    if(typeof bVa != 'undefined' && bVa != '') {
         var data = {};
         data.book = bVa;
         var httpType = 'https://';
@@ -242,50 +241,15 @@ $(function(){
             contentType: 'application/json',
             url: httpType+$('#hostname').val()+'/catalog/stories_ajax',
             success : function(stories) {
-                
                 $.each(stories, function(i, story){
-                    if($('#story_id').val() == story._id){
-                        $('#story').append($("<option></option>")
-                        .attr("value",story._id)
-                        .attr("selected", "selected")
+                    $('#index').append($("<a></a>")
+                        .attr("class", "dropdown-item")
+                        .attr("href", "/catalog/story/"+story._id)
                         .text(story.title));
-                    } else {
-                        $('#story').append($("<option></option>")
-                        .attr("value",story._id)
-                        .text(story.title));
-                    }
                 });
             }
         });
     }
-
-    $("#story").on('change', function() {
-        if ( $("#story").val() != '' ) {
-            document.location.href = '/catalog/story/'+$("#story").val();
-        }
-    });
-
-    $("#menu").on('change', function() {
-        if( $("#menu").val() == "0" ) {
-            document.location.href = '/';
-        } else if( $("#menu").val() == "1" ) {
-            ReadingOnly();
-        } else if( $("#menu").val() == "2" ) {
-            ReadingSearch();
-        } else if( $("#menu").val() == "3" ) {
-            ReadingPractice();
-        } else if( $("#menu").val() == "4" ) {
-            document.location.href = '/catalog/story/'+$("#story_id").val()+'/delete';
-        } else if( $("#menu").val() == "5" ) {
-            document.location.href = '/catalog/story/'+$("#story_id").val()+'/update';
-        } else if( $("#menu").val() == "6" ) {
-            showWordLayer();
-        }  else if( $("#menu").val() == "7" ) {
-            hideWordLayer();
-        }  else if( $("#menu").val() == "8" ) {
-            document.location.href = '/catalog/story/create?book='+$("#book").val();
-        }
-    });
 
 });
 
@@ -391,6 +355,18 @@ function ReadingPractice() {
     $('#jb_sidebar').addClass('col-lg-4');
     $('#jb_sidebar').css('display', 'block');
     $('.hgt').css('color', 'blue');
+}
+
+function DeleteStory() {
+    document.location.href = '/catalog/story/'+$("#story_id").val()+'/delete';
+}
+
+function UpdateStory() {
+    document.location.href = '/catalog/story/'+$("#story_id").val()+'/update';
+}
+
+function CreateStory() {
+    document.location.href = '/catalog/story/create?book='+$("#book").val();
 }
 
 function storyPost() {

@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <script>
+      $(function(){
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+          if (prevScrollpos > currentScrollPos) {
+            document.getElementById("navbar").style.top = "0";
+          } else {
+            document.getElementById("navbar").style.top = "-210px";
+          }
+          prevScrollpos = currentScrollPos;
+        }
+      });
+    </script>
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar" style="position: fixed;top: 0;left: 0;width: 100%;transition: top 0.5s;">
+      <a class="navbar-brand" href="#">HOME</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MENU</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">LOG IN</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">SIGN UP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">LOG OUT</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+<div class="container-fluid">
+  <h1>My First Bootstrap Page</h1>
+  <P>Acknowledgments</P>
+  <P>I would like to acknowledge the enormous help given to me in creating this book. For their memories, their patience, and their guidance, I wish to thank Charlotte, Rob, and Jonathan Schwartz, Maurie Stein, Charlie Derber, Gordie Fellman, David Schwartz, Rabbi Al Axelrad, and the multitude of Morrie's friends and colleagues. Also, special thanks to Bill Thomas, my editor, for handling this project with just the right touch. And, as always, my appreciation to David Black, who often believes in me more than I do myself.</P>
+  <P>Mostly, my thanks to Morrie, for wanting to do this last thesis together. Have you ever had a teacher like this?</P>
+  <P>The Curriculum</P>
+  <P>The last class of my old professor's life took place once a week in his house, by a window in the study where he could watch a small hibiscus plant shed its pink leaves. The class met on Tuesdays. It began after breakfast. The subject was The Meaning of Life. It was taught from experience.</P>
+  <P>No grades were given, but there were oral exams each week. You were expected to respond to questions, and you were expected to pose questions of your own. You were also required to perform physical tasks now and then, such as lifting the professor's head to a comfortable spot on the pillow or placing his glasses on the bridge of his nose. Kissing himgood-bye earned you extra credit.</P>
+  <P>No books were required, yet many topics were covered, including love, work, community, family, aging, forgiveness, and, finally, death. The last lecture was brief, only a few words.</P>
+  <P>A funeral was held in lieu of graduation.</P>
+  <P>Although no final exam was given, you were expected to produce one long paper on what was learned. That paper is presented here.</P>
+  <P>The last class of my old professor's life had only one student. I was the student.</P>
+  <P>It is the late spring of 1979, a hot, sticky Saturday afternoon. Hundreds of us sit together, side by side, in rows of wooden folding chairs on the main campus lawn. We wear blue nylon robes. We listen impatiently to long speeches. When the ceremony is over, we throw our caps in the air, and we are officially graduated from college, the senior class of Brandeis University in the city of Waltham, Massachusetts. For many of us, the curtain has just come down on childhood.</P>
+  <P>Afterward, I find Morrie Schwartz, my favorite professor, and introduce him to my parents. He is a small man who takes small steps, as if a strong wind could, at any time, whisk him up into the clouds. In his graduation day robe, he looks like a cross between a biblical prophet and a Christmas elf. He has sparkling blue-green eyes, thinning silver hair that spills onto his forehead, big ears, a triangular nose, and tufts of graying eyebrows. Although his teeth are crooked and his lower ones are slantedback—as if someone had once punched themin—when he smiles it's as if you'd just told him the first joke on earth.</P>
+  <P>He tells my parents how I took every class he taught. He tells them, "You have a special boy here." Embarrassed, I look at my feet. Before we leave, I hand my professor a present, a tan briefcase with his initials on the front. I bought this the day before at a shopping mall. I didn't want to forget him. Maybe I didn't want him to forget me.</P>
+  <P>"Mitch, you are one of the good ones," he says, admiring the briefcase. Then he hugs me. I feel his thin arms around my back. I am taller than he is, and when he holds me, I feel awkward, older, as if I were the parent and he were the child. He asks if I will stay in</P>
+  <P>touch, and without hesitation I say, "Of course." When he steps back, I see that he is crying.</P>
+
+  <P>The Syllabus</P>
+  <P>His death sentence came in the summer of 1994. Looking back, Morrie knew something bad was coming long before that. He knew it the day he gave up dancing.</P>
+  <P>He had always been a dancer, my old professor. The music didn't matter. Rock and roll, big band, the blues. He loved them all. He would close his eyes and with a blissful smile begin to move to his own sense of rhythm. It wasn't always pretty. But then, he didn't worry about a partner. Morrie danced by himself.</P>
+  <P>He used to go to this church in Harvard Square every Wednesday night for something called "Dance Free." They had flashing lights and booming speakers and Morrie would wander in among the mostly student crowd, wearing a whiteT-shirt and black sweatpants and a towel around his neck, and whatever music was playing, that's the music to which he danced. He'd do the lindy to Jimi Hendrix. He twisted and twirled, he waved his arms like a conductor on amphetamines, until sweat was dripping down the middle of his back. No one there knew he was a prominent doctor of sociology, with years of experience as a college professor and severalwell-respected books. They just thought he was some old nut.</P>
+  <P>Once, he brought a tango tape and got them to play it over the speakers. Then he commandeered the floor, shooting back and forth like some hot Latin lover. When he finished, everyone applauded. He could have stayed in that moment forever.</P>
+  <P>But then the dancing stopped.</P>
+  <P>He developed asthma in his sixties. His breathing became labored. One day he was walking along the Charles River, and a cold burst of wind left him choking for air. He was rushed to the hospital and injected with Adrenalin.</P>
+  <P>A few years later, he began to have trouble walking. At a birthday party for a friend, he stumbled inexplicably. Another night, he fell down the steps of a theater, startling a small crowd of people.</P>
+  <P>"Give him air!" someone yelled.</P>
+  <P>He was in his seventies by this point, so they whispered "old age" and helped him to his feet. But Morrie, who was always more in touch with his insides than the rest of us, knew something else was wrong. This was more than old age. He was weary all the time. He had trouble sleeping. He dreamt he was dying.</P>
+  <P>He began to see doctors. Lots of them. They tested his blood. They tested his urine. They put a scope up his rear end and looked inside his intestines. Finally, when nothing could be found, one doctor ordered a muscle biopsy, taking a small piece out of Morrie's calf. The lab report came back suggesting a neurological problem, and Morrie was brought in for yet another series of tests. In one of those tests, he sat in a special seat as they zapped him with electricalcurrent—an electric chair, of sortsand studied his neurological responses.</P>
+  <P>"We need to check this further," the doctors said, looking over his results. "Why?" Morrie asked. "What is it?"</P>
+  <P>"We're not sure. Your times are slow." His times were slow? What did that mean?</P>
+  <p>Finally, on a hot, humid day in August 1994, Morrie and his wife, Charlotte, went to the neurologist's office, and he asked them to sit before he broke the news: Morrie had amyotrophic lateral sclerosis (ALS), Lou Gehrig's disease, a brutal, unforgiving illness of the neurological system.</P>
+  <P>There was no known cure.</P>
+  <P>"How did I get it?" Morrie asked.</P>
+  <p>Nobody knew.</p>
+  <p>"Is it terminal?"</P>
+  <P>Yes.</P>
+  <P>"So I'm going to die?"</P>
+  <P>Yes, you are, the doctor said. I'm very sorry.</P>
+  <P>He sat with Morrie and Charlotte for nearly two hours, patiently answering their questions. When they left, the doctor gave them some information on ALS, little pamphlets, as if they were opening a bank account. Outside, the sun was shining and people were going about their business. A woman ran to put money in the parking meter. Another carried groceries. Charlotte had a million thoughts running through her mind: How much time do we have left? How will we manage? How will we pay the bills?</P>
+  <P>My old professor, meanwhile, was stunned by the normalcy of the day around him. Shouldn't the world stop? Don't they know what has happened to me?</P>
+  <P>But the world did not stop, it took no notice at all, and as Morrie pulled weakly on the car door, he felt as if he were dropping into a hole.</P>
+  <P>Now what? he thought.</P>
+  <P>As my old professor searched for answers, the disease took him over, day by day, week by week. He backed the car out of the garage one morning and could barely push the brakes. That was the end of his driving.</P>
+  <P>He kept tripping, so he purchased a cane. That was the end of his walking free. He went for his regular swim at the YMCA, but found he could no longer undress</P>
+  <P>himself. So he hired his first home careworker—a theology student namedTony—who helped him in and out of the pool, and in and out of his bathing suit. In the locker room, the other swimmers pretended not to stare. They stared anyhow. That was the end of his privacy.</P>
+  <P>In the fall of 1994, Morrie came to the hilly Brandeis campus to teach his final college course. He could have skipped this, of course. The university would have understood. Why suffer in front of so many people? Stay at home. Get your affairs in order. But the idea of quitting did not occur to Morrie.</P>
+  <P>Instead, he hobbled into the classroom, his home for more than thirty years. Because of the cane, he took a while to reach the chair. Finally, he sat down, dropped his glasses off his nose, and looked out at the young faces who stared back in silence.</P>
+  <P>"My friends, I assume you are all here for the Social Psychology class. I have been teaching this course for twenty years, and this is the first time I can say there is a risk in taking it, because I have a fatal illness. I may not live to finish the semester.</P>
+  <P>"If you feel this is a problem, I understand if you wish to drop the course." He smiled.</P>
+  <P>And that was the end of his secret.</P>
+  <P>ALS is like a lit candle: it melts your nerves and leaves your body a pile of wax. Often, it begins with the legs and works its way up. You lose control of your thigh muscles, so that you cannot support yourself standing. You lose control of your trunk muscles, so that you cannot sit up straight. By the end, if you are still alive, you are breathing through a tube in a hole in your throat, while your soul, perfectly awake, is imprisoned inside a limp husk, perhaps able to blink, or cluck a tongue, like something from a science fiction movie, the man frozen inside his own flesh. This takes no more than five years from the day you contract the disease.</P>
+  <P>Morrie's doctors guessed he had two years left. Morrie knew it was less.</P>
+  <P>But my old professor had made a profound decision, one he began to construct the day he came out of the doctor's office with a sword hanging over his head. Do I wither up and disappear, or do I make the best of my time left? he had asked himself.</P>
+  <P>He would not wither. He would not be ashamed of dying.</P>
+  <P>Study me in my slow and patient demise. Watch what happens to me. Learn with me.</P>
+  <P>Morrie would walk that final bridge between life and death, and narrate the trip.</P>
+  <P>The fall semester passed quickly. The pills increased. Therapy became a regular</P>
+  <P>routine. Nurses came to his house to work with Morrie's withering legs, to keep the muscles active, bending them back and forth as if pumping water from a well. Massage specialists came by once a week to try to soothe the constant, heavy stiffness he felt. He met with meditation teachers, and closed his eyes and narrowed his thoughts until his world shrunk down to a single breath, in and out, in and out.</P>
+  <P>One day, using his cane, he stepped onto the curb and fell over into the street. The cane was exchanged for a walker. As his body weakened, the back and forth to the bathroom became too exhausting, so Morrie began to urinate into a large beaker. He had to support himself as he did this, meaning someone had to hold the beaker while Morrie filled it.</P>
+  <P>Most of us would be embarrassed by all this, especially at Morrie's age. But Morrie was not like most of us. When some of his close colleagues would visit, he would say to them, "Listen, I have to pee. Would you mind helping? Are you okay with that?"</P>
+  <P>Often, to their own surprise, they were.</P>
+  <P>In fact, he entertained a growing stream of visitors. He had discussion groups about dying, what it really meant, how societies had always been afraid of it without necessarily understanding it. He told his friends that if they really wanted to help him, they would treat him not with sympathy but with visits, phone calls, a sharing of theirproblems—the way they had always shared their problems, because Morrie had always been a wonderful listener.</P>
+  <P>For all that was happening to him, his voice was strong and inviting, and his mind was vibrating with a million thoughts. He was intent on proving that the word "dying" was not synonymous with "useless."</P>
+  <P>The New Year came and went. Although he never said it to anyone, Morrie knew this would be the last year of his life. He was using a wheelchair now, and he was fighting time to say all the things he wanted to say to all the people he loved. When a colleague at Brandeis died suddenly of a heart attack, Morrie went to his funeral. He came home depressed.</P>
+  <P>"What a waste," he said. "All those people saying all those wonderful things, and Irv never got to hear any of it."</P>
+  <P>Morrie had a better idea. He made some calls. He chose a date. And on a cold Sunday afternoon, he was joined in his home by a small group of friends and family for a "living funeral." Each of them spoke and paid tribute to my old professor. Some cried. Some laughed. One woman read a poem:</P>
+  <P>"My dear and loving cousin ... Your ageless heart</P>
+  <P>as you move through time, layer on layer, tender sequoia ..."</P>
+  <P>Morrie cried and laughed with them. And all the heartfelt things we never get to say to those we love, Morrie said that day. His "living funeral" was a rousing success.</P>
+  <P>Only Morrie wasn't dead yet.</P>
+  <P>In fact, the most unusual part of his life was about to unfold.</P>
+
+  <P>The Student</P>
+  <P>At this point, I should explain what had happened to me since that summer day when I last hugged my dear and wise professor, and promised to keep in touch.</P>
+  <P>I did not keep in touch.</P>
+  <P>In fact, I lost contact with most of the people I knew in college, including my, beer-drinking friends and the first woman I ever woke up with in the morning. The years after graduation hardened me into someone quite different from the strutting graduate who left campus that day headed for New York City, ready to offer the world his talent.</P>
+  <P>The world, I discovered, was not all that interested. I wandered around my early</P>
+  <P>twenties, paying rent and reading classifieds and wondering why the lights were not turning green for me. My dream was to be a famous musician (I played the piano), but after several years of dark, empty nightclubs, broken promises, bands that kept breaking up and producers who seemed excited about everyone but me, the dream soured. I was failing for the first time in my life.</P>
+  <P>At the same time, I had my first serious encounter with death. My favorite uncle, my mother's brother, the man who had taught me music, taught me to drive, teased me about girls, thrown me afootball—that one adult whom I targeted as a child and said, "That's who I want to be when I growup"—died of pancreatic cancer at the age of forty-four. He was a short, handsome man with a thick mustache, and I was with him for the last year of his life, living in an apartment just below his. I watched his strong body wither, then bloat, saw him suffer, night after night, doubled over at the dinner table, pressing on his stomach, his eyes shut, his mouth contorted in pain. "Ahhhhh, God," he would moan. "Ahhhhhh, Jesus!" The rest ofus—my aunt, his two young sons, me— stood there, silently, cleaning the plates, averting our eyes.</P>
+  <P>It was the most helpless I have ever felt in my life. One night in May, my uncle and I sat on the balcony of his apartment. It was breezy and warm. He looked out toward the horizon and said, through gritted teeth, that he wouldn't be around to see his kids into the next school year. He asked if I would look after them. I told him not to talk that way. He stared at me sadly.</P>
+  <P>He died a few weeks later.</P>
+  <P>After the funeral, my life changed. I felt as if time were suddenly precious, water going down an open drain, and I could not move quickly enough. No more playing music athalf-empty night clubs. No more writing songs in my apartment, songs that no one would hear. I returned to school. I earned a master's degree in journalism and took the first job offered, as a sports writer. Instead of chasing my own fame, I wrote about famous athletes chasing theirs. I worked for newspapers and freelanced for magazines. I worked at a pace that knew no hours, no limits. I would wake up in the morning, brush my teeth, and sit down at the typewriter in the same clothes I had slept in. My uncle had worked for a corporation and hatedit—same thing, everyday—and I was determined never to end up like him.</P>
+  <P>I bounced around from New York to Florida and eventually took a job in Detroit as a columnist for the Detroit Free Press. The sports appetite in that city wasinsatiable—they had professional teams in football, basketball, baseball, andhockey—and it matched my ambition. In a few years, I was not only penning columns, I was writing sports books, doing radio shows, and appearing regularly on TV, spouting my opinions on rich football players and hypocritical college sports programs. I was part of the media thunderstorm that now soaks our country. I was in demand.</P>
+  <P>I stopped renting. I started buying. I bought a house on a hill. I bought cars. I invested in stocks and built a portfolio. I was cranked to a fifth gear, and everything I did, I did on a deadline. I exercised like a demon. I drove my car at breakneck speed. I made more money than I had ever figured to see. I met adark-haired woman named Janine who somehow loved me despite my schedule and the constant absences. We married after a seven year courtship. I was back to work a week after the wedding. I toldher—andmyself—that we would one day start a family, something she wanted very much. But that day never came.</P>
+  <P>Instead, I buried myself in accomplishments, because with accomplishments, I believed I could control things, I could squeeze in every last piece of happiness before I got sick and died, like my uncle before me, which I figured was my natural fate.</P>
+  <P>As for Morrie? Well, I thought about him now and then, the things he had taught me about "being human" and "relating to others," but it was always in the distance, as if from another life. Over the years, I threw away any mail that came from Brandeis University, figuring they were only asking for money. So I did not know of Morrie's illness. The people who might have told me were long forgotten, their phone numbers buried in somepacked-away box in the attic.</P>
+  <P>It might have stayed that way, had I not been flicking through the TV channels late one night, when something caught my ear ...</P>
+  <P class="p ft_sbj" id="C04">The Audiovisual</P>
+  <P>In March of 1995, a limousine carrying Ted Koppel, the host ofABC-TV's "Nightline" pulled up to thesnow-covered curb outside Morrie's house in West Newton, Massachusetts.</P>
+  <P>Morrie was in a wheelchairfull-time now, getting used to helpers lifting him like a heavy sack from the chair to the bed and the bed to the chair. He had begun to cough while eating, and chewing was a chore. His legs were dead; he would never walk again. Yet he refused to be depressed. Instead, Morrie had become a lightning rod of ideas.</P>
+  <P>He jotted down his thoughts on yellow pads, envelopes, folders, scrap paper. He wrotebite-sized philosophies about living with death's shadow: "Accept what you are able to do and what you are not able to do"; "Accept the past as past, without denying it or discarding it"; "Learn to forgive yourself and to forgive others"; "Don't assume that it's too late to get involved."</P>
+  <P>After a while, he had more than fifty of these "aphorisms," which he shared with his friends. One friend, a fellow Brandeis professor named Maurie Stein, was so taken with the words that he sent them to a Boston Globe reporter, who came out and wrote a long feature story on Morrie. The headline read:</P>
+  <P>A Professor's Final Course: His Own Death</P>
+  <P>The article caught the eye of a producer from the "Nightline" show, who brought it to Koppel in Washington, D. C.</P>
+  <P>"Take a look at this," the producer said.</P>
+  <P>Next thing you knew, there were cameramen in Morrie's living room and Koppel's limousine was in front of the house.</P>
+  <P>Several of Morrie's friends and family members had gathered to meet Koppel, and when the famous man entered the house, they buzzed withexcitement—all except Morrie, who wheeled himself forward, raised his eyebrows, and interrupted the clamor with his high, singsong voice.</P>
+  <P>"Ted, I need to check you out before I agree to do this interview."</P>
+  <P>There was an awkward moment of silence, then the two men were ushered into the study. The door was shut. "Man," one friend whispered outside the door, "I hope Ted goes easy on Morrie."</P>
+  <P>"I hope Morrie goes easy on Ted," said the other.</P>
+  <P>Inside the office, Morrie motioned for Koppel to sit down. He crossed his hands in his lap and smiled.</P>
+  <P>"Tell me something close to your heart," Morrie began. "My heart?"</P>
+  <P>Koppel studied the old man. "All right," he said cautiously, and he spoke about his children. They were close to his heart, weren't they?</P>
+  <P>"Good," Morrie said. "Now tell me something, about your faith."</P>
+  <P>Koppel was uncomfortable. "I usually don't talk about such things with people I've only known a few minutes."</P>
+  <P>"Ted, I'm dying," Morrie said, peering over his glasses. "I don't have a lot of time here." Koppel laughed. All right. Faith. He quoted a passage from Marcus Aurelius,</P>
+  <P>something he felt strongly about. Morrie nodded.</P>
+  <P>"Now let me ask you something," Koppel said. "Have you ever seen my program?" Morrie shrugged. "Twice, I think." "Twice? That's all?"</P>
+  <P>"Don't feel bad. I've only seen 'Oprah' once." "Well, the two times you saw my show,</P>
+  <P>what did you think?"</P>
+  <P>Morrie paused. "To be honest?" "Yes?"</P>
+  <P>"I thought you were a narcissist." Koppel burst into laughter. "I'm too ugly to be a narcissist," he said.</P>
+  <P>Soon the cameras were rolling in front of the living room fireplace, with Koppel in his crisp blue suit and Morrie in his shaggy gray sweater. He had refused fancy clothes or makeup for this interview. His philosophy was that death should not be embarrassing; he was not about to powder its nose.</P>
+  <P>Because Morrie sat in the wheelchair, the camera never caught his withered legs. And because he was still able to move his hands—Morrie always spoke with both hands waving—he showed great passion when explaining how you face the end of life.</P>
+  <P>"Ted," he said, "when all this started, I asked myself, 'Am I going to withdraw from the world, like most people do, or am I going to live?' I decided I'm going to live—or at least try to live—the way I want, with dignity, with courage, with humor, with composure.</P>
+  <P>"There are some mornings when I cry and cry and mourn for myself. Some mornings, I'm so angry and bitter. But it doesn't last too long. Then I get up and say, 'I want to live ...'</P>
+  <P>"So far, I've been able to do it. Will I be able to continue? I don't know. But I'm betting on myself that I will."</P>
+  <P>Koppel seemed extremely taken with Morrie. He asked about the humility that death induced.</P>
+  <P>"Well, Fred," Morrie said accidentally, then he quickly corrected himself. "I mean Ted ... "</P>
+  <P>that's inducing humility," Koppel said, laughing.</P>
+  <P>The two men spoke about the afterlife. They spoke about Morrie's increasing dependency on other people. He already needed help eating and sitting and moving from place to place. What, Koppel asked, did Morrie dread the most about his slow, insidious decay?</P>
+  <P>Morrie paused. He asked if he could say this certain thing on television. Koppel said go ahead.</P>
+  <P>Morrie looked straight into the eyes of the most famous interviewer in America. "Well, Ted, one day soon, someone's gonna have to wipe my ass."</P>
+  <P>The program aired on a Friday night. It began with Ted Koppel from behind the desk in Washington, his voice booming with authority.</P>
+  <P>"Who is Morrie Schwartz," he said, "and why, by the end of the night, are so many of you going to care about him?"</P>
+  <P>A thousand miles away, in my house on the hill, I was casually flipping channels. I heard these words from the TV set "Who is Morrie Schwartz?"—and went numb.</P>
+  <P>It is our first class together, in the spring of 1976. I enter Morrie's large office and notice the seemingly countless books that line the wall, shelf after shelf. Books on sociology, philosophy, religion, psychology. There is a large rug on the hardwood floor and a window that looks out on the campus walk. Only a dozen or so students are there, fumbling with notebooks and syllabi. Most of them wear jeans and earth shoes and plaid flannel shirts. I tell myself it will not be easy to cut a class this small. Maybe I shouldn't take it.</P>
+  <P>"Mitchell?" Morrie says, reading from the attendance list. I raise a hand. "Do you prefer Mitch? Or is Mitchell better?"</P>
+  <P>I have never been asked this by a teacher. I do a double take at this guy in his yellow turtleneck and green corduroy pants, the silver hair that falls on his forehead. He is smiling.</P>
+  <P>Mitch, I say. Mitch is what my friends called me.</P>
+  <P>"Well, Mitch it is then," Morrie says, as if closing a deal. "And, Mitch?"</P>
+  <P>Yes?</P>
+  <P>"I hope that one day you will think of me as your friend."</P>
+</div>    
+
+  </body>
+</html>
