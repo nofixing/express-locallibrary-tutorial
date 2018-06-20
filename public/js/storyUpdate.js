@@ -1,7 +1,8 @@
 $( document ).ready(function() {
     // Handler for .ready() called.
     var myEditor = document.querySelector('#snow-container');
-    myEditor.children[0].innerHTML = $('#content').val();
+    //myEditor.children[0].innerHTML = $('#content').val();
+    quill.clipboard.dangerouslyPasteHTML($('#content').val());
 
     if ( $("#book").val() != "" ) {
         book_ajax();
