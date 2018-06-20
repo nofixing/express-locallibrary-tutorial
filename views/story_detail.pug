@@ -28,17 +28,22 @@ html(lang='en')
             li.nav-item.dropdown
               a#story.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') STORY INDEX
               div#index.dropdown-menu(aria-labelledby='story')
-          li.nav-item.dropdown
-            a#menu.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') STORY MENU
-            div.dropdown-menu(aria-labelledby='menu')
-              <a class='dropdown-item' href='#none' onclick='ReadingOnly();return false;'>Reading Only</a>
-              <a class='dropdown-item' href='#none' onclick='ReadingSearch();return false;'>Reading Search</a>
-              <a class='dropdown-item' href='#none' onclick='ReadingPractice();return false;'>Reading Practice</a>
-              <a class='dropdown-item' href='#none' onclick='DeleteStory();return false;'>Delete Story</a>
-              <a class='dropdown-item' href='#none' onclick='UpdateStory();return false;'>Update Story</a>
-              <a class='dropdown-item' href='#none' onclick='showWordLayer();return false;'>Word List</a>
-              <a class='dropdown-item' href='#none' onclick='hideWordLayer();return false;'>Memo Edit</a>
-              <a class='dropdown-item' href='#none' onclick='CreateStory();return false;'>Create Story</a>
+          li.nav-item
+            a.nav-link(href='#none' onclick='ReadingOnly();return false;') Reading Only
+          li.nav-item
+            a.nav-link(href='#none' onclick='ReadingSearch();return false;') Reading Search
+          li.nav-item
+            a.nav-link(href='#none' onclick='ReadingPractice();return false;') Reading Practice
+          li.nav-item
+            a.nav-link(href='#none' onclick='DeleteStory();return false;') Delete Story
+          li.nav-item
+            a.nav-link(href='#none' onclick='UpdateStory();return false;') Update Story
+          li.nav-item
+            a.nav-link(href='#none' onclick='showWordLayer();return false;') Word List
+          li.nav-item
+            a.nav-link(href='#none' onclick='hideWordLayer();return false;') Memo Edit
+          li.nav-item
+            a.nav-link(href='#none' onclick='CreateStory();return false;') Create Story
           if user
             li.nav-item
               a.nav-link(href='/user/logout') LOG OUT
@@ -106,7 +111,7 @@ html(lang='en')
         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <iframe id="dic_frame" src="https://c.merriam-webster.com/coredictionary/"></iframe>
 
-    <div id="img_layer" style="display:none;position:fixed;left:34%;top:60px;width:500px;height:95%;overflow:auto;background:#fff;">
+    <div id="img_layer" style="display:none;position:fixed;left:34%;top:60px;width:500px;height:90%;overflow:auto;background:#fff;z-index: 3;">
       <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">닫기</button>
       <div id="show_img"></div>
       <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">닫기</button>

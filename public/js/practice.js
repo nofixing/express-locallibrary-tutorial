@@ -59,7 +59,7 @@ $(function(){
             $.ajax({
                 url: 'https://www.googleapis.com/customsearch/v1',
                  type: 'GET',
-                 data: "key=AIzaSyAsn_BqIJs8FS8qyCZonEvJ2fgpzXHmt_s&cx=012222057275105284918:2fhqptrxpgk&q="+selectText+"&num=7&start=1&imgSize=medium&searchType=image",
+                 data: "key=AIzaSyAsn_BqIJs8FS8qyCZonEvJ2fgpzXHmt_s&cx=012222057275105284918:2fhqptrxpgk&q="+selectText+"&num=10&start=1&imgSize=medium&searchType=image",
                  dataType: 'JSON',
                  success: function(data){
                     showData.empty();

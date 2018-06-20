@@ -11,7 +11,7 @@
     font-family: 'Libre Franklin', sans-serif;
     font-size: 1.3em;
     word-spacing: 2px;
-    text-indent: 3%;
+    text-indent: 20px;
 }
 .hgt {color: black;}
 #jb_txtEditor {
@@ -55,7 +55,6 @@
 }
 .standalone-container {
     margin: 0 auto;
-    width: 100%;
 }
 #snow-container {
     height: 750px;

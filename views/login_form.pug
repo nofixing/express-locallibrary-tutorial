@@ -4,10 +4,12 @@ block content
   h1= title
 
   form(method='POST' action='')
-    div.form-group
-      label(for='email') Email
-      input.form-control(type='text' id='email' placeholder='email' name='email')
-    div.form-group
-      label(for='password') Password
-      input.form-control(type='password' id='password' placeholder='password' name='password')
+    div.form-group.row
+      div.col-sm-2
+        label(for='email') Email
+        input.form-control(type='text' id='email' placeholder='email' name='email')
+    div.form-group.row
+      div.col-sm-2
+        label(for='password') Password
+        input.form-control(type='password' id='password' placeholder='password' name='password')
     button.btn.btn-primary(type='submit') Log in

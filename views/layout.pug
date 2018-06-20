@@ -24,16 +24,18 @@ html(lang='en')
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          li.nav-item.dropdown
-              a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') MENU
-              div.dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
-                a.dropdown-item(href='/catalog/') Home
-                a.dropdown-item(href='/catalog/books') All books
-                a.dropdown-item(href='/catalog/stories') All stories
-                a.dropdown-item(href='/catalog/genres') All genres
-                a.dropdown-item(href='/catalog/book/create') Create new book
-                a.dropdown-item(href='/catalog/story/create') Create new story
-                a.dropdown-item(href='/catalog/genre/create') Create new genre
+          li.nav-item
+            a.nav-link(href='/catalog/books') All Books
+          li.nav-item
+            a.nav-link(href='/catalog/stories') All Stories
+          li.nav-item
+            a.nav-link(href='/catalog/genres') All Genres
+          li.nav-item
+            a.nav-link(href='/catalog/book/create') Create Book
+          li.nav-item
+            a.nav-link(href='/catalog/story/create') Create Story
+          li.nav-item
+            a.nav-link(href='/catalog/genre/create') Create Genre
           if user
             li.nav-item
               a.nav-link(href='/user/logout') LOG OUT
