@@ -1,7 +1,9 @@
 extends layout
 
 block content
-  h1 #{title}: #{book.title}
+  h1= title 
+
+  h1 #[strong Title:] #{book.title}
   
   p #[strong Author:] #{book.author}
   p #[strong Summary:] #{book.summary}
