@@ -16,6 +16,8 @@ var MongoStore = require('connect-mongo')(session);
 
 // Create the Express application object
 var app = express();
+var device = require('express-device');
+app.use(device.capture());
 
 app.use(helmet());
 

@@ -34,8 +34,10 @@ exports.index = function(req, res) {
             Story.find({user: req.session.userId, book: null}).count(callback);
         },
     }, function(err, results) {
+        console.log(req.device.type.toUpperCase());
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         var cert = req.query.cert;
-        res.render('index', { title: 'Local Library Home', error: err, data: results, cert: cert });
+        res.render('index', { title: 'Local Library Home', error: err, data: results, cert: cert, pc: pc });
     });
 };
 

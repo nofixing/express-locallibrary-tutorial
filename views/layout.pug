@@ -30,12 +30,13 @@ html(lang='en')
             a.nav-link(href='/catalog/stories') Stories
           li.nav-item
             a.nav-link(href='/catalog/genres') Genres
-          li.nav-item
-            a.nav-link(href='/catalog/book/create') Create Book
-          li.nav-item
-            a.nav-link(href='/catalog/story/create') Create Story
-          li.nav-item
-            a.nav-link(href='/catalog/genre/create') Create Genre
+          if pc
+            li.nav-item
+              a.nav-link(href='/catalog/book/create') Create Book
+            li.nav-item
+              a.nav-link(href='/catalog/story/create') Create Story
+            li.nav-item
+              a.nav-link(href='/catalog/genre/create') Create Genre
           if user
             li.nav-item
               a.nav-link(href='/user/logout') LOG OUT
