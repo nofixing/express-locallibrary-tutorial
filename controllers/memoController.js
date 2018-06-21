@@ -12,7 +12,8 @@ exports.memo_list = function(req, res, next) {
     .exec(function (err, list_memos) {
       if (err) { return next(err); }
       // Successful, so render
-      res.render('memo_list', { title: 'Memo List', memo_list:  list_memos});
+      var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+      res.render('memo_list', { title: 'Memo List', memo_list:  list_memos, pc: pc});
     });
 
 };
@@ -34,7 +35,8 @@ exports.memo_detail = function(req, res, next) {
             return next(eor);
         }
         // Successful, so render.
-        res.render('memo_detail', { title: 'Title', memo:  results.memo } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('memo_detail', { title: 'Title', memo:  results.memo, pc: pc } );
     });
 
 };
@@ -55,7 +57,8 @@ exports.memo_iframe = function(req, res, next) {
             return next(eor);
         }
         // Successful, so render.
-        res.render('memo_iframe', { memo:  results.memo } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('memo_iframe', { memo:  results.memo, pc: pc } );
     });
 
 };
@@ -121,7 +124,8 @@ exports.memo_delete_get = function(req, res, next) {
             res.redirect('/catalog/memos');
         }
         // Successful, so render.
-        res.render('memo_delete', { title: 'Delete Memo', memo: results.memo } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('memo_delete', { title: 'Delete Memo', memo: results.memo, pc: pc } );
     });
 
 };
@@ -164,7 +168,8 @@ exports.memo_update_get = function(req, res, next) {
             return next(eor);
         }
         // Success.
-        res.render('memo_form', { title: 'Update Memo', memo: results.memo });
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('memo_form', { title: 'Update Memo', memo: results.memo, pc: pc });
     });
 
 };
@@ -197,7 +202,8 @@ exports.memo_update_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render form again with sanitized values/error messages.
-            res.render('memo_form', { title: 'Update Memo', memo: memo, errors: errors.array() });
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('memo_form', { title: 'Update Memo', memo: memo, errors: errors.array(), pc: pc });
             return;
         }
         else {

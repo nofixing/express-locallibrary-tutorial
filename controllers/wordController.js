@@ -12,7 +12,8 @@ exports.word_list = function(req, res, next) {
     .exec(function (err, list_words) {
       if (err) { return next(err); }
       // Successful, so render
-      res.render('word_list', { title: 'Word List', word_list:  list_words});
+      var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+      res.render('word_list', { title: 'Word List', word_list:  list_words, pc: pc});
     });
 
 };
@@ -34,7 +35,8 @@ exports.word_detail = function(req, res, next) {
             return next(eor);
         }
         // Successful, so render.
-        res.render('word_detail', { title: 'Title', word:  results.word } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('word_detail', { title: 'Title', word:  results.word, pc: pc } );
     });
 
 };
@@ -55,7 +57,8 @@ exports.word_iframe = function(req, res, next) {
             return next(eor);
         }
         // Successful, so render.
-        res.render('word_iframe', { word:  results.word } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('word_iframe', { word:  results.word, pc: pc } );
     });
 
 };
@@ -63,7 +66,8 @@ exports.word_iframe = function(req, res, next) {
 // Display word create form on GET.
 exports.word_create_get = function(req, res, next) {
 
-    res.render('word_form', { title: 'Create Word' });
+    var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+    res.render('word_form', { title: 'Create Word', pc: pc });
 
 };
 
@@ -123,7 +127,8 @@ exports.word_delete_get = function(req, res, next) {
             res.redirect('/catalog/words');
         }
         // Successful, so render.
-        res.render('word_delete', { title: 'Delete Word', word: results.word } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('word_delete', { title: 'Delete Word', word: results.word, pc: pc } );
     });
 
 };
@@ -155,7 +160,8 @@ exports.word_update_get = function(req, res, next) {
             return next(eor);
         }
         // Success.
-        res.render('word_form', { title: 'Update Word', word: results.word });
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('word_form', { title: 'Update Word', word: results.word, pc: pc });
     });
 
 };

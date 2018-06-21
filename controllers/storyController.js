@@ -18,8 +18,8 @@ exports.story_list = function(req, res, next) {
   Story.find({user: req.session.userId, book: null}).collation({locale: 'en' }).sort({title: 1})
     .exec(function (err, list_stories) {
       if (err) { return next(err); }
-      // Successful, so render
-      res.render('story_list', { title: 'Story List', story_list:  list_stories});
+      var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+      res.render('story_list', { title: 'Story List', story_list:  list_stories, pc: pc});
     });
 
 };
@@ -76,10 +76,9 @@ exports.story_detail = function(req, res, next) {
             memo = results.memo[0].content;
             memo_id = results.memo[0]._id;
         }
-        // Successful, so render.
-        //console.log(results.story.content);
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_detail', 
-        { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host } );
+        { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host, pc: pc } );
     });
 
 };
@@ -101,7 +100,8 @@ exports.story_iframe = function(req, res, next) {
         }
         // Successful, so render.
         results.story.content = entities.decode(results.story.content);
-        res.render('story_iframe', { story:  results.story } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('story_iframe', { story:  results.story, pc: pc } );
     });
 
 };
@@ -125,7 +125,8 @@ exports.story_create_get = function(req, res, next) {
             results.genres[i].name = entities.decode(results.genres[i].name);
         }
         var bok = req.query.book;
-        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, bok: bok, hostname: req.headers.host });
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, bok: bok, hostname: req.headers.host, pc: pc });
     });
 
 };
@@ -204,7 +205,8 @@ exports.story_create_post = [
                     }
                 }
                 story.content = entities.decode(story.content);
-                res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, story: story, hostname: req.headers.host, errors: errors.array() });
+                var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+                res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, story: story, hostname: req.headers.host, errors: errors.array(), pc: pc });
             });
             return;
         }
@@ -251,7 +253,8 @@ exports.story_delete_get = function(req, res, next) {
         // Successful, so render.
         results.story.content = entities.decode(results.story.content);
         results.story.title = entities.decode(results.story.title);
-        res.render('story_delete', { title: 'Delete Story', story: results.story } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('story_delete', { title: 'Delete Story', story: results.story, pc: pc } );
     });
 
 };
@@ -320,7 +323,8 @@ exports.story_update_get = function(req, res, next) {
             }
         }
         results.story.content = entities.decode(results.story.content);
-        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story, hostname: req.headers.host });
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story, hostname: req.headers.host, pc: pc });
     });
 
 };
@@ -392,7 +396,8 @@ exports.story_update_post = [
                     }
                 }
                 story.content = entities.decode(story.content);
-                res.render('story_form', { title: 'Update Story',books:results.books,genres:results.genres, story: story, errors: errors.array() });
+                var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+                res.render('story_form', { title: 'Update Story',books:results.books,genres:results.genres, story: story, errors: errors.array(), pc: pc });
             });
             return;
         }

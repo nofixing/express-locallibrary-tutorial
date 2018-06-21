@@ -49,7 +49,8 @@ exports.book_list = function(req, res, next) {
     .exec(function (err, list_books) {
       if (err) { return next(err); }
       // Successful, so render
-      res.render('book_list', { title: 'Book List', book_list:  list_books});
+      var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+      res.render('book_list', { title: 'Book List', book_list:  list_books, pc: pc});
     });
 
 };
@@ -89,8 +90,8 @@ exports.book_detail = function(req, res, next) {
             results.book.genre[i].name = entities.decode(results.book.genre[i].name);
         }
         results.book.summary = entities.decode(results.book.summary);
-        // Successful, so render.
-        res.render('book_detail', { title: 'Title', book:  results.book, stories: results.stories } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('book_detail', { title: 'Title', book:  results.book, stories: results.stories, pc: pc } );
     });
 
 };
@@ -109,7 +110,8 @@ exports.book_create_get = function(req, res, next) {
         for (let i = 0; i < results.genres.length; i++) {
             results.genres[i].name = entities.decode(results.genres[i].name);
         }
-        res.render('book_form', { title: 'Create Book',genres:results.genres });
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('book_form', { title: 'Create Book',genres:results.genres, pc: pc });
     });
 
 };
@@ -171,7 +173,8 @@ exports.book_create_post = [
                     }
                     results.genres[i].name = entities.decode(results.genres[i].name);
                 }
-                res.render('book_form', { title: 'Create Book', genres:results.genres, book: book, errors: errors.array() });
+                var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+                res.render('book_form', { title: 'Create Book', genres:results.genres, book: book, errors: errors.array(), pc: pc });
             });
             return;
         }
@@ -207,8 +210,8 @@ exports.book_delete_get = function(req, res, next) {
         for (let i = 0; i < results.book.genre.length; i++) {
             results.book.genre[i].name = entities.decode(results.book.genre[i].name);
         }
-        // Successful, so render.
-        res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc } );
     });
 
 };
@@ -231,7 +234,8 @@ exports.book_delete_post = function(req, res, next) {
             for (let i = 0; i < results.book.genre.length; i++) {
                 results.book.genre[i].name = entities.decode(results.book.genre[i].name);
             }
-            res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories } );
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc } );
             return;
         }
         else {
@@ -276,7 +280,8 @@ exports.book_update_get = function(req, res, next) {
                     }
                 }
             }
-            res.render('book_form', { title: 'Update Book', genres:results.genres, book: results.book });
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('book_form', { title: 'Update Book', genres:results.genres, book: results.book, pc: pc });
         });
 
 };
@@ -341,7 +346,8 @@ exports.book_update_post = [
                         results.genres[i].checked='true';
                     }
                 }
-                res.render('book_form', { title: 'Update Book', genres:results.genres, book: book, errors: errors.array() });
+                var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+                res.render('book_form', { title: 'Update Book', genres:results.genres, book: book, errors: errors.array(), pc: pc });
             });
             return;
         }

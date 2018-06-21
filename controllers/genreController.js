@@ -20,7 +20,8 @@ exports.genre_list = function(req, res, next) {
       for (let i = 0; i < list_genres.length; i++) {
         list_genres[i].name = entities.decode(list_genres[i].name);
       }
-      res.render('genre_list', { title: 'Genre List', list_genres:  list_genres});
+      var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+      res.render('genre_list', { title: 'Genre List', list_genres:  list_genres, pc: pc});
     });
 
 };
@@ -56,15 +57,16 @@ exports.genre_detail = function(req, res, next) {
         for (let i = 0; i < results.genre_books.length; i++) {
             results.genre_books[i].summary = entities.decode(results.genre_books[i].summary);
         }
-        // Successful, so render.
-        res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books, genre_stories: results.genre_stories } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books, genre_stories: results.genre_stories, pc: pc } );
     });
 
 };
 
 // Display Genre create form on GET.
 exports.genre_create_get = function(req, res, next) {
-    res.render('genre_form', { title: 'Create Genre'});
+    var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+    res.render('genre_form', { title: 'Create Genre', pc: pc});
 };
 
 // Handle Genre create on POST.
@@ -90,7 +92,8 @@ exports.genre_create_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values/error messages.
-            res.render('genre_form', { title: 'Create Genre', genre: genre, errors: errors.array()});
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('genre_form', { title: 'Create Genre', genre: genre, errors: errors.array(), pc: pc});
         return;
         }
         else {
@@ -136,7 +139,8 @@ exports.genre_delete_get = function(req, res, next) {
         }
         // Successful, so render.
         results.genre.name = entities.decode(results.genre.name);
-        res.render('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books } );
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books, pc: pc } );
     });
 
 };
@@ -156,7 +160,8 @@ exports.genre_delete_post = function(req, res, next) {
         // Success
         if (results.genre_books.length > 0) {
             // Genre has books. Render in same way as for GET route.
-            res.render('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books } );
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books, pc: pc } );
             return;
         }
         else {
@@ -184,7 +189,8 @@ exports.genre_update_get = function(req, res, next) {
         }
         // Success.
         genre.name = entities.decode(genre.name);
-        res.render('genre_form', { title: 'Update Genre', genre: genre });
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('genre_form', { title: 'Update Genre', genre: genre, pc: pc });
     });
 
 };
@@ -215,7 +221,8 @@ exports.genre_update_post = [
 
         if (!errors.isEmpty()) {
             // There are errors. Render the form again with sanitized values and error messages.
-            res.render('genre_form', { title: 'Update Genre', genre: genre, errors: errors.array()});
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('genre_form', { title: 'Update Genre', genre: genre, errors: errors.array(), pc: pc});
         return;
         }
         else {
