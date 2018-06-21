@@ -29,21 +29,21 @@ html(lang='en')
               a#story.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') STORY INDEX
               div#index.dropdown-menu(aria-labelledby='story')
           li.nav-item
-            a.nav-link(href='#none' onclick='ReadingOnly();return false;') Reading Only
+            a.nav-link(href='#none' onclick='ReadingOnly();return false;') Reading
           li.nav-item
-            a.nav-link(href='#none' onclick='ReadingSearch();return false;') Reading Search
+            a.nav-link(href='#none' onclick='ReadingSearch();return false;') DicSearch
           li.nav-item
-            a.nav-link(href='#none' onclick='ReadingPractice();return false;') Reading Practice
+            a.nav-link(href='#none' onclick='ReadingPractice();return false;') Practice
           li.nav-item
-            a.nav-link(href='#none' onclick='DeleteStory();return false;') Delete Story
+            a.nav-link(href='#none' onclick='showWordLayer();return false;') Words
           li.nav-item
-            a.nav-link(href='#none' onclick='UpdateStory();return false;') Update Story
+            a.nav-link(href='#none' onclick='hideWordLayer();return false;') Memo
           li.nav-item
-            a.nav-link(href='#none' onclick='showWordLayer();return false;') Word List
+            a.nav-link(href='#none' onclick='CreateStory();return false;') Create
           li.nav-item
-            a.nav-link(href='#none' onclick='hideWordLayer();return false;') Memo Edit
+            a.nav-link(href='#none' onclick='UpdateStory();return false;') Update
           li.nav-item
-            a.nav-link(href='#none' onclick='CreateStory();return false;') Create Story
+            a.nav-link(href='#none' onclick='DeleteStory();return false;') Delete
           if user
             li.nav-item
               a.nav-link(href='/user/logout') LOG OUT

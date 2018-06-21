@@ -5,7 +5,7 @@ block content
 
   form(method='POST' action='' id='storyForm' name='storyForm')
     div.form-group.row
-      div.col-sm-4
+      div.col-sm-3
         label(for='book') Book:
         select#book.form-control(type='select', placeholder='Select book' name='book' required='true' )
           for book in books
@@ -28,12 +28,12 @@ block content
             if !story.book
               option(value='' selected='selected') story only
     div.form-group.row
-      div.col-sm-4
+      div.col-sm-3
         label(for='title') Title:
         input#title.form-control(type='text', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
     
     div.form-group.row
-      div.col-sm-9
+      div.col-sm-6
         label(for='Content') Content:
         div#snow-container(spellcheck='false')
         input#content.form-control(type='hidden', name='content' value=(undefined===story ? '' : story.content) )
@@ -49,11 +49,11 @@ block content
         input#author.form-control(type='text', placeholder='Author of story' name='author' required='true' value=(undefined===story ? '' : story.author) )
 
     div.form-group.row.stro
-      div.col-sm-4
+      div.col-sm-3
         label(for='reference') Reference:
         input#reference.form-control(type='text', placeholder='Reference of story' name='reference' required='true' value=(undefined===story ? '' : story.reference) )
     
-    div.form-group.row.stro
+    div.form-group.stro
       label Genre:
       div
         for genre in genres

@@ -6,11 +6,14 @@ $( document ).ready(function() {
 
     if ( $("#book").val() != "" ) {
         book_ajax();
+    } else {
+        $(".boko").css("display", "none");
     }
 
     $("#book").change(function() {
         if ( $("#book").val() != "" ) {
             book_ajax();
+            $(".stro").css("display", "none");
             $(".boko").css("display", "block");
         } else {
             $("#author").val("");
@@ -18,6 +21,7 @@ $( document ).ready(function() {
                 $(this).prop('checked', false);
             });
             $(".stro").css("display", "block");
+            $(".boko").css("display", "none");
         }
     });
 

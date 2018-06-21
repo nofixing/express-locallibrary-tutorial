@@ -332,6 +332,9 @@ function ReadingOnly() {
 }
 
 function ReadingSearch() {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        alert("use this from PC");
+    }
     $('#jb_content').removeClass('col-lg-4');
     $('#jb_content').removeClass('col-lg-12');
     $('#jb_content').addClass('col-lg-6');
@@ -345,6 +348,9 @@ function ReadingSearch() {
 }
 
 function ReadingPractice() {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        alert("use this from PC");
+    }
     $('#jb_content').removeClass('col-lg-12');
     $('#jb_content').removeClass('col-lg-6');
     $('#jb_content').addClass('col-lg-4');
