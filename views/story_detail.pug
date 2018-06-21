@@ -58,9 +58,14 @@ html(lang='en')
     </nav>
       
     div(class='container-fluid')
-      div#jb_content.col-lg-12
-        p(style='font-weight:bold;') #{story.title} 
-        div !{story.content}
+      if pc
+        div#jb_content.col-lg-12
+          p(style='font-weight:bold;') #{story.title} 
+          div !{story.content}
+      else
+        div#jb_content_mb.col-lg-12
+          p(style='font-weight:bold;') #{story.title} 
+          div !{story.content}
       div#jb_txtEditor.col-lg-4
         div.standalone-container
           div#snow-container

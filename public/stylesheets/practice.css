@@ -13,6 +13,21 @@
     word-spacing: 2px;
     text-indent: 20px;
 }
+#jb_content_mb {
+    height: 100%;
+    top: 70px;
+    padding: 0;
+    margin-bottom: 20px;
+    float: left;
+    border: 0px solid #bcbcbc;
+    overflow-x: hidden;
+    overflow-y: auto; /* prevents scroll bar flash */
+    line-height: 1.6;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.3em;
+    word-spacing: 2px;
+    text-indent: 20px;
+}
 .hgt {color: black;}
 #jb_txtEditor {
     height: 100%;
