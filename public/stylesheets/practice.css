@@ -12,6 +12,7 @@
     font-size: 1.3em;
     word-spacing: 2px;
     text-indent: 20px;
+    text-align: justify;
 }
 #jb_content_mb {
     height: 100%;
@@ -27,6 +28,13 @@
     font-size: 1.3em;
     word-spacing: 2px;
     text-indent: 20px;
+    text-align: justify;
+}
+p {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
 }
 .hgt {color: black;}
 #jb_txtEditor {
