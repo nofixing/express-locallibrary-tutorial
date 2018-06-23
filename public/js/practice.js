@@ -14,7 +14,7 @@ $(function(){
         document.getElementById("navbar").style.top = "-210px";
         }
         prevScrollpos = currentScrollPos;
-    }
+    };
 
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
     $( "#jb_content" ).bind('dblclick', function(e){

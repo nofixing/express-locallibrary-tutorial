@@ -6,12 +6,9 @@ block content
     h1 Now you are our member! Log in and create Story now.
   else
     h1= title
-    p Welcome to #[em Story Library], Good practice.
+    h1 Welcome to #[em Story Library], Good practice.
 
-    p This is my new project start point!
-
-
-    h1 Dynamic content  
+    h1 My contents  
   
     if error
       p Error getting dynamic content.
@@ -19,7 +16,9 @@ block content
 
       p The library has the following record counts:
 
-      ul
-        li #[strong Books:] !{data.book_count}
-        li #[strong Stories:] !{data.story_count}
-        li #[strong Genres:] !{data.genre_count}
+      ul.tite
+        li #[strong Books: ]
+          a(href='/catalog/books') !{data.book_count}
+        li #[strong Stories: ]
+          a(href='/catalog/stories') !{data.story_count}
+        li #[strong Genres: ] !{data.genre_count}
