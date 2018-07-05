@@ -70,6 +70,7 @@ exports.story_detail = function(req, res, next) {
         }
         results.story.content = txt;
         results.story.reference = entities.decode(results.story.reference);
+        results.story.title = entities.decode(results.story.title);
         var memo = '';
         var memo_id = '';
         if(results.memo.length > 0) {
