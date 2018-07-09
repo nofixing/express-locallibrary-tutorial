@@ -12,6 +12,7 @@
   "dependencies": {
     "async": "^2.6.0",
     "bcrypt": "^2.0.1",
+    "brew": "0.0.8",
     "compression": "^1.7.2",
     "connect-mongo": "^2.0.1",
     "cookie-parser": "~1.4.3",
