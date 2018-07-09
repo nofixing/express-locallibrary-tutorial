@@ -120,6 +120,9 @@ router.get('/word/:id/iframe', word_controller.word_iframe);
 // GET request for list of all Book.
 router.get('/words', word_controller.word_list);
 
+// GET request for list of all Book.
+router.get('/word_list', word_controller.words);
+
 /// MEMO ROUTES ///
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
