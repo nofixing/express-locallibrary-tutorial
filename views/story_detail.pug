@@ -66,11 +66,15 @@ html(lang='en')
     div(class='container-fluid')
       if pc
         div#jb_content.col-lg-12
-          p(style='font-weight:bold;') #{story.title} 
+          p(style='font-weight:bold;') #{story.title}
+          | by #{story.author}<br/>
+          | reference: #{story.reference}<br/><br/>
           div !{story.content}
       else
         div#jb_content_mb.col-lg-12
-          p(style='font-weight:bold;') #{story.title} 
+          p(style='font-weight:bold;') #{story.title}
+          | by #{story.author}<br/>
+          | reference: #{story.reference}<br/><br/>
           div !{story.content}
       div#jb_txtEditor.col-lg-4
         div.standalone-container
@@ -99,10 +103,6 @@ html(lang='en')
                   textarea(class='txt' rows='3' cols='45') #{word.content}
         <button type="button" id="wordAdd">Add</button>&nbsp;&nbsp;&nbsp;after add, you must save before leaving.
       div#jb_sidebar.col-lg-4
-        div#header_center
-          h3(style='text-align:center;' id='docTitle')
-          | by #{story.author}<br/>
-          | reference: #{story.reference}
         <span>dictionary : </span>
         <select name="dicType" id="dicType" style="margin-right: 5px;">
           <option value="3">english korea</option>

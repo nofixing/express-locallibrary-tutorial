@@ -269,10 +269,10 @@ function search() {
         wordList();
         
         var nNd = document.createElement("span");
-        nNd.setAttribute("class", "sbue");
+        nNd.setAttribute("class", "hgt");
         var w = getSelection().getRangeAt(0);
         w.surroundContents(nNd);
-        $('.sbue').css({"color":"blue"});
+        $('.hgt').css({"color":"blue"});
     }
     
 

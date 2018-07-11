@@ -67,7 +67,7 @@ p {
 }
 #jb_sidebar {
     position: fixed;
-    top: 60px;
+    top: 70px;
     right: 0;
     padding: 0px 0px 20px 20px;
     margin-bottom: 20px;
@@ -90,15 +90,6 @@ p {
 }
 .ql-opnFile:after {
     content: "[File]";
-}
-#header_center {
-    height: 100px;
-    padding-left: 0px;
-    margin: 0px auto;
-    margin-bottom: 0px;
-    vertical-align:middle;
-    border: 0px solid #bcbcbc;
-    text-align: center;
 }
 #dic_frame {
     width: 100%;
