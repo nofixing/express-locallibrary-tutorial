@@ -14,6 +14,9 @@ router.get('/login', mid.loggedOut, function(req, res, next) {
 // POST request for creating User.
 router.post('/login', user_controller.login_post);
 
+// POST request for creating User.
+router.post('/login_app', user_controller.login_app);
+
 // GET /logout
 router.get('/logout', function(req, res, next) {
   if (req.session) {

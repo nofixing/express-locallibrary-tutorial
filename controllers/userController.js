@@ -52,6 +52,33 @@ exports.login_post = function (req, res, next) {
 
 };
 
+exports.login_app = function (req, res, next) {
+
+  if (req.body.email && req.body.password) {
+    User.authenticate(req.body.email, req.body.password, function (error, user) {
+      if (error || !user) {
+        var err = new Error('Wrong email or password.');
+        err.status = 401;
+        return next(err);
+      } else {
+        if (user.certyn == 'N') {
+          var crr = new Error('Oops. you are not certified!');
+          crr.status = 401;
+          return next(crr);
+        } else {
+          req.session.userId = user._id;
+          return res.sendStatus(200);
+        }
+      }
+    });
+  } else {
+    var err = new Error('Email and password are required.');
+    err.status = 401;
+    return next(err);
+  }
+
+};
+
 exports.emailcheck = function (req, res, next) {
 
   User.find({email: req.body.email})
