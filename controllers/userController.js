@@ -67,7 +67,7 @@ exports.login_app = function (req, res, next) {
           return next(crr);
         } else {
           req.session.userId = user._id;
-          return res.sendStatus(200);
+          res.send(req.body);
         }
       }
     });
