@@ -68,6 +68,7 @@ exports.login_app = function (req, res, next) {
         } else {
           req.session.userId = user._id;
           res.send(req.body);
+          res.json({ session: req.sessionID });
         }
       }
     });

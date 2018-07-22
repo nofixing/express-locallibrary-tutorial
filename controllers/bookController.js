@@ -34,6 +34,8 @@ exports.index = function(req, res) {
             Story.find({user: req.session.userId, book: null}).count(callback);
         },
     }, function(err, results) {
+        console.log('Inside the homepage callback function');
+        console.log(req.sessionID);
         console.log(req.device.type.toUpperCase());
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         var cert = req.query.cert;
