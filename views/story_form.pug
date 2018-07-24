@@ -8,6 +8,11 @@ block content
       div.col-sm-3
         label(for='book') Book:
         select#book.form-control(type='select', placeholder='Select book' name='book' required='true' )
+          if !story
+            option(value='') story only
+          else
+            if !story.book
+              option(value='' selected='selected') story only
           for book in books
             if story
               if story.book
@@ -22,11 +27,6 @@ block content
                 option(value=book._id selected=(book._id.toString()==bok.toString() ? 'selected' : false) ) #{book.title}
               else
                 option(value=book._id) #{book.title}
-          if !story
-            option(value='') story only
-          else
-            if !story.book
-              option(value='' selected='selected') story only
     div.form-group.row
       div.col-sm-3
         label(for='title') Title:

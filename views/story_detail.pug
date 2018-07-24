@@ -65,14 +65,18 @@ html(lang='en')
       if pc
         div#jb_content.col-lg-12
           p(style='font-weight:bold;') #{story.title}
-          | by #{story.author}<br/>
-          | reference: #{story.reference}<br/><br/>
+          if story.author 
+            p by #{story.author}
+          if story.reference 
+            p reference: #{story.reference}<br/>
           div !{story.content}
       else
         div#jb_content_mb.col-lg-12
           p(style='font-weight:bold;') #{story.title}
-          | by #{story.author}<br/>
-          | reference: #{story.reference}<br/><br/>
+          if story.author 
+            p by #{story.author}
+          if story.reference 
+            p reference: #{story.reference}<br/>
           div !{story.content}
       div#jb_txtEditor.col-lg-4
         div.standalone-container
