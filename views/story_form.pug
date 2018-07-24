@@ -7,7 +7,7 @@ block content
     div.form-group.row
       div.col-sm-3
         label(for='book') Book:
-        select#book.form-control(type='select', placeholder='Select book' name='book' required='true' )
+        select#book.form-control(type='select', placeholder='Select book' name='book' )
           if !story
             option(value='') story only
           else
@@ -35,17 +35,17 @@ block content
     div.form-group.row.boko
       div.col-sm-1
         label(for='order') Order:
-        input#order.form-control(type='text', placeholder='Order of story' name='order' required='true' value=(undefined===story ? '' : story.order) )
+        input#order.form-control(type='text', placeholder='Order of story' name='order' value=(undefined===story ? '' : story.order) )
     
     div.form-group.row.stro
       div.col-sm-2
         label(for='author') Author:
-        input#author.form-control(type='text', placeholder='Author of story' name='author' required='true' value=(undefined===story ? '' : story.author) )
+        input#author.form-control(type='text', placeholder='Author of story' name='author' value=(undefined===story ? '' : story.author) )
 
     div.form-group.row.stro
       div.col-sm-3
         label(for='reference') Reference:
-        input#reference.form-control(type='text', placeholder='Reference of story' name='reference' required='true' value=(undefined===story ? '' : story.reference) )
+        input#reference.form-control(type='text', placeholder='Reference of story' name='reference' value=(undefined===story ? '' : story.reference) )
     
     div.form-group.stro
       label Genre:
