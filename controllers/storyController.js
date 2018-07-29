@@ -273,7 +273,7 @@ exports.story_delete_post = function(req, res, next) {
         if (err) { return next(err); }
         // Success
         var aul = '';
-        if (results.story.book != '') {
+        if (results.story.book != undefined) {
             console.log("There is book");
             aul = '/catalog/book/'+results.story.book;
         } else {

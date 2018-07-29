@@ -378,13 +378,17 @@ function CreateStory() {
 function storyPost() {
 
     var frm = document.getElementById("storyForm");
+    /*
     var tContent = txtArea.value;
     var find = '<p><br></p>';
     var re = new RegExp(find, 'g');
     tContent = tContent.replace(re, '');
     document.querySelector('#snow-container').children[0].innerHTML = tContent;
+    */
     frm.content.value = document.querySelector('#snow-container').children[0].innerHTML;
-    frm.submit();		
+    //alert(frm.content.value);
+    //return;
+    frm.submit();	
 
 }
 

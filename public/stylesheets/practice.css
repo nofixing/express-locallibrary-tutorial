@@ -7,10 +7,6 @@
     border: 0px solid #bcbcbc;
     overflow-x: hidden;
     overflow-y: auto; /* prevents scroll bar flash */
-    line-height: 1.6;
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 1.3em;
-    word-spacing: 2px;
     text-indent: 10px;
     text-align: justify;
 }
@@ -23,11 +19,7 @@
     border: 0px solid #bcbcbc;
     overflow-x: hidden;
     overflow-y: auto; /* prevents scroll bar flash */
-    line-height: 1.6;
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 1.3em;
-    word-spacing: 2px;
-    text-indent: 1`0px;
+    text-indent: 10px;
     text-align: justify;
 }
 p {
@@ -114,4 +106,92 @@ ul.tite li {
     padding-top: 15px;
     font-size: 1.3em;
     text-decoration: none;
+}
+
+.boko { display: none; }
+
+#toolbar-container .ql-font span[data-label="Sans Serif"]::before {
+    font-family: "Sans Serif";
+}
+
+#toolbar-container .ql-font span[data-label="Libre Franklin"]::before {
+    font-family: "Libre Franklin";
+}
+
+#toolbar-container .ql-font span[data-label="Inconsolata"]::before {
+    font-family: "Inconsolata";
+}
+
+#toolbar-container .ql-font span[data-label="Roboto"]::before {
+    font-family: "Roboto";
+}
+
+#toolbar-container .ql-font span[data-label="Mirza"]::before {
+    font-family: "Mirza";
+}
+
+#toolbar-container .ql-font span[data-label="Arial"]::before {
+    font-family: "Arial";
+}
+
+#toolbar-container .ql-font span[data-label="Nanum Pen Script"]::before {
+    font-family: "Nanum Pen Script";
+}
+
+#toolbar-container .ql-font span[data-label="Oswald"]::before {
+    font-family: "Oswald";
+}
+
+#toolbar-container .ql-font span[data-label="Shadows Into Light"]::before {
+    font-family: "Shadows Into Light";
+}
+
+#toolbar-container .ql-font span[data-label="Abril Fatface"]::before {
+    font-family: "Abril Fatface";
+}
+
+#toolbar-container .ql-font span[data-label="Teko"]::before {
+    font-family: "Teko";
+}
+
+/* Set content font-families */
+
+.ql-font-LibreFranklin {
+    font-family: "Libre Franklin";
+}
+
+.ql-font-inconsolata {
+    font-family: "Inconsolata";
+}
+
+.ql-font-roboto {
+    font-family: "Roboto";
+}
+
+.ql-font-mirza {
+    font-family: "Mirza";
+}
+
+.ql-font-arial {
+    font-family: "Arial";
+}
+
+.ql-font-NanumPenScript {
+    font-family: "Nanum Pen Script";            
+}
+
+.ql-font-Oswald {
+    font-family: "Oswald";            
+}
+
+.ql-font-ShadowsIntoLight {
+    font-family: "Shadows Into Light";
+}
+
+.ql-font-AbrilFatface {
+    font-family: "Abril Fatface";            
+}
+
+.ql-font-Teko {
+    font-family: "Teko";            
 }

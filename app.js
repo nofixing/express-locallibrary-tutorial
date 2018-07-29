@@ -35,9 +35,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // use sessions for tracking logins
 app.use(session({
   genid: (req) => {
-    console.log('Inside the session middleware')
-    console.log(req.sessionID)
-    return uuid() // use UUIDs for session IDs
+    console.log('Inside the session middleware');
+    console.log(req.sessionID);
+    return uuid(); // use UUIDs for session IDs
   },
   secret: 'I love you',
   resave: true,

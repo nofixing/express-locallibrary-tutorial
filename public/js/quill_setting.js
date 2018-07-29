@@ -16,20 +16,18 @@ var toolbarOptions = [
     [{ 'align': [] }],
   
     ['clean'],                                         // remove formatting button
-    ['link', 'image', 'video'],
-    ['showHtml'],
-    
-    ['clearContents'],
-  
-    ['opnFile']
+    ['link', 'image', 'video']
   ];
-  
+
+  // Add fonts to whitelist
+  var Font = Quill.import('formats/font');
+  // We do not add Sans Serif since it is the default
+  Font.whitelist = ['LibreFranklin', 'inconsolata', 'roboto', 'mirza', 'arial', 'NanumPenScript', 'Oswald', 'ShadowsIntoLight', 'AbrilFatface', 'Teko'];
+  Quill.register(Font, true);
+
   var quill = new Quill('#snow-container', {
     modules: {
-      toolbar: toolbarOptions,
-      clipboard: {
-        matchVisual: false
-      }
+      toolbar: '#toolbar-container'
     },
     theme: 'snow'
   });
@@ -37,7 +35,7 @@ var toolbarOptions = [
   if(typeof memo != 'undefined') {
     quill.clipboard.dangerouslyPasteHTML(memo);
   }
-  
+  /*
   var txtArea = document.createElement('textarea');
   txtArea.style.cssText = "width: 100%;height: 750px;margin: 0;background: rgb(255, 255, 255);box-sizing: border-box;color: rgb(0, 0, 0);"+
   "font-size: 13px;outline: none;padding: 20px;line-height: 24px;font-family: Consolas, Menlo, Monaco, &quot;Courier New&quot;, monospace;"+
@@ -101,3 +99,4 @@ var toolbarOptions = [
       reader.readAsText(file);
     });
   }
+  */
