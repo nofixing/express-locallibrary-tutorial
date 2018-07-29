@@ -395,6 +395,10 @@ function storyPost() {
 function userPost() {
 
     var frm = document.getElementById("userForm");
+    if(frm.email.value == '' || frm.password.value == '' || frm.confirmPassword.value == '') {
+        alert("All fields required.");
+        return;
+    }
     var isThere = false;
     var data = {};
     data.email = frm.email.value;

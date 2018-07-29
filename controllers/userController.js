@@ -105,7 +105,6 @@ exports.registration_post = function (req, res, next) {
   if (req.body.email &&
     req.body.password &&
     req.body.confirmPassword) {
-      console.log('name:'+req.body.name);
       // confirm that user typed same password twice
       if (req.body.password !== req.body.confirmPassword) {
         var err = new Error('Passwords do not match.');
