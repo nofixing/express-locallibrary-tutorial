@@ -103,16 +103,15 @@ exports.registration_post = function (req, res, next) {
   var randomstring = require("randomstring");
 
   if (req.body.email &&
-    req.body.name &&
     req.body.password &&
     req.body.confirmPassword) {
-    console.log('name:'+req.body.name);
-    // confirm that user typed same password twice
-    if (req.body.password !== req.body.confirmPassword) {
-      var err = new Error('Passwords do not match.');
-      err.status = 400;
-      return next(err);
-    }
+      console.log('name:'+req.body.name);
+      // confirm that user typed same password twice
+      if (req.body.password !== req.body.confirmPassword) {
+        var err = new Error('Passwords do not match.');
+        err.status = 400;
+        return next(err);
+      }
 
     // create object with form input
     var userData = new User({
