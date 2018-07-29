@@ -71,20 +71,20 @@ html(lang='en')
       if pc
         div#jb_content.col-lg-12
           div.ql-editor
-            p(style='font-weight:bold;') #{story.title}
+            p(style='font-weight:bold;') #{story.title}<br/><br/>
             if story.author 
-              p by #{story.author}
+              p by #{story.author}<br/><br/>
             if story.reference 
-              p reference: #{story.reference}<br/>
+              p reference: #{story.reference}<br/><br/>
             div !{story.content}
       else
         div#jb_content_mb.col-lg-12
           div.ql-editor
-            p(style='font-weight:bold;') #{story.title}
+            p(style='font-weight:bold;') #{story.title}<br/><br/>
             if story.author 
-              p by #{story.author}
+              p by #{story.author}<br/><br/>
             if story.reference 
-              p reference: #{story.reference}<br/>
+              p reference: #{story.reference}<br/><br/>
             div !{story.content}
       div#jb_txtEditor.col-lg-4
         div.standalone-container
@@ -161,7 +161,7 @@ html(lang='en')
           </div>          
           div#snow-container
           <!--<br><span>파일명: </span><input type="text" id="fileName">-->
-          <br/><button type="button" value="save" id="save">Save</button>
+          <br/><button type="button" value="save" id="save">Save</button>&nbsp;&nbsp;&nbsp;after add, you must save before leaving.
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div#word_container.col-lg-4
         <button type="button" id="wordSave">Save</button>&nbsp;&nbsp;&nbsp;checked words only will be saved or deleted.&nbsp;&nbsp;&nbsp;

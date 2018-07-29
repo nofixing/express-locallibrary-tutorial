@@ -57,6 +57,9 @@ exports.genre_detail = function(req, res, next) {
         for (let i = 0; i < results.genre_books.length; i++) {
             results.genre_books[i].summary = entities.decode(results.genre_books[i].summary);
         }
+        for (let i = 0; i < results.genre_stories.length; i++) {
+            results.genre_stories[i].title = entities.decode(results.genre_stories[i].title);
+        }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books, genre_stories: results.genre_stories, pc: pc } );
     });

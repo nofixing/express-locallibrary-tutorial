@@ -66,7 +66,7 @@ exports.story_detail = function(req, res, next) {
         for (let i = 0; i < results.words.length; i++) {
             //console.log(results.words[i]);
             //console.log(results.words[i].content);
-            txt = txt.replace(new RegExp('(' + results.words[i].title + ')', 'gi'), highlightHtml);
+            txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
         }
         results.story.content = txt;
         results.story.reference = entities.decode(results.story.reference);

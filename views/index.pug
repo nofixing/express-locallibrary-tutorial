@@ -5,8 +5,8 @@ block content
   if cert == 'OK'
     h1(style='margin-top: 100px;') Now you are our member! Log in and create Story now.
   else
-    h1= title
-    h1 Welcome to #[em Story Library], Good practice.
+    h1(style='margin-top: 100px;')= title
+    h1 Make your own stories, good practice.
 
     h1 My contents  
   
@@ -14,10 +14,15 @@ block content
       p Error getting dynamic content.
     else
 
-      p The library has the following record counts:
+      p Your library has the following record counts:
 
       ul.tite
         li #[strong Books: ]
           a(href='/catalog/books') !{data.book_count}
         li #[strong Stories: ]
           a(href='/catalog/stories') !{data.story_count}
+        li #[strong Genres: ]
+          a(href='/catalog/genres') !{data.genre_count}
+
+      p To create your first story or book, create genre first.<br/>
+      |for example, Article, Address, Fantasy

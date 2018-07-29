@@ -39,7 +39,7 @@ exports.index = function(req, res) {
         console.log(req.device.type.toUpperCase());
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         var cert = req.query.cert;
-        res.render('index', { title: 'Local Library Home', error: err, data: results, cert: cert, pc: pc });
+        res.render('index', { title: 'Welcome Infinite Storlets Home', error: err, data: results, cert: cert, pc: pc });
     });
 };
 
