@@ -324,6 +324,7 @@ exports.story_update_get = function(req, res, next) {
             }
         }
         results.story.content = entities.decode(results.story.content);
+        results.story.title = entities.decode(results.story.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story, hostname: req.headers.host, pc: pc });
     });
