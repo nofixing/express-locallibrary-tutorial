@@ -51,6 +51,9 @@ exports.book_list = function(req, res, next) {
     .exec(function (err, list_books) {
       if (err) { return next(err); }
       // Successful, so render
+        for (let i = 0; i < list_books.length; i++) {
+            list_books[i].title = entities.decode(list_books[i].title);
+        }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
       res.render('book_list', { title: 'Book List', book_list:  list_books, pc: pc});
     });
@@ -92,6 +95,7 @@ exports.book_detail = function(req, res, next) {
             results.book.genre[i].name = entities.decode(results.book.genre[i].name);
         }
         results.book.summary = entities.decode(results.book.summary);
+        results.book.title = entities.decode(results.book.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('book_detail', { title: 'Title', book:  results.book, stories: results.stories, pc: pc } );
     });
@@ -272,6 +276,7 @@ exports.book_update_get = function(req, res, next) {
                 return next(eor);
             }
             results.book.summary = entities.decode(results.book.summary);
+            results.book.title = entities.decode(results.book.title);
             // Success.
             // Mark our selected genres as checked.
             for (var all_g_iter = 0; all_g_iter < results.genres.length; all_g_iter++) {

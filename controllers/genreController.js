@@ -42,7 +42,7 @@ exports.genre_detail = function(req, res, next) {
         },
 
         genre_stories: function(callback) {
-            Story.find({ 'genre': req.params.id, 'user': req.session.userId })
+            Story.find({ 'genre': req.params.id, 'user': req.session.userId, 'book': null })
             .exec(callback);
         },
 
@@ -56,6 +56,7 @@ exports.genre_detail = function(req, res, next) {
         results.genre.name = entities.decode(results.genre.name);
         for (let i = 0; i < results.genre_books.length; i++) {
             results.genre_books[i].summary = entities.decode(results.genre_books[i].summary);
+            results.genre_books[i].title = entities.decode(results.genre_books[i].title);
         }
         for (let i = 0; i < results.genre_stories.length; i++) {
             results.genre_stories[i].title = entities.decode(results.genre_stories[i].title);

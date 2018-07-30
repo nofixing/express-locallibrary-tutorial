@@ -323,6 +323,9 @@ exports.story_update_get = function(req, res, next) {
                 }
             }
         }
+        for (var i = 0; i < results.books.length; i++) {
+            results.books[i].title = entities.decode(results.books[i].title);
+        }
         results.story.content = entities.decode(results.story.content);
         results.story.title = entities.decode(results.story.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';

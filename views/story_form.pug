@@ -132,7 +132,7 @@ block content
         div#snow-container(spellcheck='false')
         input#content.form-control(type='hidden', name='content' value=(undefined===story ? '' : story.content) )
 
-    button.btn.btn-primary(type='submit', onclick='storyPost();return false;') Submit
+    button.btn.btn-primary(type='submit', onclick='storyPost();return false;' style='margin-bottom: 50px;') Submit
     <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
 
   if errors 
