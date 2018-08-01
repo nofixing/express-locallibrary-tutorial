@@ -92,6 +92,8 @@ router.get('/stories', story_controller.story_list);
 
 router.post('/stories_ajax', story_controller.story_list_ajax);
 
+router.post('/story/preview', story_controller.story_preview);
+
 /// WORD ROUTES ///
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).

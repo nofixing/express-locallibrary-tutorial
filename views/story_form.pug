@@ -3,6 +3,12 @@ extends layout
 block content
   h1(style='margin-top: 100px;')= title
 
+  if errors 
+    br
+    ul
+      for error in errors
+        li(style='font-size: 1.2em; font-weight: bold; color: red;')!= error.msg
+  
   form(method='POST' action='' id='storyForm' name='storyForm')
     div.form-group.row
       div.col-sm-3
@@ -132,13 +138,12 @@ block content
         div#snow-container(spellcheck='false')
         input#content.form-control(type='hidden', name='content' value=(undefined===story ? '' : story.content) )
 
-    button.btn.btn-primary(type='submit', onclick='storyPost();return false;' style='margin-bottom: 50px;') Submit
+    button.btn.btn-primary(type='submit', onclick='preview();return false;') Preview
+    <br><br>
+    button.btn.btn-primary(type='submit', onclick='storyPost();return false;') Submit
     <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
 
-  if errors 
-    ul
-      for error in errors
-        li!= error.msg
+  div(style='margin-bottom: 50px;')
 
   <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <script src="/js/quill_setting.js"></script>

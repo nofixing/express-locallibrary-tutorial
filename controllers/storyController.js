@@ -125,6 +125,9 @@ exports.story_create_get = function(req, res, next) {
         for (let i = 0; i < results.genres.length; i++) {
             results.genres[i].name = entities.decode(results.genres[i].name);
         }
+        for (var i = 0; i < results.books.length; i++) {
+            results.books[i].title = entities.decode(results.books[i].title);
+        }
         var bok = req.query.book;
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, bok: bok, hostname: req.headers.host, pc: pc });
@@ -417,3 +420,8 @@ exports.story_update_post = [
     }
 ];
 
+exports.story_preview = function(req, res, next) {
+
+    res.render('preview', { content: req.body.content } );
+
+};

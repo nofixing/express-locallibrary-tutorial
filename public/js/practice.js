@@ -392,6 +392,29 @@ function storyPost() {
 
 }
 
+function preview() {
+
+    var content = document.querySelector('#snow-container').children[0].innerHTML;
+
+    var form = document.createElement("form");
+    form.setAttribute("method", "post");
+    form.setAttribute("action", "/catalog/story/preview");
+
+    form.setAttribute("target", "view");
+
+    var hiddenField = document.createElement("input"); 
+    hiddenField.setAttribute("type", "hidden");
+    hiddenField.setAttribute("name", "content");
+    hiddenField.setAttribute("value", content);
+    form.appendChild(hiddenField);
+    document.body.appendChild(form);
+
+    window.open('', 'view');
+
+    form.submit();
+
+}
+
 function userPost() {
 
     var frm = document.getElementById("userForm");
