@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var Comment = require('./comment');
 
 var Schema = mongoose.Schema;
 
@@ -10,7 +11,10 @@ var StorySchema = new Schema({
     content: {type: String, required: true},
     reference: {type: String},
     genre: [{ type: Schema.ObjectId, ref: 'Genre', required: true }],
-    order: {type: String}
+    order: {type: String},
+    comments: [Comment.schema],
+    open: {type: String},
+    date: Date
 });
 
 // Virtual for this story instance URL.

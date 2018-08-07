@@ -102,7 +102,8 @@ exports.registration_post = function (req, res, next) {
   
   var randomstring = require("randomstring");
 
-  if (req.body.email &&
+  if (req.body.name &&
+    req.body.email &&
     req.body.password &&
     req.body.confirmPassword) {
       // confirm that user typed same password twice

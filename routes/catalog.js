@@ -5,6 +5,7 @@ var mid = require('../middleware');
 // Require our controllers.
 var book_controller = require('../controllers/bookController');
 var story_controller = require('../controllers/storyController');
+var comment_controller = require('../controllers/commentController');
 var word_controller = require('../controllers/wordController');
 var memo_controller = require('../controllers/memoController');
 var author_controller = require('../controllers/authorController');
@@ -90,9 +91,15 @@ router.get('/story/:id/iframe', story_controller.story_iframe);
 // GET request for list of all Book.
 router.get('/stories', story_controller.story_list);
 
+router.get('/story_open_list', story_controller.story_open_list);
+
 router.post('/stories_ajax', story_controller.story_list_ajax);
 
 router.post('/story/preview', story_controller.story_preview);
+
+router.post('/story/:id/comments/replies', comment_controller.comment_create_post);
+
+router.post('/story/:id/comments/:commentId/replies', comment_controller.comment_create_post2);
 
 /// WORD ROUTES ///
 

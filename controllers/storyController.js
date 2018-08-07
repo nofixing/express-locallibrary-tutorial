@@ -15,13 +15,24 @@ var async = require('async');
 // Display list of all stories.
 exports.story_list = function(req, res, next) {
 
-  Story.find({user: req.session.userId, book: null}).collation({locale: 'en' }).sort({title: 1})
+  Story.find({user: req.session.userId, book: null}).collation({locale: 'en' }).sort({date: 1})
     .exec(function (err, list_stories) {
       if (err) { return next(err); }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
       res.render('story_list', { title: 'Story List', story_list:  list_stories, pc: pc});
     });
 
+};
+
+exports.story_open_list = function(req, res, next) {
+
+    Story.find({open: 'Y'}).sort({date: 1})
+      .exec(function (err, list_stories) {
+        if (err) { return next(err); }
+        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+        res.render('story_open_list', { title: 'Story List', story_list:  list_stories, pc: pc});
+    });
+  
 };
 
 exports.story_list_ajax = function(req, res, next) {
@@ -172,7 +183,8 @@ exports.story_create_post = [
             genre: req.body.genre,
             book: req.body.book,
             user: req.session.userId,
-            order: req.body.order
+            order: req.body.order,
+            date: Date.now()
            });
 
         var storyOnly = new Story(
@@ -182,7 +194,9 @@ exports.story_create_post = [
               reference: req.body.reference,
               genre: req.body.genre,
               user: req.session.userId,
-              order: req.body.order
+              order: req.body.order,
+              date: Date.now(),
+              open: req.body.open
              });
 
         if (!errors.isEmpty()) {
@@ -377,6 +391,7 @@ exports.story_update_post = [
             genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
             book: req.body.book,
             order: req.body.order,
+            open: req.body.open,
             _id:req.params.id // This is required, or a new ID will be assigned!
            });
 

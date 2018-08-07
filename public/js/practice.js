@@ -418,7 +418,7 @@ function preview() {
 function userPost() {
 
     var frm = document.getElementById("userForm");
-    if(frm.email.value == '' || frm.password.value == '' || frm.confirmPassword.value == '') {
+    if(frm.name.value == '' || frm.email.value == '' || frm.password.value == '' || frm.confirmPassword.value == '') {
         alert("All fields required.");
         return;
     }

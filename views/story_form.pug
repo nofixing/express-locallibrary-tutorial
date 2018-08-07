@@ -138,6 +138,14 @@ block content
         div#snow-container(spellcheck='false')
         input#content.form-control(type='hidden', name='content' value=(undefined===story ? '' : story.content) )
 
+    div.form-group.row.stro
+      div.col-sm-1
+        label(for='open') Open:
+        select#open.form-control(type='select', placeholder='Select Open' name='open')
+          option(value='N' selected=(undefined===story ? 'selected' : story.open=='N' ? 'selected' : false) ) N
+          option(value='Y' selected=(undefined===story ? false : story.open=='Y' ? 'selected' : false) ) Y
+        <br><br>
+    
     button.btn.btn-primary(type='submit', onclick='preview();return false;') Preview
     <br><br>
     button.btn.btn-primary(type='submit', onclick='storyPost();return false;') Submit
