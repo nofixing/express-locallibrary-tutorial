@@ -425,12 +425,44 @@ exports.story_update_post = [
             return;
         }
         else {
+            if(req.body.book == '') {
+                Story.update({_id: req.params.id}, {
+                    title: req.body.title,
+                    author: req.body.author,
+                    content: req.body.content,
+                    reference: req.body.reference,
+                    genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
+                    open: req.body.open
+                }, function(err, theStory) {
+                    if (err) { return next(err); }
+                    // Successful - redirect to story detail page.
+                    res.redirect("/catalog/story/"+req.params.id);
+                });
+            } else {
+                Story.update({_id: req.params.id}, {
+                    title: req.body.title,
+                    author: req.body.author,
+                    content: req.body.content,
+                    reference: req.body.reference,
+                    book: req.body.book,
+                    order: req.body.order
+                }, function(err, theStory) {
+                    if (err) { return next(err); }
+                    // Successful - redirect to story detail page.
+                    res.redirect("/catalog/story/"+req.params.id);
+                });
+            }
+            
+            
+            
             // Data from form is valid. Update the record.
+            /*
             Story.findByIdAndUpdate(req.params.id, story, {}, function (err,theStory) {
                 if (err) { return next(err); }
                    // Successful - redirect to story detail page.
                    res.redirect(theStory.url);
                 });
+            */
         }
     }
 ];

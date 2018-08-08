@@ -195,3 +195,7 @@ ul.tite li {
 .ql-font-Teko {
     font-family: "Teko";            
 }
+
+.comment-indent {
+    margin-left: 10px;
+  }
