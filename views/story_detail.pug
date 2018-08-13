@@ -85,9 +85,13 @@ html(lang='en')
           </div>
           <input type="hidden" id="sfkb" name="sfkb" value="#{story._id}" />
         </form>
-        include pets-partial
-        each comment in story.comments
-          +petslist(comment)
+        for genre in genres
+          <p>#{genre.name}</p>
+        for comment in comments
+          <p>#{comment.content}</p>
+          include pets-partial
+          each cmt in comment.comments
+            +petslist(cmt)
 
       div#jb_txtEditor.col-lg-4
         div.standalone-container

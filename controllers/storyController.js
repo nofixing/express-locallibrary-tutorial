@@ -52,6 +52,7 @@ exports.story_detail = function(req, res, next) {
         story: function(callback) {
             Story.findById(req.params.id)
               .populate('genre')
+              .populate('comments')
               .exec(callback);
         },
         words: function(callback) {

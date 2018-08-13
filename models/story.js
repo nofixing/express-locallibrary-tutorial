@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-var Comment = require('./comment');
 
 var Schema = mongoose.Schema;
 
@@ -12,7 +11,7 @@ var StorySchema = new Schema({
     reference: {type: String},
     genre: [{ type: Schema.ObjectId, ref: 'Genre', required: true }],
     order: {type: String},
-    comments: [Comment.schema],
+    comments: [{ type: Schema.ObjectId, ref: 'Comment' }],
     open: {type: String},
     date: Date
 });
