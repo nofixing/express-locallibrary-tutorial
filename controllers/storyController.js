@@ -3,6 +3,7 @@ var Genre = require('../models/genre');
 var Word = require('../models/word');
 var Memo = require('../models/memo');
 var Book = require('../models/book');
+var Comment = require('../models/comment');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -52,8 +53,11 @@ exports.story_detail = function(req, res, next) {
         story: function(callback) {
             Story.findById(req.params.id)
               .populate('genre')
-              .populate('comments')
               .exec(callback);
+        },
+        comments: function(callback) {
+            //console.log("user:"+req.session.userId+"/story:"+req.params.id);
+            Comment.find({story: req.params.id}).exec(callback);
         },
         words: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
@@ -91,7 +95,7 @@ exports.story_detail = function(req, res, next) {
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_detail', 
-        { title: 'Title', story:  results.story, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host, pc: pc } );
+        { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host, pc: pc } );
     });
 
 };

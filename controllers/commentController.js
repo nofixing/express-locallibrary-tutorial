@@ -9,18 +9,14 @@ var async = require('async');
 exports.comment_create_post = [
     (req, res, next) => {
         var comment = new Comment({ 
+            story: req.body.sfkb,
             user: req.session.userId,
             content: req.body.content
             });
         
         comment.save(function(err, comment) {
             if (err) return res.send(err);
-            Story.findById({'_id': req.body.sfkb}).exec( function(err, story) {
-                if (err) { return next(err); }
-                story.comments.push(comment);
-                story.save();
-                res.redirect('/catalog/story/'+story._id);
-            });
+            res.redirect('/catalog/story/'+req.params.id);
         });
     }
 ];
@@ -29,48 +25,21 @@ exports.comment_create_post2 = [
     
     (req, res, next) => {
         
-        Comment.findById({'_id': req.params.commentId}).exec( function(err, comment) {
-            if (err) { return next(err); }
-            console.log("111111");
-            if (comment) {
-                console.log("222222");
-                console.log(req.params.commentId);
-                //var comment = story.comments.id(req.params.commentId);
-                console.log(comment);
-                // ADD THE REPLY
-                var cmt = new Comment({ 
-                    user: req.session.userId,
-                    content: req.body.content
-                    });
-                comment.comments.unshift(cmt);
-                // SAVE THE CHANGE TO THE PARENT DOCUMENT
-                comment.save();
-                res.redirect('/catalog/story/'+story._id);
-                /*
-                Comment.findById({'_id': req.params.commentId}).exec( function(err, cmt) {
-                    if (err) { return next(err); }
-                    console.log("252525");
-                    if (cmt) {
-                        console.log("333333");
-                        var comment = new Comment({ 
-                            user: req.session.userId,
-                            content: req.body.content
-                            });
-                        
-                        cmt.comments = comment;
-                        story.save();
-                        res.redirect('/catalog/story/'+story._id);
-                    }
-                    else {
-                        console.log(err.message);
-                    }
-                });
-                */
-            }
-            else {
-                console.log(err.message);
-            }
+        var comment = new Comment({ 
+            user: req.session.userId,
+            content: req.body.content
+            });
+        
+        comment.save(function(err, comment) {
+            if (err) return res.send(err);
+            Comment.findById({'_id': req.params.commentId}).exec( function(err, prnt) {
+                if (err) { return next(err); }
+                prnt.comments.push(comment);
+                prnt.save();
+                res.redirect('/catalog/story/'+req.params.id);
+            });
         });
+        
     }
 ];
 

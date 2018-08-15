@@ -1,5 +1,6 @@
 mixin petslist(comment)
   <div class="comment-indent">
+    p There
     <p>#{comment.content}</p><span>reply this</span>
     <form method="post" action="/catalog/story/#{story._id}/comments/#{comment._id}/replies">
       <div class="form-group">
@@ -12,6 +13,7 @@ mixin petslist(comment)
       <input type="hidden" id="sfkb" name="sfkb" value="#{story._id}" />
     </form>
     if comment.comments
+      p Here
       each cmt in comment.comments
         +petslist(cmt)
   </div>
