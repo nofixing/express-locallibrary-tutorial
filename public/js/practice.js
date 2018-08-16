@@ -480,3 +480,8 @@ function hideWordLayer() {
     $('#jb_txtEditor').css('display', 'block');
 }
 
+function viewR(elem) {
+    var id = $(elem).attr("id");
+    id = id.substring(2);
+    $("#d_" + id).toggle();
+}

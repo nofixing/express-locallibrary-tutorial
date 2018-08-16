@@ -11,6 +11,7 @@ var CommentSchema = new Schema({
 
 function autoPopulateSubs(next) {
     this.populate('comments');
+    this.populate('user');
     next();
 }
   

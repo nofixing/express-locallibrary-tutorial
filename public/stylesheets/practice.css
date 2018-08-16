@@ -198,4 +198,10 @@ ul.tite li {
 
 .comment-indent {
     margin-left: 30px;
-  }
+}
+
+.replyB {
+    text-align: left;
+    color: blue;
+    cursor: pointer;
+}  

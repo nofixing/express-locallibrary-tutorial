@@ -101,6 +101,8 @@ router.post('/story/:id/comments/replies', comment_controller.comment_create_pos
 
 router.post('/story/:id/comments/:commentId/replies', comment_controller.comment_create_post2);
 
+router.post('/story/:id/comments/:commentId/replies_update', comment_controller.comment_update_post);
+
 /// WORD ROUTES ///
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).

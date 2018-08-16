@@ -57,7 +57,7 @@ exports.story_detail = function(req, res, next) {
         },
         comments: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
-            Comment.find({story: req.params.id}).exec(callback);
+            Comment.find({story: req.params.id}).populate('user').exec(callback);
         },
         words: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
