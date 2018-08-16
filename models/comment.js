@@ -6,6 +6,7 @@ var CommentSchema = new Schema({
     story: { type: Schema.ObjectId, ref: 'Story' },
     user: { type: Schema.ObjectId, ref: 'User', required: true },
     content: { type: String, required: true },
+    date: Date,
     comments: [ { type: Schema.ObjectId, ref: 'Comment' } ]
 });
 
