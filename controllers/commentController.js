@@ -26,21 +26,39 @@ exports.comment_create_post2 = [
     
     (req, res, next) => {
         
-        var comment = new Comment({ 
-            user: req.session.userId,
-            content: req.body.content,
-            date: Date.now()
+        var flag = req.body.cgb;
+
+        if (flag == 'R') {
+
+            var comment = new Comment({ 
+                user: req.session.userId,
+                content: req.body.content,
+                date: Date.now()
+                });
+            
+            comment.save(function(err, comment) {
+                if (err) return res.send(err);
+                Comment.findById({'_id': req.params.commentId}).exec( function(err, prnt) {
+                    if (err) { return next(err); }
+                    prnt.comments.push(comment);
+                    prnt.save();
+                    res.redirect('/catalog/story/'+req.params.id);
+                });
             });
-        
-        comment.save(function(err, comment) {
-            if (err) return res.send(err);
-            Comment.findById({'_id': req.params.commentId}).exec( function(err, prnt) {
+
+        } else {
+
+            Comment.update({_id: req.params.commentId}, {
+                content: req.body.content
+            }, function(err, theComment) {
                 if (err) { return next(err); }
-                prnt.comments.push(comment);
-                prnt.save();
-                res.redirect('/catalog/story/'+req.params.id);
+                // Successful - redirect to story detail page.
+                res.redirect("/catalog/story/"+req.params.id);
             });
-        });
+
+        }
+        
+        
         
     }
 ];

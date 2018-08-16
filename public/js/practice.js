@@ -485,3 +485,11 @@ function viewR(elem) {
     id = id.substring(2);
     $("#d_" + id).toggle();
 }
+
+function viewU(elem) {
+    var id = $(elem).attr("id");
+    id = id.substring(2);
+    $("#r_" + id).html($("#c_" + id).html());
+    $("#cgb_" + id).val("U");
+    $("#d_" + id).toggle();
+}

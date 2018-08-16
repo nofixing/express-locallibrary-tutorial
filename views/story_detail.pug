@@ -95,17 +95,19 @@ html(lang='en')
                 - cyn = 'Y'
               <span>#{comment.user.name}</span>
               <span id="s_#{comment._id}" onclick="viewR(this);" class="replyB">Reply</span>
-              <div>#{comment.content}</div>
+              <span id="u_#{comment._id}" onclick="viewU(this);" class="replyB">Update</span>
+              <div id="c_#{comment._id}">#{comment.content}</div>
               <div id="d_#{comment._id}" style="display: none;">
                 <form method="post" action="/catalog/story/#{story._id}/comments/#{comment._id}/replies">
                   <div class="form-group">
-                    <textarea name="content" class="form-control" id="reply-content" placeholder="Reply"></textarea>
+                    <textarea name="content" class="form-control" id="r_#{comment._id}" placeholder="Reply"></textarea>
                   </div>
                   <div class='text-right'>
                     <button type="submit" class="btn btn-primary">Reply</button>
                   </div>
                   <input type="hidden" id="sfkb" name="sfkb" value="#{story._id}" />
                   <input type="hidden" id="cyn" name="cyn" value="#{cyn}" />
+                  <input type="hidden" id="cgb_#{comment._id}" name="cgb" value="R" />
                 </form>
               </div>
               if comment.comments != ''

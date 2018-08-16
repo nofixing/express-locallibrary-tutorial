@@ -3,23 +3,21 @@ extends layout
 block content
 	h1(style='margin-top:100px;')= title
   
-	div(class='container-fluid')
-		div.col-lg-12
-			table(class='table table-responsive table-striped table-hover table-condensed' style='margin-top: 10px;')
-				thead
+	table(class='table table-striped table-hover table-condensed' style='margin-top: 10px;')
+		thead
+			tr
+				th(width='80%') Title
+				th(width='20%') Writer
+		tbody
+			if story_list
+				each story in story_list
 					tr
-						th Title
-						th Writer
-				tbody.wtd
-					if story_list
-						each story in story_list
-							tr
-								td
-									a(href=story.url) !{story.title}
-								td
-									#{story.author}
-					else
-						tr
-							td(colspan='2')
-								There are no stories.
+						td
+							a(href=story.url) !{story.title}
+						td
+							span #{story.user.name}
+			else
+				tr
+					td(colspan='2')
+						There are no stories.
 						

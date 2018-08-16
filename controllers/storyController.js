@@ -28,7 +28,8 @@ exports.story_list = function(req, res, next) {
 exports.story_open_list = function(req, res, next) {
 
     Story.find({open: 'Y'}).sort({date: 1})
-      .exec(function (err, list_stories) {
+        .populate('user')
+        .exec(function (err, list_stories) {
         if (err) { return next(err); }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_open_list', { title: 'Story List', story_list:  list_stories, pc: pc});
