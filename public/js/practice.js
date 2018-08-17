@@ -363,11 +363,19 @@ function ReadingPractice() {
     $('.hgt').css('color', 'blue');
 }
 
-function DeleteStory() {
+function DeleteStory(a, b) {
+    if ( a != b ) {
+        alert("You can not delete the other member's story.");
+        return;
+    }
     document.location.href = '/catalog/story/'+$("#story_id").val()+'/delete';
 }
 
-function UpdateStory() {
+function UpdateStory(a, b) {
+    if ( a != b ) {
+        alert("You can not update the other member's story.");
+        return;
+    }
     document.location.href = '/catalog/story/'+$("#story_id").val()+'/update';
 }
 

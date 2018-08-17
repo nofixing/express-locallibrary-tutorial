@@ -35,22 +35,23 @@ html(lang='en')
               a#story.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') STORY INDEX
               div#index.dropdown-menu(aria-labelledby='story')
           if pc
-            li.nav-item
-              a.nav-link(href='#none' onclick='ReadingOnly();return false;') Reading
-            li.nav-item
-              a.nav-link(href='#none' onclick='ReadingSearch();return false;') DicSearch
-            li.nav-item
-              a.nav-link(href='#none' onclick='ReadingPractice();return false;') Practice
-            li.nav-item
-              a.nav-link(href='#none' onclick='showWordLayer();return false;') Words
-            li.nav-item
-              a.nav-link(href='#none' onclick='hideWordLayer();return false;') Memo
+            if story.open != 'Y'
+              li.nav-item
+                a.nav-link(href='#none' onclick='ReadingOnly();return false;') Reading
+              li.nav-item
+                a.nav-link(href='#none' onclick='ReadingSearch();return false;') DicSearch
+              li.nav-item
+                a.nav-link(href='#none' onclick='ReadingPractice();return false;') Practice
+              li.nav-item
+                a.nav-link(href='#none' onclick='showWordLayer();return false;') Words
+              li.nav-item
+                a.nav-link(href='#none' onclick='hideWordLayer();return false;') Memo
             li.nav-item
               a.nav-link(href='#none' onclick='CreateStory();return false;') Create
             li.nav-item
-              a.nav-link(href='#none' onclick='UpdateStory();return false;') Update
+              <a class="nav-link" href="#none" onclick="UpdateStory('#{story.user}', '#{userId}');return false;">Update</a>
             li.nav-item
-              a.nav-link(href='#none' onclick='DeleteStory();return false;') Delete
+              <a class="nav-link" href="#none" onclick="DeleteStory('#{story.user}', '#{userId}');return false;">Delete</a>
           li.nav-item
             a.nav-link(href='/catalog/books') Books
           li.nav-item
@@ -94,9 +95,11 @@ html(lang='en')
               if comment.comments != ''
                 - cyn = 'Y'
               <span>#{comment.user.name}</span>
-              <span id="s_#{comment._id}" onclick="viewR(this);" class="replyB">Reply</span>
-              <span id="u_#{comment._id}" onclick="viewU(this, '#{userId}');" class="replyB">Update</span>
-              <span id="t_#{comment._id}" onclick="viewT(this, '#{userId}');" class="replyB">Delete</span>
+              <div style="display: inline; float: right;">
+                <span id="s_#{comment._id}" onclick="viewR(this);" class="replyB">Reply</span>
+                <span id="u_#{comment._id}" onclick="viewU(this, '#{userId}');" class="replyB">Update</span>
+                <span id="t_#{comment._id}" onclick="viewT(this, '#{userId}');" class="replyB">Delete</span>
+              </div>
               <div id="c_#{comment._id}">#{comment.content}</div>
               <div id="d_#{comment._id}" style="display: none;">
                 <form method="post" action="/catalog/story/#{story._id}/comments/#{comment._id}/replies">

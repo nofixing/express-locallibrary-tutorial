@@ -31,7 +31,7 @@ exports.index = function(req, res) {
             Genre.find({user: req.session.userId}).count(callback);
         },
         story_count: function(callback) {
-            Story.find({user: req.session.userId, book: null}).count(callback);
+            Story.find({$and:[{user: req.session.userId}, {book: null}, {$or: [{open: null}, {open: 'N'}]}] }).count(callback);
         },
     }, function(err, results) {
         console.log('Inside the homepage callback function');
