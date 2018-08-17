@@ -46,13 +46,20 @@ exports.comment_create_post2 = [
                 });
             });
 
-        } else {
+        } else if (flag == 'U') {
 
             Comment.update({_id: req.params.commentId}, {
                 content: req.body.content
             }, function(err, theComment) {
                 if (err) { return next(err); }
                 // Successful - redirect to story detail page.
+                res.redirect("/catalog/story/"+req.params.id);
+            });
+
+        } else if (flag == 'T') {
+
+            Comment.findByIdAndRemove(req.params.commentId, function deleteComment(err) {
+                if (err) { return next(err); }
                 res.redirect("/catalog/story/"+req.params.id);
             });
 

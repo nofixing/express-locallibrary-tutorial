@@ -16,7 +16,7 @@ var async = require('async');
 // Display list of all stories.
 exports.story_list = function(req, res, next) {
 
-  Story.find({user: req.session.userId, book: null}).collation({locale: 'en' }).sort({date: 1})
+  Story.find({$and:[{user: req.session.userId}, {book: null}, {$or: [{open: null}, {open: 'N'}]}] }).collation({locale: 'en' }).sort({date: 1})
     .exec(function (err, list_stories) {
       if (err) { return next(err); }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
@@ -96,7 +96,8 @@ exports.story_detail = function(req, res, next) {
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_detail', 
-        { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, word_list:results.words, hostname: req.headers.host, pc: pc } );
+        { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, 
+        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId } );
     });
 
 };

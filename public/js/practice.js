@@ -486,10 +486,31 @@ function viewR(elem) {
     $("#d_" + id).toggle();
 }
 
-function viewU(elem) {
+function viewU(elem, uid) {
     var id = $(elem).attr("id");
     id = id.substring(2);
+    if ( $("#uid_" + id).val() != uid ) {
+        alert("You can not update the other member's comment.");
+        return;
+    }
     $("#r_" + id).html($("#c_" + id).html());
     $("#cgb_" + id).val("U");
+    $("#d_" + id).toggle();
+}
+
+function viewT(elem, uid) {
+    var id = $(elem).attr("id");
+    id = id.substring(2);
+    if ( $("#uid_" + id).val() != uid ) {
+        alert("You can not delete the other member's comment.");
+        return;
+    }
+    if ( $("#cyn_" + id).val() == "Y" ) {
+        alert("You can not delete the comment that has a child comment.");
+        return;
+    }
+    $("#r_" + id).html($("#c_" + id).html());
+    $("#cgb_" + id).val("T");
+    $("#b_" + id).html("Delete");
     $("#d_" + id).toggle();
 }
