@@ -154,6 +154,14 @@ ul.tite li {
     font-family: "Teko";
 }
 
+#toolbar-container .ql-font span[data-label="Cormorant"]::before {
+    font-family: "Cormorant";
+}
+
+#toolbar-container .ql-font span[data-label="Alfa Slab One"]::before {
+    font-family: "Alfa Slab One";
+}
+
 /* Set content font-families */
 
 .ql-font-LibreFranklin {
@@ -194,6 +202,14 @@ ul.tite li {
 
 .ql-font-Teko {
     font-family: "Teko";            
+}
+
+.ql-font-Cormorant {
+    font-family: "Cormorant";            
+}
+
+.ql-font-AlfaSlabOne {
+    font-family: "Alfa Slab One";            
 }
 
 .comment-indent {
