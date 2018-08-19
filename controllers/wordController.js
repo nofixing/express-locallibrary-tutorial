@@ -20,7 +20,7 @@ exports.word_list = function(req, res, next) {
 
 // Display list of all words.
 exports.words = function(req, res, next) {
-    console.log(req.session.userId+"/"+req.query.story_id)
+    console.log(req.session.userId+"/"+req.query.story_id);
     Word.find({user: '5b21fd3946969f00144f2622', story: '5b2602d8b2d1122bbce72078'}, {title: 1, _id: 0})
       .exec(function (err, list_words) {
         if (err) { return next(err); }

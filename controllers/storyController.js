@@ -47,6 +47,29 @@ exports.story_open_list = function(req, res, next) {
   
 };
 
+exports.story_open_ajax = function(req, res, next) {
+
+    var mxcnt = 0;
+    if(typeof req.body.mxcnt !='undefined') {
+        mxcnt = req.body.mxcnt;
+    }
+    
+    var ct = 0;
+    Story.find({open: 'Y'}).count().exec(function (err, count) {
+        ct =count;
+    });
+    
+    Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+20).sort({date: 1})
+        .populate('user')
+        .exec(function (err, list_stories) {
+        if (err) { return next(err); }
+        list_stories.mxcnt = mxcnt+20;
+        list_stories.ct = ct;
+        res.send(list_stories);
+    });
+  
+};
+
 exports.story_list_ajax = function(req, res, next) {
 
     Story.find({book: req.body.book}, 'title ').collation({locale: 'en' }).sort({order: 1})
