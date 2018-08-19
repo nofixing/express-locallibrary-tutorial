@@ -27,12 +27,22 @@ exports.story_list = function(req, res, next) {
 
 exports.story_open_list = function(req, res, next) {
 
-    Story.find({open: 'Y'}).sort({date: 1})
+    var mxcnt = 0;
+    if(typeof req.body.mxcnt !='undefined') {
+        mxcnt = req.body.mxcnt;
+    }
+    
+    var ct = 0;
+    Story.find({open: 'Y'}).count().exec(function (err, count) {
+        ct =count;
+    });
+    
+    Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+20).sort({date: 1})
         .populate('user')
         .exec(function (err, list_stories) {
         if (err) { return next(err); }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_open_list', { title: 'Story List', story_list:  list_stories, pc: pc});
+        res.render('story_open_list', { title: 'Story List', story_list:  list_stories, pc: pc, mxcnt: mxcnt+20, ct: ct});
     });
   
 };

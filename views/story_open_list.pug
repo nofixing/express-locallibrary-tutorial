@@ -2,7 +2,7 @@ extends layout
 
 block content
 	h1(style='margin-top:100px;')= title
-  
+	
 	table(class='table table-striped table-hover table-condensed' style='margin-top: 10px;')
 		thead
 			tr
@@ -20,4 +20,6 @@ block content
 				tr
 					td(colspan='2')
 						There are no stories.
-						
+	<input type="hidden" id="mxcnt" name="mxcnt" value="#{mxcnt}" />
+	<input type="hidden" id="ct" name="ct" value="#{ct}" />
+	<script src="/js/storyOpen.js"></script>		
