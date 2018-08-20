@@ -1,30 +1,32 @@
 $( document ).ready(function() {
     
   $(window).scroll(function() {
-    if($(window).scrollTop() + $(window).height() > $(document).height() - 50) {
-        alert("near bottom!");
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 10) {
         
-        var data = {};
-        data.id = $("#book").val();
-        var httpType = 'https://';
-        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            url: httpType+$('#hostname').val()+'/catalog/book_ajax',
-            success : function(book) {
-                $("#author").val(book.author);
-                $.each(book.genre, function(i, gnr){
-                    $('.gne').each(function () {
-                        if( gnr._id ==  $(this).val() ) $(this).prop('checked', true);
+        if($("#mxcnt").val() < $("#ct").val()) {
+            
+            var data = {};
+            data.mxcnt = $("#mxcnt").val();
+            var httpType = 'https://';
+            if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                url: httpType+$('#hostname').val()+'/catalog/story_open_ajax',
+                async: false,
+                success : function(list_stories) {
+                    $("#mxcnt").val(list_stories.mxcnt);
+                    $("#ct").val(list_stories.ct);
+                    $.each(list_stories, function(i, story){
+                        var markup = "<tr><td><a href='/catalog/story/"+story._id+"'>"+story.title+"</a></td>";
+                        markup += "<td><span>"+story.user.name+"</span></td></tr>";
+                        $(".wtd").append(markup);
                     });
-                });
-                $(".stro").css("display", "none");
-                $(".boko").css("display", "block");
-            }
-        });
-  
+                }
+            });
+        }
+        
     }
   });
     

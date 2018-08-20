@@ -42,7 +42,7 @@ exports.story_open_list = function(req, res, next) {
         .exec(function (err, list_stories) {
         if (err) { return next(err); }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_open_list', { title: 'Story List', story_list:  list_stories, pc: pc, mxcnt: mxcnt+20, ct: ct});
+        res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct});
     });
   
 };
@@ -53,18 +53,23 @@ exports.story_open_ajax = function(req, res, next) {
     if(typeof req.body.mxcnt !='undefined') {
         mxcnt = req.body.mxcnt;
     }
-    
+    mxcnt = Number(mxcnt);
     var ct = 0;
     Story.find({open: 'Y'}).count().exec(function (err, count) {
         ct =count;
     });
-    
+    //console.log(mxcnt+"/"+ct);
     Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+20).sort({date: 1})
         .populate('user')
         .exec(function (err, list_stories) {
-        if (err) { return next(err); }
+        if (err) { 
+            console.log(err);
+            return next(err); 
+        }
+        
         list_stories.mxcnt = mxcnt+20;
         list_stories.ct = ct;
+        //console.log(list_stories);
         res.send(list_stories);
     });
   

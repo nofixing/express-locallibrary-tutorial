@@ -8,7 +8,7 @@ block content
 			tr
 				th(width='80%') Title
 				th(width='20%') Writer
-		tbody
+		tbody.wtd
 			if story_list
 				each story in story_list
 					tr
@@ -22,4 +22,5 @@ block content
 						There are no stories.
 	<input type="hidden" id="mxcnt" name="mxcnt" value="#{mxcnt}" />
 	<input type="hidden" id="ct" name="ct" value="#{ct}" />
+	<input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
 	<script src="/js/storyOpen.js"></script>		
