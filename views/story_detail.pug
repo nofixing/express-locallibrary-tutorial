@@ -21,6 +21,7 @@ html(lang='en')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     script(src='/js/practice.js')
+    script(src='/js/stjs.js')
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/practice.css')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -48,6 +49,9 @@ html(lang='en')
                 a.nav-link(href='#none' onclick='showWordLayer();return false;') Words
               li.nav-item
                 a.nav-link(href='#none' onclick='hideWordLayer();return false;') Memo
+            else
+              li.nav-item
+                a.nav-link(href='#none' onclick='ReadingOnly();return false;') Reading
             li.nav-item
               a.nav-link(href='#none' onclick='CreateStory();return false;') Create
             li.nav-item

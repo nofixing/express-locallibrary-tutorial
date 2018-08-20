@@ -345,6 +345,8 @@ function ReadingSearch() {
     $('#jb_sidebar').addClass('col-lg-6');
     $('#jb_sidebar').css('display', 'block');
     $('.hgt').css('color', 'black');
+    $(".nav-item").removeClass("active");
+    $(".nav-item:eq(1)").addClass("active");
 }
 
 function ReadingPractice() {
@@ -361,6 +363,8 @@ function ReadingPractice() {
     $('#jb_sidebar').addClass('col-lg-4');
     $('#jb_sidebar').css('display', 'block');
     $('.hgt').css('color', 'blue');
+    $(".nav-item").removeClass("active");
+    $(".nav-item:eq(2)").addClass("active");
 }
 
 function DeleteStory(a, b) {
@@ -480,12 +484,16 @@ function showWordLayer() {
     ReadingPractice();
     $('#word_container').css('display', 'block');
     $('#jb_txtEditor').css('display', 'none');
+    $(".nav-item").removeClass("active");
+    $(".nav-item:eq(3)").addClass("active");
 }
 
 function hideWordLayer() {
     ReadingPractice();
     $('#word_container').css('display', 'none');
     $('#jb_txtEditor').css('display', 'block');
+    $(".nav-item").removeClass("active");
+    $(".nav-item:eq(4)").addClass("active");
 }
 
 function viewR(elem) {
