@@ -3,6 +3,9 @@ extends layout
 block content
   h1(style='margin-top: 100px;')= title
 
+  if errors 
+    span(style='font-size: 1.2em; font-weight: bold; color: red;')!= errors
+
   form(method='POST' action='')
     div.form-group.row
       div.col-sm-2

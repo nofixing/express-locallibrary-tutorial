@@ -1,11 +1,11 @@
 $( document ).ready(function() {
     
   var pah = $(location).attr('href');
-  if(pah.indexOf("catalog/books") > -1) {
+  if(pah.indexOf("catalog/books") > -1 || pah.indexOf("/catalog/book/") > -1) {
     $(".nav-item:first").addClass("active");
   } else if(pah.indexOf("stories") > -1) {
     $(".nav-item:eq(1)").addClass("active");
-  } else if(pah.indexOf("genres") > -1) {
+  } else if(pah.indexOf("genres") > -1 || pah.indexOf("/catalog/genre/") > -1) {
     $(".nav-item:eq(2)").addClass("active");
   } else if(pah.indexOf("story_open_list") > -1) {
     $(".nav-item:eq(3)").addClass("active");

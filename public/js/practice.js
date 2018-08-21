@@ -346,7 +346,11 @@ function ReadingSearch() {
     $('#jb_sidebar').css('display', 'block');
     $('.hgt').css('color', 'black');
     $(".nav-item").removeClass("active");
-    $(".nav-item:eq(1)").addClass("active");
+    if($("#book").val() != "") {
+        $(".nav-item:eq(2)").addClass("active");
+    } else {
+        $(".nav-item:eq(1)").addClass("active");
+    }
 }
 
 function ReadingPractice() {
@@ -364,7 +368,11 @@ function ReadingPractice() {
     $('#jb_sidebar').css('display', 'block');
     $('.hgt').css('color', 'blue');
     $(".nav-item").removeClass("active");
-    $(".nav-item:eq(2)").addClass("active");
+    if($("#book").val() != "") {
+        $(".nav-item:eq(3)").addClass("active");
+    } else {
+        $(".nav-item:eq(2)").addClass("active");
+    }
 }
 
 function DeleteStory(a, b) {
@@ -485,7 +493,11 @@ function showWordLayer() {
     $('#word_container').css('display', 'block');
     $('#jb_txtEditor').css('display', 'none');
     $(".nav-item").removeClass("active");
-    $(".nav-item:eq(3)").addClass("active");
+    if($("#book").val() != "") {
+        $(".nav-item:eq(4)").addClass("active");
+    } else {
+        $(".nav-item:eq(3)").addClass("active");
+    }
 }
 
 function hideWordLayer() {
@@ -493,7 +505,11 @@ function hideWordLayer() {
     $('#word_container').css('display', 'none');
     $('#jb_txtEditor').css('display', 'block');
     $(".nav-item").removeClass("active");
-    $(".nav-item:eq(4)").addClass("active");
+    if($("#book").val() != "") {
+        $(".nav-item:eq(5)").addClass("active");
+    } else {
+        $(".nav-item:eq(4)").addClass("active");
+    }
 }
 
 function viewR(elem) {

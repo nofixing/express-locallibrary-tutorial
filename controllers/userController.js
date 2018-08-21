@@ -32,12 +32,12 @@ exports.login_post = function (req, res, next) {
       if (error || !user) {
         var err = new Error('Wrong email or password.');
         err.status = 401;
-        return next(err);
+        res.render('login_form', { title: 'Log In', errors: err });
       } else {
         if (user.certyn == 'N') {
           var crr = new Error('Oops. you are not certified!');
           crr.status = 401;
-          return next(crr);
+          res.render('login_form', { title: 'Log In', errors: crr });
         } else {
           req.session.userId = user._id;
           return res.redirect('/');
