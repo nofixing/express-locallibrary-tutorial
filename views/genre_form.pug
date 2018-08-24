@@ -2,14 +2,14 @@ extends layout
 
 block content
 
-  h1(style='margin-top:100px;') #{title}
+  h1(style='margin-top:100px;') #{translation.CreateGenre}
           
   form(method='POST' action='')
     div.form-group.row
       div.col-sm-2
-        label(for='name') Genre:
+        label(for='name') #{translation.Genre}:
         input#name.form-control(type='text', placeholder='Fantasy, Poetry etc.' name='name' required='true' value=(undefined===genre ? '' : genre.name) )
-    button.btn.btn-primary(type='submit') Submit
+    button.btn.btn-primary(type='submit') #{translation.Submit}
 
   if errors 
     ul

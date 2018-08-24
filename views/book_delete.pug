@@ -2,11 +2,11 @@ extends layout
 
 block content
 
-  h1 #{title}: #{book.title}
+  h1(style='margin-top:100px;') #[strong #{translation.Title}:] #{book.title}
   
-  p #[strong Author:] #{book.author}
-  p #[strong Summary:] #{book.summary}
-  p #[strong Genre:] 
+  p #[strong #{translation.Author}:] #{book.author}
+  p #[strong #{translation.Summary}:] #{book.summary}
+  p #[strong #{translation.Genre}:] 
     each val in book.genre
       a(href=val.url) #{val.name}
       |, 
@@ -15,21 +15,21 @@ block content
   
   if stories.length
   
-    p #[strong Delete the following stories before attempting to delete this Book.]
+    p #[strong #{translation.Deletethefollowingstories}]
   
     div(style='margin-left:20px;margin-top:20px')
 
-      h4 Stories
+      h4 #{translation.STORY}
     
         each story in stories
           p
             a(href=story.url) #{story.title}
 
   else
-    p Do you really want to delete this Book?
+    p #{translation.Doyoureallywanttodeletebook}
     
     form(method='POST' action='')
       div.form-group
         input#id.form-control(type='hidden',name='id', required='true', value=book._id )
 
-      button.btn.btn-primary(type='submit') Delete
+      button.btn.btn-primary(type='submit') #{translation.Delete}

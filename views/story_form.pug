@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1(style='margin-top: 100px;')= title
+  h1(style='margin-top: 100px;') #{translation.CREATESTORY}
 
   if errors 
     br
@@ -12,13 +12,13 @@ block content
   form(method='POST' action='' id='storyForm' name='storyForm')
     div.form-group.row
       div.col-sm-3
-        label(for='book') Book:
+        label(for='book') #{translation.Book}:
         select#book.form-control(type='select', placeholder='Select book' name='book' )
           if !story
-            option(value='') story only
+            option(value='') #{translation.storyonly}
           else
             if !story.book
-              option(value='' selected='selected') story only
+              option(value='' selected='selected') #{translation.storyonly}
           for book in books
             if story
               if story.book
@@ -35,26 +35,26 @@ block content
                 option(value=book._id) #{book.title}
     div.form-group.row
       div.col-sm-3
-        label(for='title') Title:
+        label(for='title') #{translation.Title}:
         input#title.form-control(type='text', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
     
     div.form-group.row.boko
       div.col-sm-1
-        label(for='order') Order:
+        label(for='order') #{translation.Order}:
         input#order.form-control(type='text', placeholder='Order of story' name='order' value=(undefined===story ? '' : story.order) )
     
     div.form-group.row.stro
       div.col-sm-2
-        label(for='author') Author:
+        label(for='author') #{translation.Author}:
         input#author.form-control(type='text', placeholder='Author of story' name='author' value=(undefined===story ? '' : story.author) )
 
     div.form-group.row.stro
       div.col-sm-3
-        label(for='reference') Reference:
+        label(for='reference') #{translation.Reference}:
         input#reference.form-control(type='text', placeholder='Reference of story' name='reference' value=(undefined===story ? '' : story.reference) )
     
     div.form-group.stro
-      label Genre:
+      label #{translation.Genre}:
       div
         for genre in genres
           div(style='display: inline; padding-right:10px;')
@@ -63,7 +63,7 @@ block content
     
     div.form-group.row
       div.col-sm-6
-        label(for='Content') Content:
+        label(for='Content') #{translation.Content}:
         <div id="toolbar-container" class="ql-toolbar ql-snow">
             <span class="ql-formats">
                 <select class="ql-font" style="width: 150px;">
@@ -142,15 +142,15 @@ block content
 
     div.form-group.row.stro
       div.col-sm-1
-        label(for='open') Open:
+        label(for='open') #{translation.Open}:
         select#open.form-control(type='select', placeholder='Select Open' name='open')
           option(value='N' selected=(undefined===story ? 'selected' : story.open=='N' ? 'selected' : false) ) N
           option(value='Y' selected=(undefined===story ? false : story.open=='Y' ? 'selected' : false) ) Y
         <br><br>
     
-    button.btn.btn-primary(type='submit', onclick='preview();return false;') Preview
+    button.btn.btn-primary(type='submit', onclick='preview();return false;') #{translation.Preview}
     <br><br>
-    button.btn.btn-primary(type='submit', onclick='storyPost();return false;') Submit
+    button.btn.btn-primary(type='submit', onclick='storyPost();return false;') #{translation.Submit}
     <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
 
   div(style='margin-bottom: 50px;')

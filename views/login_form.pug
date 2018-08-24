@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1(style='margin-top: 100px;')= title
+  h1(style='margin-top: 100px;') #{translation.LOGIN}
 
   if errors 
     span(style='font-size: 1.2em; font-weight: bold; color: red;')!= errors
@@ -9,10 +9,10 @@ block content
   form(method='POST' action='')
     div.form-group.row
       div.col-sm-2
-        label(for='email') Email
+        label(for='email') #{translation.Email}
         input.form-control(type='text' id='email' placeholder='email' name='email')
     div.form-group.row
       div.col-sm-2
-        label(for='password') Password
+        label(for='password') #{translation.Password}
         input.form-control(type='password' id='password' placeholder='password' name='password')
-    button.btn.btn-primary(type='submit') Log in
+    button.btn.btn-primary(type='submit') #{translation.LOGIN}

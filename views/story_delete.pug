@@ -4,7 +4,7 @@ block content
 
   h1 #{title}: #{story.title}
   
-  p #[strong Content:]
+  p #[strong #{translation.Content}:]
   div(id='cntn')
   input#content.form-control(type='hidden', name='content' value=(undefined===story ? '' : story.content) )
   p #[strong Genre:] 
@@ -14,11 +14,11 @@ block content
 
   hr
   
-  p Do you really want to delete this Story?
+  p #{translation.Doyoureallywanttodeletestory}
     
   form(method='POST' action='')
     div.form-group
       input#id.form-control(type='hidden',name='id', required='true', value=story._id )
 
-    button.btn.btn-primary(type='submit') Delete
+    button.btn.btn-primary(type='submit') #{translation.Delete}
   <script src="/js/storyDelete.js"></script>

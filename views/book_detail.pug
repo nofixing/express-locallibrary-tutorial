@@ -1,25 +1,25 @@
 extends layout
 
 block content
-  h1(style='margin-top:100px;') #[strong Title:] #{book.title}
+  h1(style='margin-top:100px;') #[strong #{translation.Title}:] #{book.title}
   
-  p #[strong Author:] #{book.author}
-  p #[strong Summary:] #{book.summary}
-  p #[strong Stories:]
+  p #[strong #{translation.Author}:] #{book.author}
+  p #[strong #{translation.Summary}:] #{book.summary}
+  p #[strong #{translation.STORY}:]
   ul.tite
     for story in stories
       li
         a(href=story.url) !{story.title}
   <br>
-  p #[strong Genre:] 
+  p #[strong #{translation.Genre}:] 
     each val in book.genre
       a(href=val.url) #{val.name}
       |, 
   
   hr
   p
-    a(href=book.url+'/delete') Delete Book
+    a(href=book.url+'/delete') #{translation.DeleteBook}
   p
-    a(href=book.url+'/update') Update Book
+    a(href=book.url+'/update') #{translation.UpdateBook}
   p
-    a(href='/catalog/story/create?book='+book._id) Create Story
+    a(href='/catalog/story/create?book='+book._id) #{translation.CreateStory}

@@ -14,6 +14,7 @@ var helmet = require('helmet');
 
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var i18n=require("i18n-express");
 
 // Create the Express application object
 var app = express();
@@ -61,6 +62,12 @@ app.use(cookieParser());
 app.use(compression()); // Compress all routes
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(i18n({
+  translationsPath: path.join(__dirname, 'i18n'), // <--- use here. Specify translations files path.
+  siteLangs: ["en","ko"],
+  textsVarName: 'translation'
+}));
 
 app.use('/', index);
 app.use('/user', users);

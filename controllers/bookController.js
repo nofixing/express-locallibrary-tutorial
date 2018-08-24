@@ -213,6 +213,7 @@ exports.book_delete_get = function(req, res, next) {
             res.redirect('/catalog/books');
         }
         results.book.summary = entities.decode(results.book.summary);
+        results.book.title = entities.decode(results.book.title);
         for (let i = 0; i < results.book.genre.length; i++) {
             results.book.genre[i].name = entities.decode(results.book.genre[i].name);
         }

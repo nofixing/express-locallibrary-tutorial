@@ -3,18 +3,19 @@ extends layout
 block content
 
   if cert == 'OK'
-    h1(style='margin-top: 100px;') Now you are our member! Log in and create Story now.
+    h1(style='margin-top: 100px;') #{translation.createStorynow}
   else
-    h1(style='margin-top: 100px;')= title
-    h2 Make your own stories. Practice on that stories.
-
-    h2 My contents  
+    h1(style='margin-top: 100px;')= translation.WELCOME_MSG
+    br
+    h2 #{translation.Makeyourownstories}
+    br
+    h2 #{translation.Mycontents}
   
     if error
       p Error getting dynamic content.
     else
 
-      p Your library has the following record counts:
+      p #{translation.recordcounts}
 
       ul.tite
         li #[strong Books: ]
@@ -24,5 +25,4 @@ block content
         li #[strong Genres: ]
           a(href='/catalog/genres') !{data.genre_count}
 
-      p To create your first story or book, create genre first.<br/>
-      |for example, Article, Address, Fantasy.
+      p #{translation.firstGenreCreate}

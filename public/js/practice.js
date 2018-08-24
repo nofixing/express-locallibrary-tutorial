@@ -435,7 +435,7 @@ function preview() {
 
 }
 
-function userPost() {
+function userPost(param1, param2) {
 
     var frm = document.getElementById("userForm");
     if(frm.name.value == '' || frm.email.value == '' || frm.password.value == '' || frm.confirmPassword.value == '') {
@@ -457,9 +457,9 @@ function userPost() {
         success : function(data) {
 
             if(data.emailThere == 'Y') {
-                alert('Oops email already exists.');
+                alert(param1);
             } else {
-                alert("We will send email to your email address to authenticate your email.\nTo be our member. you need to check our email.");
+                alert(param2);
                 frm.submit();
             }
 

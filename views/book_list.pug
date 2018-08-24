@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1(style='margin-top:100px;')= title
+  h1(style='margin-top:100px;') #{translation.BookList}
   
   ul.tite
     each book in book_list
@@ -10,4 +10,4 @@ block content
         | (#{book.author})
 
     else
-      li There are no books.
+      li #{translation.nobooks}

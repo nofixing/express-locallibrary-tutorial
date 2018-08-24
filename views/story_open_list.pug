@@ -1,13 +1,13 @@
 extends layout
 
 block content
-	h1(style='margin-top:100px;')= title
+	h1(style='margin-top:100px;') #{translation.StoryList}
 	
 	table(class='table table-striped table-hover table-condensed' style='margin-top: 10px;')
 		thead
 			tr
-				th(width='80%') Title
-				th(width='20%') Writer
+				th(width='80%') #{translation.Title}
+				th(width='20%') #{translation.Writer}
 		tbody.wtd
 			if story_list
 				each story in story_list
@@ -19,7 +19,7 @@ block content
 			else
 				tr
 					td(colspan='2')
-						There are no stories.
+						#{translation.nostories}
 	<input type="hidden" id="mxcnt" name="mxcnt" value="#{mxcnt}" />
 	<input type="hidden" id="ct" name="ct" value="#{ct}" />
 	<input type="hidden" id="hostname" name="hostname" value="#{hostname}" />

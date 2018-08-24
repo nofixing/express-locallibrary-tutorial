@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1(style='margin-top:100px;')= title
+  h1(style='margin-top:100px;') #{translation.GenreList}
   
   ul
   each val in list_genres
@@ -9,4 +9,4 @@ block content
       a(href=val.url) #{val.name}
 
   else
-    li There are no genre.
+    li #{translation.nogenres}

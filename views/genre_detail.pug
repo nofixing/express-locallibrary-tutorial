@@ -2,11 +2,11 @@ extends layout
 
 block content
 
-  h1(style='margin-top:100px;') Genre: #{genre.name}
+  h1(style='margin-top:100px;') #{translation.Genre}: #{genre.name}
   
   div(style='margin-left:20px;margin-top:20px')
 
-    h4 Books
+    h4 #{translation.BOOK}
     
     dl
     each book in genre_books
@@ -15,9 +15,9 @@ block content
       dd #{book.summary}
 
     else
-      p This genre has no books.
+      p #{translation.nobooks}
 
-    h4 Stories
+    h4 #{translation.STORY}
     
     dl
     each story in genre_stories
@@ -25,10 +25,10 @@ block content
         a(href=story.url) #{story.title}
 
     else
-      p This genre has no stories.
+      p #{translation.nostories}
       
   hr
   p
-    a(href=genre.url+'/delete') Delete genre
+    a(href=genre.url+'/delete') #{translation.DeleteGenre}
   p
-    a(href=genre.url+'/update') Update genre
+    a(href=genre.url+'/update') #{translation.UpdateGenre}

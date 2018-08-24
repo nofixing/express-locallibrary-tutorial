@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1(style='margin-top:100px;')= title
+  h1(style='margin-top:100px;') #{translation.StoryList}
   
   ul.tite
     each story in story_list
@@ -9,4 +9,4 @@ block content
         a(href=story.url) !{story.title}
 
     else
-      li There are no stories.
+      li #{translation.nostories}

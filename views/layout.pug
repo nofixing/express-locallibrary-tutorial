@@ -28,35 +28,40 @@ html(lang='en')
   body
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-      <a class="navbar-brand" href="/catalog/">HOME</a>
+      <a class="navbar-brand" href="/catalog/">#{translation.HOME}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           li.nav-item
-            a.nav-link(href='/catalog/books') Books
+            a.nav-link(href='/catalog/books') #{translation.BOOK}
           li.nav-item
-            a.nav-link(href='/catalog/stories') Stories
+            a.nav-link(href='/catalog/stories') #{translation.STORY}
           li.nav-item
-            a.nav-link(href='/catalog/genres') Genres
+            a.nav-link(href='/catalog/genres') #{translation.GENRE}
           li.nav-item
-            a.nav-link(href='/catalog/story_open_list') Board
+            a.nav-link(href='/catalog/story_open_list') #{translation.BOARD}
           if pc
             li.nav-item
-              a.nav-link(href='/catalog/book/create') Create Book
+              a.nav-link(href='/catalog/book/create') #{translation.CREATEBOOK}
             li.nav-item
-              a.nav-link(href='/catalog/story/create') Create Story
+              a.nav-link(href='/catalog/story/create') #{translation.CREATESTORY}
             li.nav-item
-              a.nav-link(href='/catalog/genre/create') Create Genre
+              a.nav-link(href='/catalog/genre/create') #{translation.CREATEGENRE}
+          li.nav-item.dropdown
+              a#lang.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.LANGUAGE}
+              div.dropdown-menu(aria-labelledby='lang')
+                a.dropdown-item(href='/catalog?clang=en' ) ENGLISH
+                a.dropdown-item(href='/catalog?clang=ko' ) 한글
           if user
             li.nav-item
-              a.nav-link(href='/user/logout') LOG OUT
+              a.nav-link(href='/user/logout') #{translation.LOGOUT}
           else
             li.nav-item
-              a.nav-link(href='/user/login') LOG IN
+              a.nav-link(href='/user/login') #{translation.LOGIN}
             li.nav-item 
-              a.nav-link(href='/user/registration') SIGN UP
+              a.nav-link(href='/user/registration') #{translation.SIGNUP}
         </ul>
       </div>
     </nav>
