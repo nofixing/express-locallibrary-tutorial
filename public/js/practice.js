@@ -268,10 +268,12 @@ function search() {
         dicSearch();
         wordList();
         
-        var nNd = document.createElement("span");
-        nNd.setAttribute("class", "hgt");
-        var w = getSelection().getRangeAt(0);
-        w.surroundContents(nNd);
+        var span = document.createElement("span");
+        span.setAttribute("class", "hgt");
+        var range = window.getSelection().getRangeAt(0);
+        //w.surroundContents(nNd);
+        span.appendChild(range.extractContents());
+        range.insertNode(span);
         $('.hgt').css({"color":"blue"});
     }
     
