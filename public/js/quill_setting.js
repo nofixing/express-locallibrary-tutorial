@@ -22,7 +22,7 @@ var toolbarOptions = [
   // Add fonts to whitelist
   var Font = Quill.import('formats/font');
   // We do not add Sans Serif since it is the default
-  Font.whitelist = ['LibreFranklin', 'inconsolata', 'roboto', 'mirza', 'arial', 'NanumPenScript', 'Oswald', 
+  Font.whitelist = ['LibreFranklin', 'inconsolata', 'roboto', 'mirza', 'arial', 'NanumPenScript', 'NanumBrushScript', 'SongMyung', 'Gaegu', 'Oswald', 
   'ShadowsIntoLight', 'AbrilFatface', 'Teko', 'Cormorant', 'AlfaSlabOne'];
   Quill.register(Font, true);
 

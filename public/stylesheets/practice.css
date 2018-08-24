@@ -138,6 +138,18 @@ ul.tite li {
     font-family: "Nanum Pen Script";
 }
 
+#toolbar-container .ql-font span[data-label="Nanum Brush Script"]::before {
+    font-family: "Nanum Brush Script";
+}
+
+#toolbar-container .ql-font span[data-label="Song Myung"]::before {
+    font-family: "Song Myung";
+}
+
+#toolbar-container .ql-font span[data-label="Gaegu"]::before {
+    font-family: "Gaegu";
+}
+
 #toolbar-container .ql-font span[data-label="Oswald"]::before {
     font-family: "Oswald";
 }
@@ -186,6 +198,18 @@ ul.tite li {
 
 .ql-font-NanumPenScript {
     font-family: "Nanum Pen Script";            
+}
+
+.ql-font-NanumBrushScript {
+    font-family: "Nanum Brush Script";            
+}
+
+.ql-font-SongMyung {
+    font-family: "Song Myung";            
+}
+
+.ql-font-Gaegu {
+    font-family: "Gaegu";            
 }
 
 .ql-font-Oswald {
