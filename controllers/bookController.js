@@ -39,7 +39,8 @@ exports.index = function(req, res) {
         console.log(req.device.type.toUpperCase());
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         var cert = req.query.cert;
-        res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc });
+        var cfnt = req.query.cfnt;
+        res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: cfnt });
     });
 };
 

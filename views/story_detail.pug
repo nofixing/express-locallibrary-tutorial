@@ -17,6 +17,18 @@ html(lang='en')
     <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cute+Font" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Stylish" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hi+Melody" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sunflower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <!-- Optional JavaScript -->
@@ -42,20 +54,16 @@ html(lang='en')
               a#story.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.STORYINDEX}
               div#index.dropdown-menu(aria-labelledby='story')
           if pc
-            if story.open != 'Y'
-              li.nav-item
-                a.nav-link(href='#none' onclick='ReadingOnly();return false;') #{translation.Reading}
-              li.nav-item
-                a.nav-link(href='#none' onclick='ReadingSearch();return false;') #{translation.DicSearch}
-              li.nav-item
-                a.nav-link(href='#none' onclick='ReadingPractice();return false;') #{translation.Practice}
-              li.nav-item
-                a.nav-link(href='#none' onclick='showWordLayer();return false;') #{translation.Words}
-              li.nav-item
-                a.nav-link(href='#none' onclick='hideWordLayer();return false;') #{translation.Memo}
-            else
-              li.nav-item
-                a.nav-link(href='#none' onclick='ReadingOnly();return false;') #{translation.Reading}
+            li.nav-item
+              a.nav-link(href='#none' onclick='ReadingOnly();return false;') #{translation.Reading}
+            li.nav-item
+              a.nav-link(href='#none' onclick='ReadingSearch();return false;') #{translation.DicSearch}
+            li.nav-item
+              a.nav-link(href='#none' onclick='ReadingPractice();return false;') #{translation.Practice}
+            li.nav-item
+              a.nav-link(href='#none' onclick='showWordLayer();return false;') #{translation.Words}
+            li.nav-item
+              a.nav-link(href='#none' onclick='hideWordLayer();return false;') #{translation.Memo}
             li.nav-item
               a.nav-link(href='#none' onclick='CreateStory();return false;') #{translation.Create}
             li.nav-item
@@ -133,80 +141,93 @@ html(lang='en')
       div#jb_txtEditor.col-lg-4
         div.standalone-container
           <div id="toolbar-container" class="ql-toolbar ql-snow">
-              <span class="ql-formats">
-                  <select class="ql-font" style="width: 150px;">
-                      <option selected="">Sans Serif</option>
-                      <option value="LibreFranklin">Libre Franklin</option>
-                      <option value="inconsolata">Inconsolata</option>
-                      <option value="roboto">Roboto</option>
-                      <option value="mirza">Mirza</option>
-                      <option value="arial">Arial</option>
-                      <option value="NanumPenScript">Nanum Pen Script</option>
-                      <option value="NanumBrushScript">Nanum Brush Script</option>
-                      <option value="SongMyung">Song Myung</option>
-                      <option value="Gaegu">Gaegu</option>
-                      <option value="Oswald">Oswald</option>
-                      <option value="ShadowsIntoLight">Shadows Into Light</option>
-                      <option value="AbrilFatface">Abril Fatface</option>
-                      <option value="Teko">Teko</option>
-                      <option value="Cormorant">Cormorant</option>
-                      <option value="AlfaSlabOne">Alfa Slab One</option>
-                  </select>
-              </span>
-              <span class="ql-formats">
-                  <select class="ql-header"></select>
-                  <select class="ql-size"></select>
-              </span>
-              <span class="ql-formats">
-                  <button class="ql-bold"></button>
-                  <button class="ql-italic"></button>
-                  <button class="ql-underline"></button>
-                  <button class="ql-strike"></button>
-              </span>
-              <span class="ql-formats">
-                  <select class="ql-color">
-                      <option selected></option>
-                      <option value="red"></option>
-                      <option value="orange"></option>
-                      <option value="yellow"></option>
-                      <option value="green"></option>
-                      <option value="blue"></option>
-                      <option value="purple"></option>
-                  </select>
-                  <select class="ql-background">
-                      <option selected></option>
-                      <option value="red"></option>
-                      <option value="orange"></option>
-                      <option value="yellow"></option>
-                      <option value="green"></option>
-                      <option value="blue"></option>
-                      <option value="purple"></option>
-                  </select>
-              </span>
-              <span class="ql-formats">
-                  <button class="ql-script" value="sub"></button>
-                  <button class="ql-script" value="super"></button>
-              </span>
-              <span class="ql-formats">
-                  <button class="ql-blockquote"></button>
-                  <button class="ql-code-block"></button>
-              </span>
-              <span class="ql-formats">
-                  <button class="ql-list" value="ordered"></button>
-                  <button class="ql-list" value="bullet"></button>
-                  <select class="ql-align"></select>
-              </span>
-              <span class="ql-formats">
-                  <button class="ql-link"></button>
-                  <button class="ql-image"></button>
-                  <button class="ql-formula"></button>
-              </span>
-              <span class="ql-formats">
-                  <button class="ql-indent" value="-1"></button>
-                  <button class="ql-indent" value="+1"></button>
-                  <button class="ql-direction" value="rtl"></button>
-                  <button class="ql-clean"></button>
-              </span>
+            <span class="ql-formats">
+              <select class="ql-font" style="width: 150px;">
+                <option selected="">Sans Serif</option>
+                <option value="LibreFranklin">Libre Franklin</option>
+                <option value="inconsolata">Inconsolata</option>
+                <option value="roboto">Roboto</option>
+                <option value="mirza">Mirza</option>
+                <option value="arial">Arial</option>
+                <option value="Oswald">Oswald</option>
+                <option value="ShadowsIntoLight">Shadows Into Light</option>
+                <option value="AbrilFatface">Abril Fatface</option>
+                <option value="Teko">Teko</option>
+                <option value="Cormorant">Cormorant</option>
+                <option value="AlfaSlabOne">Alfa Slab One</option>
+                <option value="NanumPenScript">나눔 손글씨 펜</option>
+                <option value="NanumBrushScript">나눔 손글씨 붓</option>
+                <option value="SongMyung">송명</option>
+                <option value="Gaegu">개구쟁이</option>
+                <option value="Jua">주아</option>
+                <option value="GamjaFlower">감자꽃 마을</option>
+                <option value="CuteFont">귀여운 폰트</option>
+                <option value="Stylish">스타일리시</option>
+                <option value="YeonSung">연성</option>
+                <option value="HiMelody">하이멜로디</option>
+                <option value="Sunflower">해바라기</option>
+                <option value="BlackHanSans">검은고딕</option>
+                <option value="GothicA1">고딕 A1</option>
+                <option value="NanumGothic">나눔고딕</option>
+                <option value="NanumMyeongjo">나눔명조</option>
+                <option value="PoorStory">서툰이야기</option>
+                <option value="BlackAndWhitePicture">흑백사진</option>
+              </select>
+            </span>
+            <span class="ql-formats">
+              <select class="ql-header"></select>
+              <select class="ql-size"></select>
+            </span>
+            <span class="ql-formats">
+              <button class="ql-bold"></button>
+              <button class="ql-italic"></button>
+              <button class="ql-underline"></button>
+              <button class="ql-strike"></button>
+            </span>
+            <span class="ql-formats">
+              <select class="ql-color">
+                <option selected></option>
+                <option value="red"></option>
+                <option value="orange"></option>
+                <option value="yellow"></option>
+                <option value="green"></option>
+                <option value="blue"></option>
+                <option value="purple"></option>
+              </select>
+              <select class="ql-background">
+                <option selected></option>
+                <option value="red"></option>
+                <option value="orange"></option>
+                <option value="yellow"></option>
+                <option value="green"></option>
+                <option value="blue"></option>
+                <option value="purple"></option>
+              </select>
+            </span>
+            <span class="ql-formats">
+              <button class="ql-script" value="sub"></button>
+              <button class="ql-script" value="super"></button>
+            </span>
+            <span class="ql-formats">
+              <button class="ql-blockquote"></button>
+              <button class="ql-code-block"></button>
+            </span>
+            <span class="ql-formats">
+              <button class="ql-list" value="ordered"></button>
+              <button class="ql-list" value="bullet"></button>
+              <select class="ql-align"></select>
+            </span>
+            <span class="ql-formats">
+              <button class="ql-link"></button>
+              <button class="ql-image"></button>
+              <button class="ql-formula"></button>
+            </span>
+            <span class="ql-formats">
+              <button class="ql-indent" value="-1"></button>
+              <button class="ql-indent" value="+1"></button>
+              <button class="ql-direction" value="rtl"></button>
+              <button class="ql-clean"></button>
+            </span>
           </div>          
           div#snow-container
           <!--<br><span>파일명: </span><input type="text" id="fileName">-->

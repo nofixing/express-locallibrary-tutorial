@@ -153,6 +153,51 @@ ul.tite li {
     font-family: "Gaegu";
 }
 
+#toolbar-container .ql-font span[data-label="Jua"]::before {
+    font-family: "Jua";
+}
+
+
+
+#toolbar-container .ql-font span[data-label="GamjaFlower"]::before {
+    font-family: "GamjaFlower";
+}
+#toolbar-container .ql-font span[data-label="CuteFont"]::before {
+    font-family: "CuteFont";
+}
+#toolbar-container .ql-font span[data-label="Stylish"]::before {
+    font-family: "Stylish";
+}
+#toolbar-container .ql-font span[data-label="YeonSung"]::before {
+    font-family: "YeonSung";
+}
+#toolbar-container .ql-font span[data-label="HiMelody"]::before {
+    font-family: "HiMelody";
+}
+#toolbar-container .ql-font span[data-label="Sunflower"]::before {
+    font-family: "Sunflower";
+}
+#toolbar-container .ql-font span[data-label="BlackHanSans"]::before {
+    font-family: "BlackHanSans";
+}
+#toolbar-container .ql-font span[data-label="GothicA1"]::before {
+    font-family: "GothicA1";
+}
+#toolbar-container .ql-font span[data-label="NanumGothic"]::before {
+    font-family: "NanumGothic";
+}
+#toolbar-container .ql-font span[data-label="NanumMyeongjo"]::before {
+    font-family: "NanumMyeongjo";
+}
+#toolbar-container .ql-font span[data-label="PoorStory"]::before {
+    font-family: "PoorStory";
+}
+#toolbar-container .ql-font span[data-label="BlackAndWhitePicture"]::before {
+    font-family: "BlackAndWhitePicture";
+}
+
+
+
 #toolbar-container .ql-font span[data-label="Oswald"]::before {
     font-family: "Oswald";
 }
@@ -214,6 +259,49 @@ ul.tite li {
 .ql-font-Gaegu {
     font-family: "Gaegu";            
 }
+
+.ql-font-Jua {
+    font-family: "Jua";            
+}
+
+
+.ql-font-GamjaFlower {
+    font-family: "Gamja Flower";            
+}
+.ql-font-CuteFont {
+    font-family: "Cute Font";            
+}
+.ql-font-Stylish {
+    font-family: "Stylish";            
+}
+.ql-font-YeonSung {
+    font-family: "Yeon Sung";            
+}
+.ql-font-HiMelody {
+    font-family: "Hi Melody";            
+}
+.ql-font-Sunflower {
+    font-family: "Sunflower";            
+}
+.ql-font-BlackHanSans {
+    font-family: "Black Han Sans";            
+}
+.ql-font-GothicA1 {
+    font-family: "Gothic A1";            
+}
+.ql-font-NanumGothic {
+    font-family: "Nanum Gothic";            
+}
+.ql-font-NanumMyeongjo {
+    font-family: "Nanum Myeongjo";            
+}
+.ql-font-PoorStory {
+    font-family: "Poor Story";            
+}
+.ql-font-BlackAndWhitePicture {
+    font-family: "Black And White Picture";            
+}
+
 
 .ql-font-Oswald {
     font-family: "Oswald";            

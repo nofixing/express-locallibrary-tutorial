@@ -17,6 +17,18 @@ html(lang='en')
     <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cute+Font" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Stylish" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hi+Melody" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sunflower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <!-- Optional JavaScript -->
@@ -58,6 +70,37 @@ html(lang='en')
               div.dropdown-menu(aria-labelledby='lang')
                 a.dropdown-item(href='/catalog?clang=en' ) ENGLISH
                 a.dropdown-item(href='/catalog?clang=ko' ) 한글
+          li.nav-item.dropdown
+              a#fnt.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.FONT}
+              div.dropdown-menu(aria-labelledby='fnt')
+                a.dropdown-item(href='/catalog?cfnt=Libre+Franklin' ) Libre Franklin
+                a.dropdown-item(href='/catalog?cfnt=inconsolata' ) Inconsolata
+                a.dropdown-item(href='/catalog?cfnt=roboto' ) Roboto
+                a.dropdown-item(href='/catalog?cfnt=mirza' ) Mirza
+                a.dropdown-item(href='/catalog?cfnt=arial' ) Arial
+                a.dropdown-item(href='/catalog?cfnt=Oswald' ) Oswald
+                a.dropdown-item(href='/catalog?cfnt=Shadows+Into+Light' ) Shadows Into Light
+                a.dropdown-item(href='/catalog?cfnt=Abril+Fatface' ) Abril Fatface
+                a.dropdown-item(href='/catalog?cfnt=Teko' ) Teko
+                a.dropdown-item(href='/catalog?cfnt=Cormorant' ) Cormorant
+                a.dropdown-item(href='/catalog?cfnt=Alfa+Slab+One' ) Alfa Slab One
+                a.dropdown-item(href='/catalog?cfnt=Nanum+Pen+Script' ) 나눔 손글씨 펜
+                a.dropdown-item(href='/catalog?cfnt=Nanum+Brush+Script' ) 나눔 손글씨 붓
+                a.dropdown-item(href='/catalog?cfnt=Song+Myung' ) 송명
+                a.dropdown-item(href='/catalog?cfnt=Gaegu' ) 개구쟁이
+                a.dropdown-item(href='/catalog?cfnt=Jua' ) 주아
+                a.dropdown-item(href='/catalog?cfnt=Gamja+Flower' ) 감자꽃 마을
+                a.dropdown-item(href='/catalog?cfnt=Cute+Font' ) 귀여운 폰트
+                a.dropdown-item(href='/catalog?cfnt=Stylish' ) 스타일리시
+                a.dropdown-item(href='/catalog?cfnt=Yeon+Sung' ) 연성
+                a.dropdown-item(href='/catalog?cfnt=Hi+Melody' ) 하이멜로디
+                a.dropdown-item(href='/catalog?cfnt=Sunflower' ) 해바라기
+                a.dropdown-item(href='/catalog?cfnt=Black+Han+Sans' ) 검은고딕
+                a.dropdown-item(href='/catalog?cfnt=Gothic+A1' ) 고딕 A1
+                a.dropdown-item(href='/catalog?cfnt=Nanum+Gothic' ) 나눔고딕
+                a.dropdown-item(href='/catalog?cfnt=Nanum+Myeongjo' ) 나눔명조
+                a.dropdown-item(href='/catalog?cfnt=Poor+Story' ) 서툰이야기
+                a.dropdown-item(href='/catalog?cfnt=Black+And+White+Picture' ) 흑백사진
           if user
             li.nav-item
               a.nav-link(href='/user/logout') #{translation.LOGOUT}
