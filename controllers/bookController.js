@@ -3,6 +3,7 @@ var Author = require('../models/author');
 var Genre = require('../models/genre');
 var BookInstance = require('../models/bookinstance');
 var Story = require('../models/story');
+var User = require('../models/user');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -12,7 +13,7 @@ const { sanitizeBody } = require('express-validator/filter');
 
 var async = require('async');
 
-exports.index = function(req, res) {
+exports.index = function(req, res, next) {
 
     async.parallel({
         book_count: function(callback) {
@@ -40,7 +41,32 @@ exports.index = function(req, res) {
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         var cert = req.query.cert;
         var cfnt = req.query.cfnt;
-        res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: cfnt });
+        var clang = req.query.clang;
+
+        if (req.session) {
+            if (typeof cfnt != 'undefined' && req.session.cfnt != cfnt) {
+                User.update({_id: req.session.userId}, {
+                    cfnt: cfnt
+                }, function(err, theUser) {
+                    if (err) { return next(err); }
+                    req.session.cfnt = cfnt;
+                    console.log("update cfnt:"+cfnt+"/update to:"+req.session.cfnt);
+                    res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt });
+                });
+            } else if (typeof clang != 'undefined' && req.session.clang != clang) {
+                User.update({_id: req.session.userId}, {
+                    clang: clang
+                }, function(err, theUser) {
+                    if (err) { return next(err); }
+                    console.log("update clang:"+clang);
+                    res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt });
+                });
+            }
+        } else {
+            console.log("req.session.cfnt:"+req.session.cfnt);
+            res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc });
+        }
+        
     });
 };
 
@@ -56,7 +82,7 @@ exports.book_list = function(req, res, next) {
             list_books[i].title = entities.decode(list_books[i].title);
         }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-      res.render('book_list', { title: 'Book List', book_list:  list_books, pc: pc});
+      res.render('book_list', { title: 'Book List', book_list:  list_books, pc: pc, cfnt: req.session.cfnt });
     });
 
 };
@@ -98,7 +124,7 @@ exports.book_detail = function(req, res, next) {
         results.book.summary = entities.decode(results.book.summary);
         results.book.title = entities.decode(results.book.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('book_detail', { title: 'Title', book:  results.book, stories: results.stories, pc: pc } );
+        res.render('book_detail', { title: 'Title', book:  results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt } );
     });
 
 };
@@ -118,7 +144,7 @@ exports.book_create_get = function(req, res, next) {
             results.genres[i].name = entities.decode(results.genres[i].name);
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('book_form', { title: 'Create Book',genres:results.genres, pc: pc });
+        res.render('book_form', { title: 'Create Book',genres:results.genres, pc: pc, cfnt: req.session.cfnt });
     });
 
 };
@@ -181,7 +207,7 @@ exports.book_create_post = [
                     results.genres[i].name = entities.decode(results.genres[i].name);
                 }
                 var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-                res.render('book_form', { title: 'Create Book', genres:results.genres, book: book, errors: errors.array(), pc: pc });
+                res.render('book_form', { title: 'Create Book', genres:results.genres, book: book, errors: errors.array(), pc: pc, cfnt: req.session.cfnt });
             });
             return;
         }
@@ -219,7 +245,7 @@ exports.book_delete_get = function(req, res, next) {
             results.book.genre[i].name = entities.decode(results.book.genre[i].name);
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc } );
+        res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt } );
     });
 
 };
@@ -243,7 +269,7 @@ exports.book_delete_post = function(req, res, next) {
                 results.book.genre[i].name = entities.decode(results.book.genre[i].name);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc } );
+            res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt } );
             return;
         }
         else {
@@ -290,7 +316,7 @@ exports.book_update_get = function(req, res, next) {
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('book_form', { title: 'Update Book', genres:results.genres, book: results.book, pc: pc });
+            res.render('book_form', { title: 'Update Book', genres:results.genres, book: results.book, pc: pc, cfnt: req.session.cfnt });
         });
 
 };

@@ -1,5 +1,8 @@
 var User = require('../models/user');
 
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
+
 const {
   body,
   validationResult
@@ -40,7 +43,10 @@ exports.login_post = function (req, res, next) {
           res.render('login_form', { title: 'Log In', errors: crr });
         } else {
           req.session.userId = user._id;
-          return res.redirect('/');
+          req.session.cfnt = user.cfnt;
+          req.session.clang = user.clang;
+          console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
+          return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
         }
       }
     });

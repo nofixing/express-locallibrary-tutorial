@@ -20,7 +20,7 @@ exports.story_list = function(req, res, next) {
     .exec(function (err, list_stories) {
       if (err) { return next(err); }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-      res.render('story_list', { title: 'Story List', story_list:  list_stories, pc: pc});
+      res.render('story_list', { title: 'Story List', story_list:  list_stories, pc: pc, cfnt: req.session.cfnt });
     });
 
 };
@@ -42,7 +42,7 @@ exports.story_open_list = function(req, res, next) {
         .exec(function (err, list_stories) {
         if (err) { return next(err); }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct});
+        res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct, cfnt: req.session.cfnt });
     });
   
 };
@@ -135,7 +135,7 @@ exports.story_detail = function(req, res, next) {
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_detail', 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, 
-        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId } );
+        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt } );
     });
 
 };
@@ -186,7 +186,7 @@ exports.story_create_get = function(req, res, next) {
         }
         var bok = req.query.book;
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, bok: bok, hostname: req.headers.host, pc: pc });
+        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, bok: bok, hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt });
     });
 
 };
@@ -317,7 +317,7 @@ exports.story_delete_get = function(req, res, next) {
         results.story.content = entities.decode(results.story.content);
         results.story.title = entities.decode(results.story.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_delete', { title: 'Delete Story', story: results.story, pc: pc } );
+        res.render('story_delete', { title: 'Delete Story', story: results.story, pc: pc, cfnt: req.session.cfnt } );
     });
 
 };
@@ -391,7 +391,7 @@ exports.story_update_get = function(req, res, next) {
         results.story.content = entities.decode(results.story.content);
         results.story.title = entities.decode(results.story.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story, hostname: req.headers.host, pc: pc });
+        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story, hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt });
     });
 
 };
@@ -514,6 +514,6 @@ exports.story_update_post = [
 
 exports.story_preview = function(req, res, next) {
 
-    res.render('preview', { content: req.body.content } );
+    res.render('preview', { content: req.body.content, cfnt: req.session.cfnt } );
 
 };

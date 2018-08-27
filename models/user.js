@@ -24,6 +24,14 @@ var UserSchema = new mongoose.Schema({
   certyn: {
     type: String,
     trim: true
+  },
+  clang: {
+    type: String,
+    trim: true
+  },
+  cfnt: {
+    type: String,
+    trim: true
   }
 });
 
