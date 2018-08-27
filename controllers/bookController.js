@@ -42,8 +42,9 @@ exports.index = function(req, res, next) {
         var cert = req.query.cert;
         var cfnt = req.query.cfnt;
         var clang = req.query.clang;
-
-        if (req.session) {
+        console.log('we are here.');
+        if (req.session.userId) {
+            console.log("req.session exists");
             if (typeof cfnt != 'undefined' && req.session.cfnt != cfnt) {
                 User.update({_id: req.session.userId}, {
                     cfnt: cfnt
@@ -61,6 +62,9 @@ exports.index = function(req, res, next) {
                     console.log("update clang:"+clang);
                     res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt });
                 });
+            } else {
+                console.log("normal access");
+                res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt });
             }
         } else {
             console.log("req.session.cfnt:"+req.session.cfnt);
