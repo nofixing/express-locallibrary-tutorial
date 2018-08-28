@@ -98,6 +98,9 @@ html(lang='en')
             p #{translation.Reference}: #{story.reference}<br/><br/>
           div !{story.content}
         if story.open == 'Y'
+          <div style="text-align: center; margin: 30px;"><button id="favs" type="submit" class="btn btn-primary">#{translation.favs}</button></div>
+          <input type="hidden" id="facnt" name="facnt" value="#{story.favs}" />
+          <input type="hidden" id="stusr" name="stusr" value="#{story.user}" />
           <form method="post" action="/catalog/story/#{story._id}/comments/replies">
             <div class="form-group">
               <textarea name="content" class="form-control" id="reply-content" placeholder="Reply"></textarea>

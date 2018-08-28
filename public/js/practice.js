@@ -251,6 +251,24 @@ $(function(){
         });
     }
 
+    $('#favs').click(function(){
+        var data = {};
+        data.story_id = $( "#story_id" ).val();
+        data.facnt = $("#facnt").val();
+        data.stusr = $("#stusr").val();
+        var httpType = 'https://';
+        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: httpType+$('#hostname').val()+'/catalog/story/favs_ajax',
+            success : function(data) {
+                //alert('Recommended');
+            }
+        });
+    });
+
 });
 
 function search() {

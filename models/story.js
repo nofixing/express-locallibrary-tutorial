@@ -13,6 +13,10 @@ var StorySchema = new Schema({
     order: {type: String},
     comments: [{ type: Schema.ObjectId, ref: 'Comment' }],
     open: {type: String},
+    rcnt: {type: Number, default: 0},
+    rcusr: [{ type: Schema.ObjectId, ref: 'User' }],
+    favs: {type: Number, default: 0},
+    fausr: [{ type: Schema.ObjectId, ref: 'User' }],
     date: Date
 });
 

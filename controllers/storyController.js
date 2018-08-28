@@ -100,13 +100,23 @@ exports.story_detail = function(req, res, next) {
         },
         words: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
-            Word.find({user: req.session.userId, story: req.params.id}).collation({locale: 'en' }).sort({title: 1})
+            if (req.query.open == 'Y') {
+                Word.find({story: req.params.id}).collation({locale: 'en' }).sort({title: 1})
+                    .exec(callback);
+            } else {
+                Word.find({user: req.session.userId, story: req.params.id}).collation({locale: 'en' }).sort({title: 1})
                 .exec(callback);
+            }
         },
         memo: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
-            Memo.find({user: req.session.userId, story: req.params.id}, {content: 1})
-                .exec(callback);
+            if (req.query.open == 'Y') {
+                Memo.find({story: req.params.id}, {content: 1})
+                    .exec(callback);
+            } else {
+                Memo.find({user: req.session.userId, story: req.params.id}, {content: 1})
+                    .exec(callback);
+            }
         },
     }, function(err, results) {
         if (err) { return next(err); }
@@ -114,6 +124,12 @@ exports.story_detail = function(req, res, next) {
             var eor = new Error('Story not found');
             eor.status = 404;
             return next(eor);
+        }
+        if (results.story.user != req.session.userId) {
+            Story.update({_id: req.params.id}, {
+                rcnt: results.story.rcnt+1
+            }, function(err, theStory) {
+            });
         }
         var txt = entities.decode(results.story.content);
         var highlightHtml = '<span class="hgt" style="color:black;">$1</span>';
@@ -137,6 +153,35 @@ exports.story_detail = function(req, res, next) {
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, 
         word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt } );
     });
+
+};
+
+exports.favs_ajax = function(req, res, next) {
+
+    if (req.body.stusr != req.session.userId) {
+        var isThere = false;
+        Story.findById({'_id': req.body.story_id}).exec( function (err,theStory) {
+            if (err) { return next(err); }
+            for (let i = 0; i < theStory.fausr.length; i++) {
+                if( req.session.userId == theStory.fausr[i] ) isThere = true;
+            }
+            
+            if (!isThere) {
+                theStory.favs = Number(req.body.facnt)+1;
+                theStory.fausr.push(req.session.userId);
+                theStory.save();
+            }
+            res.send(theStory);
+        });
+        /*
+        Story.update({_id: req.body.story_id}, {
+            favs: Number(req.body.facnt)+1
+        }, function(err, theStory) {
+            if (err) { return next(err); }
+            res.send(theStory);
+        });
+        */
+    }
 
 };
 

@@ -6,19 +6,25 @@ block content
 	table(class='table table-striped table-hover table-condensed' style='margin-top: 10px;')
 		thead
 			tr
-				th(width='80%') #{translation.Title}
-				th(width='20%') #{translation.Writer}
+				th(width='70%') #{translation.Title}
+				th(width='10%') #{translation.Writer}
+				th(width='10%') #{translation.favs}
+				th(width='10%') #{translation.rcnt}
 		tbody.wtd
 			if story_list
 				each story in story_list
 					tr
 						td
-							a(href=story.url) !{story.title}
+							a(href=story.url+'?open=Y') !{story.title}
 						td
 							span #{story.user.name}
+						td
+							span #{story.favs}
+						td
+							span #{story.rcnt}
 			else
 				tr
-					td(colspan='2')
+					td(colspan='3')
 						#{translation.nostories}
 	<input type="hidden" id="mxcnt" name="mxcnt" value="#{mxcnt}" />
 	<input type="hidden" id="ct" name="ct" value="#{ct}" />

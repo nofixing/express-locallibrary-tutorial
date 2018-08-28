@@ -97,6 +97,8 @@ router.post('/story_open_ajax', story_controller.story_open_ajax);
 
 router.post('/stories_ajax', story_controller.story_list_ajax);
 
+router.post('/story/favs_ajax', story_controller.favs_ajax);
+
 router.post('/story/preview', story_controller.story_preview);
 
 router.post('/story/:id/comments/replies', comment_controller.comment_create_post);
