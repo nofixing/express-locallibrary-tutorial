@@ -17,6 +17,12 @@ exports.comment_create_post = [
         
         comment.save(function(err, comment) {
             if (err) return res.send(err);
+
+            Story.findById({'_id': req.body.sfkb}).exec( function (err,theStory) {
+                theStory.cct = theStory.cct+1;
+                theStory.save();
+            });
+
             res.redirect('/catalog/story/'+req.params.id);
         });
     }
@@ -42,6 +48,12 @@ exports.comment_create_post2 = [
                     if (err) { return next(err); }
                     prnt.comments.push(comment);
                     prnt.save();
+
+                    Story.findById({'_id': req.body.sfkb}).exec( function (err,theStory) {
+                        theStory.cct = theStory.cct+1;
+                        theStory.save();
+                    });
+
                     res.redirect('/catalog/story/'+req.params.id);
                 });
             });
@@ -60,6 +72,12 @@ exports.comment_create_post2 = [
 
             Comment.findByIdAndRemove(req.params.commentId, function deleteComment(err) {
                 if (err) { return next(err); }
+
+                Story.findById({'_id': req.body.sfkb}).exec( function (err,theStory) {
+                    theStory.cct = theStory.cct-1;
+                    theStory.save();
+                });
+
                 res.redirect("/catalog/story/"+req.params.id);
             });
 

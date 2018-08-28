@@ -264,6 +264,11 @@ $(function(){
             contentType: 'application/json',
             url: httpType+$('#hostname').val()+'/catalog/story/favs_ajax',
             success : function(data) {
+                if(data.fayn == 'Y') {
+                    alert($("#favy").val());
+                } else {
+                    alert($("#favn").val());
+                }
                 //alert('Recommended');
             }
         });
@@ -542,7 +547,7 @@ function viewU(elem, uid) {
     var id = $(elem).attr("id");
     id = id.substring(2);
     if ( $("#uid_" + id).val() != uid ) {
-        alert("You can not update the other member's comment.");
+        alert($("#cmm").val());
         return;
     }
     $("#r_" + id).html($("#c_" + id).html());
@@ -554,11 +559,11 @@ function viewT(elem, uid) {
     var id = $(elem).attr("id");
     id = id.substring(2);
     if ( $("#uid_" + id).val() != uid ) {
-        alert("You can not delete the other member's comment.");
+        alert($("#cmm2").val());
         return;
     }
     if ( $("#cyn_" + id).val() == "Y" ) {
-        alert("You can not delete the comment that has a child comment.");
+        alert($("#cmm3").val());
         return;
     }
     $("#r_" + id).html($("#c_" + id).html());

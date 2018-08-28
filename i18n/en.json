@@ -61,6 +61,8 @@
   "Writer": "Writer",
   "rcnt": "Read",
   "favs": "Recommend",
+  "favy": "Recommended.",
+  "favn": "Cannot recommend.",
   "Summary": "Summary",
   "Order": "Order",
   "Author": "Author",
@@ -79,5 +81,8 @@
   "Add": "Add",
   "afteradd": "after add, you must save before leaving.",
   "englishkorea": "english korea",
-  "ImageSearch": "Image Search"
+  "ImageSearch": "Image Search",
+  "cmm": "You can not update the other member's comment.",
+  "cmm2": "You can not delete the other member's comment.",
+  "cmm3": "You can not delete the comment that has a child comment."
 }

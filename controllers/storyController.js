@@ -126,9 +126,23 @@ exports.story_detail = function(req, res, next) {
             return next(eor);
         }
         if (results.story.user != req.session.userId) {
-            Story.update({_id: req.params.id}, {
-                rcnt: results.story.rcnt+1
-            }, function(err, theStory) {
+            Story.findById({'_id': req.params.id}).exec( function (err,theStory) {
+                var isThere = false;
+                for (let i = 0; i < theStory.rcusr.length; i++) {
+                    if( req.session.userId == theStory.rcusr[i] ) isThere = true;
+                }
+                
+                if (!isThere) {
+                    theStory.rcnt = Number(theStory.rcnt)+1;
+                    theStory.rcusr.push(req.session.userId);
+                    theStory.save();
+                }
+                /*
+                Story.update({_id: req.params.id}, {
+                    rcnt: results.story.rcnt+1
+                }, function(err, theStory) {
+                });
+                */
             });
         }
         var txt = entities.decode(results.story.content);
@@ -158,6 +172,7 @@ exports.story_detail = function(req, res, next) {
 
 exports.favs_ajax = function(req, res, next) {
 
+    req.body.fayn = 'N';
     if (req.body.stusr != req.session.userId) {
         var isThere = false;
         Story.findById({'_id': req.body.story_id}).exec( function (err,theStory) {
@@ -170,8 +185,9 @@ exports.favs_ajax = function(req, res, next) {
                 theStory.favs = Number(req.body.facnt)+1;
                 theStory.fausr.push(req.session.userId);
                 theStory.save();
+                req.body.fayn = 'Y';
             }
-            res.send(theStory);
+            res.send(req.body);
         });
         /*
         Story.update({_id: req.body.story_id}, {
@@ -181,6 +197,8 @@ exports.favs_ajax = function(req, res, next) {
             res.send(theStory);
         });
         */
+    } else {
+        res.send(req.body);
     }
 
 };

@@ -61,6 +61,8 @@
   "Writer": "글쓴이",
   "rcnt": "조회",
   "favs": "추천",
+  "favy": "추천했습니다.",
+  "favn": "추천할 수 없습니다.",
   "Summary": "요약",
   "Order": "순서",
   "Author": "저자",
@@ -72,12 +74,15 @@
   "Submit": "저장",
   "Close": "닫기",
   "by": "저자",
-  "Reply": "등록",
+  "Reply": "댓글",
   "Save": "등록",
   "checkedwordsonly": "체크된 항목들만 저장 또는 삭제됩니다.",
   "dictionary": "사전",
   "Add": "추가",
   "afteradd": "단어를 추가한후 저장하셔야 합니다.",
   "englishkorea": "영한",
-  "ImageSearch": "이미지검색"
+  "ImageSearch": "이미지검색",
+  "cmm": "다른 회원의 댓글을 수정할 수 없습니다.",
+  "cmm2": "다른 회원의 댓글을 삭제할 수 없습니다.",
+  "cmm3": "댓글이 달린 댓글은 삭제할 수 없습니다."
 }

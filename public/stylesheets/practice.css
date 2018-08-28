@@ -4,7 +4,6 @@ body {
 #jb_content {
     height: 100%;
     top: 70px;
-    padding: 0 10% 0 10%;
     margin-bottom: 20px;
     float: left;
     border: 0px solid #bcbcbc;
@@ -16,7 +15,6 @@ body {
 #jb_content_mb {
     height: 100%;
     top: 70px;
-    padding: 0;
     margin-bottom: 20px;
     float: left;
     border: 0px solid #bcbcbc;

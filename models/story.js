@@ -17,6 +17,7 @@ var StorySchema = new Schema({
     rcusr: [{ type: Schema.ObjectId, ref: 'User' }],
     favs: {type: Number, default: 0},
     fausr: [{ type: Schema.ObjectId, ref: 'User' }],
+    cct: {type: Number, default: 0},
     date: Date
 });
 
