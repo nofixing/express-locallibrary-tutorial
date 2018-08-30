@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var bcrypt = require('bcrypt');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -53,7 +54,48 @@ exports.login_post = function (req, res, next) {
   } else {
     var err = new Error('Email and password are required.');
     err.status = 401;
-    return next(err);
+    res.render('login_form', { title: 'Log In', errors: err });
+  }
+
+};
+
+exports.alter_password_get = function (req, res, next) {
+
+  res.render('alter_password', { hostname: req.headers.host, cfnt: req.session.cfnt });
+
+};
+
+exports.alter_password_post = function (req, res, next) {
+  
+  if (req.body.email && req.body.password) {
+    User.authenticate(req.body.email, req.body.password, function (error, user) {
+      if (error || !user) {
+        //var err = new Error('Wrong email or password.');
+        //err.status = 401;
+        console.log("Wrong email or password.");
+        req.body.rcode = '401';
+        res.send(req.body);
+      } else {
+        bcrypt.hash(req.body.new_password, 10, function (err, hash) {
+          req.body.new_password = hash;
+          console.log("hash:"+req.body.new_password);
+          User.update({_id: user._id}, {
+              password: req.body.new_password
+          }, function(err, theUser) {
+              if (err) { return next(err); }
+              console.log("Success");
+              req.body.rcode = '000';
+              res.send(req.body);
+          });
+        });
+      }
+    });
+  } else {
+    //var err = new Error('Email and password are required.');
+    //err.status = 401;
+    console.log("Email and password are required.");
+    req.body.rcode = '402';
+    res.send(req.body);
   }
 
 };
@@ -152,7 +194,7 @@ exports.registration_post = function (req, res, next) {
         var mailOptions = {
           from: 'nofixing@gmail.com',
           to: req.body.email,
-          subject: 'myStory Email Verification',
+          subject: 'infinitestorlet Email Verification',
           text: emlCont
         };
 
@@ -173,6 +215,68 @@ exports.registration_post = function (req, res, next) {
     eor.status = 400;
     return next(eor);
   }
+
+};
+
+exports.forgot_password = function (req, res, next) {
+
+  console.log('forgot_password call');
+  
+  var randomstring = require("randomstring");
+  var new_password = randomstring.generate({
+    length: 4,
+    charset: 'numeric'
+  });
+
+  User.find({email: req.body.email})
+    .exec(function (err, user) {
+      if (err) { return next(err); }
+      if (user.length > 0){
+        console.log('email:'+user[0].email);
+        var id = user[0]._id;
+        bcrypt.hash(new_password, 10, function (err, hash) {
+          console.log("new_password:"+new_password+"/hash:"+hash);
+          var newvalues = { $set: {password: hash} };
+          User.findByIdAndUpdate(id, newvalues, {}, function(err, theUser) {
+              if (err) { return next(err); }
+              console.log("theUser:"+theUser);
+              var nodemailer = require('nodemailer');
+
+              var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                  user: 'nofixing@gmail.com',
+                  pass: 'nlrgkuedjqopymvi'
+                }
+              });
+
+              var emlCont = 'Your  temporary password is '+new_password+' You should change your password';
+              
+              var mailOptions = {
+                from: 'nofixing@gmail.com',
+                to: req.body.email,
+                subject: 'infinitestorlet notice',
+                text: emlCont
+              };
+
+              transporter.sendMail(mailOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+              
+              console.log("Success");
+              req.body.rcode = '000';
+              res.send(req.body);
+          });
+        });
+      } else {
+        req.body.rcode = '400';
+        res.send(req.body);
+      }
+    });
 
 };
 

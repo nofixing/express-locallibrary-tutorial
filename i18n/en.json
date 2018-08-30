@@ -84,5 +84,18 @@
   "ImageSearch": "Image Search",
   "cmm": "You can not update the other member's comment.",
   "cmm2": "You can not delete the other member's comment.",
-  "cmm3": "You can not delete the comment that has a child comment."
+  "cmm3": "You can not delete the comment that has a child comment.",
+  "AlterPassword": "Alter Password",
+  "CurrentPassword": "Current Password",
+  "NewPassword": "New Password",
+  "NewPasswordConfirm": "New Password Confirm",
+  "Confirm": "Confirm",
+  "requireField": "All fields required.",
+  "notEqualPwCfm": "does not match new password and new password confirm.",
+  "WrongEP": "Wrong email or password.",
+  "alterPwSuccess": "Password altered.",
+  "forgotPw": "forgot password",
+  "InitPassword": "Initialize password",
+  "noEmail": "No user use this email address",
+  "forgotPwSuccess": "We sent the temporary password to your email."
 }

@@ -17,6 +17,14 @@ router.post('/login', user_controller.login_post);
 // POST request for creating User.
 router.post('/login_app', user_controller.login_app);
 
+router.post('/alter_password_post', user_controller.alter_password_post);
+
+router.get('/forgot_password', function(req, res, next) {
+  return res.render('forgot_password', { hostname: req.headers.host });
+});
+
+router.post('/forgot_password', user_controller.forgot_password);
+
 // GET /logout
 router.get('/logout', function(req, res, next) {
   if (req.session) {

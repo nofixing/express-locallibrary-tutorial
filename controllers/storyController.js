@@ -37,7 +37,7 @@ exports.story_open_list = function(req, res, next) {
         ct =count;
     });
     
-    Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+20).sort({date: 1})
+    Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: 1})
         .populate('user')
         .exec(function (err, list_stories) {
         if (err) { return next(err); }

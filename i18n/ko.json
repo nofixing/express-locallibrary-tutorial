@@ -84,5 +84,18 @@
   "ImageSearch": "이미지검색",
   "cmm": "다른 회원의 댓글을 수정할 수 없습니다.",
   "cmm2": "다른 회원의 댓글을 삭제할 수 없습니다.",
-  "cmm3": "댓글이 달린 댓글은 삭제할 수 없습니다."
+  "cmm3": "댓글이 달린 댓글은 삭제할 수 없습니다.",
+  "AlterPassword": "비밀번호 변경",
+  "CurrentPassword": "현재 비밀번호",
+  "NewPassword": "신규 비밀번호",
+  "NewPasswordConfirm": "신규 비밀번호 확인",
+  "Confirm": "확인",
+  "requireField": "모든 입력란을 채워주세요.",
+  "notEqualPwCfm": "신규 비밀번호와 신규 비밀번호 확인이 일치하지 않습니다.",
+  "WrongEP": "이메일 또는 비밀번호가 일치하지 않습니다.",
+  "alterPwSuccess": "비밀번호를 변경하였습니다.",
+  "forgotPw": "비밀번호를 잊어먹음",
+  "InitPassword": "비밀번호 초기화",
+  "noEmail": "이 이메일주소를 사용하는 사용자가 없습니다.",
+  "forgotPwSuccess": "임시비밀번호를 회원님의 이메일로 전송하였습니다."
 }

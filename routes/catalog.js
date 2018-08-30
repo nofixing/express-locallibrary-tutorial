@@ -11,6 +11,7 @@ var memo_controller = require('../controllers/memoController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
+var user_controller = require('../controllers/userController');
 
 
 router.all('/story/*', mid.requiresLogin, function(req, res, next) {
@@ -35,7 +36,9 @@ router.all('/*', function(req, res, next) {
 /// BOOK ROUTES ///
 
 // GET catalog home page.
-router.get('/', book_controller.index);  
+router.get('/', book_controller.index); 
+
+router.get('/alter_password', user_controller.alter_password_get);
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
 router.get('/book/create', book_controller.book_create_get);
