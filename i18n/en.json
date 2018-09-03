@@ -20,7 +20,16 @@
   "emailalreadyexists": "Oops email already exists.",
   "checkouremail": "We will send email to your email address to authenticate your email. To be our member. you need to check our email.",
   "createStorynow": "Now you are our member! Log in and create Story now.",
-
+  "HowToUse": "How to use this site.",
+  "HowToUse2": "Every Writing is a story on this site.",
+  "HowToUse3": "The writing that makes a unique story itself is just called Story.",
+  "HowToUse4": "If several stories make a unique story, that is called Book.",
+  "HowToUse5": "Stories or Books must have more than one genre that describes its characteristics.",
+  "HowToUse6": "For example, The 'Alice in Wonderland' may have the following genres; 'Children's Books' and or 'Fairy Tales' and or 'Tales & Myths.'",
+  "HowToUse7": "Therefore, To make Stories or Books, First make specific genres.",
+  "HowToUse8": "This site is for both PC and Mobile.",
+  "HowToUse9": "The difference is that you can make practice contents only on PC and on Mobile, you can just read your materials or others.",
+  
   "Reading": "Reading",
   "DicSearch": "DicSearch",
   "Practice": "Practice",

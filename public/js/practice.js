@@ -16,6 +16,15 @@ $(function(){
         prevScrollpos = currentScrollPos;
     };
 
+    var body = document.body,
+    html = document.documentElement;
+
+    var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+    console.log("height:"+height);
+
+    if ( height < 1200 ) $(document).height(1200);
+
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
     $( "#jb_content" ).bind('dblclick', function(e){
         search();
