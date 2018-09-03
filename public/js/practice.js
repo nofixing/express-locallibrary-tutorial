@@ -23,7 +23,10 @@ $(function(){
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
     console.log("height:"+height);
 
-    if ( height < 1200 ) $(document).height(1200);
+    if ( height < 1200 ) {
+        console.log("body.height");
+        $("body").height(1200);
+    }
 
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
     $( "#jb_content" ).bind('dblclick', function(e){
