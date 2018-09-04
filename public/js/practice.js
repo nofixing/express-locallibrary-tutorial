@@ -11,7 +11,7 @@ $(function(){
         if (prevScrollpos > currentScrollPos) {
         document.getElementById("navbar").style.top = "0";
         } else {
-        document.getElementById("navbar").style.top = "-250px";
+        document.getElementById("navbar").style.top = "-600px";
         }
         prevScrollpos = currentScrollPos;
     };
