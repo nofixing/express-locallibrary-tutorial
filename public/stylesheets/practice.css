@@ -44,6 +44,18 @@ p {
     z-index: 1;
     display: none;
 }
+#jb_only_txtEditor {
+    height: 100%;
+    top: 70px;
+    margin-bottom: 20px;
+    float: left;
+    border: 0px solid #bcbcbc;
+    overflow-x: hidden;
+    overflow-y: auto; /* prevents scroll bar flash */
+    text-indent: 10px;
+    text-align: justify;
+    display: none;
+}
 #word_container {
     height: 90%;
     position: fixed;
@@ -56,6 +68,18 @@ p {
     overflow-x: hidden;
     overflow-y: auto; /* prevents scroll bar flash */
     z-index: 0;
+    display: none;
+}
+#word_only_container {
+    height: 100%;
+    top: 70px;
+    margin-bottom: 20px;
+    float: left;
+    border: 0px solid #bcbcbc;
+    overflow-x: hidden;
+    overflow-y: auto; /* prevents scroll bar flash */
+    text-indent: 10px;
+    text-align: justify;
     display: none;
 }
 #jb_sidebar {

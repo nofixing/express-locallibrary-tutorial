@@ -366,6 +366,11 @@ function ReadingOnly() {
     $('#word_container').css('display', 'none');
     $('#jb_sidebar').css('display', 'none');
     $('.hgt').css('color', 'black');
+    if($("#book").val() != "") {
+        $(".nav-item:eq(1)").addClass("active");
+    } else {
+        $(".nav-item:eq(0)").addClass("active");
+    }
 }
 
 function ReadingSearch() {
@@ -535,6 +540,26 @@ function showWordLayer() {
     } else {
         $(".nav-item:eq(3)").addClass("active");
     }
+}
+
+function showWordOnlyLayer() {
+    $('#jb_content').css('display', 'none');
+    $('#jb_txtEditor').css('display', 'none');
+    $('#word_container').css('display', 'none');
+    $('#word_only_container').css('display', 'block');
+    $('#jb_only_txtEditor').css('display', 'none');
+    $('#jb_sidebar').css('display', 'none');
+    $('.navbar-collapse').collapse('hide');
+}
+
+function showMemoOnlyLayer() {
+    $('#jb_content').css('display', 'none');
+    $('#jb_txtEditor').css('display', 'none');
+    $('#word_container').css('display', 'none');
+    $('#word_only_container').css('display', 'none');
+    $('#jb_only_txtEditor').css('display', 'block');
+    $('#jb_sidebar').css('display', 'none');
+    $('.navbar-collapse').collapse('hide');
 }
 
 function hideWordLayer() {

@@ -70,6 +70,11 @@ html(lang='en')
               <a class="nav-link" href="#none" onclick="UpdateStory('#{story.user}', '#{userId}');return false;">#{translation.Update}</a>
             li.nav-item
               <a class="nav-link" href="#none" onclick="DeleteStory('#{story.user}', '#{userId}');return false;">#{translation.Delete}</a>
+          else
+            li.nav-item
+              a.nav-link(href='#none' onclick='showWordOnlyLayer();return false;') #{translation.Words}
+            li.nav-item
+              a.nav-link(href='#none' onclick='showMemoOnlyLayer();return false;') #{translation.Memo}
           li.nav-item
             a.nav-link(href='/catalog/books') #{translation.BOOK}
           li.nav-item
@@ -261,6 +266,14 @@ html(lang='en')
                 td
                   textarea(class='txt' rows='3' cols='45') #{word.content}
         <button type="button" id="wordAdd">#{translation.Add}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
+      div#word_only_container.col-lg-12
+        p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
+        ul
+          each word in word_list
+            li(style='font-weight:bold') #{word.title}<br/>#{word.content}
+      div#jb_only_txtEditor.col-lg-12
+        p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
+        #{memo}
       div#jb_sidebar.col-lg-4
         <span>#{translation.dictionary} : </span>
         <select name="dicType" id="dicType" style="margin-right: 5px;">
