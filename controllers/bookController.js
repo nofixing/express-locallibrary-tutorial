@@ -47,7 +47,9 @@ exports.index = function(req, res, next) {
             console.log("req.session exists");
             var name = req.session.userName;
             if (typeof clang != 'undefined' && clang == 'ko') {
-                name += "님";
+                name += "님,";
+            } else {
+                name += ",";
             }
             if (typeof cfnt != 'undefined' && req.session.cfnt != cfnt) {
                 User.update({_id: req.session.userId}, {
