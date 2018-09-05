@@ -368,10 +368,12 @@ function ReadingOnly() {
     $('#word_container').css('display', 'none');
     $('#jb_sidebar').css('display', 'none');
     $('.hgt').css('color', 'black');
-    if($("#book").val() != "") {
-        $(".nav-item:eq(1)").addClass("active");
-    } else {
-        $(".nav-item:eq(0)").addClass("active");
+    if($("#pc").val() == "DESKTOP") {
+        if($("#book").val() != "") {
+            $(".nav-item:eq(1)").addClass("active");
+        } else {
+            $(".nav-item:eq(0)").addClass("active");
+        }
     }
 }
 
@@ -389,11 +391,13 @@ function ReadingSearch() {
     $('#jb_sidebar').addClass('col-lg-6');
     $('#jb_sidebar').css('display', 'block');
     $('.hgt').css('color', 'black');
-    $(".nav-item").removeClass("active");
-    if($("#book").val() != "") {
-        $(".nav-item:eq(2)").addClass("active");
-    } else {
-        $(".nav-item:eq(1)").addClass("active");
+    if($("#pc").val() == "DESKTOP") {
+        $(".nav-item").removeClass("active");
+        if($("#book").val() != "") {
+            $(".nav-item:eq(2)").addClass("active");
+        } else {
+            $(".nav-item:eq(1)").addClass("active");
+        }
     }
 }
 
@@ -411,11 +415,13 @@ function ReadingPractice() {
     $('#jb_sidebar').addClass('col-lg-4');
     $('#jb_sidebar').css('display', 'block');
     $('.hgt').css('color', 'blue');
-    $(".nav-item").removeClass("active");
-    if($("#book").val() != "") {
-        $(".nav-item:eq(3)").addClass("active");
-    } else {
-        $(".nav-item:eq(2)").addClass("active");
+    if($("#pc").val() == "DESKTOP") {
+        $(".nav-item").removeClass("active");
+        if($("#book").val() != "") {
+            $(".nav-item:eq(3)").addClass("active");
+        } else {
+            $(".nav-item:eq(2)").addClass("active");
+        }
     }
 }
 
@@ -536,11 +542,13 @@ function showWordLayer() {
     ReadingPractice();
     $('#word_container').css('display', 'block');
     $('#jb_txtEditor').css('display', 'none');
-    $(".nav-item").removeClass("active");
-    if($("#book").val() != "") {
-        $(".nav-item:eq(4)").addClass("active");
-    } else {
-        $(".nav-item:eq(3)").addClass("active");
+    if($("#pc").val() == "DESKTOP") {
+        $(".nav-item").removeClass("active");
+        if($("#book").val() != "") {
+            $(".nav-item:eq(4)").addClass("active");
+        } else {
+            $(".nav-item:eq(3)").addClass("active");
+        }
     }
 }
 
@@ -568,11 +576,13 @@ function hideWordLayer() {
     ReadingPractice();
     $('#word_container').css('display', 'none');
     $('#jb_txtEditor').css('display', 'block');
-    $(".nav-item").removeClass("active");
-    if($("#book").val() != "") {
-        $(".nav-item:eq(5)").addClass("active");
-    } else {
-        $(".nav-item:eq(4)").addClass("active");
+    if($("#pc").val() == "DESKTOP") {
+        $(".nav-item").removeClass("active");
+        if($("#book").val() != "") {
+            $(".nav-item:eq(5)").addClass("active");
+        } else {
+            $(".nav-item:eq(4)").addClass("active");
+        }
     }
 }
 
