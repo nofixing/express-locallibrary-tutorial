@@ -6,7 +6,7 @@ block content
   ul.tite
     each story in story_list
       li 
-        a(href=story.url) !{story.title}
+        a(href=story.url) !{story.title} (#{story.len})
 
     else
       li #{translation.nostories}

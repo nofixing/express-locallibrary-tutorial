@@ -20,6 +20,11 @@ exports.story_list = function(req, res, next) {
     .exec(function (err, list_stories) {
       if (err) { return next(err); }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+      for (let i = 0; i < list_stories.length; i++) {
+        var str = list_stories[i].content;
+        var len = str.split(" ").length;
+        list_stories[i].len = len;
+      }
       res.render('story_list', { title: 'Story List', story_list:  list_stories, pc: pc, cfnt: req.session.cfnt });
     });
 
@@ -159,7 +164,7 @@ exports.story_detail = function(req, res, next) {
         var memo = '';
         var memo_id = '';
         if(results.memo.length > 0) {
-            memo = results.memo[0].content;
+            memo = entities.decode(results.memo[0].content);
             memo_id = results.memo[0]._id;
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';

@@ -100,7 +100,7 @@ $(function(){
             contentType: 'application/json',
             url: httpType+$('#hostname').val()+'/catalog/memo/create',
             success : function(data) {
-                alert('saved');
+                alert($('#SAVED').val());
             }
         });
         /*
@@ -206,7 +206,7 @@ $(function(){
                 });
             }
         });
-        alert('SAVED');
+        alert($('#SAVED').val());
     });
 
     $('#wordDelete').click(function(){
@@ -231,7 +231,7 @@ $(function(){
                 $(this).parents("tr").remove();
             }
         });
-        alert('DELETED');
+        alert($('#DELETED').val());
     });
 
     $('#wordAdd').click(function(){
@@ -333,6 +333,8 @@ function dicSearch() {
         dicAddr = "https://c.merriam-webster.com/coredictionary/"+selectText;
     } else if ($("#dicType").val() == "4") {
         dicAddr = "http://small.dic.daum.net/search.do?q="+selectText+"&dic=eng";
+    } else if ($("#dicType").val() == "5") {
+        dicAddr = "https://www.wordreference.com/enko/"+selectText;
     }
     $('#dic_frame').attr('src', dicAddr);
 
@@ -607,4 +609,8 @@ function viewT(elem, uid) {
     $("#cgb_" + id).val("T");
     $("#b_" + id).html("Delete");
     $("#d_" + id).toggle();
+}
+
+function WordCount(str) { 
+    return str.split(" ").length;
 }

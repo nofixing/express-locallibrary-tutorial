@@ -273,11 +273,12 @@ html(lang='en')
             li(style='font-weight:bold') #{word.title}<br/>#{word.content}
       div#jb_only_txtEditor.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
-        #{memo}
+        div !{memo}
       div#jb_sidebar.col-lg-4
         <span>#{translation.dictionary} : </span>
         <select name="dicType" id="dicType" style="margin-right: 5px;">
-          <option value="3">#{translation.englishkorea}</option>
+          <option value="5">#{translation.englishkorea}</option>
+          <option value="3">#{translation.englishkorea}2</option>
           <!--<option value="4">Daum Dictionary</option>-->
           <!--<option value="2">english english</option>-->
           <option value="1">Merriam Webster</option>  
@@ -293,8 +294,11 @@ html(lang='en')
         <input type="checkbox" id="myCheck"> 
         | #{translation.ImageSearch}   
         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <iframe id="dic_frame" src="https://c.merriam-webster.com/coredictionary/"></iframe>
+        <iframe id="dic_frame" src="https://www.wordreference.com/enko/"></iframe>
 
+    <input type="hidden" id="SAVED" name="SAVED" value="#{translation.SAVED}" />
+    <input type="hidden" id="DELETED" name="DELETED" value="#{translation.DELETED}" />
+    
     <div id="img_layer" style="display:none;position:fixed;left:34%;top:60px;width:500px;height:90%;overflow:auto;background:#fff;z-index: 3;">
       <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">#{translation.Close}</button>
       <div id="show_img"></div>
