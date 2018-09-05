@@ -29,6 +29,7 @@
   "HowToUse7": "Therefore, To make Stories or Books, First make specific genres.",
   "HowToUse8": "This site is for both PC and Mobile.",
   "HowToUse9": "The difference is that you can make practice contents only on PC and on Mobile, you can just read your materials or others.",
+  "browser": "This site recommends you to use the following browsers;  Chrome, Firefox, Safari. And does not recommends you to use Internet Explorer.",
   
   "Reading": "Reading",
   "DicSearch": "DicSearch",
@@ -108,5 +109,8 @@
   "forgotPw": "forgot password",
   "InitPassword": "Initialize password",
   "noEmail": "No user use this email address",
-  "forgotPwSuccess": "We sent the temporary password to your email."
+  "forgotPwSuccess": "We sent the temporary password to your email.",
+  "AlterName": "Alter Name",
+  "NewName": "New Name",
+  "alterNmSuccess": "Name altered."
 }

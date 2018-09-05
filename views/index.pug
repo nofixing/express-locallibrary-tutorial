@@ -5,7 +5,7 @@ block content
   if cert == 'OK'
     h1(style='margin-top: 100px;') #{translation.createStorynow}
   else
-    h1(style='margin-top: 100px;')= translation.WELCOME_MSG
+    h1(style='margin-top: 100px;') #{name}, #{translation.WELCOME_MSG}
     br
     h2 #{translation.Makeyourownstories}
     br
@@ -37,5 +37,6 @@ block content
         li(style='font-weight: bold;') #{translation.HowToUse7}
         li(style='font-weight: bold;') #{translation.HowToUse8}
         li(style='font-weight: bold;') #{translation.HowToUse9}
+        li(style='font-weight: bold; color: blue;') #{translation.browser}
       <input type="hidden" id="cfnt" name="cfnt" value="#{cfnt}" />
     <script src="/js/idx.js"></script>

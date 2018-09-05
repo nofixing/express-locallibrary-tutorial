@@ -46,6 +46,8 @@ exports.login_post = function (req, res, next) {
           req.session.userId = user._id;
           req.session.cfnt = user.cfnt;
           req.session.clang = user.clang;
+          req.session.userName = user.name;
+          console.log("user.name:"+user.name);
           console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
           return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
         }
@@ -95,6 +97,35 @@ exports.alter_password_post = function (req, res, next) {
     //err.status = 401;
     console.log("Email and password are required.");
     req.body.rcode = '402';
+    res.send(req.body);
+  }
+
+};
+
+exports.alter_name_get = function (req, res, next) {
+
+  User.findById(req.session.userId)
+    .exec(function (err, user) {
+      if (err) { return next(err); }
+      res.render('alter_name', { hostname: req.headers.host, user: user });
+    });
+
+};
+
+exports.alter_name_post = function (req, res, next) {
+  
+  if (req.body.new_name) {
+    User.update({_id: req.session.userId}, {
+        name: req.body.new_name
+    }, function(err, theUser) {
+        if (err) { return next(err); }
+        console.log("Success");
+        req.body.rcode = '000';
+        res.send(req.body);
+    });
+  } else {
+    console.log("New Name is required.");
+    req.body.rcode = '403';
     res.send(req.body);
   }
 

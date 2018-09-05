@@ -427,7 +427,7 @@ function ReadingPractice() {
 
 function DeleteStory(a, b) {
     if ( a != b ) {
-        alert("You can not delete the other member's story.");
+        alert($("#cmm2").val());
         return;
     }
     document.location.href = '/catalog/story/'+$("#story_id").val()+'/delete';
@@ -435,7 +435,7 @@ function DeleteStory(a, b) {
 
 function UpdateStory(a, b) {
     if ( a != b ) {
-        alert("You can not update the other member's story.");
+        alert($("#cmm").val());
         return;
     }
     document.location.href = '/catalog/story/'+$("#story_id").val()+'/update';

@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1(style='margin-top: 100px;') #{translation.AlterName}
+
+  if errors 
+    span(style='font-size: 1.2em; font-weight: bold; color: red;')!= errors
+
+  form#alterNmForm(method='POST' action='')
+    div.form-group.row
+      div.col-sm-2
+        label(for='name') #{translation.Name}
+        input.form-control(type='text' id='name' placeholder='name' name='name' value=user.name readonly)
+    div.form-group.row
+      div.col-sm-2
+        label(for='new_name') #{translation.NewName}
+        input.form-control(type='text' id='new_name' placeholder='new nickname' name='new_name')
+    <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
+    <input type="hidden" id="requireField" name="requireField" value="#{translation.requireField}" />
+    <input type="hidden" id="alterNmSuccess" name="alterNmSuccess" value="#{translation.alterNmSuccess}" />
+    button#alterNmBtn.btn.btn-primary(type='button') #{translation.Confirm}
+
+  <script src="/js/alterName.js"></script>
