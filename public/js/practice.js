@@ -363,7 +363,7 @@ function ReadingOnly() {
     $('#jb_content').removeClass('col-lg-4');
     $('#jb_content').removeClass('col-lg-6');
     $('#jb_content').addClass('col-lg-12');
-    $('#jb_content').css('padding', '0 10% 0 10%');
+    //$('#jb_content').css('padding', '0 10% 0 10%');
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
     $('#jb_sidebar').css('display', 'none');
