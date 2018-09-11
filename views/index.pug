@@ -25,6 +25,13 @@ block content
         li #[strong Genres: ]
           a(href='/catalog/genres') !{data.genre_count}
 
+      if data.history
+        p #{translation.history}
+        ul.tite
+          each his in data.history
+            li 
+              a(href=his.url) #{his.title}          
+
       p #{translation.firstGenreCreate}
       br
       h2 #{translation.HowToUse}

@@ -4,6 +4,7 @@ var Genre = require('../models/genre');
 var BookInstance = require('../models/bookinstance');
 var Story = require('../models/story');
 var User = require('../models/user');
+var History = require('../models/history');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -34,6 +35,9 @@ exports.index = function(req, res, next) {
         story_count: function(callback) {
             Story.find({$and:[{user: req.session.userId}, {book: null}, {$or: [{open: null}, {open: 'N'}]}] }).count(callback);
         },
+        history: function(callback) {
+            History.find({user: req.session.userId}).skip(0).limit(5).sort({date: -1}).exec(callback);
+        },
     }, function(err, results) {
         console.log('Inside the homepage callback function');
         console.log(req.sessionID);
@@ -46,6 +50,7 @@ exports.index = function(req, res, next) {
         if (req.session.userId) {
             console.log("req.session exists");
             var name = req.session.userName;
+            results.history.title = entities.decode(results.history.title);
             if (typeof clang != 'undefined' && clang == 'ko') {
                 name += "님,";
             } else {

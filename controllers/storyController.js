@@ -4,6 +4,7 @@ var Word = require('../models/word');
 var Memo = require('../models/memo');
 var Book = require('../models/book');
 var Comment = require('../models/comment');
+var History = require('../models/history');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -42,7 +43,7 @@ exports.story_open_list = function(req, res, next) {
         ct =count;
     });
     
-    Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: 1})
+    Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
         .populate('user')
         .exec(function (err, list_stories) {
         if (err) { return next(err); }
@@ -130,6 +131,7 @@ exports.story_detail = function(req, res, next) {
             eor.status = 404;
             return next(eor);
         }
+        results.story.title = entities.decode(results.story.title);
         if (results.story.user != req.session.userId) {
             Story.findById({'_id': req.params.id}).exec( function (err,theStory) {
                 var isThere = false;
@@ -150,6 +152,28 @@ exports.story_detail = function(req, res, next) {
                 */
             });
         }
+        console.log("history start");
+        History.find({user: req.session.userId, story: req.params.id}).exec( function (err,theHistory) {
+            if (err) { console.log(err); return next(err); };
+            if (theHistory.length == 0) {
+                console.log("history not exists");
+                var history = new History(
+                    { title: results.story.title,
+                      story: req.params.id,
+                      user: req.session.userId,
+                      date: Date.now()
+                     });
+                history.save(function (err) {
+                    if (err) { console.log(err); return next(err); }
+                    console.log("history saved");
+                }); 
+            } else {
+                History.update({_id: theHistory._id}, {
+                    date: Date.now()
+                }, function(err, updatedHistory) {
+                });
+            }
+        });
         var txt = entities.decode(results.story.content);
         var highlightHtml = '<span class="hgt" style="color:black;">$1</span>';
         //console.log(results.words.length);
@@ -160,7 +184,6 @@ exports.story_detail = function(req, res, next) {
         }
         results.story.content = txt;
         results.story.reference = entities.decode(results.story.reference);
-        results.story.title = entities.decode(results.story.title);
         var memo = '';
         var memo_id = '';
         if(results.memo.length > 0) {
