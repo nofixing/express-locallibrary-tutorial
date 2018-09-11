@@ -29,7 +29,7 @@ var toolbarOptions = [
   Quill.register(Font, true);
   
   var Size = Quill.import('attributors/style/size');
-  Size.whitelist = ['10em', '8em', '6em', '4em', '3.5em', '3em', '2.5em', '2em', '1.5em', '1em'];
+  Size.whitelist = ['1em', '1.5em', '2em', '2.5em', '3em', '3.5em', '4em', '6em', '8em', '10em'];
   Quill.register(Size, true);
 
   var quill = new Quill('#snow-container', {
