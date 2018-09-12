@@ -31,6 +31,13 @@
   "HowToUse9": "The difference is that you can make practice contents only on PC and on Mobile, you can just read your materials or others.",
   "browser": "This site recommends you to use the following browsers;  Chrome, Firefox, Safari. And does not recommends you to use Internet Explorer.",
   "history": "Story History",
+  "HowToUseStory": "How to practice story",
+  "HowToUseStory2": "When you are in the story detail page, the story menu appears.",
+  "HowToUseStory3": "If you click the Practice menu, you can use a dictionary search, image search, memo writing.",
+  "HowToUseStory4": "If you double-click a word, dictionary search is done and if image search checkbox is checked then image search is done, and in the memo area, the word appears.",
+  "HowToUseStory5": "If the memo is added or modified, you must save the note before leaving.",
+  "HowToUseStory6": "The double-clicked word is saved automatically, and you can see it in the Words menu.",
+  "HowToUseStory7": "In the Words menu, you can add, modify, delete the words.",
   
   "Reading": "Reading",
   "DicSearch": "DicSearch",
