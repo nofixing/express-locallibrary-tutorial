@@ -29,6 +29,47 @@ $(function(){
     }
 
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
+    
+    var touchtime = 0;
+    $("#jb_content").on("click", function() {
+        if (touchtime == 0) {
+            // set first click
+            touchtime = new Date().getTime();
+        } else {
+            // compare first click to this click and see if they occurred within double click threshold
+            if (((new Date().getTime()) - touchtime) < 800) {
+                // double click occurred
+                search();
+                imageSearch();
+                
+                var data = {};
+                data.title = selectText;
+                data.story_id = $( "#story_id" ).val();
+                data.word_id = '';
+                var httpType = 'https://';
+                if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+                $.ajax({
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    url: httpType+$('#hostname').val()+'/catalog/word/create',
+                    success : function(data) {
+            
+                        var markup = "<tr><td style='text-align: center;'><input type='checkbox' class='wList' value='"+data.word_id+"'></td>";
+                        markup += "<td><input type='text' size='15' maxlength='30' class='ipt' value='"+data.title+"'></td>";
+                        markup += "<td><textarea class='txt' rows='3' cols='45'></textarea></td></tr>";
+                        $(".wtd").append(markup);
+            
+                    }
+                });
+                touchtime = 0;
+            } else {
+                // not a double click so set as a new first click
+                touchtime = new Date().getTime();
+            }
+        }
+    });
+    /*
     $( "#jb_content" ).bind('dblclick', function(e){
         search();
         imageSearch();
@@ -54,6 +95,7 @@ $(function(){
             }
         });
     });
+    */
     $( "#searchWordButton" ).click(function() {
         selectText = $("#searchWord").val();
         dicSearch();
