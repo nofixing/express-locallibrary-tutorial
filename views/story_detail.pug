@@ -72,6 +72,8 @@ html(lang='en')
               <a class="nav-link" href="#none" onclick="DeleteStory('#{story.user}', '#{userId}');return false;">#{translation.Delete}</a>
           else
             li.nav-item
+              a.nav-link(href='#none' onclick='ReadingOnly();return false;') #{translation.Reading}
+            li.nav-item
               a.nav-link(href='#none' onclick='showWordOnlyLayer();return false;') #{translation.Words}
             li.nav-item
               a.nav-link(href='#none' onclick='showMemoOnlyLayer();return false;') #{translation.Memo}
