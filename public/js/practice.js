@@ -24,12 +24,12 @@ $(function(){
     console.log("height:"+height);
 
     if ( height < 1200 ) {
-        console.log("body.height");
+        //console.log("body.height");
         $("body").height(1200);
     }
 
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
-    
+    /*
     var touchtime = 0;
     $("#jb_content").on("click", function() {
         if (touchtime == 0) {
@@ -71,7 +71,8 @@ $(function(){
             }
         }
     });
-    /*
+    */
+    
     $( "#jb_content" ).bind('dblclick', function(e){
         search();
         imageSearch();
@@ -87,6 +88,7 @@ $(function(){
             data: JSON.stringify(data),
             contentType: 'application/json',
             url: httpType+$('#hostname').val()+'/catalog/word/create',
+            async: false,
             success : function(data) {
     
                 var markup = "<tr><td style='text-align: center;'><input type='checkbox' class='wList' value='"+data.word_id+"'></td>";
@@ -97,7 +99,38 @@ $(function(){
             }
         });
     });
-    */
+    
+    $( "#jb_content" ).on("taphold", function(){
+        console.log("tapholdHandler");
+        var selection;
+        if (window.getSelection) {
+        selection = window.getSelection();
+        } else if (document.selection) {
+        selection = document.selection.createRange();
+        }
+        selectText = selection.toString().trim();
+
+        var data = {};
+        data.title = selectText;
+        data.story_id = $( "#story_id" ).val();
+        data.word_id = '';
+        var httpType = 'https://';
+        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: httpType+$('#hostname').val()+'/catalog/word/create',
+            async: false,
+            success : function(data) {
+    
+                var markup = "<li style='font-weight:bold'>"+data.title+"</li>";
+                $(".wsd").append(markup);
+    
+            }
+        });
+    });
+
     $( "#searchWordButton" ).click(function() {
         selectText = $("#searchWord").val();
         dicSearch();
@@ -419,6 +452,16 @@ function ReadingOnly() {
             $(".nav-item:eq(0)").addClass("active");
         }
     }
+}
+
+function showReadingOnlyLayer() {
+    $('#jb_content').css('display', 'block');
+    $('#jb_txtEditor').css('display', 'none');
+    $('#word_container').css('display', 'none');
+    $('#word_only_container').css('display', 'none');
+    $('#jb_only_txtEditor').css('display', 'none');
+    $('#jb_sidebar').css('display', 'none');
+    $('.navbar-collapse').collapse('hide');
 }
 
 function ReadingSearch() {

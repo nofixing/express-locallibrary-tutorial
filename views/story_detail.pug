@@ -72,7 +72,7 @@ html(lang='en')
               <a class="nav-link" href="#none" onclick="DeleteStory('#{story.user}', '#{userId}');return false;">#{translation.Delete}</a>
           else
             li.nav-item
-              a.nav-link(href='#none' onclick='ReadingOnly();return false;') #{translation.Reading}
+              a.nav-link(href='#none' onclick='showReadingOnlyLayer();return false;') #{translation.Reading}
             li.nav-item
               a.nav-link(href='#none' onclick='showWordOnlyLayer();return false;') #{translation.Words}
             li.nav-item
@@ -281,7 +281,7 @@ html(lang='en')
         <button type="button" id="wordAdd">#{translation.Add}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
-        ul
+        ul.wsd
           each word in word_list
             li(style='font-weight:bold') #{word.title}<br/>#{word.content}
       div#jb_only_txtEditor.col-lg-12

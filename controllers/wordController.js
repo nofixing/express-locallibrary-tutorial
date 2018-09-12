@@ -114,7 +114,7 @@ exports.word_create_post = [
              } else {
                  console.log('word insert');
                  word.save(function (err, theWord) {
-                    if (err) { return next(err); }
+                    if (err) { console.log(err); return next(err); }
                         // Successful - redirect to new word record.
                         //res.redirect(word.url);
                         req.body.word_id = theWord._id;
