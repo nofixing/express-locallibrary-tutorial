@@ -7,11 +7,11 @@ $(function(){
 
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function() {
-    var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-        document.getElementById("navbar").style.top = "0";
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos >= currentScrollPos) {
+            document.getElementById("navbar").style.top = "0";
         } else {
-        document.getElementById("navbar").style.top = "-600px";
+            document.getElementById("navbar").style.top = "-600px";
         }
         prevScrollpos = currentScrollPos;
     };
@@ -21,7 +21,7 @@ $(function(){
 
     var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
-    console.log("height:"+height);
+    //console.log("height:"+height);
 
     if ( height < 1200 ) {
         //console.log("body.height");
@@ -29,49 +29,6 @@ $(function(){
     }
 
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
-    /*
-    var touchtime = 0;
-    $("#jb_content").on("click", function() {
-        if (touchtime == 0) {
-            // set first click
-            touchtime = new Date().getTime();
-        } else {
-            // compare first click to this click and see if they occurred within double click threshold
-            if (((new Date().getTime()) - touchtime) < 800) {
-                // double click occurred
-                touchtime = 0;
-                if($("#pc").val() == "DESKTOP") {
-                    search();
-                    imageSearch();
-                }
-                var data = {};
-                data.title = selectText;
-                data.story_id = $( "#story_id" ).val();
-                data.word_id = '';
-                var httpType = 'https://';
-                if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-                $.ajax({
-                    type: 'POST',
-                    data: JSON.stringify(data),
-                    contentType: 'application/json',
-                    url: httpType+$('#hostname').val()+'/catalog/word/create',
-                    async: false,
-                    success : function(data) {
-            
-                        var markup = "<tr><td style='text-align: center;'><input type='checkbox' class='wList' value='"+data.word_id+"'></td>";
-                        markup += "<td><input type='text' size='15' maxlength='30' class='ipt' value='"+data.title+"'></td>";
-                        markup += "<td><textarea class='txt' rows='3' cols='45'></textarea></td></tr>";
-                        $(".wtd").append(markup);
-            
-                    }
-                });
-            } else {
-                // not a double click so set as a new first click
-                touchtime = new Date().getTime();
-            }
-        }
-    });
-    */
     
     $( "#jb_content" ).bind('dblclick', function(e){
         search();
@@ -101,7 +58,7 @@ $(function(){
     });
     
     $( "#jb_content" ).on("taphold", function(){
-        console.log("tapholdHandler");
+        //console.log("tapholdHandler");
         var selection;
         if (window.getSelection) {
         selection = window.getSelection();
@@ -130,6 +87,8 @@ $(function(){
             }
         });
     });
+
+    $( ".ui-loader-header" ).text( "" );
 
     $( "#searchWordButton" ).click(function() {
         selectText = $("#searchWord").val();
@@ -333,7 +292,8 @@ $(function(){
                 $.each(stories, function(i, story){
                     $('#index').append($("<a></a>")
                         .attr("class", "dropdown-item")
-                        .attr("href", "/catalog/story/"+story._id)
+                        .attr("href", "#none")
+                        .attr("onclick", "stogo('"+story._id+"');return false;")
                         .text(story.title));
                 });
             }
@@ -711,3 +671,29 @@ function viewT(elem, uid) {
 function WordCount(str) { 
     return str.split(" ").length;
 }
+
+function home() {
+    document.location.href = '/catalog/';
+}
+
+function stogo(id) {
+    document.location.href = '/catalog/story/'+id;
+}
+function books() {
+    document.location.href = '/catalog/books';
+}
+function stories() {
+    document.location.href = '/catalog/stories';
+}
+function story_open_list() {
+    document.location.href = '/catalog/story_open_list';
+}
+function logout() {
+    document.location.href = '/user/logout';
+}
+function login() {
+    document.location.href = '/user/login';
+}
+function registration() {
+    document.location.href = '/user/registration';
+}              
