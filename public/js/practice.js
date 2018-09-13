@@ -664,7 +664,7 @@ function viewT(elem, uid) {
     }
     $("#r_" + id).html($("#c_" + id).html());
     $("#cgb_" + id).val("T");
-    $("#b_" + id).html("Delete");
+    $("#b_" + id).html($("#Delete").val());
     $("#d_" + id).toggle();
 }
 
@@ -696,4 +696,13 @@ function login() {
 }
 function registration() {
     document.location.href = '/user/registration';
-}              
+}
+
+function smf() {
+    var frm = document.getElementById("cmf");
+    frm.submit();		
+}
+function smf2(comment_id) {
+    var frm = document.getElementById("cmf_"+comment_id);
+    frm.submit();		
+}
