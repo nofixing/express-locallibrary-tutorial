@@ -18,11 +18,11 @@ block content
       p #{translation.recordcounts}
 
       ul.tite
-        li #[strong Books: ]
+        li(style='font-weight: bold;') #{translation.BOOK} &nbsp;&nbsp;
           a(href='/catalog/books') !{data.book_count}
-        li #[strong Stories: ]
+        li(style='font-weight: bold;') #{translation.STORY} &nbsp;&nbsp;
           a(href='/catalog/stories') !{data.story_count}
-        li #[strong Genres: ]
+        li(style='font-weight: bold;') #{translation.GENRE} &nbsp;&nbsp;
           a(href='/catalog/genres') !{data.genre_count}
 
       if data.history
