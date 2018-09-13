@@ -152,7 +152,6 @@ exports.story_detail = function(req, res, next) {
                 */
             });
         }
-        console.log("history start");
         History.find({user: req.session.userId, story: req.params.id}).exec( function (err,theHistory) {
             if (err) { console.log(err); return next(err); };
             if (theHistory.length == 0) {
@@ -165,13 +164,24 @@ exports.story_detail = function(req, res, next) {
                      });
                 history.save(function (err) {
                     if (err) { console.log(err); return next(err); }
-                    console.log("history saved");
+                    //console.log("history saved");
                 }); 
             } else {
+                console.log(theHistory);
+                var newvalues = { $set: {date: Date.now()} };
+                History.findByIdAndUpdate(theHistory[0]._id, newvalues, {}, function(err, updatedHistory) {
+                    if (err) { console.log(err); return next(err); }
+                    //console.log("history updated");
+                    //console.log("updatedHistory:"+updatedHistory);
+                });
+                /*
                 History.update({_id: theHistory._id}, {
                     date: Date.now()
                 }, function(err, updatedHistory) {
+                    if (err) { console.log(err); return next(err); }
+                    console.log("history updated");
                 });
+                */
             }
         });
         var txt = entities.decode(results.story.content);
