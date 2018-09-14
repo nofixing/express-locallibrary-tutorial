@@ -4,7 +4,7 @@ body {
 #jb_content {
     height: 100%;
     top: 70px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     float: left;
     border: 0px solid #bcbcbc;
     overflow-x: hidden;
@@ -15,7 +15,7 @@ body {
 #jb_content_mb {
     height: 100%;
     top: 70px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     float: left;
     border: 0px solid #bcbcbc;
     overflow-x: hidden;
@@ -359,10 +359,27 @@ ul.tite li {
     cursor: pointer;
 }
 
-.back-to-top {
-    cursor: pointer;
+#back-to-top {
     position: fixed;
-    bottom: 70px;
+    bottom: 20px;
     right: 20px;
-    display:none;
+    z-index: 9999;
+    width: 52px;
+    height: 52px;
+    text-align: center;
+    line-height: 50px;
+    background: #f5f5f5;
+    color: #444;
+    cursor: pointer;
+    border: 0;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    opacity: 0;
+}
+#back-to-top:hover {
+    background: #e9ebec;
+}
+#back-to-top.show {
+    opacity: 1;
 }
