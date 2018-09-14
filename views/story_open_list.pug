@@ -15,7 +15,7 @@ block content
 				each story in story_list
 					tr
 						td
-							a(href=story.url+'?open=Y') !{story.title}
+							a(href=story.url+'?open=Y') !{story.title} (#{story.len})
 							span(style='margin-left:50px;') #{story.cct}
 						td
 							if story.user

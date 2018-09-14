@@ -137,6 +137,11 @@ exports.book_detail = function(req, res, next) {
         for (let i = 0; i < results.book.genre.length; i++) {
             results.book.genre[i].name = entities.decode(results.book.genre[i].name);
         }
+        for (let i = 0; i < results.stories.length; i++) {
+            var str = results.stories[i].content;
+            var len = str.split(" ").length;
+            results.stories[i].len = len;
+        }
         results.book.summary = entities.decode(results.book.summary);
         results.book.title = entities.decode(results.book.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';

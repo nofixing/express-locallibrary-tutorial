@@ -47,6 +47,11 @@ exports.story_open_list = function(req, res, next) {
         .populate('user')
         .exec(function (err, list_stories) {
         if (err) { return next(err); }
+        for (let i = 0; i < list_stories.length; i++) {
+            var str = list_stories[i].content;
+            var len = str.split(" ").length;
+            list_stories[i].len = len;
+        }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct, cfnt: req.session.cfnt });
     });
