@@ -13,7 +13,7 @@ $( document ).ready(function() {
     $("#book").change(function() {
         if ( $("#book").val() != "" ) {
             book_ajax();
-            $(".stro").css("display", "none");
+            $(".stro").css("display", "block");
             $(".boko").css("display", "block");
         } else {
             $("#author").val("");
@@ -43,7 +43,7 @@ $( document ).ready(function() {
                         if( gnr._id ==  $(this).val() ) $(this).prop('checked', true);
                     });
                 });
-                $(".stro").css("display", "none");
+                $(".stro").css("display", "block");
                 $(".boko").css("display", "block");
             }
         });

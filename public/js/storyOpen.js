@@ -7,6 +7,7 @@ $( document ).ready(function() {
             
             var data = {};
             data.mxcnt = $("#mxcnt").val();
+            data.stle = $("#stle").val();
             var httpType = 'https://';
             if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
             $.ajax({

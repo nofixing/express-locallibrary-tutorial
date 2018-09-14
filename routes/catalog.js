@@ -98,6 +98,8 @@ router.get('/stories', story_controller.story_list);
 
 router.get('/story_open_list', story_controller.story_open_list);
 
+router.post('/story_open_list', story_controller.story_open_list);
+
 router.post('/story_open_ajax', story_controller.story_open_ajax);
 
 router.post('/stories_ajax', story_controller.story_list_ajax);

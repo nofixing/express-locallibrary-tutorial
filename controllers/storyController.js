@@ -39,22 +39,39 @@ exports.story_open_list = function(req, res, next) {
     }
     
     var ct = 0;
-    Story.find({open: 'Y'}).count().exec(function (err, count) {
-        ct =count;
-    });
-    
-    Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
-        .populate('user')
-        .exec(function (err, list_stories) {
-        if (err) { return next(err); }
-        for (let i = 0; i < list_stories.length; i++) {
-            var str = list_stories[i].content;
-            var len = str.split(" ").length;
-            list_stories[i].len = len;
-        }
-        var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct, cfnt: req.session.cfnt });
-    });
+    if(typeof req.body.stle !='undefined' && req.body.stle != '') {
+        Story.find({open: 'Y', title: { $regex: '.*' + req.body.stle + '.*' }}).count().exec(function (err, count) {
+            ct =count;
+        });
+        Story.find({open: 'Y', title: { $regex: '.*' + req.body.stle + '.*' }}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
+            .populate('user')
+            .exec(function (err, list_stories) {
+            if (err) { return next(err); }
+            for (let i = 0; i < list_stories.length; i++) {
+                var str = list_stories[i].content;
+                var len = str.split(" ").length;
+                list_stories[i].len = len;
+            }
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct, cfnt: req.session.cfnt });
+        });
+    } else {
+        Story.find({open: 'Y'}).count().exec(function (err, count) {
+            ct =count;
+        });
+        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
+            .populate('user')
+            .exec(function (err, list_stories) {
+            if (err) { return next(err); }
+            for (let i = 0; i < list_stories.length; i++) {
+                var str = list_stories[i].content;
+                var len = str.split(" ").length;
+                list_stories[i].len = len;
+            }
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct, cfnt: req.session.cfnt });
+        });
+    }
   
 };
 
@@ -66,6 +83,43 @@ exports.story_open_ajax = function(req, res, next) {
     }
     mxcnt = Number(mxcnt);
     var ct = 0;
+    
+    if(typeof req.body.stle !='undefined' && req.body.stle != '') {
+        Story.find({open: 'Y', title: { $regex: '.*' + req.body.stle + '.*' }}).count().exec(function (err, count) {
+            ct =count;
+        });
+        Story.find({open: 'Y', title: { $regex: '.*' + req.body.stle + '.*' }}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
+            .populate('user')
+            .exec(function (err, list_stories) {
+                if (err) { 
+                    console.log(err);
+                    return next(err); 
+                }
+                
+                list_stories.mxcnt = mxcnt+20;
+                list_stories.ct = ct;
+                //console.log(list_stories);
+                res.send(list_stories);
+        });
+    } else {
+        Story.find({open: 'Y'}).count().exec(function (err, count) {
+            ct =count;
+        });
+        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
+            .populate('user')
+            .exec(function (err, list_stories) {
+                if (err) { 
+                    console.log(err);
+                    return next(err); 
+                }
+                
+                list_stories.mxcnt = mxcnt+20;
+                list_stories.ct = ct;
+                //console.log(list_stories);
+                res.send(list_stories);
+        });
+    }
+    
     Story.find({open: 'Y'}).count().exec(function (err, count) {
         ct =count;
     });
@@ -597,6 +651,7 @@ exports.story_update_post = [
                     content: req.body.content,
                     reference: req.body.reference,
                     book: req.body.book,
+                    open: req.body.open,
                     order: req.body.order
                 }, function(err, theStory) {
                     if (err) { return next(err); }
