@@ -447,6 +447,7 @@ exports.story_delete_post = function(req, res, next) {
         Story.findByIdAndRemove(req.body.id, function deleteStory(err) {
             if (err) { return next(err); }
             // Success - got to stories list.
+            History.find({ user:req.session.userId, story:req.body.id }).remove().exec();
             res.redirect(aul);
         });
     });

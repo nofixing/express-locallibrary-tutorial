@@ -2,10 +2,10 @@ extends layout
 
 block content
 
-  h1 #{title}: #{story.title}
+  h1(style='margin-top:100px;') #{title}: #{story.title}
   
   p #[strong #{translation.Content}:]
-  div(id='cntn')
+  div.ql-editor(id='cntn')
   input#content.form-control(type='hidden', name='content' value=(undefined===story ? '' : story.content) )
   p #[strong Genre:] 
     each val in story.genre
@@ -21,4 +21,5 @@ block content
       input#id.form-control(type='hidden',name='id', required='true', value=story._id )
 
     button.btn.btn-primary(type='submit') #{translation.Delete}
+  div(style='margin-bottom: 50px;') &nbsp;
   <script src="/js/storyDelete.js"></script>

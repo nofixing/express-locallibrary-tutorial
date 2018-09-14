@@ -16,6 +16,8 @@ $( document ).ready(function() {
           success : function(data) {
               if ( data.rcode == "403" ) {
                 alert($("#requireField").val());
+              } else if ( data.rcode == "402" ) {
+                alert($("#nameThere").val());
               } else if ( data.rcode == "000" ) {
                 alert($("#alterNmSuccess").val());
                 document.location.href = httpType+$('#hostname').val()+'/catalog';

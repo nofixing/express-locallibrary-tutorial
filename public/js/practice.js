@@ -474,7 +474,7 @@ function ReadingPractice() {
 
 function DeleteStory(a, b) {
     if ( a != b ) {
-        alert($("#cmm2").val());
+        alert($("#dmm").val());
         return;
     }
     document.location.href = '/catalog/story/'+$("#story_id").val()+'/delete';
@@ -556,8 +556,12 @@ function userPost(param1, param2) {
             if(data.emailThere == 'Y') {
                 alert(param1);
             } else {
-                alert(param2);
-                frm.submit();
+                if(data.nameThere == 'Y') {
+                    alert($('#nameThere').val());
+                } else {
+                    alert(param2);
+                    frm.submit();
+                }
             }
 
         }

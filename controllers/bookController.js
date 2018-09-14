@@ -49,14 +49,16 @@ exports.index = function(req, res, next) {
         console.log('we are here.');
         if (req.session.userId) {
             console.log("req.session exists");
+            console.log("req.session.clang:"+req.session.clang);
             var name = req.session.userName;
             results.history.title = entities.decode(results.history.title);
-            if (typeof clang != 'undefined' && clang == 'ko') {
-                name += "님,";
-            } else {
+            if ( (clang != '' && clang != 'undefined' && typeof clang != 'undefined' && clang == 'en') || req.session.clang == 'en' ) {
                 name += ",";
+            } else {
+                name += "님,";
             }
-            if (typeof cfnt != 'undefined' && req.session.cfnt != cfnt) {
+            console.log("req.session.cfnt:"+req.session.cfnt+"/cfnt:"+req.session.cfnt);
+            if (cfnt != '' && cfnt != 'undefined' && typeof cfnt != 'undefined' && req.session.cfnt != cfnt) {
                 User.update({_id: req.session.userId}, {
                     cfnt: cfnt
                 }, function(err, theUser) {
@@ -65,7 +67,7 @@ exports.index = function(req, res, next) {
                     console.log("update cfnt:"+cfnt+"/update to:"+req.session.cfnt);
                     res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, name: name });
                 });
-            } else if (typeof clang != 'undefined' && req.session.clang != clang) {
+            } else if (clang != '' && clang != 'undefined' && typeof clang != 'undefined' && req.session.clang != clang) {
                 User.update({_id: req.session.userId}, {
                     clang: clang
                 }, function(err, theUser) {
@@ -78,7 +80,6 @@ exports.index = function(req, res, next) {
                 res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, name: name });
             }
         } else {
-            console.log("req.session.cfnt:"+req.session.cfnt);
             res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc });
         }
         

@@ -115,14 +115,23 @@ exports.alter_name_get = function (req, res, next) {
 exports.alter_name_post = function (req, res, next) {
   
   if (req.body.new_name) {
-    User.update({_id: req.session.userId}, {
-        name: req.body.new_name
-    }, function(err, theUser) {
+    User.find({name: req.body.new_name})
+      .exec(function (err, theUser) {
         if (err) { return next(err); }
-        console.log("Success");
-        req.body.rcode = '000';
-        res.send(req.body);
-    });
+        if (theUser.length > 0){
+          req.body.rcode = '402';
+          res.send(req.body);
+        } else {
+          User.update({_id: req.session.userId}, {
+                name: req.body.new_name
+            }, function(err, theUser) {
+                if (err) { return next(err); }
+                console.log("Success");
+                req.body.rcode = '000';
+                res.send(req.body);
+            });
+        }
+      });
   } else {
     console.log("New Name is required.");
     req.body.rcode = '403';
@@ -169,7 +178,21 @@ exports.emailcheck = function (req, res, next) {
         res.send(req.body);
       } else {
         req.body.emailThere = 'N';
-        res.send(req.body);
+
+        User.find({name: req.body.name})
+          .exec(function (err, theUser) {
+            if (err) { return next(err); }
+            if (theUser.length > 0){
+              console.log('theUser:'+theUser);
+              console.log('name:'+theUser[0].name);
+              req.body.nameThere = 'Y';
+              res.send(req.body);
+            } else {
+              req.body.nameThere = 'N';
+              res.send(req.body);
+            }
+          });
+
       }
     });
 
