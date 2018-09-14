@@ -16,6 +16,7 @@ $(function(){
         prevScrollpos = currentScrollPos;
         if ($(this).scrollTop() > 50) {
             $('#back-to-top').fadeIn();
+            setTimeout(function(){ $('#back-to-top').fadeOut(); }, 2000);
         } else {
             $('#back-to-top').fadeOut();
         }
