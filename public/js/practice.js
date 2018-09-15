@@ -48,27 +48,29 @@ $(function(){
         search();
         imageSearch();
         
-        var data = {};
-        data.title = selectText;
-        data.story_id = $( "#story_id" ).val();
-        data.word_id = '';
-        var httpType = 'https://';
-        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            url: httpType+$('#hostname').val()+'/catalog/word/create',
-            async: false,
-            success : function(data) {
-    
-                var markup = "<tr><td style='text-align: center;'><input type='checkbox' class='wList' value='"+data.word_id+"'></td>";
-                markup += "<td><input type='text' size='15' maxlength='30' class='ipt' value='"+data.title+"'></td>";
-                markup += "<td><textarea class='txt' rows='3' cols='45'></textarea></td></tr>";
-                $(".wtd").append(markup);
-    
-            }
-        });
+        if (selectText.length > 0) {
+            var data = {};
+            data.title = selectText;
+            data.story_id = $( "#story_id" ).val();
+            data.word_id = '';
+            var httpType = 'https://';
+            if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                url: httpType+$('#hostname').val()+'/catalog/word/create',
+                async: false,
+                success : function(data) {
+        
+                    var markup = "<tr><td style='text-align: center;'><input type='checkbox' class='wList' value='"+data.word_id+"'></td>";
+                    markup += "<td><input type='text' size='15' maxlength='30' class='ipt' value='"+data.title+"'></td>";
+                    markup += "<td><textarea class='txt' rows='3' cols='45'></textarea></td></tr>";
+                    $(".wtd").append(markup);
+        
+                }
+            });
+        }
     });
     
     $( "#jb_content" ).on("taphold", function(){
@@ -81,25 +83,27 @@ $(function(){
         }
         selectText = selection.toString().trim();
 
-        var data = {};
-        data.title = selectText;
-        data.story_id = $( "#story_id" ).val();
-        data.word_id = '';
-        var httpType = 'https://';
-        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            url: httpType+$('#hostname').val()+'/catalog/word/create',
-            async: false,
-            success : function(data) {
-    
-                var markup = "<li style='font-weight:bold'>"+data.title+"</li>";
-                $(".wsd").append(markup);
-    
-            }
-        });
+        if (selectText.length > 0) {
+            var data = {};
+            data.title = selectText;
+            data.story_id = $( "#story_id" ).val();
+            data.word_id = '';
+            var httpType = 'https://';
+            if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                url: httpType+$('#hostname').val()+'/catalog/word/create',
+                async: false,
+                success : function(data) {
+        
+                    var markup = "<li style='font-weight:bold'>"+data.title+"</li>";
+                    $(".wsd").append(markup);
+        
+                }
+            });
+        }
     });
 
     $( ".ui-loader-header" ).text( "" );

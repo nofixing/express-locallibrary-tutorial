@@ -6,7 +6,7 @@ body {
     top: 70px;
     margin-bottom: 100px;
     float: left;
-    border: 0px solid #bcbcbc;
+    border: 0px solid #ffffff;
     overflow-x: hidden;
     overflow-y: auto; /* prevents scroll bar flash */
     text-indent: 10px;
@@ -17,7 +17,7 @@ body {
     top: 70px;
     margin-bottom: 100px;
     float: left;
-    border: 0px solid #bcbcbc;
+    border: 0px solid #ffffff;
     overflow-x: hidden;
     overflow-y: auto; /* prevents scroll bar flash */
     text-indent: 10px;
