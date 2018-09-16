@@ -212,7 +212,7 @@ exports.story_detail = function(req, res, next) {
             });
         }
         History.find({user: req.session.userId, story: req.params.id}).exec( function (err,theHistory) {
-            if (err) { console.log(err); return next(err); };
+            if (err) { console.log(err); return next(err); }
             if (theHistory.length == 0) {
                 console.log("history not exists");
                 var history = new History(
