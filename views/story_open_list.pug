@@ -11,32 +11,48 @@ block content
 		</form>
 	</div>
 	table(class='table table-striped table-hover table-condensed' style='margin-top: 10px;')
-		thead
-			tr
-				th(width='70%') #{translation.Title}
-				th(width='10%') #{translation.Writer}
-				th(width='10%') #{translation.favs}
-				th(width='10%') #{translation.rcnt}
-		tbody.wtd
-			if story_list
-				each story in story_list
-					tr
-						td
-							a(href=story.url+'?open=Y') !{story.title} (#{story.len})
-							span(style='margin-left:50px;') #{story.cct}
-						td
-							if story.user
-								span #{story.user.name}
-						td
-							span #{story.favs}
-						td
-							span #{story.rcnt}
-			else
+		if pc
+			thead
 				tr
-					td(colspan='3')
-						#{translation.nostories}
+					th(width='70%') #{translation.Title}
+					th(width='10%') #{translation.Writer}
+					th(width='10%') #{translation.favs}
+					th(width='10%') #{translation.rcnt}
+			tbody.wtd
+				if story_list
+					each story in story_list
+						tr
+							td
+								a(href=story.url+'?open=Y') !{story.title} (#{story.len})
+								span(style='margin-left:50px;') #{story.cct}
+							td
+								if story.user
+									span #{story.user.name}
+							td
+								span #{story.favs}
+							td
+								span #{story.rcnt}
+				else
+					tr
+						td(colspan='3')
+							#{translation.nostories}
+		else
+			thead
+				tr
+					th(width='100%') #{translation.Title}
+			tbody.wtd
+				if story_list
+					each story in story_list
+						tr
+							td
+								a(href=story.url+'?open=Y') !{story.title} (#{story.len})
+								span(style='margin-left:50px;') #{story.cct}
+				else
+					tr
+						td #{translation.nostories}
 	<a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" title="Click to return on the top page" data-toggle="tooltip" data-placement="left">#{translation.Top}</a>
 	<input type="hidden" id="mxcnt" name="mxcnt" value="#{mxcnt}" />
 	<input type="hidden" id="ct" name="ct" value="#{ct}" />
 	<input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
+	<input type="hidden" id="pc" name="pc" value="#{pc}" />
 	<script src="/js/storyOpen.js"></script>		

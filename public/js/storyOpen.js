@@ -20,11 +20,19 @@ $( document ).ready(function() {
                     $("#mxcnt").val(list_stories.mxcnt);
                     $("#ct").val(list_stories.ct);
                     $.each(list_stories, function(i, story){
-                        var markup = "<tr><td><a href='/catalog/story/"+story._id+"'>"+story.title+"</a></td>";
-                        markup += "<td><span>"+story.user.name+"</span></td>";
-                        markup += "<td><span>"+story.favs+"</span></td>";
-                        markup += "<td><span>"+story.rcnt+"</span></td></tr>";
-                        $(".wtd").append(markup);
+                        var markup = "";
+                        if($("#pc").val() == "DESKTOP") {
+                            markup = "<tr><td><a href='/catalog/story/"+story._id+"'>"+story.title+" ("+story.len+")";
+                            markup += "<span style='margin-left:50px;'>"+story.cct+"</span></a></td>";
+                            markup += "<td><span>"+story.user.name+"</span></td>";
+                            markup += "<td><span>"+story.favs+"</span></td>";
+                            markup += "<td><span>"+story.rcnt+"</span></td></tr>";
+                            $(".wtd").append(markup);
+                        } else {
+                            markup = "<tr><td><a href='/catalog/story/"+story._id+"'>"+story.title+" ("+story.len+")";
+                            markup += "<span style='margin-left:50px;'>"+story.cct+"</span></a></td></tr>";
+                            $(".wtd").append(markup);
+                        }
                     });
                 }
             });
