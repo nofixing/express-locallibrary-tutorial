@@ -40,11 +40,14 @@ exports.story_open_list = function(req, res, next) {
     
     var ct = 0;
     if(typeof req.body.stle !='undefined' && req.body.stle != '') {
-        Story.find({open: 'Y', title: { $regex: '.*' + req.body.stle + '.*' }}).count().exec(function (err, count) {
+        Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {book: { $regex: '.*' + req.body.stle + '.*' }}]})
+            .count().exec(function (err, count) {
             ct =count;
         });
-        Story.find({open: 'Y', title: { $regex: '.*' + req.body.stle + '.*' }}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
+        Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {book: { $regex: '.*' + req.body.stle + '.*' }}]})
+            .skip(mxcnt).limit(mxcnt+50).sort({date: -1})
             .populate('user')
+            .populate('book')
             .exec(function (err, list_stories) {
             if (err) { return next(err); }
             for (let i = 0; i < list_stories.length; i++) {
@@ -61,6 +64,7 @@ exports.story_open_list = function(req, res, next) {
         });
         Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
             .populate('user')
+            .populate('book')
             .exec(function (err, list_stories) {
             if (err) { return next(err); }
             for (let i = 0; i < list_stories.length; i++) {

@@ -42,6 +42,11 @@ block content
       div.col-sm-1
         label(for='order') #{translation.Order}:
         input#order.form-control(type='text', placeholder='Order of story' name='order' value=(undefined===story ? '' : story.order) )
+
+    div.form-group.row.boko
+      div.col-sm-2
+        label(for='chapter') #{translation.Chapter}:
+        input#chapter.form-control(type='text', placeholder='Chapter of story' name='chapter' value=(undefined===story ? '' : story.chapter) )
     
     div.form-group.row.stro
       div.col-sm-2

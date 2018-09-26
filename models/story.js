@@ -11,6 +11,7 @@ var StorySchema = new Schema({
     reference: {type: String},
     genre: [{ type: Schema.ObjectId, ref: 'Genre', required: true }],
     order: {type: String},
+    chapter: {type: String},
     comments: [{ type: Schema.ObjectId, ref: 'Comment' }],
     open: {type: String},
     rcnt: {type: Number, default: 0},

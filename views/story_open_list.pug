@@ -14,7 +14,8 @@ block content
 		if pc
 			thead
 				tr
-					th(width='70%') #{translation.Title}
+					th(width='45%') #{translation.Title}
+					th(width='25%') #{translation.Book}
 					th(width='10%') #{translation.Writer}
 					th(width='10%') #{translation.favs}
 					th(width='10%') #{translation.rcnt}
@@ -26,6 +27,9 @@ block content
 								a(href=story.url+'?open=Y') !{story.title} (#{story.len})
 								span(style='margin-left:50px;') #{story.cct}
 							td
+								if story.book
+									span #{story.book.title}
+							td
 								if story.user
 									span #{story.user.name}
 							td
@@ -34,7 +38,7 @@ block content
 								span #{story.rcnt}
 				else
 					tr
-						td(colspan='3')
+						td(colspan='4')
 							#{translation.nostories}
 		else
 			thead

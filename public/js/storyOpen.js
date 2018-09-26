@@ -24,6 +24,7 @@ $( document ).ready(function() {
                         if($("#pc").val() == "DESKTOP") {
                             markup = "<tr><td><a href='/catalog/story/"+story._id+"'>"+story.title+" ("+story.len+")";
                             markup += "<span style='margin-left:50px;'>"+story.cct+"</span></a></td>";
+                            markup += "<td><span>"+story.book.title+"</span></td>";
                             markup += "<td><span>"+story.user.name+"</span></td>";
                             markup += "<td><span>"+story.favs+"</span></td>";
                             markup += "<td><span>"+story.rcnt+"</span></td></tr>";
