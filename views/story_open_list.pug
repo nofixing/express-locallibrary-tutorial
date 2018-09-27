@@ -16,9 +16,10 @@ block content
 				tr
 					th(width='45%') #{translation.Title}
 					th(width='25%') #{translation.Book}
+					th(width='10%') #{translation.Chapter}
 					th(width='10%') #{translation.Writer}
-					th(width='10%') #{translation.favs}
-					th(width='10%') #{translation.rcnt}
+					th(width='5%') #{translation.favs}
+					th(width='5%') #{translation.rcnt}
 			tbody.wtd
 				if story_list
 					each story in story_list
@@ -27,8 +28,9 @@ block content
 								a(href=story.url+'?open=Y') !{story.title} (#{story.len})
 								span(style='margin-left:50px;') #{story.cct}
 							td
-								if story.book
-									span #{story.book.title}
+								span #{story.btitle}
+							td
+								span #{story.chapter}
 							td
 								if story.user
 									span #{story.user.name}

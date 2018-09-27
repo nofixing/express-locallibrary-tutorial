@@ -40,12 +40,12 @@ exports.story_open_list = function(req, res, next) {
     
     var ct = 0;
     if(typeof req.body.stle !='undefined' && req.body.stle != '') {
-        Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {book: { $regex: '.*' + req.body.stle + '.*' }}]})
+        Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {btitle: { $regex: '.*' + req.body.stle + '.*' }}]})
             .count().exec(function (err, count) {
             ct =count;
         });
-        Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {book: { $regex: '.*' + req.body.stle + '.*' }}]})
-            .skip(mxcnt).limit(mxcnt+50).sort({date: -1})
+        Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {btitle: { $regex: '.*' + req.body.stle + '.*' }}]})
+            .skip(mxcnt).limit(mxcnt+50).sort({date: -1, order: 1})
             .populate('user')
             .populate('book')
             .exec(function (err, list_stories) {
@@ -54,6 +54,7 @@ exports.story_open_list = function(req, res, next) {
                 var str = list_stories[i].content;
                 var len = str.split(" ").length;
                 list_stories[i].len = len;
+                list_stories[i].btitle = entities.decode(list_stories[i].btitle);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
             res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct, cfnt: req.session.cfnt });
@@ -62,7 +63,7 @@ exports.story_open_list = function(req, res, next) {
         Story.find({open: 'Y'}).count().exec(function (err, count) {
             ct =count;
         });
-        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
+        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1, order: 1})
             .populate('user')
             .populate('book')
             .exec(function (err, list_stories) {
@@ -71,6 +72,7 @@ exports.story_open_list = function(req, res, next) {
                 var str = list_stories[i].content;
                 var len = str.split(" ").length;
                 list_stories[i].len = len;
+                list_stories[i].btitle = entities.decode(list_stories[i].btitle);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
             res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct, cfnt: req.session.cfnt });
@@ -89,10 +91,12 @@ exports.story_open_ajax = function(req, res, next) {
     var ct = 0;
     
     if(typeof req.body.stle !='undefined' && req.body.stle != '') {
-        Story.find({open: 'Y', title: { $regex: '.*' + req.body.stle + '.*' }}).count().exec(function (err, count) {
+        Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {btitle: { $regex: '.*' + req.body.stle + '.*' }}]})
+            .count().exec(function (err, count) {
             ct =count;
         });
-        Story.find({open: 'Y', title: { $regex: '.*' + req.body.stle + '.*' }}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
+        Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {btitle: { $regex: '.*' + req.body.stle + '.*' }}]})
+            .skip(mxcnt).limit(mxcnt+50).sort({date: -1, order: 1})
             .populate('user')
             .exec(function (err, list_stories) {
                 if (err) { 
@@ -109,7 +113,7 @@ exports.story_open_ajax = function(req, res, next) {
         Story.find({open: 'Y'}).count().exec(function (err, count) {
             ct =count;
         });
-        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1})
+        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1, order: 1})
             .populate('user')
             .exec(function (err, list_stories) {
                 if (err) { 
@@ -393,6 +397,9 @@ exports.story_create_post = [
             book: req.body.book,
             user: req.session.userId,
             order: req.body.order,
+            chapter: req.body.chapter,
+            btitle: req.body.btitle,
+            open: req.body.open,
             date: Date.now()
            });
 
@@ -403,7 +410,6 @@ exports.story_create_post = [
               reference: req.body.reference,
               genre: req.body.genre,
               user: req.session.userId,
-              order: req.body.order,
               date: Date.now(),
               open: req.body.open
              });
@@ -600,7 +606,9 @@ exports.story_update_post = [
             reference: req.body.reference,
             genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
             book: req.body.book,
+            btitle: req.body.btitle,
             order: req.body.order,
+            chapter: req.body.chapter,
             open: req.body.open,
             _id:req.params.id // This is required, or a new ID will be assigned!
            });
@@ -655,11 +663,14 @@ exports.story_update_post = [
                     content: req.body.content,
                     reference: req.body.reference,
                     book: req.body.book,
+                    btitle: req.body.btitle,
                     open: req.body.open,
-                    order: req.body.order
+                    order: req.body.order,
+                    chapter: req.body.chapter
                 }, function(err, theStory) {
                     if (err) { return next(err); }
                     // Successful - redirect to story detail page.
+                    console.log("story updated:"+theStory);
                     res.redirect("/catalog/story/"+req.params.id);
                 });
             }

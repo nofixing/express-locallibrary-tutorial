@@ -412,6 +412,11 @@ exports.book_update_post = [
             Book.findByIdAndUpdate(req.params.id, book, {}, function (err,thebook) {
                 if (err) { return next(err); }
                    // Successful - redirect to book detail page.
+                    Story.update({book: req.params.id}, {
+                        btitle: req.body.title
+                    }, function(err, theStory) {
+                        if (err) { return next(err); }
+                    });
                    res.redirect(thebook.url);
                 });
         }

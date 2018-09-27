@@ -513,6 +513,10 @@ function CreateStory() {
 function storyPost() {
 
     var frm = document.getElementById("storyForm");
+    var sel = frm.book;
+    if ( $("#book").val() != "" ) {
+        $("#btitle").val( sel.options[sel.selectedIndex].text );
+    }
     /*
     var tContent = txtArea.value;
     var find = '<p><br></p>';
@@ -521,9 +525,9 @@ function storyPost() {
     document.querySelector('#snow-container').children[0].innerHTML = tContent;
     */
     frm.content.value = document.querySelector('#snow-container').children[0].innerHTML;
-    //alert(frm.content.value);
+    //alert(frm.btitle.value);
     //return;
-    frm.submit();	
+    frm.submit();
 
 }
 

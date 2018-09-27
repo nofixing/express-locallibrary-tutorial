@@ -180,10 +180,11 @@ block content
           option(value='Y' selected=(undefined===story ? false : story.open=='Y' ? 'selected' : false) ) Y
         <br><br>
     
-    button.btn.btn-primary(type='submit', onclick='preview();return false;') #{translation.Preview}
+    button.btn.btn-primary(type='button', onclick='preview();return false;') #{translation.Preview}
     <br><br>
-    button.btn.btn-primary(type='submit', onclick='storyPost();return false;') #{translation.Submit}
+    button.btn.btn-primary(type='button', onclick='storyPost();return false;') #{translation.Submit}
     <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
+    <input type="hidden" id="btitle" name="btitle" value="" />
 
   div(style='margin-bottom: 50px;')
 

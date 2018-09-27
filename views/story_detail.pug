@@ -100,8 +100,8 @@ html(lang='en')
       div#jb_content.col-lg-12
         div.ql-editor(style='padding: 50px 0 0 0; overflow-y: hidden;')
           if story.chapter 
-            p #{story.chapter}<br/><br/>
-          p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
+            p(style='font-weight:bold;font-size: 2em') #{story.chapter}<br/><br/>
+          p(style='font-weight:bold;font-size: 2.5em') #{story.title}<br/><br/>
           if story.author 
             p #{translation.by} #{story.author}<br/><br/>
           if story.reference 
