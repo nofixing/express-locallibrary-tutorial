@@ -9,7 +9,7 @@ block content
   ul.tite
     for story in stories
       li
-        a(href=story.url) #{story.chapter}, !{story.title} (#{story.len})
+        a(href=story.url) #{story.chapter} !{story.title} (#{story.len})
   <br>
   p #[strong #{translation.Genre}:] 
     each val in book.genre

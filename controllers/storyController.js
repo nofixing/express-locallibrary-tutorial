@@ -150,9 +150,16 @@ exports.story_open_ajax = function(req, res, next) {
 
 exports.story_list_ajax = function(req, res, next) {
 
-    Story.find({book: req.body.book}, 'title ').collation({locale: 'en' }).sort({order: 1})
+    Story.find({book: req.body.book}).collation({locale: 'en' }).sort({order: 1})
       .exec(function (err, list_stories) {
         if (err) { return next(err); }
+        for (let i = 0; i < list_stories.length; i++) {
+            if(typeof list_stories[i].chapter == 'undefined') {
+                list_stories[i].chapter = '';
+            } else {
+                list_stories[i].chapter += ', ';
+            }
+        }
         res.send(list_stories);
       });
   

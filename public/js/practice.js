@@ -312,7 +312,7 @@ $(function(){
                         .attr("class", "dropdown-item")
                         .attr("href", "#none")
                         .attr("onclick", "stogo('"+story._id+"');return false;")
-                        .text(story.title));
+                        .text(story.chapter+story.title));
                 });
             }
         });
