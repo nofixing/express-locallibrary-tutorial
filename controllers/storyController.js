@@ -191,10 +191,12 @@ exports.story_detail = function(req, res, next) {
         memo: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
             if (req.query.open == 'Y') {
-                Memo.find({story: req.params.id}, {content: 1})
+                //Memo.find({story: req.params.id}, {content: 1})
+                Memo.find({story: req.params.id})
                     .exec(callback);
             } else {
-                Memo.find({user: req.session.userId, story: req.params.id}, {content: 1})
+                //Memo.find({user: req.session.userId, story: req.params.id}, {content: 1})
+                Memo.find({user: req.session.userId, story: req.params.id})
                     .exec(callback);
             }
         },

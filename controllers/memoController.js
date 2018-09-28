@@ -97,12 +97,14 @@ exports.memo_create_post = [
                   story: req.body.story_id,
                   content: req.body.content
                  });
-            memo.save(function (err) {
+            memo.save(function (err, theMemo) {
                 if (err) { return next(err); }
                     // Successful - redirect to new memo record.
                     //res.redirect(memo.url);
-                    console.log('memo insert success');
+                    //console.log('memo insert success');
                     //return next();
+                    req.body.memo_id = theMemo.id;
+                    console.log('theMemo.id:'+theMemo.id);
                     res.send(req.body);
                 });
         }

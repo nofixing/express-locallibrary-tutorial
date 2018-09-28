@@ -111,6 +111,7 @@ exports.word_create_post = [
              //console.log(results);
              if (results.length > 0) { // No results.
                  console.log('already exists');
+                 res.send(req.body);
              } else {
                  console.log('word insert');
                  word.save(function (err, theWord) {

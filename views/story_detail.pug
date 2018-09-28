@@ -260,7 +260,7 @@ html(lang='en')
           </div>          
           div#snow-container
           <!--<br><span>파일명: </span><input type="text" id="fileName">-->
-          <br/><button type="button" value="save" id="save">#{translation.Save}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
+          <br/><button type="button" value="save" id="save" onclick="saveMemo();return false;">#{translation.Save}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div#word_container.col-lg-4
         <button type="button" id="wordSave">#{translation.Save}</button>&nbsp;&nbsp;&nbsp;#{translation.checkedwordsonly}&nbsp;&nbsp;&nbsp;

@@ -139,78 +139,6 @@ $(function(){
     
     }
 
-    $("#save").click(function(){
-        
-        var data = {};
-        data.story_id = $( "#story_id" ).val();
-        data.content = document.querySelector('#snow-container').children[0].innerHTML;
-        data.memo_id = $('#memo_id').val();
-        console.log('save click');
-        var httpType = 'https://';
-        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            url: httpType+$('#hostname').val()+'/catalog/memo/create',
-            success : function(data) {
-                alert($('#SAVED').val());
-            }
-        });
-        /*
-        if($.trim($('#fileName').val()) == "") {
-            alert('파일명을 입력해 주세요.');
-            return;
-        }
-        
-        var str = document.querySelector('#snow-container').children[0].innerHTML;
-        var find = '<p><br></p>';
-        var re = new RegExp(find, 'g');
-        str = str.replace(re, '');
-        var orgText = "<!doctype html>";
-        orgText += "<html>";
-        orgText += "  <head>";
-        orgText += "    <title>"+$('#fileName').val()+"</title>";
-        orgText += "    <link href='https://cdn.quilljs.com/1.3.6/quill.snow.css' type='text/css' rel='stylesheet'>";
-        orgText += "  </head>";
-        orgText += "  <body>";
-        orgText += str;
-        orgText += "  </body>";
-        orgText += "</html>";
-        
-        //var textToWrite = wordWrap(orgText, 72);
-        
-        var textFileAsBlob = new Blob([orgText], {type:'text/html'});
-        var fileNameToSaveAs = $('#fileName').val()+'.html';
-
-        try {
-            var downloadLink = document.createElement("a");
-            downloadLink.download = fileNameToSaveAs;
-            downloadLink.innerHTML = "Download File";
-            if (window.webkitURL != null)
-            {
-                // Chrome allows the link to be clicked
-                // without actually adding it to the DOM.
-                downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-            }
-            else
-            {
-                // Firefox requires the link to be added to the DOM
-                // before it can be clicked.
-                downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-                //downloadLink.onclick = destroyClickedElement;
-                downloadLink.style.display = "none";
-                document.body.appendChild(downloadLink);
-            }
-
-            downloadLink.click();
-        }
-        catch(err) {
-            window.navigator.msSaveBlob(textFileAsBlob, $('#fileName').val()+'.html'); 
-        }
-        */
-    });
-
     $("#checkall").click(function(){
         $('.wList').not(this).prop('checked', this.checked);
     });
@@ -731,4 +659,79 @@ function smf() {
 function smf2(comment_id) {
     var frm = document.getElementById("cmf_"+comment_id);
     frm.submit();		
+}
+
+function saveMemo() {
+        
+    var data = {};
+    data.story_id = $( "#story_id" ).val();
+    data.content = document.querySelector('#snow-container').children[0].innerHTML;
+    data.memo_id = $('#memo_id').val();
+    console.log('save click');
+    console.log(data.content);
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/catalog/memo/create',
+        async: false,
+        success : function(data) {
+            $('#memo_id').val(data.memo_id);
+            alert($('#SAVED').val());
+        }
+    });
+    /*
+    if($.trim($('#fileName').val()) == "") {
+        alert('파일명을 입력해 주세요.');
+        return;
+    }
+    
+    var str = document.querySelector('#snow-container').children[0].innerHTML;
+    var find = '<p><br></p>';
+    var re = new RegExp(find, 'g');
+    str = str.replace(re, '');
+    var orgText = "<!doctype html>";
+    orgText += "<html>";
+    orgText += "  <head>";
+    orgText += "    <title>"+$('#fileName').val()+"</title>";
+    orgText += "    <link href='https://cdn.quilljs.com/1.3.6/quill.snow.css' type='text/css' rel='stylesheet'>";
+    orgText += "  </head>";
+    orgText += "  <body>";
+    orgText += str;
+    orgText += "  </body>";
+    orgText += "</html>";
+    
+    //var textToWrite = wordWrap(orgText, 72);
+    
+    var textFileAsBlob = new Blob([orgText], {type:'text/html'});
+    var fileNameToSaveAs = $('#fileName').val()+'.html';
+
+    try {
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        if (window.webkitURL != null)
+        {
+            // Chrome allows the link to be clicked
+            // without actually adding it to the DOM.
+            downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
+        }
+        else
+        {
+            // Firefox requires the link to be added to the DOM
+            // before it can be clicked.
+            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+            //downloadLink.onclick = destroyClickedElement;
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+        }
+
+        downloadLink.click();
+    }
+    catch(err) {
+        window.navigator.msSaveBlob(textFileAsBlob, $('#fileName').val()+'.html'); 
+    }
+    */
 }
