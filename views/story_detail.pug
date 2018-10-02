@@ -261,6 +261,11 @@ html(lang='en')
           div#snow-container
           <!--<br><span>파일명: </span><input type="text" id="fileName">-->
           <br/><button type="button" value="save" id="save" onclick="saveMemo();return false;">#{translation.Save}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
+          <div style="display: inline-block; float: left; height: 30px; margin-top: 10px;">
+          <input type="file" name="file" id="file" class="inputfile">
+          <label for="file" style="line-height: 30px; float: left;" title="#{translation.AudioDesc}">#{translation.Audio}</label>
+          <audio controls id="myAudio" style="line-height: 30px; float: right;" autoplay></audio>
+          </div>
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div#word_container.col-lg-4
         <button type="button" id="wordSave">#{translation.Save}</button>&nbsp;&nbsp;&nbsp;#{translation.checkedwordsonly}&nbsp;&nbsp;&nbsp;

@@ -101,6 +101,8 @@
   "by": "by",
   "Reply": "Reply",
   "Save": "Save",
+  "Audio": "Choose audio file",
+  "AudioDesc": "You can listen to the audio file that is on your PC.",
   "SAVED": "SAVED",
   "DELETED": "DELETED",
   "checkedwordsonly": "checked words only will be saved or deleted.",
