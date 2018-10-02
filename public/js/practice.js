@@ -302,14 +302,14 @@ function search() {
     if (selectText.length > 0) {
         dicSearch();
         wordList();
-        
+        /*
         var span = document.createElement("span");
         span.setAttribute("class", "hgt");
         var range = window.getSelection().getRangeAt(0);
-        //w.surroundContents(nNd);
         span.appendChild(range.extractContents());
         range.insertNode(span);
         $('.hgt').css({"color":"blue"});
+        */
     }
     
 
@@ -328,11 +328,11 @@ function BookMark() {
     selectText = selection.toString().trim();
     
     if (selectText.length > 0) {
-        var a = document.createElement('a');
-        a.id = lnk;
+        var span = document.createElement('span');
+        span.id = lnk;
         var range = window.getSelection().getRangeAt(0);
-        a.appendChild(range.extractContents());
-        range.insertNode(a);
+        span.appendChild(range.extractContents());
+        range.insertNode(span);
     } else {
         alert("북마크할 단어를 선택해 주세요.");
         return;
@@ -411,7 +411,7 @@ function ReadingOnly() {
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
     $('#jb_sidebar').css('display', 'none');
-    $('.hgt').css('color', 'black');
+    //$('.hgt').css('color', 'black');
     if($("#pc").val() == "DESKTOP") {
         if($("#book").val() != "") {
             $(".nav-item:eq(1)").addClass("active");
@@ -444,7 +444,7 @@ function ReadingSearch() {
     $('#jb_sidebar').removeClass('col-lg-4');
     $('#jb_sidebar').addClass('col-lg-6');
     $('#jb_sidebar').css('display', 'block');
-    $('.hgt').css('color', 'black');
+    //$('.hgt').css('color', 'black');
     if($("#pc").val() == "DESKTOP") {
         $(".nav-item").removeClass("active");
         if($("#book").val() != "") {
@@ -468,7 +468,7 @@ function ReadingPractice() {
     $('#jb_sidebar').removeClass('col-lg-6');
     $('#jb_sidebar').addClass('col-lg-4');
     $('#jb_sidebar').css('display', 'block');
-    $('.hgt').css('color', 'blue');
+    //$('.hgt').css('color', 'blue');
     if($("#pc").val() == "DESKTOP") {
         $(".nav-item").removeClass("active");
         if($("#book").val() != "") {
