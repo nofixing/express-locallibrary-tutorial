@@ -71,6 +71,8 @@ html(lang='en')
               <a class="nav-link" href="#none" onclick="UpdateStory('#{story.user}', '#{userId}');return false;">#{translation.Update}</a>
             li.nav-item
               <a class="nav-link" href="#none" onclick="DeleteStory('#{story.user}', '#{userId}');return false;">#{translation.Delete}</a>
+            li.nav-item
+              <a class="nav-link" href="#none" onclick="BookMark();return false;">#{translation.BookMark}</a>
           else
             li.nav-item
               a.nav-link(href='#none' onclick='showReadingOnlyLayer();return false;') #{translation.Reading}
@@ -106,7 +108,9 @@ html(lang='en')
             p #{translation.by} #{story.author}<br/><br/>
           if story.reference 
             p #{translation.Reference}: #{story.reference}<br/><br/>
-          div !{story.content}
+          if story.anchor 
+            <a href="##{story.anchor}">#{translation.BookMark}</a><br/><br/>
+          div#st_content !{story.content}
         if story.open == 'Y'
           <div style="text-align: center; margin: 30px;"><button id="favs" type="submit" class="btn btn-primary">#{translation.favs}</button></div>
           <input type="hidden" id="facnt" name="facnt" value="#{story.favs}" />

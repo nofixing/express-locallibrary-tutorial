@@ -315,6 +315,50 @@ function search() {
 
 }
 
+function BookMark() {
+
+    var selection;
+    var lnk = Date.now();
+    
+    if (window.getSelection) {
+      selection = window.getSelection();
+    } else if (document.selection) {
+      selection = document.selection.createRange();
+    }
+    selectText = selection.toString().trim();
+    
+    if (selectText.length > 0) {
+        var a = document.createElement('a');
+        a.id = lnk;
+        var range = window.getSelection().getRangeAt(0);
+        a.appendChild(range.extractContents());
+        range.insertNode(a);
+    } else {
+        alert("북마크할 단어를 선택해 주세요.");
+        return;
+    }
+
+    var data = {};
+    data.story_id = $( "#story_id" ).val();
+    data.content = document.getElementById('st_content').innerHTML;
+    data.anchor = lnk;
+    //console.log(data.content);
+    //return;
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/catalog/story/bookMark_ajax',
+        async: false,
+        success : function(data) {
+            alert($("#SAVED").val());
+        }
+    });
+    
+}
+
 function dicSearch() {
 
     if ($("#dicType").val() == "1") {

@@ -317,6 +317,17 @@ exports.favs_ajax = function(req, res, next) {
 
 };
 
+exports.bookMark_ajax = function(req, res, next) {
+
+    var newvalues = { $set: {content: req.body.content, anchor: req.body.anchor} };
+    
+    Story.findByIdAndUpdate(req.body.story_id, newvalues, {}, function (err,theStory) {
+        if (err) { return next(err); }
+        res.send(req.body);
+        });
+
+};
+
 exports.story_iframe = function(req, res, next) {
 
     async.parallel({
