@@ -5,6 +5,7 @@ var Memo = require('../models/memo');
 var Book = require('../models/book');
 var Comment = require('../models/comment');
 var History = require('../models/history');
+var BookMark = require('../models/bookMark');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -200,6 +201,10 @@ exports.story_detail = function(req, res, next) {
                     .exec(callback);
             }
         },
+        bookMark: function(callback) {
+            BookMark.find({user: req.session.userId, story: req.params.id})
+                .exec(callback);
+        },
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.story==null) { // No results.
@@ -275,9 +280,15 @@ exports.story_detail = function(req, res, next) {
             memo = entities.decode(results.memo[0].content);
             memo_id = results.memo[0]._id;
         }
+        var anchor = '';
+        var bookMark_id = '';
+        if(results.bookMark.length > 0) {
+            anchor = results.bookMark[0].anchor;
+            bookMark_id = results.bookMark[0]._id;
+        }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_detail', 
-        { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, 
+        { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 
         word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt } );
     });
 
@@ -316,16 +327,50 @@ exports.favs_ajax = function(req, res, next) {
 
 };
 
-exports.bookMark_ajax = function(req, res, next) {
-
-    var newvalues = { $set: {content: req.body.content, anchor: req.body.anchor} };
+exports.bookMark_ajax = [
     
-    Story.findByIdAndUpdate(req.body.story_id, newvalues, {}, function (err,theStory) {
-        if (err) { return next(err); }
-        res.send(req.body);
-        });
-
-};
+    // Process request after validation and sanitization.
+    (req, res, next) => {
+        
+        var bookMark;
+        console.log('req.body.bookMark_id:'+req.body.bookMark_id);
+        if(req.body.bookMark_id.length > 0) {
+            console.log('BookMark Update call');
+            bookMark = new BookMark(
+                { _id: req.body.bookMark_id,
+                  user: req.session.userId,
+                  story: req.body.story_id,
+                  anchor: req.body.anchor
+                 });
+            BookMark.findByIdAndUpdate(req.body.bookMark_id, bookMark, {}, function (err) {
+                if (err) { console.log(err);return next(err); }
+                    var newvalues = { $set: {content: req.body.content} };
+        
+                    Story.findByIdAndUpdate(req.body.story_id, newvalues, {}, function (err,theStory) {
+                        if (err) { return next(err); }
+                    });
+                    res.send(req.body);
+                });
+        } else {
+            bookMark = new BookMark(
+                { user: req.session.userId,
+                  story: req.body.story_id,
+                  anchor: req.body.anchor
+                 });
+                bookMark.save(function (err, theBookMark) {
+                    if (err) { return next(err); }
+                    var newvalues = { $set: {content: req.body.content} };
+            
+                    Story.findByIdAndUpdate(req.body.story_id, newvalues, {}, function (err,theStory) {
+                        if (err) { return next(err); }
+                    });
+                    req.body.bookMark_id = theBookMark.id;
+                    console.log('theBookMark.id:'+theBookMark.id);
+                    res.send(req.body);
+                });
+        }
+    }
+];
 
 exports.story_iframe = function(req, res, next) {
 

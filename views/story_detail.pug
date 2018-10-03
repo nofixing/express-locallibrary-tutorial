@@ -108,8 +108,8 @@ html(lang='en')
             p #{translation.by} #{story.author}<br/><br/>
           if story.reference 
             p #{translation.Reference}: #{story.reference}<br/><br/>
-          if story.anchor 
-            <a href="##{story.anchor}">#{translation.BookMark}</a><br/><br/>
+          if anchor 
+            <a href="none" onclick="goBokM('#{anchor}');return false;">#{translation.BookMark}</a><br/><br/>
           div#st_content !{story.content}
         if story.open == 'Y'
           <div style="text-align: center; margin: 30px;"><button id="favs" type="submit" class="btn btn-primary">#{translation.favs}</button></div>
@@ -311,6 +311,7 @@ html(lang='en')
         <input type="hidden" id="book" name="book" value="#{story.book}" />
         <input type="hidden" id="memo" name="memo" value="#{memo}" />
         <input type="hidden" id="memo_id" name="memo_id" value="#{memo_id}" />
+        <input type="hidden" id="bookMark_id" name="bookMark_id" value="#{bookMark_id}" />
         <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
         <input type="text" id="searchWord" name="searchWord" style="width:150px" />
         | &nbsp;&nbsp;&nbsp;

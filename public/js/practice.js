@@ -277,7 +277,6 @@ $(function(){
     
     console.log($audio[0]);
     if (target.files && file) {
-            var reader = new FileReader();
             reader.onload = function (e) {
                 $audio.attr('src', e.target.result);
                 $audio.play;
@@ -340,6 +339,7 @@ function BookMark() {
 
     var data = {};
     data.story_id = $( "#story_id" ).val();
+    data.bookMark_id =$( "#bookMark_id" ).val();
     data.content = document.getElementById('st_content').innerHTML;
     data.anchor = lnk;
     //console.log(data.content);
@@ -353,10 +353,15 @@ function BookMark() {
         url: httpType+$('#hostname').val()+'/catalog/story/bookMark_ajax',
         async: false,
         success : function(data) {
+            $('#bookMark_id').val(data.bookMark_id);
             alert($("#SAVED").val());
         }
     });
     
+}
+
+function goBokM(url) {
+    location.href = "#"+url;
 }
 
 function dicSearch() {
