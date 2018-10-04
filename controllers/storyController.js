@@ -181,6 +181,7 @@ exports.story_detail = function(req, res, next) {
         },
         words: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
+            /*
             if (req.query.open == 'Y') {
                 Word.find({story: req.params.id}).collation({locale: 'en' }).sort({title: 1})
                     .exec(callback);
@@ -188,18 +189,25 @@ exports.story_detail = function(req, res, next) {
                 Word.find({user: req.session.userId, story: req.params.id}).collation({locale: 'en' }).sort({title: 1})
                 .exec(callback);
             }
+            */
+           Word.find({story: req.params.id}).collation({locale: 'en' }).sort({title: 1})
+                .exec(callback);
         },
         memo: function(callback) {
-            //console.log("user:"+req.session.userId+"/story:"+req.params.id);
+            console.log("user:"+req.session.userId+"/story:"+req.params.id);
+            /*
             if (req.query.open == 'Y') {
-                //Memo.find({story: req.params.id}, {content: 1})
-                Memo.find({story: req.params.id})
+                Memo.find({story: req.params.id}, {content: 1})
+                //Memo.find({story: req.params.id})
                     .exec(callback);
             } else {
-                //Memo.find({user: req.session.userId, story: req.params.id}, {content: 1})
-                Memo.find({user: req.session.userId, story: req.params.id})
+                Memo.find({user: req.session.userId, story: req.params.id}, {content: 1})
+                //Memo.find({user: req.session.userId, story: req.params.id})
                     .exec(callback);
             }
+            */
+           Memo.find({story: req.params.id})
+                .exec(callback);
         },
         bookMark: function(callback) {
             BookMark.find({user: req.session.userId, story: req.params.id})
@@ -280,6 +288,7 @@ exports.story_detail = function(req, res, next) {
             memo = entities.decode(results.memo[0].content);
             memo_id = results.memo[0]._id;
         }
+        console.log("memo:"+memo);
         var anchor = '';
         var bookMark_id = '';
         if(results.bookMark.length > 0) {
@@ -287,7 +296,9 @@ exports.story_detail = function(req, res, next) {
             bookMark_id = results.bookMark[0]._id;
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_detail', 
+        var vName = 'story_detail';
+        if (pc == '') vName = 'story_mdtl';
+        res.render(vName, 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 
         word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt } );
     });

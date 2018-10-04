@@ -418,6 +418,7 @@ function ReadingOnly() {
     $('#jb_sidebar').css('display', 'none');
     //$('.hgt').css('color', 'black');
     if($("#pc").val() == "DESKTOP") {
+        $(".nav-item").removeClass("active");
         if($("#book").val() != "") {
             $(".nav-item:eq(1)").addClass("active");
         } else {
