@@ -495,7 +495,7 @@ function DeleteStory(a, b) {
 
 function UpdateStory(a, b) {
     if ( a != b ) {
-        alert($("#cmm").val());
+        alert($("#smm").val());
         return;
     }
     document.location.href = '/catalog/story/'+$("#story_id").val()+'/update';
