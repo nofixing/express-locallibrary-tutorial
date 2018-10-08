@@ -9,7 +9,7 @@ body {
     border: 0px solid #ffffff;
     overflow-x: hidden;
     overflow-y: auto; /* prevents scroll bar flash */
-    text-indent: 10px;
+    text-indent: 20px;
     text-align: justify;
 }
 #jb_content_mb {
@@ -20,7 +20,7 @@ body {
     border: 0px solid #ffffff;
     overflow-x: hidden;
     overflow-y: auto; /* prevents scroll bar flash */
-    text-indent: 10px;
+    text-indent: 20px;
     text-align: justify;
 }
 p {
