@@ -181,41 +181,44 @@ ul.tite li {
 
 
 
-#toolbar-container .ql-font span[data-label="GamjaFlower"]::before {
-    font-family: "GamjaFlower";
+#toolbar-container .ql-font span[data-label="Gamja Flower"]::before {
+    font-family: "Gamja Flower";
 }
-#toolbar-container .ql-font span[data-label="CuteFont"]::before {
-    font-family: "CuteFont";
+#toolbar-container .ql-font span[data-label="Cute Font"]::before {
+    font-family: "Cute Font";
 }
 #toolbar-container .ql-font span[data-label="Stylish"]::before {
     font-family: "Stylish";
 }
-#toolbar-container .ql-font span[data-label="YeonSung"]::before {
-    font-family: "YeonSung";
+#toolbar-container .ql-font span[data-label="Yeon Sung"]::before {
+    font-family: "Yeon Sung";
 }
-#toolbar-container .ql-font span[data-label="HiMelody"]::before {
-    font-family: "HiMelody";
+#toolbar-container .ql-font span[data-label="Hi Melody"]::before {
+    font-family: "Hi Melody";
 }
 #toolbar-container .ql-font span[data-label="Sunflower"]::before {
     font-family: "Sunflower";
 }
-#toolbar-container .ql-font span[data-label="BlackHanSans"]::before {
-    font-family: "BlackHanSans";
+#toolbar-container .ql-font span[data-label="Black Han Sans"]::before {
+    font-family: "Black Han Sans";
 }
-#toolbar-container .ql-font span[data-label="GothicA1"]::before {
-    font-family: "GothicA1";
+#toolbar-container .ql-font span[data-label="Gothic A1"]::before {
+    font-family: "Gothic A1";
 }
-#toolbar-container .ql-font span[data-label="NanumGothic"]::before {
-    font-family: "NanumGothic";
+#toolbar-container .ql-font span[data-label="Nanum Gothic"]::before {
+    font-family: "Nanum Gothic";
 }
-#toolbar-container .ql-font span[data-label="NanumMyeongjo"]::before {
-    font-family: "NanumMyeongjo";
+#toolbar-container .ql-font span[data-label="Nanum Myeongjo"]::before {
+    font-family: "Nanum Myeongjo";
 }
-#toolbar-container .ql-font span[data-label="PoorStory"]::before {
-    font-family: "PoorStory";
+#toolbar-container .ql-font span[data-label="Poor Story"]::before {
+    font-family: "Poor Story";
 }
-#toolbar-container .ql-font span[data-label="BlackAndWhitePicture"]::before {
-    font-family: "BlackAndWhitePicture";
+#toolbar-container .ql-font span[data-label="Black And White Picture"]::before {
+    font-family: "Black And White Picture";
+}
+#toolbar-container .ql-font span[data-label="PT Sans"]::before {
+    font-family: "PT Sans";
 }
 
 
@@ -322,6 +325,9 @@ ul.tite li {
 }
 .ql-font-BlackAndWhitePicture {
     font-family: "Black And White Picture";            
+}
+.ql-font-PTSans {
+    font-family: "PT Sans";       
 }
 
 
