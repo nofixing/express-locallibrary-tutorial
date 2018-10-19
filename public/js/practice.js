@@ -285,6 +285,22 @@ $(function(){
         }
     });
 
+    var $audio2 = $('#myAudio2');
+    $('#file2').on('change', function(e) {
+        var target = e.currentTarget;
+        var file = target.files[0];
+        var reader = new FileReader();
+        
+        console.log($audio2[0]);
+        if (target.files && file) {
+            reader.onload = function (e) {
+                $audio2.attr('src', e.target.result);
+                $audio2.play;
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
 });
 
 function search() {
@@ -411,8 +427,10 @@ function wordList() {
 function ReadingOnly() {
     $('#jb_content').removeClass('col-lg-4');
     $('#jb_content').removeClass('col-lg-6');
+    $('#jb_content').removeClass('col-lg-8');
     $('#jb_content').addClass('col-lg-12');
     //$('#jb_content').css('padding', '0 10% 0 10%');
+    $('#jb_memo').css('display', 'none');
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
     $('#jb_sidebar').css('display', 'none');
@@ -427,8 +445,30 @@ function ReadingOnly() {
     }
 }
 
+function LearnReading() {
+    $('#jb_content').removeClass('col-lg-4');
+    $('#jb_content').removeClass('col-lg-6');
+    $('#jb_content').removeClass('col-lg-12');
+    $('#jb_content').addClass('col-lg-8');
+    //$('#jb_content').css('padding', '0 10% 0 10%');
+    $('#jb_memo').css('display', 'block');
+    $('#jb_txtEditor').css('display', 'none');
+    $('#word_container').css('display', 'none');
+    $('#jb_sidebar').css('display', 'none');
+    //$('.hgt').css('color', 'black');
+    if($("#pc").val() == "DESKTOP") {
+        $(".nav-item").removeClass("active");
+        if($("#book").val() != "") {
+            $(".nav-item:eq(2)").addClass("active");
+        } else {
+            $(".nav-item:eq(1)").addClass("active");
+        }
+    }
+}
+
 function showReadingOnlyLayer() {
     $('#jb_content').css('display', 'block');
+    $('#jb_memo').css('display', 'none');
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
     $('#word_only_container').css('display', 'none');
@@ -442,9 +482,11 @@ function ReadingSearch() {
         alert("use this from PC");
     }
     $('#jb_content').removeClass('col-lg-4');
+    $('#jb_content').removeClass('col-lg-8');
     $('#jb_content').removeClass('col-lg-12');
     $('#jb_content').addClass('col-lg-6');
     $('#jb_content').css('padding', '0 20px 20px 20px');
+    $('#jb_memo').css('display', 'none');
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
     $('#jb_sidebar').removeClass('col-lg-4');
@@ -454,9 +496,9 @@ function ReadingSearch() {
     if($("#pc").val() == "DESKTOP") {
         $(".nav-item").removeClass("active");
         if($("#book").val() != "") {
-            $(".nav-item:eq(2)").addClass("active");
+            $(".nav-item:eq(3)").addClass("active");
         } else {
-            $(".nav-item:eq(1)").addClass("active");
+            $(".nav-item:eq(2)").addClass("active");
         }
     }
 }
@@ -466,9 +508,11 @@ function ReadingPractice() {
         alert("use this from PC");
     }
     $('#jb_content').removeClass('col-lg-12');
+    $('#jb_content').removeClass('col-lg-8');
     $('#jb_content').removeClass('col-lg-6');
     $('#jb_content').addClass('col-lg-4');
     $('#jb_content').css('padding', '0 20px 20px 20px');
+    $('#jb_memo').css('display', 'none');
     $('#jb_txtEditor').css('display', 'block');
     $('#word_container').css('display', 'none');
     $('#jb_sidebar').removeClass('col-lg-6');
@@ -478,9 +522,59 @@ function ReadingPractice() {
     if($("#pc").val() == "DESKTOP") {
         $(".nav-item").removeClass("active");
         if($("#book").val() != "") {
-            $(".nav-item:eq(3)").addClass("active");
+            $(".nav-item:eq(4)").addClass("active");
         } else {
-            $(".nav-item:eq(2)").addClass("active");
+            $(".nav-item:eq(3)").addClass("active");
+        }
+    }
+}
+
+function showWordLayer() {
+    ReadingPractice();
+    $('#word_container').css('display', 'block');
+    $('#jb_txtEditor').css('display', 'none');
+    if($("#pc").val() == "DESKTOP") {
+        $(".nav-item").removeClass("active");
+        if($("#book").val() != "") {
+            $(".nav-item:eq(5)").addClass("active");
+        } else {
+            $(".nav-item:eq(4)").addClass("active");
+        }
+    }
+}
+
+function showWordOnlyLayer() {
+    $('#jb_content').css('display', 'none');
+    $('#jb_memo').css('display', 'none');
+    $('#jb_txtEditor').css('display', 'none');
+    $('#word_container').css('display', 'none');
+    $('#word_only_container').css('display', 'block');
+    $('#jb_only_txtEditor').css('display', 'none');
+    $('#jb_sidebar').css('display', 'none');
+    $('.navbar-collapse').collapse('hide');
+}
+
+function showMemoOnlyLayer() {
+    $('#jb_content').css('display', 'none');
+    $('#jb_memo').css('display', 'none');
+    $('#jb_txtEditor').css('display', 'none');
+    $('#word_container').css('display', 'none');
+    $('#word_only_container').css('display', 'none');
+    $('#jb_only_txtEditor').css('display', 'block');
+    $('#jb_sidebar').css('display', 'none');
+    $('.navbar-collapse').collapse('hide');
+}
+
+function hideWordLayer() {
+    ReadingPractice();
+    $('#word_container').css('display', 'none');
+    $('#jb_txtEditor').css('display', 'block');
+    if($("#pc").val() == "DESKTOP") {
+        $(".nav-item").removeClass("active");
+        if($("#book").val() != "") {
+            $(".nav-item:eq(6)").addClass("active");
+        } else {
+            $(".nav-item:eq(5)").addClass("active");
         }
     }
 }
@@ -604,54 +698,6 @@ function storyNewPost() {
     frm.content.value = orgText;
     frm.submit();		
 
-}
-
-function showWordLayer() {
-    ReadingPractice();
-    $('#word_container').css('display', 'block');
-    $('#jb_txtEditor').css('display', 'none');
-    if($("#pc").val() == "DESKTOP") {
-        $(".nav-item").removeClass("active");
-        if($("#book").val() != "") {
-            $(".nav-item:eq(4)").addClass("active");
-        } else {
-            $(".nav-item:eq(3)").addClass("active");
-        }
-    }
-}
-
-function showWordOnlyLayer() {
-    $('#jb_content').css('display', 'none');
-    $('#jb_txtEditor').css('display', 'none');
-    $('#word_container').css('display', 'none');
-    $('#word_only_container').css('display', 'block');
-    $('#jb_only_txtEditor').css('display', 'none');
-    $('#jb_sidebar').css('display', 'none');
-    $('.navbar-collapse').collapse('hide');
-}
-
-function showMemoOnlyLayer() {
-    $('#jb_content').css('display', 'none');
-    $('#jb_txtEditor').css('display', 'none');
-    $('#word_container').css('display', 'none');
-    $('#word_only_container').css('display', 'none');
-    $('#jb_only_txtEditor').css('display', 'block');
-    $('#jb_sidebar').css('display', 'none');
-    $('.navbar-collapse').collapse('hide');
-}
-
-function hideWordLayer() {
-    ReadingPractice();
-    $('#word_container').css('display', 'none');
-    $('#jb_txtEditor').css('display', 'block');
-    if($("#pc").val() == "DESKTOP") {
-        $(".nav-item").removeClass("active");
-        if($("#book").val() != "") {
-            $(".nav-item:eq(5)").addClass("active");
-        } else {
-            $(".nav-item:eq(4)").addClass("active");
-        }
-    }
 }
 
 function viewR(elem) {

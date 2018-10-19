@@ -30,6 +30,20 @@ p {
     hyphens: auto;
 }
 .hgt {color: black;}
+#jb_memo {
+    height: 90%;
+    position: fixed;
+    top: 70px;
+    left: 66%;
+    margin-bottom: 100px;
+    float: left;
+    border: 0px solid #ffffff;
+    overflow-x: hidden;
+    overflow-y: hidden; /* prevents scroll bar flash */
+    text-indent: 20px;
+    text-align: justify;
+    display: none;
+}
 #jb_txtEditor {
     height: 100%;
     position: fixed;
