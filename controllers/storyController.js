@@ -160,6 +160,7 @@ exports.story_list_ajax = function(req, res, next) {
             } else {
                 list_stories[i].chapter += ', ';
             }
+            list_stories[i].title = entities.decode(list_stories[i].title);
         }
         res.send(list_stories);
       });
