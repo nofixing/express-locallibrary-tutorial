@@ -417,9 +417,9 @@ function wordList() {
     });
     if ( isThere ) return;
     if (wordArray.length == 0 && $("#memo").val() == "") {
-        document.querySelector('#snow-container').children[0].innerHTML = "<strong>"+selectText+"</strong>";
+        document.querySelector('#snow-container').children[0].innerHTML = "<p class='ql-font-PTSans' style='font-size:2em;'><strong>"+selectText+"</strong></p>";
     } else {
-        document.querySelector('#snow-container').children[0].innerHTML = html + "<strong>"+selectText+"</strong>";
+        document.querySelector('#snow-container').children[0].innerHTML = html + "<br><p class='ql-font-PTSans' style='font-size:2em;'><strong>"+selectText+"</strong></p>";
     }
     wordArray.push(selectText);
 }
