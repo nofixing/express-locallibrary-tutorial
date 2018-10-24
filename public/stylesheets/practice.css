@@ -241,6 +241,14 @@ ul.tite li {
     font-family: "Oswald";
 }
 
+#toolbar-container .ql-font span[data-label="Caveat"]::before {
+    font-family: "Caveat";
+}
+
+#toolbar-container .ql-font span[data-label="Raleway"]::before {
+    font-family: "Raleway";
+}
+
 #toolbar-container .ql-font span[data-label="Shadows Into Light"]::before {
     font-family: "Shadows Into Light";
 }
@@ -347,6 +355,14 @@ ul.tite li {
 
 .ql-font-Oswald {
     font-family: "Oswald";            
+}
+
+.ql-font-Caveat {
+    font-family: "Caveat";            
+}
+
+.ql-font-Raleway {
+    font-family: "Raleway";            
 }
 
 .ql-font-ShadowsIntoLight {
