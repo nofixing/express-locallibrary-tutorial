@@ -32,12 +32,68 @@ var toolbarOptions = [
   Size.whitelist = ['1em', '1.5em', '2em', '2.5em', '3em', '3.5em', '4em', '6em', '8em', '10em'];
   Quill.register(Size, true);
 
+var Inline = Quill.import('blots/inline');
+
+class LinkBlot extends Inline {
+  static create(url) {
+    var node = super.create();
+    // Sanitize url if desired
+    node.setAttribute('href', '#');
+    node.setAttribute('title', url);
+    // Okay to set other non-format related attributes
+    node.setAttribute('target', '_blank');
+    node.setAttribute('class', 'tltp');
+    return node;
+  }
+  
+  static formats(node) {
+    // We will only be called with a node already
+    // determined to be a Link blot, so we do
+    // not need to check ourselves
+    return node.getAttribute('href');
+  }
+}
+LinkBlot.blotName = 'link';
+LinkBlot.tagName = 'a';
+
+Quill.register(LinkBlot);
+
   var quill = new Quill('#snow-container', {
     modules: {
       toolbar: '#toolbar-container'
     },
     theme: 'snow'
   });
+
+  var toolbar = quill.getModule('toolbar');
+  toolbar.addHandler('omega', function() {
+    console.log('omega')
+  });
+
+  var customButton = document.querySelector('.ql-omega');
+customButton.addEventListener('click', function() {
+  var range = quill.getSelection();
+  if (range) {
+    if (range.length == 0) {
+      console.log('User cursor is at index', range.index);
+    } else {
+      $('#OpenModal')[0].click();
+    }
+  } else {
+    console.log('User cursor is not in editor');
+  }
+  if (range) {
+        
+  }
+});
+
+$('#InsertTooltip').click(function(){
+  var sTag = "<img src="+$('#recipient-name').val()+"><h4>"+$('#message-text').val()+"</h4>";
+  quill.format('link', sTag);
+  console.log(quill.root.innerHTML);
+  $('#tcls')[0].click();
+});
+
   var memo = $('#memo').val();
   if(typeof memo != 'undefined') {
     quill.clipboard.dangerouslyPasteHTML(memo);

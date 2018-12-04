@@ -301,6 +301,8 @@ $(function(){
         }
     });
 
+    $('.tltp').tooltip({html: true, placement: "right"});
+
 });
 
 function search() {

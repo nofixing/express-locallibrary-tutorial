@@ -385,6 +385,19 @@ ul.tite li {
     font-family: "Alfa Slab One";            
 }
 
+.ql-omega:after {
+    content: "Tooltip";
+}
+
+.tooltip-inner {
+    max-width: 100% !important;
+}
+
+.tltp {
+    color: blue !important;
+    cursor: pointer !important;
+}
+
 .comment-indent {
     margin-left: 30px;
 }
