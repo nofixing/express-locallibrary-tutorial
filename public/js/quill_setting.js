@@ -67,7 +67,7 @@ Quill.register(LinkBlot);
 
   var toolbar = quill.getModule('toolbar');
   toolbar.addHandler('omega', function() {
-    console.log('omega')
+    console.log('omega');
   });
 
   var customButton = document.querySelector('.ql-omega');

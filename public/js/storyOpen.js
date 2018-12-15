@@ -1,10 +1,11 @@
 $( document ).ready(function() {
-    
+  var notCalled = true;
   $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() > $(document).height() - 10) {
         
-        if($("#mxcnt").val() < $("#ct").val()) {
-            
+        if($("#mxcnt").val() < $("#ct").val() && notCalled) {
+            notCalled = false;
+            console.log('story_open_ajax called');
             var data = {};
             data.mxcnt = $("#mxcnt").val();
             data.stle = $("#stle").val();
@@ -38,6 +39,7 @@ $( document ).ready(function() {
                     });
                 }
             });
+            setTimeout(function(){ notCalled = true; }, 3000);
         }
         
     }
