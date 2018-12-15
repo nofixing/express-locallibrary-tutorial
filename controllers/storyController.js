@@ -58,7 +58,7 @@ exports.story_open_list = function(req, res, next) {
                 list_stories[i].btitle = entities.decode(list_stories[i].btitle);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct, cfnt: req.session.cfnt });
+            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+50, ct: ct, cfnt: req.session.cfnt });
         });
     } else {
         Story.find({open: 'Y'}).count().exec(function (err, count) {
@@ -76,7 +76,7 @@ exports.story_open_list = function(req, res, next) {
                 list_stories[i].btitle = entities.decode(list_stories[i].btitle);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+20, ct: ct, cfnt: req.session.cfnt });
+            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+50, ct: ct, cfnt: req.session.cfnt });
         });
     }
   
@@ -105,7 +105,7 @@ exports.story_open_ajax = function(req, res, next) {
                     return next(err); 
                 }
                 
-                list_stories.mxcnt = mxcnt+20;
+                list_stories.mxcnt = mxcnt+50;
                 list_stories.ct = ct;
                 //console.log(list_stories);
                 res.send(list_stories);
@@ -122,9 +122,9 @@ exports.story_open_ajax = function(req, res, next) {
                     return next(err); 
                 }
                 
-                list_stories.mxcnt = mxcnt+20;
+                list_stories.mxcnt = mxcnt+50;
                 list_stories.ct = ct;
-                //console.log(list_stories);
+                console.log(list_stories);
                 res.send(list_stories);
         });
     }
