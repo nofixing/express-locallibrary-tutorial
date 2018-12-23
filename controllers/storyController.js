@@ -18,7 +18,7 @@ var async = require('async');
 // Display list of all stories.
 exports.story_list = function(req, res, next) {
 
-  Story.find({$and:[{user: req.session.userId}, {book: null}, {$or: [{open: null}, {open: 'N'}]}] }).collation({locale: 'en' }).sort({date: 1})
+  Story.find({$and:[{user: req.session.userId}, {book: null}, {$or: [{open: null}, {open: 'N'}]}] }).collation({locale: 'en' }).sort({create_date: 1})
     .exec(function (err, list_stories) {
       if (err) { return next(err); }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
@@ -46,7 +46,7 @@ exports.story_open_list = function(req, res, next) {
             ct =count;
         });
         Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {btitle: { $regex: '.*' + req.body.stle + '.*' }}]})
-            .skip(mxcnt).limit(mxcnt+50).sort({date: -1, order: 1})
+            .skip(mxcnt).limit(mxcnt+50).sort({create_date: -1, order: 1})
             .populate('user')
             .populate('book')
             .exec(function (err, list_stories) {
@@ -64,7 +64,7 @@ exports.story_open_list = function(req, res, next) {
         Story.find({open: 'Y'}).count().exec(function (err, count) {
             ct =count;
         });
-        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1, order: 1})
+        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({create_date: -1, order: 1})
             .populate('user')
             .populate('book')
             .exec(function (err, list_stories) {
@@ -97,7 +97,7 @@ exports.story_open_ajax = function(req, res, next) {
             ct =count;
         });
         Story.find({open: 'Y', $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {btitle: { $regex: '.*' + req.body.stle + '.*' }}]})
-            .skip(mxcnt).limit(mxcnt+50).sort({date: -1, order: 1})
+            .skip(mxcnt).limit(mxcnt+50).sort({create_date: -1, order: 1})
             .populate('user')
             .exec(function (err, list_stories) {
                 if (err) { 
@@ -114,7 +114,7 @@ exports.story_open_ajax = function(req, res, next) {
         Story.find({open: 'Y'}).count().exec(function (err, count) {
             ct =count;
         });
-        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({date: -1, order: 1})
+        Story.find({open: 'Y'}).skip(mxcnt).limit(mxcnt+50).sort({create_date: -1, order: 1})
             .populate('user')
             .exec(function (err, list_stories) {
                 if (err) { 
@@ -160,7 +160,7 @@ exports.story_detail = function(req, res, next) {
         },
         comments: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
-            Comment.find({story: req.params.id}).populate('user').sort({date: 1}).exec(callback);
+            Comment.find({story: req.params.id}).populate('user').sort({create_date: 1}).exec(callback);
         },
         words: function(callback) {
             //console.log("user:"+req.session.userId+"/story:"+req.params.id);
@@ -173,7 +173,7 @@ exports.story_detail = function(req, res, next) {
                 .exec(callback);
             }
             */
-           Word.find({story: req.params.id}).collation({locale: 'en' }).sort({title: 1})
+           Word.find({story: req.params.id}).collation({locale: 'en' }).sort({create_date: -1, order: 1})
                 .exec(callback);
         },
         memo: function(callback) {
@@ -232,7 +232,7 @@ exports.story_detail = function(req, res, next) {
                     { title: results.story.title,
                       story: req.params.id,
                       user: req.session.userId,
-                      date: Date.now()
+                      create_date: Date.now()
                      });
                 history.save(function (err) {
                     if (err) { console.log(err); return next(err); }
@@ -240,7 +240,7 @@ exports.story_detail = function(req, res, next) {
                 }); 
             } else {
                 console.log(theHistory);
-                var newvalues = { $set: {date: Date.now()} };
+                var newvalues = { $set: {create_date: Date.now()} };
                 History.findByIdAndUpdate(theHistory[0]._id, newvalues, {}, function(err, updatedHistory) {
                     if (err) { console.log(err); return next(err); }
                     //console.log("history updated");
@@ -248,7 +248,7 @@ exports.story_detail = function(req, res, next) {
                 });
                 /*
                 History.update({_id: theHistory._id}, {
-                    date: Date.now()
+                    create_date: Date.now()
                 }, function(err, updatedHistory) {
                     if (err) { console.log(err); return next(err); }
                     console.log("history updated");
@@ -458,7 +458,7 @@ exports.story_create_post = [
             chapter: req.body.chapter,
             btitle: req.body.btitle,
             open: req.body.open,
-            date: Date.now()
+            create_date: Date.now()
            });
 
         var storyOnly = new Story(
@@ -468,7 +468,7 @@ exports.story_create_post = [
               reference: req.body.reference,
               genre: req.body.genre,
               user: req.session.userId,
-              date: Date.now(),
+              create_date: Date.now(),
               open: req.body.open
              });
 

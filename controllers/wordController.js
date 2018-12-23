@@ -1,7 +1,11 @@
 var Word = require('../models/word');
+var moment = require('moment');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
+
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
 
 var async = require('async');
 
@@ -221,3 +225,109 @@ exports.word_update_post = function(req, res, next) {
 
 };
 
+exports.word_board_list = function(req, res, next) {
+    console.log("Server side word_board_list called.");
+    var mxcnt = 0;
+    if(typeof req.body.mxcnt !='undefined') {
+        mxcnt = req.body.mxcnt;
+    }
+    
+    var ct = 0;
+    if(typeof req.body.stle !='undefined' && req.body.stle != '') {
+        Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
+            .count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
+            .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate('story', 'title')
+            .exec(function (err, list_words) {
+            if (err) { return next(err); }
+            for (let i = 0; i < list_words.length; i++) {
+                if (list_words[i].story != null && list_words[i].story.title != null) {
+                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+            }
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('word_board_list', { title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+        });
+    } else {
+        Word.find({user: req.session.userId}).count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId}).skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate('story', 'title')
+            .exec(function (err, list_words) {
+            if (err) { return next(err); }
+            console.log(list_words);
+            for (let i = 0; i < list_words.length; i++) {
+                if(list_words[i].create_date != null){
+                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                }
+                if (list_words[i].story != null && list_words[i].story.title != null) {
+                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+            }
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('word_board_list', { title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+        });
+    }
+  
+};
+
+exports.word_board_ajax = function(req, res, next) {
+    console.log("Server side word_board_ajax called.");
+    var mxcnt = 0;
+    if(typeof req.body.mxcnt !='undefined') {
+        mxcnt = req.body.mxcnt;
+    }
+    mxcnt = Number(mxcnt);
+    var ct = 0;
+    
+    if(typeof req.body.stle !='undefined' && req.body.stle != '') {
+        Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
+            .count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
+            .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate('story', 'title')
+            .exec(function (err, list_words) {
+                if (err) { 
+                    console.log(err);
+                    return next(err); 
+                }
+                for (let i = 0; i < list_words.length; i++) {
+                    if (list_words[i].story != null && list_words[i].story.title != null) {
+                        list_words[i].story.title = entities.decode(list_words[i].story.title);
+                    }
+                }
+                list_words.mxcnt = mxcnt+100;
+                list_words.ct = ct;
+                //console.log(list_words);
+                res.send(list_words);
+        });
+    } else {
+        Word.find({user: req.session.userId}).count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId}).skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate('story', 'title')
+            .exec(function (err, list_words) {
+                if (err) { 
+                    console.log(err);
+                    return next(err); 
+                }
+                for (let i = 0; i < list_words.length; i++) {
+                    if (list_words[i].story != null && list_words[i].story.title != null) {
+                        list_words[i].story.title = entities.decode(list_words[i].story.title);
+                    }
+                }
+                list_words.mxcnt = mxcnt+100;
+                list_words.ct = ct;
+                console.log(list_words);
+                res.send(list_words);
+        });
+    }
+  
+};

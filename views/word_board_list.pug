@@ -1,0 +1,68 @@
+extends layout
+
+block content
+	h1(style='margin-top:100px;') #{translation.WordList}
+	h5(style='margin-top:20px; color:#800080;') #{translation.OpenTipWords}
+	<div>
+		<form method="post" action="/catalog/word_board_list">
+			<div class="form-group row" style="float: right;">
+				<p style="height: 30px;padding-top: 10px;">#{translation.SearchTipWords}</p>&nbsp;&nbsp;&nbsp;
+				<input type="text" id="stle" name="stle" class="form-control" style="width:300px; margin-right:10px;"/>
+				<button type="submit" class="btn btn-primary" style="margin-right:15px;">#{translation.Search}</button>
+			</div>
+		</form>
+	</div>
+	table(class='table table-striped table-hover table-condensed' style='margin-top: 10px;')
+		if pc
+			thead
+				tr
+					th(width='15%') #{translation.Word}
+					th(width='35%') #{translation.Meaning}
+					th(width='20%') #{translation.Story}
+					th(width='10%') #{translation.Skill}
+					th(width='10%') #{translation.Importance}
+					th(width='10%') #{translation.CreateDate}
+			tbody.wtd
+				if word_board_list
+					each word in word_board_list
+						tr
+							td
+								span #{word.title}
+							td
+								span #{word.content}
+							td
+								if word.story
+									span #{word.story.title}
+							td
+								span #{word.skill}
+							td
+								span #{word.importance}
+							td
+								span #{word.create_date}
+				else
+					tr
+						td(colspan='6')
+							#{translation.nostories}
+		else
+			thead
+				tr
+					th(width='40%') #{translation.Word}
+					th(width='60%') #{translation.Meaning}
+			tbody.wtd
+				if word_board_list
+					each word in word_board_list
+						tr
+							td
+								span #{word.title}
+							td
+								span #{word.content}
+				else
+					tr
+						td(colspan='2') 
+							#{translation.nostories}
+	<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+	<input type="hidden" id="mxcnt" name="mxcnt" value="#{mxcnt}" />
+	<input type="hidden" id="ct" name="ct" value="#{ct}" />
+	<input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
+	<input type="hidden" id="pc" name="pc" value="#{pc}" />
+	<script src="/js/wordBoard.js"></script>		

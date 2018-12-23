@@ -6,7 +6,7 @@ var HistorySchema = new Schema({
     title: {type: String, required: true},
     story: { type: Schema.ObjectId, ref: 'Story' },
     user: { type: Schema.ObjectId, ref: 'User', required: true },
-    date: Date
+    create_date: Date
 });
 
 HistorySchema

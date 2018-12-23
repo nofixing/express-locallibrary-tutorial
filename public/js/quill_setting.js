@@ -82,9 +82,6 @@ customButton.addEventListener('click', function() {
   } else {
     console.log('User cursor is not in editor');
   }
-  if (range) {
-        
-  }
 });
 
 $('#InsertTooltip').click(function(){

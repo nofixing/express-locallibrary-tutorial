@@ -147,6 +147,12 @@ router.get('/words', word_controller.word_list);
 // GET request for list of all Book.
 router.get('/word_list', word_controller.words);
 
+router.get('/word_board_list', word_controller.word_board_list);
+
+router.post('/word_board_list', word_controller.word_board_list);
+
+router.post('/word_board_ajax', word_controller.word_board_ajax);
+
 /// MEMO ROUTES ///
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).

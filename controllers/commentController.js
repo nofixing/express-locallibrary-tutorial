@@ -12,7 +12,7 @@ exports.comment_create_post = [
             story: req.body.sfkb,
             user: req.session.userId,
             content: req.body.content,
-            date: Date.now()
+            create_date: Date.now()
             });
         
         comment.save(function(err, comment) {
@@ -39,7 +39,7 @@ exports.comment_create_post2 = [
             var comment = new Comment({ 
                 user: req.session.userId,
                 content: req.body.content,
-                date: Date.now()
+                create_date: Date.now()
                 });
             
             comment.save(function(err, comment) {
