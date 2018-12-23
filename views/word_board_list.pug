@@ -16,8 +16,9 @@ block content
 		if pc
 			thead
 				tr
+					th(width='5%') #{translation.Rownum}
 					th(width='15%') #{translation.Word}
-					th(width='35%') #{translation.Meaning}
+					th(width='30%') #{translation.Meaning}
 					th(width='20%') #{translation.Story}
 					th(width='10%') #{translation.Skill}
 					th(width='10%') #{translation.Importance}
@@ -27,12 +28,14 @@ block content
 					each word in word_board_list
 						tr
 							td
+								span #{word.rownum}
+							td
 								span #{word.title}
 							td
 								span #{word.content}
 							td
 								if word.story
-									span #{word.story.title}
+									a(href='/catalog/story/'+word.story._id) #{word.story.title}
 							td
 								span #{word.skill}
 							td
@@ -41,24 +44,27 @@ block content
 								span #{word.create_date}
 				else
 					tr
-						td(colspan='6')
+						td(colspan='7')
 							#{translation.nostories}
 		else
 			thead
 				tr
-					th(width='40%') #{translation.Word}
+					th(width='5%') #{translation.Rownum}
+					th(width='35%') #{translation.Word}
 					th(width='60%') #{translation.Meaning}
 			tbody.wtd
 				if word_board_list
 					each word in word_board_list
 						tr
 							td
+								span #{word.rownum}
+							td
 								span #{word.title}
 							td
 								span #{word.content}
 				else
 					tr
-						td(colspan='2') 
+						td(colspan='3') 
 							#{translation.nostories}
 	<a href="#" id="back-to-top" title="Back to top">&uarr;</a>
 	<input type="hidden" id="mxcnt" name="mxcnt" value="#{mxcnt}" />

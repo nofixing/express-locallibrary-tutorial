@@ -23,10 +23,11 @@ $( document ).ready(function() {
                     $.each(list_words, function(i, word){
                         var markup = "";
                         if($("#pc").val() == "DESKTOP") {
-                            markup = "<tr><td><span>"+word.title+"</span></td>";
+                            markup = "<tr><td><span>"+word.rownum+"</span></td>";
+                            markup += "<td><span>"+word.title+"</span></td>";
                             if(word.content != null) markup += "<td><span>"+word.content+"</span></td>";
                             else markup += "<td><span></span></td>";
-                            if(word.story != null && word.story.title  != null) markup += "<td><span>"+word.story.title+"</span></td>";
+                            if(word.story != null && word.story.title  != null) markup += "<td><a href='/catalog/story/"+word.story._id+"'>"+word.story.title+"</a></td>";
                             else markup += "<td><span></span></td>";
                             if(word.skill != null) markup += "<td><span>"+word.skill+"</span></td>";
                             else markup += "<td><span></span></td>";
@@ -36,7 +37,8 @@ $( document ).ready(function() {
                             else markup += "<td><span></span></td></tr>";
                             $(".wtd").append(markup);
                         } else {
-                            markup = "<tr><td><span>"+word.title+"</span></td>";
+                            markup = "<tr><td><span>"+word.rownum+"</span></td>";
+                            markup += "<td><span>"+word.title+"</span></td>";
                             if(word.content != null) markup += "<td><span>"+word.content+"</span></td>";
                             else markup += "<td><span></span></td></tr>";
                             $(".wtd").append(markup);

@@ -240,10 +240,14 @@ exports.word_board_list = function(req, res, next) {
         });
         Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
-            .lean().populate('story', 'title')
+            .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
             if (err) { return next(err); }
             for (let i = 0; i < list_words.length; i++) {
+                list_words[i].rownum = mxcnt + i + 1;
+                if(list_words[i].create_date != null){
+                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
                 }
@@ -256,11 +260,12 @@ exports.word_board_list = function(req, res, next) {
             ct =count;
         });
         Word.find({user: req.session.userId}).skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
-            .lean().populate('story', 'title')
+            .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
             if (err) { return next(err); }
             console.log(list_words);
             for (let i = 0; i < list_words.length; i++) {
+                list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
                     list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
@@ -291,13 +296,17 @@ exports.word_board_ajax = function(req, res, next) {
         });
         Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
-            .lean().populate('story', 'title')
+            .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
                 if (err) { 
                     console.log(err);
                     return next(err); 
                 }
                 for (let i = 0; i < list_words.length; i++) {
+                    list_words[i].rownum = mxcnt + i + 1;
+                    if(list_words[i].create_date != null){
+                        list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    }
                     if (list_words[i].story != null && list_words[i].story.title != null) {
                         list_words[i].story.title = entities.decode(list_words[i].story.title);
                     }
@@ -312,13 +321,17 @@ exports.word_board_ajax = function(req, res, next) {
             ct =count;
         });
         Word.find({user: req.session.userId}).skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
-            .lean().populate('story', 'title')
+            .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
                 if (err) { 
                     console.log(err);
                     return next(err); 
                 }
                 for (let i = 0; i < list_words.length; i++) {
+                    list_words[i].rownum = mxcnt + i + 1;
+                    if(list_words[i].create_date != null){
+                        list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    }
                     if (list_words[i].story != null && list_words[i].story.title != null) {
                         list_words[i].story.title = entities.decode(list_words[i].story.title);
                     }
