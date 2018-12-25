@@ -309,17 +309,17 @@ html(lang='en')
                 td
                   input(type='text' size='15' maxlength='30' class='form-control ipt' value=word.title)
                   select.importance.form-control(type='select', style='margin-top: 10px;')
-                    option(value='#{translation.NotImportance}' selected=(word.importance==='#{translation.NotImportance}' ? 'selected' : false) ) #{translation.NotImportance}
-                    option(value='#{translation.Important}' selected=(word.importance==='#{translation.Important}' ? 'selected' : false) ) #{translation.Important}
-                    option(value='#{translation.VeryImportance}' selected=(word.importance==='#{translation.VeryImportance}' ? 'selected' : false) ) #{translation.VeryImportance}
-                    option(value='#{translation.Indispensable}' selected=(word.importance==='#{translation.Indispensable}' ? 'selected' : false) ) #{translation.Indispensable}
+                    option(value='1' selected=(word.importance==='1' ? 'selected' : false) ) #{translation.NotImportance}
+                    option(value='2' selected=(word.importance==='2' ? 'selected' : false) ) #{translation.Important}
+                    option(value='3' selected=(word.importance==='3' ? 'selected' : false) ) #{translation.VeryImportance}
+                    option(value='4' selected=(word.importance==='4' ? 'selected' : false) ) #{translation.Indispensable}
                 td
                   textarea(class='form-control txt' rows='1' cols='45') #{word.content}
                   select.skill.form-control(type='select', style='margin-top: 10px;')
-                    option(value='#{translation.NotKnow}' selected=(word.skill==='#{translation.NotKnow}' ? 'selected' : false) ) #{translation.NotKnow}
-                    option(value='#{translation.SawSeveralTime}' selected=(word.skill==='#{translation.SawSeveralTime}' ? 'selected' : false) ) #{translation.SawSeveralTime}
-                    option(value='#{translation.BeUsedTo}' selected=(word.skill==='#{translation.BeUsedTo}' ? 'selected' : false) ) #{translation.BeUsedTo}
-                    option(value='#{translation.RememberComplete}' selected=(word.skill==='#{translation.RememberComplete}' ? 'selected' : false) ) #{translation.RememberComplete}
+                    option(value='1' selected=(word.skill==='1' ? 'selected' : false) ) #{translation.NotKnow}
+                    option(value='2' selected=(word.skill==='2' ? 'selected' : false) ) #{translation.SawSeveralTime}
+                    option(value='3' selected=(word.skill==='3' ? 'selected' : false) ) #{translation.BeUsedTo}
+                    option(value='4' selected=(word.skill==='4' ? 'selected' : false) ) #{translation.RememberComplete}
         <button type="button" id="wordAdd">#{translation.Add}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>

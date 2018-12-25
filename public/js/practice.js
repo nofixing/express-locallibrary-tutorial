@@ -67,18 +67,18 @@ $(function(){
                     markup += "<td><input type='text' size='15' maxlength='30' class='form-control ipt' value='"+data.title+"'>";
 
                     markup += "<select class='importance form-control' style='margin-top: 10px;'>";
-                    markup += "<option value='"+$('#NotImportance').val()+"'>"+$('#NotImportance').val()+"</option>";
-                    markup += "<option value='"+$('#Important').val()+"'>"+$('#Important').val()+"</option>";
-                    markup += "<option value='"+$('#VeryImportance').val()+"'>"+$('#VeryImportance').val()+"</option>";
-                    markup += "<option value='"+$('#Indispensable').val()+"'>"+$('#Indispensable').val()+"</option></td>";
+                    markup += "<option value='1'>"+$('#NotImportance').val()+"</option>";
+                    markup += "<option value='2'>"+$('#Important').val()+"</option>";
+                    markup += "<option value='3'>"+$('#VeryImportance').val()+"</option>";
+                    markup += "<option value='4'>"+$('#Indispensable').val()+"</option></td>";
 
                     markup += "<td><textarea class='form-control txt' rows='1' cols='45'></textarea>";
 
                     markup += "<select class='skill form-control' style='margin-top: 10px;'>";
-                    markup += "<option value='"+$('#NotKnow').val()+"'>"+$('#NotKnow').val()+"</option>";
-                    markup += "<option value='"+$('#SawSeveralTime').val()+"'>"+$('#SawSeveralTime').val()+"</option>";
-                    markup += "<option value='"+$('#BeUsedTo').val()+"'>"+$('#BeUsedTo').val()+"</option>";
-                    markup += "<option value='"+$('#RememberComplete').val()+"'>"+$('#RememberComplete').val()+"</option></td></tr>";
+                    markup += "<option value='1'>"+$('#NotKnow').val()+"</option>";
+                    markup += "<option value='2'>"+$('#SawSeveralTime').val()+"</option>";
+                    markup += "<option value='3'>"+$('#BeUsedTo').val()+"</option>";
+                    markup += "<option value='4'>"+$('#RememberComplete').val()+"</option></td></tr>";
 
                     $(".wtd").append(markup);
         
@@ -237,18 +237,18 @@ $(function(){
         markup += "<td><input type='text' size='15' maxlength='30' class='form-control ipt' value=''>";
         
         markup += "<select class='importance form-control' style='margin-top: 10px;'>";
-        markup += "<option value='"+$('#NotImportance').val()+"'>"+$('#NotImportance').val()+"</option>";
-        markup += "<option value='"+$('#Important').val()+"'>"+$('#Important').val()+"</option>";
-        markup += "<option value='"+$('#VeryImportance').val()+"'>"+$('#VeryImportance').val()+"</option>";
-        markup += "<option value='"+$('#Indispensable').val()+"'>"+$('#Indispensable').val()+"</option></td>";
+        markup += "<option value='1'>"+$('#NotImportance').val()+"</option>";
+        markup += "<option value='2'>"+$('#Important').val()+"</option>";
+        markup += "<option value='3'>"+$('#VeryImportance').val()+"</option>";
+        markup += "<option value='4'>"+$('#Indispensable').val()+"</option></td>";
 
         markup += "<td><textarea class='form-control txt' rows='1' cols='45'></textarea>";
 
         markup += "<select class='skill form-control' style='margin-top: 10px;'>";
-        markup += "<option value='"+$('#NotKnow').val()+"'>"+$('#NotKnow').val()+"</option>";
-        markup += "<option value='"+$('#SawSeveralTime').val()+"'>"+$('#SawSeveralTime').val()+"</option>";
-        markup += "<option value='"+$('#BeUsedTo').val()+"'>"+$('#BeUsedTo').val()+"</option>";
-        markup += "<option value='"+$('#RememberComplete').val()+"'>"+$('#RememberComplete').val()+"</option></td></tr>";
+        markup += "<option value='1'>"+$('#NotKnow').val()+"</option>";
+        markup += "<option value='2'>"+$('#SawSeveralTime').val()+"</option>";
+        markup += "<option value='3'>"+$('#BeUsedTo').val()+"</option>";
+        markup += "<option value='4'>"+$('#RememberComplete').val()+"</option></td></tr>";
         $(".wtd").append(markup);
     });
 
