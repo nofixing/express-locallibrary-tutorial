@@ -12,7 +12,7 @@ var WordSchema = new Schema({
     references: [{type: String}],
     skill: { type: String },
     importance: { type: String },
-    create_date: {type: Date, default: Date.now}
+    create_date: {type: Date}
 });
 
 // Virtual for this word instance URL.

@@ -63,9 +63,23 @@ $(function(){
                 async: false,
                 success : function(data) {
         
-                    var markup = "<tr><td style='text-align: center;'><input type='checkbox' class='wList' value='"+data.word_id+"'></td>";
-                    markup += "<td><input type='text' size='15' maxlength='30' class='ipt' value='"+data.title+"'></td>";
-                    markup += "<td><textarea class='txt' rows='3' cols='45'></textarea></td></tr>";
+                    var markup = "<tr><td style='text-align: center;'><div class='checkbox'><input type='checkbox' class='wList' value='"+data.word_id+"'></div></td>";
+                    markup += "<td><input type='text' size='15' maxlength='30' class='form-control ipt' value='"+data.title+"'>";
+
+                    markup += "<select class='importance form-control' style='margin-top: 10px;'>";
+                    markup += "<option value='"+$('#NotImportance').val()+"'>"+$('#NotImportance').val()+"</option>";
+                    markup += "<option value='"+$('#Important').val()+"'>"+$('#Important').val()+"</option>";
+                    markup += "<option value='"+$('#VeryImportance').val()+"'>"+$('#VeryImportance').val()+"</option>";
+                    markup += "<option value='"+$('#Indispensable').val()+"'>"+$('#Indispensable').val()+"</option></td>";
+
+                    markup += "<td><textarea class='form-control txt' rows='1' cols='45'></textarea>";
+
+                    markup += "<select class='skill form-control' style='margin-top: 10px;'>";
+                    markup += "<option value='"+$('#NotKnow').val()+"'>"+$('#NotKnow').val()+"</option>";
+                    markup += "<option value='"+$('#SawSeveralTime').val()+"'>"+$('#SawSeveralTime').val()+"</option>";
+                    markup += "<option value='"+$('#BeUsedTo').val()+"'>"+$('#BeUsedTo').val()+"</option>";
+                    markup += "<option value='"+$('#RememberComplete').val()+"'>"+$('#RememberComplete').val()+"</option></td></tr>";
+
                     $(".wtd").append(markup);
         
                 }
@@ -175,6 +189,8 @@ $(function(){
                 data.story_id = $( "#story_id" ).val();
                 data.title = $('.ipt')[idx].value;
                 data.content = $('.txt')[idx].value;
+                data.importance = $('.importance')[idx].value;
+                data.skill = $('.skill')[idx].value;
                 var httpType = 'https://';
                 if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
                 $.ajax({
@@ -217,9 +233,22 @@ $(function(){
     });
 
     $('#wordAdd').click(function(){
-        var markup = "<tr><td style='text-align: center;'><input type='checkbox' class='wList' value=''></td>";
-        markup += "<td><input type='text' size='20' maxlength='30' class='ipt' value=''></td>";
-        markup += "<td><textarea class='txt' rows='3' cols='50'></textarea></td></tr>";
+        var markup = "<tr><td style='text-align: center;'><div class='checkbox'><input type='checkbox' class='wList' value=''></div></td>";
+        markup += "<td><input type='text' size='15' maxlength='30' class='form-control ipt' value=''>";
+        
+        markup += "<select class='importance form-control' style='margin-top: 10px;'>";
+        markup += "<option value='"+$('#NotImportance').val()+"'>"+$('#NotImportance').val()+"</option>";
+        markup += "<option value='"+$('#Important').val()+"'>"+$('#Important').val()+"</option>";
+        markup += "<option value='"+$('#VeryImportance').val()+"'>"+$('#VeryImportance').val()+"</option>";
+        markup += "<option value='"+$('#Indispensable').val()+"'>"+$('#Indispensable').val()+"</option></td>";
+
+        markup += "<td><textarea class='form-control txt' rows='1' cols='45'></textarea>";
+
+        markup += "<select class='skill form-control' style='margin-top: 10px;'>";
+        markup += "<option value='"+$('#NotKnow').val()+"'>"+$('#NotKnow').val()+"</option>";
+        markup += "<option value='"+$('#SawSeveralTime').val()+"'>"+$('#SawSeveralTime').val()+"</option>";
+        markup += "<option value='"+$('#BeUsedTo').val()+"'>"+$('#BeUsedTo').val()+"</option>";
+        markup += "<option value='"+$('#RememberComplete').val()+"'>"+$('#RememberComplete').val()+"</option></td></tr>";
         $(".wtd").append(markup);
     });
 

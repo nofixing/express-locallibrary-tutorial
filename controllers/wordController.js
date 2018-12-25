@@ -194,13 +194,18 @@ exports.word_update_post = function(req, res, next) {
         user: req.session.userId,
         story: req.body.story_id,
         content: req.body.content,
+        skill: req.body.skill,
+        importance: req.body.importance,
         _id:req.body.id // This is required, or a new ID will be assigned!
        });
     var newWord = new Word(
         { title: req.body.title,
           user: req.session.userId,
           story: req.body.story_id,
-          content: req.body.content
+          content: req.body.content,
+          skill: req.body.skill,
+          importance: req.body.importance,
+          create_date: Date.now()
          });
     //console.log('word update start');
     Word.findById({_id: req.body.id})
@@ -255,6 +260,72 @@ exports.word_board_list = function(req, res, next) {
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
             res.render('word_board_list', { title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
         });
+    } else if(typeof req.body.importance !='undefined' && req.body.importance != '' && (typeof req.body.skill =='undefined' || req.body.skill == '')) {
+        Word.find({user: req.session.userId, importance: req.body.importance})
+            .count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId, importance: req.body.importance})
+            .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate({ path: 'story', select: '_id title' })
+            .exec(function (err, list_words) {
+            if (err) { return next(err); }
+            for (let i = 0; i < list_words.length; i++) {
+                list_words[i].rownum = mxcnt + i + 1;
+                if(list_words[i].create_date != null){
+                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                }
+                if (list_words[i].story != null && list_words[i].story.title != null) {
+                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+            }
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('word_board_list', {importance: req.body.importance, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+        });
+    } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance =='undefined' || req.body.importance == '')) {
+        Word.find({user: req.session.userId, skill: req.body.skill})
+            .count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId, skill: req.body.skill})
+            .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate({ path: 'story', select: '_id title' })
+            .exec(function (err, list_words) {
+            if (err) { return next(err); }
+            for (let i = 0; i < list_words.length; i++) {
+                list_words[i].rownum = mxcnt + i + 1;
+                if(list_words[i].create_date != null){
+                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                }
+                if (list_words[i].story != null && list_words[i].story.title != null) {
+                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+            }
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('word_board_list', {skill: req.body.skill, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+        });
+    } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance !='undefined' && req.body.importance != '')) {
+        Word.find({user: req.session.userId, skill: req.body.skill, importance: req.body.importance})
+            .count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId, skill: req.body.skill, importance: req.body.importance})
+            .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate({ path: 'story', select: '_id title' })
+            .exec(function (err, list_words) {
+            if (err) { return next(err); }
+            for (let i = 0; i < list_words.length; i++) {
+                list_words[i].rownum = mxcnt + i + 1;
+                if(list_words[i].create_date != null){
+                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                }
+                if (list_words[i].story != null && list_words[i].story.title != null) {
+                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+            }
+            var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+            res.render('word_board_list', {skill: req.body.skill, importance: req.body.importance, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+        });
     } else {
         Word.find({user: req.session.userId}).count().exec(function (err, count) {
             ct =count;
@@ -263,7 +334,7 @@ exports.word_board_list = function(req, res, next) {
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
             if (err) { return next(err); }
-            console.log(list_words);
+            //console.log(list_words);
             for (let i = 0; i < list_words.length; i++) {
                 list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
@@ -316,6 +387,78 @@ exports.word_board_ajax = function(req, res, next) {
                 //console.log(list_words);
                 res.send(list_words);
         });
+    } else if(typeof req.body.importance !='undefined' && req.body.importance != '' && (typeof req.body.skill =='undefined' || req.body.skill == '')) {
+        Word.find({user: req.session.userId, importance: req.body.importance})
+            .count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId, importance: req.body.importance})
+            .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate({ path: 'story', select: '_id title' })
+            .exec(function (err, list_words) {
+            if (err) { return next(err); }
+            for (let i = 0; i < list_words.length; i++) {
+                list_words[i].rownum = mxcnt + i + 1;
+                if(list_words[i].create_date != null){
+                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                }
+                if (list_words[i].story != null && list_words[i].story.title != null) {
+                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+            }
+            list_words.mxcnt = mxcnt+100;
+            list_words.ct = ct;
+            //console.log(list_words);
+            res.send(list_words);
+        });
+    } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance =='undefined' || req.body.importance == '')) {
+        Word.find({user: req.session.userId, skill: req.body.skill})
+            .count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId, skill: req.body.skill})
+            .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate({ path: 'story', select: '_id title' })
+            .exec(function (err, list_words) {
+            if (err) { return next(err); }
+            for (let i = 0; i < list_words.length; i++) {
+                list_words[i].rownum = mxcnt + i + 1;
+                if(list_words[i].create_date != null){
+                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                }
+                if (list_words[i].story != null && list_words[i].story.title != null) {
+                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+            }
+            list_words.mxcnt = mxcnt+100;
+            list_words.ct = ct;
+            //console.log(list_words);
+            res.send(list_words);
+        });
+    } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance !='undefined' && req.body.importance != '')) {
+        Word.find({user: req.session.userId, skill: req.body.skill, importance: req.body.importance})
+            .count().exec(function (err, count) {
+            ct =count;
+        });
+        Word.find({user: req.session.userId, skill: req.body.skill, importance: req.body.importance})
+            .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+            .lean().populate({ path: 'story', select: '_id title' })
+            .exec(function (err, list_words) {
+            if (err) { return next(err); }
+            for (let i = 0; i < list_words.length; i++) {
+                list_words[i].rownum = mxcnt + i + 1;
+                if(list_words[i].create_date != null){
+                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                }
+                if (list_words[i].story != null && list_words[i].story.title != null) {
+                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+            }
+            list_words.mxcnt = mxcnt+100;
+            list_words.ct = ct;
+            //console.log(list_words);
+            res.send(list_words);
+        });
     } else {
         Word.find({user: req.session.userId}).count().exec(function (err, count) {
             ct =count;
@@ -338,7 +481,7 @@ exports.word_board_ajax = function(req, res, next) {
                 }
                 list_words.mxcnt = mxcnt+100;
                 list_words.ct = ct;
-                console.log(list_words);
+                //console.log(list_words);
                 res.send(list_words);
         });
     }

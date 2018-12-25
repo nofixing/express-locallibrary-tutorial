@@ -296,18 +296,30 @@ html(lang='en')
           thead
             tr
               th(style='text-align: center;')
-                input#checkall(type='checkbox')
-              th #{translation.Title}
-              th #{translation.Content}
+                div.checkbox
+                  input#checkall(type='checkbox')
+              th #{translation.WordCol1}
+              th #{translation.WordCol2}
           tbody.wtd
             each word, i in word_list
               tr
                 td(style='text-align: center;') 
-                  input(type='checkbox' class='wList' value=word._id)
+                  div.checkbox
+                    input(type='checkbox' class='wList' value=word._id)
                 td
-                  input(type='text' size='15' maxlength='30' class='ipt' value=word.title)
+                  input(type='text' size='15' maxlength='30' class='form-control ipt' value=word.title)
+                  select.importance.form-control(type='select', style='margin-top: 10px;')
+                    option(value='#{translation.NotImportance}' selected=(word.importance==='#{translation.NotImportance}' ? 'selected' : false) ) #{translation.NotImportance}
+                    option(value='#{translation.Important}' selected=(word.importance==='#{translation.Important}' ? 'selected' : false) ) #{translation.Important}
+                    option(value='#{translation.VeryImportance}' selected=(word.importance==='#{translation.VeryImportance}' ? 'selected' : false) ) #{translation.VeryImportance}
+                    option(value='#{translation.Indispensable}' selected=(word.importance==='#{translation.Indispensable}' ? 'selected' : false) ) #{translation.Indispensable}
                 td
-                  textarea(class='txt' rows='3' cols='45') #{word.content}
+                  textarea(class='form-control txt' rows='1' cols='45') #{word.content}
+                  select.skill.form-control(type='select', style='margin-top: 10px;')
+                    option(value='#{translation.NotKnow}' selected=(word.skill==='#{translation.NotKnow}' ? 'selected' : false) ) #{translation.NotKnow}
+                    option(value='#{translation.SawSeveralTime}' selected=(word.skill==='#{translation.SawSeveralTime}' ? 'selected' : false) ) #{translation.SawSeveralTime}
+                    option(value='#{translation.BeUsedTo}' selected=(word.skill==='#{translation.BeUsedTo}' ? 'selected' : false) ) #{translation.BeUsedTo}
+                    option(value='#{translation.RememberComplete}' selected=(word.skill==='#{translation.RememberComplete}' ? 'selected' : false) ) #{translation.RememberComplete}
         <button type="button" id="wordAdd">#{translation.Add}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
@@ -345,6 +357,14 @@ html(lang='en')
     <input type="hidden" id="Delete" name="Delete" value="#{translation.Delete}" />
     <input type="hidden" id="pc" name="pc" value="#{pc}" />
     <input type="hidden" id="dmm" name="dmm" value="#{translation.dmm}" />
+    <input type="hidden" id="NotImportance" name="NotImportance" value="#{translation.NotImportance}" />
+    <input type="hidden" id="Important" name="Important" value="#{translation.Important}" />
+    <input type="hidden" id="VeryImportance" name="VeryImportance" value="#{translation.VeryImportance}" />
+    <input type="hidden" id="Indispensable" name="Indispensable" value="#{translation.Indispensable}" />
+    <input type="hidden" id="NotKnow" name="NotKnow" value="#{translation.NotKnow}" />
+    <input type="hidden" id="SawSeveralTime" name="SawSeveralTime" value="#{translation.SawSeveralTime}" />
+    <input type="hidden" id="BeUsedTo" name="BeUsedTo" value="#{translation.BeUsedTo}" />
+    <input type="hidden" id="RememberComplete" name="RememberComplete" value="#{translation.RememberComplete}" />
     
     <div id="img_layer" style="display:none;position:fixed;left:34%;top:60px;width:500px;height:90%;overflow:auto;background:#fff;z-index: 3;">
       <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">#{translation.Close}</button>

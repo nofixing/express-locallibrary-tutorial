@@ -177,7 +177,7 @@ exports.story_detail = function(req, res, next) {
                 .exec(callback);
         },
         memo: function(callback) {
-            console.log("user:"+req.session.userId+"/story:"+req.params.id);
+            //console.log("user:"+req.session.userId+"/story:"+req.params.id);
             /*
             if (req.query.open == 'Y') {
                 Memo.find({story: req.params.id}, {content: 1})
@@ -239,7 +239,7 @@ exports.story_detail = function(req, res, next) {
                     //console.log("history saved");
                 }); 
             } else {
-                console.log(theHistory);
+                //console.log(theHistory);
                 var newvalues = { $set: {create_date: Date.now()} };
                 History.findByIdAndUpdate(theHistory[0]._id, newvalues, {}, function(err, updatedHistory) {
                     if (err) { console.log(err); return next(err); }
@@ -271,7 +271,7 @@ exports.story_detail = function(req, res, next) {
             memo = entities.decode(results.memo[0].content);
             memo_id = results.memo[0]._id;
         }
-        console.log("memo:"+memo);
+        //console.log("memo:"+memo);
         var anchor = '';
         var bookMark_id = '';
         if(results.bookMark.length > 0) {

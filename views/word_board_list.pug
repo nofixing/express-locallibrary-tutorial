@@ -6,6 +6,20 @@ block content
 	<div>
 		<form method="post" action="/catalog/word_board_list">
 			<div class="form-group row" style="float: right;">
+				<p style="height: 30px;padding-top: 10px; margin-right:10px;">#{translation.Skill}</p>&nbsp;&nbsp;&nbsp;
+				select.skill.form-control(type='select', style='width: 100px; margin-right:10px;' name='skill')
+					option(value='' selected=(skill==='' ? 'selected' : false) )  선택
+					option(value='모름' selected=(skill==='모름' ? 'selected' : false) ) 모름
+					option(value='몇번봄' selected=(skill==='몇번봄' ? 'selected' : false) ) 몇번봄
+					option(value='익숙함' selected=(skill==='익숙함' ? 'selected' : false) ) 익숙함
+					option(value='기억완료' selected=(skill==='기억완료' ? 'selected' : false) ) 기억완료
+				<p style="height: 30px;padding-top: 10px; margin-right:10px;">#{translation.Importance}</p>&nbsp;&nbsp;&nbsp;
+				select.importance.form-control(type='select', style='width: 100px; margin-right:10px;' name='importance')
+					option(value='' selected=(importance==='' ? 'selected' : false) )  선택
+					option(value='중요도없음' selected=(importance==='중요도없음' ? 'selected' : false) ) 중요도없음
+					option(value='중요' selected=(importance==='중요' ? 'selected' : false) ) 중요
+					option(value='매우중요' selected=(importance==='매우중요' ? 'selected' : false) ) 매우중요
+					option(value='필수' selected=(importance==='필수' ? 'selected' : false) ) 필수
 				<p style="height: 30px;padding-top: 10px;">#{translation.SearchTipWords}</p>&nbsp;&nbsp;&nbsp;
 				<input type="text" id="stle" name="stle" class="form-control" style="width:300px; margin-right:10px;"/>
 				<button type="submit" class="btn btn-primary" style="margin-right:15px;">#{translation.Search}</button>
