@@ -107,7 +107,10 @@ exports.word_create_post = [
           { title: req.body.title,
             user: req.session.userId,
             story: req.body.story_id,
-            content: req.body.content
+            content: req.body.content,
+            skill: req.body.skill,
+            importance: req.body.importance,
+            create_date: Date.now()
            });
 
         Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
