@@ -136,6 +136,9 @@ router.get('/word/:id/update', word_controller.word_update_get);
 // POST request to update Book.
 router.post('/word/update', word_controller.word_update_post);
 
+// POST request to update Book.
+router.post('/word/updateImgAddr', word_controller.word_update_imgAddr_post);
+
 // GET request for one Book.
 router.get('/word/:id', word_controller.word_detail);
 

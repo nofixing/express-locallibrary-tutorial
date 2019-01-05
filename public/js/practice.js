@@ -62,9 +62,10 @@ $(function(){
                 url: httpType+$('#hostname').val()+'/catalog/word/create',
                 async: false,
                 success : function(data) {
-        
+                    console.log("jb_content dblclick");
                     var markup = "<tr><td style='text-align: center;'><div class='checkbox'><input type='checkbox' class='wList' value='"+data.word_id+"'></div></td>";
                     markup += "<td><input type='text' size='15' maxlength='30' class='form-control ipt' value='"+data.title+"'>";
+                    markup += "<input type='hidden' class='form-control iph' value=''>";
 
                     markup += "<select class='importance form-control' style='margin-top: 10px;'>";
                     markup += "<option value='1'>"+$('#NotImportance').val()+"</option>";
@@ -74,11 +75,15 @@ $(function(){
 
                     markup += "<td><textarea class='form-control txt' rows='1' cols='45'></textarea>";
 
-                    markup += "<select class='skill form-control' style='margin-top: 10px;'>";
+                    markup += "<select class='skill form-control' style='display: inline; width: 200px; margin-top: 10px;'>";
                     markup += "<option value='1'>"+$('#NotKnow').val()+"</option>";
                     markup += "<option value='2'>"+$('#SawSeveralTime').val()+"</option>";
                     markup += "<option value='3'>"+$('#BeUsedTo').val()+"</option>";
-                    markup += "<option value='4'>"+$('#RememberComplete').val()+"</option></td></tr>";
+                    markup += "<option value='4'>"+$('#RememberComplete').val()+"</option>";
+                    markup += "</select>";
+                    markup += "<button type='button' class='btn btn-primary' style='display: inline; float: right; margin-top: 8px;' onclick='imgAddress(-1)'>";
+                    markup += $('#ImageAddress').val();
+                    markup += "</button></td></tr>";
 
                     $(".wtd").append(markup);
         
@@ -235,6 +240,7 @@ $(function(){
     $('#wordAdd').click(function(){
         var markup = "<tr><td style='text-align: center;'><div class='checkbox'><input type='checkbox' class='wList' value=''></div></td>";
         markup += "<td><input type='text' size='15' maxlength='30' class='form-control ipt' value=''>";
+        markup += "<input type='hidden' class='form-control iph' value=''>";
         
         markup += "<select class='importance form-control' style='margin-top: 10px;'>";
         markup += "<option value='1'>"+$('#NotImportance').val()+"</option>";
@@ -244,11 +250,15 @@ $(function(){
 
         markup += "<td><textarea class='form-control txt' rows='1' cols='45'></textarea>";
 
-        markup += "<select class='skill form-control' style='margin-top: 10px;'>";
+        markup += "<select class='skill form-control' style='display: inline; width: 200px; margin-top: 10px;'>";
         markup += "<option value='1'>"+$('#NotKnow').val()+"</option>";
         markup += "<option value='2'>"+$('#SawSeveralTime').val()+"</option>";
         markup += "<option value='3'>"+$('#BeUsedTo').val()+"</option>";
-        markup += "<option value='4'>"+$('#RememberComplete').val()+"</option></td></tr>";
+        markup += "<option value='4'>"+$('#RememberComplete').val()+"</option>";
+        markup += "</select>";
+        markup += "<button type='button' class='btn btn-primary' style='display: inline; float: right; margin-top: 8px;' onclick='imgAddress(-1)'>";
+        markup += $('#ImageAddress').val();
+        markup += "</button></td></tr>";
         $(".wtd").append(markup);
     });
 
@@ -332,8 +342,44 @@ $(function(){
 
     $('.tltp').tooltip({html: true, placement: "right"});
 
+    $('#InsertImgAddr').click(function(){
+        var data = {};
+        data.id = $('#w_id').val();
+        data.image_address = $( "#iddr_name" ).val();
+        var idx = $('#widx').val();
+        var httpType = 'https://';
+        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: httpType+$('#hostname').val()+'/catalog/word/updateImgAddr',
+            async: false,
+            success : function(data) {
+                $('.iph')[idx].value = $( "#iddr_name" ).val();
+                alert($("#SAVED").val());
+                $('#tcs')[0].click();
+            }
+        });
+    });
+
 });
 
+function imgAddress(i) {
+    if(i == -1){
+        return;
+    }
+    $('.wList').each(function(idx) {
+        if (idx == i && $(this).val() != '') {
+            $('#w_id').val($(this).val());
+            $('#widx').val(i);
+            $('#w_name').val($('.ipt')[idx].value);
+            $('#iddr_name').val($('.iph')[idx].value);
+            $('#ImageModal')[0].click();
+        }
+    });
+}
+  
 function search() {
 
     var selection;

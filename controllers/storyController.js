@@ -257,7 +257,25 @@ exports.story_detail = function(req, res, next) {
             }
         });
         var txt = entities.decode(results.story.content);
-        var highlightHtml = '<span class="hgt" style="color:black;">$1</span>';
+        //var highlightHtml = '<span class="hgt" style="color:black;">$1</span>';
+        var highlightHtml = '';
+        var sTag = '';
+        for (let i = 0; i < results.words.length; i++) {
+            if (typeof results.words[i].image_address != 'undefined' && typeof results.words[i].content != 'undefined') {
+                console.log(results.words[i].image_address);
+                console.log(results.words[i].content);
+                sTag = "<img src="+results.words[i].image_address+"><h5>"+results.words[i].content+"</h5>";
+                highlightHtml = '<a href="#" target="_blank" class="tltp" title="'+sTag+'">$1</a>';
+            } else if(typeof results.words[i].content != 'undefined') {
+                console.log('content:'+results.words[i].content);
+                sTag = "<h5>"+results.words[i].content+"</h5>";
+                highlightHtml = '<a href="#" target="_blank" class="tltp" title="'+sTag+'">$1</a>';
+            } else {
+                highlightHtml = results.words[i].title;
+            }
+            
+            txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
+        }
         /*
         for (let i = 0; i < results.words.length; i++) {
             txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);

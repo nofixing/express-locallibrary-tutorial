@@ -158,5 +158,9 @@
   "forgotPwSuccess": "임시비밀번호를 회원님의 이메일로 전송하였습니다.",
   "AlterName": "이름 수정",
   "NewName": "신규 이름",
-  "alterNmSuccess": "이름을 수정하였습니다."
+  "alterNmSuccess": "이름을 수정하였습니다.",
+  "Tooltip": "말풍선",
+  "ImageAddress": "이미지 주소",
+  "Definition": "정의",
+  "InsertTooltip": "말풍선 입력"
 }

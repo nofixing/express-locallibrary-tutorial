@@ -158,5 +158,9 @@
   "forgotPwSuccess": "We sent the temporary password to your email.",
   "AlterName": "Alter Name",
   "NewName": "New Name",
-  "alterNmSuccess": "Name altered."
+  "alterNmSuccess": "Name altered.",
+  "Tooltip": "Tooltip",
+  "ImageAddress": "Image Address",
+  "Definition": "Definition",
+  "InsertTooltip": "Insert tooltip"
 }

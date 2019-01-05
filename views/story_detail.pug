@@ -139,13 +139,13 @@ html(lang='en')
               - var cyn = ''
               if comment.comments != ''
                 - cyn = 'Y'
-              <span>#{comment.user.name}</span>
+              <span style="color: purple;">#{comment.user.name}</span>
+              <div id="c_#{comment._id}">#{comment.content}</div>
               <div style="display: inline; float: right;">
                 <span id="s_#{comment._id}" onclick="viewR(this);" class="replyB">#{translation.Reply}</span>
                 <span id="u_#{comment._id}" onclick="viewU(this, '#{userId}');" class="replyB">#{translation.Update}</span>
                 <span id="t_#{comment._id}" onclick="viewT(this, '#{userId}');" class="replyB">#{translation.Delete}</span>
               </div>
-              <div id="c_#{comment._id}">#{comment.content}</div>
               <div id="d_#{comment._id}" style="display: none;">
                 <form id="cmf_#{comment._id}" method="post" action="/catalog/story/#{story._id}/comments/#{comment._id}/replies">
                   <div class="form-group">
@@ -309,6 +309,7 @@ html(lang='en')
                     input(type='checkbox' class='wList' value=word._id)
                 td
                   input(type='text' size='15' maxlength='30' class='form-control ipt' value=word.title)
+                  input(type='hidden' class='form-control iph' value=word.image_address)
                   select.importance.form-control(type='select', style='margin-top: 10px;')
                     option(value='1' selected=(word.importance==='1' ? 'selected' : false) ) #{translation.NotImportance}
                     option(value='2' selected=(word.importance==='2' ? 'selected' : false) ) #{translation.Important}
@@ -316,11 +317,12 @@ html(lang='en')
                     option(value='4' selected=(word.importance==='4' ? 'selected' : false) ) #{translation.Indispensable}
                 td
                   textarea(class='form-control txt' rows='1' cols='45') #{word.content}
-                  select.skill.form-control(type='select', style='margin-top: 10px;')
+                  select.skill.form-control(type='select', style='display: inline; width: 200px; margin-top: 10px;')
                     option(value='1' selected=(word.skill==='1' ? 'selected' : false) ) #{translation.NotKnow}
                     option(value='2' selected=(word.skill==='2' ? 'selected' : false) ) #{translation.SawSeveralTime}
                     option(value='3' selected=(word.skill==='3' ? 'selected' : false) ) #{translation.BeUsedTo}
                     option(value='4' selected=(word.skill==='4' ? 'selected' : false) ) #{translation.RememberComplete}
+                  <button type="button" class="btn btn-primary" style="display: inline; float: right; margin-top: 8px;" onclick="imgAddress(#{i})">#{translation.ImageAddress}</button>
         <button type="button" id="wordAdd">#{translation.Add}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
@@ -366,6 +368,7 @@ html(lang='en')
     <input type="hidden" id="SawSeveralTime" name="SawSeveralTime" value="#{translation.SawSeveralTime}" />
     <input type="hidden" id="BeUsedTo" name="BeUsedTo" value="#{translation.BeUsedTo}" />
     <input type="hidden" id="RememberComplete" name="RememberComplete" value="#{translation.RememberComplete}" />
+    <input type="hidden" id="ImageAddress" name="ImageAddress" value="#{translation.ImageAddress}" />
     
     <div id="img_layer" style="display:none;position:fixed;left:34%;top:60px;width:500px;height:90%;overflow:auto;background:#fff;z-index: 3;">
       <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">#{translation.Close}</button>
@@ -374,6 +377,70 @@ html(lang='en')
     </div>
 
     <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+    
+    <a href="#" id="OpenModal" data-toggle="modal" data-target="#exampleModal"></a>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">#{translation.Tooltip}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">#{translation.ImageAddress}:</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label">#{translation.Definition}:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="tcls">#{translation.Close}</button>
+            <button type="button" class="btn btn-primary" id="InsertTooltip">#{translation.InsertTooltip}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" id="ImageModal" data-toggle="modal" data-target="#imgAddrModal"></a>
+
+    <div class="modal fade" id="imgAddrModal" tabindex="-1" role="dialog" aria-labelledby="imgModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="imgModalLabel">#{translation.Tooltip}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="w_name" class="col-form-label">#{translation.Word}:</label>
+                <input type="text" class="form-control" id="w_name" readOnly>
+              </div>
+              <div class="form-group">
+                <label for="iddr_name" class="col-form-label">#{translation.ImageAddress}:</label>
+                <input type="text" class="form-control" id="iddr_name">
+              </div>
+            <input type="hidden" id="w_id" name="w_id" value=""/>
+            <input type="hidden" id="widx" name="widx" value=""/>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="tcs">#{translation.Close}</button>
+            <button type="button" class="btn btn-primary" id="InsertImgAddr">#{translation.InsertTooltip}</button>
+          </div>
+        </div>
+      </div>
+    </div>    
     
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="/js/quill_setting.js"></script>

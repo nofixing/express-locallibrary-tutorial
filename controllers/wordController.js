@@ -218,7 +218,8 @@ exports.word_update_post = function(req, res, next) {
             //console.log('word update');
             Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
                 if (err) { console.log(err); return next(err); }
-                });
+                res.send(req.body);
+            });
           } else {
               //console.log('word insert');
               newWord.save(function (err, theWord) {
@@ -230,6 +231,20 @@ exports.word_update_post = function(req, res, next) {
                  });
           }
         });
+
+};
+
+// Handle word update on POST.
+exports.word_update_imgAddr_post = function(req, res, next) {
+
+    var word = new Word(
+      { image_address: req.body.image_address,
+        _id:req.body.id // This is required, or a new ID will be assigned!
+       });
+    Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
+        if (err) { console.log(err); return next(err); }
+        res.send(req.body);
+    });
 
 };
 
