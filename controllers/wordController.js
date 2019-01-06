@@ -12,7 +12,7 @@ var async = require('async');
 // Display list of all words.
 exports.word_list = function(req, res, next) {
 
-  Word.find({user: req.session.userId}, {story: req.params.story_id}, 'title ')
+  Word.find({user: { $in: [req.session.userId]}}, {story: req.params.story_id}, 'title ')
     .exec(function (err, list_words) {
       if (err) { return next(err); }
       // Successful, so render
@@ -113,7 +113,8 @@ exports.word_create_post = [
             create_date: Date.now()
            });
 
-        Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
+        //Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
+        Word.find({story: req.body.story_id, title: req.body.title})
            .exec(function (err, results) {
              //console.log(results);
              if (results.length > 0) { // No results.
@@ -212,14 +213,50 @@ exports.word_update_post = function(req, res, next) {
          });
     //console.log('word update start');
     Word.findById({_id: req.body.id})
-        .exec(function (err, results) {
-          //console.log(results);
-          if (results != null) {
-            //console.log('word update');
-            Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
-                if (err) { console.log(err); return next(err); }
-                res.send(req.body);
-            });
+        .exec(function (err, theWord) {
+          //console.log(theWord);
+          if (theWord != null) {
+            var upYn = 'N';
+            for (let i = 0; i < theWord.user.length; i++) {
+                if (theWord.user[i] == req.session.userId) {
+                    Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
+                        if (err) { console.log(err); return next(err); }
+                    });
+                    upYn = 'Y';
+                    break;
+                }
+            }
+            if (upYn == 'N') {
+                Word.update({_id: req.body.id}, {
+                    title: req.body.title,
+                    $push: {user: req.session.userId},
+                    story: req.body.story_id,
+                    content: req.body.content,
+                    skill: req.body.skill,
+                    importance: req.body.importance
+                }, function(err, upWord) {
+                    if (err) { console.log(err); return next(err); }
+                });
+            }
+            req.body.id = theWord._id;
+            res.send(req.body);
+            /*
+            if (theWord.user == req.session.userId) {
+                Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
+                    if (err) { console.log(err); return next(err); }
+                    res.send(req.body);
+                });
+            } else {
+                //console.log('word insert');
+                newWord.save(function (err, theWord) {
+                if (err) { return next(err); }
+                    // Successful - redirect to new word record.
+                    //res.redirect(word.url);
+                    req.body.id = theWord._id;
+                    res.send(req.body);
+                });
+            }
+            */
           } else {
               //console.log('word insert');
               newWord.save(function (err, theWord) {
@@ -257,11 +294,11 @@ exports.word_board_list = function(req, res, next) {
     
     var ct = 0;
     if(typeof req.body.stle !='undefined' && req.body.stle != '') {
-        Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
+        Word.find({user: { $in: [req.session.userId]}, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
             .count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
+        Word.find({user: { $in: [req.session.userId]}, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
@@ -279,11 +316,11 @@ exports.word_board_list = function(req, res, next) {
             res.render('word_board_list', { title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
         });
     } else if(typeof req.body.importance !='undefined' && req.body.importance != '' && (typeof req.body.skill =='undefined' || req.body.skill == '')) {
-        Word.find({user: req.session.userId, importance: req.body.importance})
+        Word.find({user: { $in: [req.session.userId]}, importance: req.body.importance})
             .count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId, importance: req.body.importance})
+        Word.find({user: { $in: [req.session.userId]}, importance: req.body.importance})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
@@ -301,11 +338,11 @@ exports.word_board_list = function(req, res, next) {
             res.render('word_board_list', {importance: req.body.importance, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
         });
     } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance =='undefined' || req.body.importance == '')) {
-        Word.find({user: req.session.userId, skill: req.body.skill})
+        Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill})
             .count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId, skill: req.body.skill})
+        Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
@@ -323,11 +360,11 @@ exports.word_board_list = function(req, res, next) {
             res.render('word_board_list', {skill: req.body.skill, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
         });
     } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance !='undefined' && req.body.importance != '')) {
-        Word.find({user: req.session.userId, skill: req.body.skill, importance: req.body.importance})
+        Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill, importance: req.body.importance})
             .count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId, skill: req.body.skill, importance: req.body.importance})
+        Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill, importance: req.body.importance})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
@@ -345,10 +382,10 @@ exports.word_board_list = function(req, res, next) {
             res.render('word_board_list', {skill: req.body.skill, importance: req.body.importance, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
         });
     } else {
-        Word.find({user: req.session.userId}).count().exec(function (err, count) {
+        Word.find({user: { $in: [req.session.userId]}}).count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId}).skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+        Word.find({user: { $in: [req.session.userId]}}).skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
             if (err) { return next(err); }
@@ -379,11 +416,11 @@ exports.word_board_ajax = function(req, res, next) {
     var ct = 0;
     
     if(typeof req.body.stle !='undefined' && req.body.stle != '') {
-        Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
+        Word.find({user: { $in: [req.session.userId]}, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
             .count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
+        Word.find({user: { $in: [req.session.userId]}, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
@@ -406,11 +443,11 @@ exports.word_board_ajax = function(req, res, next) {
                 res.send(list_words);
         });
     } else if(typeof req.body.importance !='undefined' && req.body.importance != '' && (typeof req.body.skill =='undefined' || req.body.skill == '')) {
-        Word.find({user: req.session.userId, importance: req.body.importance})
+        Word.find({user: { $in: [req.session.userId]}, importance: req.body.importance})
             .count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId, importance: req.body.importance})
+        Word.find({user: { $in: [req.session.userId]}, importance: req.body.importance})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
@@ -430,11 +467,11 @@ exports.word_board_ajax = function(req, res, next) {
             res.send(list_words);
         });
     } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance =='undefined' || req.body.importance == '')) {
-        Word.find({user: req.session.userId, skill: req.body.skill})
+        Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill})
             .count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId, skill: req.body.skill})
+        Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
@@ -454,11 +491,11 @@ exports.word_board_ajax = function(req, res, next) {
             res.send(list_words);
         });
     } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance !='undefined' && req.body.importance != '')) {
-        Word.find({user: req.session.userId, skill: req.body.skill, importance: req.body.importance})
+        Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill, importance: req.body.importance})
             .count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId, skill: req.body.skill, importance: req.body.importance})
+        Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill, importance: req.body.importance})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
@@ -478,10 +515,10 @@ exports.word_board_ajax = function(req, res, next) {
             res.send(list_words);
         });
     } else {
-        Word.find({user: req.session.userId}).count().exec(function (err, count) {
+        Word.find({user: { $in: [req.session.userId]}}).count().exec(function (err, count) {
             ct =count;
         });
-        Word.find({user: req.session.userId}).skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
+        Word.find({user: { $in: [req.session.userId]}}).skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, order: 1})
             .lean().populate({ path: 'story', select: '_id title' })
             .exec(function (err, list_words) {
                 if (err) { 
