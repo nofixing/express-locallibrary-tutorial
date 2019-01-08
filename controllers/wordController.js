@@ -110,7 +110,7 @@ exports.word_create_post = [
             content: req.body.content,
             skill: req.body.skill,
             importance: req.body.importance,
-            create_date: Date.now()
+            create_date: [{user: req.session.userId, c_date: Date.now()}]
            });
 
         //Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
@@ -121,7 +121,7 @@ exports.word_create_post = [
                  console.log('already exists');
                  res.send(req.body);
              } else {
-                 console.log('word insert');
+                 console.log('word_create_post');
                  word.save(function (err, theWord) {
                     if (err) { console.log(err); return next(err); }
                         // Successful - redirect to new word record.
@@ -193,15 +193,6 @@ exports.word_update_get = function(req, res, next) {
 exports.word_update_post = function(req, res, next) {
 
     //console.log('word update call');
-    var word = new Word(
-      { title: req.body.title,
-        user: req.session.userId,
-        story: req.body.story_id,
-        content: req.body.content,
-        skill: req.body.skill,
-        importance: req.body.importance,
-        _id:req.body.id // This is required, or a new ID will be assigned!
-       });
     var newWord = new Word(
         { title: req.body.title,
           user: req.session.userId,
@@ -209,7 +200,7 @@ exports.word_update_post = function(req, res, next) {
           content: req.body.content,
           skill: req.body.skill,
           importance: req.body.importance,
-          create_date: Date.now()
+          create_date: [{user: req.session.userId, c_date: Date.now()}]
          });
     //console.log('word update start');
     Word.findById({_id: req.body.id})
@@ -219,7 +210,14 @@ exports.word_update_post = function(req, res, next) {
             var upYn = 'N';
             for (let i = 0; i < theWord.user.length; i++) {
                 if (theWord.user[i] == req.session.userId) {
-                    Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
+                    console.log('Word.update 1');
+                    Word.update({_id: req.body.id}, {
+                        title: req.body.title,
+                        story: req.body.story_id,
+                        content: req.body.content,
+                        skill: req.body.skill,
+                        importance: req.body.importance
+                    }, function(err, upWord) {
                         if (err) { console.log(err); return next(err); }
                     });
                     upYn = 'Y';
@@ -227,13 +225,15 @@ exports.word_update_post = function(req, res, next) {
                 }
             }
             if (upYn == 'N') {
+                console.log('Word.update 2');
                 Word.update({_id: req.body.id}, {
                     title: req.body.title,
                     $push: {user: req.session.userId},
                     story: req.body.story_id,
                     content: req.body.content,
                     skill: req.body.skill,
-                    importance: req.body.importance
+                    importance: req.body.importance,
+                    $addToSet: {create_date: {user: req.session.userId, c_date: Date.now()}}
                 }, function(err, upWord) {
                     if (err) { console.log(err); return next(err); }
                 });
@@ -258,7 +258,7 @@ exports.word_update_post = function(req, res, next) {
             }
             */
           } else {
-              //console.log('word insert');
+              console.log('word_update_post new insert');
               newWord.save(function (err, theWord) {
                  if (err) { return next(err); }
                      // Successful - redirect to new word record.
@@ -306,7 +306,12 @@ exports.word_board_list = function(req, res, next) {
             for (let i = 0; i < list_words.length; i++) {
                 list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
-                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    for (let j = 0; j < list_words[i].create_date.length; j++) {
+                        if(list_words[i].create_date[j].user == req.session.userId) {
+                            list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                        }
+                    }
+                    //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
@@ -328,7 +333,12 @@ exports.word_board_list = function(req, res, next) {
             for (let i = 0; i < list_words.length; i++) {
                 list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
-                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    for (let j = 0; j < list_words[i].create_date.length; j++) {
+                        if(list_words[i].create_date[j].user == req.session.userId) {
+                            list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                        }
+                    }
+                    //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
@@ -350,7 +360,12 @@ exports.word_board_list = function(req, res, next) {
             for (let i = 0; i < list_words.length; i++) {
                 list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
-                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    for (let j = 0; j < list_words[i].create_date.length; j++) {
+                        if(list_words[i].create_date[j].user == req.session.userId) {
+                            list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                        }
+                    }
+                    //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
@@ -372,7 +387,12 @@ exports.word_board_list = function(req, res, next) {
             for (let i = 0; i < list_words.length; i++) {
                 list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
-                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    for (let j = 0; j < list_words[i].create_date.length; j++) {
+                        if(list_words[i].create_date[j].user == req.session.userId) {
+                            list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                        }
+                    }
+                    //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
@@ -393,7 +413,12 @@ exports.word_board_list = function(req, res, next) {
             for (let i = 0; i < list_words.length; i++) {
                 list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
-                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    for (let j = 0; j < list_words[i].create_date.length; j++) {
+                        if(list_words[i].create_date[j].user == req.session.userId) {
+                            list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                        }
+                    }
+                    //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
@@ -431,7 +456,12 @@ exports.word_board_ajax = function(req, res, next) {
                 for (let i = 0; i < list_words.length; i++) {
                     list_words[i].rownum = mxcnt + i + 1;
                     if(list_words[i].create_date != null){
-                        list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                        for (let j = 0; j < list_words[i].create_date.length; j++) {
+                            if(list_words[i].create_date[j].user == req.session.userId) {
+                                list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                            }
+                        }
+                        //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                     }
                     if (list_words[i].story != null && list_words[i].story.title != null) {
                         list_words[i].story.title = entities.decode(list_words[i].story.title);
@@ -455,7 +485,12 @@ exports.word_board_ajax = function(req, res, next) {
             for (let i = 0; i < list_words.length; i++) {
                 list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
-                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    for (let j = 0; j < list_words[i].create_date.length; j++) {
+                        if(list_words[i].create_date[j].user == req.session.userId) {
+                            list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                        }
+                    }
+                    //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
@@ -479,7 +514,12 @@ exports.word_board_ajax = function(req, res, next) {
             for (let i = 0; i < list_words.length; i++) {
                 list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
-                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    for (let j = 0; j < list_words[i].create_date.length; j++) {
+                        if(list_words[i].create_date[j].user == req.session.userId) {
+                            list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                        }
+                    }
+                    //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
@@ -503,7 +543,12 @@ exports.word_board_ajax = function(req, res, next) {
             for (let i = 0; i < list_words.length; i++) {
                 list_words[i].rownum = mxcnt + i + 1;
                 if(list_words[i].create_date != null){
-                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                    for (let j = 0; j < list_words[i].create_date.length; j++) {
+                        if(list_words[i].create_date[j].user == req.session.userId) {
+                            list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                        }
+                    }
+                    //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
@@ -528,7 +573,12 @@ exports.word_board_ajax = function(req, res, next) {
                 for (let i = 0; i < list_words.length; i++) {
                     list_words[i].rownum = mxcnt + i + 1;
                     if(list_words[i].create_date != null){
-                        list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                        for (let j = 0; j < list_words[i].create_date.length; j++) {
+                            if(list_words[i].create_date[j].user == req.session.userId) {
+                                list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                            }
+                        }
+                        //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                     }
                     if (list_words[i].story != null && list_words[i].story.title != null) {
                         list_words[i].story.title = entities.decode(list_words[i].story.title);
