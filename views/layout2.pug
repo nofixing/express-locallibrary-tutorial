@@ -1,0 +1,147 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Song+Myung" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cute+Font" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Stylish" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hi+Melody" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.4/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/editor.bootstrap4.min.css">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.4/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.bootstrap4.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.4/js/buttons.print.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/js/dataTables.editor.min.js"></script>
+    <script type="text/javascript" language="javascript" src="/js/editor.bootstrap4.min.js"></script>
+    script(src='/js/practice.js')
+    script(src='/js/lyjs.js')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/practice.css')
+    link(rel="stylesheet", href='https://cdn.quilljs.com/1.3.6/quill.snow.css')
+  body(style=(undefined===cfnt ? '' : 'font-family:'+cfnt))
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+      <a class="navbar-brand" href="/catalog/">#{translation.HOME}</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          li.nav-item
+            a.nav-link(href='/catalog/books') #{translation.BOOK}
+          li.nav-item
+            a.nav-link(href='/catalog/stories') #{translation.STORY}
+          li.nav-item
+            a.nav-link(href='/catalog/genres') #{translation.GENRE}
+          li.nav-item
+            a.nav-link(href='/catalog/story_open_list') #{translation.BOARD}
+          li.nav-item
+            a.nav-link(href='/catalog/word_board_list') #{translation.Words}
+          if pc
+            li.nav-item
+              a.nav-link(href='/catalog/book/create') #{translation.CREATEBOOK}
+            li.nav-item
+              a.nav-link(href='/catalog/story/create') #{translation.CREATESTORY}
+            li.nav-item
+              a.nav-link(href='/catalog/genre/create') #{translation.CREATEGENRE}
+          li.nav-item.dropdown
+              a#lang.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.LANGUAGE}
+              div.dropdown-menu(aria-labelledby='lang')
+                a.dropdown-item(href='/catalog?clang=en' ) ENGLISH
+                a.dropdown-item(href='/catalog?clang=ko' ) 한글
+          if user
+            li.nav-item.dropdown
+                a#fnt.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.FONT}
+                div.dropdown-menu(aria-labelledby='fnt')
+                  a.dropdown-item(href='/catalog?cfnt=Libre+Franklin' ) Libre Franklin
+                  a.dropdown-item(href='/catalog?cfnt=inconsolata' ) Inconsolata
+                  a.dropdown-item(href='/catalog?cfnt=roboto' ) Roboto
+                  a.dropdown-item(href='/catalog?cfnt=mirza' ) Mirza
+                  a.dropdown-item(href='/catalog?cfnt=arial' ) Arial
+                  a.dropdown-item(href='/catalog?cfnt=Oswald' ) Oswald
+                  a.dropdown-item(href='/catalog?cfnt=Caveat' ) Caveat
+                  a.dropdown-item(href='/catalog?cfnt=Raleway' ) Raleway
+                  a.dropdown-item(href='/catalog?cfnt=Shadows+Into+Light' ) Shadows Into Light
+                  a.dropdown-item(href='/catalog?cfnt=Abril+Fatface' ) Abril Fatface
+                  a.dropdown-item(href='/catalog?cfnt=Teko' ) Teko
+                  a.dropdown-item(href='/catalog?cfnt=Cormorant' ) Cormorant
+                  a.dropdown-item(href='/catalog?cfnt=Alfa+Slab+One' ) Alfa Slab One
+                  a.dropdown-item(href='/catalog?cfnt=PT+Sans' ) PT Sans
+                  a.dropdown-item(href='/catalog?cfnt=Nanum+Pen+Script' ) 나눔 손글씨 펜
+                  a.dropdown-item(href='/catalog?cfnt=Nanum+Brush+Script' ) 나눔 손글씨 붓
+                  a.dropdown-item(href='/catalog?cfnt=Song+Myung' ) 송명
+                  a.dropdown-item(href='/catalog?cfnt=Gaegu' ) 개구쟁이
+                  a.dropdown-item(href='/catalog?cfnt=Jua' ) 주아
+                  a.dropdown-item(href='/catalog?cfnt=Gamja+Flower' ) 감자꽃 마을
+                  a.dropdown-item(href='/catalog?cfnt=Cute+Font' ) 귀여운 폰트
+                  a.dropdown-item(href='/catalog?cfnt=Stylish' ) 스타일리시
+                  a.dropdown-item(href='/catalog?cfnt=Yeon+Sung' ) 연성
+                  a.dropdown-item(href='/catalog?cfnt=Hi+Melody' ) 하이멜로디
+                  a.dropdown-item(href='/catalog?cfnt=Sunflower' ) 해바라기
+                  a.dropdown-item(href='/catalog?cfnt=Black+Han+Sans' ) 검은고딕
+                  a.dropdown-item(href='/catalog?cfnt=Gothic+A1' ) 고딕 A1
+                  a.dropdown-item(href='/catalog?cfnt=Nanum+Gothic' ) 나눔고딕
+                  a.dropdown-item(href='/catalog?cfnt=Nanum+Myeongjo' ) 나눔명조
+                  a.dropdown-item(href='/catalog?cfnt=Poor+Story' ) 서툰이야기
+                  a.dropdown-item(href='/catalog?cfnt=Black+And+White+Picture' ) 흑백사진
+            li.nav-item
+              a.nav-link(href='/user/logout') #{translation.LOGOUT}
+            li.nav-item
+              a.nav-link(href='/catalog/alter_password') #{translation.AlterPassword}
+            li.nav-item
+              a.nav-link(href='/catalog/alter_name') #{translation.AlterName}
+          else
+            li.nav-item
+              a.nav-link(href='/user/login') #{translation.LOGIN}
+            li.nav-item 
+              a.nav-link(href='/user/registration') #{translation.SIGNUP}
+        </ul>
+      </div>
+    </nav>
+    <input type="hidden" id="pc" name="pc" value="#{pc}" />
+    div(class='container-fluid')
+      div(class='row')
+        div(class='col-lg-12')
+          block content

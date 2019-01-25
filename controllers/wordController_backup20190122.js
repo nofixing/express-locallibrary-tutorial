@@ -107,13 +107,10 @@ exports.word_create_post = [
           { title: req.body.title,
             user: req.session.userId,
             story: req.body.story_id,
-            book: req.body.book_id,
-            story_title: req.body.story_title,
-            book_title: req.body.book_title,
             content: req.body.content,
             skill: req.body.skill,
             importance: req.body.importance,
-            create_date: Date.now()
+            create_date: [{user: req.session.userId, c_date: Date.now()}]
            });
 
         //Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
@@ -195,20 +192,15 @@ exports.word_update_get = function(req, res, next) {
 // Handle word update on POST.
 exports.word_update_post = function(req, res, next) {
 
-    console.log('book_id:'+req.body.book_id);
-    var book_id = req.body.book_id;
-    if(book_id == '') book_id = '000000000000000000000000';
+    //console.log('word update call');
     var newWord = new Word(
         { title: req.body.title,
           user: req.session.userId,
           story: req.body.story_id,
-          book: book_id,
-          story_title: req.body.story_title,
-          book_title: req.body.book_title,
           content: req.body.content,
           skill: req.body.skill,
           importance: req.body.importance,
-          create_date: Date.now()
+          create_date: [{user: req.session.userId, c_date: Date.now()}]
          });
     //console.log('word update start');
     Word.findById({_id: req.body.id})
@@ -222,9 +214,6 @@ exports.word_update_post = function(req, res, next) {
                     Word.update({_id: req.body.id}, {
                         title: req.body.title,
                         story: req.body.story_id,
-                        book: book_id,
-                        story_title: req.body.story_title,
-                        book_title: req.body.book_title,
                         content: req.body.content,
                         skill: req.body.skill,
                         importance: req.body.importance
@@ -241,18 +230,33 @@ exports.word_update_post = function(req, res, next) {
                     title: req.body.title,
                     $push: {user: req.session.userId},
                     story: req.body.story_id,
-                    book: book_id,
-                    story_title: req.body.story_title,
-                    book_title: req.body.book_title,
                     content: req.body.content,
                     skill: req.body.skill,
-                    importance: req.body.importance
+                    importance: req.body.importance,
+                    $addToSet: {create_date: {user: req.session.userId, c_date: Date.now()}}
                 }, function(err, upWord) {
                     if (err) { console.log(err); return next(err); }
                 });
             }
             req.body.id = theWord._id;
             res.send(req.body);
+            /*
+            if (theWord.user == req.session.userId) {
+                Word.findByIdAndUpdate(req.body.id, word, {}, function (err) {
+                    if (err) { console.log(err); return next(err); }
+                    res.send(req.body);
+                });
+            } else {
+                //console.log('word insert');
+                newWord.save(function (err, theWord) {
+                if (err) { return next(err); }
+                    // Successful - redirect to new word record.
+                    //res.redirect(word.url);
+                    req.body.id = theWord._id;
+                    res.send(req.body);
+                });
+            }
+            */
           } else {
               console.log('word_update_post new insert');
               newWord.save(function (err, theWord) {
@@ -282,164 +286,76 @@ exports.word_update_imgAddr_post = function(req, res, next) {
 };
 
 exports.word_datatable = function (req, res, next) {
-    var book_id = '';
-    if(typeof req.query.book_id != 'undefined') {
-        book_id = req.query.book_id;
-    }
+
     var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-    res.render('word_board_list', { title: 'Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, book_id: book_id });
+    res.render('word_board_list', { title: 'Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt });
 
 };
 
-function getSorts(query) {
-    var sortables;
-    if (query.order[0].column == '1') {
-        sortables = { title: query.order[0].dir };
-    } else if (query.order[0].column == '2') {
-        sortables = { content: query.order[0].dir };
-    } else if (query.order[0].column == '3') {
-        sortables = { book_title: query.order[0].dir };
-    } else if (query.order[0].column == '4') {
-        sortables = { story_title: query.order[0].dir };
-    } else if (query.order[0].column == '5') {
-        sortables = { skill: query.order[0].dir };
-    } else if (query.order[0].column == '6') {
-        sortables = { importance: query.order[0].dir };
-    } else if (query.order[0].column == '7') {
-        sortables = { create_date: query.order[0].dir };
-    } else {
-        sortables = { create_date: 'desc' };
-    }
-    
-    return sortables;
-}
-
 exports.word_datatable_list = function (req, res, next) {
-    console.log('req.body.action:'+req.body.action);
     console.log('req.body:'+JSON.stringify(req.body));
-    if(typeof req.body.action == 'undefined') {
-        var book_id = {};
-        if(req.query.book_id != '') {
-            book_id = {book: req.query.book_id};
-        }
-        console.log('Right now here!');
-        var sortables = getSorts(req.body);
-        console.log('sortables:'+JSON.stringify(sortables));
-        var searchStr = req.body.search.value;
-        if (req.body.search.value) {
-            var regex = new RegExp(req.body.search.value, "i");
-            searchStr = {
-                user: { $in: [req.session.userId]}, book_id,
-                $or: [{
-                    'title': { $regex: '.*' + req.body.search.value + '.*' }
-                }, {
-                    'content': { $regex: '.*' + req.body.search.value + '.*' }
-                }, {
-                    'book_title': { $regex: '.*' + req.body.search.value + '.*' }
-                }, {
-                    'story_title': { $regex: '.*' + req.body.search.value + '.*' }
-                }]
-            };
-        } else {
-            searchStr = {user: { $in: [req.session.userId]}, book_id};
-        }
+    var searchStr = req.body.search.value;
+    if (req.body.search.value) {
+        var regex = new RegExp(req.body.search.value, "i");
+        searchStr = {
+            user: { $in: [req.session.userId]}, 
+            $or: [{
+                'title': { $regex: '.*' + req.body.search.value + '.*' }
+            }, {
+                'content': { $regex: '.*' + req.body.search.value + '.*' }
+            }, {
+                'story.title': { $regex: '.*' + req.body.search.value + '.*' }
+            }]
+        };
+    } else {
+        searchStr = {user: { $in: [req.session.userId]}};
+    }
 
-        var recordsTotal = 0;
-        var recordsFiltered = 0;
+    var recordsTotal = 0;
+    var recordsFiltered = 0;
 
-        Word.count({user: { $in: [req.session.userId]}, book_id}, function (err, c) {
-            recordsTotal = c;
-            console.log('recordsTotal:'+c);
-            Word.count(searchStr, function (err, c) {
-                if (err) { console.log(err); return next(err); }
-                recordsFiltered = c;
-                //console.log('recordsFiltered:'+c);console.log('start:'+req.body.start);console.log('length:'+req.body.length);
-                var start = Number(req.body.start);
-                var length = Number(req.body.length);
-                if(length == -1) length = 1000000;
-                Word.find(searchStr)
-                    .skip(start).limit(length).sort(sortables)
-                    .lean().populate({ path: 'story', select: '_id title' }).populate({ path: 'book', select: '_id title' })
-                    .exec(function (err, list_words) {
-                        if (err) { return next(err); }
-                        for (let i = 0; i < list_words.length; i++) {
-                            list_words[i].rownum = start + i + 1;
-                            if(list_words[i].create_date != null){
-                                list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
-                            }
-                            if (list_words[i].story != null && list_words[i].story.title != null) {
-                                list_words[i].story.title = entities.decode(list_words[i].story.title);
-                            }
-                            if (list_words[i].story_title != null && list_words[i].story_title != null) {
-                                list_words[i].story_title = entities.decode(list_words[i].story_title);
-                            }
-                            if (list_words[i].book_title != null && list_words[i].book_title != null) {
-                                list_words[i].book_title = entities.decode(list_words[i].book_title);
+    Word.count({user: { $in: [req.session.userId]}}, function (err, c) {
+        recordsTotal = c;
+        console.log('recordsTotal:'+c);
+        Word.count(searchStr, function (err, c) {
+            if (err) { console.log(err); return next(err); }
+            recordsFiltered = c;
+            console.log('recordsFiltered:'+c);
+            console.log('start:'+req.body.start);
+            console.log('length:'+req.body.length);
+            var start = Number(req.body.start);
+            var length = Number(req.body.length);
+            Word.find(searchStr)
+                .skip(start).limit(length).sort({create_date: -1, title: 1})
+                .lean().populate({ path: 'story', select: '_id title' })
+                .exec(function (err, list_words) {
+                    if (err) { return next(err); }
+                    for (let i = 0; i < list_words.length; i++) {
+                        list_words[i].rownum = start + i + 1;
+                        if(list_words[i].create_date != null){
+                            for (let j = 0; j < list_words[i].create_date.length; j++) {
+                                if(list_words[i].create_date[j].user == req.session.userId) {
+                                    list_words[i].cdate = moment(list_words[i].create_date[j].c_date).format('YYYY-MM-DD');
+                                    console.log('cdate:'+list_words[i].cdate);
+                                }
                             }
                         }
-                        //console.log('list_words:'+JSON.stringify(list_words));
-                        var data = JSON.stringify({
-                            "draw": req.body.draw,
-                            "recordsFiltered": recordsFiltered,
-                            "recordsTotal": recordsTotal,
-                            "data": list_words
-                        });
-                        res.send(data);
-                });
+                        if (list_words[i].story != null && list_words[i].story.title != null) {
+                            list_words[i].story.title = entities.decode(list_words[i].story.title);
+                        }
+                    }
+                    console.log('list_words:'+JSON.stringify(list_words));
+                    var data = JSON.stringify({
+                        "draw": req.body.draw,
+                        "recordsFiltered": recordsFiltered,
+                        "recordsTotal": recordsTotal,
+                        "data": list_words
+                    });
+                    res.send(data);
             });
         });
-    } else if (req.body.action == 'edit') {
-        console.log('req.body.data:'+JSON.stringify(req.body.data));
-        var obj = req.body.data, kyz = Object.keys(obj);
-        console.log('key:'+kyz[0]);
-        //console.log('req.body.data.title:'+JSON.stringify(obj[kyz[0]]));
-        console.log('req.body.data.title:'+obj[kyz[0]].title);
-        console.log('req.body.data.story_title:'+obj[kyz[0]].story_title);
-        console.log('req.body.data.create_date:'+obj[kyz[0]].create_date);
-        Word.update({_id: kyz}, {
-            title: obj[kyz[0]].title,
-            content: obj[kyz[0]].content,
-            skill: obj[kyz[0]].skill,
-            importance: obj[kyz[0]].importance,
-            create_date: new Date(obj[kyz[0]].create_date)
-        }, function(err, upWord) {
-            if (err) { console.log(err); return next(err); }
-            var theWord = [{
-                "_id": kyz[0],
-                "title": obj[kyz[0]].title,
-                "content": obj[kyz[0]].content,
-                "skill": obj[kyz[0]].skill,
-                "importance": obj[kyz[0]].importance,
-                "create_date": obj[kyz[0]].create_date
-            }];
-            var data = JSON.stringify({
-                "action": "edit",
-                "data": theWord
-            });
-            console.log('upWord:'+data);
-            res.send(data);
-        });
-    } else if (req.body.action == 'remove') {
-        console.log('req.body.data:'+JSON.stringify(req.body.data));
-        var obj = req.body.data, kyz = Object.keys(obj);
-        Word.findByIdAndRemove(kyz[0], function deleteWord(err) {
-            if (err) { console.log(err); return next(err); }
-            var theWord = [{
-                "_id": kyz[0],
-                "title": obj[kyz[0]].title,
-                "content": obj[kyz[0]].content,
-                "skill": obj[kyz[0]].skill,
-                "importance": obj[kyz[0]].importance,
-                "create_date": obj[kyz[0]].create_date
-            }];
-            var data = JSON.stringify({
-                "action": "remove",
-                "data": theWord
-            });
-            console.log('removeWord:'+data);
-            res.send(data);
-        });
-    }
+    });
+
 };
 
 exports.word_board_list = function(req, res, next) {

@@ -5,6 +5,7 @@ var BookInstance = require('../models/bookinstance');
 var Story = require('../models/story');
 var User = require('../models/user');
 var History = require('../models/history');
+var moment = require('moment');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -428,3 +429,150 @@ exports.book_update_post = [
     }
 ];
 
+exports.book_datatable = function (req, res, next) {
+
+    var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+    res.render('book_board_list', { title: 'Book List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt });
+
+};
+
+function getSorts(query) {
+    var sortables;
+    if (query.order[0].column == '1') {
+        sortables = { title: query.order[0].dir };
+    } else if (query.order[0].column == '2') {
+        sortables = { wcnt: query.order[0].dir };
+    } else if (query.order[0].column == '3') {
+        sortables = { lexile: query.order[0].dir };
+    } else if (query.order[0].column == '4') {
+        sortables = { level: query.order[0].dir };
+    } else if (query.order[0].column == '5') {
+        sortables = { progress: query.order[0].dir };
+    } else if (query.order[0].column == '6') {
+        sortables = { rcnt: query.order[0].dir };
+    } else if (query.order[0].column == '7') {
+        sortables = { start_date: query.order[0].dir };
+    } else if (query.order[0].column == '8') {
+        sortables = { end_date: query.order[0].dir };
+    } else {
+        sortables = { create_date: 'desc' };
+    }
+    
+    return sortables;
+}
+
+exports.book_datatable_list = function (req, res, next) {
+    console.log('req.body.action:'+req.body.action);
+    console.log('req.body:'+JSON.stringify(req.body));
+    if(typeof req.body.action == 'undefined') {
+        console.log('Right now here!');
+        var sortables = getSorts(req.body);
+        console.log('sortables:'+JSON.stringify(sortables));
+        var searchStr = req.body.search.value;
+        if (req.body.search.value) {
+            var regex = new RegExp(req.body.search.value, "i");
+            searchStr = {
+                user: { $in: [req.session.userId]}, 
+                $or: [{
+                    'title': { $regex: '.*' + req.body.search.value + '.*' }
+                }]
+            };
+        } else {
+            searchStr = {user: { $in: [req.session.userId]}};
+        }
+
+        var recordsTotal = 0;
+        var recordsFiltered = 0;
+
+        Book.count({user: { $in: [req.session.userId]}}, function (err, c) {
+            recordsTotal = c;
+            console.log('recordsTotal:'+c);
+            Book.count(searchStr, function (err, c) {
+                if (err) { console.log(err); return next(err); }
+                recordsFiltered = c;
+                //console.log('recordsFiltered:'+c);console.log('start:'+req.body.start);console.log('length:'+req.body.length);
+                var start = Number(req.body.start);
+                var length = Number(req.body.length);
+                if(length == -1) length = 1000000;
+                Book.find(searchStr)
+                    .skip(start).limit(length).sort(sortables)
+                    .lean()
+                    .exec(function (err, list_books) {
+                        if (err) { return next(err); }
+                        for (let i = 0; i < list_books.length; i++) {
+                            list_books[i].rownum = start + i + 1;
+                            list_books[i].title = entities.decode(list_books[i].title);
+                            if(list_books[i].start_date != null){
+                                list_books[i].start_date = moment(list_books[i].start_date).format('YYYY-MM-DD');
+                            }
+                            if(list_books[i].end_date != null){
+                                list_books[i].end_date = moment(list_books[i].end_date).format('YYYY-MM-DD');
+                            }
+                            if(list_books[i].create_date != null){
+                                list_books[i].create_date = moment(list_books[i].create_date).format('YYYY-MM-DD');
+                            }
+                        }
+                        //console.log('list_books:'+JSON.stringify(list_books));
+                        var data = JSON.stringify({
+                            "draw": req.body.draw,
+                            "recordsFiltered": recordsFiltered,
+                            "recordsTotal": recordsTotal,
+                            "data": list_books
+                        });
+                        res.send(data);
+                });
+            });
+        });
+    } else if (req.body.action == 'edit') {
+        console.log('req.body.data:'+JSON.stringify(req.body.data));
+        var obj = req.body.data, kyz = Object.keys(obj);
+        console.log('key:'+kyz[0]);
+        //console.log('req.body.data.title:'+JSON.stringify(obj[kyz[0]]));
+        console.log('req.body.data.title:'+obj[kyz[0]].title);
+        Book.update({_id: kyz}, {
+            wcnt: obj[kyz[0]].wcnt,
+            lexile: obj[kyz[0]].lexile,
+            level: obj[kyz[0]].level,
+            progress: obj[kyz[0]].progress,
+            rcnt: obj[kyz[0]].rcnt,
+            start_date: new Date(obj[kyz[0]].start_date),
+            end_date: new Date(obj[kyz[0]].end_date),
+            create_date: new Date(obj[kyz[0]].create_date)
+        }, function(err, upBook) {
+            if (err) { console.log(err); return next(err); }
+            var theBook = [{
+                "_id": kyz[0],
+                "title": obj[kyz[0]].title,
+                "wcnt": obj[kyz[0]].wcnt,
+                "lexile": obj[kyz[0]].lexile,
+                "level": obj[kyz[0]].level,
+                "progress": obj[kyz[0]].progress,
+                "rcnt": obj[kyz[0]].rcnt,
+                "start_date": obj[kyz[0]].start_date,
+                "end_date": obj[kyz[0]].end_date,
+                "create_date": obj[kyz[0]].create_date
+            }];
+            var data = JSON.stringify({
+                "action": "edit",
+                "data": theBook
+            });
+            console.log('upBook:'+data);
+            res.send(data);
+        });
+    } else if (req.body.action == 'remove') {
+        console.log('req.body.data:'+JSON.stringify(req.body.data));
+        var obj = req.body.data, kyz = Object.keys(obj);
+        Book.findByIdAndRemove(kyz[0], function deleteBook(err) {
+            if (err) { console.log(err); return next(err); }
+            var theBook = [{
+                "_id": kyz[0]
+            }];
+            var data = JSON.stringify({
+                "action": "remove",
+                "data": theBook
+            });
+            console.log('removeBook:'+data);
+            res.send(data);
+        });
+    }
+};

@@ -1,0 +1,37 @@
+extends layout2
+
+block content
+	h1(style='margin-top:100px;') #{translation.BookList}
+	<table id="example" class="table table-striped table-bordered" style="width:100%">
+		<thead>
+			<tr>
+				th(width='3%') #{translation.Rownum}
+				th(width='22%') #{translation.Book}
+				th(width='11%') #{translation.Author}
+				th(width='9%') #{translation.WordCount}
+				th(width='9%') #{translation.Lexile}
+				th(width='9%') #{translation.Level}
+				th(width='9%') #{translation.Progress}
+				th(width='7%') #{translation.Rcnt}
+				th(width='7%') #{translation.StartDate}
+				th(width='7%') #{translation.EndDate}
+				th(width='7%') #{translation.CreateDate}
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				th(width='3%') #{translation.Rownum}
+				th(width='22%') #{translation.Book}
+				th(width='11%') #{translation.Author}
+				th(width='9%') #{translation.WordCount}
+				th(width='9%') #{translation.Lexile}
+				th(width='9%') #{translation.Level}
+				th(width='9%') #{translation.Progress}
+				th(width='7%') #{translation.Rcnt}
+				th(width='8%') #{translation.StartDate}
+				th(width='7%') #{translation.EndDate}
+				th(width='7%') #{translation.CreateDate}
+			</tr>
+		</tfoot>
+	</table>	
+	<script src="/js/bookBoardList.js"></script>		

@@ -68,6 +68,10 @@ router.get('/books', book_controller.book_list);
 
 router.post('/book_ajax', book_controller.book_ajax);
 
+router.get('/book_board_list', book_controller.book_datatable);
+
+router.post('/book_board_list', book_controller.book_datatable_list);
+
 /// STORY ROUTES ///
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
@@ -150,9 +154,13 @@ router.get('/words', word_controller.word_list);
 // GET request for list of all Book.
 router.get('/word_list', word_controller.words);
 
-router.get('/word_board_list', word_controller.word_board_list);
+//router.get('/word_board_list', word_controller.word_board_list);
 
-router.post('/word_board_list', word_controller.word_board_list);
+//router.post('/word_board_list', word_controller.word_board_list);
+
+router.get('/word_board_list', word_controller.word_datatable);
+
+router.post('/word_board_list', word_controller.word_datatable_list);
 
 router.post('/word_board_ajax', word_controller.word_board_ajax);
 

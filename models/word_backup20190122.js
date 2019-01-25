@@ -7,14 +7,12 @@ var WordSchema = new Schema({
     title: {type: String, required: true},
     user: [{ type: Schema.ObjectId, ref: 'User', required: true }],
     book: { type: Schema.ObjectId, ref: 'Book' },
-    book_title: {type: String},
     story: { type: Schema.ObjectId, ref: 'Story', required: true },
-    story_title: {type: String},
     content: {type: String},
     references: [{type: String}],
     skill: { type: String },
     importance: { type: String },
-    create_date: {type: Date},
+    create_date: [ { user: {type: Schema.ObjectId, ref: 'User'}, c_date: {type: Date} } ],
     image_address: { type: String }
 });
 

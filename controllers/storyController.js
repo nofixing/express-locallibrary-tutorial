@@ -18,7 +18,8 @@ var async = require('async');
 // Display list of all stories.
 exports.story_list = function(req, res, next) {
 
-  Story.find({$and:[{user: req.session.userId}, {book: null}, {$or: [{open: null}, {open: 'N'}]}] }).collation({locale: 'en' }).sort({create_date: 1})
+  //Story.find({$and:[{user: req.session.userId}, {book: null}, {$or: [{open: null}, {open: 'N'}]}] }).collation({locale: 'en' }).sort({create_date: 1})
+  Story.find({$and:[{user: req.session.userId}, {book: null}] }).collation({locale: 'en' }).sort({create_date: 1})
     .exec(function (err, list_stories) {
       if (err) { return next(err); }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
@@ -156,6 +157,7 @@ exports.story_detail = function(req, res, next) {
         story: function(callback) {
             Story.findById(req.params.id)
               .populate('genre')
+              .populate('book')
               .exec(callback);
         },
         comments: function(callback) {
@@ -204,6 +206,12 @@ exports.story_detail = function(req, res, next) {
             return next(eor);
         }
         results.story.title = entities.decode(results.story.title);
+        var book_title = '';
+        var book_id = '';
+        if (typeof results.story.book != 'undefined'){
+            book_title = entities.decode(results.story.book.title);
+            book_id = results.story.book._id;
+        }
         if (results.story.user != req.session.userId) {
             Story.findById({'_id': req.params.id}).exec( function (err,theStory) {
                 var isThere = false;
@@ -301,7 +309,7 @@ exports.story_detail = function(req, res, next) {
         if (pc == '') vName = 'story_mdtl';
         res.render(vName, 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 
-        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt } );
+        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, book_title: book_title, book_id: book_id } );
     });
 
 };
