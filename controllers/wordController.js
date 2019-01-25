@@ -335,7 +335,7 @@ exports.word_datatable_list = function (req, res, next) {
             if (req.body.search.value) {
                 var regex = new RegExp(req.body.search.value, "i");
                 searchStr = {
-                    book_id,
+                    user: { $in: [req.session.userId]}, book: req.body.book_id,
                     $or: [{
                         'title': { $regex: '.*' + req.body.search.value + '.*' }
                     }, {
