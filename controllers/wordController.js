@@ -318,76 +318,141 @@ exports.word_datatable_list = function (req, res, next) {
     console.log('req.body.action:'+req.body.action);
     console.log('req.body:'+JSON.stringify(req.body));
     if(typeof req.body.action == 'undefined') {
-        var book_id = {};
-        if(req.query.book_id != '') {
-            book_id = {book: req.query.book_id};
+        var book_id = '';
+        if(req.body.book_id != '') {
+            book_id = {user: { $in: [req.session.userId]}, book: req.body.book_id};
         }
-        console.log('Right now here!');
+        console.log('book_id:'+JSON.stringify(book_id));
         var sortables = getSorts(req.body);
         console.log('sortables:'+JSON.stringify(sortables));
         var searchStr = req.body.search.value;
-        if (req.body.search.value) {
-            var regex = new RegExp(req.body.search.value, "i");
-            searchStr = {
-                user: { $in: [req.session.userId]}, book_id,
-                $or: [{
-                    'title': { $regex: '.*' + req.body.search.value + '.*' }
-                }, {
-                    'content': { $regex: '.*' + req.body.search.value + '.*' }
-                }, {
-                    'book_title': { $regex: '.*' + req.body.search.value + '.*' }
-                }, {
-                    'story_title': { $regex: '.*' + req.body.search.value + '.*' }
-                }]
-            };
-        } else {
-            searchStr = {user: { $in: [req.session.userId]}, book_id};
-        }
+        
 
         var recordsTotal = 0;
         var recordsFiltered = 0;
+        if(book_id != '') {
+            console.log('We are here:');
+            if (req.body.search.value) {
+                var regex = new RegExp(req.body.search.value, "i");
+                searchStr = {
+                    book_id,
+                    $or: [{
+                        'title': { $regex: '.*' + req.body.search.value + '.*' }
+                    }, {
+                        'content': { $regex: '.*' + req.body.search.value + '.*' }
+                    }, {
+                        'book_title': { $regex: '.*' + req.body.search.value + '.*' }
+                    }, {
+                        'story_title': { $regex: '.*' + req.body.search.value + '.*' }
+                    }]
+                };
+            } else {
+                searchStr = book_id;
+            }
 
-        Word.count({user: { $in: [req.session.userId]}, book_id}, function (err, c) {
-            recordsTotal = c;
-            console.log('recordsTotal:'+c);
-            Word.count(searchStr, function (err, c) {
-                if (err) { console.log(err); return next(err); }
-                recordsFiltered = c;
-                //console.log('recordsFiltered:'+c);console.log('start:'+req.body.start);console.log('length:'+req.body.length);
-                var start = Number(req.body.start);
-                var length = Number(req.body.length);
-                if(length == -1) length = 1000000;
-                Word.find(searchStr)
-                    .skip(start).limit(length).sort(sortables)
-                    .lean().populate({ path: 'story', select: '_id title' }).populate({ path: 'book', select: '_id title' })
-                    .exec(function (err, list_words) {
-                        if (err) { return next(err); }
-                        for (let i = 0; i < list_words.length; i++) {
-                            list_words[i].rownum = start + i + 1;
-                            if(list_words[i].create_date != null){
-                                list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+            Word.count(book_id, function (err, c) {
+                recordsTotal = c;
+                console.log('recordsTotal:'+c);
+                Word.count(searchStr, function (err, c) {
+                    if (err) { console.log(err); return next(err); }
+                    recordsFiltered = c;
+                    //console.log('recordsFiltered:'+c);console.log('start:'+req.body.start);console.log('length:'+req.body.length);
+                    var start = Number(req.body.start);
+                    var length = Number(req.body.length);
+                    if(length == -1) length = 1000000;
+                    Word.find(searchStr)
+                        .skip(start).limit(length).sort(sortables)
+                        .lean().populate({ path: 'story', select: '_id title' }).populate({ path: 'book', select: '_id title' })
+                        .exec(function (err, list_words) {
+                            if (err) { return next(err); }
+                            for (let i = 0; i < list_words.length; i++) {
+                                list_words[i].rownum = start + i + 1;
+                                if(list_words[i].create_date != null){
+                                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                                }
+                                if (list_words[i].story != null && list_words[i].story.title != null) {
+                                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                                }
+                                if (list_words[i].story_title != null && list_words[i].story_title != null) {
+                                    list_words[i].story_title = entities.decode(list_words[i].story_title);
+                                }
+                                if (list_words[i].book_title != null && list_words[i].book_title != null) {
+                                    list_words[i].book_title = entities.decode(list_words[i].book_title);
+                                }
                             }
-                            if (list_words[i].story != null && list_words[i].story.title != null) {
-                                list_words[i].story.title = entities.decode(list_words[i].story.title);
-                            }
-                            if (list_words[i].story_title != null && list_words[i].story_title != null) {
-                                list_words[i].story_title = entities.decode(list_words[i].story_title);
-                            }
-                            if (list_words[i].book_title != null && list_words[i].book_title != null) {
-                                list_words[i].book_title = entities.decode(list_words[i].book_title);
-                            }
-                        }
-                        //console.log('list_words:'+JSON.stringify(list_words));
-                        var data = JSON.stringify({
-                            "draw": req.body.draw,
-                            "recordsFiltered": recordsFiltered,
-                            "recordsTotal": recordsTotal,
-                            "data": list_words
-                        });
-                        res.send(data);
+                            //console.log('list_words:'+JSON.stringify(list_words));
+                            var data = JSON.stringify({
+                                "draw": req.body.draw,
+                                "recordsFiltered": recordsFiltered,
+                                "recordsTotal": recordsTotal,
+                                "data": list_words
+                            });
+                            res.send(data);
+                    });
                 });
             });
-        });
+        } else {
+
+            if (req.body.search.value) {
+                var regex = new RegExp(req.body.search.value, "i");
+                searchStr = {
+                    user: { $in: [req.session.userId]},
+                    $or: [{
+                        'title': { $regex: '.*' + req.body.search.value + '.*' }
+                    }, {
+                        'content': { $regex: '.*' + req.body.search.value + '.*' }
+                    }, {
+                        'book_title': { $regex: '.*' + req.body.search.value + '.*' }
+                    }, {
+                        'story_title': { $regex: '.*' + req.body.search.value + '.*' }
+                    }]
+                };
+            } else {
+                searchStr = {user: { $in: [req.session.userId]}};
+            }
+
+            Word.count({user: { $in: [req.session.userId]}}, function (err, c) {
+                recordsTotal = c;
+                console.log('recordsTotal:'+c);
+                Word.count(searchStr, function (err, c) {
+                    if (err) { console.log(err); return next(err); }
+                    recordsFiltered = c;
+                    //console.log('recordsFiltered:'+c);console.log('start:'+req.body.start);console.log('length:'+req.body.length);
+                    var start = Number(req.body.start);
+                    var length = Number(req.body.length);
+                    if(length == -1) length = 1000000;
+                    Word.find(searchStr)
+                        .skip(start).limit(length).sort(sortables)
+                        .lean().populate({ path: 'story', select: '_id title' }).populate({ path: 'book', select: '_id title' })
+                        .exec(function (err, list_words) {
+                            if (err) { return next(err); }
+                            for (let i = 0; i < list_words.length; i++) {
+                                list_words[i].rownum = start + i + 1;
+                                if(list_words[i].create_date != null){
+                                    list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
+                                }
+                                if (list_words[i].story != null && list_words[i].story.title != null) {
+                                    list_words[i].story.title = entities.decode(list_words[i].story.title);
+                                }
+                                if (list_words[i].story_title != null && list_words[i].story_title != null) {
+                                    list_words[i].story_title = entities.decode(list_words[i].story_title);
+                                }
+                                if (list_words[i].book_title != null && list_words[i].book_title != null) {
+                                    list_words[i].book_title = entities.decode(list_words[i].book_title);
+                                }
+                            }
+                            //console.log('list_words:'+JSON.stringify(list_words));
+                            var data = JSON.stringify({
+                                "draw": req.body.draw,
+                                "recordsFiltered": recordsFiltered,
+                                "recordsTotal": recordsTotal,
+                                "data": list_words
+                            });
+                            res.send(data);
+                    });
+                });
+            });
+        }
     } else if (req.body.action == 'edit') {
         console.log('req.body.data:'+JSON.stringify(req.body.data));
         var obj = req.body.data, kyz = Object.keys(obj);
