@@ -138,7 +138,7 @@ exports.story_list_ajax = function(req, res, next) {
       .exec(function (err, list_stories) {
         if (err) { return next(err); }
         for (let i = 0; i < list_stories.length; i++) {
-            if(typeof list_stories[i].chapter == 'undefined') {
+            if(typeof list_stories[i].chapter == 'undefined' || list_stories[i].chapter == '') {
                 list_stories[i].chapter = '';
             } else {
                 list_stories[i].chapter += ', ';

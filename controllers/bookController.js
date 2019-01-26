@@ -142,7 +142,7 @@ exports.book_detail = function(req, res, next) {
             var str = results.stories[i].content;
             var len = str.split(" ").length;
             results.stories[i].len = len;
-            if(typeof results.stories[i].chapter == 'undefined') {
+            if(typeof results.stories[i].chapter == 'undefined' || results.stories[i].chapter == '') {
                 results.stories[i].chapter = '';
             } else {
                 results.stories[i].chapter += ',';
