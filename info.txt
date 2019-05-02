@@ -25,3 +25,5 @@ nlrgkuedjqopymvi
 How to add or remove rows inside a table dynamically using jQuery
 https://www.tutorialrepublic.com/codelab.php?topic=faq&file=jquery-append-and-remove-table-row-dynamically
 https://closebrace.com/tutorials/2017-03-02/creating-a-simple-restful-web-app-with-nodejs-express-and-mongodb
+
+set GOOGLE_APPLICATION_CREDENTIALS=/path/to/service_account_file.json
