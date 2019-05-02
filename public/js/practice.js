@@ -1,4 +1,5 @@
 var selectText = "";
+var selectContent = "";
 var wordArray = [];
 var dicAddr = "https://c.merriam-webster.com/coredictionary/";
 $(function(){
@@ -69,6 +70,7 @@ $(function(){
                 async: false,
                 success : function(data) {
                     console.log("jb_content dblclick");
+                    selectContent = data.content;
                     var markup = "<tr><td style='text-align: center;'><div class='checkbox'><input type='checkbox' class='wList' value='"+data.word_id+"'></div></td>";
                     markup += "<td><input type='text' size='15' maxlength='30' class='form-control ipt' value='"+data.title+"'>";
                     markup += "<input type='hidden' class='form-control iph' value=''>";
@@ -92,6 +94,8 @@ $(function(){
                     markup += "</button></td></tr>";
 
                     $(".wtd").append(markup);
+
+                    wordList();
         
                 }
             });
@@ -407,7 +411,6 @@ function search() {
     
     if (selectText.length > 0) {
         dicSearch();
-        wordList();
         /*
         var span = document.createElement("span");
         span.setAttribute("class", "hgt");
@@ -508,9 +511,11 @@ function wordList() {
     });
     if ( isThere ) return;
     if (wordArray.length == 0 && $("#memo").val() == "") {
-        document.querySelector('#snow-container').children[0].innerHTML = "<p class='ql-font-PTSans' style='font-size:2em;'><strong>"+selectText+"</strong></p>";
+        document.querySelector('#snow-container').children[0].innerHTML = 
+            "<p class='ql-font-PTSans' style='font-size:2em;'><strong>"+selectText+"&nbsp;&nbsp;&nbsp;"+selectContent+"</strong></p>";
     } else {
-        document.querySelector('#snow-container').children[0].innerHTML = html + "<br><p class='ql-font-PTSans' style='font-size:2em;'><strong>"+selectText+"</strong></p>";
+        document.querySelector('#snow-container').children[0].innerHTML = 
+            html + "<br><p class='ql-font-PTSans' style='font-size:2em;'><strong>"+selectText+"&nbsp;&nbsp;&nbsp;"+selectContent+"</strong></p>";
     }
     wordArray.push(selectText);
 }
