@@ -10,6 +10,7 @@
     "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
+    "@google-cloud/translate": "^3.0.1",
     "async": "^2.6.0",
     "bcrypt": "^2.0.1",
     "brew": "0.0.8",
