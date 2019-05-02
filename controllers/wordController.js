@@ -3,6 +3,15 @@ var moment = require('moment');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
+const {Translate} = require('@google-cloud/translate');
+
+// Your Google Cloud Platform project ID
+const projectId = 'deft-chariot-149807';
+
+// Instantiates a client
+const translate = new Translate({
+  projectId: projectId,
+});
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -102,20 +111,6 @@ exports.word_create_post = [
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
-        // Create a Word object with escaped and trimmed data.
-        var word = new Word(
-          { title: req.body.title,
-            user: req.session.userId,
-            story: req.body.story_id,
-            book: req.body.book_id,
-            story_title: req.body.story_title,
-            book_title: req.body.book_title,
-            content: req.body.content,
-            skill: req.body.skill,
-            importance: req.body.importance,
-            create_date: Date.now()
-           });
-
         //Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
         Word.find({story: req.body.story_id, title: req.body.title})
            .exec(function (err, results) {
@@ -125,13 +120,41 @@ exports.word_create_post = [
                  res.send(req.body);
              } else {
                  console.log('word_create_post');
-                 word.save(function (err, theWord) {
-                    if (err) { console.log(err); return next(err); }
-                        // Successful - redirect to new word record.
-                        //res.redirect(word.url);
-                        req.body.word_id = theWord._id;
-                        res.send(req.body);
-                    });
+                 
+                var translation = '';
+                translate.translate(req.body.title, 'ko').then(results => {
+                    translation = results[0];
+                    console.log(`Translation: ${translation}`);
+
+                    // Create a Word object with escaped and trimmed data.
+                    var word = new Word(
+                        { title: req.body.title,
+                        user: req.session.userId,
+                        story: req.body.story_id,
+                        book: req.body.book_id,
+                        story_title: req.body.story_title,
+                        book_title: req.body.book_title,
+                        content: translation,
+                        skill: req.body.skill,
+                        importance: req.body.importance,
+                        create_date: Date.now()
+                        });
+                    console.log('word.content:'+word.content);
+                    word.save(function (err, theWord) {
+                        if (err) { console.log(err); return next(err); }
+                            // Successful - redirect to new word record.
+                            //res.redirect(word.url);
+                            req.body.word_id = theWord._id;
+                            req.body.content = translation;
+                            res.send(req.body);
+                        });
+
+                }).catch(err => {
+                    console.error('ERROR:', err);
+                    res.send(req.body);
+                });
+                
+
              }
            });
     }

@@ -58,6 +58,7 @@ $(function(){
             data.word_id = '';
             data.skill = '1';
             data.importance = '1';
+            data.content = '';
             var httpType = 'https://';
             if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
             $.ajax({
@@ -78,7 +79,7 @@ $(function(){
                     markup += "<option value='3'>"+$('#VeryImportance').val()+"</option>";
                     markup += "<option value='4'>"+$('#Indispensable').val()+"</option></td>";
 
-                    markup += "<td><textarea class='form-control txt' rows='1' cols='45'></textarea>";
+                    markup += "<td><textarea class='form-control txt' rows='1' cols='45'>"+data.content+"</textarea>";
 
                     markup += "<select class='skill form-control' style='display: inline; width: 200px; margin-top: 10px;'>";
                     markup += "<option value='1'>"+$('#NotKnow').val()+"</option>";
