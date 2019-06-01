@@ -122,9 +122,11 @@ exports.word_create_post = [
                  console.log('word_create_post');
                  
                 var translation = '';
+                /*
                 translate.translate(req.body.title, 'ko').then(results => {
                     translation = results[0];
                     console.log(`Translation: ${translation}`);
+                    */
 
                     // Create a Word object with escaped and trimmed data.
                     var word = new Word(
@@ -148,11 +150,12 @@ exports.word_create_post = [
                             req.body.content = translation;
                             res.send(req.body);
                         });
-
+                /*
                 }).catch(err => {
                     console.error('ERROR:', err);
                     res.send(req.body);
                 });
+                */
                 
 
              }
