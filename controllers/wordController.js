@@ -118,7 +118,7 @@ exports.word_create_post = [
         
         const client = auth.fromJSON(keys);
         client.scopes = ['https://www.googleapis.com/auth/cloud-platform'];
-        const url = `https://www.googleapis.com/dns/v1/projects/${keys.project_id}`;
+        const url = `https://translation.googleapis.com/language/translate/v2`;
         const resp = await client.request({url});
         console.log(resp.data);
         
