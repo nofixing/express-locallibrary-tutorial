@@ -116,11 +116,15 @@ exports.word_create_post = [
     // Process request after validation and sanitization.
     async (req, res, next) => {
         
-        const client = auth.fromJSON(keys);
-        client.scopes = ['https://www.googleapis.com/auth/cloud-platform'];
-        const url = `https://translation.googleapis.com/language/translate/v2`;
-        const resp = await client.request({url});
-        console.log(resp.data);
+        try {
+            const client = auth.fromJSON(keys);
+            client.scopes = ['https://www.googleapis.com/auth/cloud-platform'];
+            const url = `https://translation.googleapis.com/language/translate/v2`;
+            const resp = await client.request({url});
+            console.log(resp.data);
+        } catch(err){
+            console.error(err); 
+        }
         
         // Extract the validation errors from a request.
         const errors = validationResult(req);
