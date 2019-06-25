@@ -4,14 +4,6 @@ var moment = require('moment');
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
 const {Translate} = require('@google-cloud/translate');
-const {auth} = require('google-auth-library');
-
-// load the environment variable with our keys
-const keysEnvVar = process.env['GOOGLE_APPLICATION_CREDENTIALS'];
-if (!keysEnvVar) {
-  throw new Error('The $GOOGLE_APPLICATION_CREDENTIALS environment variable was not found!');
-}
-const keys = JSON.parse(keysEnvVar);
 
 // Your Google Cloud Platform project ID
 const projectId = 'infinitestorlet';
@@ -114,17 +106,7 @@ exports.word_create_post = [
     // Sanitize fields.
     sanitizeBody('*').trim().escape(),
     // Process request after validation and sanitization.
-    async (req, res, next) => {
-        
-        try {
-            const client = auth.fromJSON(keys);
-            client.scopes = ['https://www.googleapis.com/auth/cloud-platform'];
-            const url = `https://translation.googleapis.com/language/translate/v2`;
-            const resp = await client.request({url});
-            console.log(resp.data);
-        } catch(err){
-            console.error(err); 
-        }
+    (req, res, next) => {
         
         // Extract the validation errors from a request.
         const errors = validationResult(req);
