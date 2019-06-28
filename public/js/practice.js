@@ -227,6 +227,9 @@ $(function(){
                 });
             }
         });
+        $('.wList:not(#checkall)').each(function () {
+            $(this).prop('checked', false);
+        });
         alert($('#SAVED').val());
     });
 
@@ -251,6 +254,9 @@ $(function(){
             if($(this).prop('checked')){
                 $(this).parents("tr").remove();
             }
+        });
+        $('.wList:not(#checkall)').each(function () {
+            $(this).prop('checked', false);
         });
         alert($('#DELETED').val());
     });
