@@ -48,8 +48,19 @@ $(function(){
     $( "#jb_content" ).bind('dblclick', function(e){
         search();
         imageSearch();
-        
+
+        $('.wList').each(function(idx) {
+            console.log("previous words:"+$('.ipt')[idx].value);
+            if (selectText == $('.ipt')[idx].value) {
+                console.log("front already exists");
+                selectText = '';
+            }
+        });
+
         if (selectText.length > 0) {
+
+            
+
             var data = {};
             data.title = selectText;
             data.story_id = $( "#story_id" ).val();
