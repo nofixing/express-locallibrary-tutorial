@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1(style='margin-top: 100px;') #{translation.SIGNUP}
+
+  form(method='POST' action='' id='userForm' name='userForm')
+    div.form-group.row
+      div.col-sm-2
+        label(for='name') #{translation.Name}:
+        input#name.form-control(type='text', placeholder='Nickname' name='name')
+    div.form-group.row
+      div.col-sm-2
+        label(for='email') #{translation.Email}:
+        input#email.form-control(type='email', placeholder='name@email.com' name='email')
+    div.form-group.row
+      div.col-sm-2
+        label(for='pw') #{translation.Password}:
+        input#pw.form-control(type='password' name='password')
+    div.form-group.row
+      div.col-sm-2
+        label(for='pw2') #{translation.ConfirmPassword}:
+        input#pw2.form-control(type='password' name='confirmPassword')
+    <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
+    <input type="hidden" id="nameThere" name="nameThere" value="#{translation.nameThere}" />
+    <button type="submit" class="btn btn-primary" onclick="userPost('#{translation.emailalreadyexists}', '#{translation.checkouremail}');return false;">#{translation.Submit}</button>

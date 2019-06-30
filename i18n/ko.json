@@ -169,5 +169,8 @@
   "Tooltip": "말풍선",
   "ImageAddress": "이미지 주소",
   "Definition": "정의",
-  "InsertTooltip": "말풍선 입력"
+  "InsertTooltip": "말풍선 입력",
+  "Sorry":"이 사이트는 현재 개발중이며 사이트 전반적인 것들을 재검토 하고 있습니다.",
+  "Sorry1":"그러므로 당분간 회원가입을 하실 수 없습니다.",
+  "Sorry2":"불편을 드린점 죄송합니다."
 }

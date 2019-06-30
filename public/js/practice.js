@@ -760,6 +760,9 @@ function preview() {
 
 function userPost(param1, param2) {
 
+    alert("You cannot sign up for membership at this time.");
+    return;
+    /*
     var frm = document.getElementById("userForm");
     if(frm.name.value == '' || frm.email.value == '' || frm.password.value == '' || frm.confirmPassword.value == '') {
         alert("All fields required.");
@@ -792,7 +795,7 @@ function userPost(param1, param2) {
 
         }
     });
-
+    */
 }
 
 function storyNewPost() {

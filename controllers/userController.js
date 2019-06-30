@@ -201,7 +201,11 @@ exports.emailcheck = function (req, res, next) {
 exports.registration_post = function (req, res, next) {
 
   console.log('registration_post call');
-  
+
+  var eor = new Error('You cannot sign up for membership at this time.');
+  eor.status = 400;
+  return next(eor);
+  /*
   var randomstring = require("randomstring");
 
   if (req.body.name &&
@@ -269,7 +273,7 @@ exports.registration_post = function (req, res, next) {
     eor.status = 400;
     return next(eor);
   }
-
+  */
 };
 
 exports.forgot_password = function (req, res, next) {
