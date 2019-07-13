@@ -94,6 +94,7 @@ router.post('/story/:id/update', story_controller.story_update_post);
 
 // GET request for one Book.
 router.get('/story/:id', story_controller.story_detail);
+router.post('/story/:id', story_controller.story_detail);
 
 router.get('/story/:id/iframe', story_controller.story_iframe);
 

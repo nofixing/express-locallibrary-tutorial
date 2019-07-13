@@ -60,7 +60,7 @@ html(lang='en')
             li.nav-item
               a.nav-link(href='#none' onclick='ReadingOnly();return false;') #{translation.Reading}
             li.nav-item
-              a.nav-link(href='#none' onclick='LearnReading();return false;') #{translation.LearnReading}
+              a.nav-link(href='#none' onclick='storyTooltip();return false;') #{translation.LearnReading}
             li.nav-item
               a.nav-link(href='#none' onclick='ReadingSearch();return false;') #{translation.DicSearch}
             li.nav-item
@@ -373,6 +373,10 @@ html(lang='en')
     <input type="hidden" id="BeUsedTo" name="BeUsedTo" value="#{translation.BeUsedTo}" />
     <input type="hidden" id="RememberComplete" name="RememberComplete" value="#{translation.RememberComplete}" />
     <input type="hidden" id="ImageAddress" name="ImageAddress" value="#{translation.ImageAddress}" />
+    <input type="hidden" id="tooltip" name="tooltip" value="#{tooltip}" />
+    <form id="ftlp" method="post" action="/catalog/story/#{story._id}">
+      <input type="hidden" name="tlp" value="y" />
+    </form>
     
     <div id="img_layer" style="display:none;position:fixed;left:34%;top:60px;width:500px;height:90%;overflow:auto;background:#fff;z-index: 3;">
       <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">#{translation.Close}</button>

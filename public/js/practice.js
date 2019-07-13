@@ -4,6 +4,9 @@ var wordArray = [];
 var dicAddr = "https://c.merriam-webster.com/coredictionary/";
 $(function(){
     var showData = $('#show_img');
+    var tooltip = $('#tooltip').val();
+    if(tooltip == 'y') LearnReading();
+
     $.support.cors = true;
 
     var prevScrollpos = window.pageYOffset;
@@ -731,6 +734,13 @@ function storyPost() {
     frm.content.value = document.querySelector('#snow-container').children[0].innerHTML;
     //alert(frm.btitle.value);
     //return;
+    frm.submit();
+
+}
+
+function storyTooltip() {
+
+    var frm = document.getElementById("ftlp");
     frm.submit();
 
 }

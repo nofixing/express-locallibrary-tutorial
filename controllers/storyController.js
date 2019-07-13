@@ -264,32 +264,35 @@ exports.story_detail = function(req, res, next) {
                 */
             }
         });
-        var txt = entities.decode(results.story.content);
-        //var highlightHtml = '<span class="hgt" style="color:black;">$1</span>';
-        var highlightHtml = '';
-        var sTag = '';
-        for (let i = 0; i < results.words.length; i++) {
-            if (typeof results.words[i].image_address != 'undefined' && typeof results.words[i].content != 'undefined') {
-                //console.log(results.words[i].image_address);
-                //console.log(results.words[i].content);
-                sTag = "<img src="+results.words[i].image_address+"><h5>"+results.words[i].content+"</h5>";
-                highlightHtml = '<a href="#" target="_blank" class="tltp" title="'+sTag+'">$1</a>';
-            } else if(typeof results.words[i].content != 'undefined') {
-                //console.log('content:'+results.words[i].content);
-                sTag = "<h5>"+results.words[i].content+"</h5>";
-                highlightHtml = '<a href="#" target="_blank" class="tltp" title="'+sTag+'">$1</a>';
-            } else {
-                highlightHtml = results.words[i].title;
+        results.story.content = entities.decode(results.story.content);
+        if(req.body.tlp == 'y') {
+            var txt = results.story.content;
+            //var highlightHtml = '<span class="hgt" style="color:black;">$1</span>';
+            var highlightHtml = '';
+            var sTag = '';
+            for (let i = 0; i < results.words.length; i++) {
+                if (typeof results.words[i].image_address != 'undefined' && typeof results.words[i].content != 'undefined') {
+                    //console.log(results.words[i].image_address);
+                    //console.log(results.words[i].content);
+                    sTag = "<img src="+results.words[i].image_address+"><h5>"+results.words[i].content+"</h5>";
+                    highlightHtml = '<a href="#" target="_blank" class="tltp" title="'+sTag+'">$1</a>';
+                } else if(typeof results.words[i].content != 'undefined') {
+                    //console.log('content:'+results.words[i].content);
+                    sTag = "<h5>"+results.words[i].content+"</h5>";
+                    highlightHtml = '<a href="#" target="_blank" class="tltp" title="'+sTag+'">$1</a>';
+                } else {
+                    highlightHtml = results.words[i].title;
+                }
+                
+                txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
             }
-            
-            txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
+            /*
+            for (let i = 0; i < results.words.length; i++) {
+                txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
+            }
+            */
+            results.story.content = txt;
         }
-        /*
-        for (let i = 0; i < results.words.length; i++) {
-            txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
-        }
-        */
-        results.story.content = txt;
         results.story.reference = entities.decode(results.story.reference);
         var memo = '';
         var memo_id = '';
@@ -309,7 +312,8 @@ exports.story_detail = function(req, res, next) {
         if (pc == '') vName = 'story_mdtl';
         res.render(vName, 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 
-        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, book_title: book_title, book_id: book_id } );
+        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, book_title: book_title, book_id: book_id,
+        tooltip:req.body.tlp } );
     });
 
 };
