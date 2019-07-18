@@ -3,12 +3,13 @@ var moment = require('moment');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
-const {Translate} = require('@google-cloud/translate');
+//const {Translate} = require('@google-cloud/translate');
 
 // Your Google Cloud Platform project ID
 const projectId = 'infinitestorlet';
 
 // Instantiates a client
+/*
 const translate = new Translate({
   projectId: projectId,
   credentials: {
@@ -16,6 +17,11 @@ const translate = new Translate({
     client_email: process.env.GOOGLE_CLIENT_EMAIL
   }
 });
+*/
+
+var client_id = 'BdLjzx4yosbmSqFb4feb';
+var client_secret = 'GskGpbVB1L';
+var query = "";
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -127,10 +133,29 @@ exports.word_create_post = [
                  
                 var translation = '';
                 
+                /*
                 translate.translate(req.body.title, 'ko').then(results => {
                     translation = results[0];
                     console.log(`Translation: ${translation}`);
-                    
+                */ 
+                
+               var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
+               var request = require('request');
+               var options = {
+                   url: api_url,
+                   form: {'source':'en', 'target':'ko', 'text':query},
+                   headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+                };
+               request.post(options, function (error, response, body) {
+                 if (!error && response.statusCode == 200) {
+                   //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
+                   //res.end(body);
+                   translation = body.message.result.translatedText;
+                 } else {
+                   //res.status(response.statusCode).end();
+                   console.log('error = ' + response.statusCode);
+                 }
+               });
 
                     // Create a Word object with escaped and trimmed data.
                     var word = new Word(
@@ -155,13 +180,13 @@ exports.word_create_post = [
                             res.send(req.body);
                         });
                 
+                /*
                 }).catch(err => {
                     console.error('ERROR:', err);
                     res.send(req.body);
                 });
+                */
                 
-                
-
              }
            });
     }
