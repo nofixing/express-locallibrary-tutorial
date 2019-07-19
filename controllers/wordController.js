@@ -21,7 +21,6 @@ const translate = new Translate({
 
 var client_id = 'BdLjzx4yosbmSqFb4feb';
 var client_secret = 'GskGpbVB1L';
-var query = "";
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -143,14 +142,15 @@ exports.word_create_post = [
                var request = require('request');
                var options = {
                    url: api_url,
-                   form: {'source':'en', 'target':'ko', 'text':query},
+                   form: {'source':'en', 'target':'ko', 'text':req.body.title},
                    headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
                 };
                request.post(options, function (error, response, body) {
                  if (!error && response.statusCode == 200) {
                    //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
                    //res.end(body);
-                   translation = body.message.result.translatedText;
+                   console.log(`Translation json: ${body}`);
+                   //translation = body.message.result.translatedText;
                  } else {
                    //res.status(response.statusCode).end();
                    console.log('error = ' + response.statusCode);
