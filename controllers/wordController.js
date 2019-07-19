@@ -153,8 +153,32 @@ exports.word_create_post = [
                    var json = JSON.parse(body);
                    console.log(json.message.result.translatedText);
                    translation = json.message.result.translatedText;
+                   
+                    // Create a Word object with escaped and trimmed data.
+                    var word = new Word(
+                        { title: req.body.title,
+                        user: req.session.userId,
+                        story: req.body.story_id,
+                        book: req.body.book_id,
+                        story_title: req.body.story_title,
+                        book_title: req.body.book_title,
+                        content: translation,
+                        skill: req.body.skill,
+                        importance: req.body.importance,
+                        create_date: Date.now()
+                        });
+                    console.log('word.content:'+word.content);
+                    word.save(function (err, theWord) {
+                        if (err) { console.log(err); return next(err); }
+                            // Successful - redirect to new word record.
+                            //res.redirect(word.url);
+                            req.body.word_id = theWord._id;
+                            req.body.content = translation;
+                            res.send(req.body);
+                        });                   
+                   
                  } else {
-                   //res.status(response.statusCode).end();
+                   res.status(response.statusCode).end();
                    console.log('error = ' + response.statusCode);
                  }
                });
