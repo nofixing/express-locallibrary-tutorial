@@ -20,7 +20,7 @@ const translate = new Translate({
 */
 
 var client_id = 'BdLjzx4yosbmSqFb4feb';
-var client_secret = 'GskGpbVB1L';
+var client_secret = process.env.NAVER_TRANSLATE_CLIENT_SECRET;
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
