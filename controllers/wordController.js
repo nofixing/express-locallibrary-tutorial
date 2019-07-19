@@ -151,7 +151,7 @@ exports.word_create_post = [
                    //res.end(body);
                    //console.log(`Translation json: ${body}`);
                    var json = JSON.parse(body);
-                   //console.log(json.message.result.translatedText);
+                   console.log(json.message.result.translatedText);
                    translation = json.message.result.translatedText;
                  } else {
                    //res.status(response.statusCode).end();
