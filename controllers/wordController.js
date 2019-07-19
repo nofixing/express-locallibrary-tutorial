@@ -150,7 +150,8 @@ exports.word_create_post = [
                    //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
                    //res.end(body);
                    console.log(`Translation json: ${body}`);
-                   console.log(body.message.result.translatedText);
+                   var json = JSON.parse(body);
+                   console.log(json.message.result.translatedText);
                    //translation = body.message.result.translatedText;
                  } else {
                    //res.status(response.statusCode).end();
