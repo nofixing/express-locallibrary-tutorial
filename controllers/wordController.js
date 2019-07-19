@@ -149,10 +149,10 @@ exports.word_create_post = [
                  if (!error && response.statusCode == 200) {
                    //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
                    //res.end(body);
-                   console.log(`Translation json: ${body}`);
+                   //console.log(`Translation json: ${body}`);
                    var json = JSON.parse(body);
-                   console.log(json.message.result.translatedText);
-                   //translation = body.message.result.translatedText;
+                   //console.log(json.message.result.translatedText);
+                   translation = json.message.result.translatedText;
                  } else {
                    //res.status(response.statusCode).end();
                    console.log('error = ' + response.statusCode);
