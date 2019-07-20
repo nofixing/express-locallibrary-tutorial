@@ -129,6 +129,8 @@ router.get('/word/create', word_controller.word_create_get);
 // POST request for creating Book.
 router.post('/word/create', word_controller.word_create_post);
 
+router.post('/word/translate', word_controller.word_translate_post);
+
 // GET request to delete Book.
 router.get('/word/:id/delete', word_controller.word_delete_get);
 

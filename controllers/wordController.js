@@ -195,7 +195,30 @@ exports.word_create_post = [
     }
 ];
 
+exports.word_translate_post = function(req, res, next) {
 
+    var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
+    var request = require('request');
+    var options = {
+        url: api_url,
+        form: {'source':'en', 'target':'ko', 'text':req.body.title},
+        headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+     };
+    request.post(options, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        var json = JSON.parse(body);
+        translation = json.message.result.translatedText;
+        
+        req.body.content = translation;
+        res.send(req.body);                  
+        
+      } else {
+        console.log('error = ' + response.statusCode);
+        res.send(req.body);
+      }
+    });
+
+};
 
 // Display word delete form on GET.
 exports.word_delete_get = function(req, res, next) {

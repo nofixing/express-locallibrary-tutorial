@@ -162,6 +162,37 @@ $(function(){
         wordList();
         imageSearch();
     });
+    $( "#translateButton" ).click(function() {
+        var selection;
+    
+        if (window.getSelection) {
+          selection = window.getSelection();
+        } else if (document.selection) {
+          selection = document.selection.createRange();
+        }
+        selectText = selection.toString().trim();
+        
+        if (selectText.length > 0) {
+    
+            var data = {};
+            data.title = selectText;
+            data.content = '';
+            var httpType = 'https://';
+            if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+            $.ajax({
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                url: httpType+$('#hostname').val()+'/catalog/word/translate',
+                async: false,
+                success : function(data) {
+                    console.log('translatedText:'+data.content);
+                    $('#translatedText').html(data.content);
+                    $('#TranslationModal')[0].click();
+                }
+            });
+        }
+    });
     $("#dicType").change(function() {
         dicSearch();
     });
@@ -443,7 +474,6 @@ function search() {
         */
     }
     
-
 }
 
 function BookMark() {

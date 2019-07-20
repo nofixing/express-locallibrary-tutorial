@@ -356,7 +356,8 @@ html(lang='en')
         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/>
         <input type="checkbox" id="myCheck"> 
         | #{translation.ImageSearch}   
-        | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <iframe id="dic_frame" src="https://www.wordreference.com/enko/"></iframe>
 
     <input type="hidden" id="SAVED" name="SAVED" value="#{translation.SAVED}" />
@@ -445,6 +446,27 @@ html(lang='en')
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" id="tcs">#{translation.Close}</button>
             <button type="button" class="btn btn-primary" id="InsertImgAddr">#{translation.InsertTooltip}</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+
+    <a href="#" id="TranslationModal" data-toggle="modal" data-target="#translateModal"></a>
+
+    <div class="modal fade" id="translateModal" tabindex="-1" role="dialog" aria-labelledby="translateModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="translateModalLabel">#{translation.Translation}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            p#translatedText
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="tcs">#{translation.Close}</button>
           </div>
         </div>
       </div>
