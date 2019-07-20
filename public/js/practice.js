@@ -276,7 +276,7 @@ $(function(){
             $(this).prop('checked', false);
         });
         alert($('#SAVED').val());
-        location.reload();
+        //location.reload();
     });
 
     $('#wordDelete').click(function(){
@@ -305,7 +305,7 @@ $(function(){
             $(this).prop('checked', false);
         });
         alert($('#DELETED').val());
-        location.reload();
+        //location.reload();
     });
 
     $('#wordAdd').click(function(){
