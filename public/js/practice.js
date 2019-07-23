@@ -5,7 +5,7 @@ var dicAddr = "https://c.merriam-webster.com/coredictionary/";
 $(function(){
     var showData = $('#show_img');
     var tooltip = $('#tooltip').val();
-    if(tooltip == 'y') LearnReading();
+    if(tooltip == 'y' && $("#pc").val() == "DESKTOP") LearnReading();
 
     $.support.cors = true;
 
