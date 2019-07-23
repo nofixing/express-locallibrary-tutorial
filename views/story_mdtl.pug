@@ -53,10 +53,6 @@ html(lang='en')
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          if story.book
-            li.nav-item.dropdown
-              a#story.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.STORYINDEX}
-              div#index.dropdown-menu(aria-labelledby='story')
           if pc
             li.nav-item
               a.nav-link(href='#none' onclick='ReadingOnly();return false;') #{translation.Reading}
@@ -81,6 +77,8 @@ html(lang='en')
           else
             li.nav-item
               a.nav-link(href='#none' onclick='showReadingOnlyLayer();return false;') #{translation.Reading}
+            li.nav-item
+              a.nav-link(href='#none' onclick='storyTooltip();return false;') #{translation.LearnReading}
             li.nav-item
               a.nav-link(href='#none' onclick='showWordOnlyLayer();return false;') #{translation.Words}
             li.nav-item
