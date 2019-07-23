@@ -333,6 +333,9 @@ html(lang='en')
     <input type="hidden" id="Delete" name="Delete" value="#{translation.Delete}" />
     <input type="hidden" id="pc" name="pc" value="#{pc}" />
     <input type="hidden" id="dmm" name="dmm" value="#{translation.dmm}" />
+    <form id="ftlp" method="post" action="/catalog/story/#{story._id}">
+      <input type="hidden" name="tlp" value="y" />
+    </form>
     
     <div id="img_layer" style="display:none;position:fixed;left:34%;top:60px;width:500px;height:90%;overflow:auto;background:#fff;z-index: 3;">
       <button type="button" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">#{translation.Close}</button>
