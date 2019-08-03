@@ -92,12 +92,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const GoogleCloudStorage = require('@google-cloud/storage');
+const {Storage} = require('@google-cloud/storage');
 const Multer = require('multer');
 
 const projectId = 'infinitestorlet';
 
-const storage = new GoogleCloudStorage({
+const storage = new Storage({
   projectId: projectId,
   credentials: {
     private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
