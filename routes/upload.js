@@ -3,7 +3,7 @@ var router = express.Router();
 
 const {Storage} = require('@google-cloud/storage');
 const Multer = require('multer');
-
+const {format} = require('util');
 const projectId = 'infinitestorlet';
 
 const storage = new Storage({
@@ -25,7 +25,7 @@ const multer = Multer({
 
 const bucket = storage.bucket(projectId);
 
-router.post('/upload', multer.single('file'), (req, res, next) => {
+router.post('/', multer.single('file'), (req, res, next) => {
   console.log('upload started');
   if (!req.file) {
     res.status(400).send('No file uploaded.');
@@ -43,6 +43,7 @@ router.post('/upload', multer.single('file'), (req, res, next) => {
   blobStream.on('finish', () => {
     // The public URL can be used to directly access the file via HTTP.
     const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
+    console.log(publicUrl);
     res.status(200).send(publicUrl);
   });
 
