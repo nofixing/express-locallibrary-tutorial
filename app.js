@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var catalog = require('./routes/catalog'); // Import routes for "catalog" area of site
+var upload = require('./routes/upload');
 var compression = require('compression');
 var helmet = require('helmet');
 
@@ -73,9 +74,11 @@ app.use(i18n({
 app.use('/', index);
 app.use('/user', users);
 app.use('/catalog', catalog); // Add catalog routes to middleware chain.
+app.use('/upload', upload);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  console.log('404 error exists!!!!!');
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -90,54 +93,6 @@ app.use(function(err, req, res, next) {
   // Render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-const {Storage} = require('@google-cloud/storage');
-const Multer = require('multer');
-
-const projectId = 'infinitestorlet';
-
-const storage = new Storage({
-  projectId: projectId,
-  credentials: {
-    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    client_email: process.env.GOOGLE_CLIENT_EMAIL
-  }
-});
-
-// Multer is required to process file uploads and make them available via
-// req.files.
-const multer = Multer({
-  storage: Multer.memoryStorage(),
-  limits: {
-    fileSize: 10 * 1024 * 1024 // no larger than 10mb, you can change as needed.
-  }
-});
-
-const bucket = storage.bucket(projectId);
-
-// Process the file upload and upload to Google Cloud Storage.
-app.post('/upload', multer.single('file'), (req, res, next) => {
-  if (!req.file) {
-    res.status(400).send('No file uploaded.');
-    return;
-  }
-
-  // Create a new blob in the bucket and upload the file data.
-  const blob = bucket.file(req.file.originalname);
-  const blobStream = blob.createWriteStream();
-
-  blobStream.on('error', (err) => {
-    next(err);
-  });
-
-  blobStream.on('finish', () => {
-    // The public URL can be used to directly access the file via HTTP.
-    const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
-    res.status(200).send(publicUrl);
-  });
-
-  blobStream.end(req.file.buffer);
 });
 
 module.exports = app;
