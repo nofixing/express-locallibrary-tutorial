@@ -152,7 +152,7 @@ exports.story_list_ajax = function(req, res, next) {
 
 // Display detail page for a specific story.
 exports.story_detail = function(req, res, next) {
-
+    console.log('story_detail started');
     async.parallel({
         story: function(callback) {
             Story.findById(req.params.id)
@@ -778,7 +778,13 @@ exports.story_update_post = [
 ];
 
 exports.story_preview = function(req, res, next) {
+    console.log("story story_preview");
+    res.render('preview', { content: req.body.content, cfnt: req.session.cfnt } );
 
+};
+
+exports.story_update_preview = function(req, res, next) {
+    console.log("story story_update_preview");
     res.render('preview', { content: req.body.content, cfnt: req.session.cfnt } );
 
 };

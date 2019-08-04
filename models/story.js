@@ -20,7 +20,8 @@ var StorySchema = new Schema({
     favs: {type: Number, default: 0},
     fausr: [{ type: Schema.ObjectId, ref: 'User' }],
     cct: {type: Number, default: 0},
-    create_date: {type: Date, default: Date.now}
+    create_date: {type: Date, default: Date.now},
+    file_path: {type: String}
 });
 
 // Virtual for this story instance URL.

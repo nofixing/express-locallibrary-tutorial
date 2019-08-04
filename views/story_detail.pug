@@ -361,9 +361,12 @@ html(lang='en')
         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="button" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <iframe id="dic_frame" src="https://www.wordreference.com/enko/"></iframe>
-        form(method="POST", action="/upload", enctype="multipart/form-data")
-          input(type="file", name="file")
-          input(type="submit")
+        if story.file_path
+          a(href=story.file_path) #{story.file_path}
+        form#fileUpload(method="POST", enctype="multipart/form-data")
+          input(type="file" name="file")
+          input(type='hidden' name='storyId' value=story._id)
+          input(type='submit' value=translation.FileUpload)
 
     <input type="hidden" id="SAVED" name="SAVED" value="#{translation.SAVED}" />
     <input type="hidden" id="DELETED" name="DELETED" value="#{translation.DELETED}" />
@@ -380,6 +383,8 @@ html(lang='en')
     <input type="hidden" id="RememberComplete" name="RememberComplete" value="#{translation.RememberComplete}" />
     <input type="hidden" id="ImageAddress" name="ImageAddress" value="#{translation.ImageAddress}" />
     <input type="hidden" id="tooltip" name="tooltip" value="#{tooltip}" />
+    <input type="hidden" id="Uploaded" name="Uploaded" value="#{translation.Uploaded}" />
+    <input type="hidden" id="UploadFailed" name="UploadFailed" value="#{translation.UploadFailed}" />
     <form id="ftlp" method="post" action="/catalog/story/#{story._id}">
       <input type="hidden" name="tlp" value="y" />
     </form>

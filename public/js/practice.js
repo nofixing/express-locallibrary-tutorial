@@ -434,6 +434,28 @@ $(function(){
         });
     });
 
+    var fileForm = document.getElementById('fileUpload');
+
+    fileForm.addEventListener('submit', function(ev) {
+
+        var oData = new FormData(fileForm);
+      
+        oData.append("CustomField", "This is some extra data");
+      
+        var oReq = new XMLHttpRequest();
+        oReq.open("POST", "/upload", true);
+        oReq.onload = function(oEvent) {
+          if (oReq.status == 200) {
+            alert($("#Uploaded").val());
+          } else {
+            alert($("#UploadFailed").val());
+          }
+        };
+      
+        oReq.send(oData);
+        ev.preventDefault();
+    }, false);
+
 });
 
 function imgAddress(i) {
@@ -776,13 +798,18 @@ function storyTooltip() {
 }
 
 function preview() {
-
+    console.log('preview start');
     var content = document.querySelector('#snow-container').children[0].innerHTML;
 
     var form = document.createElement("form");
     form.setAttribute("method", "post");
-    form.setAttribute("action", "/catalog/story/preview");
-
+    
+    if($("#story_id").val() != "") {
+        form.setAttribute("action", "/catalog/story/"+$("#story_id").val()+"/preview");
+    } else {
+        form.setAttribute("action", "/catalog/preview");
+    }
+    
     form.setAttribute("target", "view");
 
     var hiddenField = document.createElement("input"); 

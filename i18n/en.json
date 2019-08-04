@@ -173,5 +173,8 @@
   "Sorry":"This site is now under development and reviewing everything again.",
   "Sorry1":"For a while, you cannot sign up as a member.",
   "Sorry2":"I'm sorry for the inconvenience.",
-  "Translation":"Translation"
+  "Translation":"Translation",
+  "FileUpload":"File Upload",
+  "Uploaded":"Uploaded.",
+  "UploadFailed":"Upload Failed."
 }

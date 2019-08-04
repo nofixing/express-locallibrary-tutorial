@@ -113,7 +113,9 @@ router.post('/story/favs_ajax', story_controller.favs_ajax);
 
 router.post('/story/bookMark_ajax', story_controller.bookMark_ajax);
 
-router.post('/story/preview', story_controller.story_preview);
+router.post('/preview', story_controller.story_preview);
+
+router.post('/story/:id/preview', story_controller.story_update_preview);
 
 router.post('/story/:id/comments/replies', comment_controller.comment_create_post);
 
