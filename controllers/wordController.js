@@ -155,7 +155,10 @@ exports.word_create_post = [
                    translation = json.message.result.translatedText;
                    
                     // Create a Word object with escaped and trimmed data.
-                    var word = new Word(
+                   var word; 
+                   var book_id = req.body.book_id;
+                    if (book_id.match(/^[0-9a-fA-F]{24}$/)) {
+                      word = new Word(
                         { title: req.body.title,
                         user: req.session.userId,
                         story: req.body.story_id,
@@ -167,6 +170,18 @@ exports.word_create_post = [
                         importance: req.body.importance,
                         create_date: Date.now()
                         });
+                    }else{
+                      word = new Word(
+                        { title: req.body.title,
+                        user: req.session.userId,
+                        story: req.body.story_id,
+                        story_title: req.body.story_title,
+                        content: translation,
+                        skill: req.body.skill,
+                        importance: req.body.importance,
+                        create_date: Date.now()
+                        });
+                    }
                     console.log('word.content:'+word.content);
                     word.save(function (err, theWord) {
                         if (err) { console.log(err); return next(err); }
