@@ -176,5 +176,6 @@
   "Translation":"번역",
   "FileUpload":"파일 업로드",
   "Uploaded":"업로드 되었습니다.",
-  "UploadFailed":"업로드에 실패하였습니다."
+  "UploadFailed":"업로드에 실패하였습니다.",
+  "Copy":"복사"
 }

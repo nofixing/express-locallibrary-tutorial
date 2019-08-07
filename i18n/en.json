@@ -176,5 +176,6 @@
   "Translation":"Translation",
   "FileUpload":"File Upload",
   "Uploaded":"Uploaded.",
-  "UploadFailed":"Upload Failed."
+  "UploadFailed":"Upload Failed.",
+  "Copy":"Copy"
 }

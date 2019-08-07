@@ -6,6 +6,7 @@ var Book = require('../models/book');
 var Comment = require('../models/comment');
 var History = require('../models/history');
 var BookMark = require('../models/bookMark');
+var File = require('../models/file');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -198,6 +199,10 @@ exports.story_detail = function(req, res, next) {
             BookMark.find({user: req.session.userId, story: req.params.id})
                 .exec(callback);
         },
+        file: function(callback) {
+            File.find({user: req.session.userId, story: req.params.id})
+                .exec(callback);
+        },
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.story==null) { // No results.
@@ -313,7 +318,7 @@ exports.story_detail = function(req, res, next) {
         res.render(vName, 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 
         word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, book_title: book_title, book_id: book_id,
-        tooltip:req.body.tlp } );
+        tooltip:req.body.tlp, files: file } );
     });
 
 };

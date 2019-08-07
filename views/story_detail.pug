@@ -361,8 +361,10 @@ html(lang='en')
         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="button" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <iframe id="dic_frame" src="https://www.wordreference.com/enko/"></iframe>
-        if story.file_path
-          a(href=story.file_path) #{story.file_path}
+        if files
+          for file in files
+            <input type="text" value="#{file.file_path}" id="#{file._id}">
+            <button onclick="CopyFilePath('#{file._id}')">#{translation.Copy}</button>
         form#fileUpload(method="POST", enctype="multipart/form-data")
           input(type="file" name="file")
           input(type='hidden' name='storyId' value=story._id)
