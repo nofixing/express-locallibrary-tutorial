@@ -1038,6 +1038,10 @@ function saveMemo() {
 
 function CopyFilePath(id) {
     var copyText = document.getElementById(id);
-    copyText.select();
-    document.execCommand("copy");
+    var textArea = document.createElement("textarea");
+    textArea.value = copyText.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("Copy");
+    textArea.remove();
 }
