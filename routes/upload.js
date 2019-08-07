@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Story = require('../models/story');
+var File = require('../models/file');
 
 const {Storage} = require('@google-cloud/storage');
 const Multer = require('multer');
@@ -46,14 +47,28 @@ router.post('/', multer.single('file'), (req, res, next) => {
     const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
     console.log(publicUrl);
 
+    var file = new File(
+      { user: req.session.userId,
+      story: req.body.storyId,
+      file_path: publicUrl,
+      file_size: req.file.size,
+      create_date: Date.now()
+      });
+
+      file.save(function (err, theFile) {
+        if (err) { console.log(err); return next(err); }
+          console.log('story file created');
+          res.status(200).send(publicUrl);
+        });
+    /*
     Story.update({_id: req.body.storyId}, {
         file_path: publicUrl
     }, function(err, theStory) {
         if (err) { return next(err); }
-        // Successful - redirect to story detail page.
         console.log('story file path updated');
         res.status(200).send(publicUrl);
     });
+    */
 
   });
 
