@@ -60,10 +60,7 @@ Quill.register(LinkBlot);
 
   var quill = new Quill('#snow-container', {
     modules: {
-        toolbar: '#toolbar-container',
-        handlers: {
-            image: imageHandler
-        }
+        toolbar: '#toolbar-container'
     },
     theme: 'snow'
   });
@@ -80,6 +77,8 @@ Quill.register(LinkBlot);
   toolbar.addHandler('omega', function() {
     console.log('omega');
   });
+
+  toolbar.addHandler('image', imageHandler);
 
   var customButton = document.querySelector('.ql-omega');
 customButton.addEventListener('click', function() {
