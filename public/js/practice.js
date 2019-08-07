@@ -434,27 +434,29 @@ $(function(){
         });
     });
 
-    var fileForm = document.getElementById('fileUpload');
+    if (document.getElementById('fileUpload') !=null) {
+        var fileForm = document.getElementById('fileUpload');
 
-    fileForm.addEventListener('submit', function(ev) {
+        fileForm.addEventListener('submit', function(ev) {
 
-        var oData = new FormData(fileForm);
-      
-        oData.append("CustomField", "This is some extra data");
-      
-        var oReq = new XMLHttpRequest();
-        oReq.open("POST", "/upload", true);
-        oReq.onload = function(oEvent) {
-          if (oReq.status == 200) {
-            alert($("#Uploaded").val());
-          } else {
-            alert($("#UploadFailed").val());
-          }
-        };
-      
-        oReq.send(oData);
-        ev.preventDefault();
-    }, false);
+            var oData = new FormData(fileForm);
+
+            oData.append("CustomField", "This is some extra data");
+
+            var oReq = new XMLHttpRequest();
+            oReq.open("POST", "/upload", true);
+            oReq.onload = function(oEvent) {
+              if (oReq.status == 200) {
+                alert($("#Uploaded").val());
+              } else {
+                alert($("#UploadFailed").val());
+              }
+            };
+
+            oReq.send(oData);
+            ev.preventDefault();
+        }, false);
+    }
 
 });
 
