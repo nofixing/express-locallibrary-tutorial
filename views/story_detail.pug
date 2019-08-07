@@ -363,7 +363,7 @@ html(lang='en')
         <iframe id="dic_frame" src="https://www.wordreference.com/enko/"></iframe>
         if files
           for file in files
-            <input type="text" value="#{file.file_path}" id="#{file._id}">
+            <span id="#{file._id}">#{file.file_path}</span>
             <button onclick="CopyFilePath('#{file._id}')">#{translation.Copy}</button>
         form#fileUpload(method="POST", enctype="multipart/form-data")
           input(type="file" name="file")
