@@ -62,6 +62,7 @@ router.post('/', multer.single('file'), (req, res, next) => {
                 "file_path": publicUrl,
                 "file_id": theFile._id
             });
+          res.setHeader('Content-Type', 'application/json');
           res.status(200).send(data);
         });
     /*
