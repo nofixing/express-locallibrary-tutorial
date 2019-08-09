@@ -632,6 +632,10 @@ exports.story_update_get = function(req, res, next) {
             Genre.find({user: req.session.userId}, 'name ')
                 .exec(callback);
         },
+        files: function(callback) {
+            File.find({user: req.session.userId, story: req.params.id})
+                .exec(callback);
+        },
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.story==null) { // No results.
@@ -655,7 +659,8 @@ exports.story_update_get = function(req, res, next) {
         results.story.content = entities.decode(results.story.content);
         results.story.title = entities.decode(results.story.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story, hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt });
+        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story
+        , hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, files:results.files });
     });
 
 };
