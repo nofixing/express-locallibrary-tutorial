@@ -185,12 +185,25 @@ block content
           option(value='N' selected=(undefined===story ? 'selected' : story.open=='N' ? 'selected' : false) ) N
           option(value='Y' selected=(undefined===story ? false : story.open=='Y' ? 'selected' : false) ) Y
         <br><br>
-    
+    if story
+      if files
+        table(class='table table-striped table-bordered table-hover table-condensed' style='margin-top: 20px;')
+          tbody.ftd
+            for file in files
+              tr
+                td
+                  <span id="#{file._id}">#{file.file_path}</span>
+                  <button onclick="CopyFilePath('#{file._id}')">#{translation.Copy}</button>
+      form#fileUpload(method="POST", enctype="multipart/form-data")
+        input(type="file" name="file")
+        input(type='hidden' name='storyId' value=story._id)
+        input(type='submit' value=translation.FileUpload)    
     button.btn.btn-primary(type='button', onclick='preview();return false;') #{translation.Preview}
     <br><br>
     button.btn.btn-primary(type='button', onclick='storyPost();return false;') #{translation.Submit}
     <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
     <input type="hidden" id="btitle" name="btitle" value="" />
+    <input type="hidden" id="cptr" name="cptr" value="#{translation.Copy}" />
     input#story_id.form-control(type='hidden', name='story_id' value=(undefined===story ? '' : story._id) )
 
   <a href="#" id="OpenModal" data-toggle="modal" data-target="#exampleModal"></a>
