@@ -193,12 +193,12 @@ block content
               tr
                 td
                   <span id="#{file._id}">#{file.file_path}</span>
-                  <button onclick="CopyFilePath('#{file._id}')">#{translation.Copy}</button>
+                  <button onclick="CopyFilePath('#{file._id};return false;')">#{translation.Copy}</button>
       form#fileUpload(method="POST", enctype="multipart/form-data")
         input(type="file" name="file")
         input(type='hidden' name='storyId' value=story._id)
         input(type='submit' value=translation.FileUpload)    
-    button.btn.btn-primary(type='button', onclick='preview();return false;') #{translation.Preview}
+    button.btn.btn-primary(type='button', onclick='preview();return false;' style='margin-top: 20px;') #{translation.Preview}
     <br><br>
     button.btn.btn-primary(type='button', onclick='storyPost();return false;') #{translation.Submit}
     <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
