@@ -63,7 +63,7 @@ router.post('/', multer.single('file'), (req, res, next) => {
                 "file_id": theFile._id
             });
           res.setHeader('Content-Type', 'application/json');
-          res.send(data);
+          return res.send(data);
         });
     /*
     Story.update({_id: req.body.storyId}, {
