@@ -447,12 +447,11 @@ $(function(){
             oReq.open("POST", "/upload", true);
             oReq.onload = function(oEvent) {
               if (oReq.status == 200) {
-                /*
-                var markup = "<tr><td><span id='"+oReq.response.file_id+"'>"+oReq.response.file_path+"</span>";
-                markup += "<button onclick=\'CopyFilePath('"+oReq.response.file_id+"');return false;\'>"+$("#cptr").val()+"</button></td></tr>";
+                var arr = oReq.responseText.split('&');
+                var markup = "<tr><td><span id='"+arr[1]+"'>"+arr[0]+"</span>";
+                markup += "<button onclick=\'CopyFilePath('"+arr[1]+"');return false;\'>"+$("#cptr").val()+"</button></td></tr>";
                 $(".ftd").append(markup);
-                */
-                alert(oReq.responseText+'&&&&'+$("#Uploaded").val());
+                alert($("#Uploaded").val());
               } else {
                 alert($("#UploadFailed").val());
               }
