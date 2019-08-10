@@ -75,4 +75,17 @@ router.post('/', multer.single('file'), (req, res, next) => {
   blobStream.end(req.file.buffer);
 });
 
+router.post('/delete', (req, res, next) => {
+  console.log('delete started');
+
+  // Deletes the file from the bucket
+  bucket.file(req.body.file_name).delete();
+  
+  File.findByIdAndRemove(req.body.file_id, function deleteFile(err) {
+    if (err) { return next(err); }
+    res.send(req.body);
+  });
+  
+});
+
 module.exports = router;

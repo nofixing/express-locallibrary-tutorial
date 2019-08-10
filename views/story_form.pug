@@ -193,6 +193,8 @@ block content
     <input type="hidden" id="cptr" name="cptr" value="#{translation.Copy}" />
     <input type="hidden" id="Uploaded" name="Uploaded" value="#{translation.Uploaded}" />
     <input type="hidden" id="UploadFailed" name="UploadFailed" value="#{translation.UploadFailed}" />
+    <input type="hidden" id="Delete" name="Delete" value="#{translation.Delete}" />
+    <input type="hidden" id="DELETED" name="DELETED" value="#{translation.DELETED}" />
     input#story_id.form-control(type='hidden', name='story_id' value=(undefined===story ? '' : story._id) )
   if story
     if files
@@ -203,6 +205,7 @@ block content
               td
                 <span id="#{file._id}">#{file.file_path}</span>
                 <button onclick="CopyFilePath('#{file._id}');return false;">#{translation.Copy}</button>
+                <button onclick="DeleteFile(this,'#{file._id}','#{file.file_path}');return false;">#{translation.Delete}</button>
     form#fileUpload(method="POST", enctype="multipart/form-data")
       input(type="file" name="file")
       input(type='hidden' name='storyId' value=story._id)

@@ -449,7 +449,9 @@ $(function(){
               if (oReq.status == 200) {
                 var arr = oReq.responseText.split('&');
                 var markup = "<tr><td><span id='"+arr[1]+"'>"+arr[0]+"</span>";
-                markup += "<button onclick=\'CopyFilePath('"+arr[1]+"');return false;\'>"+$("#cptr").val()+"</button></td></tr>";
+                markup += "<button onclick=\'CopyFilePath('"+arr[1]+"');return false;\'>"+$("#cptr").val()+"</button>";
+                markup += "<button onclick=\'DeleteFile(this,'"+arr[1]+"','"+arr[0]+"');return false;\'>"+$("#Delete").val()+"</button>";
+                markup += "</td></tr>";
                 $(".ftd").append(markup);
                 alert($("#Uploaded").val());
               } else {
@@ -1048,4 +1050,27 @@ function CopyFilePath(id) {
     textArea.select();
     document.execCommand("Copy");
     textArea.remove();
+}
+
+function DeleteFile(rw, id, path) {
+    var arr = path.split('/');
+
+    var data = {};
+    data.file_id = id;
+    data.file_name = arr[4];
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/upload/delete',
+        async: false,
+        success : function(data) {
+            if (typeof(rw) == "object") {
+                $(rw).closest("tr").remove();
+            }
+            alert($('#DELETED').val());
+        }
+    });
 }
