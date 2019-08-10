@@ -450,7 +450,7 @@ $(function(){
                 var arr = oReq.responseText.split('&');
                 var markup = "<tr><td><span id='"+arr[1]+"'>"+arr[0]+"</span>";
                 markup += "<button onclick=\'CopyFilePath('"+arr[1]+"');return false;\'>"+$("#cptr").val()+"</button>";
-                markup += "<button onclick=\'DeleteFile(this,'"+arr[1]+"','"+arr[0]+"');return false;\'>"+$("#Delete").val()+"</button>";
+                markup += "&nbsp;<button onclick=\'DeleteFile('"+arr[1]+"','"+arr[0]+"');return false;\'>"+$("#Delete").val()+"</button>";
                 markup += "</td></tr>";
                 $(".ftd").append(markup);
                 alert($("#Uploaded").val());
@@ -1052,7 +1052,7 @@ function CopyFilePath(id) {
     textArea.remove();
 }
 
-function DeleteFile(rw, id, path) {
+function DeleteFile(id, path) {
     var arr = path.split('/');
 
     var data = {};
@@ -1067,6 +1067,7 @@ function DeleteFile(rw, id, path) {
         url: httpType+$('#hostname').val()+'/upload/delete',
         async: false,
         success : function(data) {
+            var rw = document.getElementById(id);
             if (typeof(rw) == "object") {
                 $(rw).closest("tr").remove();
             }
