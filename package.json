@@ -38,7 +38,8 @@
     "randomstring": "^1.1.5",
     "request": "^2.88.0",
     "serve-favicon": "^2.4.5",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "webpack": "^4.39.1"
   },
   "devDependencies": {
     "nodemon": "^1.17.4"
