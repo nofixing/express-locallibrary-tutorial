@@ -60,8 +60,7 @@ Quill.register(LinkBlot);
 
   var quill = new Quill('#snow-container', {
     modules: {
-        toolbar: '#toolbar-container',
-        VideoResize: {}
+        toolbar: '#toolbar-container'
     },
     theme: 'snow'
   });
