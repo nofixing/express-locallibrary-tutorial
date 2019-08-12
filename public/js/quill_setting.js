@@ -79,9 +79,10 @@ Quill.register(LinkBlot);
   });
 
 toolbar.addHandler('video', function() {
+    var range = this.quill.getSelection();
     var value = prompt('What is the video URL');
     if(value){
-        this.quill.insertEmbed(index, 'video', value, Quill.sources.USER);
+        this.quill.insertEmbed(range.index, 'video', value, Quill.sources.USER);
     }
 });
 
