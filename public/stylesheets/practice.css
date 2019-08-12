@@ -458,6 +458,3 @@ ul.tite li {
     color: #f1f1f1;
     width: 100%;
   }
-.ql-editor iframe {
-    pointer-events: none;
-}

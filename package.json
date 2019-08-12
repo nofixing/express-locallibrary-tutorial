@@ -35,7 +35,6 @@
     "nodemailer": "^4.6.5",
     "npm": "^6.1.0",
     "pug": "2.0.0-beta11",
-    "quill-video-resize-module": "^1.0.2",
     "randomstring": "^1.1.5",
     "request": "^2.88.0",
     "serve-favicon": "^2.4.5",
