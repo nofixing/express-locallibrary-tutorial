@@ -58,20 +58,12 @@ LinkBlot.tagName = 'a';
 
 Quill.register(LinkBlot);
 
-import { Video } from 'quill-video-resize.js'
-require("quill-video-resize.css");
-
-// register with Quill
-Quill.register({ 'formats/video': Video });
-
   var quill = new Quill('#snow-container', {
     modules: {
         toolbar: '#toolbar-container'
     },
     theme: 'snow'
   });
-
-quill.root.quill = quill;
 
     function imageHandler() {
         var range = this.quill.getSelection();
