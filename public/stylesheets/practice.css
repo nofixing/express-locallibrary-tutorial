@@ -460,10 +460,10 @@ ul.tite li {
   }
 .embed-container {
   position: relative;
-  padding-bottom: 56.25%;
+  padding-bottom: 28.13%;
   height: 0;
   overflow: hidden;
-  max-width: 60%;
+  max-width: 50%;
 }
 .embed-container iframe, .embed-container object, .embed-container embed {
   position: absolute;
