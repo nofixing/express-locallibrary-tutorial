@@ -78,14 +78,15 @@ Quill.register(LinkBlot);
     console.log('omega');
   });
 
+var currentIdx = 0;
 toolbar.addHandler('video', function() {
   var range = this.quill.getSelection();
+  currentIdx = range.index;
   $('#OpenVideo')[0].click();
 });
 
 $('#InsertVideo').click(function(){
-  var range = quill.getSelection();
-  quill.insertEmbed(range.index, 'video', $('#video_src').val(), Quill.sources.USER);
+  quill.insertEmbed(currentIdx, 'video', $('#video_src').val(), Quill.sources.USER);
   quill.format('width', $('#video_width').val());
   quill.format('height', $('#video_height').val());
   $('#vcls')[0].click();
