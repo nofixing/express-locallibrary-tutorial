@@ -458,13 +458,3 @@ ul.tite li {
     color: #f1f1f1;
     width: 100%;
   }
-.embed-container {
-  position: relative;
-  height: 0;
-  overflow: hidden;
-}
-.embed-container iframe, .embed-container object, .embed-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-}      
