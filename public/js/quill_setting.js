@@ -113,6 +113,16 @@ $('#InsertTooltip').click(function(){
   if(typeof memo != 'undefined') {
     quill.clipboard.dangerouslyPasteHTML(memo);
   }
+
+var videos = document.querySelectorAll('.ql-video');
+for (let i = 0; i < videos.length; i++) {
+  var embedContainer = document.createElement('div');
+  embedContainer.setAttribute('class', 'embed-container');
+  var parent = videos[i].parentNode;
+  parent.insertBefore(embedContainer, videos[i]);
+  embedContainer.appendChild(videos[i]);
+}
+
   /*
   var txtArea = document.createElement('textarea');
   txtArea.style.cssText = "width: 100%;height: 750px;margin: 0;background: rgb(255, 255, 255);box-sizing: border-box;color: rgb(0, 0, 0);"+
