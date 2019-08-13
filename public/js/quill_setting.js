@@ -86,6 +86,7 @@ toolbar.addHandler('video', function() {
 });
 
 $('#InsertVideo').click(function(){
+  quill.setSelection(currentIdx, 0);
   quill.insertEmbed(currentIdx, 'video', $('#video_src').val(), Quill.sources.USER);
   quill.format('width', $('#video_width').val());
   quill.format('height', $('#video_height').val());
