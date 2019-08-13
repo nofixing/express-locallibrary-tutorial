@@ -86,9 +86,8 @@ toolbar.addHandler('video', function() {
 });
 
 $('#InsertVideo').click(function(){
-  quill.setSelection(currentIdx, 1);
+  //quill.setSelection(currentIdx, 1);
   quill.insertEmbed(currentIdx, 'video', $('#video_src').val(), Quill.sources.USER);
-  //$('.ql-align-center').width($('#video_width').val()).height($('#video_height').val());
   quill.formatText(currentIdx, 1,'width', $('#video_width').val());
   quill.formatText(currentIdx, 1,'height', $('#video_height').val());
   $('#vcls')[0].click();
