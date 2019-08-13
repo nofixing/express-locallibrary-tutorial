@@ -122,11 +122,22 @@ Quill.register(LinkBlot);
   });
 
 toolbar.addHandler('video', function() {
-    var range = this.quill.getSelection();
-    var value = prompt('What is the video URL');
-    if(value){
-        this.quill.insertEmbed(range.index, 'video', value, Quill.sources.USER);
-    }
+  var range = this.quill.getSelection();
+  $('#OpenVideo')[0].click();
+  /*
+  var value = prompt('What is the video URL');
+  if(value){
+      this.quill.insertEmbed(range.index, 'video', value, Quill.sources.USER);
+  }
+  */
+});
+
+$('#InsertVideo').click(function(){
+  var range = this.quill.getSelection();
+  this.quill.insertEmbed(range.index, 'video', $('#video_src').val(), Quill.sources.USER);
+  quill.format('width', $('#video_width').val());
+  quill.format('height', $('#video_height').val());
+  $('#vcls')[0].click();
 });
 
   toolbar.addHandler('image', imageHandler);
