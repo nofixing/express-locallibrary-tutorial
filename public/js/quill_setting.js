@@ -86,8 +86,12 @@ toolbar.addHandler('video', function() {
 });
 
 $('#InsertVideo').click(function(){
-  //quill.setSelection(currentIdx, 1);
-  quill.insertEmbed(currentIdx, 'video', $('#video_src').val(), Quill.sources.USER);
+  var spath = $('#video_src').val();
+  var arr = spath.split("/");
+  var lnum = spath.split("/").length -1;
+  var vsrc = arr[lnum];
+  vsrc = "https://www.youtube.com/embed/"+vsrc;
+  quill.insertEmbed(currentIdx, 'video', vsrc, Quill.sources.USER);
   quill.formatText(currentIdx, 1,'width', $('#video_width').val());
   quill.formatText(currentIdx, 1,'height', $('#video_height').val());
   $('#vcls')[0].click();
