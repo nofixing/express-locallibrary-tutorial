@@ -173,62 +173,62 @@ ul.tite li {
     font-family: "Arial";
 }
 
-#toolbar-container .ql-font span[data-label="Nanum Pen Script"]::before {
+#toolbar-container .ql-font span[data-label="나눔 손글씨 펜"]::before {
     font-family: "Nanum Pen Script";
 }
 
-#toolbar-container .ql-font span[data-label="Nanum Brush Script"]::before {
+#toolbar-container .ql-font span[data-label="나눔 손글씨 붓"]::before {
     font-family: "Nanum Brush Script";
 }
 
-#toolbar-container .ql-font span[data-label="Song Myung"]::before {
+#toolbar-container .ql-font span[data-label="송명"]::before {
     font-family: "Song Myung";
 }
 
-#toolbar-container .ql-font span[data-label="Gaegu"]::before {
+#toolbar-container .ql-font span[data-label="개구쟁이"]::before {
     font-family: "Gaegu";
 }
 
-#toolbar-container .ql-font span[data-label="Jua"]::before {
+#toolbar-container .ql-font span[data-label="주아"]::before {
     font-family: "Jua";
 }
 
 
 
-#toolbar-container .ql-font span[data-label="Gamja Flower"]::before {
+#toolbar-container .ql-font span[data-label="감자꽃 마을"]::before {
     font-family: "Gamja Flower";
 }
-#toolbar-container .ql-font span[data-label="Cute Font"]::before {
+#toolbar-container .ql-font span[data-label="귀여운 폰트"]::before {
     font-family: "Cute Font";
 }
-#toolbar-container .ql-font span[data-label="Stylish"]::before {
+#toolbar-container .ql-font span[data-label="스타일리시"]::before {
     font-family: "Stylish";
 }
-#toolbar-container .ql-font span[data-label="Yeon Sung"]::before {
+#toolbar-container .ql-font span[data-label="연성"]::before {
     font-family: "Yeon Sung";
 }
-#toolbar-container .ql-font span[data-label="Hi Melody"]::before {
+#toolbar-container .ql-font span[data-label="하이멜로디"]::before {
     font-family: "Hi Melody";
 }
-#toolbar-container .ql-font span[data-label="Sunflower"]::before {
+#toolbar-container .ql-font span[data-label="해바라기"]::before {
     font-family: "Sunflower";
 }
-#toolbar-container .ql-font span[data-label="Black Han Sans"]::before {
+#toolbar-container .ql-font span[data-label="검은고딕"]::before {
     font-family: "Black Han Sans";
 }
-#toolbar-container .ql-font span[data-label="Gothic A1"]::before {
+#toolbar-container .ql-font span[data-label="고딕 A1"]::before {
     font-family: "Gothic A1";
 }
-#toolbar-container .ql-font span[data-label="Nanum Gothic"]::before {
+#toolbar-container .ql-font span[data-label="나눔고딕"]::before {
     font-family: "Nanum Gothic";
 }
-#toolbar-container .ql-font span[data-label="Nanum Myeongjo"]::before {
+#toolbar-container .ql-font span[data-label="나눔명조"]::before {
     font-family: "Nanum Myeongjo";
 }
-#toolbar-container .ql-font span[data-label="Poor Story"]::before {
+#toolbar-container .ql-font span[data-label="서툰이야기"]::before {
     font-family: "Poor Story";
 }
-#toolbar-container .ql-font span[data-label="Black And White Picture"]::before {
+#toolbar-container .ql-font span[data-label="흑백사진"]::before {
     font-family: "Black And White Picture";
 }
 #toolbar-container .ql-font span[data-label="PT Sans"]::before {
