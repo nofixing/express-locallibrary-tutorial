@@ -1075,3 +1075,11 @@ function DeleteFile(id, path) {
         }
     });
 }
+
+function cs_change_music(music) {
+      
+     document.getElementById("myAudio").pause();
+     document.getElementById("myAudio").setAttribute('src', music);
+     document.getElementById("myAudio").load();
+     document.getElementById("myAudio").play();
+}
