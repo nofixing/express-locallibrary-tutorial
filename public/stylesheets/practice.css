@@ -269,6 +269,10 @@ ul.tite li {
     font-family: "Alfa Slab One";
 }
 
+.dropdown-menu a[text() = "나눔 손글씨 펜"]::before {
+    font-family: "Nanum Pen Script";
+}
+
 /* Set content font-families */
 
 .ql-font-LibreFranklin {
