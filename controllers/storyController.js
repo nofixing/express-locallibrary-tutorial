@@ -200,7 +200,7 @@ exports.story_detail = function(req, res, next) {
                 .exec(callback);
         },
         files: function(callback) {
-            File.find({user: req.session.userId, story: req.params.id})
+            File.find({user: req.session.userId, story: req.params.id}).select('file_path file_name file_size')
                 .exec(callback);
         },
     }, function(err, results) {
@@ -308,7 +308,7 @@ exports.story_detail = function(req, res, next) {
             var arr = file_path.split("/");
             var lnum = file_path.split("/").length -1;
             var vsrc = arr[lnum];
-            results.files[i].set('file_name', vsrc);
+            results.files[i].file_name = vsrc;
         }
 
         results.story.reference = entities.decode(results.story.reference);
