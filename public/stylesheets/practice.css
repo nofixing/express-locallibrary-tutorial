@@ -193,8 +193,6 @@ ul.tite li {
     font-family: "Jua";
 }
 
-
-
 #toolbar-container .ql-font span[data-label="감자꽃 마을"]::before {
     font-family: "Gamja Flower";
 }
@@ -235,8 +233,6 @@ ul.tite li {
     font-family: "PT Sans";
 }
 
-
-
 #toolbar-container .ql-font span[data-label="Oswald"]::before {
     font-family: "Oswald";
 }
@@ -269,13 +265,108 @@ ul.tite li {
     font-family: "Alfa Slab One";
 }
 
+
 .dropdown-menu .dropdown-item span[data-label]::before {
     content: attr(data-label);
 }
 
+.dropdown-menu .dropdown-item span[data-label="Sans Serif"]::before {
+    font-family: "Sans Serif";
+}
+.dropdown-menu .dropdown-item span[data-label="Libre Franklin"]::before {
+    font-family: "Libre Franklin";
+}
+.dropdown-menu .dropdown-item span[data-label="Inconsolata"]::before {
+    font-family: "Inconsolata";
+}
+.dropdown-menu .dropdown-item span[data-label="Roboto"]::before {
+    font-family: "Roboto";
+}
+.dropdown-menu .dropdown-item span[data-label="Mirza"]::before {
+    font-family: "Mirza";
+}
+.dropdown-menu .dropdown-item span[data-label="Arial"]::before {
+    font-family: "Arial";
+}
 .dropdown-menu .dropdown-item span[data-label="나눔 손글씨 펜"]::before {
     font-family: "Nanum Pen Script";
 }
+.dropdown-menu .dropdown-item span[data-label="나눔 손글씨 붓"]::before {
+    font-family: "Nanum Brush Script";
+}
+.dropdown-menu .dropdown-item span[data-label="송명"]::before {
+    font-family: "Song Myung";
+}
+.dropdown-menu .dropdown-item span[data-label="개구쟁이"]::before {
+    font-family: "Gaegu";
+}
+.dropdown-menu .dropdown-item span[data-label="주아"]::before {
+    font-family: "Jua";
+}
+.dropdown-menu .dropdown-item span[data-label="감자꽃 마을"]::before {
+    font-family: "Gamja Flower";
+}
+.dropdown-menu .dropdown-item span[data-label="귀여운 폰트"]::before {
+    font-family: "Cute Font";
+}
+.dropdown-menu .dropdown-item span[data-label="스타일리시"]::before {
+    font-family: "Stylish";
+}
+.dropdown-menu .dropdown-item span[data-label="연성"]::before {
+    font-family: "Yeon Sung";
+}
+.dropdown-menu .dropdown-item span[data-label="하이멜로디"]::before {
+    font-family: "Hi Melody";
+}
+.dropdown-menu .dropdown-item span[data-label="해바라기"]::before {
+    font-family: "Sunflower";
+}
+.dropdown-menu .dropdown-item span[data-label="검은고딕"]::before {
+    font-family: "Black Han Sans";
+}
+.dropdown-menu .dropdown-item span[data-label="고딕 A1"]::before {
+    font-family: "Gothic A1";
+}
+.dropdown-menu .dropdown-item span[data-label="나눔고딕"]::before {
+    font-family: "Nanum Gothic";
+}
+.dropdown-menu .dropdown-item span[data-label="나눔명조"]::before {
+    font-family: "Nanum Myeongjo";
+}
+.dropdown-menu .dropdown-item span[data-label="서툰이야기"]::before {
+    font-family: "Poor Story";
+}
+.dropdown-menu .dropdown-item span[data-label="흑백사진"]::before {
+    font-family: "Black And White Picture";
+}
+.dropdown-menu .dropdown-item span[data-label="PT Sans"]::before {
+    font-family: "PT Sans";
+}
+.dropdown-menu .dropdown-item span[data-label="Oswald"]::before {
+    font-family: "Oswald";
+}
+.dropdown-menu .dropdown-item span[data-label="Caveat"]::before {
+    font-family: "Caveat";
+}
+.dropdown-menu .dropdown-item span[data-label="Raleway"]::before {
+    font-family: "Raleway";
+}
+.dropdown-menu .dropdown-item span[data-label="Shadows Into Light"]::before {
+    font-family: "Shadows Into Light";
+}
+.dropdown-menu .dropdown-item span[data-label="Abril Fatface"]::before {
+    font-family: "Abril Fatface";
+}
+.dropdown-menu .dropdown-item span[data-label="Teko"]::before {
+    font-family: "Teko";
+}
+.dropdown-menu .dropdown-item span[data-label="Cormorant"]::before {
+    font-family: "Cormorant";
+}
+.dropdown-menu .dropdown-item span[data-label="Alfa Slab One"]::before {
+    font-family: "Alfa Slab One";
+}
+
 
 /* Set content font-families */
 
