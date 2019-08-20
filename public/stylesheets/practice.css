@@ -269,7 +269,7 @@ ul.tite li {
     font-family: "Alfa Slab One";
 }
 
-.dropdown-menu a[data-label="나눔 손글씨 펜"]::before {
+.dropdown-menu .dropdown-item span[data-label="나눔 손글씨 펜"]::before {
     font-family: "Nanum Pen Script";
 }
 
