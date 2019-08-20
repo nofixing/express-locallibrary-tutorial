@@ -305,10 +305,6 @@ exports.story_detail = function(req, res, next) {
             if(ext.toLowerCase() != 'mp3' || ext.toLowerCase() != 'ogg' || ext.toLowerCase() != 'wav') {
                 results.files.splice(i,1);
             }
-            var arr = file_path.split("/");
-            var lnum = file_path.split("/").length -1;
-            var vsrc = arr[lnum];
-            results.files[i].file_name = vsrc;
         }
 
         results.story.reference = entities.decode(results.story.reference);
