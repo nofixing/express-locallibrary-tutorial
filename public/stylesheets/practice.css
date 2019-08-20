@@ -273,7 +273,7 @@ ul.tite li {
     font-family: "Nanum Pen Script";
 }
 
-.dropdown-menu span[data-label="나눔 손글씨 붓"]::before {
+.dropdown-item span[data-label="나눔 손글씨 붓"]::before {
     font-family: "Nanum Brush Script";
 }
 
