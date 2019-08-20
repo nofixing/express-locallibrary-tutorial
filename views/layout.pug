@@ -80,38 +80,68 @@ html(lang='en')
             li.nav-item.dropdown
                 a#fnt.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.FONT}
                 div.dropdown-menu(aria-labelledby='fnt')
-                  a.dropdown-item(href='/catalog?cfnt=Libre+Franklin' ) Libre Franklin
-                  a.dropdown-item(href='/catalog?cfnt=inconsolata' ) Inconsolata
-                  a.dropdown-item(href='/catalog?cfnt=roboto' ) Roboto
-                  a.dropdown-item(href='/catalog?cfnt=mirza' ) Mirza
-                  a.dropdown-item(href='/catalog?cfnt=arial' ) Arial
-                  a.dropdown-item(href='/catalog?cfnt=Oswald' ) Oswald
-                  a.dropdown-item(href='/catalog?cfnt=Caveat' ) Caveat
-                  a.dropdown-item(href='/catalog?cfnt=Raleway' ) Raleway
-                  a.dropdown-item(href='/catalog?cfnt=Shadows+Into+Light' ) Shadows Into Light
-                  a.dropdown-item(href='/catalog?cfnt=Abril+Fatface' ) Abril Fatface
-                  a.dropdown-item(href='/catalog?cfnt=Teko' ) Teko
-                  a.dropdown-item(href='/catalog?cfnt=Cormorant' ) Cormorant
-                  a.dropdown-item(href='/catalog?cfnt=Alfa+Slab+One' ) Alfa Slab One
-                  a.dropdown-item(href='/catalog?cfnt=PT+Sans' ) PT Sans
+                  a.dropdown-item(href='/catalog?cfnt=Libre+Franklin' )
+                    span(data-label='Libre Franklin' )
+                  a.dropdown-item(href='/catalog?cfnt=inconsolata' )
+                    span(data-label='Inconsolata' )
+                  a.dropdown-item(href='/catalog?cfnt=roboto' )
+                    span(data-label='Roboto' )
+                  a.dropdown-item(href='/catalog?cfnt=mirza' )
+                    span(data-label='Mirza' )
+                  a.dropdown-item(href='/catalog?cfnt=arial' )
+                    span(data-label='Arial' )
+                  a.dropdown-item(href='/catalog?cfnt=Oswald' )
+                    span(data-label='Oswald' )
+                  a.dropdown-item(href='/catalog?cfnt=Caveat' )
+                    span(data-label='Caveat' )
+                  a.dropdown-item(href='/catalog?cfnt=Raleway' )
+                    span(data-label='Raleway' )
+                  a.dropdown-item(href='/catalog?cfnt=Shadows+Into+Light' )
+                    span(data-label='Shadows Into Light' )
+                  a.dropdown-item(href='/catalog?cfnt=Abril+Fatface' )
+                    span(data-label='Abril Fatface' )
+                  a.dropdown-item(href='/catalog?cfnt=Teko' )
+                    span(data-label='Teko' )
+                  a.dropdown-item(href='/catalog?cfnt=Cormorant' )
+                    span(data-label='Cormorant' )
+                  a.dropdown-item(href='/catalog?cfnt=Alfa+Slab+One' )
+                    span(data-label='Alfa Slab One' )
+                  a.dropdown-item(href='/catalog?cfnt=PT+Sans' )
+                    span(data-label='PT Sans' )
                   a.dropdown-item(href='/catalog?cfnt=Nanum+Pen+Script' )
                     span(data-label='나눔 손글씨 펜' )
-                  a.dropdown-item(href='/catalog?cfnt=Nanum+Brush+Script' ) 나눔 손글씨 붓
-                  a.dropdown-item(href='/catalog?cfnt=Song+Myung' ) 송명
-                  a.dropdown-item(href='/catalog?cfnt=Gaegu' ) 개구쟁이
-                  a.dropdown-item(href='/catalog?cfnt=Jua' ) 주아
-                  a.dropdown-item(href='/catalog?cfnt=Gamja+Flower' ) 감자꽃 마을
-                  a.dropdown-item(href='/catalog?cfnt=Cute+Font' ) 귀여운 폰트
-                  a.dropdown-item(href='/catalog?cfnt=Stylish' ) 스타일리시
-                  a.dropdown-item(href='/catalog?cfnt=Yeon+Sung' ) 연성
-                  a.dropdown-item(href='/catalog?cfnt=Hi+Melody' ) 하이멜로디
-                  a.dropdown-item(href='/catalog?cfnt=Sunflower' ) 해바라기
-                  a.dropdown-item(href='/catalog?cfnt=Black+Han+Sans' ) 검은고딕
-                  a.dropdown-item(href='/catalog?cfnt=Gothic+A1' ) 고딕 A1
-                  a.dropdown-item(href='/catalog?cfnt=Nanum+Gothic' ) 나눔고딕
-                  a.dropdown-item(href='/catalog?cfnt=Nanum+Myeongjo' ) 나눔명조
-                  a.dropdown-item(href='/catalog?cfnt=Poor+Story' ) 서툰이야기
-                  a.dropdown-item(href='/catalog?cfnt=Black+And+White+Picture' ) 흑백사진
+                  a.dropdown-item(href='/catalog?cfnt=Nanum+Brush+Script' )
+                    span(data-label='나눔 손글씨 붓' )
+                  a.dropdown-item(href='/catalog?cfnt=Song+Myung' )
+                    span(data-label='송명' )
+                  a.dropdown-item(href='/catalog?cfnt=Gaegu' )
+                    span(data-label='개구쟁이' )
+                  a.dropdown-item(href='/catalog?cfnt=Jua' )
+                    span(data-label='주아' )
+                  a.dropdown-item(href='/catalog?cfnt=Gamja+Flower' )
+                    span(data-label='감자꽃 마을' )
+                  a.dropdown-item(href='/catalog?cfnt=Cute+Font' )
+                    span(data-label='귀여운 폰트' )
+                  a.dropdown-item(href='/catalog?cfnt=Stylish' )
+                    span(data-label='스타일리시' )
+                  a.dropdown-item(href='/catalog?cfnt=Yeon+Sung' )
+                    span(data-label='연성' )
+                  a.dropdown-item(href='/catalog?cfnt=Hi+Melody' )
+                    span(data-label='하이멜로디' )
+                  a.dropdown-item(href='/catalog?cfnt=Sunflower' )
+                    span(data-label='해바라기' )
+                  a.dropdown-item(href='/catalog?cfnt=Black+Han+Sans' )
+                    span(data-label='검은고딕' )
+                  a.dropdown-item(href='/catalog?cfnt=Gothic+A1' )
+                    span(data-label='고딕 A1' )
+                  a.dropdown-item(href='/catalog?cfnt=Nanum+Gothic' )
+                    span(data-label='나눔고딕' )
+                  a.dropdown-item(href='/catalog?cfnt=Nanum+Myeongjo' )
+                    span(data-label='나눔명조' )
+                  a.dropdown-item(href='/catalog?cfnt=Poor+Story' )
+                    span(data-label='서툰이야기' )
+                  a.dropdown-item(href='/catalog?cfnt=Black+And+White+Picture' )
+                    span(data-label='흑백사진' )
             li.nav-item
               a.nav-link(href='/user/logout') #{translation.LOGOUT}
             li.nav-item
