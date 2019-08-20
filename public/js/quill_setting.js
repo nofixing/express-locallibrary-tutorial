@@ -60,6 +60,7 @@ Quill.register(LinkBlot);
 
   var quill = new Quill('#snow-container', {
     modules: {
+        syntax: true,
         toolbar: '#toolbar-container'
     },
     theme: 'snow'
