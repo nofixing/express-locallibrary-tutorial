@@ -47,8 +47,8 @@ router.post('/', multer.single('file'), (req, res, next) => {
     const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
     console.log(publicUrl);
 
-    var arr = file_path.split("/");
-    var lnum = file_path.split("/").length -1;
+    var arr = publicUrl.split("/");
+    var lnum = publicUrl.split("/").length -1;
     var vsrc = arr[lnum];
 
     var file = new File(
