@@ -300,6 +300,7 @@ exports.story_detail = function(req, res, next) {
         }
 
         for (let i = 0; i < results.files.length; i++) {
+            console.log('for index:'+i);  
             var file_path = results.files[i].file_path;
             var ext = file_path.substring(file_path.length - 3, file_path.length);
             console.log('file extension:'+ext);
