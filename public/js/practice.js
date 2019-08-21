@@ -438,6 +438,9 @@ $(function(){
         var fileForm = document.getElementById('fileUpload');
 
         fileForm.addEventListener('submit', function(ev) {
+            
+            $("div.spanner").addClass("show");
+            $("div.overlay").addClass("show");
 
             var oData = new FormData(fileForm);
 
@@ -447,6 +450,8 @@ $(function(){
             oReq.open("POST", "/upload", true);
             oReq.onload = function(oEvent) {
               if (oReq.status == 200) {
+                $("div.spanner").removeClass("show");
+                $("div.overlay").removeClass("show");
                 var arr = oReq.responseText.split('&');
                 var markup = "<tr><td><span id='"+arr[1]+"'>"+arr[0]+"</span>";
                 markup += "&nbsp;<button onclick=CopyFilePath('"+arr[1]+"')>"+$("#cptr").val()+"</button>";
@@ -455,6 +460,8 @@ $(function(){
                 $(".ftd").append(markup);
                 alert($("#Uploaded").val());
               } else {
+                $("div.spanner").removeClass("show");
+                $("div.overlay").removeClass("show");
                 alert($("#UploadFailed").val());
               }
             };
