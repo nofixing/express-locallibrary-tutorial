@@ -200,7 +200,9 @@ exports.story_detail = function(req, res, next) {
                 .exec(callback);
         },
         files: function(callback) {
-            File.find({user: req.session.userId, story: req.params.id}).select('file_path file_name file_size')
+            File.find({user: req.session.userId, story: req.params.id, 
+                $or:[ {file_name: { $regex: '.*' + 'mp3' }}, {file_name: { $regex: '.*' + 'ogg' }},
+                {file_name: { $regex: '.*' + 'wav' }}]}).select('file_path file_name file_size')
                 .exec(callback);
         },
     }, function(err, results) {
@@ -298,7 +300,7 @@ exports.story_detail = function(req, res, next) {
             */
             results.story.content = txt;
         }
-
+        /*
         for (let i = 0; i < results.files.length; i++) {
             console.log('for index:'+i);  
             var file_path = results.files[i].file_path;
@@ -310,7 +312,7 @@ exports.story_detail = function(req, res, next) {
                 i = 0;
             }
         }
-
+        */
         results.story.reference = entities.decode(results.story.reference);
         var memo = '';
         var memo_id = '';
