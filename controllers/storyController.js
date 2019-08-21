@@ -302,7 +302,7 @@ exports.story_detail = function(req, res, next) {
         for (let i = 0; i < results.files.length; i++) {
             var file_path = results.files[i].file_path;
             var ext = file_path.substring(file_path.length - 3, file_path.length);
-            if(ext.toLowerCase() != 'mp3' || ext.toLowerCase() != 'ogg' || ext.toLowerCase() != 'wav') {
+            if(ext.toLowerCase() != 'mp3' && ext.toLowerCase() != 'ogg' && ext.toLowerCase() != 'wav') {
                 console.log('This file will be deleted:'+file_path);
                 results.files.splice(i,1);
             }
