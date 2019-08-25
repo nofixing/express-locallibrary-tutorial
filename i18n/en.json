@@ -177,5 +177,6 @@
   "FileUpload":"File Upload",
   "Uploaded":"Uploaded.",
   "UploadFailed":"Upload Failed.",
-  "Copy":"Copy"
+  "Copy":"Copy",
+  "UploadingFile":"Uploading file, please be patient."
 }
