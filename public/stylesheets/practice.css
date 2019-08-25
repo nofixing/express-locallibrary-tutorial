@@ -560,7 +560,7 @@ ul.tite li {
 
   .spanner{
     position:absolute;
-    top: 50%;
+    top: 50vh;
     left: 0;
     background: #2a2a2a;
     width: 100%;
