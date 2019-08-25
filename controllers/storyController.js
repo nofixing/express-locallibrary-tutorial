@@ -20,7 +20,7 @@ var async = require('async');
 exports.story_list = function(req, res, next) {
 
   //Story.find({$and:[{user: req.session.userId}, {book: null}, {$or: [{open: null}, {open: 'N'}]}] }).collation({locale: 'en' }).sort({create_date: 1})
-  Story.find({$and:[{user: req.session.userId}, {book: null}] }).collation({locale: 'en' }).sort({create_date: 1})
+  Story.find({$and:[{user: req.session.userId}, {book: null}] }).collation({locale: 'en' }).sort({create_date: -1})
     .exec(function (err, list_stories) {
       if (err) { return next(err); }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
