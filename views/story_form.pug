@@ -37,7 +37,8 @@ block content
       div.col-sm-4
         label(for='title') #{translation.Title}:
         input#title.form-control(type='text', style='display: inline; width: 400px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
-        <select name="title_font" class="ql-font" style="display: inline; float: right; width: 150px;">
+        select.form-control(type='select', style='display: inline; float: right; width: 150px;', placeholder='Select font' name='title_font' )
+          <option value="">Select font</option>
           <option class="ql-font-SansSerif" value="SansSerif" selected>Sans Serif</option>
           <option class="ql-font-LibreFranklin" value="LibreFranklin">Libre Franklin</option>
           <option class="ql-font-inconsolata" value="inconsolata">Inconsolata</option>
