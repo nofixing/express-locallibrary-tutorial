@@ -484,6 +484,37 @@ ul.tite li {
     font-family: "Alfa Slab One";            
 }
 
+#toolbar-container .ql-size span[data-label="1em"]::before {
+    font-size: 1em;
+}
+#toolbar-container .ql-size span[data-label="1.5em"]::before {
+    font-size: 1.5em;
+}
+#toolbar-container .ql-size span[data-label="2em"]::before {
+    font-size: 2em;
+}
+#toolbar-container .ql-size span[data-label="2.5em"]::before {
+    font-size: 2.5em;
+}
+#toolbar-container .ql-size span[data-label="3em"]::before {
+    font-size: 3em;
+}
+#toolbar-container .ql-size span[data-label="3.5em"]::before {
+    font-size: 3.5em;
+}
+#toolbar-container .ql-size span[data-label="4em"]::before {
+    font-size: 4em;
+}
+#toolbar-container .ql-size span[data-label="6em"]::before {
+    font-size: 6em;
+}
+#toolbar-container .ql-size span[data-label="8em"]::before {
+    font-size: 8em;
+}
+#toolbar-container .ql-size span[data-label="10em"]::before {
+    font-size: 10em;
+}
+
 .ql-omega:after {
     content: "Tooltip";
 }
