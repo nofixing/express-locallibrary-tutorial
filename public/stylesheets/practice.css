@@ -149,119 +149,119 @@ ul.tite li {
 
 .boko { display: none; }
 
-#toolbar-container .ql-font span[data-label="Sans Serif"]::before {
+.ql-font span[data-label="Sans Serif"]::before {
     font-family: "Sans Serif";
 }
 
-#toolbar-container .ql-font span[data-label="Libre Franklin"]::before {
+.ql-font span[data-label="Libre Franklin"]::before {
     font-family: "Libre Franklin";
 }
 
-#toolbar-container .ql-font span[data-label="Inconsolata"]::before {
+.ql-font span[data-label="Inconsolata"]::before {
     font-family: "Inconsolata";
 }
 
-#toolbar-container .ql-font span[data-label="Roboto"]::before {
+.ql-font span[data-label="Roboto"]::before {
     font-family: "Roboto";
 }
 
-#toolbar-container .ql-font span[data-label="Mirza"]::before {
+.ql-font span[data-label="Mirza"]::before {
     font-family: "Mirza";
 }
 
-#toolbar-container .ql-font span[data-label="Arial"]::before {
+.ql-font span[data-label="Arial"]::before {
     font-family: "Arial";
 }
 
-#toolbar-container .ql-font span[data-label="나눔 손글씨 펜"]::before {
+.ql-font span[data-label="나눔 손글씨 펜"]::before {
     font-family: "Nanum Pen Script";
 }
 
-#toolbar-container .ql-font span[data-label="나눔 손글씨 붓"]::before {
+.ql-font span[data-label="나눔 손글씨 붓"]::before {
     font-family: "Nanum Brush Script";
 }
 
-#toolbar-container .ql-font span[data-label="송명"]::before {
+.ql-font span[data-label="송명"]::before {
     font-family: "Song Myung";
 }
 
-#toolbar-container .ql-font span[data-label="개구쟁이"]::before {
+.ql-font span[data-label="개구쟁이"]::before {
     font-family: "Gaegu";
 }
 
-#toolbar-container .ql-font span[data-label="주아"]::before {
+.ql-font span[data-label="주아"]::before {
     font-family: "Jua";
 }
 
-#toolbar-container .ql-font span[data-label="감자꽃 마을"]::before {
+.ql-font span[data-label="감자꽃 마을"]::before {
     font-family: "Gamja Flower";
 }
-#toolbar-container .ql-font span[data-label="귀여운 폰트"]::before {
+.ql-font span[data-label="귀여운 폰트"]::before {
     font-family: "Cute Font";
 }
-#toolbar-container .ql-font span[data-label="스타일리시"]::before {
+.ql-font span[data-label="스타일리시"]::before {
     font-family: "Stylish";
 }
-#toolbar-container .ql-font span[data-label="연성"]::before {
+.ql-font span[data-label="연성"]::before {
     font-family: "Yeon Sung";
 }
-#toolbar-container .ql-font span[data-label="하이멜로디"]::before {
+.ql-font span[data-label="하이멜로디"]::before {
     font-family: "Hi Melody";
 }
-#toolbar-container .ql-font span[data-label="해바라기"]::before {
+.ql-font span[data-label="해바라기"]::before {
     font-family: "Sunflower";
 }
-#toolbar-container .ql-font span[data-label="검은고딕"]::before {
+.ql-font span[data-label="검은고딕"]::before {
     font-family: "Black Han Sans";
 }
-#toolbar-container .ql-font span[data-label="고딕 A1"]::before {
+.ql-font span[data-label="고딕 A1"]::before {
     font-family: "Gothic A1";
 }
-#toolbar-container .ql-font span[data-label="나눔고딕"]::before {
+.ql-font span[data-label="나눔고딕"]::before {
     font-family: "Nanum Gothic";
 }
-#toolbar-container .ql-font span[data-label="나눔명조"]::before {
+.ql-font span[data-label="나눔명조"]::before {
     font-family: "Nanum Myeongjo";
 }
-#toolbar-container .ql-font span[data-label="서툰이야기"]::before {
+.ql-font span[data-label="서툰이야기"]::before {
     font-family: "Poor Story";
 }
-#toolbar-container .ql-font span[data-label="흑백사진"]::before {
+.ql-font span[data-label="흑백사진"]::before {
     font-family: "Black And White Picture";
 }
-#toolbar-container .ql-font span[data-label="PT Sans"]::before {
+.ql-font span[data-label="PT Sans"]::before {
     font-family: "PT Sans";
 }
 
-#toolbar-container .ql-font span[data-label="Oswald"]::before {
+.ql-font span[data-label="Oswald"]::before {
     font-family: "Oswald";
 }
 
-#toolbar-container .ql-font span[data-label="Caveat"]::before {
+.ql-font span[data-label="Caveat"]::before {
     font-family: "Caveat";
 }
 
-#toolbar-container .ql-font span[data-label="Raleway"]::before {
+.ql-font span[data-label="Raleway"]::before {
     font-family: "Raleway";
 }
 
-#toolbar-container .ql-font span[data-label="Shadows Into Light"]::before {
+.ql-font span[data-label="Shadows Into Light"]::before {
     font-family: "Shadows Into Light";
 }
 
-#toolbar-container .ql-font span[data-label="Abril Fatface"]::before {
+.ql-font span[data-label="Abril Fatface"]::before {
     font-family: "Abril Fatface";
 }
 
-#toolbar-container .ql-font span[data-label="Teko"]::before {
+.ql-font span[data-label="Teko"]::before {
     font-family: "Teko";
 }
 
-#toolbar-container .ql-font span[data-label="Cormorant"]::before {
+.ql-font span[data-label="Cormorant"]::before {
     font-family: "Cormorant";
 }
 
-#toolbar-container .ql-font span[data-label="Alfa Slab One"]::before {
+.ql-font span[data-label="Alfa Slab One"]::before {
     font-family: "Alfa Slab One";
 }
 
