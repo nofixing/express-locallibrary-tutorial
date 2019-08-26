@@ -508,7 +508,8 @@ exports.story_create_post = [
             chapter: req.body.chapter,
             btitle: req.body.btitle,
             open: req.body.open,
-            create_date: Date.now()
+            create_date: Date.now(),
+            title_font: req.body.title_font
            });
 
         var storyOnly = new Story(
@@ -519,7 +520,8 @@ exports.story_create_post = [
               genre: req.body.genre,
               user: req.session.userId,
               create_date: Date.now(),
-              open: req.body.open
+              open: req.body.open,
+              title_font: req.body.title_font
              });
 
         if (!errors.isEmpty()) {
@@ -723,6 +725,7 @@ exports.story_update_post = [
             order: req.body.order,
             chapter: req.body.chapter,
             open: req.body.open,
+            title_font: req.body.title_font,
             _id:req.params.id // This is required, or a new ID will be assigned!
            });
 
@@ -763,7 +766,8 @@ exports.story_update_post = [
                     content: req.body.content,
                     reference: req.body.reference,
                     genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
-                    open: req.body.open
+                    open: req.body.open,
+                    title_font: req.body.title_font
                 }, function(err, theStory) {
                     if (err) { return next(err); }
                     // Successful - redirect to story detail page.
@@ -779,7 +783,8 @@ exports.story_update_post = [
                     btitle: req.body.btitle,
                     open: req.body.open,
                     order: req.body.order,
-                    chapter: req.body.chapter
+                    chapter: req.body.chapter,
+                    title_font: req.body.title_font
                 }, function(err, theStory) {
                     if (err) { return next(err); }
                     // Successful - redirect to story detail page.

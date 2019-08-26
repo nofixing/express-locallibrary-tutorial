@@ -112,7 +112,10 @@ html(lang='en')
         div.ql-editor(style='padding: 50px 0 0 0; overflow-y: hidden;')
           if story.chapter 
             p(style='font-weight:bold;font-size: 2em') #{story.chapter}<br/><br/>
-          p(style='font-weight:bold;font-size: 2.5em') #{story.title}<br/><br/>
+          if story.title_font
+            p(style='font-weight:bold;font-size: 2.5em', class=story.title_font) #{story.title}<br/><br/>
+          else
+            p(style='font-weight:bold;font-size: 2.5em') #{story.title}<br/><br/>
           if story.author 
             p #{translation.by} #{story.author}<br/><br/>
           if story.reference 
