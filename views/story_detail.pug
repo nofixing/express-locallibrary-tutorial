@@ -117,11 +117,20 @@ html(lang='en')
           else
             p(style='font-weight:bold;font-size: 2.5em') #{story.title}<br/><br/>
           if story.author 
-            p #{translation.by} #{story.author}<br/><br/>
+            if story.title_font
+              p(class=story.title_font) #{translation.by} #{story.author}<br/><br/>
+            else
+              p #{translation.by} #{story.author}<br/><br/>
           if story.reference 
-            p #{translation.Reference}: #{story.reference}<br/><br/>
+            if story.title_font
+              p(class=story.title_font) #{translation.Reference}: #{story.reference}<br/><br/>
+            else
+              p #{translation.Reference}: #{story.reference}<br/><br/>
           if anchor 
-            <a href="none" onclick="goBokM('#{anchor}');return false;">#{translation.BookMark}</a><br/><br/>
+            if story.title_font
+              <a href="none" class="#{story.title_font}" onclick="goBokM('#{anchor}');return false;">#{translation.BookMark}</a><br/><br/>
+            else
+              <a href="none" onclick="goBokM('#{anchor}');return false;">#{translation.BookMark}</a><br/><br/>
           div#st_content !{story.content}
         if story.open == 'Y'
           <div style="text-align: center; margin: 30px;"><button id="favs" type="submit" class="btn btn-primary">#{translation.favs}</button></div>
