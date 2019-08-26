@@ -34,9 +34,43 @@ block content
               else
                 option(value=book._id) #{book.title}
     div.form-group.row
-      div.col-sm-3
+      div.col-sm-4
         label(for='title') #{translation.Title}:
         input#title.form-control(type='text', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
+        <select name="title_font" class="ql-font" style="width: 150px;">
+          <option value="" selected><span data-label="Sans Serif">Sans Serif</span></option>
+          <option value="LibreFranklin"><span data-label="Libre Franklin">Libre Franklin</span></option>
+          <option value="inconsolata"><span data-label="Inconsolata">Inconsolata</span></option>
+          <option value="roboto"><span data-label="Roboto">Roboto</span></option>
+          <option value="mirza"><span data-label="Mirza">Mirza</span></option>
+          <option value="arial"><span data-label="Arial">Arial</span></option>
+          <option value="Oswald"><span data-label="Oswald">Oswald</span></option>
+          <option value="Caveat"><span data-label="Caveat">Caveat</span></option>
+          <option value="Raleway"><span data-label="Raleway">Raleway</span></option>
+          <option value="ShadowsIntoLight"><span data-label="Shadows Into Light">Shadows Into Light</span></option>
+          <option value="AbrilFatface"><span data-label="Abril Fatface">Abril Fatface</span></option>
+          <option value="Teko"><span data-label="Teko">Teko</span></option>
+          <option value="Cormorant"><span data-label="Cormorant">Cormorant</span></option>
+          <option value="AlfaSlabOne"><span data-label="Alfa Slab One">Alfa Slab One</span></option>
+          <option value="PTSans"><span data-label="PT Sans">PT Sans</span></option>
+          <option value="NanumPenScript"><span data-label="나눔 손글씨 펜">나눔 손글씨 펜</span></option>
+          <option value="NanumBrushScript"><span data-label="나눔 손글씨 붓">나눔 손글씨 붓</span></option>
+          <option value="SongMyung"><span data-label="송명">송명</span></option>
+          <option value="Gaegu"><span data-label="개구쟁이">개구쟁이</span></option>
+          <option value="Jua"><span data-label="주아">주아</span></option>
+          <option value="GamjaFlower"><span data-label="감자꽃 마을">감자꽃 마을</span></option>
+          <option value="CuteFont"><span data-label="귀여운 폰트">귀여운 폰트</span></option>
+          <option value="Stylish"><span data-label="스타일리시">스타일리시</span></option>
+          <option value="YeonSung"><span data-label="연성">연성</span></option>
+          <option value="HiMelody"><span data-label="하이멜로디">하이멜로디</span></option>
+          <option value="Sunflower"><span data-label="해바라기">해바라기</span></option>
+          <option value="BlackHanSans"><span data-label="검은고딕">검은고딕</span></option>
+          <option value="GothicA1"><span data-label="고딕 A1">고딕 A1</span></option>
+          <option value="NanumGothic"><span data-label="나눔고딕">나눔고딕</span></option>
+          <option value="NanumMyeongjo"><span data-label="나눔명조">나눔명조</span></option>
+          <option value="PoorStory"><span data-label="서툰이야기">서툰이야기</span></option>
+          <option value="BlackAndWhitePicture"><span data-label="흑백사진">흑백사진</span></option>
+        </select>
     
     div.form-group.row.boko
       div.col-sm-1
