@@ -149,6 +149,10 @@ ul.tite li {
 
 .boko { display: none; }
 
+.ql-font span[data-label]::before {
+    content: attr(data-label);
+}
+
 .ql-font span[data-label="Sans Serif"]::before {
     font-family: "Sans Serif";
 }
