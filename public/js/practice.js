@@ -355,6 +355,15 @@ $(function(){
             }
         });
     }
+    
+    var tft = $("#title_font").val();
+    if(typeof tft != 'undefined' && tft != '') {
+        $('#tfnt').text(tft);
+    }
+    var sft = $("#title_size").val();
+    if(typeof sft != 'undefined' && sft != '') {
+        $('#sfnt').text(sft);
+    }
 
     $('#favs').click(function(){
         var data = {};
