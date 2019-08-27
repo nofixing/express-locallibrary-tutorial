@@ -37,7 +37,13 @@ block content
       div.col-sm-5
         label(for='title') #{translation.Title}:
         input#title.form-control(type='text', style='display: inline; width: 400px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
-        input.form-control(type='hidden', name='title_font' )
+        if story
+          if story.title_font
+            input#title_font.form-control(type='hidden', name='title_font', value=story.title_font)
+          else
+            input#title_font.form-control(type='hidden', name='title_font')
+        else
+          input#title_font.form-control(type='hidden', name='title_font')
         div.dropdown(style='display: inline; float: right; width: 150px; margin-right: 10px')
           a#tfnt.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.FONT}
           div.dropdown-menu(aria-labelledby='tfnt')
@@ -103,7 +109,13 @@ block content
               span(data-label='서툰이야기' )
             a.dropdown-item(href='#', onclick='toggleSurface("흑백사진","BlackAndWhitePicture");' )
               span(data-label='흑백사진' )
-        input.form-control(type='hidden', name='title_size' )
+        if story
+          if story.title_size
+            input#title_size.form-control(type='hidden', name='title_size', value=story.title_size)
+          else
+            input#title_size.form-control(type='hidden', name='title_size')
+        else
+          input#title_size.form-control(type='hidden', name='title_size')
         div.dropdown(style='display: inline; float: right; width: 150px; margin-right: 10px')
           a#sfnt.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.SIZE}
           div.dropdown-menu(aria-labelledby='sfnt')
