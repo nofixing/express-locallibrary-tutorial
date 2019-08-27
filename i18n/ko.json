@@ -178,5 +178,6 @@
   "Uploaded":"업로드 되었습니다.",
   "UploadFailed":"업로드에 실패하였습니다.",
   "Copy":"복사",
-  "UploadingFile":"파일을 업로드 중입니다. 잠시만 기다려 주세요."
+  "UploadingFile":"파일을 업로드 중입니다. 잠시만 기다려 주세요.",
+  "SIZE":"크기"
 }
