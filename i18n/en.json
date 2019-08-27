@@ -178,5 +178,6 @@
   "Uploaded":"Uploaded.",
   "UploadFailed":"Upload Failed.",
   "Copy":"Copy",
-  "UploadingFile":"Uploading file, please be patient."
+  "UploadingFile":"Uploading file, please be patient.",
+  "SIZE":"Size"
 }
