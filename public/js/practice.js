@@ -1096,3 +1096,9 @@ function toggleSurface(sfnt, ffmt) {
     var frm = document.getElementById("storyForm");
     frm.title_font.value = 'ql-font-'+ffmt;
 }
+
+function toggleSurface2(sfnt) {
+    $('#sfnt').text(sfnt);
+    var frm = document.getElementById("storyForm");
+    frm.title_size.value = sfnt;
+}
