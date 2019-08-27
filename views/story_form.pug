@@ -37,41 +37,72 @@ block content
       div.col-sm-4
         label(for='title') #{translation.Title}:
         input#title.form-control(type='text', style='display: inline; width: 400px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
-        select.form-control(type='select', style='display: inline; float: right; width: 150px;', placeholder='Select font' name='title_font' )
-          <option value="">Select font</option>
-          <option class="ql-font-SansSerif" value="SansSerif">Sans Serif</option>
-          <option class="ql-font-LibreFranklin" value="LibreFranklin">Libre Franklin</option>
-          <option class="ql-font-inconsolata" value="inconsolata">Inconsolata</option>
-          <option class="ql-font-roboto" value="roboto">Roboto</option>
-          <option class="ql-font-mirza" value="mirza">Mirza</option>
-          <option class="ql-font-arial" value="arial">Arial</option>
-          <option class="ql-font-Oswald" value="Oswald">Oswald</option>
-          <option class="ql-font-Caveat" value="Caveat">Caveat</option>
-          <option class="ql-font-Raleway" value="Raleway">Raleway</option>
-          <option class="ql-font-ShadowsIntoLight" value="ShadowsIntoLight">Shadows Into Light</option>
-          <option class="ql-font-AbrilFatface" value="AbrilFatface">Abril Fatface</option>
-          <option class="ql-font-Teko" value="Teko">Teko</option>
-          <option class="ql-font-Cormorant" value="Cormorant">Cormorant</option>
-          <option class="ql-font-AlfaSlabOne" value="AlfaSlabOne">Alfa Slab One</option>
-          <option class="ql-font-PTSans" value="PTSans">PT Sans</option>
-          <option class="ql-font-NanumPenScript" value="NanumPenScript">나눔 손글씨 펜</option>
-          <option class="ql-font-NanumBrushScript" value="NanumBrushScript">나눔 손글씨 붓</option>
-          <option class="ql-font-SongMyung" value="SongMyung">송명</option>
-          <option class="ql-font-Gaegu" value="Gaegu">개구쟁이</option>
-          <option class="ql-font-Jua" value="Jua">주아</option>
-          <option class="ql-font-GamjaFlower" value="GamjaFlower">감자꽃 마을</option>
-          <option class="ql-font-CuteFont" value="CuteFont">귀여운 폰트</option>
-          <option class="ql-font-Stylish" value="Stylish">스타일리시</option>
-          <option class="ql-font-YeonSung" value="YeonSung">연성</option>
-          <option class="ql-font-HiMelody" value="HiMelody">하이멜로디</option>
-          <option class="ql-font-Sunflower" value="Sunflower">해바라기</option>
-          <option class="ql-font-BlackHanSans" value="BlackHanSans">검은고딕</option>
-          <option class="ql-font-GothicA1" value="GothicA1">고딕 A1</option>
-          <option class="ql-font-NanumGothic" value="NanumGothic">나눔고딕</option>
-          <option class="ql-font-NanumMyeongjo" value="NanumMyeongjo">나눔명조</option>
-          <option class="ql-font-PoorStory" value="PoorStory">서툰이야기</option>
-          <option class="ql-font-BlackAndWhitePicture" value="BlackAndWhitePicture">흑백사진</option>
-        </select>
+        input.form-control(type='hidden', name='title_font' )
+        div.dropdown(style='display: inline; float: right; width: 150px;')
+          a#tfnt.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.FONT}
+          div.dropdown-menu(aria-labelledby='tfnt')
+            a.dropdown-item(href='#', onclick='toggleSurface("Libre Franklin");' )
+              span(data-label='Libre Franklin' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Inconsolata");' )
+              span(data-label='Inconsolata' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Roboto");' )
+              span(data-label='Roboto' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Mirza");' )
+              span(data-label='Mirza' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Arial");' )
+              span(data-label='Arial' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Oswald");' )
+              span(data-label='Oswald' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Caveat");' )
+              span(data-label='Caveat' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Raleway");' )
+              span(data-label='Raleway' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Shadows Into Light");' )
+              span(data-label='Shadows Into Light' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Abril Fatface");' )
+              span(data-label='Abril Fatface' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Teko");' )
+              span(data-label='Teko' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Cormorant");' )
+              span(data-label='Cormorant' )
+            a.dropdown-item(href='#', onclick='toggleSurface("Alfa Slab One");' )
+              span(data-label='Alfa Slab One' )
+            a.dropdown-item(href='#', onclick='toggleSurface("PT Sans");' )
+              span(data-label='PT Sans' )
+            a.dropdown-item(href='#', onclick='toggleSurface("나눔 손글씨 펜");' )
+              span(data-label='나눔 손글씨 펜' )
+            a.dropdown-item(href='#', onclick='toggleSurface("나눔 손글씨 붓");' )
+              span(data-label='나눔 손글씨 붓' )
+            a.dropdown-item(href='#', onclick='toggleSurface("송명");' )
+              span(data-label='송명' )
+            a.dropdown-item(href='#', onclick='toggleSurface("개구쟁이");' )
+              span(data-label='개구쟁이' )
+            a.dropdown-item(href='#', onclick='toggleSurface("주아");' )
+              span(data-label='주아' )
+            a.dropdown-item(href='#', onclick='toggleSurface("감자꽃 마을");' )
+              span(data-label='감자꽃 마을' )
+            a.dropdown-item(href='#', onclick='toggleSurface("귀여운 폰트");' )
+              span(data-label='귀여운 폰트' )
+            a.dropdown-item(href='#', onclick='toggleSurface("스타일리시");' )
+              span(data-label='스타일리시' )
+            a.dropdown-item(href='#', onclick='toggleSurface("연성");' )
+              span(data-label='연성' )
+            a.dropdown-item(href='#', onclick='toggleSurface("하이멜로디");' )
+              span(data-label='하이멜로디' )
+            a.dropdown-item(href='#', onclick='toggleSurface("해바라기");' )
+              span(data-label='해바라기' )
+            a.dropdown-item(href='#', onclick='toggleSurface("검은고딕");' )
+              span(data-label='검은고딕' )
+            a.dropdown-item(href='#', onclick='toggleSurface("고딕 A1");' )
+              span(data-label='고딕 A1' )
+            a.dropdown-item(href='#', onclick='toggleSurface("나눔고딕");' )
+              span(data-label='나눔고딕' )
+            a.dropdown-item(href='#', onclick='toggleSurface("나눔명조");' )
+              span(data-label='나눔명조' )
+            a.dropdown-item(href='#', onclick='toggleSurface("서툰이야기");' )
+              span(data-label='서툰이야기' )
+            a.dropdown-item(href='#', onclick='toggleSurface("흑백사진");' )
+              span(data-label='흑백사진' )
     
     div.form-group.row.boko
       div.col-sm-1
