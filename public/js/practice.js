@@ -1090,3 +1090,9 @@ function cs_change_music(music) {
      document.getElementById("myAudio").load();
      document.getElementById("myAudio").play();
 }
+
+function toggleSurface(sfnt, ffmt) {
+    $('#tfnt').text(sfnt);
+    var frm = document.getElementById("storyForm");
+    frm.title_font.value = 'ql-font-'+ffmt;
+}
