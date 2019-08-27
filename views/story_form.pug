@@ -34,11 +34,11 @@ block content
               else
                 option(value=book._id) #{book.title}
     div.form-group.row
-      div.col-sm-4
+      div.col-sm-5
         label(for='title') #{translation.Title}:
         input#title.form-control(type='text', style='display: inline; width: 400px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
         input.form-control(type='hidden', name='title_font' )
-        div.dropdown(style='display: inline; float: right; width: 150px;')
+        div.dropdown(style='display: inline; float: right; width: 150px; margin-right: 10px')
           a#tfnt.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.FONT}
           div.dropdown-menu(aria-labelledby='tfnt')
             a.dropdown-item(href='#', onclick='toggleSurface("Libre Franklin","LibreFranklin");' )
@@ -103,6 +103,30 @@ block content
               span(data-label='서툰이야기' )
             a.dropdown-item(href='#', onclick='toggleSurface("흑백사진","BlackAndWhitePicture");' )
               span(data-label='흑백사진' )
+        input.form-control(type='hidden', name='title_size' )
+        div.dropdown(style='display: inline; float: right; width: 150px; margin-right: 10px')
+          a#sfnt.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.SIZE}
+          div.dropdown-menu(aria-labelledby='sfnt')
+            a.dropdown-item(href='#', onclick='toggleSurface2("1em");' )
+              span(data-label='1em' )
+            a.dropdown-item(href='#', onclick='toggleSurface2("1.5em");' )
+              span(data-label='1.5em' )
+            a.dropdown-item(href='#', onclick='toggleSurface2("2em");' )
+              span(data-label='2em' )
+            a.dropdown-item(href='#', onclick='toggleSurface2("2.5em");' )
+              span(data-label='2.5em' )
+            a.dropdown-item(href='#', onclick='toggleSurface2("3em");' )
+              span(data-label='3em' )
+            a.dropdown-item(href='#', onclick='toggleSurface2("3.5em");' )
+              span(data-label='3.5em' )
+            a.dropdown-item(href='#', onclick='toggleSurface2("4em");' )
+              span(data-label='4em' )
+            a.dropdown-item(href='#', onclick='toggleSurface2("6em");' )
+              span(data-label='6em' )
+            a.dropdown-item(href='#', onclick='toggleSurface2("8em");' )
+              span(data-label='8em' )
+            a.dropdown-item(href='#', onclick='toggleSurface2("10em");' )
+              span(data-label='10em' )
     
     div.form-group.row.boko
       div.col-sm-1
