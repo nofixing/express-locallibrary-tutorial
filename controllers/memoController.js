@@ -75,7 +75,7 @@ exports.memo_create_post = [
     
     // Process request after validation and sanitization.
     (req, res, next) => {
-        
+        if (req.body.story_user != req.session.userId) { return next(); }
         var memo;
         console.log('req.body.memo_id:'+req.body.memo_id);
         if(req.body.memo_id.length > 0) {
