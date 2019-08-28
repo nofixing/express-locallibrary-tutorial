@@ -220,6 +220,9 @@ exports.story_detail = function(req, res, next) {
             book_id = results.story.book._id;
         }
         if (results.story.user != req.session.userId) {
+            if (typeof results.story.open == 'undefined' || results.story.open != 'y'){
+              return res.redirect('/catalog/');  
+            }
             Story.findById({'_id': req.params.id}).exec( function (err,theStory) {
                 var isThere = false;
                 for (let i = 0; i < theStory.rcusr.length; i++) {
