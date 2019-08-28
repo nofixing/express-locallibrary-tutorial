@@ -116,7 +116,7 @@ exports.word_create_post = [
     sanitizeBody('*').trim().escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
-        
+        if (req.body.story_user != req.session.userId) { return next(); }
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
@@ -237,7 +237,7 @@ exports.word_translate_post = function(req, res, next) {
 
 // Display word delete form on GET.
 exports.word_delete_get = function(req, res, next) {
-
+    
     async.parallel({
         word: function(callback) {
             Word.findById(req.params.id).exec(callback);
@@ -256,7 +256,7 @@ exports.word_delete_get = function(req, res, next) {
 
 // Handle word delete on POST.
 exports.word_delete_post = function(req, res, next) {
-
+    if (req.body.story_user != req.session.userId) { return next(); }
     Word.findByIdAndRemove(req.body.id, function deleteWord(err) {
         if (err) { return next(err); }
         // Success - got to words list.
@@ -290,7 +290,7 @@ exports.word_update_get = function(req, res, next) {
 
 // Handle word update on POST.
 exports.word_update_post = function(req, res, next) {
-
+    if (req.body.story_user != req.session.userId) { return next(); }
     console.log('book_id:'+req.body.book_id);
     var book_id = req.body.book_id;
     if(book_id == '') book_id = '000000000000000000000000';
