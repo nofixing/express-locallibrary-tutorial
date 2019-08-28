@@ -144,7 +144,6 @@ html(lang='en')
         if story.open == 'Y'
           <div style="text-align: center; margin: 30px;"><button id="favs" type="submit" class="btn btn-primary">#{translation.favs}</button></div>
           <input type="hidden" id="facnt" name="facnt" value="#{story.favs}" />
-          <input type="hidden" id="stusr" name="stusr" value="#{story.user}" />
           <input type="hidden" id="favy" name="favy" value="#{translation.favy}" />
           <input type="hidden" id="favn" name="favn" value="#{translation.favn}" />
           <input type="hidden" id="cmm" name="cmm" value="#{translation.cmm}" />
@@ -392,7 +391,8 @@ html(lang='en')
         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="button" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <iframe id="dic_frame" src="https://www.wordreference.com/enko/"></iframe>
-        
+    
+    <input type="hidden" id="stusr" name="stusr" value="#{story.user}" />
     <input type="hidden" id="SAVED" name="SAVED" value="#{translation.SAVED}" />
     <input type="hidden" id="DELETED" name="DELETED" value="#{translation.DELETED}" />
     <input type="hidden" id="Delete" name="Delete" value="#{translation.Delete}" />
