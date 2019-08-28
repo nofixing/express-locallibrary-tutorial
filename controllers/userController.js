@@ -49,7 +49,11 @@ exports.login_post = function (req, res, next) {
           req.session.userName = user.name;
           console.log("user.name:"+user.name);
           console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
-          return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
+          if (req.session.redirectUrl) {
+            return res.redirect(req.session.redirectUrl);
+          } else {
+            return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
+          }
         }
       }
     });
