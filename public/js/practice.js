@@ -1002,6 +1002,7 @@ function saveMemo() {
         
     var data = {};
     data.story_id = $( "#story_id" ).val();
+    data.story_user = $( "#stusr" ).val();
     data.content = document.querySelector('#snow-container').children[0].innerHTML;
     data.memo_id = $('#memo_id').val();
     console.log('save click');
