@@ -67,6 +67,7 @@ $(function(){
             var data = {};
             data.title = selectText;
             data.story_id = $( "#story_id" ).val();
+            data.story_user = $( "#stusr" ).val();
             data.book_id = $( "#book_id" ).val();
             data.story_title = $( "#story_title" ).val();
             data.book_title = $( "#book_title" ).val();
@@ -130,6 +131,7 @@ $(function(){
             var data = {};
             data.title = selectText;
             data.story_id = $( "#story_id" ).val();
+            data.story_user = $( "#stusr" ).val();
             data.book_id = $( "#book_id" ).val();
             data.story_title = $( "#story_title" ).val();
             data.book_title = $( "#book_title" ).val();
@@ -252,6 +254,7 @@ $(function(){
                 var data = {};
                 data.id = $(this).val();
                 data.story_id = $( "#story_id" ).val();
+                data.story_user = $( "#stusr" ).val();
                 data.book_id = $( "#book_id" ).val();
                 data.story_title = $( "#story_title" ).val();
                 data.book_title = $( "#book_title" ).val();
@@ -284,6 +287,7 @@ $(function(){
             if ($(this).prop('checked')) {
                 var data = {};
                 data.id = $(this).val();
+                data.story_user = $( "#stusr" ).val();
                 var httpType = 'https://';
                 if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
                 $.ajax({
