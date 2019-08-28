@@ -359,21 +359,21 @@ $(function(){
     var tft = $("#title_font").val();
     if(typeof tft != 'undefined' && tft != '') {
          
-        var fary = {ql-font-LibreFranklin:"Libre Franklin",ql-font-inconsolata:"Inconsolata",ql-font-roboto:"Roboto",
-                    ql-font-mirza:"Mirza",ql-font-arial:"Arial",ql-font-Oswald:"Oswald",ql-font-Caveat:"Caveat",
-                    ql-font-Raleway:"Raleway",
-                    ql-font-ShadowsIntoLight:"Shadows Into Light",ql-font-AbrilFatface:"Abril Fatface",
-                    ql-font-Teko:"Teko",ql-font-Cormorant:"Cormorant",
-                    ql-font-AlfaSlabOne:"Alfa Slab One",ql-font-PTSans:"PT Sans",ql-font-NanumPenScript:"나눔 손글씨 펜",
-                    ql-font-NanumBrushScript:"나눔 손글씨 붓",
-                    ql-font-SongMyung:"송명",ql-font-Gaegu:"개구쟁이",ql-font-Jua:"주아",ql-font-GamjaFlower:"감자꽃 마을",
-                    ql-font-CuteFont:"귀여운 폰트",ql-font-Stylish:"스타일리시",ql-font-YeonSung:"연성",
-                    ql-font-HiMelody:"하이멜로디",ql-font-Sunflower:"해바라기",
-                    ql-font-BlackHanSans:"검은고딕",ql-font-GothicA1:"고딕 A1",ql-font-NanumGothic:"나눔고딕",
-                    ql-font-NanumMyeongjo:"나눔명조",ql-font-PoorStory:"서툰이야기",
-                    ql-font-BlackAndWhitePicture:"흑백사진"};
+        var fary = {LibreFranklin:"Libre Franklin",inconsolata:"Inconsolata",roboto:"Roboto",
+                    mirza:"Mirza",arial:"Arial",Oswald:"Oswald",Caveat:"Caveat",
+                    Raleway:"Raleway",
+                    ShadowsIntoLight:"Shadows Into Light",AbrilFatface:"Abril Fatface",
+                    Teko:"Teko",Cormorant:"Cormorant",
+                    AlfaSlabOne:"Alfa Slab One",PTSans:"PT Sans",NanumPenScript:"나눔 손글씨 펜",
+                    NanumBrushScript:"나눔 손글씨 붓",
+                    SongMyung:"송명",Gaegu:"개구쟁이",Jua:"주아",GamjaFlower:"감자꽃 마을",
+                    CuteFont:"귀여운 폰트",Stylish:"스타일리시",YeonSung:"연성",
+                    HiMelody:"하이멜로디",Sunflower:"해바라기",
+                    BlackHanSans:"검은고딕",GothicA1:"고딕 A1",NanumGothic:"나눔고딕",
+                    NanumMyeongjo:"나눔명조",PoorStory:"서툰이야기",
+                    BlackAndWhitePicture:"흑백사진"};
         
-        $('#tfnt').text(fary[tft]);
+        $('#tfnt').text(fary[tft.substring(8)]);
     }
     var sft = $("#title_size").val();
     if(typeof sft != 'undefined' && sft != '') {
