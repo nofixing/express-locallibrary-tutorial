@@ -418,6 +418,9 @@ $(function(){
                     alert($("#favn").val());
                 }
                 //alert('Recommended');
+            },
+            error: function(jqXHR) {
+                alert(jqXHR.responseText);
             }
         });
     });
