@@ -348,17 +348,23 @@ exports.favs_ajax = function(req, res, next) {
         var isThere = false;
         Story.findById({'_id': req.body.story_id}).exec( function (err,theStory) {
             if (err) { console.log(err); return next(err); }
+            console.log('11111111111111');
             for (let i = 0; i < theStory.fausr.length; i++) {
                 if( req.session.userId == theStory.fausr[i] ) isThere = true;
             }
-            
+            console.log('22222222222222');
             if (!isThere) {
+                console.log('33333333333333');
                 theStory.favs = Number(req.body.facnt)+1;
                 theStory.fausr.push(req.session.userId);
+                console.log('44444444444444');
                 theStory.save(function (err, saveStory) {
                     if (err) { console.log(err); return next(err); }
                 });
+                console.log('555555555555555');
                 req.body.fayn = 'Y';
+            } else {
+              console.log('666666666666666');
             }
             res.send(req.body);
         });
@@ -371,7 +377,8 @@ exports.favs_ajax = function(req, res, next) {
         });
         */
     } else {
-        res.send(req.body);
+      console.log('77777777777777777');  
+      res.send(req.body);
     }
 
 };
