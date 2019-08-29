@@ -347,7 +347,7 @@ exports.favs_ajax = function(req, res, next) {
     if (req.body.stusr != req.session.userId) {
         var isThere = false;
         Story.findById({'_id': req.body.story_id}).exec( function (err,theStory) {
-            if (err) { return next(err); }
+            if (err) { console.log(err); return next(err); }
             for (let i = 0; i < theStory.fausr.length; i++) {
                 if( req.session.userId == theStory.fausr[i] ) isThere = true;
             }
