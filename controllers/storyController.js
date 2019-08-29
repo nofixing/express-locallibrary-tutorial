@@ -342,7 +342,7 @@ exports.story_detail = function(req, res, next) {
 };
 
 exports.favs_ajax = function(req, res, next) {
-
+    console.log('0000000000000');
     req.body.fayn = 'N';
     if (req.body.stusr != req.session.userId) {
         var isThere = false;
