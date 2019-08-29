@@ -262,6 +262,7 @@ $(function(){
                 data.content = $('.txt')[idx].value;
                 data.importance = $('.importance')[idx].value;
                 data.skill = $('.skill')[idx].value;
+                data.result = $('#SAVED').val();
                 var httpType = 'https://';
                 if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
                 $.ajax({
@@ -271,10 +272,7 @@ $(function(){
                     url: httpType+$('#hostname').val()+'/catalog/word/update',
                     success : function(data) {
                         $(this).val(data.id);
-                        alert($('#SAVED').val());
-                    },
-                    error: function(jqXHR) {
-                        alert(jqXHR.responseText);
+                        alert(data.result);
                     }
                 });
             }
