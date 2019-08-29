@@ -259,14 +259,14 @@ exports.word_delete_post = function(req, res, next) {
     if (req.body.story_user != req.session.userId) { 
       req.body.result = req.body.fail;
       res.send(req.body);
+    } else {
+      Word.findByIdAndRemove(req.body.id, function deleteWord(err) {
+          if (err) { return next(err); }
+          // Success - got to words list.
+          //res.redirect('/catalog/words');
+          res.send(req.body);
+      });
     }
-    Word.findByIdAndRemove(req.body.id, function deleteWord(err) {
-        if (err) { return next(err); }
-        // Success - got to words list.
-        //res.redirect('/catalog/words');
-        res.send(req.body);
-    });
-
 };
 
 // Display word update form on GET.
@@ -297,77 +297,77 @@ exports.word_update_post = function(req, res, next) {
     if (req.body.story_user != req.session.userId) { 
       req.body.result = req.body.fail;
       res.send(req.body); 
+    } else {
+      console.log('book_id:'+req.body.book_id);
+      var book_id = req.body.book_id;
+      if(book_id == '') book_id = '000000000000000000000000';
+      var newWord = new Word(
+          { title: req.body.title,
+            user: req.session.userId,
+            story: req.body.story_id,
+            book: book_id,
+            story_title: req.body.story_title,
+            book_title: req.body.book_title,
+            content: req.body.content,
+            skill: req.body.skill,
+            importance: req.body.importance,
+            create_date: Date.now()
+           });
+      //console.log('word update start');
+      Word.findById({_id: req.body.id})
+          .exec(function (err, theWord) {
+            //console.log(theWord);
+            if (theWord != null) {
+              var upYn = 'N';
+              for (let i = 0; i < theWord.user.length; i++) {
+                  if (theWord.user[i] == req.session.userId) {
+                      console.log('Word.update 1');
+                      Word.update({_id: req.body.id}, {
+                          title: req.body.title,
+                          story: req.body.story_id,
+                          book: book_id,
+                          story_title: req.body.story_title,
+                          book_title: req.body.book_title,
+                          content: req.body.content,
+                          skill: req.body.skill,
+                          importance: req.body.importance
+                      }, function(err, upWord) {
+                          if (err) { console.log(err); return next(err); }
+                      });
+                      upYn = 'Y';
+                      break;
+                  }
+              }
+              if (upYn == 'N') {
+                  console.log('Word.update 2');
+                  Word.update({_id: req.body.id}, {
+                      title: req.body.title,
+                      $push: {user: req.session.userId},
+                      story: req.body.story_id,
+                      book: book_id,
+                      story_title: req.body.story_title,
+                      book_title: req.body.book_title,
+                      content: req.body.content,
+                      skill: req.body.skill,
+                      importance: req.body.importance
+                  }, function(err, upWord) {
+                      if (err) { console.log(err); return next(err); }
+                  });
+              }
+              req.body.id = theWord._id;
+              res.send(req.body);
+            } else {
+                console.log('word_update_post new insert');
+                newWord.save(function (err, theWord) {
+                   if (err) { return next(err); }
+                       // Successful - redirect to new word record.
+                       //res.redirect(word.url);
+                       req.body.id = theWord._id;
+                       res.send(req.body);
+                   });
+            }
+          });
     }
-    console.log('book_id:'+req.body.book_id);
-    var book_id = req.body.book_id;
-    if(book_id == '') book_id = '000000000000000000000000';
-    var newWord = new Word(
-        { title: req.body.title,
-          user: req.session.userId,
-          story: req.body.story_id,
-          book: book_id,
-          story_title: req.body.story_title,
-          book_title: req.body.book_title,
-          content: req.body.content,
-          skill: req.body.skill,
-          importance: req.body.importance,
-          create_date: Date.now()
-         });
-    //console.log('word update start');
-    Word.findById({_id: req.body.id})
-        .exec(function (err, theWord) {
-          //console.log(theWord);
-          if (theWord != null) {
-            var upYn = 'N';
-            for (let i = 0; i < theWord.user.length; i++) {
-                if (theWord.user[i] == req.session.userId) {
-                    console.log('Word.update 1');
-                    Word.update({_id: req.body.id}, {
-                        title: req.body.title,
-                        story: req.body.story_id,
-                        book: book_id,
-                        story_title: req.body.story_title,
-                        book_title: req.body.book_title,
-                        content: req.body.content,
-                        skill: req.body.skill,
-                        importance: req.body.importance
-                    }, function(err, upWord) {
-                        if (err) { console.log(err); return next(err); }
-                    });
-                    upYn = 'Y';
-                    break;
-                }
-            }
-            if (upYn == 'N') {
-                console.log('Word.update 2');
-                Word.update({_id: req.body.id}, {
-                    title: req.body.title,
-                    $push: {user: req.session.userId},
-                    story: req.body.story_id,
-                    book: book_id,
-                    story_title: req.body.story_title,
-                    book_title: req.body.book_title,
-                    content: req.body.content,
-                    skill: req.body.skill,
-                    importance: req.body.importance
-                }, function(err, upWord) {
-                    if (err) { console.log(err); return next(err); }
-                });
-            }
-            req.body.id = theWord._id;
-            res.send(req.body);
-          } else {
-              console.log('word_update_post new insert');
-              newWord.save(function (err, theWord) {
-                 if (err) { return next(err); }
-                     // Successful - redirect to new word record.
-                     //res.redirect(word.url);
-                     req.body.id = theWord._id;
-                     res.send(req.body);
-                 });
-          }
-        });
-
 };
 
 // Handle word update on POST.
