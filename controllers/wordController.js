@@ -290,7 +290,10 @@ exports.word_update_get = function(req, res, next) {
 
 // Handle word update on POST.
 exports.word_update_post = function(req, res, next) {
-    if (req.body.story_user != req.session.userId) { res.status(500).send("You can not create or update the other member's story"); }
+    if (req.body.story_user != req.session.userId) { 
+      req.body.result = "You can not create or update the other member's story";
+      res.status(500).send(req.body); 
+    }
     console.log('book_id:'+req.body.book_id);
     var book_id = req.body.book_id;
     if(book_id == '') book_id = '000000000000000000000000';
