@@ -355,7 +355,9 @@ exports.favs_ajax = function(req, res, next) {
             if (!isThere) {
                 theStory.favs = Number(req.body.facnt)+1;
                 theStory.fausr.push(req.session.userId);
-                theStory.save();
+                theStory.save(function (err, saveStory) {
+                    if (err) { console.log(err); return next(err); }
+                });
                 req.body.fayn = 'Y';
             }
             res.send(req.body);
