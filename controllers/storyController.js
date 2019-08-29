@@ -344,9 +344,16 @@ exports.story_detail = function(req, res, next) {
 exports.favs_ajax = function(req, res, next) {
     console.log('0000000000000');
     req.body.fayn = 'N';
+    var id = req.body.story_id;
+    console.log(id);
+    if (id.match(/^[0-9a-fA-F]{24}$/)) {
+      console.log('99999999999999');
+    } else {
+      console.log('id is not valid ObjectId');
+    }
     if (req.body.stusr != req.session.userId) {
         var isThere = false;
-        Story.findById({'_id': req.body.story_id}).exec( function (err,theStory) {
+        Story.findById(id).exec( function (err,theStory) {
             if (err) { console.log(err); return next(err); }
             console.log('11111111111111');
             for (let i = 0; i < theStory.fausr.length; i++) {
