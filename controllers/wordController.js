@@ -256,11 +256,15 @@ exports.word_delete_get = function(req, res, next) {
 
 // Handle word delete on POST.
 exports.word_delete_post = function(req, res, next) {
-    if (req.body.story_user != req.session.userId) { return next(); }
+    if (req.body.story_user != req.session.userId) { 
+      req.body.result = req.body.fail;
+      res.send(req.body);
+    }
     Word.findByIdAndRemove(req.body.id, function deleteWord(err) {
         if (err) { return next(err); }
         // Success - got to words list.
         //res.redirect('/catalog/words');
+        res.send(req.body);
     });
 
 };
@@ -291,7 +295,7 @@ exports.word_update_get = function(req, res, next) {
 // Handle word update on POST.
 exports.word_update_post = function(req, res, next) {
     if (req.body.story_user != req.session.userId) { 
-      req.body.result = "You can not create or update the other member's story";
+      req.body.result = req.body.fail;
       res.send(req.body); 
     }
     console.log('book_id:'+req.body.book_id);
