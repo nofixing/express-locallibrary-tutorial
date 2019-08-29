@@ -285,6 +285,7 @@ $(function(){
     });
 
     $('#wordDelete').click(function(){
+        var isDel = true;
         $('.wList').each(function(idx) {
             if ($(this).prop('checked')) {
                 var data = {};
@@ -301,15 +302,18 @@ $(function(){
                     url: httpType+$('#hostname').val()+'/catalog/word/delete',
                     success : function(data) {
                         alert(data.result);
+                        if(data.result == data.fail) isDel = false;
                     }
                 });
             }
         });
-        $('.wList').each(function(){
-            if($(this).prop('checked')){
-                $(this).parents("tr").remove();
-            }
-        });
+        if (isDel) {
+            $('.wList').each(function(){
+                if($(this).prop('checked')){
+                    $(this).parents("tr").remove();
+                }
+            });
+        }
         $('.wList:not(#checkall)').each(function () {
             $(this).prop('checked', false);
         });
