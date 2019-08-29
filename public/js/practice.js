@@ -271,6 +271,10 @@ $(function(){
                     url: httpType+$('#hostname').val()+'/catalog/word/update',
                     success : function(data) {
                         $(this).val(data.id);
+                        alert($('#SAVED').val());
+                    },
+                    error: function(jqXHR) {
+                        alert(jqXHR.responseText);
                     }
                 });
             }
@@ -278,7 +282,6 @@ $(function(){
         $('.wList:not(#checkall)').each(function () {
             $(this).prop('checked', false);
         });
-        alert($('#SAVED').val());
         //location.reload();
     });
 
