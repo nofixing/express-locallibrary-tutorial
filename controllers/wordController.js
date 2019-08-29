@@ -116,97 +116,102 @@ exports.word_create_post = [
     sanitizeBody('*').trim().escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
-        if (req.body.story_user != req.session.userId) { return next(); }
-        // Extract the validation errors from a request.
-        const errors = validationResult(req);
+        if (req.body.story_user != req.session.userId) { 
+            req.body.result = req.body.fail;
+            res.send(req.body); 
+        } else {
+            // Extract the validation errors from a request.
+            const errors = validationResult(req);
 
-        //Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
-        Word.find({story: req.body.story_id, title: req.body.title})
-           .exec(function (err, results) {
-             //console.log(results);
-             if (results.length > 0) { // No results.
-                 console.log('already exists');
-                 res.send(req.body);
-             } else {
-                 console.log('word_create_post');
-                 
-                var translation = '';
-                
-                /*
-                translate.translate(req.body.title, 'ko').then(results => {
-                    translation = results[0];
-                    console.log(`Translation: ${translation}`);
-                */ 
-                
-               var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
-               var request = require('request');
-               var options = {
-                   url: api_url,
-                   form: {'source':'en', 'target':'ko', 'text':req.body.title},
-                   headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
-                };
-               request.post(options, function (error, response, body) {
-                 if (!error && response.statusCode == 200) {
-                   //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-                   //res.end(body);
-                   //console.log(`Translation json: ${body}`);
-                   var json = JSON.parse(body);
-                   console.log(json.message.result.translatedText);
-                   translation = json.message.result.translatedText;
-                   
-                    // Create a Word object with escaped and trimmed data.
-                   var word; 
-                   var book_id = req.body.book_id;
-                    if (book_id.match(/^[0-9a-fA-F]{24}$/)) {
-                      word = new Word(
-                        { title: req.body.title,
-                        user: req.session.userId,
-                        story: req.body.story_id,
-                        book: req.body.book_id,
-                        story_title: req.body.story_title,
-                        book_title: req.body.book_title,
-                        content: translation,
-                        skill: req.body.skill,
-                        importance: req.body.importance,
-                        create_date: Date.now()
-                        });
-                    }else{
-                      word = new Word(
-                        { title: req.body.title,
-                        user: req.session.userId,
-                        story: req.body.story_id,
-                        story_title: req.body.story_title,
-                        content: translation,
-                        skill: req.body.skill,
-                        importance: req.body.importance,
-                        create_date: Date.now()
-                        });
-                    }
-                    console.log('word.content:'+word.content);
-                    word.save(function (err, theWord) {
-                        if (err) { console.log(err); return next(err); }
-                            // Successful - redirect to new word record.
-                            //res.redirect(word.url);
-                            req.body.word_id = theWord._id;
-                            req.body.content = translation;
-                            res.send(req.body);
-                        });                   
-                   
+            //Word.find({user: req.session.userId, story: req.body.story_id, title: req.body.title})
+            Word.find({story: req.body.story_id, title: req.body.title})
+               .exec(function (err, results) {
+                 //console.log(results);
+                 if (results.length > 0) { // No results.
+                     console.log('already exists');
+                    req.body.result = req.body.fail;
+                    res.send(req.body);
                  } else {
-                   console.log('error = ' + response.statusCode);
-                   res.send(req.body);
+                     console.log('word_create_post');
+
+                    var translation = '';
+
+                    /*
+                    translate.translate(req.body.title, 'ko').then(results => {
+                        translation = results[0];
+                        console.log(`Translation: ${translation}`);
+                    */ 
+
+                   var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
+                   var request = require('request');
+                   var options = {
+                       url: api_url,
+                       form: {'source':'en', 'target':'ko', 'text':req.body.title},
+                       headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+                    };
+                   request.post(options, function (error, response, body) {
+                     if (!error && response.statusCode == 200) {
+                       //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
+                       //res.end(body);
+                       //console.log(`Translation json: ${body}`);
+                       var json = JSON.parse(body);
+                       console.log(json.message.result.translatedText);
+                       translation = json.message.result.translatedText;
+
+                        // Create a Word object with escaped and trimmed data.
+                       var word; 
+                       var book_id = req.body.book_id;
+                        if (book_id.match(/^[0-9a-fA-F]{24}$/)) {
+                          word = new Word(
+                            { title: req.body.title,
+                            user: req.session.userId,
+                            story: req.body.story_id,
+                            book: req.body.book_id,
+                            story_title: req.body.story_title,
+                            book_title: req.body.book_title,
+                            content: translation,
+                            skill: req.body.skill,
+                            importance: req.body.importance,
+                            create_date: Date.now()
+                            });
+                        }else{
+                          word = new Word(
+                            { title: req.body.title,
+                            user: req.session.userId,
+                            story: req.body.story_id,
+                            story_title: req.body.story_title,
+                            content: translation,
+                            skill: req.body.skill,
+                            importance: req.body.importance,
+                            create_date: Date.now()
+                            });
+                        }
+                        console.log('word.content:'+word.content);
+                        word.save(function (err, theWord) {
+                            if (err) { console.log(err); return next(err); }
+                                // Successful - redirect to new word record.
+                                //res.redirect(word.url);
+                                req.body.word_id = theWord._id;
+                                req.body.content = translation;
+                                res.send(req.body);
+                            });                   
+
+                     } else {
+                       console.log('error = ' + response.statusCode);
+                       res.send(req.body);
+                     }
+                   });
+
+                    /*
+                    }).catch(err => {
+                        console.error('ERROR:', err);
+                        res.send(req.body);
+                    });
+                    */
+
                  }
                });
-
-                /*
-                }).catch(err => {
-                    console.error('ERROR:', err);
-                    res.send(req.body);
-                });
-                */
-                
-             }
-           });
+        }
     }
 ];
 
