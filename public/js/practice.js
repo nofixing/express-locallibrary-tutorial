@@ -271,6 +271,7 @@ $(function(){
                     data: JSON.stringify(data),
                     contentType: 'application/json',
                     url: httpType+$('#hostname').val()+'/catalog/word/update',
+                    async: false,
                     success : function(data) {
                         $(this).val(data.id);
                         alert(data.result);
@@ -300,6 +301,7 @@ $(function(){
                     data: JSON.stringify(data),
                     contentType: 'application/json',
                     url: httpType+$('#hostname').val()+'/catalog/word/delete',
+                    async: false,
                     success : function(data) {
                         alert(data.result);
                         if(data.result == data.fail) isDel = false;
