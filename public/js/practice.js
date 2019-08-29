@@ -263,6 +263,7 @@ $(function(){
                 data.importance = $('.importance')[idx].value;
                 data.skill = $('.skill')[idx].value;
                 data.result = $('#SAVED').val();
+                data.fail = $('#smm').val();
                 var httpType = 'https://';
                 if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
                 $.ajax({
@@ -289,6 +290,8 @@ $(function(){
                 var data = {};
                 data.id = $(this).val();
                 data.story_user = $( "#stusr" ).val();
+                data.result = $('#DELETED').val();
+                data.fail = $('#smm').val();
                 var httpType = 'https://';
                 if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
                 $.ajax({
@@ -297,6 +300,7 @@ $(function(){
                     contentType: 'application/json',
                     url: httpType+$('#hostname').val()+'/catalog/word/delete',
                     success : function(data) {
+                        alert(data.result);
                     }
                 });
             }
@@ -309,7 +313,6 @@ $(function(){
         $('.wList:not(#checkall)').each(function () {
             $(this).prop('checked', false);
         });
-        alert($('#DELETED').val());
         //location.reload();
     });
 
