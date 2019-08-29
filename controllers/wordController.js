@@ -292,7 +292,7 @@ exports.word_update_get = function(req, res, next) {
 exports.word_update_post = function(req, res, next) {
     if (req.body.story_user != req.session.userId) { 
       req.body.result = "You can not create or update the other member's story";
-      res.status(500).send(req.body); 
+      res.send(req.body); 
     }
     console.log('book_id:'+req.body.book_id);
     var book_id = req.body.book_id;
