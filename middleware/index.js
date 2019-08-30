@@ -6,7 +6,6 @@ function loggedOut(req, res, next) {
 }
 function requiresLogin(req, res, next) {
   if (req.session && req.session.userId) {
-    console.log('requiresLogin->'+req.body);
     return next();
   } else {
     /*
