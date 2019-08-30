@@ -153,7 +153,7 @@ exports.story_list_ajax = function(req, res, next) {
 
 // Display detail page for a specific story.
 exports.story_detail = function(req, res, next) {
-    console.log('story_detail started');
+    console.log('story_detail start, req.param.id->'+req.params.id);
     async.parallel({
         story: function(callback) {
             Story.findById(req.params.id)
