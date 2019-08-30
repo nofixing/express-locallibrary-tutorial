@@ -109,9 +109,9 @@ router.post('/story_open_ajax', story_controller.story_open_ajax);
 
 router.post('/stories_ajax', story_controller.story_list_ajax);
 
-router.post('/story/favs_ajax', story_controller.favs_ajax);
+router.post('/story_favs_ajax', story_controller.favs_ajax);
 
-router.post('/story/bookMark_ajax', story_controller.bookMark_ajax);
+router.post('/story_bookMark_ajax', story_controller.bookMark_ajax);
 
 router.post('/preview', story_controller.story_preview);
 
