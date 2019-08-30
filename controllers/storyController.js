@@ -353,7 +353,7 @@ exports.favs_ajax = function(req, res, next) {
     }
     if (req.body.stusr != req.session.userId) {
         var isThere = false;
-        Story.findById(id).exec( function (err,theStory) {
+        Story.findOne({'_id':id}).exec( function (err,theStory) {
             if (err) { console.log(err); return next(err); }
             console.log('11111111111111');
             for (let i = 0; i < theStory.fausr.length; i++) {
