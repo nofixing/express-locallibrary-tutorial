@@ -410,7 +410,7 @@ $(function(){
             type: 'POST',
             data: JSON.stringify(data),
             contentType: 'application/json',
-            url: httpType+$('#hostname').val()+'/catalog/story/favs_ajax',
+            url: httpType+$('#hostname').val()+'/catalog/story_favs_ajax',
             success : function(data) {
                 if(data.fayn == 'Y') {
                     alert($("#favy").val());
@@ -595,7 +595,7 @@ function BookMark() {
         type: 'POST',
         data: JSON.stringify(data),
         contentType: 'application/json',
-        url: httpType+$('#hostname').val()+'/catalog/story/bookMark_ajax',
+        url: httpType+$('#hostname').val()+'/catalog/story_bookMark_ajax',
         async: false,
         success : function(data) {
             $('#bookMark_id').val(data.bookMark_id);
