@@ -106,14 +106,35 @@ html(lang='en')
       div#jb_content.col-lg-12
         div.ql-editor(style='padding: 50px 0 0 0; overflow-y: hidden;')
           if story.chapter 
-            p(style='font-weight:bold;font-size: 2em') #{story.chapter}<br/><br/>
-          p(style='font-weight:bold;font-size: 2.5em') #{story.title}<br/><br/>
+            if story.title_font
+              p(class=story.title_font, style='font-weight:bold;font-size: 2em') #{story.chapter}<br/><br/>
+            else
+              p(style='font-weight:bold;font-size: 2em') #{story.chapter}<br/><br/>
+          if story.title_font
+            if story.title_size
+              <p style='font-weight:bold;font-size: #{story.title_size}' class='#{story.title_font}'>#{story.title}</p><br/><br/>
+            else
+              p(style='font-weight:bold;font-size: 2.5em', class=story.title_font) #{story.title}<br/><br/>
+          else
+            if story.title_size
+              <p style='font-weight:bold;font-size: #{story.title_size}'>#{story.title}</p><br/><br/>
+            else
+              p(style='font-weight:bold;font-size: 2.5em') #{story.title}<br/><br/>
           if story.author 
-            p #{translation.by} #{story.author}<br/><br/>
+            if story.title_font
+              p(class=story.title_font) #{story.author}<br/><br/>
+            else
+              p #{story.author}<br/><br/>
           if story.reference 
-            p #{translation.Reference}: #{story.reference}<br/><br/>
+            if story.title_font
+              p(class=story.title_font) #{story.reference}<br/><br/>
+            else
+              p #{story.reference}<br/><br/>
           if anchor 
-            <a href="none" onclick="goBokM('#{anchor}');return false;">#{translation.BookMark}</a><br/><br/>
+            if story.title_font
+              <a href="none" class="#{story.title_font}" onclick="goBokM('#{anchor}');return false;">#{translation.BookMark}</a><br/><br/>
+            else
+              <a href="none" onclick="goBokM('#{anchor}');return false;">#{translation.BookMark}</a><br/><br/>
           div#st_content !{story.content}
         if story.open == 'Y'
           <div style="text-align: center; margin: 30px;"><button id="favs" type="submit" class="btn btn-primary">#{translation.favs}</button></div>
