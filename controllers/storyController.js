@@ -16,6 +16,11 @@ const { sanitizeBody } = require('express-validator/filter');
 
 var async = require('async');
 
+var Dictionary = require("oxford-dictionary-api");
+  
+var oxford_app_id = "26926fc1";
+var oxford_app_key = process.env.OXFORD_ACCOUNT_APP_KEY;
+
 // Display list of all stories.
 exports.story_list = function(req, res, next) {
 
@@ -831,5 +836,19 @@ exports.story_preview = function(req, res, next) {
 exports.story_update_preview = function(req, res, next) {
     console.log("story story_update_preview");
     res.render('preview', { content: req.body.content, cfnt: req.session.cfnt } );
+
+};
+
+exports.story_oxford = function(req, res, next) {
+    
+    console.log('story_oxford start -> query:'+req.params.query);
+    
+    var dict = new Dictionary(oxford_app_id, oxford_app_key);
+
+    dict.find(req.params.query, function(err, data) {
+        if(err) { console.log('req.params.query:'+req.params.query+'     story_oxford err:'+err); return next(err); }
+        console.log(data);
+        res.render('oxford_data', { content: data } );
+    });
 
 };
