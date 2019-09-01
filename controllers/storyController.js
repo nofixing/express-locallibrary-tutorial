@@ -16,7 +16,7 @@ const { sanitizeBody } = require('express-validator/filter');
 
 var async = require('async');
 
-var Dictionary = require("oxford-dictionary-api");
+var OxfordDictionary = require('../middleware/oxford');
   
 var oxford_app_id = "26926fc1";
 var oxford_app_key = process.env.OXFORD_ACCOUNT_APP_KEY;
@@ -843,11 +843,11 @@ exports.story_oxford = function(req, res, next) {
     
     console.log('story_oxford start -> query:'+req.params.query);
     
-    var dict = new Dictionary(oxford_app_id, oxford_app_key);
+    var dict = new OxfordDictionary(oxford_app_id, oxford_app_key);
 
     dict.find(req.params.query, function(err, data) {
         if(err) { console.log('req.params.query:'+req.params.query+'     story_oxford err:'+err); return next(err); }
-        console.log(data);
+        console.log('=======================================story_oxford find -> data:'+data);
         res.render('oxford_data', { content: data } );
     });
 
