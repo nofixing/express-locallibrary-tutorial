@@ -123,7 +123,7 @@ router.post('/story/:id/comments/:commentId/replies', comment_controller.comment
 
 router.post('/story/:id/comments/:commentId/replies_update', comment_controller.comment_update_post);
 
-router.get('/story_oxford/:query', story_controller.story_oxford);
+router.get('/story_oxford', story_controller.story_oxford);
 
 /// WORD ROUTES ///
 
