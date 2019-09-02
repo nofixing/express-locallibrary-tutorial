@@ -841,7 +841,7 @@ exports.story_update_preview = function(req, res, next) {
 
 exports.story_oxford = function(req, res, next) {
     
-    console.log('story_oxford start -> query:'+req.params.query);
+    console.log('story_oxford start -> query:'+req.query.word);
     
     var config = {
         app_id : oxford_app_id,
@@ -855,7 +855,7 @@ exports.story_oxford = function(req, res, next) {
         word: req.params.query,
         // filters: "grammaticalFeatures=singular,past;lexicalCategory=noun",
         //fields: "definitions,domains,etymologies,examples,pronunciations,regions,registers,variantForms"
-        fields: req.params.fields
+        fields: req.query.fields
     };
     
     var lookup = dict.find(props);
