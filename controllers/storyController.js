@@ -861,8 +861,13 @@ exports.story_oxford = function(req, res, next) {
     var lookup = dict.find(props);
 
     lookup.then(function(data) {
-        //console.log(JSON.stringify(res, null, 4));
-        console.log('=======================================story_oxford find -> data:'+data);
+        //console.log('=======================================story_oxford find -> data:'+data);
+        var voca = JSON.parse(data);
+        var results = voca.results;
+        for (let i = 0; i < results.lexicalEntries.length; i++) {
+            var lexicalEntries = results.lexicalEntries[i];
+            console.log('lexicalEntries ->'+JSON.stringify(lexicalEntries));
+        }
         res.render('oxford_data', { content: data } );
     },
     function(err) {
