@@ -54,9 +54,9 @@ var validate = function(path, props, $this, dtype) {
 
             if (props.hasOwnProperty('fields') && (typeof props.fields === 'string') ) {
                 if (path.indexOf('?') > -1) {
-                    path += '&' + props.fields.toString();
+                    path += '&fields=' + props.fields.toString();
                 } else {
-                    path += '?' + props.fields.toString();
+                    path += '?fields=' + props.fields.toString();
                 }
             }
 
