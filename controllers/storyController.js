@@ -861,7 +861,7 @@ exports.story_oxford = function(req, res, next) {
 
     lookup.then(function(data) {
         //console.log(JSON.stringify(res, null, 4));
-        console.log('=======================================story_oxford find -> data:'+JSON.stringify(data));
+        console.log('=======================================story_oxford find -> data:'+data);
         res.render('oxford_data', { content: data } );
     },
     function(err) {
