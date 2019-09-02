@@ -852,7 +852,7 @@ exports.story_oxford = function(req, res, next) {
     var dict = new OxfordDictionary(config);
     
     var props = {
-        word: req.params.query,
+        word: req.query.word,
         // filters: "grammaticalFeatures=singular,past;lexicalCategory=noun",
         //fields: "definitions,domains,etymologies,examples,pronunciations,regions,registers,variantForms"
         fields: req.query.fields
@@ -866,11 +866,11 @@ exports.story_oxford = function(req, res, next) {
         res.render('oxford_data', { content: data } );
     },
     function(err) {
-        console.log('req.params.query:'+req.params.query+'     story_oxford err:'+err); return next(err);
+        console.log('req.query.word:'+req.query.word+'     story_oxford err:'+err); return next(err);
     });
     /*
-    dict.find(req.params.query, function(err, data) {
-        if(err) { console.log('req.params.query:'+req.params.query+'     story_oxford err:'+err); return next(err); }
+    dict.find(req.query.word, function(err, data) {
+        if(err) { console.log('req.query.word:'+req.query.word+'     story_oxford err:'+err); return next(err); }
         console.log('=======================================story_oxford find -> data:'+data);
         res.render('oxford_data', { content: data } );
     });
