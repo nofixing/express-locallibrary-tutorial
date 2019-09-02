@@ -854,7 +854,8 @@ exports.story_oxford = function(req, res, next) {
     var props = {
         word: req.params.query,
         // filters: "grammaticalFeatures=singular,past;lexicalCategory=noun",
-        // fields: "definitions,domains,etymologies,examples,pronunciations,regions,registers,variantForms"
+        //fields: "definitions,domains,etymologies,examples,pronunciations,regions,registers,variantForms"
+        fields: req.params.fields;
     };
     
     var lookup = dict.find(props);
