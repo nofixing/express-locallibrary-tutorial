@@ -863,11 +863,25 @@ exports.story_oxford = function(req, res, next) {
     lookup.then(function(data) {
         //console.log('=======================================story_oxford find -> data:'+data);
         var voca = JSON.parse(data);
+        //console.log('parse result ->'+JSON.stringify(voca));
+        var results = voca.results;
+        for (let i = 0; i < results.length; i++) {
+            var lexicalEntries = results[i].lexicalEntries;
+            for (let j = 0; j < lexicalEntries.length; j++) {
+                var entries = lexicalEntries[j].entries;
+                console.log('entries ->'+JSON.stringify(entries));
+            }
+            //console.log('lexicalEntries ->'+JSON.stringify(lexicalEntries));
+        }
+        //console.log('parse result results->'+results);
+        /*
+        var voca = JSON.parse(data);
         var results = voca.results;
         for (let i = 0; i < results.lexicalEntries.length; i++) {
             var lexicalEntries = results.lexicalEntries[i];
             console.log('lexicalEntries ->'+JSON.stringify(lexicalEntries));
         }
+        */
         res.render('oxford_data', { content: data } );
     },
     function(err) {
