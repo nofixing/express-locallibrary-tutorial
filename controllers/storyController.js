@@ -843,12 +843,35 @@ exports.story_oxford = function(req, res, next) {
     
     console.log('story_oxford start -> query:'+req.params.query);
     
-    var dict = new OxfordDictionary(oxford_app_id, oxford_app_key);
+    var config = {
+        app_id : oxford_app_id,
+        app_key : oxford_app_key,
+        source_lang : "en-us"
+    };  
+  
+    var dict = new OxfordDictionary(config);
+    
+    var props = {
+        word: "ace",
+        // filters: "grammaticalFeatures=singular,past;lexicalCategory=noun",
+        // fields: "definitions,domains,etymologies,examples,pronunciations,regions,registers,variantForms"
+    };
+    
+    var lookup = dict.find(props);
 
+    lookup.then(function(data) {
+        //console.log(JSON.stringify(res, null, 4));
+        console.log('=======================================story_oxford find -> data:'+JSON.stringify(data));
+        res.render('oxford_data', { content: data } );
+    },
+    function(err) {
+        console.log('req.params.query:'+req.params.query+'     story_oxford err:'+err); return next(err);
+    });
+    /*
     dict.find(req.params.query, function(err, data) {
         if(err) { console.log('req.params.query:'+req.params.query+'     story_oxford err:'+err); return next(err); }
         console.log('=======================================story_oxford find -> data:'+data);
         res.render('oxford_data', { content: data } );
     });
-
+    */
 };
