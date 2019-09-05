@@ -92,8 +92,8 @@ var buildRequest = function(options) {
             res.on('end', function() {
                 var result;
                 try {
-                    //result = JSON.parse(data);
-                    result = data;
+                    result = JSON.parse(data);
+                    //result = data;
                 } catch (exp) {
                     result = {
                         'status_code': 500,
