@@ -10,11 +10,13 @@
     	<h1>Bootstrap Tree View</h1>
       <br>
       <div class="row">
-        <div class="col-sm-4">
+        <div class="col-lg-12">
           <h2>Default</h2>
           <div id="treeview1" class=""></div>
         </div>
-        <div class="col-sm-4">
+	  </div>
+      <div class="row">
+		<div class="col-sm-4">
           <h2>Collapsed</h2>
           <div id="treeview2" class=""></div>
         </div>
@@ -68,7 +70,7 @@
         <h2>Searchable Tree</h2>
         <div class="col-sm-4">
           <h2>Input</h2>
-          <!-- <form> -->
+          <form>
             <div class="form-group">
               <label for="input-search" class="sr-only">Search Tree:</label>
               <input type="input" class="form-control" id="input-search" placeholder="Type to search..." value="">
@@ -93,7 +95,7 @@
             </div>
             <button type="button" class="btn btn-success" id="btn-search">Search</button>
             <button type="button" class="btn btn-default" id="btn-clear-search">Clear</button>
-          <!-- </form> -->
+          </form>
         </div>
         <div class="col-sm-4">
           <h2>Tree</h2>
@@ -301,7 +303,7 @@
           <div id="treeview14"></div>
         </div>
       </div>
-      <br/>
+	  <br/>
       <br/>
       <br/>
       <br/>
@@ -1352,8 +1354,8 @@ simpleData[0].nodes[0].nodes.push({text:'Grandchild 1'});
 simpleData[0].nodes[0].nodes.push({text:'Grandchild 2'});
 */
 
-var word_id = voca.id;
-var results = voca.results;
+var word_id = voca2.id;
+var results = voca2.results;
 for (let i = 0; i < results.length; i++) {
 	var word = results[i].word;
 	simpleData.push({text:word});
@@ -1364,6 +1366,29 @@ for (let i = 0; i < results.length; i++) {
 	var lexicalEntries = results[i].lexicalEntries;
   	for (let j = 0; j < lexicalEntries.length; j++) {
     	if (j == 0) simpleData[i].nodes = [];
+		var lexicalEntries_language = lexicalEntries[j].language;
+		var lexicalCategory = lexicalEntries[j].lexicalCategory;
+		if (typeof lexicalCategory === 'object') {
+			var lexicalCategory_id = lexicalCategory.id;
+			var lexicalCategory_text = lexicalCategory.text;
+			console.log('lexicalCategory.text:'+lexicalCategory.text);
+			simpleData[i].nodes.push({text:lexicalCategory.text});
+		}
+		var pronunciations = lexicalEntries[j].pronunciations;
+		if (typeof pronunciations === 'object') {
+			for (let k = 0; k < pronunciations.length; k++) {
+				var audioFile = pronunciations[k].audioFile;
+				if (typeof audioFile !== 'undefined') {
+					console.log('audioFile: '+audioFile);
+					simpleData[i].nodes[j].text = simpleData[i].nodes[j].text + '&nbsp;<a href="'+audioFile+'">'+pronunciations[k].phoneticSpelling+'</a>';
+				}
+				var dialects = pronunciations[k].dialects;
+				//console.log('dialects: '+dialects);
+				var phoneticNotation = pronunciations[k].phoneticNotation;
+				var phoneticSpelling = pronunciations[k].phoneticSpelling;
+			}
+		}
+		var text = lexicalEntries[j].text;
 		var derivatives = lexicalEntries[j].derivatives;
 		if (typeof derivatives === 'object') {
 			for (let k = 0; k < derivatives.length; k++) {
@@ -1383,6 +1408,15 @@ for (let i = 0; i < results.length; i++) {
 			var etymologies = entries[k].etymologies;
 			if (typeof etymologies === 'object') {
 				//console.log('etymologies: '+etymologies);
+				console.log('simpleData['+i+']: '+JSON.stringify(simpleData[i]));
+				
+				if (typeof simpleData[i].nodes[j].nodes !== 'object') {
+					simpleData[i].nodes[j].nodes = [];
+					simpleData[i].nodes[j].nodes.push({text:'etymologies: '+etymologies});
+				} else {
+					simpleData[i].nodes[j].nodes.push({text:'etymologies: '+etymologies});
+				}
+				
 			}
 			var homographNumber = entries[k].homographNumber;
 			var entries_pronunciations = entries[k].pronunciations;
@@ -1391,6 +1425,24 @@ for (let i = 0; i < results.length; i++) {
 					var entries_audioFile = entries_pronunciations[l].audioFile;
 					if (typeof entries_audioFile !== 'undefined') {
 						console.log('entries_audioFile: '+entries_audioFile);
+						if (typeof simpleData[i].nodes[j].nodes !== 'object') {
+							simpleData[i].nodes[j].nodes = [];
+							simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a href="'+entries_audioFile+'">'+entries_pronunciations[l].phoneticSpelling+'</a>'});
+						} else {
+							var isExists = false;
+							var isIdx = 0;
+							for (let v = 0; v < simpleData[i].nodes[j].nodes.length; v++) {
+								if (simpleData[i].nodes[j].nodes[v].text.indexOf("mp3") > -1) {
+									isExists = true;
+									isIdx = v;
+								}
+							}
+							if (isExists) {
+								simpleData[i].nodes[j].nodes[isIdx].text = simpleData[i].nodes[j].nodes[isIdx].text + '&nbsp;<a href="'+entries_audioFile+'">'+entries_pronunciations[l].phoneticSpelling+'</a>';
+							} else {
+								simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a href="'+entries_audioFile+'">'+entries_pronunciations[l].phoneticSpelling+'</a>'});
+							}
+						}
 					}
 					var entries_dialects = entries_pronunciations[l].dialects;
 					//console.log('entries_dialects: '+entries_dialects);
@@ -1400,8 +1452,21 @@ for (let i = 0; i < results.length; i++) {
 			}
 			var senses = entries[k].senses;
 			for (let l = 0; l < senses.length; l++) {
+				
+				var ssIdx = 0;
+				
+				if (typeof simpleData[i].nodes[j].nodes !== 'object') simpleData[i].nodes[j].nodes = [];
 				var definitions = senses[l].definitions;
-				console.log('definitions: '+definitions);
+				if (typeof definitions !== 'undefined') {
+					console.log('definitions: '+definitions);
+					simpleData[i].nodes[j].nodes.push({text:definitions});
+					ssIdx = simpleData[i].nodes[j].nodes.length - 1;
+				}
+				var crossReferenceMarkers = senses[l].crossReferenceMarkers;
+				if (typeof crossReferenceMarkers !== 'undefined') {
+					console.log('crossReferenceMarkers: '+crossReferenceMarkers);
+					simpleData[i].nodes[j].nodes.push({text:crossReferenceMarkers});
+				}
 				var domains = senses[l].domains;
 				if (typeof domains === 'object') {
 					domains[0].id;
@@ -1416,6 +1481,8 @@ for (let i = 0; i < results.length; i++) {
 						}
 						var examples_text = examples[m].text;
 						console.log('examples_text: '+examples_text);
+						simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'});
+						ssIdx = simpleData[i].nodes[j].nodes.length - 1;
 					}
 				}
 				var senses_id = senses[l].id;
@@ -1432,9 +1499,13 @@ for (let i = 0; i < results.length; i++) {
 				}
 				var subsenses = senses[l].subsenses;
 				if (typeof subsenses === 'object') {
+					if (typeof simpleData[i].nodes[j].nodes[ssIdx].nodes !== 'object') simpleData[i].nodes[j].nodes[ssIdx].nodes = [];
 					for (let m = 0; m < subsenses.length; m++) {
 						var subsenses_definitions = subsenses[m].definitions;
-						console.log('subsenses_definitions: '+subsenses_definitions);
+						if (typeof definitions !== 'undefined') {
+							console.log('subsenses_definitions: '+subsenses_definitions);
+							simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions});
+						}
 						var subsenses_domains = subsenses[m].domains;
 						var subsenses_examples = subsenses[m].examples;
 						if (typeof subsenses_examples === 'object') {
@@ -1445,6 +1516,7 @@ for (let i = 0; i < results.length; i++) {
 								}
 								var subsenses_examples_text = subsenses_examples[n].text;
 								console.log('subsenses_examples_text: '+subsenses_examples_text);
+								simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'<i>'+subsenses_examples[n].text+'</i>'});
 							}
 						}
 						var subsenses_id = subsenses[m].id;
@@ -1476,37 +1548,16 @@ for (let i = 0; i < results.length; i++) {
 				}
 			}
 		}
-		var lexicalEntries_language = lexicalEntries[j].language;
-		var lexicalCategory = lexicalEntries[j].lexicalCategory;
-		if (typeof lexicalCategory === 'object') {
-			var lexicalCategory_id = lexicalCategory.id;
-			var lexicalCategory_text = lexicalCategory.text;
-			console.log('lexicalCategory.text:'+lexicalCategory.text);
-			simpleData[i].nodes.push({text:lexicalCategory.text});
-		}
-		var pronunciations = lexicalEntries[j].pronunciations;
-		if (typeof pronunciations === 'object') {
-			for (let k = 0; k < pronunciations.length; k++) {
-				var audioFile = pronunciations[k].audioFile;
-				if (typeof audioFile !== 'undefined') {
-					console.log('audioFile: '+audioFile);
-				}
-				var dialects = pronunciations[k].dialects;
-				//console.log('dialects: '+dialects);
-				var phoneticNotation = pronunciations[k].phoneticNotation;
-				var phoneticSpelling = pronunciations[k].phoneticSpelling;
-			}
-		}
-		var text = lexicalEntries[j].text;
-  	}
+	}
 	var type = results[i].type;
 }
 console.log(JSON.stringify(simpleData));
 
         $('#treeview1').treeview({
-          data: simpleData
+          levels: 99,
+		  data: simpleData
         });
-
+		
         $('#treeview2').treeview({
           levels: 1,
           data: defaultData
@@ -1809,7 +1860,8 @@ console.log(JSON.stringify(simpleData));
         var $tree = $('#treeview12').treeview({
           data: json
         });
-  		});
+		
+  	});
   	</script>
   </body>
 </html>
