@@ -125,6 +125,8 @@ router.post('/story/:id/comments/:commentId/replies_update', comment_controller.
 
 router.get('/story_oxford', story_controller.story_oxford);
 
+router.post('/story_oxford_ajax', story_controller.story_oxford_ajax);
+
 /// WORD ROUTES ///
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).

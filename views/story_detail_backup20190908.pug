@@ -35,7 +35,6 @@ html(lang='en')
     <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
@@ -368,12 +367,12 @@ html(lang='en')
         div !{memo}
       div#jb_sidebar.col-lg-4
         <span>#{translation.dictionary} : </span>
-        <!--<select name="dicType" id="dicType" style="margin-right: 5px;">-->
-          <!--<option value="5">#{translation.englishkorea}</option>-->
-          <!--<option value="3">#{translation.englishkorea}2</option>-->
+        <select name="dicType" id="dicType" style="margin-right: 5px;">
+          <option value="5">#{translation.englishkorea}</option>
+          <option value="3">#{translation.englishkorea}2</option>
           <!--<option value="4">Daum Dictionary</option>-->
           <!--<option value="2">english english</option>-->
-          <!--<option value="1">Merriam Webster</option>-->  
+          <option value="1">Merriam Webster</option>  
         <input type="hidden" id="story_id" name="story_id" value="#{story._id}" />
         <input type="hidden" id="book_id" name="book_id" value="#{book_id}" />
         <input type="hidden" id="book" name="book" value="#{book_id}" />
@@ -391,7 +390,7 @@ html(lang='en')
         | #{translation.ImageSearch}   
         | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="button" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <div id="treeview1" class=""></div>
+        <iframe id="dic_frame" src="https://www.wordreference.com/enko/"></iframe>
     
     <input type="hidden" id="stusr" name="stusr" value="#{story.user}" />
     <input type="hidden" id="SAVED" name="SAVED" value="#{translation.SAVED}" />
@@ -510,5 +509,4 @@ html(lang='en')
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="/js/quill_setting.js"></script>
-    script(src='/js/bootstrap_treeview.js')
   

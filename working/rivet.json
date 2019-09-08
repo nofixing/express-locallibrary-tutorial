@@ -1,0 +1,141 @@
+{
+  "id": "rivet",
+  "metadata": {
+    "operation": "retrieve",
+    "provider": "Oxford University Press",
+    "schema": "RetrieveEntry"
+  },
+  "results": [{
+    "id": "rivet",
+    "language": "en-us",
+    "lexicalEntries": [{
+      "derivatives": [{
+        "id": "riveter",
+        "text": "riveter"
+      }],
+      "entries": [{
+        "etymologies": ["Middle English: from Old French, from river‘fix, clinch’, of unknown ultimate origin"],
+        "senses": [{
+          "definitions": ["a short metal pin or bolt for holding together two plates of metal, its headless end being beaten out or pressed down when in place."],
+          "domains": [{
+            "id": "civil_engineering",
+            "text": "Civil_Engineering"
+          }],
+          "id": "m_en_gbus0876340.005",
+          "shortDefinitions": ["short metal pin or bolt for holding together two plates of metal"],
+          "subsenses": [{
+            "definitions": ["a device similar to a rivet for holding seams of clothing together."],
+            "domains": [{
+              "id": "clothing",
+              "text": "Clothing"
+            }],
+            "id": "m_en_gbus0876340.008",
+            "shortDefinitions": ["similar device for holding seams of clothing together"]
+          }]
+        }]
+      }],
+      "language": "en-us",
+      "lexicalCategory": {
+        "id": "noun",
+        "text": "Noun"
+      },
+      "pronunciations": [{
+        "dialects": ["American English"],
+        "phoneticNotation": "respell",
+        "phoneticSpelling": "ˈrivit"
+      }, {
+        "audioFile": "http://audio.oxforddictionaries.com/en/mp3/rivet_us_1.mp3",
+        "dialects": ["American English"],
+        "phoneticNotation": "IPA",
+        "phoneticSpelling": "ˈrɪvɪt"
+      }],
+      "text": "rivet"
+    }, {
+      "derivatives": [{
+        "id": "riveter",
+        "text": "riveter"
+      }],
+      "entries": [{
+        "grammaticalFeatures": [{
+          "id": "transitive",
+          "text": "Transitive",
+          "type": "Subcategorization"
+        }],
+        "senses": [{
+          "definitions": ["join or fasten (plates of metal) with a rivet or rivets"],
+          "examples": [{
+            "text": "the linings are bonded, not riveted, to the brake shoes for longer wear"
+          }, {
+            "notes": [{
+              "text": "as adjective \"riveted\"",
+              "type": "wordFormNote"
+            }],
+            "text": "the riveted plates of the floor"
+          }],
+          "id": "m_en_gbus0876340.011",
+          "shortDefinitions": ["join with rivet or ivets"],
+          "thesaurusLinks": [{
+            "entry_id": "attach",
+            "sense_id": "t_en_gb0000943.001"
+          }]
+        }, {
+          "definitions": ["hold (someone or something) fast so as to make them incapable of movement"],
+          "examples": [{
+            "text": "the grip on her arm was firm enough to rivet her to the spot"
+          }],
+          "id": "m_en_gbus0876340.018",
+          "shortDefinitions": ["make incapable of movement"],
+          "subsenses": [{
+            "definitions": ["attract and completely engross (someone)"],
+            "examples": [{
+              "text": "he was riveted by the newsreels shown on television"
+            }],
+            "id": "m_en_gbus0876340.019",
+            "shortDefinitions": ["attract and completely engross"],
+            "thesaurusLinks": [{
+              "entry_id": "riveted",
+              "sense_id": "t_en_gb0012679.002"
+            }, {
+              "entry_id": "riveting",
+              "sense_id": "t_en_gb0012680.001"
+            }]
+          }, {
+            "definitions": ["direct (one's eyes or attention) intently"],
+            "examples": [{
+              "text": "all eyes were riveted on him"
+            }],
+            "id": "m_en_gbus0876340.020",
+            "shortDefinitions": ["direct one's eyes or attention intently"],
+            "thesaurusLinks": [{
+              "entry_id": "riveted",
+              "sense_id": "t_en_gb0012679.003"
+            }]
+          }],
+          "thesaurusLinks": [{
+            "entry_id": "riveted",
+            "sense_id": "t_en_gb0012679.001"
+          }]
+        }]
+      }],
+      "language": "en-us",
+      "lexicalCategory": {
+        "id": "verb",
+        "text": "Verb"
+      },
+      "pronunciations": [{
+        "dialects": ["American English"],
+        "phoneticNotation": "respell",
+        "phoneticSpelling": "ˈrivit"
+      }, {
+        "audioFile": "http://audio.oxforddictionaries.com/en/mp3/rivet_us_1.mp3",
+        "dialects": ["American English"],
+        "phoneticNotation": "IPA",
+        "phoneticSpelling": "ˈrɪvɪt"
+      }],
+      "text": "rivet"
+    }],
+    "type": "headword",
+    "word": "rivet"
+  }],
+  "word": "rivet"
+}

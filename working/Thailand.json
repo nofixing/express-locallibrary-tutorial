@@ -1,0 +1,55 @@
+{
+  "id": "thailand",
+  "metadata": {
+    "operation": "retrieve",
+    "provider": "Oxford University Press",
+    "schema": "RetrieveEntry"
+  },
+  "results": [{
+    "id": "Thailand",
+    "language": "en-us",
+    "lexicalEntries": [{
+      "entries": [{
+        "grammaticalFeatures": [{
+          "id": "proper",
+          "text": "Proper",
+          "type": "Properness"
+        }],
+        "notes": [{
+          "text": "A powerful Thai kingdom emerged in the 14th century. In the 19th century, it lost territory in the east to France and in the south to Britain. Thailand was occupied by the Japanese during World War II; it supported the US in the Vietnam War, later experiencing a large influx of refugees from Cambodia, Laos, and Vietnam. Absolute monarchy was abolished in 1932, the king remaining head of state",
+          "type": "encyclopedicNote"
+        }],
+        "senses": [{
+          "crossReferenceMarkers": ["Former name (until 1939) Siam"],
+          "crossReferences": [{
+            "id": "Siam",
+            "text": "Siam",
+            "type": "see also"
+          }],
+          "definitions": ["a kingdom in Southeast Asia, on the Gulf of Thailand; population 68,000,000 (estimated 2015); capital, Bangkok; language, Thai (official)."],
+          "id": "m_en_gbus1044000.005",
+          "shortDefinitions": ["kingdom in SE Asia"]
+        }]
+      }],
+      "language": "en-us",
+      "lexicalCategory": {
+        "id": "noun",
+        "text": "Noun"
+      },
+      "pronunciations": [{
+        "dialects": ["American English"],
+        "phoneticNotation": "respell",
+        "phoneticSpelling": "ˈtīland"
+      }, {
+        "audioFile": "http://audio.oxforddictionaries.com/en/mp3/thailand_1_us_1.mp3",
+        "dialects": ["American English"],
+        "phoneticNotation": "IPA",
+        "phoneticSpelling": "ˈtaɪlænd"
+      }],
+      "text": "Thailand"
+    }],
+    "type": "headword",
+    "word": "Thailand"
+  }],
+  "word": "Thailand"
+}

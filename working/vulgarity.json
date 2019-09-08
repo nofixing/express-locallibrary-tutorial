@@ -1,0 +1,61 @@
+{
+  "id": "vulgarity",
+  "metadata": {
+    "operation": "retrieve",
+    "provider": "Oxford University Press",
+    "schema": "RetrieveEntry"
+  },
+  "results": [{
+    "id": "vulgarity",
+    "language": "en-us",
+    "lexicalEntries": [{
+      "entries": [{
+        "senses": [{
+          "definitions": ["the state or quality of being vulgar"],
+          "examples": [{
+            "text": "he was seen as the embodiment of the vulgarity of the 1980s"
+          }],
+          "id": "m_en_gbus1136390.005",
+          "shortDefinitions": ["property of being vulgar"],
+          "subsenses": [{
+            "definitions": ["a vulgar remark or act"],
+            "examples": [{
+              "text": "his letters were full of vulgarities"
+            }],
+            "id": "m_en_gbus1136390.007",
+            "shortDefinitions": ["vulgar remark or act"],
+            "thesaurusLinks": [{
+              "entry_id": "vulgarity",
+              "sense_id": "t_en_gb0016036.001"
+            }]
+          }],
+          "thesaurusLinks": [{
+            "entry_id": "vulgarity",
+            "sense_id": "t_en_gb0016036.002"
+          }, {
+            "entry_id": "vulgarity",
+            "sense_id": "t_en_gb0016036.003"
+          }]
+        }]
+      }],
+      "language": "en-us",
+      "lexicalCategory": {
+        "id": "noun",
+        "text": "Noun"
+      },
+      "pronunciations": [{
+        "dialects": ["American English"],
+        "phoneticNotation": "respell",
+        "phoneticSpelling": "vəlˈɡerədē"
+      }, {
+        "dialects": ["American English"],
+        "phoneticNotation": "IPA",
+        "phoneticSpelling": "vəlˈɡɛrədi"
+      }],
+      "text": "vulgarity"
+    }],
+    "type": "headword",
+    "word": "vulgarity"
+  }],
+  "word": "vulgarity"
+}

@@ -1,0 +1,122 @@
+{
+  "id": "devastating",
+  "metadata": {
+    "operation": "retrieve",
+    "provider": "Oxford University Press",
+    "schema": "RetrieveEntry"
+  },
+  "results": [
+    {
+      "id": "devastating",
+      "language": "en-us",
+      "lexicalEntries": [
+        {
+          "entries": [
+            {
+              "senses": [
+                {
+                  "definitions": [
+                    "highly destructive or damaging"
+                  ],
+                  "examples": [
+                    {
+                      "text": "a devastating cyclone struck Bangladesh"
+                    }
+                  ],
+                  "id": "m_en_gbus0270140.005",
+                  "shortDefinitions": [
+                    "highly destructive or damaging"
+                  ],
+                  "subsenses": [
+                    {
+                      "definitions": [
+                        "causing severe shock, distress, or grief"
+                      ],
+                      "examples": [
+                        {
+                          "text": "the news came as a devastating blow"
+                        }
+                      ],
+                      "id": "m_en_gbus0270140.007",
+                      "shortDefinitions": [
+                        "causing severe shock or grief"
+                      ],
+                      "thesaurusLinks": [
+                        {
+                          "entry_id": "devastating",
+                          "sense_id": "t_en_gb0003861.002"
+                        }
+                      ]
+                    },
+                    {
+                      "definitions": [
+                        "extremely impressive or effective"
+                      ],
+                      "examples": [
+                        {
+                          "text": "she had a devastating wit"
+                        }
+                      ],
+                      "id": "m_en_gbus0270140.008",
+                      "registers": [
+                        {
+                          "id": "informal",
+                          "text": "Informal"
+                        }
+                      ],
+                      "shortDefinitions": [
+                        "extremely impressive or effective"
+                      ],
+                      "thesaurusLinks": [
+                        {
+                          "entry_id": "devastating",
+                          "sense_id": "t_en_gb0003861.003"
+                        },
+                        {
+                          "entry_id": "devastating",
+                          "sense_id": "t_en_gb0003861.004"
+                        }
+                      ]
+                    }
+                  ],
+                  "thesaurusLinks": [
+                    {
+                      "entry_id": "devastating",
+                      "sense_id": "t_en_gb0003861.001"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "language": "en-us",
+          "lexicalCategory": {
+            "id": "adjective",
+            "text": "Adjective"
+          },
+          "pronunciations": [
+            {
+              "dialects": [
+                "American English"
+              ],
+              "phoneticNotation": "respell",
+              "phoneticSpelling": "ˈdevəˌstādiNG"
+            },
+            {
+              "audioFile": "http://audio.oxforddictionaries.com/en/mp3/devastating_us_1.mp3",
+              "dialects": [
+                "American English"
+              ],
+              "phoneticNotation": "IPA",
+              "phoneticSpelling": "ˈdɛvəˌsteɪdɪŋ"
+            }
+          ],
+          "text": "devastating"
+        }
+      ],
+      "type": "headword",
+      "word": "devastating"
+    }
+  ],
+  "word": "devastating"
+}

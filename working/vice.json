@@ -1,0 +1,335 @@
+{
+  "id": "vice",
+  "metadata": {
+    "operation": "retrieve",
+    "provider": "Oxford University Press",
+    "schema": "RetrieveEntry"
+  },
+  "results": [
+    {
+      "id": "vice",
+      "language": "en-us",
+      "lexicalEntries": [
+        {
+          "derivatives": [
+            {
+              "id": "viceless",
+              "text": "viceless"
+            }
+          ],
+          "entries": [
+            {
+              "etymologies": [
+                "Middle English: via Old French from Latin vitium"
+              ],
+              "homographNumber": "100",
+              "pronunciations": [
+                {
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "vīs"
+                },
+                {
+                  "audioFile": "http://audio.oxforddictionaries.com/en/mp3/vice_us_1.mp3",
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "vaɪs"
+                }
+              ],
+              "senses": [
+                {
+                  "definitions": [
+                    "immoral or wicked behavior."
+                  ],
+                  "id": "m_en_gbus1127650.005",
+                  "shortDefinitions": [
+                    "immoral or wicked behaviour"
+                  ],
+                  "subsenses": [
+                    {
+                      "definitions": [
+                        "criminal activities involving prostitution, pornography, or drugs."
+                      ],
+                      "domains": [
+                        {
+                          "id": "sex",
+                          "text": "Sex"
+                        },
+                        {
+                          "id": "crime",
+                          "text": "Crime"
+                        }
+                      ],
+                      "id": "m_en_gbus1127650.007",
+                      "shortDefinitions": [
+                        "criminal activities involving prostitution or drugs"
+                      ],
+                      "thesaurusLinks": [
+                        {
+                          "entry_id": "vice",
+                          "sense_id": "t_en_gb0015939.001"
+                        }
+                      ]
+                    },
+                    {
+                      "definitions": [
+                        "an immoral or wicked personal characteristic."
+                      ],
+                      "id": "m_en_gbus1127650.008",
+                      "shortDefinitions": [
+                        "immoral or wicked personal characteristic"
+                      ]
+                    },
+                    {
+                      "definitions": [
+                        "a weakness of character or behavior; a bad habit"
+                      ],
+                      "examples": [
+                        {
+                          "text": "cigars happen to be my father's vice"
+                        }
+                      ],
+                      "id": "m_en_gbus1127650.011",
+                      "shortDefinitions": [
+                        "weakness of character or behaviour"
+                      ],
+                      "thesaurusLinks": [
+                        {
+                          "entry_id": "vice",
+                          "sense_id": "t_en_gb0015939.002"
+                        }
+                      ]
+                    }
+                  ],
+                  "thesaurusLinks": [
+                    {
+                      "entry_id": "vice",
+                      "sense_id": "t_en_gb0015939.001"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "language": "en-us",
+          "lexicalCategory": {
+            "id": "noun",
+            "text": "Noun"
+          },
+          "text": "vice"
+        }
+      ],
+      "type": "headword",
+      "word": "vice"
+    },
+    {
+      "id": "vice",
+      "language": "en-us",
+      "lexicalEntries": [
+        {
+          "entries": [
+            {
+              "etymologies": [
+                "Latin, ablative of vic-‘change’"
+              ],
+              "homographNumber": "200",
+              "pronunciations": [
+                {
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "vīs"
+                },
+                {
+                  "audioFile": "http://audio.oxforddictionaries.com/en/mp3/vice_us_2.mp3",
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "vaɪs"
+                },
+                {
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "ˈvīsē"
+                },
+                {
+                  "audioFile": "http://audio.oxforddictionaries.com/en/mp3/vice_us_3.mp3",
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "ˈvaɪsi"
+                },
+                {
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "ˈvīsə"
+                },
+                {
+                  "audioFile": "http://audio.oxforddictionaries.com/en/mp3/vice_us_4.mp3",
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "ˈvaɪsə"
+                }
+              ],
+              "senses": [
+                {
+                  "definitions": [
+                    "as a substitute for"
+                  ],
+                  "examples": [
+                    {
+                      "text": "the letter was drafted by David Hunt, vice Bevin who was ill"
+                    }
+                  ],
+                  "id": "m_en_gbus1127660.009",
+                  "shortDefinitions": [
+                    "as substitute for"
+                  ]
+                }
+              ]
+            }
+          ],
+          "language": "en-us",
+          "lexicalCategory": {
+            "id": "preposition",
+            "text": "Preposition"
+          },
+          "text": "vice"
+        }
+      ],
+      "type": "headword",
+      "word": "vice"
+    },
+    {
+      "id": "vice",
+      "language": "en-us",
+      "lexicalEntries": [
+        {
+          "entries": [
+            {
+              "homographNumber": "300",
+              "pronunciations": [
+                {
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "vīs"
+                },
+                {
+                  "audioFile": "http://audio.oxforddictionaries.com/en/mp3/vice_us_1.mp3",
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "vaɪs"
+                }
+              ],
+              "senses": [
+                {
+                  "crossReferenceMarkers": [
+                    "British spelling of vise"
+                  ],
+                  "crossReferences": [
+                    {
+                      "id": "vise",
+                      "text": "vise",
+                      "type": "variant spelling of"
+                    }
+                  ],
+                  "id": "m_en_gbus1127670.030"
+                }
+              ]
+            }
+          ],
+          "language": "en-us",
+          "lexicalCategory": {
+            "id": "noun",
+            "text": "Noun"
+          },
+          "text": "vice"
+        }
+      ],
+      "type": "headword",
+      "word": "vice"
+    },
+    {
+      "id": "vice",
+      "language": "en-us",
+      "lexicalEntries": [
+        {
+          "entries": [
+            {
+              "homographNumber": "400",
+              "pronunciations": [
+                {
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "vīs"
+                },
+                {
+                  "audioFile": "http://audio.oxforddictionaries.com/en/mp3/vice_us_1.mp3",
+                  "dialects": [
+                    "American English"
+                  ],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "vaɪs"
+                }
+              ],
+              "senses": [
+                {
+                  "crossReferenceMarkers": [
+                    "short for vice president, vice admiral, etc."
+                  ],
+                  "crossReferences": [
+                    {
+                      "id": "vice_president",
+                      "text": "vice president",
+                      "type": "abbreviation of"
+                    },
+                    {
+                      "id": "vice_admiral",
+                      "text": "vice admiral",
+                      "type": "abbreviation of"
+                    }
+                  ],
+                  "id": "m_en_gbus1127690.003",
+                  "registers": [
+                    {
+                      "id": "informal",
+                      "text": "Informal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "language": "en-us",
+          "lexicalCategory": {
+            "id": "noun",
+            "text": "Noun"
+          },
+          "text": "vice"
+        }
+      ],
+      "type": "headword",
+      "word": "vice"
+    }
+  ],
+  "word": "vice"
+}

@@ -1,0 +1,101 @@
+{
+  "id": "beautiful",
+  "metadata": {
+    "operation": "retrieve",
+    "provider": "Oxford University Press",
+    "schema": "RetrieveEntry"
+  },
+  "results": [
+    {
+      "id": "beautiful",
+      "language": "en-us",
+      "lexicalEntries": [
+        {
+          "entries": [
+            {
+              "senses": [
+                {
+                  "definitions": [
+                    "pleasing the senses or mind aesthetically"
+                  ],
+                  "examples": [
+                    {
+                      "text": "beautiful poetry"
+                    },
+                    {
+                      "text": "a beautiful young woman"
+                    },
+                    {
+                      "text": "the mountains were calm and beautiful"
+                    }
+                  ],
+                  "id": "m_en_gbus0081680.006",
+                  "shortDefinitions": [
+                    "pleasing senses or mind aesthetically"
+                  ],
+                  "subsenses": [
+                    {
+                      "definitions": [
+                        "of a very high standard; excellent"
+                      ],
+                      "examples": [
+                        {
+                          "text": "she spoke in beautiful English"
+                        },
+                        {
+                          "text": "the house had been left in beautiful order"
+                        }
+                      ],
+                      "id": "m_en_gbus0081680.008",
+                      "shortDefinitions": [
+                        "of very high standard"
+                      ],
+                      "thesaurusLinks": [
+                        {
+                          "entry_id": "marvellous",
+                          "sense_id": "t_en_gb0009216.002"
+                        }
+                      ]
+                    }
+                  ],
+                  "thesaurusLinks": [
+                    {
+                      "entry_id": "beautiful",
+                      "sense_id": "t_en_gb0001256.001"
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "language": "en-us",
+          "lexicalCategory": {
+            "id": "adjective",
+            "text": "Adjective"
+          },
+          "pronunciations": [
+            {
+              "dialects": [
+                "American English"
+              ],
+              "phoneticNotation": "respell",
+              "phoneticSpelling": "ˈbyo͞odəfəl"
+            },
+            {
+              "audioFile": "http://audio.oxforddictionaries.com/en/mp3/beautiful_us_1.mp3",
+              "dialects": [
+                "American English"
+              ],
+              "phoneticNotation": "IPA",
+              "phoneticSpelling": "ˈbjudəfəl"
+            }
+          ],
+          "text": "beautiful"
+        }
+      ],
+      "type": "headword",
+      "word": "beautiful"
+    }
+  ],
+  "word": "beautiful"
+}

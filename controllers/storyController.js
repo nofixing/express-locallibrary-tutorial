@@ -863,27 +863,92 @@ exports.story_oxford = function(req, res, next) {
     lookup.then(function(data) {
         //console.log('=======================================story_oxford find -> data:'+data);
         //var voca = JSON.parse(data);
-        //console.log('parse result ->'+JSON.stringify(voca));
+        console.log('parse result ->'+JSON.stringify(data));
         var results = data.results;
         for (let i = 0; i < results.length; i++) {
             var lexicalEntries = results[i].lexicalEntries;
             for (let j = 0; j < lexicalEntries.length; j++) {
                 var entries = lexicalEntries[j].entries;
-                console.log('entries ->'+JSON.stringify(entries));
+                //console.log('entries ->'+JSON.stringify(entries));
             }
             //console.log('lexicalEntries ->'+JSON.stringify(lexicalEntries));
         }
         //console.log('parse result results->'+results);
-        res.render('oxford_data', { content: JSON.stringify(data) } );
+        res.render('oxford_data', { dic_content: JSON.stringify(data) } );
     },
     function(err) {
         console.log('req.query.word:'+req.query.word+'     story_oxford err:'+err); return next(err);
     });
-    /*
-    dict.find(req.query.word, function(err, data) {
-        if(err) { console.log('req.query.word:'+req.query.word+'     story_oxford err:'+err); return next(err); }
-        console.log('=======================================story_oxford find -> data:'+data);
-        res.render('oxford_data', { content: data } );
+};
+
+exports.story_oxford_ajax = function(req, res, next) {
+    
+    console.log('story_oxford_ajax start -> query:'+req.body.word);
+    
+    var config = {
+        app_id : oxford_app_id,
+        app_key : oxford_app_key,
+        source_lang : "en-us"
+    };  
+  
+    var dict = new OxfordDictionary(config);
+    
+    var props = {
+        word: req.body.word,
+        // filters: "grammaticalFeatures=singular,past;lexicalCategory=noun",
+        //fields: "definitions,domains,etymologies,examples,pronunciations,regions,registers,variantForms"
+        fields: req.body.fields
+    };
+    
+    var lookup = dict.find(props);
+
+    lookup.then(function(data) {
+        console.log('parse result ->'+JSON.stringify(data));
+        req.body.dic_content = JSON.stringify(data);
+        res.send(req.body);
+    },
+    function(err) {
+        console.log('req.query.word:'+req.body.word+'     story_oxford_ajax err:'+err); 
+        if(err.indexOf('No such entry found.') > -1) {
+            console.log('lemmas start');
+            var config2 = {
+                app_id : oxford_app_id,
+                app_key : oxford_app_key,
+                source_lang : "en"
+            };
+            var dict2 = new OxfordDictionary(config2);
+            var lookup2 = dict2.lemmas(req.body.word);
+
+            lookup2.then(function(data2) {
+                console.log('parse result2 ->'+JSON.stringify(data2));
+                var lemmas_word = data2.results[0].lexicalEntries[0].inflectionOf[0].text;
+                props = {
+                    word: lemmas_word,
+                    fields: req.body.fields
+                };
+                var lookup3 = dict.find(props);
+
+                lookup3.then(function(data3) {
+                    console.log('parse result3 ->'+JSON.stringify(data3));
+                    req.body.dic_content = JSON.stringify(data3);
+                    res.send(req.body);
+                },
+                function(err3) {
+                    console.log('req.query.word:'+lemmas_word+'     story_oxford_ajax err3:'+err3); 
+                    if(err.indexOf('No such entry found.') > -1) {
+                        
+                    }
+                    return next(err3);
+                });
+
+            },
+            function(err2) {
+                console.log('req.query.word:'+req.body.word+'     story_oxford_ajax err2:'+err2); 
+                if(err.indexOf('No such entry found.') > -1) {
+                    
+                }
+                return next(err2);
+            });
+        }
     });
-    */
 };
