@@ -3,10 +3,11 @@
   <head>
     <title>Bootstrap Tree View</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
-  	<div class="container">
+    <div class="speaker"></div>
+    <div class="container">
     	<h1>Bootstrap Tree View</h1>
       <br>
       <div class="row">
@@ -1380,7 +1381,7 @@ for (let i = 0; i < results.length; i++) {
 				var audioFile = pronunciations[k].audioFile;
 				if (typeof audioFile !== 'undefined') {
 					console.log('audioFile: '+audioFile);
-					simpleData[i].nodes[j].text = simpleData[i].nodes[j].text + '&nbsp;<a href="'+audioFile+'">'+pronunciations[k].phoneticSpelling+'</a>';
+					simpleData[i].nodes[j].text = simpleData[i].nodes[j].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+audioFile+'"></a>';
 				}
 				var dialects = pronunciations[k].dialects;
 				//console.log('dialects: '+dialects);
@@ -1427,7 +1428,7 @@ for (let i = 0; i < results.length; i++) {
 						console.log('entries_audioFile: '+entries_audioFile);
 						if (typeof simpleData[i].nodes[j].nodes !== 'object') {
 							simpleData[i].nodes[j].nodes = [];
-							simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a href="'+entries_audioFile+'">'+entries_pronunciations[l].phoneticSpelling+'</a>'});
+							simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>'});
 						} else {
 							var isExists = false;
 							var isIdx = 0;
@@ -1438,9 +1439,9 @@ for (let i = 0; i < results.length; i++) {
 								}
 							}
 							if (isExists) {
-								simpleData[i].nodes[j].nodes[isIdx].text = simpleData[i].nodes[j].nodes[isIdx].text + '&nbsp;<a href="'+entries_audioFile+'">'+entries_pronunciations[l].phoneticSpelling+'</a>';
+								simpleData[i].nodes[j].nodes[isIdx].text = simpleData[i].nodes[j].nodes[isIdx].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>';
 							} else {
-								simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a href="'+entries_audioFile+'">'+entries_pronunciations[l].phoneticSpelling+'</a>'});
+								simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>'});
 							}
 						}
 					}

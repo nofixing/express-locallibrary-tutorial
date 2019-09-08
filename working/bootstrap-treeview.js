@@ -1247,3 +1247,31 @@
 	};
 
 })(jQuery, window, document);
+
+
+
+
+var saudio = new Audio();
+var $aubtn;
+
+function playAudio(elem) {
+  saudio.src = $(elem).attr('src');
+  $aubtn = $(elem);
+  if($(elem).hasClass('fa-play'))
+   {
+     $(elem).removeClass('fa-play');
+     $(elem).addClass('fa-pause');
+     saudio.play();
+   }
+  else
+   {
+     $(elem).removeClass('fa-pause');
+     $(elem).addClass('fa-play');
+     saudio.pause();
+   }
+}
+
+saudio.onended = function() {
+     $aubtn.removeClass('fa-pause');
+     $aubtn.addClass('fa-play');
+};
