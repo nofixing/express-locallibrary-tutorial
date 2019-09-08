@@ -718,3 +718,7 @@ ul.tite li {
   .spanner.show, .overlay.show {
       opacity: 1
   }
+
+  .treeview {
+      text-align: left;
+  }
