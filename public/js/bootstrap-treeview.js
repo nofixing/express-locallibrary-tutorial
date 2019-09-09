@@ -541,10 +541,10 @@
 				//classList.push(_this.options.emptyIcon);
 			}
 
-			treeItem
-				.append($(_this.template.icon)
-					.addClass(classList.join(' '))
-				);
+			//treeItem
+			//	.append($(_this.template.icon)
+			//		.addClass(classList.join(' '))
+			//	);
 
 
 			// Add node icon
