@@ -721,8 +721,9 @@ ul.tite li {
 
   .treeview {
       text-align: left;
-      height: 800px;
+      height: 740px;
       overflow-y: scroll;
+      margin-right: 20px;
   }
   
   ::-webkit-scrollbar {
