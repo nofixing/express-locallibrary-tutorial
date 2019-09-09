@@ -538,7 +538,7 @@
 				}
 			}
 			else {
-				classList.push(_this.options.emptyIcon);
+				//classList.push(_this.options.emptyIcon);
 			}
 
 			treeItem
@@ -559,10 +559,10 @@
 									node.icon || _this.options.nodeIcon);
 				}
 
-				treeItem
-					.append($(_this.template.icon)
-						.addClass(classList.join(' '))
-					);
+				//treeItem
+				//	.append($(_this.template.icon)
+				//		.addClass(classList.join(' '))
+				//	);
 			}
 
 			// Add check / unchecked icon
