@@ -518,13 +518,14 @@
 				.addClass(node.state.selected ? 'node-selected' : '')
 				.addClass(node.searchResult ? 'search-result' : '') 
 				.attr('data-nodeid', node.nodeId)
-				.attr('style', _this.buildStyleOverride(node));
+				.attr('style', _this.buildStyleOverride(node, level));
 
 			// Add indent/spacer to mimic tree structure
+			/*
 			for (var i = 0; i < (level - 1); i++) {
 				treeItem.append(_this.template.indent);
 			}
-
+			*/
 			// Add expand, collapse or empty spacer icons
 			var classList = [];
 			if (node.nodes) {
@@ -619,7 +620,7 @@
 	// Define any node level style override for
 	// 1. selectedNode
 	// 2. node|data assigned color overrides
-	Tree.prototype.buildStyleOverride = function (node) {
+	Tree.prototype.buildStyleOverride = function (node, level) {
 
 		if (node.state.disabled) return '';
 
@@ -643,9 +644,9 @@
 				backColor = this.options.searchResultBackColor;
 			}
 		}
-
+		
 		return 'color:' + color +
-			';background-color:' + backColor + ';';
+			';background-color:' + backColor + '; padding-left:' + level*20 +'px;';
 	};
 
 	// Add inline style into head
