@@ -172,11 +172,6 @@
 		$('#' + this.styleId).remove();
 	};
 	
-	Tree.prototype.removeData = function () {
-		this.destroy();
-		$.removeData(this, pluginName);
-	};
-
 	Tree.prototype.destroy = function () {
 
 		if (!this.initialized) return;
@@ -703,7 +698,7 @@
 		badge: '<span class="badge"></span>'
 	};
 
-	Tree.prototype.css = '.treeview .list-group-item{cursor:pointer}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}';
+	Tree.prototype.css = '.treeview .list-group-item{cursor:pointer;z-index:100;opacity:100}.treeview span.indent{margin-left:10px;margin-right:10px}.treeview span.icon{width:12px;margin-right:5px}.treeview .node-disabled{color:silver;cursor:not-allowed}';
 
 
 	/**
