@@ -1210,6 +1210,11 @@ function processDicData(dic_content) {
             }
         }
         var text = lexicalEntries[j].text;
+		var derivativeOf = lexicalEntries[j].derivativeOf;
+        if (typeof derivativeOf === 'object') {
+            //console.log('derivativeOf: '+derivativeOf[0].text);
+			simpleData[i].nodes.push({text:derivativeOf[0].text});
+        }
         var derivatives = lexicalEntries[j].derivatives;
         if (typeof derivatives === 'object') {
             for (let k = 0; k < derivatives.length; k++) {
