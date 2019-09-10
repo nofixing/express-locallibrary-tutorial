@@ -171,6 +171,11 @@
 		$.removeData(this, pluginName);
 		$('#' + this.styleId).remove();
 	};
+	
+	Tree.prototype.removeData = function () {
+		this.destroy();
+		$.removeData(this, pluginName);
+	};
 
 	Tree.prototype.destroy = function () {
 
