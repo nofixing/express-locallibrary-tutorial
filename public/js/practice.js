@@ -755,9 +755,9 @@ function ReadingPractice() {
     if($("#pc").val() == "DESKTOP") {
         $(".nav-item").removeClass("active");
         if($("#book").val() != "") {
-            $(".nav-item:eq(4)").addClass("active");
-        } else {
             $(".nav-item:eq(3)").addClass("active");
+        } else {
+            $(".nav-item:eq(2)").addClass("active");
         }
     }
 }
@@ -769,9 +769,9 @@ function showWordLayer() {
     if($("#pc").val() == "DESKTOP") {
         $(".nav-item").removeClass("active");
         if($("#book").val() != "") {
-            $(".nav-item:eq(5)").addClass("active");
-        } else {
             $(".nav-item:eq(4)").addClass("active");
+        } else {
+            $(".nav-item:eq(3)").addClass("active");
         }
     }
 }
