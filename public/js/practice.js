@@ -1153,7 +1153,7 @@ function toggleSurface2(sfnt) {
 }
 
 function closeDic() {
-	$('#treeview1').destroy();
+	$('#treeview1').removeData();
 }
 
 function processDicData(dic_content) {
