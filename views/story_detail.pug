@@ -367,11 +367,11 @@ html(lang='en')
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
         div !{memo}
       div#jb_sidebar.col-lg-6
-        <span style="float:left;">#{translation.dictionary} : </span>
+        <span style="float:left;margin-top:10px;">#{translation.dictionary} : </span>
         <input type="text" id="searchWord" name="searchWord" class="form-control" style="width:150px;float:left;" />
         <input type="button" style="float:left;margin-left:20px;" class="btn btn-primary" id="searchWordButton" value="#{translation.Search}"/>
-        <input type="checkbox" style="float:left;margin-left:20px;" class="form-control" id="myCheck"> 
-        <span style="float:left;margin-left:20px;">#{translation.ImageSearch}</span>  
+        <input type="checkbox" style="float:left;margin-left:20px;margin-top:10px;" id="myCheck"> 
+        <span style="float:left;margin-left:20px;margin-top:10px;">#{translation.ImageSearch}</span>  
         <input type="button" style="float:left;margin-left:20px;" class="btn btn-primary" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div id="treeview1" class=""></div>
     <input type="hidden" id="story_id" name="story_id" value="#{story._id}" />
