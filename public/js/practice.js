@@ -1178,7 +1178,6 @@ function processDicData(dic_content) {
     var word_id = voca.id;
     var results = voca.results;
     for (let i = 0; i < results.length; i++) {
-        if (i == 0) simpleData.push({text: '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>'});
         var word = results[i].word;
         simpleData.push({text:word});
         console.log('word: '+word);
@@ -1373,7 +1372,8 @@ function processDicData(dic_content) {
         }
         var type = results[i].type;
     }
-    console.log(JSON.stringify(simpleData));
+    simpleData.push({text: '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>'});
+	console.log(JSON.stringify(simpleData));
     $('#treeview1').css("display", "block");
     $('#treeview1').treeview({
         levels: 99,
