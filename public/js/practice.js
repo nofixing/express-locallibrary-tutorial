@@ -670,9 +670,7 @@ function wordList() {
 }
 
 function ReadingOnly() {
-    $('#jb_content').removeClass('col-lg-4');
     $('#jb_content').removeClass('col-lg-6');
-    $('#jb_content').removeClass('col-lg-8');
     $('#jb_content').addClass('col-lg-12');
     //$('#jb_content').css('padding', '0 10% 0 10%');
     $('#jb_memo').css('display', 'none');
@@ -691,10 +689,8 @@ function ReadingOnly() {
 }
 
 function LearnReading() {
-    $('#jb_content').removeClass('col-lg-4');
-    $('#jb_content').removeClass('col-lg-6');
     $('#jb_content').removeClass('col-lg-12');
-    $('#jb_content').addClass('col-lg-8');
+    $('#jb_content').addClass('col-lg-6');
     //$('#jb_content').css('padding', '0 10% 0 10%');
     $('#jb_memo').css('display', 'block');
     $('#jb_txtEditor').css('display', 'none');
@@ -726,16 +722,12 @@ function ReadingSearch() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
         alert("use this from PC");
     }
-    $('#jb_content').removeClass('col-lg-4');
-    $('#jb_content').removeClass('col-lg-8');
     $('#jb_content').removeClass('col-lg-12');
     $('#jb_content').addClass('col-lg-6');
     $('#jb_content').css('padding', '0 20px 20px 20px');
     $('#jb_memo').css('display', 'none');
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
-    $('#jb_sidebar').removeClass('col-lg-4');
-    $('#jb_sidebar').addClass('col-lg-6');
     $('#jb_sidebar').css('display', 'block');
     //$('.hgt').css('color', 'black');
     if($("#pc").val() == "DESKTOP") {
@@ -753,15 +745,11 @@ function ReadingPractice() {
         alert("use this from PC");
     }
     $('#jb_content').removeClass('col-lg-12');
-    $('#jb_content').removeClass('col-lg-8');
-    $('#jb_content').removeClass('col-lg-6');
-    $('#jb_content').addClass('col-lg-4');
+    $('#jb_content').addClass('col-lg-6');
     $('#jb_content').css('padding', '0 20px 20px 20px');
     $('#jb_memo').css('display', 'none');
     $('#jb_txtEditor').css('display', 'block');
     $('#word_container').css('display', 'none');
-    $('#jb_sidebar').removeClass('col-lg-6');
-    $('#jb_sidebar').addClass('col-lg-4');
     $('#jb_sidebar').css('display', 'block');
     //$('.hgt').css('color', 'blue');
     if($("#pc").val() == "DESKTOP") {
