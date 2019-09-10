@@ -695,7 +695,7 @@ function LearnReading() {
     $('#jb_memo').css('display', 'block');
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
-    $('#jb_sidebar').css('display', 'block');
+    $('#jb_sidebar').css('display', 'inline-block');
     //$('.hgt').css('color', 'black');
     if($("#pc").val() == "DESKTOP") {
         $(".nav-item").removeClass("active");
@@ -728,7 +728,7 @@ function ReadingSearch() {
     $('#jb_memo').css('display', 'none');
     $('#jb_txtEditor').css('display', 'none');
     $('#word_container').css('display', 'none');
-    $('#jb_sidebar').css('display', 'block');
+    $('#jb_sidebar').css('display', 'inline-block');
     //$('.hgt').css('color', 'black');
     if($("#pc").val() == "DESKTOP") {
         $(".nav-item").removeClass("active");
@@ -750,7 +750,7 @@ function ReadingPractice() {
     $('#jb_memo').css('display', 'none');
     $('#jb_txtEditor').css('display', 'block');
     $('#word_container').css('display', 'none');
-    $('#jb_sidebar').css('display', 'block');
+    $('#jb_sidebar').css('display', 'inline-block');
     //$('.hgt').css('color', 'blue');
     if($("#pc").val() == "DESKTOP") {
         $(".nav-item").removeClass("active");
