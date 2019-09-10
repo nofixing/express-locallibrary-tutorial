@@ -34,7 +34,7 @@ p {
     height: 90%;
     position: fixed;
     top: 70px;
-    left: 66%;
+    left: 50%;
     margin-bottom: 100px;
     float: left;
     border: 0px solid #ffffff;
@@ -48,7 +48,7 @@ p {
     height: 93%;
     position: fixed;
     top: 70px;
-    left: 33%;
+    left: 50%;
     padding: 0;
     margin-bottom: 20px;
     float: left;
@@ -74,7 +74,7 @@ p {
     height: 90%;
     position: fixed;
     top: 70px;
-    left: 33%;
+    left: 50%;
     padding: 0;
     margin-bottom: 20px;
     float: left;
@@ -97,14 +97,12 @@ p {
     display: none;
 }
 #jb_sidebar {
+    height: 40px;
     position: fixed;
     top: 70px;
-    right: 0;
-    padding: 0px 0px 20px 20px;
-    margin-bottom: 20px;
-    float: right;
-    border: 0px solid #bcbcbc;
-    text-align: center;
+    left: 50%;
+    padding: 0;
+    float: left;
     display: none;
 }
 .standalone-container {
