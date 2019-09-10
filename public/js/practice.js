@@ -1153,7 +1153,7 @@ function toggleSurface2(sfnt) {
 }
 
 function closeDic() {
-	$('#treeview1').removeData();
+	$('#treeview1').css("display", "none");
 }
 
 function processDicData(dic_content) {
@@ -1374,7 +1374,7 @@ function processDicData(dic_content) {
         var type = results[i].type;
     }
     console.log(JSON.stringify(simpleData));
-    
+    $('#treeview1').css("display", "block");
     $('#treeview1').treeview({
         levels: 99,
         data: simpleData
