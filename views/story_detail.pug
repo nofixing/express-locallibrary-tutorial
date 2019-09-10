@@ -367,14 +367,14 @@ html(lang='en')
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
         div !{memo}
       div#jb_sidebar.col-lg-6
-        <span>#{translation.dictionary} : </span>
-        <input type="text" id="searchWord" name="searchWord" class="form-control" style="width:150px" />&nbsp;&nbsp;
-        <input type="button" id="searchWordButton" value="#{translation.Search}"/>
+        <span style="float:left;">#{translation.dictionary} : </span>
+        <input type="text" id="searchWord" name="searchWord" class="form-control" style="width:150px;float:left;" />&nbsp;&nbsp;
+        <input type="button" style="float:left;" class="btn btn-primary" id="searchWordButton" value="#{translation.Search}"/>
         | &nbsp;&nbsp;&nbsp;
-        <input type="checkbox" class="form-control" id="myCheck"> 
+        <input type="checkbox" style="float:left;" class="form-control" id="myCheck"> 
         | #{translation.ImageSearch}   
         | &nbsp;&nbsp;&nbsp;
-        <input type="button" class="btn btn-primary" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" style="float:left;" class="btn btn-primary" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div id="treeview1" class=""></div>
     <input type="hidden" id="story_id" name="story_id" value="#{story._id}" />
     <input type="hidden" id="book_id" name="book_id" value="#{book_id}" />
