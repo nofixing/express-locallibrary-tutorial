@@ -187,11 +187,11 @@ html(lang='en')
                   include pets-partial
                   +petslist(cmt)
       div#jb_memo.col-lg-6
-        div.ql-editor(style='padding: 50px 0 0 0; height: 95%; overflow-y: auto;')
+        div.ql-editor(style='height: 90%; overflow-y: auto;')
           div !{memo}
         <div style="display: inline-block; float: left; height: 30px; margin-top: 10px;">
           <input type="file" name="file2" id="file2" class="inputfile">
-          <label for="file2" style="line-height: 30px; float: left;" title="#{translation.AudioDesc}">#{translation.Audio}</label>
+          <label for="file2" style="line-height: 30px; float: left;text-indent: 0;width: 160px;margin-top:5px;" class="btn btn-primary" title="#{translation.AudioDesc}">#{translation.Audio}</label>
           <audio controls id="myAudio2" style="line-height: 30px; float: right;" autoplay></audio>
         </div>
       div#jb_txtEditor.col-lg-6
@@ -304,7 +304,7 @@ html(lang='en')
           </div>          
           div#snow-container
           <!--<br><span>파일명: </span><input type="text" id="fileName">-->
-          <br/><button type="button" value="save" id="save" onclick="saveMemo();return false;">#{translation.Save}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
+          <br/><button type="button" class="btn btn-primary" value="save" id="save" onclick="saveMemo();return false;">#{translation.Save}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
           <div style="display: inline-block; float: left; height: 30px; margin-top: 10px;">
             if files
               table(class='table table-striped table-bordered table-hover table-condensed' style='margin-top: 20px;')
@@ -312,16 +312,16 @@ html(lang='en')
                   for file in files
                     tr
                       td
-                        <button onclick="cs_change_music('#{file.file_path}');return false;">#{file.file_name}</button>
+                        <button class="btn btn-primary" onclick="cs_change_music('#{file.file_path}');return false;">#{file.file_name}</button>
             <input type="file" name="file" id="file" class="inputfile">
-            <label for="file" style="line-height: 30px; float: left;" title="#{translation.AudioDesc}">#{translation.Audio}</label>
+            <label for="file" style="line-height: 30px; float: left;text-indent: 0;width: 160px;margin-top:5px;" class="btn btn-primary" title="#{translation.AudioDesc}">#{translation.Audio}</label>
             <audio controls id="myAudio" style="line-height: 30px; float: right;" autoplay></audio>
           </div>
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div#word_container.col-lg-6
         div.word_header.col-lg-6
-          <button type="button" id="wordSave">#{translation.Save}</button>&nbsp;&nbsp;&nbsp;#{translation.checkedwordsonly}&nbsp;&nbsp;&nbsp;
-          <button type="button" id="wordDelete">#{translation.Delete}</button>&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary" id="wordSave">#{translation.Save}</button>&nbsp;&nbsp;&nbsp;#{translation.checkedwordsonly}&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary" id="wordDelete">#{translation.Delete}</button>&nbsp;&nbsp;&nbsp;
           a(href='/catalog/word_board_list') #{translation.Words}
         table(class='table table-striped table-bordered table-hover table-condensed' style='margin-top: 55px;')
           thead
@@ -353,7 +353,7 @@ html(lang='en')
                     option(value='3' selected=(word.skill==='3' ? 'selected' : false) ) #{translation.BeUsedTo}
                     option(value='4' selected=(word.skill==='4' ? 'selected' : false) ) #{translation.RememberComplete}
                   <button type="button" class="btn btn-primary" style="display: inline; float: right; margin-top: 8px;" onclick="imgAddress(#{i})">#{translation.ImageAddress}</button>
-        <button type="button" id="wordAdd">#{translation.Add}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
+        <button type="button" class="btn btn-primary" id="wordAdd">#{translation.Add}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
         ul.wsd
@@ -363,11 +363,11 @@ html(lang='en')
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
         div !{memo}
       div#jb_sidebar.col-lg-6
-        <span style="float:left;margin-top:10px;">#{translation.dictionary} : </span>
-        <input type="text" id="searchWord" name="searchWord" class="form-control" style="width:150px;float:left;" />
+        <span style="float:left;margin-top:7px;">#{translation.dictionary}</span>
+        <input type="text" id="searchWord" name="searchWord" class="form-control" style="width:150px;float:left;margin-left:20px;" />
         <input type="button" style="float:left;margin-left:20px;" class="btn btn-primary" id="searchWordButton" value="#{translation.Search}"/>
-        <input type="checkbox" style="float:left;margin-left:20px;margin-top:10px;" id="myCheck"> 
-        <span style="float:left;margin-left:20px;margin-top:10px;">#{translation.ImageSearch}</span>  
+        <input type="checkbox" style="float:left;margin-left:13px;margin-top:10px;" id="myCheck"> 
+        <span style="float:left;margin-left:20px;margin-top:7px;">#{translation.ImageSearch}</span>  
         <input type="button" style="float:left;margin-left:20px;" class="btn btn-primary" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div id="treeview1" class=""></div>
     <input type="hidden" id="story_id" name="story_id" value="#{story._id}" />

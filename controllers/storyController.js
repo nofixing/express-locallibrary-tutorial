@@ -904,8 +904,44 @@ exports.story_oxford_ajax = function(req, res, next) {
 
     lookup.then(function(data) {
         console.log('parse result ->'+JSON.stringify(data));
-        req.body.dic_content = JSON.stringify(data);
-        res.send(req.body);
+        var results = data.results;
+        var derivative_word = '';
+        var isDerivativeOf = false;
+        for (let i = 0; i < results.length; i++) {
+            var lexicalEntries = results[i].lexicalEntries;
+            for (let j = 0; j < lexicalEntries.length; j++) {
+                var derivativeOf = lexicalEntries[j].derivativeOf;
+                if (typeof derivativeOf === 'object') {
+                    derivative_word = derivativeOf[0].text;
+                    isDerivativeOf = true;
+                }
+            }
+        }
+
+        if(isDerivativeOf) {
+            props = {
+                word: derivative_word,
+                fields: req.body.fields
+            };
+            var lookup4 = dict.find(props);
+
+            lookup4.then(function(data4) {
+                console.log('parse result4 ->'+JSON.stringify(data4));
+                req.body.dic_content = JSON.stringify(data4);
+                res.send(req.body);
+            },
+            function(err4) {
+                console.log('req.query.word:'+derivative_word+'     story_oxford_ajax err4:'+err4); 
+                if(err.indexOf('No such entry found.') > -1) {
+                    
+                }
+                return next(err4);
+            });
+        } else {
+            req.body.dic_content = JSON.stringify(data);
+            res.send(req.body);
+        }
+
     },
     function(err) {
         console.log('req.query.word:'+req.body.word+'     story_oxford_ajax err:'+err); 
