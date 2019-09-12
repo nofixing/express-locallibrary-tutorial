@@ -1556,7 +1556,11 @@ function processDicDatas(dic_content) {
                 if (typeof simpleData[i].nodes[j].nodes !== 'object') simpleData[i].nodes[j].nodes = [];
                 var regions = sentences[k].regions;
                 var text = sentences[k].text;
-                simpleData[i].nodes[j].nodes.push({text:regions[0].text+': '+text});
+                if(typeof regions === 'object') {
+                    simpleData[i].nodes[j].nodes.push({text:regions[0].text+': '+text});
+                } else {
+                    simpleData[i].nodes[j].nodes.push({text:text});
+                }
             }
         }
     }
