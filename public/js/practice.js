@@ -1179,7 +1179,7 @@ function processDicData(dic_content) {
     var results = voca.results;
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
-        simpleData.push({text:word});
+        simpleData.push({text:'<a onclick="sentence(\''+word+'\');" style="cursor: pointer;">'+word+'</a>'});
         console.log('word: '+word);
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
@@ -1198,15 +1198,15 @@ function processDicData(dic_content) {
             var pronunciations = lexicalEntries[j].pronunciations;
             if (typeof pronunciations === 'object') {
                 for (let k = 0; k < pronunciations.length; k++) {
-                var audioFile = pronunciations[k].audioFile;
-                if (typeof audioFile !== 'undefined') {
-                    console.log('audioFile: '+audioFile);
-                    simpleData[i].nodes[j].text = simpleData[i].nodes[j].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+audioFile+'"></a>';
-                }
-                var dialects = pronunciations[k].dialects;
-                //console.log('dialects: '+dialects);
-                var phoneticNotation = pronunciations[k].phoneticNotation;
-                var phoneticSpelling = pronunciations[k].phoneticSpelling;
+                    var audioFile = pronunciations[k].audioFile;
+                    if (typeof audioFile !== 'undefined') {
+                        console.log('audioFile: '+audioFile);
+                        simpleData[i].nodes[j].text = simpleData[i].nodes[j].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+audioFile+'"></a>';
+                    }
+                    var dialects = pronunciations[k].dialects;
+                    //console.log('dialects: '+dialects);
+                    var phoneticNotation = pronunciations[k].phoneticNotation;
+                    var phoneticSpelling = pronunciations[k].phoneticSpelling;
                 }
             }
             var text = lexicalEntries[j].text;
@@ -1218,7 +1218,7 @@ function processDicData(dic_content) {
             var derivatives = lexicalEntries[j].derivatives;
             if (typeof derivatives === 'object') {
                 for (let k = 0; k < derivatives.length; k++) {
-                //console.log('derivatives['+k+'].text: '+derivatives[k].text);
+                    //console.log('derivatives['+k+'].text: '+derivatives[k].text);
                 }
                 simpleData[i].nodes.push({text:'derivatives: '+derivatives[0].text});
             }
@@ -1226,56 +1226,56 @@ function processDicData(dic_content) {
             for (let k = 0; k < entries.length; k++) {
                 var grammaticalFeatures = entries[k].grammaticalFeatures;
                 if (typeof grammaticalFeatures === 'object') {
-                var grammaticalFeatures_id = grammaticalFeatures[0].id;
-                var grammaticalFeatures_text = grammaticalFeatures[0].text;
-                //console.log('grammaticalFeatures[0].text: '+grammaticalFeatures[0].text);
-                var grammaticalFeatures_type = grammaticalFeatures[0].type;
-                //console.log('grammaticalFeatures[0].type: '+grammaticalFeatures[0].type);
+                    var grammaticalFeatures_id = grammaticalFeatures[0].id;
+                    var grammaticalFeatures_text = grammaticalFeatures[0].text;
+                    //console.log('grammaticalFeatures[0].text: '+grammaticalFeatures[0].text);
+                    var grammaticalFeatures_type = grammaticalFeatures[0].type;
+                    //console.log('grammaticalFeatures[0].type: '+grammaticalFeatures[0].type);
                 }
                 var etymologies = entries[k].etymologies;
                 if (typeof etymologies === 'object') {
-                //console.log('etymologies: '+etymologies);
-                console.log('simpleData['+i+']: '+JSON.stringify(simpleData[i]));
-                
-                if (typeof simpleData[i].nodes[j].nodes !== 'object') {
-                    simpleData[i].nodes[j].nodes = [];
-                    simpleData[i].nodes[j].nodes.push({text:'etymologies: '+etymologies});
-                } else {
-                    simpleData[i].nodes[j].nodes.push({text:'etymologies: '+etymologies});
-                }
+                    //console.log('etymologies: '+etymologies);
+                    console.log('simpleData['+i+']: '+JSON.stringify(simpleData[i]));
+                    
+                    if (typeof simpleData[i].nodes[j].nodes !== 'object') {
+                        simpleData[i].nodes[j].nodes = [];
+                        simpleData[i].nodes[j].nodes.push({text:'etymologies: '+etymologies});
+                    } else {
+                        simpleData[i].nodes[j].nodes.push({text:'etymologies: '+etymologies});
+                    }
                 
                 }
                 var homographNumber = entries[k].homographNumber;
                 var entries_pronunciations = entries[k].pronunciations;
                 if (typeof entries_pronunciations === 'object') {
-                for (let l = 0; l < entries_pronunciations.length; l++) {
-                    var entries_audioFile = entries_pronunciations[l].audioFile;
-                    if (typeof entries_audioFile !== 'undefined') {
-                    console.log('entries_audioFile: '+entries_audioFile);
-                    if (typeof simpleData[i].nodes[j].nodes !== 'object') {
-                        simpleData[i].nodes[j].nodes = [];
-                        simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>'});
-                    } else {
-                        var isExists = false;
-                        var isIdx = 0;
-                        for (let v = 0; v < simpleData[i].nodes[j].nodes.length; v++) {
-                        if (simpleData[i].nodes[j].nodes[v].text.indexOf("mp3") > -1) {
-                            isExists = true;
-                            isIdx = v;
+                    for (let l = 0; l < entries_pronunciations.length; l++) {
+                        var entries_audioFile = entries_pronunciations[l].audioFile;
+                        if (typeof entries_audioFile !== 'undefined') {
+                            console.log('entries_audioFile: '+entries_audioFile);
+                            if (typeof simpleData[i].nodes[j].nodes !== 'object') {
+                                simpleData[i].nodes[j].nodes = [];
+                                simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>'});
+                            } else {
+                                var isExists = false;
+                                var isIdx = 0;
+                                for (let v = 0; v < simpleData[i].nodes[j].nodes.length; v++) {
+                                    if (simpleData[i].nodes[j].nodes[v].text.indexOf("mp3") > -1) {
+                                        isExists = true;
+                                        isIdx = v;
+                                    }
+                                }
+                                if (isExists) {
+                                    simpleData[i].nodes[j].nodes[isIdx].text = simpleData[i].nodes[j].nodes[isIdx].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>';
+                                } else {
+                                    simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>'});
+                                }
+                            }
                         }
-                        }
-                        if (isExists) {
-                        simpleData[i].nodes[j].nodes[isIdx].text = simpleData[i].nodes[j].nodes[isIdx].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>';
-                        } else {
-                        simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>'});
-                        }
+                        var entries_dialects = entries_pronunciations[l].dialects;
+                        //console.log('entries_dialects: '+entries_dialects);
+                        var entries_phoneticNotation = entries_pronunciations[l].phoneticNotation;
+                        var entries_phoneticSpelling = entries_pronunciations[l].phoneticSpelling;
                     }
-                    }
-                    var entries_dialects = entries_pronunciations[l].dialects;
-                    //console.log('entries_dialects: '+entries_dialects);
-                    var entries_phoneticNotation = entries_pronunciations[l].phoneticNotation;
-                    var entries_phoneticSpelling = entries_pronunciations[l].phoneticSpelling;
-                }
                 }
                 var senses = entries[k].senses;
                 for (let l = 0; l < senses.length; l++) {
@@ -1314,14 +1314,14 @@ function processDicData(dic_content) {
                     var examples = senses[l].examples;
                     if (typeof examples === 'object') {
                         for (let m = 0; m < examples.length; m++) {
-                        var examples_registers = examples[m].registers;
-                        if (typeof examples_registers !== 'undefined') {
-                            //console.log('examples_registers[0].text: '+examples_registers[0].text);
-                        }
-                        var examples_text = examples[m].text;
-                        console.log('examples_text: '+examples_text);
-                        simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'});
-                        ssIdx = simpleData[i].nodes[j].nodes.length - 1;
+                            var examples_registers = examples[m].registers;
+                            if (typeof examples_registers !== 'undefined') {
+                                //console.log('examples_registers[0].text: '+examples_registers[0].text);
+                            }
+                            var examples_text = examples[m].text;
+                            console.log('examples_text: '+examples_text);
+                            simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'});
+                            ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
                     var senses_id = senses[l].id;
@@ -1387,6 +1387,7 @@ function processDicData(dic_content) {
                     }
                     var thesaurusLinks = senses[l].thesaurusLinks;
                     if (typeof thesaurusLinks === 'object') {
+                        simpleData[i].nodes[j].nodes.push({text:'thesaurus: <a onclick="thesaurus(\''+thesaurusLinks[0].entry_id+'\');" style="cursor: pointer;">'+thesaurusLinks[0].entry_id+'</a>'});
                         var thesaurusLinks_entry_id = thesaurusLinks[0].entry_id;
                         //console.log('thesaurusLinks[0].entry_id: '+thesaurusLinks[0].entry_id);
                         var thesaurusLinks_sense_id = thesaurusLinks[0].sense_id;
@@ -1395,6 +1396,169 @@ function processDicData(dic_content) {
             }
         }
         var type = results[i].type;
+    }
+    simpleData.push({text: '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>'});
+	console.log(JSON.stringify(simpleData));
+    $('#treeview1').css("display", "block");
+    $('#treeview1').treeview({
+        levels: 99,
+        data: simpleData
+    });
+}
+
+function thesaurus(word) {
+    var data = {};
+    data.word = word;
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/catalog/story_oxford_ajaxt',
+        async: false,
+        success : function(data) {
+            processDicDatat(data.dic_content);
+        }
+    });    
+}
+
+function processDicDatat(dic_content) {
+    var simpleData = [];
+    var voca = JSON.parse(dic_content);
+    
+    var word_id = voca.id;
+    var results = voca.results;
+    for (let i = 0; i < results.length; i++) {
+        var word = results[i].word;
+        simpleData.push({text:word});
+        console.log('word: '+word);
+        var id = results[i].id;
+        //console.log('results['+i+'].id: '+results[i].id);
+        var language = results[i].language;
+        var lexicalEntries = results[i].lexicalEntries;
+        for (let j = 0; j < lexicalEntries.length; j++) {
+            if (j == 0) simpleData[i].nodes = [];
+            var lexicalEntries_language = lexicalEntries[j].language;
+            var lexicalCategory = lexicalEntries[j].lexicalCategory;
+            if (typeof lexicalCategory === 'object') {
+                var lexicalCategory_id = lexicalCategory.id;
+                var lexicalCategory_text = lexicalCategory.text;
+                console.log('lexicalCategory.text:'+lexicalCategory.text);
+                simpleData[i].nodes.push({text:lexicalCategory.text});
+            }
+            var entries = lexicalEntries[j].entries;
+            for (let k = 0; k < entries.length; k++) {
+                var senses = entries[k].senses;
+                for (let l = 0; l < senses.length; l++) {
+                    
+                    var ssIdx = 0;
+                    
+                    if (typeof simpleData[i].nodes[j].nodes !== 'object') simpleData[i].nodes[j].nodes = [];
+                    
+                    var antonyms = senses[l].antonyms;
+                    if (typeof antonyms === 'object') {
+                        for (let m = 0; m < antonyms.length; m++) {
+                            simpleData[i].nodes[j].nodes.push({text:'antonym: '+antonyms[m].text});
+                            ssIdx = simpleData[i].nodes[j].nodes.length - 1;
+                        }
+                    }
+                    
+                    var examples = senses[l].examples;
+                    if (typeof examples === 'object') {
+                        for (let m = 0; m < examples.length; m++) {
+                            simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'});
+                            ssIdx = simpleData[i].nodes[j].nodes.length - 1;
+                        }
+                    }
+                    var senses_id = senses[l].id;
+                    var registers = senses[l].registers;
+                    if (typeof registers === 'object') {
+                        console.log('registers[0].id: '+registers[0].id);
+                        console.log('registers[0].text: '+registers[0].text);
+                    }
+                    var subsenses = senses[l].subsenses;
+                    if (typeof subsenses === 'object') {
+                        if (typeof simpleData[i].nodes[j].nodes[ssIdx].nodes !== 'object') simpleData[i].nodes[j].nodes[ssIdx].nodes = [];
+                        for (let m = 0; m < subsenses.length; m++) {
+                            var subsenses_synonyms = subsenses[m].synonyms;
+                            if (typeof subsenses_synonyms === 'object') {
+                                for (let n = 0; n < subsenses_synonyms.length; n++) {
+                                    simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'synonym: '+subsenses_synonyms[n].text});
+                                }
+                            }
+                        }
+                    }
+
+                    var synonyms = senses[l].synonyms;
+                    if (typeof synonyms === 'object') {
+                        for (let m = 0; m < synonyms.length; m++) {
+                            simpleData[i].nodes[j].nodes.push({text:'synonym: '+synonyms[m].text});
+                            ssIdx = simpleData[i].nodes[j].nodes.length - 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    simpleData.push({text: '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>'});
+	console.log(JSON.stringify(simpleData));
+    $('#treeview1').css("display", "block");
+    $('#treeview1').treeview({
+        levels: 99,
+        data: simpleData
+    });
+}
+
+function sentence(word) {
+    var data = {};
+    data.word = word;
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/catalog/story_oxford_ajaxs',
+        async: false,
+        success : function(data) {
+            processDicDatas(data.dic_content);
+        }
+    });    
+}
+
+function processDicDatas(dic_content) {
+    var simpleData = [];
+    var voca = JSON.parse(dic_content);
+    
+    var word_id = voca.id;
+    var results = voca.results;
+    for (let i = 0; i < results.length; i++) {
+        var word = results[i].word;
+        simpleData.push({text:word});
+        console.log('word: '+word);
+        var id = results[i].id;
+        //console.log('results['+i+'].id: '+results[i].id);
+        var language = results[i].language;
+        var lexicalEntries = results[i].lexicalEntries;
+        for (let j = 0; j < lexicalEntries.length; j++) {
+            if (j == 0) simpleData[i].nodes = [];
+            var lexicalEntries_language = lexicalEntries[j].language;
+            var lexicalCategory = lexicalEntries[j].lexicalCategory;
+            if (typeof lexicalCategory === 'object') {
+                var lexicalCategory_id = lexicalCategory.id;
+                var lexicalCategory_text = lexicalCategory.text;
+                console.log('lexicalCategory.text:'+lexicalCategory.text);
+                simpleData[i].nodes.push({text:lexicalCategory.text});
+            }
+            var sentences = lexicalEntries[j].sentences;
+            for (let k = 0; k < sentences.length; k++) {
+                if (typeof simpleData[i].nodes[j].nodes !== 'object') simpleData[i].nodes[j].nodes = [];
+                var regions = sentences[k].regions;
+                var text = sentences[k].text;
+                simpleData[i].nodes[j].nodes.push({text:regions[0].text+': '+text});
+            }
+        }
     }
     simpleData.push({text: '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>'});
 	console.log(JSON.stringify(simpleData));

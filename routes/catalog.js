@@ -127,6 +127,10 @@ router.get('/story_oxford', story_controller.story_oxford);
 
 router.post('/story_oxford_ajax', story_controller.story_oxford_ajax);
 
+router.post('/story_oxford_ajaxt', story_controller.story_oxford_ajaxt);
+
+router.post('/story_oxford_ajaxs', story_controller.story_oxford_ajaxs);
+
 /// WORD ROUTES ///
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).

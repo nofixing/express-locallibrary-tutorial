@@ -1,0 +1,2479 @@
+{
+  "id": "ace",
+  "metadata": {
+    "operation": "retrieve",
+    "provider": "Oxford University Press",
+    "schema": "SentencesResults"
+  },
+  "results": [
+    {
+      "id": "ace",
+      "language": "en-gb",
+      "lexicalEntries": [
+        {
+          "language": "en-gb",
+          "lexicalCategory": {
+            "id": "noun",
+            "text": "Noun"
+          },
+          "sentences": [
+            {
+              "regions": [
+                {
+                  "id": "east_asian",
+                  "text": "East Asian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "One recent day, search crews found an ace of diamonds playing card, a doorknob, a pair of security guard pants, a woman's black wig and a pink toothbrush."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "You look at the cards one at a time, and pile them face up on the ace of the same suit."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "He picked up his cards, finding the ace of diamonds he tossed it on the pile."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "Your opponent has only one card left and you know it is the ace of trumps."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "When the deck is unusually rich in face cards and aces, they bet more, and when the deck is relatively poor in these cards, they bet less."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "During the Vietnam War, the ace of spades was considered the card of death by the Viet Cong."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "The ace of spades is the most powerful card, irrespective of what suit is trumps."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "When played as the High Card, jokers rank as aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "If you set down a face card, an ace, or a joker, then next person has a certain number of chances to set down one of those cards."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "The cards keep their usual ranks except for the ace which can be either the highest or lowest ranked card in a suit at the whim of the person playing it."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "At the end of the following hand it is noted who held the ace of hearts at the end of the auction."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "Christopher set down his cards, exposing a three, five, and ten of spades and the ace of diamonds."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "If an ace of spades is turned up, the next player must turn up 4 more cards."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "Trump cards beat all other cards and aces are low."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "A normal 52-card deck with the aces removed."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "The guy shows his cards and he had the ace of hearts, but like I said, my hand was unbeatable at that point."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "The black aces are permanent trumps, independent of which suit otherwise is trumps."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "I started with the queen of diamonds and spades, an ace of clubs, five of hearts and three of diamonds."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "Lynn's cards are strong - she has the ace of diamonds, the ace and queen of clubs, the ace and king of hearts."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.006",
+                "m_en_gbus0005680.006",
+                "b-en-es0000347.002"
+              ],
+              "text": "He flicked his wrist and an ace of spades appeared."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The motorcycle ace won a world title on the all-powerful Honda last year and then celebrated victory by signing for the all-powerless Yamaha."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The Chorley ace starred alongside Olympic record holder Chris Hoy and Craig MacLean as the British team left Poland trailing by more than a second in the sprint final."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "Lane however had their own batting aces and the Park bowlers struggled as S Hargreaves made 69 and Oliver Halliday 53."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The first ace is the maverick genius of young James McFadden, now of Everton."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "She appeared alongside young aces in fields including sports and music and pop singing."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "Olympic champion Maurice Greene's status as the world's No 1 sprinter looks shakier than ever and a host of other top name American stars have struggled as Britain's track aces, led by Campbell, bloom."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "Goal ace Ole Gunnar Solskjaer kept Manchester United in the Premiership title race with a typical smash-and-grab at Filbert Street."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "A football signed by Brazilian ace and World Cup winner Rivaldo is set to be auctioned off to raise funds for the York City Supporters' Trust."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The Canadian ace took charge of the ball before converting his fourth goal in five games."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The Pontefract-based ace will captain a four-man team."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The Kiwi ace piled up 24 points with a try and 10 goals before being given a rest after an hour when it was 60-6."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The former Olympic ace, who quit competitive swimming earlier this month, is determined to win a behind-the-scenes role in the sport."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The in-form Canadian ace has made only one start this season, but he is top scorer with three goals - two of them coming in the last three games."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The Sheffield-born ace will become the Blues' boss eighth signing since he took over from Joe Royle and takes his spending to around £4m."
+            },
+            {
+              "regions": [
+                {
+                  "id": "canadian",
+                  "text": "Canadian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "Sunny and sweet, this film is what's to be expected - a big studio romantic comedy about two tennis aces who fall in love at Wimbledon."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "But the government body funding the project, the Engineering and Physical Sciences Research Council, hopes it might be the making of a new generation of homegrown tennis aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "Four tennis aces from Lancaster Royal Grammar School have been competing in the National Schools Tennis Championship finals in Hertfordshire."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "The Leeds-based tennis ace, who reached the third round of the junior version of Wimbledon last year, faces a punishing daily regime."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "Meanwhile, next up for the talented tennis ace is a trip to Florida where he has been invited to the Nick Bollettieri Tennis Academy."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.010",
+                "m_en_gbus0005680.010",
+                "b-en-es0000347.004"
+              ],
+              "text": "His elder sister, a computer ace, spent second grade doing research on the Internet, delving into Greek myths and studying artists."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "The Tomahawk was also enjoying success in aerial combat and several British and Commonwealth pilots became aces while flying the aircraft."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Walsh was undoubtedly a hero but his experiences were also typical of many other USMC and Navy Corsair pilots - aces or not."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Added to this, Mint wanted to bring together Corsair pilots, aces, crewmen, and factory workers for a celebration of one of the world's most famous combat aircraft."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "In all, sergeant pilots shot down almost 250 enemy aircraft, and 17 became fighter aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Fogleman went on to credit the air supremacy of the F - 86 as a leading factor in the high number of Air Force aces from that war."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Typical of the series, this entry provides four pages of summary information on Luftwaffe aces and their battles with Allied pilots."
+            },
+            {
+              "regions": [
+                {
+                  "id": "new_zealand",
+                  "text": "New Zealand"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Nine of the squadron pilots became aces, and five were awarded the RAF Distinguished Flying Cross."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Bomber pilots that went on to become fighter aces during World War Two are fairly rare."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Even though the P - 40 was not a topline fighter, many pilots in the Pacific became aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Stationed for a tour in West Germany, he became friends with many Luftwaffe aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "The 22-year-old pilot who had never flown a plane before his 18th birthday was about to begin his meteoric rise to the top of the Luftwaffe's list of living aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Fleeting allusions to female fighter aces or the exploits of a night-bomber regiment known as the ‘Night Witches’ occasionally crop up."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "I had prepared for combat and was ready to become a fighter ace in Europe or the Pacific."
+            },
+            {
+              "regions": [
+                {
+                  "id": "australian",
+                  "text": "Australian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Despite his appearance, he was a formidable pilot who became an ace and earned the DFC."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "He traces the technological development of the fighter and its employment in combat, relying heavily on a chronological presentation of vignettes about famous aces and their machines."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "Also, while researching the particular aircraft, Craig discovered an astounding fact - the plane had actually been flown by one of Germany's leading aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "He became an ace 10 days before his 21st birthday, during the invasion of Sicily."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "This aspect of being an ace haunted him increasingly as his number of kills rose."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "The Imperial War Museum yesterday said it would continue to invite German war veterans to its shows, despite criticism over the appearance of one of the Luftwaffe's greatest aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.011",
+                "m_en_gbus0005680.011"
+              ],
+              "text": "He had already shot down five planes to become an ace and was doing a good job running the squadron."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "She got the match off to a lightning start, opening with a love service game including two aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "He finished three of his first four service games with an ace."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "He broke his opponent's opening service game easily, and then held serve with three aces to win seven out of eight of the first points played."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "It was down to a tie-breaker game of 11 aces which saw the Cavan pair run up an early lead of 6-2 and seemed to be heading for the win."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "The final game saw Carlow run into an early lead of eight aces, and were looking good."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "He fought off six break points and ended the game with two aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "australian",
+                  "text": "Australian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "The hardest server in the world, he compiled 13 aces in today's game but was broken once in each set, including at love to fall behind 5-4 in the second."
+            },
+            {
+              "regions": [
+                {
+                  "id": "canadian",
+                  "text": "Canadian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "However, striking for 13 service aces certainly helped out, he said."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "I then win a duel at the net before I take the game with an ace."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "But he managed only one service winner and no aces in the final tiebreaker."
+            },
+            {
+              "regions": [
+                {
+                  "id": "east_asian",
+                  "text": "East Asian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "He finished with 18 aces and 41 service winners, and won despite breaking serve just twice."
+            },
+            {
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "His final three aces came in his last service game."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "With the verbal equivalent of one of those ferocious aces he whacks past opponents, Andy Roddick has summed up life in just 18 words."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "She closed out with consecutive aces and a service winner."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "His serve improved as he fired down five aces in his first two service games."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "The Chinese served better than they had in previous matches against the Americans, with five aces, and they set up their offense better, with 61 kills."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "Their response to the whisper of defeat was the second-serve ace, the cross-court winner - the diamond hardness of their minds."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "‘The good thing was that I was serving very well,’ said Aisam, after delivering a dozen aces in the final."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "A forehand crosscourt, backhand down the line, a couple of aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "south_african",
+                  "text": "South African"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.013",
+                "m_en_gbus0005680.013",
+                "b-en-es0000347.003"
+              ],
+              "text": "She hit a second-serve ace to save the first and a backhand winner to salvage the second."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "He dropped in a 104-yard sand-wedge shot on the fourth hole for his second ace in less than an hour."
+            },
+            {
+              "regions": [
+                {
+                  "id": "australian",
+                  "text": "Australian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "He provided the highlight on Saturday with an ace at the par three 2nd hole, his second ace in five weeks!"
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "Not to be outdone, her brother, Sean, 14, made his own ace on the same hole during tournament play later that week."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "It was his second ace following one at Fulford's fifth hole."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "He opened the defense of his title with 14 aces in the first 16 holes."
+            },
+            {
+              "regions": [
+                {
+                  "id": "east_asian",
+                  "text": "East Asian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "A search in the bushes failed as the ball had dropped in the hole for an ace."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "A beautifully played nine-iron pitched once and then rolled gracefully into the ninth hole for an ace that shot the Irishman to the top of the leaderboard."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "Her first hole-in-one gave the couple an ace on all four of the course's par 3s."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "Prior to that, I was an active high school golfer, and I was about a 10-handicapper when I made my first ace at age 15."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "Kevin scored the ace on the 16th hole, which also secured him the prize of nearest the pin."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "Today, his ace remains the longest in Golf Digest's record book."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "The funny thing is, because I'd played that hole so many times when I could see, I have this clear vision of all three of my aces."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "Imagine his glum answer when asked if he'd ever made an ace: ‘Yeah, but nobody was there to see it.’"
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "It was my first ace, and I was so happy she was there to witness the shot."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "Mike used a pitching wedge to hit a low, piercing drive into the 17th green for the ace."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "It was the second ace for the 24-handicap player."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "But his next goal is to become the oldest person ever to record an ace."
+            },
+            {
+              "regions": [
+                {
+                  "id": "australian",
+                  "text": "Australian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "He recorded an ace on the par three 14th hole."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "The hole-in-one at No.9 was the first career ace for each."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.014",
+                "m_en_gbus0005680.014"
+              ],
+              "text": "Using her trusty seven wood, the ace came at the 143-yard eighth hole."
+            }
+          ],
+          "text": "ace"
+        }
+      ],
+      "type": "headword",
+      "word": "ace"
+    },
+    {
+      "id": "ace",
+      "language": "en-gb",
+      "lexicalEntries": [
+        {
+          "language": "en-gb",
+          "lexicalCategory": {
+            "id": "adjective",
+            "text": "Adjective"
+          },
+          "sentences": [
+            {
+              "regions": [
+                {
+                  "id": "australian",
+                  "text": "Australian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "People have these fantasies that we live in a world where mum and dad are both ace parents and have wonderful relationships with their children and with each other."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "The show's got everything - ace gags, brilliant direction and those boys can ad-lib like the pros they are."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "A peek into the world of an ace swimmer who had everything going for him until calamity came calling one day, it is the kind of brave cinema that has been making its presence felt in recent times."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "THE I-BAR sizzled with Salsa beats last weekend when ace Salsa dancers thrilled Bangalore's party circuit with the latest in Latino and Salsa rhythms."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "And, true to his name, this ace comedian has been making everyone roll up in laughter for years."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "The ace photographer has decided to go beyond his lens-work and has started a production house."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "This route is punctuated by farms with ace brick barns; we passed more, some roofless, some heading that way, and joined the River Seven to take its low floodbank."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "She brought me back lots of little ace presents from New York - including a copy of the Village Voice, whose personal ads I'll be settling down with later."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "He's a photographer and has worked with loads of famous people, so had lots of ace stories."
+            },
+            {
+              "regions": [
+                {
+                  "id": "canadian",
+                  "text": "Canadian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "This man can direct ace children's fare, and do it well."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "The Forestry Commission car park on Clay Bank Top normally provides ace views of the Cleveland Plain, but there was nothing but an impenetrable gloom."
+            },
+            {
+              "regions": [
+                {
+                  "id": "canadian",
+                  "text": "Canadian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "Poet, publisher and ace volunteer discusses her literary loves."
+            },
+            {
+              "regions": [
+                {
+                  "id": "new_zealand",
+                  "text": "New Zealand"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "They were also the days when the English still made ace movies."
+            },
+            {
+              "regions": [
+                {
+                  "id": "canadian",
+                  "text": "Canadian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "All I wanna know is why this ace MC is wasting his time with a throwaway re-hash of every track about a shorty ever written."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "I have repotted the coriander seedlings, which are still winning the prize for most vigorous specimens, and which have ace roots."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "Popov's career was given the nudge it needed when, at the age of 17, he met ace coach Touretsky in St Petersbourg."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "If gift articles have characteristics of ace craftsmanship, they also merit to be preserved as things of beauty."
+            },
+            {
+              "regions": [
+                {
+                  "id": "canadian",
+                  "text": "Canadian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "I spoke to a couple of ace gardeners recently in a mad bid to investigate the best native plants for my downtown rental cottage."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "I just found out today that the man from Japan is coming to visit us over Christmas, this is ace news because we haven't seen him for a couple of years."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.016",
+                "m_en_gbus0005680.016",
+                "b-en-es0000347.007"
+              ],
+              "text": "But on July 3 2002, in the midst of recording their ace second album, he finally met the people who did."
+            }
+          ],
+          "text": "ace"
+        }
+      ],
+      "type": "headword",
+      "word": "ace"
+    },
+    {
+      "id": "ace",
+      "language": "en-gb",
+      "lexicalEntries": [
+        {
+          "language": "en-gb",
+          "lexicalCategory": {
+            "id": "verb",
+            "text": "Verb"
+          },
+          "sentences": [
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "The balance and agility you gain will have you leaping above your opponents at beach-volleyball matches, acing your game on the tennis court and more."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "He got the message, gave Gracie and me a salute, and ran back to his game, serving the ball and acing it."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "Whether you're among the millions of players who have recently taken up tennis or a seasoned player, one of these new shoes might just help you ace your game."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "Castle and Boris aced it all the way to the final, with Castle clinching the title while describing it as the most terrifying thing he's ever done."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "MARIA SHARAPOVA, winner of women's Wimbledon 2004 title has aced her way to the top with style."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "Today Prakash, Vijay's 19-year-old son and Stephen, Anand's 18-year-old son are acing their way into the tennis circuit that is a lot tougher than the ones their fathers played in their days."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "And strong running serves have a better chance of acing the opposition, while a standing serve has less chance of netting."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "Carmen aced four serves with the remaining serves so strong, that the Dublin team could only send over a weak reply which was duly punished by fabulous hitting from Eimhinn, Gabrielle and Carlow's captain, Christine Harte."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "That then turned the ball over to Riley, and she quickly aced out the second game of the match, to even the match at one game apiece."
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.020",
+                "m_en_gbus0005680.031"
+              ],
+              "text": "Harsh then punched out a return and set Carraz on the match point and the Frenchman aced his way to the final."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "Last Christmas Eve, father and son played Big Canyon in Newport Beach, Calif., and Tiger aced the third hole."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "He was the fourth member of his family to ace the same hole - No.9 at Squaw Creek Country Club in Vienna, Ohio."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "The 34-year-old former paratrooper aced the 16th hole and then birdied the last for a final round 68 and a two-stroke 14-under winning total."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "Playing the Ironwood Course near Phoenix in June 1976, he aced the 8th hole, knocked in another at the 13 th and followed that with another ace at the next hole!"
+            },
+            {
+              "regions": [
+                {
+                  "id": "indian",
+                  "text": "Indian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "The South African world number two, looking to lift the Claret Jug for the second time, was three under with eight holes to play after acing the par-three eighth."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "The tall Swede aced the 11 th hole at Fota during the second round but there are no prizes on offer for the players."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "Playing her first full round of golf, with two friends and an adult in July, Smiley, 12, aced the 110-yard 11 th hole at Lomas Santa Fe Executive Course."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "Playing at Churchill Valley Country Club in Pittsburgh, the 3-handicapper aced the 156-yard par - 3 third for the sixth hole-in-one of his career."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "He aces more holes than he doesn't and he relaxes."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "The Forest of Galtres GC player notched his first hole in one when he aced the 170-yard par three 11 th hole at The Oaks using a four iron."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "After he had aced the 141-yard 13 th with an 8-iron, he approached his wife's group to share the news."
+            },
+            {
+              "regions": [
+                {
+                  "id": "australian",
+                  "text": "Australian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "Jim scored the ultimate in golf when he aced par 3-5 - 14th."
+            },
+            {
+              "regions": [
+                {
+                  "id": "australian",
+                  "text": "Australian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "He recorded the highlight of the weekend by acing the par 3 15th hole."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "He aced the 226-yard eighth hole with a four-iron in a front nine of 29 that had him on course to break the magical 60 barrier."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "Yesterday, he aced the 142-metres 16th hole to win a special plaque."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "Using the same ball and the same club, he aced the 167 yard fifth hole at Slade Valley."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "Toini Norman, 72, aced the par three 14th at Pelican Waters Golf Club on Australia s Sunshine Coast a few weeks ago."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "She aced two par three holes during a round at the Burnham and Berrow Golf Club in Burnham-on-Sea, Somerset, at odds of 14 million-to-one."
+            },
+            {
+              "regions": [
+                {
+                  "id": "south_african",
+                  "text": "South African"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "He has aced the short third at West Bank and the par-four fifth at East London (the fifth, of course, an even rarer albatross) in orthodox fashion during a long and distinguished career on South Africa's fairways."
+            },
+            {
+              "regions": [
+                {
+                  "id": "irish",
+                  "text": "Irish"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.026",
+                "m_en_gbus0005680.037"
+              ],
+              "text": "Allenby aced the 179-yard 11 th, helping him finish in the top 10 for the first time this year."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "Expecting to ace a test you didn't study for isn't optimism-it's dreaming!"
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "You know the information inside and out, and feel ready to ace this test!"
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "Any studious teen can memorize the driver's ed guidebook to ace the written exam."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "Why didn't I ace that test when I needed to keep my grades up if I want to get into college?"
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "You're more likely to ace the test if you study in spurts with occasional breaks in between."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "Sure, you know how to do things - like how to make new friends, ace an English test and get ready for soccer like a month before tryouts, just to name a few."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "I actually aced the tests and got great scores - which cracked me up."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "And anyway, my top priority now is acing my exams."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "We've all seen it: the employee who's convinced she's doing a great job and gets a mediocre performance appraisal, or the student who's sure he's aced an exam and winds up with a D."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "It was the kind of feeling you had in school when you knew that you had aced the test."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "But, she's doing good, just aced another test as usual."
+            },
+            {
+              "regions": [
+                {
+                  "id": "canadian",
+                  "text": "Canadian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "I know in my heart, Barbara, that I aced those exams."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "He aced the tests and was welcomed by the other officers."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "I remember once in sixth grade, we had this big test, and she gave me a whole pep talk on how to focus and everything, and I aced the test."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "He resat his Leaving Certificate, aced his exams and restarted at UCD in 2002 as a medical student."
+            },
+            {
+              "regions": [
+                {
+                  "id": "australian",
+                  "text": "Australian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "Gripping her bag for added support, she murmured softly, ‘It depends on what you call acing a subject.’"
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "I never did anything in that class but I aced the final and finished the class with a D-. Does that count?"
+            },
+            {
+              "regions": [
+                {
+                  "id": "canadian",
+                  "text": "Canadian"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "Toni, you aced the business course and they told you, you have potential!"
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "Umm, Marvin, a 700 combined score isn't really acing your SATs."
+            },
+            {
+              "regions": [
+                {
+                  "id": "british",
+                  "text": "British"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.028",
+                "m_en_gbus0005680.038"
+              ],
+              "text": "I whizzed through my GCSEs, acing geography with the only perfect score in the country."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "Trivia buffs, fantasy leaguers and statistical fanatics will all love this book as will columnists, talk show hosts and know-it-alls looking to ace someone out of a beer or two on a proposition wager."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "How can your competitor get away with not adding that tax and ace you out of yet another job?"
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "I felt cheated when the Geologists and Petroleum Engineers aced us out of the new Cecil Green building."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "In fact, as I was anxiously thinking these thoughts, a couple aced us out of the last table in the screened-in porch."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "However, he's never built momentum, so my guess is that the heavier competition here will ace him out."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "Due to new management a new reservation book was created, allowing the Lake Washington High School football team to ace us out for November."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "If you want sellers to call you before they list with discounters, we have a brand new postcard marketing campaign that will make it much harder for discounters to ace you out of the listing."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "Most print dealers were so desperate that they would undercut your price by a measly hundred dollars just to ace you out of a deal."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "Finally, I had to have a talk with him and explain that I appreciated his enthusiasm, but he needed to include me, not ace me out, or else we were going to have problems."
+            },
+            {
+              "regions": [
+                {
+                  "id": "north_american",
+                  "text": "North American"
+                }
+              ],
+              "senseIds": [
+                "m_en_gbus0005680.029",
+                "m_en_gbus0005680.039"
+              ],
+              "text": "She'll likely lose Best Pop Album to McCartney, while Kelly Clarkson's ‘Since U Been Gone,’ strangely snubbed from the Record of the Year race, should ace her out of the prize for Best Female Pop Vocal Performance."
+            }
+          ],
+          "text": "ace"
+        }
+      ],
+      "type": "headword",
+      "word": "ace"
+    }
+  ],
+  "word": "ace"
+}

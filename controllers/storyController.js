@@ -988,3 +988,53 @@ exports.story_oxford_ajax = function(req, res, next) {
         }
     });
 };
+
+exports.story_oxford_ajaxt = function(req, res, next) {
+    
+    console.log('story_oxford_ajaxt start -> query:'+req.body.word);
+    
+    var config = {
+        app_id : oxford_app_id,
+        app_key : oxford_app_key,
+        source_lang : "en"
+    };  
+  
+    var dict = new OxfordDictionary(config);
+    
+    var lookup = dict.thesaurus(req.body.word);
+
+    lookup.then(function(data) {
+        console.log('parse result ->'+JSON.stringify(data));
+        req.body.dic_content = JSON.stringify(data);
+        res.send(req.body);
+    },
+    function(err) {
+        console.log('req.query.word:'+req.body.word+'     story_oxford_ajaxt err:'+err); 
+        return next(err);
+    });
+};
+
+exports.story_oxford_ajaxs = function(req, res, next) {
+    
+    console.log('story_oxford_ajaxs start -> query:'+req.body.word);
+    
+    var config = {
+        app_id : oxford_app_id,
+        app_key : oxford_app_key,
+        source_lang : "en"
+    };  
+  
+    var dict = new OxfordDictionary(config);
+    
+    var lookup = dict.sentences(req.body.word);
+
+    lookup.then(function(data) {
+        console.log('parse result ->'+JSON.stringify(data));
+        req.body.dic_content = JSON.stringify(data);
+        res.send(req.body);
+    },
+    function(err) {
+        console.log('req.query.word:'+req.body.word+'     story_oxford_ajaxs err:'+err); 
+        return next(err);
+    });
+};
