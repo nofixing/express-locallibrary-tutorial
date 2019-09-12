@@ -1279,100 +1279,118 @@ function processDicData(dic_content) {
                 }
                 var senses = entries[k].senses;
                 for (let l = 0; l < senses.length; l++) {
-                
-                var ssIdx = 0;
-                
-                if (typeof simpleData[i].nodes[j].nodes !== 'object') simpleData[i].nodes[j].nodes = [];
-                var definitions = senses[l].definitions;
-                if (typeof definitions !== 'undefined') {
-                    console.log('definitions: '+definitions);
-                    simpleData[i].nodes[j].nodes.push({text:definitions});
-                    ssIdx = simpleData[i].nodes[j].nodes.length - 1;
-                }
-                var crossReferenceMarkers = senses[l].crossReferenceMarkers;
-                if (typeof crossReferenceMarkers !== 'undefined') {
-                    console.log('crossReferenceMarkers: '+crossReferenceMarkers);
-                    simpleData[i].nodes[j].nodes.push({text:crossReferenceMarkers});
-                }
-                var domains = senses[l].domains;
-                if (typeof domains === 'object') {
-                    domains[0].id;
-                    domains[0].text;
-                }
-                var examples = senses[l].examples;
-                if (typeof examples === 'object') {
-                    for (let m = 0; m < examples.length; m++) {
-                    var examples_registers = examples[m].registers;
-                    if (typeof examples_registers !== 'undefined') {
-                        //console.log('examples_registers[0].text: '+examples_registers[0].text);
+                    
+                    var ssIdx = 0;
+                    
+                    if (typeof simpleData[i].nodes[j].nodes !== 'object') simpleData[i].nodes[j].nodes = [];
+                    
+                    var constructions = senses[l].constructions;
+                    if (typeof constructions === 'object') {
+                        console.log('constructions: '+constructions[0].text);
                     }
-                    var examples_text = examples[m].text;
-                    console.log('examples_text: '+examples_text);
-                    simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'});
-                    ssIdx = simpleData[i].nodes[j].nodes.length - 1;
-                    }
-                }
-                var senses_id = senses[l].id;
-                var registers = senses[l].registers;
-                var regions = senses[l].regions;
-                var notes = senses[l].notes;
-                if (typeof notes === 'object') {
-                    var notes_text = notes[0].text;
-                    var notes_type = notes[0].type;
-                }
-                var shortDefinitions = senses[l].shortDefinitions;
-                if (typeof shortDefinitions !== 'undefined') {
-                    //console.log('shortDefinitions: '+shortDefinitions);
-                }
-                var subsenses = senses[l].subsenses;
-                if (typeof subsenses === 'object') {
-                    if (typeof simpleData[i].nodes[j].nodes[ssIdx].nodes !== 'object') simpleData[i].nodes[j].nodes[ssIdx].nodes = [];
-                    for (let m = 0; m < subsenses.length; m++) {
-                    var subsenses_definitions = subsenses[m].definitions;
+                    
+                    var definitions = senses[l].definitions;
                     if (typeof definitions !== 'undefined') {
-                        console.log('subsenses_definitions: '+subsenses_definitions);
-                        simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions});
+                        console.log('definitions: '+definitions);
+                        simpleData[i].nodes[j].nodes.push({text:definitions});
+                        ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                     }
-                    var subsenses_domains = subsenses[m].domains;
-                    var subsenses_examples = subsenses[m].examples;
-                    if (typeof subsenses_examples === 'object') {
-                        for (let n = 0; n < subsenses_examples.length; n++) {
-                        var subsenses_examples_registers = subsenses_examples[n].registers;
-                        if (typeof subsenses_examples_registers !== 'undefined') {
-                            //console.log('subsenses_examples_registers[0].text: '+subsenses_examples_registers[0].text);
+                    var crossReferenceMarkers = senses[l].crossReferenceMarkers;
+                    if (typeof crossReferenceMarkers !== 'undefined') {
+                        console.log('crossReferenceMarkers: '+crossReferenceMarkers);
+                        simpleData[i].nodes[j].nodes.push({text:crossReferenceMarkers});
+                    }
+                    var crossReferences = senses[l].crossReferences;
+                    if (typeof crossReferences === 'object') {
+                        console.log('crossReferences[0].id: '+crossReferences[0].id);
+                        console.log('crossReferences[0].text: '+crossReferences[0].text);
+                        console.log('crossReferences[0].type: '+crossReferences[0].type);
+                    }
+                    var domains = senses[l].domains;
+                    if (typeof domains === 'object') {
+                        console.log('domains[0].id: '+domains[0].id);
+                        console.log('domains[0].text: '+domains[0].text);
+                    }
+                    var examples = senses[l].examples;
+                    if (typeof examples === 'object') {
+                        for (let m = 0; m < examples.length; m++) {
+                        var examples_registers = examples[m].registers;
+                        if (typeof examples_registers !== 'undefined') {
+                            //console.log('examples_registers[0].text: '+examples_registers[0].text);
                         }
-                        var subsenses_examples_text = subsenses_examples[n].text;
-                        console.log('subsenses_examples_text: '+subsenses_examples_text);
-                        simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'<i>'+subsenses_examples[n].text+'</i>'});
+                        var examples_text = examples[m].text;
+                        console.log('examples_text: '+examples_text);
+                        simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'});
+                        ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
-                    var subsenses_id = subsenses[m].id;
-                    var subsenses_registers = subsenses[m].registers;
-                    var subsenses_regions = subsenses[m].regions;
-                    if (typeof subsenses_regions === 'object') {
-                        var subsenses_regions_id = subsenses_regions[0].id;
-                        var subsenses_regions_text = subsenses_regions[0].text;
-                        //console.log('subsenses_regions[0].text:'+subsenses_regions[0].text);
+                    var senses_id = senses[l].id;
+                    var registers = senses[l].registers;
+                    if (typeof registers === 'object') {
+                        console.log('registers[0].id: '+registers[0].id);
+                        console.log('registers[0].text: '+registers[0].text);
                     }
-                    var subsenses_notes = subsenses[m].notes;
-                    if (typeof subsenses_notes === 'object') {
-                        var subsenses_notes_text = subsenses_notes[0].text;
-                        var subsenses_notes_type = subsenses_notes[0].type;
-                        //console.log('subsenses_notes[0].text:'+subsenses_notes[0].text);
+                    var shortDefinitions = senses[l].shortDefinitions;
+                    if (typeof shortDefinitions !== 'undefined') {
+                        console.log('shortDefinitions: '+shortDefinitions);
+                        simpleData[i].nodes[j].nodes.push({text:shortDefinitions});
+                        ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                     }
-                    var subsenses_shortDefinitions = subsenses[m].shortDefinitions;
-                    if (typeof subsenses_shortDefinitions !== 'undefined') {
-                        //console.log('subsenses_shortDefinitions: '+subsenses_shortDefinitions);
+                    var regions = senses[l].regions;
+                    var notes = senses[l].notes;
+                    if (typeof notes === 'object') {
+                        var notes_text = notes[0].text;
+                        var notes_type = notes[0].type;
                     }
-                    var subsenses_thesaurusLinks = subsenses[m].thesaurusLinks;
+                    var subsenses = senses[l].subsenses;
+                    if (typeof subsenses === 'object') {
+                        if (typeof simpleData[i].nodes[j].nodes[ssIdx].nodes !== 'object') simpleData[i].nodes[j].nodes[ssIdx].nodes = [];
+                        for (let m = 0; m < subsenses.length; m++) {
+                            var subsenses_definitions = subsenses[m].definitions;
+                            if (typeof definitions !== 'undefined') {
+                                console.log('subsenses_definitions: '+subsenses_definitions);
+                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions});
+                            }
+                            var subsenses_domains = subsenses[m].domains;
+                            var subsenses_examples = subsenses[m].examples;
+                            if (typeof subsenses_examples === 'object') {
+                                for (let n = 0; n < subsenses_examples.length; n++) {
+                                var subsenses_examples_registers = subsenses_examples[n].registers;
+                                if (typeof subsenses_examples_registers !== 'undefined') {
+                                    //console.log('subsenses_examples_registers[0].text: '+subsenses_examples_registers[0].text);
+                                }
+                                var subsenses_examples_text = subsenses_examples[n].text;
+                                console.log('subsenses_examples_text: '+subsenses_examples_text);
+                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'<i>'+subsenses_examples[n].text+'</i>'});
+                                }
+                            }
+                            var subsenses_id = subsenses[m].id;
+                            var subsenses_registers = subsenses[m].registers;
+                            var subsenses_regions = subsenses[m].regions;
+                            if (typeof subsenses_regions === 'object') {
+                                var subsenses_regions_id = subsenses_regions[0].id;
+                                var subsenses_regions_text = subsenses_regions[0].text;
+                                //console.log('subsenses_regions[0].text:'+subsenses_regions[0].text);
+                            }
+                            var subsenses_notes = subsenses[m].notes;
+                            if (typeof subsenses_notes === 'object') {
+                                var subsenses_notes_text = subsenses_notes[0].text;
+                                var subsenses_notes_type = subsenses_notes[0].type;
+                                //console.log('subsenses_notes[0].text:'+subsenses_notes[0].text);
+                            }
+                            var subsenses_shortDefinitions = subsenses[m].shortDefinitions;
+                            if (typeof subsenses_shortDefinitions !== 'undefined') {
+                                //console.log('subsenses_shortDefinitions: '+subsenses_shortDefinitions);
+                            }
+                            var subsenses_thesaurusLinks = subsenses[m].thesaurusLinks;
+                        }
                     }
-                }
-                var thesaurusLinks = senses[l].thesaurusLinks;
-                if (typeof thesaurusLinks === 'object') {
-                    var thesaurusLinks_entry_id = thesaurusLinks[0].entry_id;
-                    //console.log('thesaurusLinks[0].entry_id: '+thesaurusLinks[0].entry_id);
-                    var thesaurusLinks_sense_id = thesaurusLinks[0].sense_id;
-                }
+                    var thesaurusLinks = senses[l].thesaurusLinks;
+                    if (typeof thesaurusLinks === 'object') {
+                        var thesaurusLinks_entry_id = thesaurusLinks[0].entry_id;
+                        //console.log('thesaurusLinks[0].entry_id: '+thesaurusLinks[0].entry_id);
+                        var thesaurusLinks_sense_id = thesaurusLinks[0].sense_id;
+                    }
                 }
             }
         }

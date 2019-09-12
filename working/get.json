@@ -1,0 +1,745 @@
+{
+  "id": "get",
+  "metadata": {
+    "operation": "retrieve",
+    "provider": "Oxford University Press",
+    "schema": "RetrieveEntry"
+  },
+  "results": [{
+    "id": "get",
+    "language": "en-us",
+    "lexicalEntries": [{
+        "derivatives": [{
+          "id": "gettable",
+          "text": "gettable"
+        }],
+        "entries": [{
+          "etymologies": [
+            "Middle English: from Old Norse geta‘obtain, beget, guess’; related to Old Englishgietan (in begietan ‘beget’, forgietan ‘forget’), from an Indo-European root shared by Latin praeda‘booty, prey’, praehendere‘get hold of, seize’, and Greek khandanein‘hold, contain, be able’"
+          ],
+          "senses": [{
+              "definitions": [
+                "come to have or hold (something); receive"
+              ],
+              "examples": [{
+                "text": "I got the impression that she wasn't happy"
+              }],
+              "id": "m_en_gbus0411550.014",
+              "notes": [{
+                "text": "with object",
+                "type": "grammaticalNote"
+              }],
+              "shortDefinitions": [
+                "come to have or hold"
+              ],
+              "subsenses": [{
+                  "definitions": [
+                    "experience, suffer, or be afflicted with (something bad)"
+                  ],
+                  "examples": [{
+                    "text": "I got a sudden pain in my left eye"
+                  }],
+                  "id": "m_en_gbus0411550.021",
+                  "shortDefinitions": [
+                    "experience or be afflicted with"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.009"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "receive as a punishment or penalty"
+                  ],
+                  "examples": [{
+                    "text": "I'll get the sack if things go wrong"
+                  }],
+                  "id": "m_en_gbus0411550.022",
+                  "shortDefinitions": [
+                    "receive as punishment or penalty"
+                  ]
+                },
+                {
+                  "definitions": [
+                    "contract (a disease or ailment)"
+                  ],
+                  "examples": [{
+                    "text": "I might be getting the flu"
+                  }],
+                  "id": "m_en_gbus0411550.023",
+                  "shortDefinitions": [
+                    "contract disease etc."
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.008"
+                  }]
+                }
+              ],
+              "thesaurusLinks": [{
+                  "entry_id": "get",
+                  "sense_id": "t_en_gb0006315.001"
+                },
+                {
+                  "entry_id": "get",
+                  "sense_id": "t_en_gb0006315.002"
+                },
+                {
+                  "entry_id": "get_something_back",
+                  "sense_id": "t_en_gb0006315.034"
+                }
+              ]
+            },
+            {
+              "definitions": [
+                "succeed in attaining, achieving, or experiencing; obtain"
+              ],
+              "examples": [{
+                "text": "I need all the sleep I can get"
+              }],
+              "id": "m_en_gbus0411550.026",
+              "notes": [{
+                "text": "with object",
+                "type": "grammaticalNote"
+              }],
+              "shortDefinitions": [
+                "obtain or achieve"
+              ],
+              "subsenses": [{
+                  "definitions": [
+                    "move in order to pick up or bring (something); fetch"
+                  ],
+                  "examples": [{
+                      "text": "get another chair"
+                    },
+                    {
+                      "notes": [{
+                        "text": "with two objects",
+                        "type": "grammaticalNote"
+                      }],
+                      "text": "I'll get you a drink"
+                    }
+                  ],
+                  "id": "m_en_gbus0411550.027",
+                  "shortDefinitions": [
+                    "fetch"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.004"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "tend to meet with or find in a specified place or situation"
+                  ],
+                  "examples": [{
+                    "text": "it was nothing like the winters we get in Florida"
+                  }],
+                  "id": "m_en_gbus0411550.029",
+                  "shortDefinitions": [
+                    "meet with or find in specified place etc."
+                  ]
+                },
+                {
+                  "definitions": [
+                    "travel by or catch (a bus, train, or other form of transport)"
+                  ],
+                  "examples": [{
+                    "text": "I'll get a taxi and be home in an hour"
+                  }],
+                  "id": "m_en_gbus0411550.030",
+                  "shortDefinitions": [
+                    "travel by or catch bus, train, etc."
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.007"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "obtain (a figure or answer) as a result of calculation."
+                  ],
+                  "id": "m_en_gbus0411550.031",
+                  "shortDefinitions": [
+                    "obtain figure etc. as a result of calculation"
+                  ]
+                },
+                {
+                  "definitions": [
+                    "respond to a ring of (a telephone or doorbell) or the knock on (a door)"
+                  ],
+                  "examples": [{
+                    "text": "I'll get it!"
+                  }],
+                  "id": "m_en_gbus0411550.033",
+                  "shortDefinitions": [
+                    "respond to ring of telephone etc."
+                  ]
+                },
+                {
+                  "definitions": [
+                    "said as an invitation to notice or look at someone, especially to criticize or ridicule them"
+                  ],
+                  "examples": [{
+                    "text": "get her!"
+                  }],
+                  "id": "m_en_gbus0411550.034",
+                  "notes": [{
+                    "text": "in imperative",
+                    "type": "grammaticalNote"
+                  }],
+                  "registers": [{
+                    "id": "informal",
+                    "text": "Informal"
+                  }],
+                  "shortDefinitions": [
+                    "used to criticize or ridicule someone"
+                  ]
+                }
+              ],
+              "thesaurusLinks": [{
+                "entry_id": "get",
+                "sense_id": "t_en_gb0006315.001"
+              }]
+            },
+            {
+              "definitions": [
+                "enter or reach a specified state or condition; become"
+              ],
+              "examples": [{
+                  "text": "it's getting late"
+                },
+                {
+                  "notes": [{
+                    "text": "with past participle",
+                    "type": "grammaticalNote"
+                  }],
+                  "text": "you'll get used to it"
+                },
+                {
+                  "text": "he got very worried"
+                }
+              ],
+              "id": "m_en_gbus0411550.036",
+              "notes": [{
+                "text": "no object",
+                "type": "grammaticalNote"
+              }],
+              "shortDefinitions": [
+                "reach or cause to reach specified state or condition"
+              ],
+              "subsenses": [{
+                  "definitions": [
+                    "used with past participle to form the passive mood"
+                  ],
+                  "examples": [{
+                    "text": "the cat got groomed"
+                  }],
+                  "id": "m_en_gbus0411550.037",
+                  "notes": [{
+                    "text": "as auxiliary verb",
+                    "type": "grammaticalNote"
+                  }],
+                  "shortDefinitions": [
+                    "used with participle to form passive mood"
+                  ]
+                },
+                {
+                  "definitions": [
+                    "cause to be treated in a specified way"
+                  ],
+                  "examples": [{
+                    "text": "get the form signed by a doctor"
+                  }],
+                  "id": "m_en_gbus0411550.038",
+                  "notes": [{
+                    "text": "with object and past participle",
+                    "type": "grammaticalNote"
+                  }],
+                  "shortDefinitions": [
+                    "cause to be treated in specified way"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.015"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "induce or prevail upon (someone) to do something"
+                  ],
+                  "examples": [{
+                    "text": "Sophie got Beth to make a fire"
+                  }],
+                  "id": "m_en_gbus0411550.039",
+                  "notes": [{
+                    "text": "with object and infinitive",
+                    "type": "grammaticalNote"
+                  }],
+                  "shortDefinitions": [
+                    "induce to do"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.014"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "have the opportunity to do"
+                  ],
+                  "examples": [{
+                    "text": "he got to try out a few of these new cars"
+                  }],
+                  "id": "m_en_gbus0411550.040",
+                  "notes": [{
+                    "text": "no object, with infinitive",
+                    "type": "grammaticalNote"
+                  }],
+                  "shortDefinitions": [
+                    "have the opportunity to do"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.015"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "begin to be or do something, especially gradually or by chance"
+                  ],
+                  "examples": [{
+                    "text": "we got talking one evening"
+                  }],
+                  "id": "m_en_gbus0411550.041",
+                  "notes": [{
+                    "text": "no object, with present participle or infinitive",
+                    "type": "grammaticalNote"
+                  }],
+                  "shortDefinitions": [
+                    "begin to be or do something"
+                  ]
+                }
+              ],
+              "thesaurusLinks": [{
+                "entry_id": "get",
+                "sense_id": "t_en_gb0006315.003"
+              }]
+            },
+            {
+              "definitions": [
+                "come, go, or make progress eventually or with some difficulty"
+              ],
+              "examples": [{
+                  "text": "I got to the airport"
+                },
+                {
+                  "text": "they weren't going to get anywhere"
+                }
+              ],
+              "id": "m_en_gbus0411550.043",
+              "notes": [{
+                "text": "no object, with adverbial of direction",
+                "type": "grammaticalNote"
+              }],
+              "shortDefinitions": [
+                "come, go, or make progress"
+              ],
+              "subsenses": [{
+                  "definitions": [
+                    "move or come into a specified position, situation, or state"
+                  ],
+                  "examples": [{
+                    "text": "she got into the car"
+                  }],
+                  "id": "m_en_gbus0411550.044",
+                  "shortDefinitions": [
+                    "move or come into specified position or state"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.003"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "succeed in making (someone or something) come, go, or make progress"
+                  ],
+                  "examples": [{
+                    "text": "my honesty often gets me into trouble"
+                  }],
+                  "id": "m_en_gbus0411550.045",
+                  "notes": [{
+                    "text": "with object and adverbial",
+                    "type": "grammaticalNote"
+                  }],
+                  "shortDefinitions": [
+                    "cause to come, go, or make progress"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.015"
+                  }]
+                },
+                {
+                  "constructions": [{
+                    "text": "it's getting so"
+                  }],
+                  "definitions": [
+                    "reach a specified point or stage"
+                  ],
+                  "examples": [{
+                    "text": "\n              it's getting so I can't even think"
+                  }],
+                  "id": "m_en_gbus0411550.046",
+                  "regions": [{
+                    "id": "north_american",
+                    "text": "North_American"
+                  }],
+                  "registers": [{
+                    "id": "informal",
+                    "text": "Informal"
+                  }],
+                  "shortDefinitions": [
+                    "reach specified point or stage"
+                  ]
+                },
+                {
+                  "definitions": [
+                    "go away."
+                  ],
+                  "id": "m_en_gbus0411550.047",
+                  "notes": [{
+                    "text": "usually in imperative",
+                    "type": "grammaticalNote"
+                  }],
+                  "regions": [{
+                    "id": "us",
+                    "text": "Us"
+                  }],
+                  "registers": [{
+                    "id": "informal",
+                    "text": "Informal"
+                  }],
+                  "shortDefinitions": [
+                    "go away"
+                  ]
+                }
+              ],
+              "thesaurusLinks": [{
+                  "entry_id": "get",
+                  "sense_id": "t_en_gb0006315.013"
+                },
+                {
+                  "entry_id": "get_back",
+                  "sense_id": "t_en_gb0006315.033"
+                }
+              ]
+            },
+            {
+              "crossReferenceMarkers": [
+                "see have"
+              ],
+              "crossReferences": [{
+                "id": "have",
+                "text": "have",
+                "type": "see also"
+              }],
+              "id": "m_en_gbus0411550.049",
+              "notes": [{
+                "text": "\"have got\"",
+                "type": "wordFormNote"
+              }],
+              "shortDefinitions": [
+                "have got"
+              ]
+            },
+            {
+              "definitions": [
+                "catch or apprehend (someone)"
+              ],
+              "examples": [{
+                "text": "the police have got him"
+              }],
+              "id": "m_en_gbus0411550.051",
+              "notes": [{
+                "text": "with object",
+                "type": "grammaticalNote"
+              }],
+              "shortDefinitions": [
+                "catch or apprehend"
+              ],
+              "subsenses": [{
+                  "definitions": [
+                    "strike or wound (someone) with a blow or missile"
+                  ],
+                  "examples": [{
+                    "text": "you got me in the eye!"
+                  }],
+                  "id": "m_en_gbus0411550.052",
+                  "shortDefinitions": [
+                    "strike or wound with blow etc."
+                  ]
+                },
+                {
+                  "definitions": [
+                    "punish, injure, or kill (someone), especially as retribution"
+                  ],
+                  "examples": [{
+                    "text": "I'll get you for this!"
+                  }],
+                  "id": "m_en_gbus0411550.053",
+                  "registers": [{
+                    "id": "informal",
+                    "text": "Informal"
+                  }],
+                  "shortDefinitions": [
+                    "punish, injure, or kill"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.017"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "be punished, injured, or killed"
+                  ],
+                  "examples": [{
+                    "text": "wait until dad comes home, then you'll get it!"
+                  }],
+                  "id": "m_en_gbus0411550.054",
+                  "notes": [{
+                    "text": "\"get it\"",
+                    "type": "wordFormNote"
+                  }],
+                  "registers": [{
+                    "id": "informal",
+                    "text": "Informal"
+                  }],
+                  "shortDefinitions": [
+                    "be punished, injured, or killed"
+                  ]
+                },
+                {
+                  "definitions": [
+                    "be killed or appropriately punished or rewarded"
+                  ],
+                  "examples": [{
+                    "text": "I'll get mine, you get yours, we'll all get wealthy"
+                  }],
+                  "id": "m_en_gbus0411550.055",
+                  "notes": [{
+                    "text": "\"get mine, his\", etc.",
+                    "type": "wordFormNote"
+                  }],
+                  "registers": [{
+                    "id": "informal",
+                    "text": "Informal"
+                  }],
+                  "shortDefinitions": [
+                    "be appropriately punished or rewarded"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.002"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "annoy or amuse (someone) greatly"
+                  ],
+                  "examples": [{
+                    "text": "cleaning the same things all the time, that's what gets me"
+                  }],
+                  "id": "m_en_gbus0411550.056",
+                  "registers": [{
+                    "id": "informal",
+                    "text": "Informal"
+                  }],
+                  "shortDefinitions": [
+                    "annoy greatly"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.019"
+                  }]
+                },
+                {
+                  "definitions": [
+                    "baffle (someone)"
+                  ],
+                  "examples": [{
+                    "text": "“What's a ‘flowery boundary tree’?” “You got me.”"
+                  }],
+                  "id": "m_en_gbus0411550.057",
+                  "shortDefinitions": [
+                    "baffle"
+                  ],
+                  "thesaurusLinks": [{
+                    "entry_id": "get",
+                    "sense_id": "t_en_gb0006315.018"
+                  }]
+                }
+              ],
+              "thesaurusLinks": [{
+                "entry_id": "get",
+                "sense_id": "t_en_gb0006315.006"
+              }]
+            },
+            {
+              "definitions": [
+                "understand (an argument or the person making it)"
+              ],
+              "examples": [{
+                "text": "What do you mean? I don't get it"
+              }],
+              "id": "m_en_gbus0411550.059",
+              "notes": [{
+                "text": "with object",
+                "type": "grammaticalNote"
+              }],
+              "registers": [{
+                "id": "informal",
+                "text": "Informal"
+              }],
+              "shortDefinitions": [
+                "understand"
+              ],
+              "thesaurusLinks": [{
+                  "entry_id": "get",
+                  "sense_id": "t_en_gb0006315.011"
+                },
+                {
+                  "entry_id": "get",
+                  "sense_id": "t_en_gb0006315.012"
+                }
+              ]
+            },
+            {
+              "definitions": [
+                "acquire (knowledge) by study; learn"
+              ],
+              "examples": [{
+                "text": "knowledge which is gotten at school"
+              }],
+              "id": "m_en_gbus0411550.061",
+              "notes": [{
+                "text": "with object",
+                "type": "grammaticalNote"
+              }],
+              "registers": [{
+                "id": "archaic",
+                "text": "Archaic"
+              }],
+              "shortDefinitions": [
+                "learn"
+              ]
+            }
+          ]
+        }],
+        "language": "en-us",
+        "lexicalCategory": {
+          "id": "verb",
+          "text": "Verb"
+        },
+        "pronunciations": [{
+            "dialects": [
+              "American English"
+            ],
+            "phoneticNotation": "respell",
+            "phoneticSpelling": "ɡet"
+          },
+          {
+            "audioFile": "http://audio.oxforddictionaries.com/en/mp3/get_us_1.mp3",
+            "dialects": [
+              "American English"
+            ],
+            "phoneticNotation": "IPA",
+            "phoneticSpelling": "ɡɛt"
+          }
+        ],
+        "text": "get"
+      },
+      {
+        "derivatives": [{
+          "id": "gettable",
+          "text": "gettable"
+        }],
+        "entries": [{
+          "senses": [{
+              "definitions": [
+                "an animal's offspring"
+              ],
+              "domains": [{
+                "id": "riding",
+                "text": "Riding"
+              }],
+              "examples": [{
+                "text": "he passes this on to his get"
+              }],
+              "id": "m_en_gbus0411550.064",
+              "registers": [{
+                "id": "dated",
+                "text": "Dated"
+              }],
+              "shortDefinitions": [
+                "animal's offspring"
+              ]
+            },
+            {
+              "definitions": [
+                "a person whom the speaker dislikes or despises."
+              ],
+              "id": "m_en_gbus0411550.068",
+              "regions": [{
+                "id": "british",
+                "text": "British"
+              }],
+              "registers": [{
+                  "id": "informal",
+                  "text": "Informal"
+                },
+                {
+                  "id": "dialect",
+                  "text": "Dialect"
+                }
+              ],
+              "shortDefinitions": [
+                "disliked person"
+              ]
+            }
+          ]
+        }],
+        "language": "en-us",
+        "lexicalCategory": {
+          "id": "noun",
+          "text": "Noun"
+        },
+        "pronunciations": [{
+            "dialects": [
+              "American English"
+            ],
+            "phoneticNotation": "respell",
+            "phoneticSpelling": "ɡet"
+          },
+          {
+            "audioFile": "http://audio.oxforddictionaries.com/en/mp3/get_us_1.mp3",
+            "dialects": [
+              "American English"
+            ],
+            "phoneticNotation": "IPA",
+            "phoneticSpelling": "ɡɛt"
+          }
+        ],
+        "text": "get"
+      }
+    ],
+    "type": "headword",
+    "word": "get"
+  }],
+  "word": "get"
+}
