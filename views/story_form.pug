@@ -34,7 +34,7 @@ block content
               else
                 option(value=book._id) #{book.title}
     div.form-group.row
-      div.col-sm-5
+      div.col-sm-8
         label(for='title') #{translation.Title}:
         input#title.form-control(type='text', style='display: inline; width: 400px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
         if story
