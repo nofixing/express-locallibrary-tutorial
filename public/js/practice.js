@@ -527,6 +527,10 @@ $(function(){
         }, false);
     }
 
+    $('.tts').click(function(){
+        $('#translateModal').css('display', 'none');
+    });
+
 });
 
 function imgAddress(i) {
