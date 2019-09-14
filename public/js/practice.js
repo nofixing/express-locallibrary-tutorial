@@ -529,7 +529,7 @@ $(function(){
 
     $('.tts').click(function(){
         $('#translateModal').css('display', 'none');
-        $('.modal-backdrop.show').css('opacity', '0');
+        $('.modal-backdrop.show').css('display', 'none');
     });
 
 });
