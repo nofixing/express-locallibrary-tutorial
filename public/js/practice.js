@@ -52,13 +52,16 @@ $(function(){
         search();
         imageSearch();
 
+        var ldxx = 0;
         $('.wList').each(function(idx) {
             console.log("previous words:"+$('.ipt')[idx].value);
-            if (selectText == $('.ipt')[idx].value) {
+            if (selectText.toLowerCase() == $('.ipt')[idx].value.toLowerCase()) {
                 console.log("front already exists");
                 selectText = '';
             }
+            ldxx = idx;
         });
+        ldxx += 1;
 
         if (selectText.length > 0) {
 
@@ -107,7 +110,7 @@ $(function(){
                         markup += "<option value='3'>"+$('#BeUsedTo').val()+"</option>";
                         markup += "<option value='4'>"+$('#RememberComplete').val()+"</option>";
                         markup += "</select>";
-                        markup += "<button type='button' class='btn btn-primary' style='display: inline; float: right; margin-top: 8px;' onclick='imgAddress(-1)'>";
+                        markup += "<button type='button' class='btn btn-primary' style='display: inline; float: right; margin-top: 8px;' onclick='imgAddress("+ldxx+")'>";
                         markup += $('#ImageAddress').val();
                         markup += "</button></td></tr>";
 
@@ -308,7 +311,6 @@ $(function(){
                     url: httpType+$('#hostname').val()+'/catalog/word/delete',
                     async: false,
                     success : function(data) {
-                        alert(data.result);
                         if(data.result == data.fail) isDel = false;
                     }
                 });
@@ -320,6 +322,7 @@ $(function(){
                     $(this).parents("tr").remove();
                 }
             });
+            alert($('#DELETED').val());
         }
         $('.wList:not(#checkall)').each(function () {
             $(this).prop('checked', false);
@@ -328,6 +331,13 @@ $(function(){
     });
 
     $('#wordAdd').click(function(){
+
+        var ldxx = 0;
+        $('.wList').each(function(idx) {
+            ldxx = idx;
+        });
+        ldxx += 1;
+
         var markup = "<tr><td style='text-align: center;'><div class='checkbox'><input type='checkbox' class='wList' value=''></div></td>";
         markup += "<td><input type='text' size='15' maxlength='30' class='form-control ipt' value=''>";
         markup += "<input type='hidden' class='form-control iph' value=''>";
@@ -346,7 +356,7 @@ $(function(){
         markup += "<option value='3'>"+$('#BeUsedTo').val()+"</option>";
         markup += "<option value='4'>"+$('#RememberComplete').val()+"</option>";
         markup += "</select>";
-        markup += "<button type='button' class='btn btn-primary' style='display: inline; float: right; margin-top: 8px;' onclick='imgAddress(-1)'>";
+        markup += "<button type='button' class='btn btn-primary' style='display: inline; float: right; margin-top: 8px;' onclick='imgAddress("+ldxx+")'>";
         markup += $('#ImageAddress').val();
         markup += "</button></td></tr>";
         $(".wtd").append(markup);
