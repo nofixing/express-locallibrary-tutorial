@@ -12,6 +12,7 @@ $(function(){
     var prevScrollpos = window.pageYOffset;
     window.onscroll = function() {
         var currentScrollPos = window.pageYOffset;
+        //console.log("currentScrollPos:"+currentScrollPos);
         if (prevScrollpos >= currentScrollPos) {
             document.getElementById("navbar").style.top = "0";
         } else {
@@ -198,7 +199,16 @@ $(function(){
                 success : function(data) {
                     console.log('translatedText:'+data.content);
                     $('#translatedText').html(data.content);
-                    $('#TranslationModal')[0].click();
+                    //$('#TranslationModal')[0].click();
+                    
+                    $('#translateModal').addClass("show");
+                    $('#translateModal').css('display', 'block');
+                    $('#translateModal').attr('aria-hidden', 'false');
+                    $('.modal-backdrop.show').css('display', 'block');
+                    $('body').addClass("modal-open");
+                    $('body').css('padding-right', '10px');
+                    $( '<div class="modal-backdrop fade show"></div>' ).appendTo( 'body' );
+
                 }
             });
         }
@@ -528,8 +538,13 @@ $(function(){
     }
 
     $('.tts').click(function(){
+        $('#translateModal').removeClass("show");
         $('#translateModal').css('display', 'none');
-        $('.modal-backdrop.show').css('display', 'none');
+        $('#translateModal').attr('aria-hidden', 'true');
+        //$('.modal-backdrop.show').css('display', 'none');
+        $('.modal-backdrop').remove();
+        $('body').removeClass("modal-open");
+        $('body').css('padding-right', '');
     });
 
 });
