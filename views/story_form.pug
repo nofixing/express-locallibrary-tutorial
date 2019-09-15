@@ -11,9 +11,9 @@ block content
   
   form(method='POST' action='' id='storyForm' name='storyForm')
     div.form-group.row
-      div.col-sm-3
-        label(for='book') #{translation.Book}:
-        select#book.form-control(type='select', placeholder='Select book' name='book' )
+      div.col-sm-4
+        span( style='width: 60px; float:left; margin-top:7px;') #{translation.Book}
+        select#book.form-control(type='select', placeholder='Select book' name='book' style='width:400px;float:left;margin-left:20px;' )
           if !story
             option(value='') #{translation.storyonly}
           else
@@ -35,8 +35,8 @@ block content
                 option(value=book._id) #{book.title}
     div.form-group.row
       div.col-sm-8
-        label(for='title') #{translation.Title}:
-        input#title.form-control(type='text', style='display: inline; width: 400px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
+        span( style='width: 60px; float:left; margin-top:7px;') #{translation.Title}
+        input#title.form-control(type='text', style='display: inline; float: left; width: 400px; margin-left: 20px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
         if story
           if story.title_font
             input#title_font.form-control(type='hidden', name='title_font', value=story.title_font)
@@ -44,7 +44,7 @@ block content
             input#title_font.form-control(type='hidden', name='title_font')
         else
           input#title_font.form-control(type='hidden', name='title_font')
-        div.dropdown(style='display: inline; float: right; width: 150px; margin-right: 10px')
+        div.dropdown(style='display: inline; float: left; width: 150px; margin-left: 20px; margin-right: 10px')
           a#tfnt.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.FONT}
           div.dropdown-menu(aria-labelledby='tfnt')
             a.dropdown-item(href='#', onclick='toggleSurface("Libre Franklin","LibreFranklin");' )
@@ -116,7 +116,7 @@ block content
             input#title_size.form-control(type='hidden', name='title_size')
         else
           input#title_size.form-control(type='hidden', name='title_size')
-        div.dropdown(style='display: inline; float: right; width: 150px; margin-right: 10px')
+        div.dropdown(style='display: inline; float: left; width: 150px; margin-left: 20px; margin-right: 10px')
           a#sfnt.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.SIZE}
           div.dropdown-menu(aria-labelledby='sfnt')
             a.dropdown-item(href='#', onclick='toggleSurface2("1em");' )
@@ -141,27 +141,27 @@ block content
               span(data-label='10em' )
     
     div.form-group.row.boko
-      div.col-sm-1
-        label(for='order') #{translation.Order}:
-        input#order.form-control(type='text', placeholder='Order of story' name='order' value=(undefined===story ? '' : story.order) )
+      div.col-sm-2
+        span( style='width: 60px; float:left; margin-top:7px;') #{translation.Order}
+        input#order.form-control(type='text', placeholder='Order of story' name='order' value=(undefined===story ? '' : story.order) style='width:100px;float:left;margin-left:20px;' )
 
     div.form-group.row.boko
       div.col-sm-2
-        label(for='chapter') #{translation.Chapter}:
-        input#chapter.form-control(type='text', placeholder='Chapter of story' name='chapter' value=(undefined===story ? '' : story.chapter) )
+        span( style='width: 60px; float:left; margin-top:7px;') #{translation.Chapter}
+        input#chapter.form-control(type='text', placeholder='Chapter of story' name='chapter' value=(undefined===story ? '' : story.chapter) style='width:150px;float:left;margin-left:20px;' )
     
     div.form-group.row.stro
       div.col-sm-2
-        label(for='author') #{translation.Author}:
-        input#author.form-control(type='text', placeholder='Author of story' name='author' value=(undefined===story ? '' : story.author) )
+        span( style='width: 60px; float:left; margin-top:7px;') #{translation.Author}
+        input#author.form-control(type='text', placeholder='Author of story' name='author' value=(undefined===story ? '' : story.author) style='width:150px;float:left;margin-left:20px;' )
 
     div.form-group.row.stro
       div.col-sm-3
-        label(for='reference') #{translation.Reference}:
-        input#reference.form-control(type='text', placeholder='Reference of story' name='reference' value=(undefined===story ? '' : story.reference) )
+        span( style='width: 60px; float:left; margin-top:7px;') #{translation.Reference}
+        input#reference.form-control(type='text', placeholder='Reference of story' name='reference' value=(undefined===story ? '' : story.reference) style='width:200px;float:left;margin-left:20px;' )
     
     div.form-group.stro
-      label #{translation.Genre}:
+      span( style='width: 60px; float:left; margin-top:2px;') #{translation.Genre}
       div
         for genre in genres
           div(style='display: inline; padding-right:10px;')
@@ -170,7 +170,7 @@ block content
     
     div.form-group.row
       div.col-sm-8
-        label(for='Content') #{translation.Content}:
+        label(for='Content') #{translation.Content}
         <div id="toolbar-container" class="ql-toolbar ql-snow">
             <span class="ql-formats">
                 <select class="ql-font" style="width: 150px;">
@@ -291,8 +291,8 @@ block content
             tr
               td
                 <span id="#{file._id}">#{file.file_path}</span>
-                <button onclick="CopyFilePath('#{file._id}');return false;">#{translation.Copy}</button>
-                <button onclick="DeleteFile('#{file._id}','#{file.file_path}');return false;">#{translation.Delete}</button>
+                <button class="btn btn-primary" onclick="CopyFilePath('#{file._id}');return false;">#{translation.Copy}</button>
+                <button class="btn btn-primary" onclick="DeleteFile('#{file._id}','#{file.file_path}');return false;">#{translation.Delete}</button>
     form#fileUpload(method="POST", enctype="multipart/form-data")
       input(type="file" name="file")
       input(type='hidden' name='storyId' value=story._id)

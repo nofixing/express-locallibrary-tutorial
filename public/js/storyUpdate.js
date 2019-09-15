@@ -13,14 +13,14 @@ $( document ).ready(function() {
     $("#book").change(function() {
         if ( $("#book").val() != "" ) {
             book_ajax();
-            $(".stro").css("display", "block");
-            $(".boko").css("display", "block");
+            $(".stro").css("display", "flex");
+            $(".boko").css("display", "flex");
         } else {
             $("#author").val("");
             $('.gne').each(function () {
                 $(this).prop('checked', false);
             });
-            $(".stro").css("display", "block");
+            $(".stro").css("display", "flex");
             $(".boko").css("display", "none");
         }
     });
@@ -43,8 +43,8 @@ $( document ).ready(function() {
                         if( gnr._id ==  $(this).val() ) $(this).prop('checked', true);
                     });
                 });
-                $(".stro").css("display", "block");
-                $(".boko").css("display", "block");
+                $(".stro").css("display", "flex");
+                $(".boko").css("display", "flex");
             }
         });
 

@@ -1209,7 +1209,7 @@ function processDicData(dic_content) {
     var results = voca.results;
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
-        simpleData.push({text:'<a onclick="sentence(\''+word+'\');" style="cursor: pointer;">'+word+'</a>'});
+        simpleData.push({text:'<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>'});
         console.log('word: '+word);
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
@@ -1417,7 +1417,7 @@ function processDicData(dic_content) {
                     }
                     var thesaurusLinks = senses[l].thesaurusLinks;
                     if (typeof thesaurusLinks === 'object') {
-                        simpleData[i].nodes[j].nodes.push({text:'thesaurus: <a onclick="thesaurus(\''+thesaurusLinks[0].entry_id+'\');" style="cursor: pointer;">'+thesaurusLinks[0].entry_id+'</a>'});
+                        simpleData[i].nodes[j].nodes.push({text:'thesaurus: <a onclick="thesaurus(\''+thesaurusLinks[0].entry_id+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+thesaurusLinks[0].entry_id+'</a>'});
                         var thesaurusLinks_entry_id = thesaurusLinks[0].entry_id;
                         //console.log('thesaurusLinks[0].entry_id: '+thesaurusLinks[0].entry_id);
                         var thesaurusLinks_sense_id = thesaurusLinks[0].sense_id;
