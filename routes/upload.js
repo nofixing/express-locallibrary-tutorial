@@ -29,16 +29,18 @@ const bucket = storage.bucket(projectId);
 
 router.post('/', multer.single('file'), (req, res, next) => {
   console.log('upload started');
-  if (!req.file) {
+  if (!req.file_upload) {
+    console.log('No file uploaded.');
     res.status(400).send('No file uploaded.');
     return;
   }
 
   // Create a new blob in the bucket and upload the file data.
-  const blob = bucket.file(req.file.originalname);
+  const blob = bucket.file(req.file_upload.originalname);
   const blobStream = blob.createWriteStream();
 
   blobStream.on('error', (err) => {
+    console.log('file upload error');
     next(err);
   });
 
@@ -56,7 +58,7 @@ router.post('/', multer.single('file'), (req, res, next) => {
       story: req.body.storyId,
       file_path: publicUrl,
       file_name: vsrc,
-      file_size: req.file.size,
+      file_size: req.file_upload.size,
       create_date: Date.now()
       });
 
