@@ -179,5 +179,7 @@
   "UploadFailed":"Upload Failed.",
   "Copy":"Copy",
   "UploadingFile":"Uploading file, please be patient.",
-  "SIZE":"Size"
+  "SIZE":"Size",
+  "FileDesc":"You can upload your file.",
+  "FileSelect":"File Select"
 }
