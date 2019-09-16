@@ -295,8 +295,8 @@ block content
                 <button class="btn btn-primary" onclick="DeleteFile('#{file._id}','#{file.file_path}');return false;">#{translation.Delete}</button>
     <div style="display: inline-block; float: left; height: 30px; margin-top: 10px;">
       form#fileUpload(method="POST", enctype="multipart/form-data")
-        input(type="file" name="file" id="file" class="inutfile")
-        <label for="file" style="line-height: 30px; float: left;text-indent: 0;width: 110px;margin-top:5px;" class="btn btn-primary" title="#{translation.FileDesc}">#{translation.FileSelect}</label>
+        <input type="file" name="file2" id="file2" class="inputfile">
+        <label for="file2" style="line-height: 30px; float: left;text-indent: 0;width: 110px;" class="btn btn-primary" title="#{translation.FileDesc}">#{translation.FileSelect}</label>
         input(type='hidden' name='storyId' value=story._id)
         button.btn.btn-primary(type='submit' style="line-height: 30px; float: left; margin-left: 20px;") #{translation.FileUpload}
 
