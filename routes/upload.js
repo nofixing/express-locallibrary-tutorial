@@ -59,7 +59,7 @@ router.post('/', multer.single('file_upload'), (req, res, next) => {
       story: req.body.storyId,
       file_path: publicUrl,
       file_name: vsrc,
-      file_size: req.file_upload.size,
+      file_size: req.file.size,
       create_date: Date.now()
       });
 
