@@ -504,7 +504,7 @@ $(function(){
         var fileForm = document.getElementById('fileUpload');
 
         fileForm.addEventListener('submit', function(ev) {
-            
+            console.log('fileUpload started.');
             $("div.spanner").addClass("show");
             $("div.overlay").addClass("show");
 
@@ -526,7 +526,8 @@ $(function(){
                 $(".ftd").append(markup);
                 alert($("#Uploaded").val());
               } else {
-                $("div.spanner").removeClass("show");
+                console.log('oReq.status:'+oReq.status);
+				$("div.spanner").removeClass("show");
                 $("div.overlay").removeClass("show");
                 alert($("#UploadFailed").val());
               }
