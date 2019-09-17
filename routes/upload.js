@@ -27,7 +27,7 @@ const multer = Multer({
 
 const bucket = storage.bucket(projectId);
 
-router.post('/', multer.single('file'), (req, res, next) => {
+router.post('/', multer.single('file_upload'), (req, res, next) => {
   console.log('upload started');
   if (!req.file_upload) {
     console.log('No file uploaded.');
