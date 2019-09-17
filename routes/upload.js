@@ -29,14 +29,14 @@ const bucket = storage.bucket(projectId);
 
 router.post('/', multer.single('file_upload'), (req, res, next) => {
   console.log('upload started');
-  if (!req.file_upload) {
+  if (!req.file) {
     console.log('No file uploaded.');
     res.status(400).send('No file uploaded.');
     return;
   }
 
   // Create a new blob in the bucket and upload the file data.
-  const blob = bucket.file(req.file_upload.originalname);
+  const blob = bucket.file(req.file.originalname);
   const blobStream = blob.createWriteStream();
 
   blobStream.on('error', (err) => {
