@@ -60,6 +60,12 @@ LinkBlot.tagName = 'a';
 
 Quill.register(LinkBlot, true);
 
+let CustomClass = new Parchment.Attributor.Class('omega', 'ql-omega', {
+  scope: Parchment.Scope.INLINE
+});
+
+Quill.register(CustomClass, true);
+
 var quill = new Quill('#snow-container', {
   modules: {
       syntax: true,
