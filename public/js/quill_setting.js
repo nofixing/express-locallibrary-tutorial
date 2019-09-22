@@ -32,9 +32,11 @@ var toolbarOptions = [
   Size.whitelist = ['1em', '1.5em', '2em', '2.5em', '3em', '3.5em', '4em', '6em', '8em', '10em'];
   Quill.register(Size, true);
 
-var Inline = Quill.import('blots/inline');
+//var Inline = Quill.import('blots/inline');
+var Parchment = Quill.import("parchment");
 
-class LinkBlot extends Inline {
+//class LinkBlot extends Inline {
+class LinkBlot extends Parchment.Inline {
   static create(url) {
     var node = super.create();
     // Sanitize url if desired
@@ -56,29 +58,26 @@ class LinkBlot extends Inline {
 LinkBlot.blotName = 'link';
 LinkBlot.tagName = 'a';
 
-Quill.register(LinkBlot);
+Quill.register(LinkBlot, true);
 
-  var quill = new Quill('#snow-container', {
-    modules: {
-        syntax: true,
-        toolbar: '#toolbar-container'
-    },
-    theme: 'snow'
-  });
+var quill = new Quill('#snow-container', {
+  modules: {
+      syntax: true,
+      toolbar: '#toolbar-container'
+  },
+  theme: 'snow'
+});
 
-    function imageHandler() {
-        var range = this.quill.getSelection();
-        var value = prompt('What is the image URL');
-        if(value){
-            this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
-        }
-    }
+function imageHandler() {
+  var range = this.quill.getSelection();
+  var value = prompt('What is the image URL');
+  if(value){
+      this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
+  }
+}
 
-  var toolbar = quill.getModule('toolbar');
-  toolbar.addHandler('omega', function() {
-    console.log('omega');
-  });
-
+var toolbar = quill.getModule('toolbar');
+  
 var currentIdx = 0;
 toolbar.addHandler('video', function() {
   var range = this.quill.getSelection();
@@ -98,9 +97,9 @@ $('#InsertVideo').click(function(){
   $('#vcls')[0].click();
 });
 
-  toolbar.addHandler('image', imageHandler);
+toolbar.addHandler('image', imageHandler);
 
-  var customButton = document.querySelector('.ql-omega');
+var customButton = document.querySelector('.ql-omega');
 customButton.addEventListener('click', function() {
   var range = quill.getSelection();
   if (range) {
@@ -121,10 +120,10 @@ $('#InsertTooltip').click(function(){
   $('#tcls')[0].click();
 });
 
-  var memo = $('#memo').val();
-  if(typeof memo != 'undefined') {
-    quill.clipboard.dangerouslyPasteHTML(memo);
-  }
+var memo = $('#memo').val();
+if(typeof memo != 'undefined') {
+  quill.clipboard.dangerouslyPasteHTML(memo);
+}
 
 var videos = document.querySelectorAll('.ql-video');
 for (let i = 0; i < videos.length; i++) {
