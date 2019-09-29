@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Create Story</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Song+Myung" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cute+Font" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Stylish" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Hi+Melody" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="/js/practice.js"></script>
+  <script src="/js/lyjs.js"></script>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/practice.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
+  <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+</head>
+
+<body style="font-family:Stylish;">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+    <a class="navbar-brand" href="/catalog/">집</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="/catalog/books">책</a></li>
+        <li class="nav-item"><a class="nav-link" href="/catalog/stories">이야기</a></li>
+        <li class="nav-item"><a class="nav-link" href="/catalog/genres">장르</a></li>
+        <li class="nav-item"><a class="nav-link" href="/catalog/story_open_list">게시판</a></li>
+        <li class="nav-item"><a class="nav-link" href="/catalog/word_board_list">단어장</a></li>
+        <li class="nav-item"><a class="nav-link" href="/catalog/book/create">책만들기</a></li>
+        <li class="nav-item"><a class="nav-link" href="/catalog/story/create">이야기만들기</a></li>
+        <li class="nav-item"><a class="nav-link" href="/catalog/genre/create">장르만들기</a></li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="lang" href="#" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">언어</a>
+          <div class="dropdown-menu" aria-labelledby="lang"><a class="dropdown-item"
+              href="/catalog?clang=en">ENGLISH</a><a class="dropdown-item" href="/catalog?clang=ko">한글</a></div>
+        </li>
+        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="fnt" href="#" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">글씨체</a>
+          <div class="dropdown-menu" aria-labelledby="fnt"><a class="dropdown-item"
+              href="/catalog?cfnt=Libre+Franklin"><span data-label="Libre Franklin"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=inconsolata"><span data-label="Inconsolata"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=roboto"><span data-label="Roboto"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=mirza"><span data-label="Mirza"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=arial"><span data-label="Arial"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Oswald"><span data-label="Oswald"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Caveat"><span data-label="Caveat"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Raleway"><span data-label="Raleway"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Shadows+Into+Light"><span data-label="Shadows Into Light"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=Abril+Fatface"><span data-label="Abril Fatface"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=Teko"><span data-label="Teko"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=Cormorant"><span data-label="Cormorant"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=Alfa+Slab+One"><span data-label="Alfa Slab One"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=PT+Sans"><span data-label="PT Sans"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=Nanum+Pen+Script"><span data-label="나눔 손글씨 펜"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=Nanum+Brush+Script"><span data-label="나눔 손글씨 붓"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=Song+Myung"><span data-label="송명"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=Gaegu"><span data-label="개구쟁이"></span></a><a
+              class="dropdown-item" href="/catalog?cfnt=Jua"><span data-label="주아"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Gamja+Flower"><span data-label="감자꽃 마을"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Cute+Font"><span data-label="귀여운 폰트"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Stylish"><span data-label="스타일리시"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Yeon+Sung"><span data-label="연성"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Hi+Melody"><span data-label="하이멜로디"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Sunflower"><span data-label="해바라기"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Black+Han+Sans"><span data-label="검은고딕"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Gothic+A1"><span data-label="고딕 A1"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Nanum+Gothic"><span data-label="나눔고딕"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Nanum+Myeongjo"><span data-label="나눔명조"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Poor+Story"><span data-label="서툰이야기"></span></a><a class="dropdown-item"
+              href="/catalog?cfnt=Black+And+White+Picture"><span data-label="흑백사진"></span></a></div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/user/logout">로그아웃</a></li>
+        <li class="nav-item"><a class="nav-link" href="/catalog/alter_password">비밀번호 변경</a></li>
+        <li class="nav-item"><a class="nav-link" href="/catalog/alter_name">이름 수정</a></li>
+      </ul>
+    </div>
+  </nav>
+  <input type="hidden" id="pc" name="pc" value="DESKTOP" />
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1 style="margin-top: 100px;">이야기만들기</h1>
+        <form method="POST" action="" id="storyForm" name="storyForm">
+          <div class="form-group row">
+            <div class="col-sm-4"><span style="width: 60px; float:left; margin-top:7px;">책</span><select
+                class="form-control" id="book" type="select" placeholder="Select book" name="book"
+                style="width:400px;float:left;margin-left:20px;">
+                <option value="">이야기 단독</option>
+                <option value="5c4bfebf717a460014a54230">A SCANDAL IN BOHEMIA</option>
+              </select></div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-8"><span style="width: 60px; float:left; margin-top:7px;">제목</span><input
+                class="form-control" id="title" type="text"
+                style="display: inline; float: left; width: 400px; margin-left: 20px; margin-right: 10px;"
+                placeholder="Name of story" name="title" required="true" value=""><input class="form-control"
+                id="title_font" type="hidden" name="title_font">
+              <div class="dropdown"
+                style="display: inline; float: left; width: 150px; margin-left: 20px; margin-right: 10px;"><a
+                  class="dropdown-toggle" id="tfnt" href="#" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">글씨체</a>
+                <div class="dropdown-menu" aria-labelledby="tfnt"><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Libre Franklin&quot;,&quot;LibreFranklin&quot;);"><span
+                      data-label="Libre Franklin"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Inconsolata&quot;,&quot;inconsolata&quot;);"><span
+                      data-label="Inconsolata"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Roboto&quot;,&quot;roboto&quot;);"><span
+                      data-label="Roboto"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Mirza&quot;,&quot;mirza&quot;);"><span data-label="Mirza"></span></a><a
+                    class="dropdown-item" href="#" onclick="toggleSurface(&quot;Arial&quot;,&quot;arial&quot;);"><span
+                      data-label="Arial"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Oswald&quot;,&quot;Oswald&quot;);"><span
+                      data-label="Oswald"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Caveat&quot;,&quot;Caveat&quot;);"><span
+                      data-label="Caveat"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Raleway&quot;,&quot;Raleway&quot;);"><span
+                      data-label="Raleway"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Shadows Into Light&quot;,&quot;ShadowsIntoLight&quot;);"><span
+                      data-label="Shadows Into Light"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Abril Fatface&quot;,&quot;AbrilFatface&quot;);"><span
+                      data-label="Abril Fatface"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Teko&quot;,&quot;Teko&quot;);"><span data-label="Teko"></span></a><a
+                    class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Cormorant&quot;,&quot;Cormorant&quot;);"><span
+                      data-label="Cormorant"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;Alfa Slab One&quot;,&quot;AlfaSlabOne&quot;);"><span
+                      data-label="Alfa Slab One"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;PT Sans&quot;,&quot;PTSans&quot;);"><span
+                      data-label="PT Sans"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;나눔 손글씨 펜&quot;,&quot;NanumPenScript&quot;);"><span
+                      data-label="나눔 손글씨 펜"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;나눔 손글씨 붓&quot;,&quot;NanumBrushScript&quot;);"><span
+                      data-label="나눔 손글씨 붓"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;송명&quot;,&quot;SongMyung&quot;);"><span data-label="송명"></span></a><a
+                    class="dropdown-item" href="#" onclick="toggleSurface(&quot;개구쟁이&quot;,&quot;Gaegu&quot;);"><span
+                      data-label="개구쟁이"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;주아&quot;,&quot;Jua&quot;);"><span data-label="주아"></span></a><a
+                    class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;감자꽃 마을&quot;,&quot;GamjaFlower&quot;);"><span
+                      data-label="감자꽃 마을"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;귀여운 폰트&quot;,&quot;CuteFont&quot;);"><span
+                      data-label="귀여운 폰트"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;스타일리시&quot;,&quot;Stylish&quot;);"><span
+                      data-label="스타일리시"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;연성&quot;,&quot;YeonSung&quot;);"><span data-label="연성"></span></a><a
+                    class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;하이멜로디&quot;,&quot;HiMelody&quot;);"><span
+                      data-label="하이멜로디"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;해바라기&quot;,&quot;Sunflower&quot;);"><span
+                      data-label="해바라기"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;검은고딕&quot;,&quot;BlackHanSans&quot;);"><span
+                      data-label="검은고딕"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;고딕 A1&quot;,&quot;GothicA1&quot;);"><span
+                      data-label="고딕 A1"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;나눔고딕&quot;,&quot;NanumGothic&quot;);"><span
+                      data-label="나눔고딕"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;나눔명조&quot;,&quot;NanumMyeongjo&quot;);"><span
+                      data-label="나눔명조"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;서툰이야기&quot;,&quot;PoorStory&quot;);"><span
+                      data-label="서툰이야기"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface(&quot;흑백사진&quot;,&quot;BlackAndWhitePicture&quot;);"><span
+                      data-label="흑백사진"></span></a></div>
+              </div><input class="form-control" id="title_size" type="hidden" name="title_size">
+              <div class="dropdown"
+                style="display: inline; float: left; width: 150px; margin-left: 20px; margin-right: 10px;"><a
+                  class="dropdown-toggle" id="sfnt" href="#" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">크기</a>
+                <div class="dropdown-menu" aria-labelledby="sfnt"><a class="dropdown-item" href="#"
+                    onclick="toggleSurface2(&quot;1em&quot;);"><span data-label="1em"></span></a><a
+                    class="dropdown-item" href="#" onclick="toggleSurface2(&quot;1.5em&quot;);"><span
+                      data-label="1.5em"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface2(&quot;2em&quot;);"><span data-label="2em"></span></a><a
+                    class="dropdown-item" href="#" onclick="toggleSurface2(&quot;2.5em&quot;);"><span
+                      data-label="2.5em"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface2(&quot;3em&quot;);"><span data-label="3em"></span></a><a
+                    class="dropdown-item" href="#" onclick="toggleSurface2(&quot;3.5em&quot;);"><span
+                      data-label="3.5em"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface2(&quot;4em&quot;);"><span data-label="4em"></span></a><a
+                    class="dropdown-item" href="#" onclick="toggleSurface2(&quot;6em&quot;);"><span
+                      data-label="6em"></span></a><a class="dropdown-item" href="#"
+                    onclick="toggleSurface2(&quot;8em&quot;);"><span data-label="8em"></span></a><a
+                    class="dropdown-item" href="#" onclick="toggleSurface2(&quot;10em&quot;);"><span
+                      data-label="10em"></span></a></div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row boko">
+            <div class="col-sm-2"><span style="width: 60px; float:left; margin-top:7px;">순서</span><input
+                class="form-control" id="order" type="text" placeholder="Order of story" name="order" value=""
+                style="width:100px;float:left;margin-left:20px;"></div>
+          </div>
+          <div class="form-group row boko">
+            <div class="col-sm-2"><span style="width: 60px; float:left; margin-top:7px;">챕터</span><input
+                class="form-control" id="chapter" type="text" placeholder="Chapter of story" name="chapter" value=""
+                style="width:150px;float:left;margin-left:20px;"></div>
+          </div>
+          <div class="form-group row stro">
+            <div class="col-sm-2"><span style="width: 60px; float:left; margin-top:7px;">저자</span><input
+                class="form-control" id="author" type="text" placeholder="Author of story" name="author" value=""
+                style="width:150px;float:left;margin-left:20px;"></div>
+          </div>
+          <div class="form-group row stro">
+            <div class="col-sm-3"><span style="width: 60px; float:left; margin-top:7px;">참조</span><input
+                class="form-control" id="reference" type="text" placeholder="Reference of story" name="reference"
+                value="" style="width:200px;float:left;margin-left:20px;"></div>
+          </div>
+          <div class="form-group stro"><span style="width: 60px; float:left; margin-top:2px;">장르</span>
+            <div>
+              <div style="display: inline; padding-right:10px;"><input class="checkbox-input gne" type="checkbox"
+                  name="genre" id="5c4bfe19717a460014a5422e" value="5c4bfe19717a460014a5422e"><label
+                  for="5c4bfe19717a460014a5422e">British &amp; Irish</label></div>
+              <div style="display: inline; padding-right:10px;"><input class="checkbox-input gne" type="checkbox"
+                  name="genre" id="5d7e39597ac7bc06ae89655f" value="5d7e39597ac7bc06ae89655f"><label
+                  for="5d7e39597ac7bc06ae89655f">THE ADVENTURES OF SHERLOCK HOLMES</label></div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-sm-8"><label for="Content">내용</label>
+              <div id="toolbar-container" class="ql-toolbar ql-snow">
+                <span class="ql-formats">
+                  <select class="ql-font" style="width: 150px;">
+                    <option selected="">Sans Serif</option>
+                    <option value="LibreFranklin">Libre Franklin</option>
+                    <option value="inconsolata">Inconsolata</option>
+                    <option value="roboto">Roboto</option>
+                    <option value="mirza">Mirza</option>
+                    <option value="arial">Arial</option>
+                    <option value="Oswald">Oswald</option>
+                    <option value="Caveat">Caveat</option>
+                    <option value="Raleway">Raleway</option>
+                    <option value="ShadowsIntoLight">Shadows Into Light</option>
+                    <option value="AbrilFatface">Abril Fatface</option>
+                    <option value="Teko">Teko</option>
+                    <option value="Cormorant">Cormorant</option>
+                    <option value="AlfaSlabOne">Alfa Slab One</option>
+                    <option value="PTSans">PT Sans</option>
+                    <option value="NanumPenScript">나눔 손글씨 펜</option>
+                    <option value="NanumBrushScript">나눔 손글씨 붓</option>
+                    <option value="SongMyung">송명</option>
+                    <option value="Gaegu">개구쟁이</option>
+                    <option value="Jua">주아</option>
+                    <option value="GamjaFlower">감자꽃 마을</option>
+                    <option value="CuteFont">귀여운 폰트</option>
+                    <option value="Stylish">스타일리시</option>
+                    <option value="YeonSung">연성</option>
+                    <option value="HiMelody">하이멜로디</option>
+                    <option value="Sunflower">해바라기</option>
+                    <option value="BlackHanSans">검은고딕</option>
+                    <option value="GothicA1">고딕 A1</option>
+                    <option value="NanumGothic">나눔고딕</option>
+                    <option value="NanumMyeongjo">나눔명조</option>
+                    <option value="PoorStory">서툰이야기</option>
+                    <option value="BlackAndWhitePicture">흑백사진</option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <select class="ql-header"></select>
+                  <select class="ql-size">
+                    <option value="1em">1em</option>
+                    <option value="1.5em">1.5em</option>
+                    <option value="2em">2em</option>
+                    <option value="2.5em">2.5em</option>
+                    <option value="3em">3em</option>
+                    <option value="3.5em">3.5em</option>
+                    <option value="4em">4em</option>
+                    <option value="6em">6em</option>
+                    <option value="8em">8em</option>
+                    <option value="10em">10em</option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-bold"></button>
+                  <button class="ql-italic"></button>
+                  <button class="ql-underline"></button>
+                  <button class="ql-strike"></button>
+                </span>
+                <span class="ql-formats">
+                  <select class="ql-color"></select>
+                  <select class="ql-background"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-script" value="sub"></button>
+                  <button class="ql-script" value="super"></button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-blockquote"></button>
+                  <button class="ql-code-block"></button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-list" value="ordered"></button>
+                  <button class="ql-list" value="bullet"></button>
+                  <select class="ql-align"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-link"></button>
+                  <button class="ql-image"></button>
+                  <button class="ql-video"></button>
+                  <button class="ql-formula"></button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-indent" value="-1"></button>
+                  <button class="ql-indent" value="+1"></button>
+                  <button class="ql-direction" value="rtl"></button>
+                  <button class="ql-clean"></button>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-omega"></button>
+                </span>
+              </div>
+              <div id="snow-container" spellcheck="false" style="height: 900px;"></div><input class="form-control"
+                id="content" type="hidden" name="content" value="">
+            </div>
+          </div>
+          <div class="form-group row stro">
+            <div class="col-sm-1"><label for="open">공개여부:</label><select class="form-control" id="open" type="select"
+                placeholder="Select Open" name="open">
+                <option value="N" selected="selected">N</option>
+                <option value="Y">Y</option>
+              </select><br><br></div>
+          </div><button class="btn btn-primary" type="button" onclick="preview();return false;"
+            style="margin-top: 20px;">미리보기</button><br><br><button class="btn btn-primary" type="button"
+            onclick="storyPost();return false;">등록</button><input type="hidden" id="hostname" name="hostname"
+            value="www.infinitestorlet.com" />
+          <input type="hidden" id="btitle" name="btitle" value="" />
+          <input type="hidden" id="cptr" name="cptr" value="복사" />
+          <input type="hidden" id="Uploaded" name="Uploaded" value="업로드 되었습니다." />
+          <input type="hidden" id="UploadFailed" name="UploadFailed" value="업로드에 실패하였습니다." />
+          <input type="hidden" id="Delete" name="Delete" value="삭제" />
+          <input type="hidden" id="DELETED" name="DELETED" value="삭제되었습니다." /><input class="form-control" id="story_id"
+            type="hidden" name="story_id" value="">
+        </form><a href="#" id="OpenModal" data-toggle="modal" data-target="#exampleModal"></a>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">말풍선</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="recipient-name" class="col-form-label">이미지 주소:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                  </div>
+                  <div class="form-group">
+                    <label for="message-text" class="col-form-label">정의:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="tcls">닫기</button>
+                <button type="button" class="btn btn-primary" id="InsertTooltip">말풍선 입력</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#" id="OpenVideo" data-toggle="modal" data-target="#videoModal"></a>
+        <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="videoModalLabel">Youtube</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="video_src" class="col-form-label">URL:</label>
+                    <input type="text" class="form-control" id="video_src">
+                  </div>
+                  <div class="form-group">
+                    <label for="video_width" class="col-form-label">Width:</label>
+                    <input type="text" class="form-control" id="video_width">
+                  </div>
+                  <div class="form-group">
+                    <label for="video_height" class="col-form-label">Height:</label>
+                    <input type="text" class="form-control" id="video_height">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="vcls">닫기</button>
+                <button type="button" class="btn btn-primary" id="InsertVideo">Insert Youtube</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overlay"></div>
+        <div class="spanner">
+          <div class="loader"></div>
+          <p>파일을 업로드 중입니다. 잠시만 기다려 주세요.</p>
+        </div>
+        <div style="margin-bottom: 50px;"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script src="/js/quill_setting.js"></script>
+        <script src="/js/storyUpdate.js"></script>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
