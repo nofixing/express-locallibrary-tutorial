@@ -97,6 +97,10 @@ $('#InsertVideo').click(function(){
   var lnum = spath.split("/").length -1;
   var vsrc = arr[lnum];
   vsrc = "https://www.youtube.com/embed/"+vsrc;
+  if($('#video_width').val() == '' || $('#video_height').val() == '') {
+    $('#video_width').val('560');
+    $('#video_height').val('315');
+  }
   quill.insertEmbed(currentIdx, 'video', vsrc, Quill.sources.USER);
   quill.formatText(currentIdx, 1,'width', $('#video_width').val());
   quill.formatText(currentIdx, 1,'height', $('#video_height').val());
