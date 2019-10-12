@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var HistorySchema = new Schema({
-    title: {type: String, required: true},
     story: { type: Schema.ObjectId, ref: 'Story' },
     user: { type: Schema.ObjectId, ref: 'User', required: true },
     create_date: Date
