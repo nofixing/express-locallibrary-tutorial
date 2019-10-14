@@ -11,7 +11,7 @@ var HistorySchema = new Schema({
 HistorySchema
 .virtual('url')
 .get(function () {
-  return '/catalog/story/'+this.story;
+  return '/catalog/story/'+this.story._id;
 });
 
 module.exports = mongoose.model('History', HistorySchema);
