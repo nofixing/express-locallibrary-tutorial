@@ -52,7 +52,9 @@ exports.index = function(req, res, next) {
             console.log("req.session exists");
             console.log("req.session.clang:"+req.session.clang);
             var name = req.session.userName;
-            results.history.story.title = entities.decode(results.history.story.title);
+            for (let i = 0; i < results.history.length; i++) {
+                results.history[i].story.title = entities.decode(results.history[i].story.title);
+            }
             if ( (clang != '' && clang != 'undefined' && typeof clang != 'undefined' && clang == 'en') || req.session.clang == 'en' ) {
                 name += ",";
             } else {
