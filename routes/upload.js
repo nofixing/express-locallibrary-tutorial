@@ -37,7 +37,8 @@ router.post('/', multer.single('file_upload'), (req, res, next) => {
 
   // Create a new blob in the bucket and upload the file data.
   console.log('req.file.originalname:'+req.file.originalname);
-  const blob = bucket.file(req.file.originalname);
+  const gcsFileName = `${Date.now()}-${req.file.originalname}`;
+  const blob = bucket.file(gcsFileName);
   const blobStream = blob.createWriteStream();
 
   blobStream.on('error', (err) => {
