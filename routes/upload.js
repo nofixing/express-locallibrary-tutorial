@@ -97,4 +97,19 @@ router.post('/delete', (req, res, next) => {
   
 });
 
+router.post('/deleteFiles', (req, res, next) => {
+  console.log('deleteFiles started');
+
+  bucket.deleteFiles({
+    prefix: `${req.session.userId}/`,
+    force: true
+  }, function(err) {
+    if (!err) {
+      // All files in the `req.session.userId` directory have been deleted.
+      res.send(req.body);
+    }
+  });
+  
+});
+
 module.exports = router;
