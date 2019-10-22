@@ -290,8 +290,8 @@ block content
           for file in files
             tr
               td
-                <span id="#{file._id}" value="#{file.file_path}">#{file.file_name}</span>
-                <button class="btn btn-primary" onclick="CopyFilePath('#{file._id}');return false;">#{translation.Copy}</button>
+                <span id="#{file._id}">#{file.file_name}</span>
+                <button class="btn btn-primary" onclick="CopyFilePath('#{file.file_path}');return false;">#{translation.Copy}</button>
                 <button class="btn btn-primary" onclick="DeleteFile('#{file._id}','#{file.file_path}');return false;">#{translation.Delete}</button>
     <div style="display: inline-block; float: left; height: 25px; margin-top: 10px; margin-bottom: 30px;">
       form#fileUpload(method="POST", enctype="multipart/form-data")
