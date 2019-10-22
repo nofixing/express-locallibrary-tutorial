@@ -1132,7 +1132,7 @@ function saveMemo() {
 function CopyFilePath(id) {
     var copyText = document.getElementById(id);
     var textArea = document.createElement("textarea");
-    textArea.value = copyText.innerHTML;
+    textArea.value = copyText.val();
     document.body.appendChild(textArea);
     textArea.select();
     document.execCommand("Copy");
