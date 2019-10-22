@@ -519,9 +519,9 @@ $(function(){
                 $("div.spanner").removeClass("show");
                 $("div.overlay").removeClass("show");
                 var arr = oReq.responseText.split('&');
-                var markup = "<tr><td><span id='"+arr[1]+"'>"+arr[0]+"</span>";
-                markup += "&nbsp;<button onclick=CopyFilePath('"+arr[1]+"')>"+$("#cptr").val()+"</button>";
-                markup += "&nbsp;<button onclick=DeleteFile('"+arr[1]+"','"+arr[0]+"')>"+$("#Delete").val()+"</button>";
+                var markup = "<tr><td><span id='"+arr[1]+"'>"+arr[2]+"</span>";
+                markup += "&nbsp;<button class='btn btn-primary' onclick=CopyFilePath('"+arr[0]+"')>"+$("#cptr").val()+"</button>";
+                markup += "&nbsp;<button class='btn btn-primary' onclick=DeleteFile('"+arr[1]+"','"+arr[0]+"')>"+$("#Delete").val()+"</button>";
                 markup += "</td></tr>";
                 $(".ftd").append(markup);
                 alert($("#Uploaded").val());
