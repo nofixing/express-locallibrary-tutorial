@@ -67,7 +67,7 @@ router.post('/', multer.single('file_upload'), (req, res, next) => {
       file.save(function (err, theFile) {
         if (err) { console.log(err); return next(err); }
           console.log('story file created');
-          res.status(200).send(publicUrl+'&'+theFile._id);
+          res.status(200).send(publicUrl+'&'+theFile._id+'&'+vsrc.substring(14));
         });
     /*
     Story.update({_id: req.body.storyId}, {
