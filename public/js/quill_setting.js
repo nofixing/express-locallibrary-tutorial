@@ -32,11 +32,9 @@ var toolbarOptions = [
   Size.whitelist = ['1em', '1.5em', '2em', '2.5em', '3em', '3.5em', '4em', '6em', '8em', '10em'];
   Quill.register(Size, true);
 
-//var Inline = Quill.import('blots/inline');
-var Parchment = Quill.import("parchment");
+var Inline = Quill.import('blots/inline');
 
-//class LinkBlot extends Inline {
-class LinkBlot extends Parchment.Inline {
+class LinkBlot extends Inline {
   static create(url) {
     var node = super.create();
     // Sanitize url if desired
@@ -59,6 +57,8 @@ LinkBlot.blotName = 'link';
 LinkBlot.tagName = 'a';
 
 Quill.register(LinkBlot, true);
+
+var Parchment = Quill.import("parchment");
 
 let CustomClass = new Parchment.Attributor.Class('omega', 'ql-omega', {
   scope: Parchment.Scope.INLINE
