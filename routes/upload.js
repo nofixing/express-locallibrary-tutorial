@@ -88,7 +88,7 @@ router.post('/delete', (req, res, next) => {
   console.log('delete started');
 
   // Deletes the file from the bucket
-  bucket.file(req.body.file_name).delete();
+  bucket.file(req.session.userId+'/'+req.body.file_name).delete();
   
   File.findByIdAndRemove(req.body.file_id, function deleteFile(err) {
     if (err) { return next(err); }
