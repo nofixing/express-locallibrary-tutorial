@@ -1162,6 +1162,22 @@ function DeleteFile(id, path) {
     });
 }
 
+function DeleteAllFiles() {
+    var data = {};
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/upload/deleteFiles',
+        async: false,
+        success : function(data) {
+            alert($('#DELETED').val());
+        }
+    });
+}
+
 function cs_change_music(music) {
       
      document.getElementById("myAudio").pause();
