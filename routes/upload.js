@@ -110,6 +110,10 @@ router.post('/deleteFiles', (req, res, next) => {
     }
   });
   
+  File.find({user: req.session.userId}).remove().exec(function(err, data) {
+		console.log('number of deleted files:'+ data);
+	}
+  
 });
 
 module.exports = router;
