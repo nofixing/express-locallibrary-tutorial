@@ -1143,7 +1143,7 @@ function DeleteFile(id, path) {
 
     var data = {};
     data.file_id = id;
-    data.file_name = arr[4];
+    data.file_name = arr[5];
     var httpType = 'https://';
     if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
     $.ajax({
