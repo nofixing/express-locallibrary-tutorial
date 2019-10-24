@@ -39,6 +39,12 @@ exports.story_list = function(req, res, next) {
 
 };
 
+exports.withdrawal = function(req, res, next) {
+
+	res.render('withdrawal');
+
+};
+
 exports.story_open_list = function(req, res, next) {
 
     var mxcnt = 0;
