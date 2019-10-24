@@ -47,6 +47,7 @@ exports.login_post = function (req, res, next) {
           req.session.cfnt = user.cfnt;
           req.session.clang = user.clang;
           req.session.userName = user.name;
+          req.session.userEmail = user.email;
           console.log("user.name:"+user.name);
           console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
           if (req.session.redirectUrl) {
