@@ -1,0 +1,38 @@
+extends layout
+
+block content
+
+	h1(style='margin-top: 100px;') #{translation.Membership} #{translation.Withdrawal}
+	br
+	if errors 
+		span(style='font-size: 1.2em; font-weight: bold; color: red;')!= errors
+	br
+	h2(style='margin-top: 100px;') #{translation.WithdrawalNotice}
+	br
+	br
+	ul.tite
+		li(style='font-weight: bold;') #{translation.WithdrawalDesc}
+		li(style='font-weight: bold;') #{translation.WithdrawalDesc2}
+		li(style='font-weight: bold;') #{translation.WithdrawalDesc3}
+		li(style='font-weight: bold;') #{translation.WithdrawalDesc4}
+		li(style='font-weight: bold;') #{translation.WithdrawalDesc5}
+		li(style='font-weight: bold;') #{translation.WithdrawalDesc6}
+		li(style='font-weight: bold;') #{translation.WithdrawalDesc7}
+	br
+	br
+	h4(style='margin-top: 100px;') #{translation.WithdrawalDesc8}
+	br
+	div.form-group.row
+		div.col-sm-4
+			label(for='email') #{translation.Email}
+			input.form-control(type='text' id='email' placeholder='email' name='email')
+	div.form-group.row
+		div.col-sm-4
+			label(for='password') #{translation.Password}
+			input.form-control(type='password' id='password' placeholder='password' name='password')
+	button.btn.btn-primary(type='button' onclick='DeleteAllFiles();return false;') #{translation.Withdrawal}
+  br
+  a(href='/user/forgot_password') #{translation.forgotPw}
+	<input type="hidden" id="WithdrawalConfirm" name="WithdrawalConfirm" value="#{translation.WithdrawalConfirm}" />
+	<input type="hidden" id="WithdrawalComplete" name="WithdrawalComplete" value="#{translation.WithdrawalComplete}" />
+	<input type="hidden" id="WrongEP" name="WrongEP" value="#{translation.WrongEP}" />
