@@ -7,6 +7,7 @@ var Comment = require('../models/comment');
 var History = require('../models/history');
 var BookMark = require('../models/bookMark');
 var File = require('../models/file');
+var fs = require('fs');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -20,6 +21,39 @@ var OxfordDictionary = require('../middleware/oxford');
   
 var oxford_app_id = "26926fc1";
 var oxford_app_key = process.env.OXFORD_ACCOUNT_APP_KEY;
+
+exports.download_get = function(req, res, next) {
+
+  	Story.findById(req.params.id).exec(function (err, theStory) {
+		if (err) { return next(err); }
+
+		fs.readFile('/public/download_template.html', 'utf8', function (err,data) {
+			if (err) { return next(err); }
+
+			theStory.content = entities.decode(theStory.content);
+			theStory.reference = entities.decode(theStory.reference);
+			theStory.title = entities.decode(theStory.title);
+
+			var result = data.replace(/tsfgkpmhr/g, theStory.title);
+			result = data.replace(/tgbyhnujb/g, req.session.cfnt);
+			result = data.replace(/poilkjmnb/g, theStory.title_font);
+			result = data.replace(/cftvgybhu/g, theStory.chapter);
+			result = data.replace(/emdfgtfrd/g, theStory.title_size);
+			result = data.replace(/acqjjqgfj/g, theStory.author);
+			result = data.replace(/uypotfhuj/g, theStory.reference);
+			result = data.replace(/rdftgyhvf/g, theStory.content);
+
+			var fileName = theStory.title+'.html';
+			fs.writeFile('/temp/'+fileName, result, 'utf8', function (err) {
+				if (err) { return next(err); }
+				console.log('File is created successfully.');
+			});
+			const file = `/temp/${fileName}`;
+			res.download(file);
+		});
+    });
+
+};
 
 // Display list of all stories.
 exports.story_list = function(req, res, next) {
