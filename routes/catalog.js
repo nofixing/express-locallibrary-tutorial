@@ -83,6 +83,8 @@ router.post('/story/create', story_controller.story_create_post);
 // GET request to delete Book.
 router.get('/story/:id/delete', story_controller.story_delete_get);
 
+router.get('/story/:id/download', story_controller.download_get);
+
 // POST request to delete Book.
 router.post('/story/:id/delete', story_controller.story_delete_post);
 
