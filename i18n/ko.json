@@ -194,5 +194,6 @@
   "WithdrawalDesc7":"위와 같은 이유로, 탈퇴전에 필요하신 데이터들은 꼭 백업해 놓으시기 바랍니다.",
 	"WithdrawalDesc8":"본인확인을 위해 이메일과 비밀번호를 입력해 주세요.",
 	"WithdrawalConfirm":"회원을 탈퇴하시겠습니까?",
-	"WithdrawalComplete":"회원탈퇴가 정상적으로 완료되었습니다."
+	"WithdrawalComplete":"회원탈퇴가 정상적으로 완료되었습니다.",
+	"Download":"다운로드"
 }
