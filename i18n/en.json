@@ -194,5 +194,6 @@
   "WithdrawalDesc7":"For these reasons, be sure to back up the data you need before leaving.",
 	"WithdrawalDesc8":"Please enter your e-mail and password to confirm your identity.",
 	"WithdrawalConfirm":"Are you sure you want to leave the membership?",
-	"WithdrawalComplete":"Membership withdrawal has been completed normally."
+	"WithdrawalComplete":"Membership withdrawal has been completed normally.",
+	"Download":"Download"
 }
