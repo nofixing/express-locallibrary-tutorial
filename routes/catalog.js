@@ -18,6 +18,10 @@ router.all('/story/*', mid.requiresLogin, function(req, res, next) {
     next();
 });
 
+router.all('/stories/*', mid.requiresLogin, function(req, res, next) {
+    next();
+});
+
 router.all('/book/*', mid.requiresLogin, function(req, res, next) {
     next();
 });
@@ -133,7 +137,7 @@ router.post('/story_oxford_ajaxt', story_controller.story_oxford_ajaxt);
 
 router.post('/story_oxford_ajaxs', story_controller.story_oxford_ajaxs);
 
-router.get('/story/withdrawal', story_controller.withdrawal);
+router.get('/stories/withdrawal', story_controller.withdrawal);
 
 /// WORD ROUTES ///
 

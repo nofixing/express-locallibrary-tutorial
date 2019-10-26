@@ -8,6 +8,7 @@ var History = require('../models/history');
 var BookMark = require('../models/bookMark');
 var File = require('../models/file');
 var fs = require('fs');
+var path = require('path');
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -23,11 +24,12 @@ var oxford_app_id = "26926fc1";
 var oxford_app_key = process.env.OXFORD_ACCOUNT_APP_KEY;
 
 exports.download_get = function(req, res, next) {
-
+    console.log('Root directory is '+req.app.get('rootDir'));
+    var rtd = req.app.get('rootDir');
   	Story.findById(req.params.id).exec(function (err, theStory) {
 		if (err) { return next(err); }
 
-		fs.readFile('/public/download_template.html', 'utf8', function (err,data) {
+		fs.readFile(rtd+'/public/download_template.html', 'utf8', function (err,data) {
 			if (err) { return next(err); }
 
 			theStory.content = entities.decode(theStory.content);
@@ -35,21 +37,21 @@ exports.download_get = function(req, res, next) {
 			theStory.title = entities.decode(theStory.title);
 
 			var result = data.replace(/tsfgkpmhr/g, theStory.title);
-			result = data.replace(/tgbyhnujb/g, req.session.cfnt);
-			result = data.replace(/poilkjmnb/g, theStory.title_font);
-			result = data.replace(/cftvgybhu/g, theStory.chapter);
-			result = data.replace(/emdfgtfrd/g, theStory.title_size);
-			result = data.replace(/acqjjqgfj/g, theStory.author);
-			result = data.replace(/uypotfhuj/g, theStory.reference);
-			result = data.replace(/rdftgyhvf/g, theStory.content);
+			result = result.replace(/tgbyhnujb/g, req.session.cfnt);
+			result = result.replace(/poilkjmnb/g, theStory.title_font);
+			result = result.replace(/cftvgybhu/g, theStory.chapter);
+			result = result.replace(/emdfgtfrd/g, theStory.title_size);
+			result = result.replace(/acqjjqgfj/g, theStory.author);
+			result = result.replace(/uypotfhuj/g, theStory.reference);
+			result = result.replace(/rdftgyhvf/g, theStory.content);
 
 			var fileName = theStory.title+'.html';
-			fs.writeFile('/temp/'+fileName, result, 'utf8', function (err) {
+			fs.writeFile(rtd+'/temp/'+fileName, result, 'utf8', function (err) {
 				if (err) { return next(err); }
-				console.log('File is created successfully.');
+                console.log('File is created successfully.');
+                const file = `${rtd}/temp/${fileName}`;
+			    res.download(file);
 			});
-			const file = `/temp/${fileName}`;
-			res.download(file);
 		});
     });
 
@@ -74,8 +76,8 @@ exports.story_list = function(req, res, next) {
 };
 
 exports.withdrawal = function(req, res, next) {
-
-	res.render('withdrawal');
+    console.log('withdrawal start');
+	res.render('withdrawal', { hostname: req.headers.host });
 
 };
 

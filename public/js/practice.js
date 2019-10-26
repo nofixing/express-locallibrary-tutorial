@@ -1163,27 +1163,33 @@ function DeleteFile(id, path) {
 }
 
 function DeleteAllFiles() {
-    var data = {};
-	data.email = $('#email').val();
-    data.password = $('#password').val();
-	data.success = '';
-    var httpType = 'https://';
-    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-    $.ajax({
-        type: 'POST',
-        data: JSON.stringify(data),
-        contentType: 'application/json',
-        url: httpType+$('#hostname').val()+'/upload/deleteFiles',
-        async: false,
-        success : function(data) {
-            if(data.success == 'Y') {
-				alert($('#WithdrawalComplete').val());
-				document.location.href = '/catalog/';
-			} else {
-				alert($('#WrongEP').val());
-			}
-        }
-    });
+    if($('#email').val() == '' || $('#password').val() == '') {
+        alert($('#requireField').val());
+        return;
+    }
+    if( confirm($('#WithdrawalConfirm').val()) ) {
+        var data = {};
+        data.email = $('#email').val();
+        data.password = $('#password').val();
+        data.success = '';
+        var httpType = 'https://';
+        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: httpType+$('#hostname').val()+'/upload/deleteFiles',
+            async: false,
+            success : function(data) {
+                if(data.success == 'Y') {
+                    alert($('#WithdrawalComplete').val());
+                    document.location.href = '/catalog/';
+                } else {
+                    alert($('#WrongEP').val());
+                }
+            }
+        });
+    }
 }
 
 function cs_change_music(music) {

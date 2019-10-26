@@ -101,61 +101,61 @@ router.post('/deleteFiles', (req, res, next) => {
 	console.log('deleteFiles started');
 
 	if (req.session) {
-	
+    console.log('req session started');
 		User.authenticate(req.body.email, req.body.password, function (error, user) {
 			if (error || !user) {
-				req.body.success = 'N';
+        console.log('deleteFiles authenticate error '+error);
+        req.body.success = 'N';
 				res.send(req.body);
 			} else {
-				bucket.deleteFiles({
+        console.log('bucket deleteFiles started');
+        bucket.deleteFiles({
 					prefix: `${req.session.userId}/`,
 					force: true
 				}, function(err) {
-					if (!err) {
-						// All files in the `req.session.userId` directory have been deleted.
-						//res.send(req.body);
-					}
+          if (err) { console.log('files delete error '+err); return next(err); }
+          console.log('data delete started');
+          Book.find({user: req.session.userId}).remove().exec(function(err, data) {
+            if (!err) console.log('Book deleted:'+ JSON.stringify(data));
+          });
+          BookMark.find({user: req.session.userId}).remove().exec(function(err, data) {
+            if (!err) console.log('BookMark deleted:'+ JSON.stringify(data));
+          });
+          Comment.find({user: req.session.userId}).remove().exec(function(err, data) {
+            if (!err) console.log('Comment deleted:'+ JSON.stringify(data));
+          });
+          File.find({user: req.session.userId}).remove().exec(function(err, data) {
+            if (!err) console.log('File deleted:'+ JSON.stringify(data));
+          });
+          Genre.find({user: req.session.userId}).remove().exec(function(err, data) {
+            if (!err) console.log('Genre deleted:'+ JSON.stringify(data));
+          });
+          History.find({user: req.session.userId}).remove().exec(function(err, data) {
+            if (!err) console.log('History deleted:'+ JSON.stringify(data));
+          });
+          Memo.find({user: req.session.userId}).remove().exec(function(err, data) {
+            if (!err) console.log('Memo deleted:'+ JSON.stringify(data));
+          });
+          Story.find({user: req.session.userId}).remove().exec(function(err, data) {
+            if (!err) console.log('Story deleted:'+ JSON.stringify(data));
+          });
+          User.find({email: req.session.userEmail}).remove().exec(function(err, data) {
+            if (!err) console.log('User deleted:'+ JSON.stringify(data));
+          });
+          Word.find({user: req.session.userId}).remove().exec(function(err, data) {
+            if (!err) console.log('Word deleted:'+ JSON.stringify(data));
+          });
+          
+          req.session.destroy(function (err) {
+            if (err) {
+              console.log('session destroy error '+err);
+              return next(err);
+            } else {
+              req.body.success = 'Y';
+              res.send(req.body);
+            }
+          });	
 				});
-				
-				Book.find({user: req.session.userId}).remove().exec(function(err, data) {
-					if (!err) console.log('Book deleted:'+ JSON.stringify(data));
-				});
-				BookMark.find({user: req.session.userId}).remove().exec(function(err, data) {
-					if (!err) console.log('BookMark deleted:'+ JSON.stringify(data));
-				});
-				Comment.find({user: req.session.userId}).remove().exec(function(err, data) {
-					if (!err) console.log('Comment deleted:'+ JSON.stringify(data));
-				});
-				File.find({user: req.session.userId}).remove().exec(function(err, data) {
-					if (!err) console.log('File deleted:'+ JSON.stringify(data));
-				});
-				Genre.find({user: req.session.userId}).remove().exec(function(err, data) {
-					if (!err) console.log('Genre deleted:'+ JSON.stringify(data));
-				});
-				History.find({user: req.session.userId}).remove().exec(function(err, data) {
-					if (!err) console.log('History deleted:'+ JSON.stringify(data));
-				});
-				Memo.find({user: req.session.userId}).remove().exec(function(err, data) {
-					if (!err) console.log('Memo deleted:'+ JSON.stringify(data));
-				});
-				Story.find({user: req.session.userId}).remove().exec(function(err, data) {
-					if (!err) console.log('Story deleted:'+ JSON.stringify(data));
-				});
-				User.find({email: req.session.userEmail}).remove().exec(function(err, data) {
-					if (!err) console.log('User deleted:'+ JSON.stringify(data));
-				});
-				Word.find({user: req.session.userId}).remove().exec(function(err, data) {
-					if (!err) console.log('Word deleted:'+ JSON.stringify(data));
-				});
-				
-				req.session.destroy(function (err) {
-					if (err) {
-						return next(err);
-					} else {
-						req.body.success = 'Y';
-						res.send(req.body);
-					}
-				});	
 			}
 		});
    
