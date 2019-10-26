@@ -9,7 +9,7 @@ block content
   ul.tite
     for story in stories
       li
-        a(href=story.url) #{story.chapter} !{story.title} (#{story.len}) &nbsp;&nbsp;
+        a(href=story.url) #{story.chapter} !{story.title} (#{story.len}) &nbsp;&nbsp;&nbsp;&nbsp;
         a(href='/catalog/story/'+story._id+'/download') #{translation.Download}
   <br>
   p #[strong #{translation.Genre}:] 

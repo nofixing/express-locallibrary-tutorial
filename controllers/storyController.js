@@ -38,11 +38,19 @@ exports.download_get = function(req, res, next) {
 
 			var result = data.replace(/tsfgkpmhr/g, theStory.title);
 			result = result.replace(/tgbyhnujb/g, req.session.cfnt);
-			result = result.replace(/poilkjmnb/g, theStory.title_font);
-			result = result.replace(/cftvgybhu/g, theStory.chapter);
+            result = result.replace(/poilkjmnb/g, theStory.title_font);
+            if(typeof theStory.chapter !='undefined') {
+                result = result.replace(/cftvgybhu/g, theStory.chapter);
+            } else {
+                result = result.replace(/cftvgybhu/g, '');
+            }
 			result = result.replace(/emdfgtfrd/g, theStory.title_size);
-			result = result.replace(/acqjjqgfj/g, theStory.author);
-			result = result.replace(/uypotfhuj/g, theStory.reference);
+            result = result.replace(/acqjjqgfj/g, theStory.author);
+            if(typeof theStory.reference !='undefined') {
+                result = result.replace(/uypotfhuj/g, theStory.reference);
+            } else {
+                result = result.replace(/uypotfhuj/g, '');
+            }
 			result = result.replace(/rdftgyhvf/g, theStory.content);
 
 			var fileName = theStory.title+'.html';
