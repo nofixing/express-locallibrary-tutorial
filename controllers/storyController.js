@@ -89,6 +89,12 @@ exports.withdrawal = function(req, res, next) {
 
 };
 
+exports.privacy_policy = function(req, res, next) {
+
+	res.render('privacy_policy');
+
+};
+
 exports.story_open_list = function(req, res, next) {
 
     var mxcnt = 0;
