@@ -139,6 +139,8 @@ router.post('/story_oxford_ajaxs', story_controller.story_oxford_ajaxs);
 
 router.get('/stories/withdrawal', story_controller.withdrawal);
 
+router.get('/privacy_policy', story_controller.privacy_policy);
+
 /// WORD ROUTES ///
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
