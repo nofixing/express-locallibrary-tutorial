@@ -91,7 +91,7 @@ exports.withdrawal = function(req, res, next) {
 
 exports.privacy_policy = function(req, res, next) {
 
-	res.render('privacyPolicy');
+	res.render('privacyPolicy', { cfnt: req.session.cfnt });
 
 };
 
