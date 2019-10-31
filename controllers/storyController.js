@@ -85,7 +85,7 @@ exports.story_list = function(req, res, next) {
 
 exports.withdrawal = function(req, res, next) {
     console.log('withdrawal start');
-	res.render('withdrawal', { hostname: req.headers.host });
+	res.render('withdrawal', { hostname: req.headers.host, cfnt: req.session.cfnt });
 
 };
 
