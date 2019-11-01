@@ -97,7 +97,8 @@ $( document ).ready(function() {
 					"csv",
 					"pdf",
 					"print"
-				]
+				],
+				editor: editor
 			}
 		],
 		initComplete : function() {
