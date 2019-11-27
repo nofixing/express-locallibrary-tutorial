@@ -53,7 +53,7 @@ class LinkBlot extends Inline {
     return node.getAttribute('href');
   }
 }
-LinkBlot.blotName = 'link';
+LinkBlot.blotName = 'tooltip';
 LinkBlot.tagName = 'a';
 
 Quill.register(LinkBlot, true);
@@ -125,7 +125,7 @@ customButton.addEventListener('click', function() {
 
 $('#InsertTooltip').click(function(){
   var sTag = "<img src="+$('#recipient-name').val()+"><h4>"+$('#message-text').val()+"</h4>";
-  quill.format('link', sTag);
+  quill.format('tooltip', sTag);
   console.log(quill.root.innerHTML);
   $('#tcls')[0].click();
 });
