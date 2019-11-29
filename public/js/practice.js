@@ -1232,7 +1232,7 @@ function processDicData(dic_content) {
     simpleData[0].nodes[0].nodes.push({text:'Grandchild 1'});
     simpleData[0].nodes[0].nodes.push({text:'Grandchild 2'});
     */
-    
+   console.log('==========================================================================DicData:\n'+dic_content);
     var voca = JSON.parse(dic_content);
     
     var word_id = voca.id;
