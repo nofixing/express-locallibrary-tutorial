@@ -1393,7 +1393,7 @@ function processDicData(dic_content) {
                     var shortDefinitions = senses[l].shortDefinitions;
                     if (typeof shortDefinitions !== 'undefined') {
                         console.log('shortDefinitions: '+shortDefinitions);
-                        simpleData[i].nodes[j].nodes.push({text:'shortDefinitions: '+shortDefinitions});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>shortDefinitions</b>: '+shortDefinitions});
                         ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                     }
                     var regions = senses[l].regions;
@@ -1402,7 +1402,7 @@ function processDicData(dic_content) {
                         var notes_text = notes[0].text;
                         var notes_type = notes[0].type;
                         for (let m = 0; m < notes.length; m++) {
-                            simpleData[i].nodes[j].nodes.push({text:'notes: '+notes[m].text+' ('+notes[m].type+')'});
+                            simpleData[i].nodes[j].nodes.push({text:'<b>notes</b>: '+notes[m].text+' ('+notes[m].type+')'});
                             ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
