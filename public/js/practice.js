@@ -1232,14 +1232,14 @@ function processDicData(dic_content) {
     simpleData[0].nodes[0].nodes.push({text:'Grandchild 1'});
     simpleData[0].nodes[0].nodes.push({text:'Grandchild 2'});
     */
-   console.log('==========================================================================DicData:\n'+dic_content);
+    console.log('==========================================================================DicData:\n'+dic_content);
     var voca = JSON.parse(dic_content);
     
     var word_id = voca.id;
     var results = voca.results;
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
-        simpleData.push({text:'<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>'});
+        simpleData.push({text:'<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>', selectable: false});
         console.log('word: '+word);
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
@@ -1253,7 +1253,7 @@ function processDicData(dic_content) {
                 var lexicalCategory_id = lexicalCategory.id;
                 var lexicalCategory_text = lexicalCategory.text;
                 console.log('lexicalCategory.text:'+lexicalCategory.text);
-                simpleData[i].nodes.push({text:lexicalCategory.text});
+                simpleData[i].nodes.push({text:lexicalCategory.text, selectable: false});
             }
             var pronunciations = lexicalEntries[j].pronunciations;
             if (typeof pronunciations === 'object') {
@@ -1273,14 +1273,14 @@ function processDicData(dic_content) {
             var derivativeOf = lexicalEntries[j].derivativeOf;
             if (typeof derivativeOf === 'object') {
                 //console.log('derivativeOf: '+derivativeOf[0].text);
-                simpleData[i].nodes.push({text:'derivativeOf: '+derivativeOf[0].text});
+                simpleData[i].nodes.push({text:'derivativeOf: '+derivativeOf[0].text, selectable: false});
             }
             var derivatives = lexicalEntries[j].derivatives;
             if (typeof derivatives === 'object') {
                 for (let k = 0; k < derivatives.length; k++) {
                     //console.log('derivatives['+k+'].text: '+derivatives[k].text);
                 }
-                simpleData[i].nodes.push({text:'derivatives: '+derivatives[0].text});
+                simpleData[i].nodes.push({text:'derivatives: '+derivatives[0].text, selectable: false});
             }
             var entries = lexicalEntries[j].entries;
             for (let k = 0; k < entries.length; k++) {
@@ -1299,9 +1299,9 @@ function processDicData(dic_content) {
                     
                     if (typeof simpleData[i].nodes[j].nodes !== 'object') {
                         simpleData[i].nodes[j].nodes = [];
-                        simpleData[i].nodes[j].nodes.push({text:'etymologies: '+etymologies});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies, selectable: false});
                     } else {
-                        simpleData[i].nodes[j].nodes.push({text:'etymologies: '+etymologies});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies, selectable: false});
                     }
                 
                 }
@@ -1314,7 +1314,7 @@ function processDicData(dic_content) {
                             console.log('entries_audioFile: '+entries_audioFile);
                             if (typeof simpleData[i].nodes[j].nodes !== 'object') {
                                 simpleData[i].nodes[j].nodes = [];
-                                simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>'});
+                                simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>', selectable: false});
                             } else {
                                 var isExists = false;
                                 var isIdx = 0;
@@ -1327,7 +1327,7 @@ function processDicData(dic_content) {
                                 if (isExists) {
                                     simpleData[i].nodes[j].nodes[isIdx].text = simpleData[i].nodes[j].nodes[isIdx].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>';
                                 } else {
-                                    simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>'});
+                                    simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>', selectable: false});
                                 }
                             }
                         }
@@ -1352,13 +1352,13 @@ function processDicData(dic_content) {
                     var definitions = senses[l].definitions;
                     if (typeof definitions !== 'undefined') {
                         console.log('definitions: '+definitions);
-                        simpleData[i].nodes[j].nodes.push({text:definitions});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>'+definitions+'</b>', selectable: false});
                         ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                     }
                     var crossReferenceMarkers = senses[l].crossReferenceMarkers;
                     if (typeof crossReferenceMarkers !== 'undefined') {
                         console.log('crossReferenceMarkers: '+crossReferenceMarkers);
-                        simpleData[i].nodes[j].nodes.push({text:crossReferenceMarkers});
+                        simpleData[i].nodes[j].nodes.push({text:crossReferenceMarkers, selectable: false});
                     }
                     var crossReferences = senses[l].crossReferences;
                     if (typeof crossReferences === 'object') {
@@ -1380,7 +1380,7 @@ function processDicData(dic_content) {
                             }
                             var examples_text = examples[m].text;
                             console.log('examples_text: '+examples_text);
-                            simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'});
+                            simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>', selectable: false});
                             ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
@@ -1393,7 +1393,7 @@ function processDicData(dic_content) {
                     var shortDefinitions = senses[l].shortDefinitions;
                     if (typeof shortDefinitions !== 'undefined') {
                         console.log('shortDefinitions: '+shortDefinitions);
-                        simpleData[i].nodes[j].nodes.push({text:'<b>shortDefinitions</b>: '+shortDefinitions});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>shortDefinitions:</b> '+shortDefinitions, selectable: false});
                         ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                     }
                     var regions = senses[l].regions;
@@ -1402,7 +1402,7 @@ function processDicData(dic_content) {
                         var notes_text = notes[0].text;
                         var notes_type = notes[0].type;
                         for (let m = 0; m < notes.length; m++) {
-                            simpleData[i].nodes[j].nodes.push({text:'<b>notes</b>: '+notes[m].text+' ('+notes[m].type+')'});
+                            simpleData[i].nodes[j].nodes.push({text:'<b>notes:</b> '+notes[m].text+' ('+notes[m].type+')', selectable: false});
                             ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
@@ -1413,7 +1413,7 @@ function processDicData(dic_content) {
                             var subsenses_definitions = subsenses[m].definitions;
                             if (typeof definitions !== 'undefined') {
                                 console.log('subsenses_definitions: '+subsenses_definitions);
-                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions});
+                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions, selectable: false});
                             }
                             var subsenses_domains = subsenses[m].domains;
                             var subsenses_examples = subsenses[m].examples;
@@ -1425,7 +1425,7 @@ function processDicData(dic_content) {
                                 }
                                 var subsenses_examples_text = subsenses_examples[n].text;
                                 console.log('subsenses_examples_text: '+subsenses_examples_text);
-                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'<i>'+subsenses_examples[n].text+'</i>'});
+                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'<i>'+subsenses_examples[n].text+'</i>', selectable: false});
                                 }
                             }
                             var subsenses_id = subsenses[m].id;
@@ -1451,7 +1451,7 @@ function processDicData(dic_content) {
                     }
                     var thesaurusLinks = senses[l].thesaurusLinks;
                     if (typeof thesaurusLinks === 'object') {
-                        simpleData[i].nodes[j].nodes.push({text:'thesaurus: <a onclick="thesaurus(\''+thesaurusLinks[0].entry_id+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+thesaurusLinks[0].entry_id+'</a>'});
+                        simpleData[i].nodes[j].nodes.push({text:'thesaurus: <a onclick="thesaurus(\''+thesaurusLinks[0].entry_id+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+thesaurusLinks[0].entry_id+'</a>', selectable: false});
                         var thesaurusLinks_entry_id = thesaurusLinks[0].entry_id;
                         //console.log('thesaurusLinks[0].entry_id: '+thesaurusLinks[0].entry_id);
                         var thesaurusLinks_sense_id = thesaurusLinks[0].sense_id;
@@ -1461,7 +1461,7 @@ function processDicData(dic_content) {
         }
         var type = results[i].type;
     }
-    simpleData.push({text: '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>'});
+    simpleData.push({text: '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>', selectable: false});
 	console.log(JSON.stringify(simpleData));
     $('#treeview1').css("display", "block");
     $('#treeview1').treeview({
