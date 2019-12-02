@@ -146,7 +146,7 @@ exports.word_create_post = [
                         */
                         let text = req.body.title;
                         let target = 'ko';
-                        let [translations] = await translate.translate(text, target);
+                        let [translations] = translate.translate(text, target);
                         translations = Array.isArray(translations) ? translations : [translations];
                         console.log('Translations:');
                         translations.forEach((translat, i) => {
