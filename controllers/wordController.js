@@ -133,7 +133,7 @@ exports.word_create_post = [
                         console.log('word_create_post');
 
                         var translation = '';
-
+                        /*
                         translate.translate(req.body.title, 'ko').then(results => {
                             translation = results[0];
                             for (let i = 0; i < results.length; i++) {
@@ -142,6 +142,15 @@ exports.word_create_post = [
                         }).catch(err => {
                             console.error('ERROR:', err);
                             res.send(req.body);
+                        });
+                        */
+                        let text = req.body.title;
+                        let target = 'ko';
+                        let [translations] = await translate.translate(text, target);
+                        translations = Array.isArray(translations) ? translations : [translations];
+                        console.log('Translations:');
+                        translations.forEach((translat, i) => {
+                        console.log(`${text[i]} => (${target}) ${translat}`);
                         });
 
                         var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
