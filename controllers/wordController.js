@@ -162,6 +162,7 @@ exports.word_create_post = [
                             targetLanguageCode: 'ko-KR'
                         };
                         translationClient.translateText(rqt).then(results => {
+                            console.log(`GOOGLE Translation results: ${JSON.stringify(results)}`);
                             for (let i = 0; i < results.length; i++) {
                                 console.log(`GOOGLE Translation: ${JSON.stringify(results[i])}`);
                             }
