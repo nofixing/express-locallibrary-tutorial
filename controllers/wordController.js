@@ -3,13 +3,23 @@ var moment = require('moment');
 
 const { body, validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
-const { Translate } = require('@google-cloud/translate');
+//const { Translate } = require('@google-cloud/translate');
+const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
 
 // Your Google Cloud Platform project ID
 const projectId = 'infinitestorlet';
 
 // Instantiates a client
+/*
 const translate = new Translate({
+    projectId: projectId,
+    credentials: {
+        private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+        client_email: process.env.GOOGLE_CLIENT_EMAIL
+    }
+});
+*/
+const translationClient = new TranslationServiceClient({
     projectId: projectId,
     credentials: {
         private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
@@ -133,7 +143,7 @@ exports.word_create_post = [
                         console.log('word_create_post');
 
                         var translation = '';
-                        
+                        /*
                         translate.translate(req.body.title, 'ko').then(results => {
                             translation = results[0];
                             for (let i = 0; i < results.length; i++) {
@@ -143,7 +153,19 @@ exports.word_create_post = [
                             console.error('ERROR:', err);
                             res.send(req.body);
                         });
-                        
+                        */
+                        const rqt = {
+                            parent: translationClient.locationPath(projectId, 'global'),
+                            contents: req.body.title,
+                            mimeType: 'text/plain', // mime types: text/plain, text/html
+                            sourceLanguageCode: 'en-US',
+                            targetLanguageCode: 'ko-Kr',
+                        };
+                        const [rps] = translationClient.translateText(rqt);
+                        for (const trans of rps.translations) {
+                            console.log(`GOOGLE Translation: ${trans.translatedText}`);
+                        }
+
                         var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
                         var request = require('request');
                         var options = {
