@@ -162,10 +162,12 @@ exports.word_create_post = [
                             targetLanguageCode: 'ko-Kr',
                         };
                         const rps = translationClient.translateText(rqt);
+                        console.log(`GOOGLE Translation: ${JSON.stringify(rps.translations)}`);
+                        /*
                         for (const trans of rps.translations) {
                             console.log(`GOOGLE Translation: ${trans.translatedText}`);
                         }
-
+                        */
                         var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
                         var request = require('request');
                         var options = {
