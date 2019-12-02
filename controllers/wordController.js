@@ -161,8 +161,15 @@ exports.word_create_post = [
                             sourceLanguageCode: 'en-US',
                             targetLanguageCode: 'ko-KR'
                         };
-                        const rps = translationClient.translateText(rqt);
-                        console.log(`GOOGLE Translation: ${JSON.stringify(rps.translations)}`);
+                        translationClient.translateText(rqt).then(results => {
+                            for (let i = 0; i < results.length; i++) {
+                                console.log(`GOOGLE Translation: ${JSON.stringify(results[i])}`);
+                            }
+                        }).catch(err => {
+                            console.error('ERROR:', err);
+                            //res.send(req.body);
+                        });
+                        //console.log(`GOOGLE Translation: ${JSON.stringify(rps.translations)}`);
                         /*
                         for (const trans of rps.translations) {
                             console.log(`GOOGLE Translation: ${trans.translatedText}`);
