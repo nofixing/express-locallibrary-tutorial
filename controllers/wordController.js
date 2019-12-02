@@ -156,7 +156,7 @@ exports.word_create_post = [
                         */
                         const rqt = {
                             parent: translationClient.locationPath(projectId, 'global'),
-                            contents: req.body.title,
+                            contents: [req.body.title],
                             mimeType: 'text/plain', // mime types: text/plain, text/html
                             sourceLanguageCode: 'en-US',
                             targetLanguageCode: 'ko-KR'
