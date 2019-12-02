@@ -161,7 +161,7 @@ exports.word_create_post = [
                             sourceLanguageCode: 'en-US',
                             targetLanguageCode: 'ko-Kr',
                         };
-                        const [rps] = translationClient.translateText(rqt);
+                        const rps = translationClient.translateText(rqt);
                         for (const trans of rps.translations) {
                             console.log(`GOOGLE Translation: ${trans.translatedText}`);
                         }
