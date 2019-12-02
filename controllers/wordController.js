@@ -159,7 +159,7 @@ exports.word_create_post = [
                             contents: req.body.title,
                             mimeType: 'text/plain', // mime types: text/plain, text/html
                             sourceLanguageCode: 'en-US',
-                            targetLanguageCode: 'ko-Kr',
+                            targetLanguageCode: 'ko-KR'
                         };
                         const rps = translationClient.translateText(rqt);
                         console.log(`GOOGLE Translation: ${JSON.stringify(rps.translations)}`);
