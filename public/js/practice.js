@@ -1235,7 +1235,7 @@ function processDicData(dic_content) {
     console.log('==========================================================================DicData:\n'+dic_content);
     var voca = JSON.parse(dic_content);
     var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="CopyFilePath(\'';
-    var cptxtb = '\');return false;" style="cursor: pointer;align:right;padding-right:30px;"><i class="fas fa-copy"></i></a>';
+    var cptxtb = '\');return false;" style="cursor: pointer;align:right;padding-right:30px;"><i class="fa">&#xf0c5;</i></a>';
     var word_id = voca.id;
     var results = voca.results;
     for (let i = 0; i < results.length; i++) {
