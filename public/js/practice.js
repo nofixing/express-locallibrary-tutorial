@@ -1234,7 +1234,8 @@ function processDicData(dic_content) {
     */
     console.log('==========================================================================DicData:\n'+dic_content);
     var voca = JSON.parse(dic_content);
-    
+    var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="CopyFilePath(\'';
+    var cptxtb = '\');return false;" style="cursor: pointer;align:right;padding-right:30px;"><i class="fas fa-copy"></i></a>';
     var word_id = voca.id;
     var results = voca.results;
     for (let i = 0; i < results.length; i++) {
@@ -1299,9 +1300,9 @@ function processDicData(dic_content) {
                     
                     if (typeof simpleData[i].nodes[j].nodes !== 'object') {
                         simpleData[i].nodes[j].nodes = [];
-                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies, selectable: false});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+etymologies+cptxtb, selectable: false});
                     } else {
-                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies, selectable: false});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+etymologies+cptxtb, selectable: false});
                     }
                 
                 }
@@ -1352,7 +1353,7 @@ function processDicData(dic_content) {
                     var definitions = senses[l].definitions;
                     if (typeof definitions !== 'undefined') {
                         console.log('definitions: '+definitions);
-                        simpleData[i].nodes[j].nodes.push({text:'<b>'+definitions+'</b>', selectable: false});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>'+definitions+'</b>'+cptxtf+definitions+cptxtb, selectable: false});
                         ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                     }
                     var crossReferenceMarkers = senses[l].crossReferenceMarkers;
@@ -1380,7 +1381,7 @@ function processDicData(dic_content) {
                             }
                             var examples_text = examples[m].text;
                             console.log('examples_text: '+examples_text);
-                            simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>', selectable: false});
+                            simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'+cptxtf+examples[m].text+cptxtb, selectable: false});
                             ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
@@ -1393,7 +1394,7 @@ function processDicData(dic_content) {
                     var shortDefinitions = senses[l].shortDefinitions;
                     if (typeof shortDefinitions !== 'undefined') {
                         console.log('shortDefinitions: '+shortDefinitions);
-                        simpleData[i].nodes[j].nodes.push({text:'<b>shortDefinitions:</b> '+shortDefinitions, selectable: false});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>shortDefinitions:</b> '+shortDefinitions+cptxtf+shortDefinitions+cptxtb, selectable: false});
                         ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                     }
                     var regions = senses[l].regions;
@@ -1402,7 +1403,7 @@ function processDicData(dic_content) {
                         var notes_text = notes[0].text;
                         var notes_type = notes[0].type;
                         for (let m = 0; m < notes.length; m++) {
-                            simpleData[i].nodes[j].nodes.push({text:'<b>notes:</b> '+notes[m].text+' ('+notes[m].type+')', selectable: false});
+                            simpleData[i].nodes[j].nodes.push({text:'<b>notes:</b> '+notes[m].text+' ('+notes[m].type+')'+cptxtf+notes[m].text+' ('+notes[m].type+')'+cptxtb, selectable: false});
                             ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
@@ -1413,7 +1414,7 @@ function processDicData(dic_content) {
                             var subsenses_definitions = subsenses[m].definitions;
                             if (typeof definitions !== 'undefined') {
                                 console.log('subsenses_definitions: '+subsenses_definitions);
-                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions, selectable: false});
+                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions+cptxtf+subsenses_definitions+cptxtb, selectable: false});
                             }
                             var subsenses_domains = subsenses[m].domains;
                             var subsenses_examples = subsenses[m].examples;
@@ -1425,7 +1426,7 @@ function processDicData(dic_content) {
                                 }
                                 var subsenses_examples_text = subsenses_examples[n].text;
                                 console.log('subsenses_examples_text: '+subsenses_examples_text);
-                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'<i>'+subsenses_examples[n].text+'</i>', selectable: false});
+                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'<i>'+subsenses_examples[n].text+'</i>'+cptxtf+subsenses_examples[n].text+cptxtb, selectable: false});
                                 }
                             }
                             var subsenses_id = subsenses[m].id;
