@@ -991,7 +991,7 @@ exports.story_oxford_ajax = function(req, res, next) {
             },
             function(err4) {
                 console.log('req.query.word:'+derivative_word+'     story_oxford_ajax err4:'+err4); 
-                if(err.indexOf('No such entry found.') > -1) {
+                if(err4.indexOf('No such entry found.') > -1) {
                     
                 }
                 return next(err4);
@@ -1030,7 +1030,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                 },
                 function(err3) {
                     console.log('req.query.word:'+lemmas_word+'     story_oxford_ajax err3:'+err3); 
-                    if(err.indexOf('No such entry found.') > -1) {
+                    if(err3.indexOf('No such entry found.') > -1) {
                         
                     }
                     return next(err3);
@@ -1039,7 +1039,7 @@ exports.story_oxford_ajax = function(req, res, next) {
             },
             function(err2) {
                 console.log('req.query.word:'+req.body.word+'     story_oxford_ajax err2:'+err2); 
-                if(err.indexOf('No such entry found.') > -1) {
+                if(err2.indexOf('No such entry found.') > -1) {
                     
                 }
                 return next(err2);
