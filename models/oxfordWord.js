@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var OxfordWordSchema = new Schema({
     title: {type: String, required: true},
-    schema: {type: String, required: true},
+    gubun: {type: String, required: true},
     data: {type: String, required: true}
 });
 
