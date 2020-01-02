@@ -961,7 +961,7 @@ exports.story_oxford_ajax = function(req, res, next) {
         if (err) { console.log(err); return next(err); }
         if (theOxfordWord.length > 0) {
             console.log('Retrieve from local DB');
-            res.send(theOxfordWord[0].data);
+            res.send(theOxfordWord[0].data.replace(/\"/g, '|'));
         } else {
             console.log('Retrieve from Oxford');
             var config = {
@@ -1083,7 +1083,7 @@ exports.story_oxford_ajaxt = function(req, res, next) {
         if (err) { console.log(err); return next(err); }
         if (theOxfordWord.length > 0) {
             console.log('Retrieve from local DB');
-            res.send(theOxfordWord[0].data);
+            res.send(theOxfordWord[0].data.replace(/\"/g, '|'));
         } else {
             console.log('Retrieve from Oxford');
             var config = {
@@ -1120,7 +1120,7 @@ exports.story_oxford_ajaxs = function(req, res, next) {
         if (err) { console.log(err); return next(err); }
         if (theOxfordWord.length > 0) {
             console.log('Retrieve from local DB');
-            res.send(theOxfordWord[0].data);
+            res.send(theOxfordWord[0].data.replace(/\"/g, '|'));
         } else {
             console.log('Retrieve from Oxford');
             var config = {
