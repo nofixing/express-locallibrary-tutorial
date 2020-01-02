@@ -8,12 +8,5 @@ var OxfordWordSchema = new Schema({
     data: {type: String, required: true}
 });
 
-// Virtual for this oxfordWord instance URL.
-OxfordWordSchema
-.virtual('url')
-.get(function () {
-  return '/catalog/oxfordWord/'+this._id;
-});
-
 // Export model.
 module.exports = mongoose.model('OxfordWord', OxfordWordSchema);
