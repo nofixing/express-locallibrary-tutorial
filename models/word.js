@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var WordSchema = new Schema({
     title: {type: String, required: true},
-    user: [{ type: Schema.ObjectId, ref: 'User', required: true }],
+    user: { type: Schema.ObjectId, ref: 'User', required: true },
     book: { type: Schema.ObjectId, ref: 'Book' },
     book_title: {type: String},
     story: { type: Schema.ObjectId, ref: 'Story', required: true },
