@@ -7,6 +7,7 @@ var Comment = require('../models/comment');
 var History = require('../models/history');
 var BookMark = require('../models/bookMark');
 var File = require('../models/file');
+var OxfordWord = require('../models/oxfordWord');
 var fs = require('fs');
 var path = require('path');
 
