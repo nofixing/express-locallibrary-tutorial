@@ -7,7 +7,6 @@ var Comment = require('../models/comment');
 var History = require('../models/history');
 var BookMark = require('../models/bookMark');
 var File = require('../models/file');
-var OxfordWord = require('../models/oxfordWord');
 var fs = require('fs');
 var path = require('path');
 
@@ -941,210 +940,160 @@ exports.story_oxford = function(req, res, next) {
     });
 };
 
-function createOxfordWord(title, schema, data) {
-    var oxfordWord = new OxfordWord(
-        {
-            title: title,
-            schema: schema,
-            data: data
-        });
-    oxfordWord.save(function (err, theOxfordWord) {
-        if (err) { console.log(err); }
-    });
-}
-
 exports.story_oxford_ajax = function(req, res, next) {
     
     console.log('story_oxford_ajax start -> query:'+req.body.word);
+    
+    var config = {
+        app_id : oxford_app_id,
+        app_key : oxford_app_key,
+        source_lang : "en-us"
+    };  
+  
+    var dict = new OxfordDictionary(config);
+    
+    var props = {
+        word: req.body.word,
+        // filters: "grammaticalFeatures=singular,past;lexicalCategory=noun",
+        //fields: "definitions,domains,etymologies,examples,pronunciations,regions,registers,variantForms"
+        fields: req.body.fields
+    };
+    
+    var lookup = dict.find(props);
 
-    OxfordWord.find({title: req.body.word, schema: 'word'}).exec( function (err,theOxfordWord) {
-        if (err) { console.log(err); return next(err); }
-        if (theOxfordWord.length > 0) {
-            console.log('Retrieve from local DB');
-            res.send(theOxfordWord[0].data);
-        } else {
-            console.log('Retrieve from Oxford');
-            var config = {
-                app_id : oxford_app_id,
-                app_key : oxford_app_key,
-                source_lang : "en-us"
-            };  
-          
-            var dict = new OxfordDictionary(config);
-            
-            var props = {
-                word: req.body.word,
-                // filters: "grammaticalFeatures=singular,past;lexicalCategory=noun",
-                //fields: "definitions,domains,etymologies,examples,pronunciations,regions,registers,variantForms"
+    lookup.then(function(data) {
+        console.log('parse result ->'+JSON.stringify(data));
+        var results = data.results;
+        var derivative_word = '';
+        var isDerivativeOf = false;
+        for (let i = 0; i < results.length; i++) {
+            var lexicalEntries = results[i].lexicalEntries;
+            for (let j = 0; j < lexicalEntries.length; j++) {
+                var derivativeOf = lexicalEntries[j].derivativeOf;
+                if (typeof derivativeOf === 'object') {
+                    derivative_word = derivativeOf[0].text;
+                    isDerivativeOf = true;
+                }
+            }
+        }
+
+        if(isDerivativeOf) {
+            props = {
+                word: derivative_word,
                 fields: req.body.fields
             };
-            
-            var lookup = dict.find(props);
-        
-            lookup.then(function(data) {
-                console.log('parse result ->'+JSON.stringify(data));
-                var results = data.results;
-                var derivative_word = '';
-                var isDerivativeOf = false;
-                for (let i = 0; i < results.length; i++) {
-                    var lexicalEntries = results[i].lexicalEntries;
-                    for (let j = 0; j < lexicalEntries.length; j++) {
-                        var derivativeOf = lexicalEntries[j].derivativeOf;
-                        if (typeof derivativeOf === 'object') {
-                            derivative_word = derivativeOf[0].text;
-                            isDerivativeOf = true;
-                        }
-                    }
-                }
-        
-                if(isDerivativeOf) {
-                    props = {
-                        word: derivative_word,
-                        fields: req.body.fields
-                    };
-                    var lookup4 = dict.find(props);
-        
-                    lookup4.then(function(data4) {
-                        console.log('parse result4 ->'+JSON.stringify(data4));
-                        req.body.dic_content = JSON.stringify(data4);
-                        createOxfordWord(req.body.word, 'word', req.body.dic_content);
-                        res.send(req.body);
-                    },
-                    function(err4) {
-                        console.log('req.query.word:'+derivative_word+'     story_oxford_ajax err4:'+err4); 
-                        if(err4.indexOf('No such entry found.') > -1) {
-                            
-                        }
-                        return next(err4);
-                    });
-                } else {
-                    req.body.dic_content = JSON.stringify(data);
-                    createOxfordWord(req.body.word, 'word', req.body.dic_content);
-                    res.send(req.body);
-                }
-        
-            },
-            function(err) {
-                console.log('req.query.word:'+req.body.word+'     story_oxford_ajax err:'+err); 
-                if(err.indexOf('No such entry found.') > -1) {
-                    console.log('lemmas start');
-                    var config2 = {
-                        app_id : oxford_app_id,
-                        app_key : oxford_app_key,
-                        source_lang : "en"
-                    };
-                    var dict2 = new OxfordDictionary(config2);
-                    var lookup2 = dict2.lemmas(req.body.word);
-        
-                    lookup2.then(function(data2) {
-                        console.log('parse result2 ->'+JSON.stringify(data2));
-                        var lemmas_word = data2.results[0].lexicalEntries[0].inflectionOf[0].text;
-                        props = {
-                            word: lemmas_word,
-                            fields: req.body.fields
-                        };
-                        var lookup3 = dict.find(props);
-        
-                        lookup3.then(function(data3) {
-                            console.log('parse result3 ->'+JSON.stringify(data3));
-                            req.body.dic_content = JSON.stringify(data3);
-                            createOxfordWord(req.body.word, 'word', req.body.dic_content);
-                            res.send(req.body);
-                        },
-                        function(err3) {
-                            console.log('req.query.word:'+lemmas_word+'     story_oxford_ajax err3:'+err3); 
-                            if(err3.indexOf('No such entry found.') > -1) {
-                                
-                            }
-                            return next(err3);
-                        });
-        
-                    },
-                    function(err2) {
-                        console.log('req.query.word:'+req.body.word+'     story_oxford_ajax err2:'+err2); 
-                        if(err2.indexOf('No such entry found.') > -1) {
-                            
-                        }
-                        return next(err2);
-                    });
-                }
-            });
+            var lookup4 = dict.find(props);
 
+            lookup4.then(function(data4) {
+                console.log('parse result4 ->'+JSON.stringify(data4));
+                req.body.dic_content = JSON.stringify(data4);
+                res.send(req.body);
+            },
+            function(err4) {
+                console.log('req.query.word:'+derivative_word+'     story_oxford_ajax err4:'+err4); 
+                if(err4.indexOf('No such entry found.') > -1) {
+                    
+                }
+                return next(err4);
+            });
+        } else {
+            req.body.dic_content = JSON.stringify(data);
+            res.send(req.body);
+        }
+
+    },
+    function(err) {
+        console.log('req.query.word:'+req.body.word+'     story_oxford_ajax err:'+err); 
+        if(err.indexOf('No such entry found.') > -1) {
+            console.log('lemmas start');
+            var config2 = {
+                app_id : oxford_app_id,
+                app_key : oxford_app_key,
+                source_lang : "en"
+            };
+            var dict2 = new OxfordDictionary(config2);
+            var lookup2 = dict2.lemmas(req.body.word);
+
+            lookup2.then(function(data2) {
+                console.log('parse result2 ->'+JSON.stringify(data2));
+                var lemmas_word = data2.results[0].lexicalEntries[0].inflectionOf[0].text;
+                props = {
+                    word: lemmas_word,
+                    fields: req.body.fields
+                };
+                var lookup3 = dict.find(props);
+
+                lookup3.then(function(data3) {
+                    console.log('parse result3 ->'+JSON.stringify(data3));
+                    req.body.dic_content = JSON.stringify(data3);
+                    res.send(req.body);
+                },
+                function(err3) {
+                    console.log('req.query.word:'+lemmas_word+'     story_oxford_ajax err3:'+err3); 
+                    if(err3.indexOf('No such entry found.') > -1) {
+                        
+                    }
+                    return next(err3);
+                });
+
+            },
+            function(err2) {
+                console.log('req.query.word:'+req.body.word+'     story_oxford_ajax err2:'+err2); 
+                if(err2.indexOf('No such entry found.') > -1) {
+                    
+                }
+                return next(err2);
+            });
         }
     });
-    
 };
 
 exports.story_oxford_ajaxt = function(req, res, next) {
     
     console.log('story_oxford_ajaxt start -> query:'+req.body.word);
     
-    OxfordWord.find({title: req.body.word, schema: 'thesaurus'}).exec( function (err,theOxfordWord) {
-        if (err) { console.log(err); return next(err); }
-        if (theOxfordWord.length > 0) {
-            console.log('Retrieve from local DB');
-            res.send(theOxfordWord[0].data);
-        } else {
-            console.log('Retrieve from Oxford');
-            var config = {
-                app_id : oxford_app_id,
-                app_key : oxford_app_key,
-                source_lang : "en"
-            };  
-          
-            var dict = new OxfordDictionary(config);
-            
-            var lookup = dict.thesaurus(req.body.word);
-        
-            lookup.then(function(data) {
-                console.log('parse result ->'+JSON.stringify(data));
-                req.body.dic_content = JSON.stringify(data);
-                createOxfordWord(req.body.word, 'thesaurus', req.body.dic_content);
-                res.send(req.body);
-            },
-            function(err) {
-                console.log('req.query.word:'+req.body.word+'     story_oxford_ajaxt err:'+err); 
-                return next(err);
-            });
-
-        }
-    });
+    var config = {
+        app_id : oxford_app_id,
+        app_key : oxford_app_key,
+        source_lang : "en"
+    };  
+  
+    var dict = new OxfordDictionary(config);
     
+    var lookup = dict.thesaurus(req.body.word);
+
+    lookup.then(function(data) {
+        console.log('parse result ->'+JSON.stringify(data));
+        req.body.dic_content = JSON.stringify(data);
+        res.send(req.body);
+    },
+    function(err) {
+        console.log('req.query.word:'+req.body.word+'     story_oxford_ajaxt err:'+err); 
+        return next(err);
+    });
 };
 
 exports.story_oxford_ajaxs = function(req, res, next) {
     
     console.log('story_oxford_ajaxs start -> query:'+req.body.word);
     
-    OxfordWord.find({title: req.body.word, schema: 'sentences'}).exec( function (err,theOxfordWord) {
-        if (err) { console.log(err); return next(err); }
-        if (theOxfordWord.length > 0) {
-            console.log('Retrieve from local DB');
-            res.send(theOxfordWord[0].data);
-        } else {
-            console.log('Retrieve from Oxford');
-            var config = {
-                app_id : oxford_app_id,
-                app_key : oxford_app_key,
-                source_lang : "en"
-            };  
-          
-            var dict = new OxfordDictionary(config);
-            
-            var lookup = dict.sentences(req.body.word);
-        
-            lookup.then(function(data) {
-                console.log('parse result ->'+JSON.stringify(data));
-                req.body.dic_content = JSON.stringify(data);
-                createOxfordWord(req.body.word, 'sentences', req.body.dic_content);
-                res.send(req.body);
-            },
-            function(err) {
-                console.log('req.query.word:'+req.body.word+'     story_oxford_ajaxs err:'+err); 
-                return next(err);
-            });
-
-        }
-    });
+    var config = {
+        app_id : oxford_app_id,
+        app_key : oxford_app_key,
+        source_lang : "en"
+    };  
+  
+    var dict = new OxfordDictionary(config);
     
+    var lookup = dict.sentences(req.body.word);
+
+    lookup.then(function(data) {
+        console.log('parse result ->'+JSON.stringify(data));
+        req.body.dic_content = JSON.stringify(data);
+        res.send(req.body);
+    },
+    function(err) {
+        console.log('req.query.word:'+req.body.word+'     story_oxford_ajaxs err:'+err); 
+        return next(err);
+    });
 };
