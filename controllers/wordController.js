@@ -323,44 +323,60 @@ exports.word_update_post = function(req, res, next) {
           .exec(function (err, theWord) {
             //console.log(theWord);
             if (theWord != null) {
-              var upYn = 'N';
-              for (let i = 0; i < theWord.user.length; i++) {
-                  if (theWord.user[i] == req.session.userId) {
-                      console.log('Word.update 1');
-                      Word.update({_id: req.body.id}, {
-                          title: req.body.title,
-                          story: req.body.story_id,
-                          book: book_id,
-                          story_title: req.body.story_title,
-                          book_title: req.body.book_title,
-                          content: req.body.content,
-                          skill: req.body.skill,
-                          importance: req.body.importance
-                      }, function(err, upWord) {
-                          if (err) { console.log(err); return next(err); }
-                      });
-                      upYn = 'Y';
-                      break;
-                  }
-              }
-              if (upYn == 'N') {
-                  console.log('Word.update 2');
-                  Word.update({_id: req.body.id}, {
-                      title: req.body.title,
-                      $push: {user: req.session.userId},
-                      story: req.body.story_id,
-                      book: book_id,
-                      story_title: req.body.story_title,
-                      book_title: req.body.book_title,
-                      content: req.body.content,
-                      skill: req.body.skill,
-                      importance: req.body.importance
-                  }, function(err, upWord) {
-                      if (err) { console.log(err); return next(err); }
-                  });
-              }
-              req.body.id = theWord._id;
-              res.send(req.body);
+              
+                Word.update({_id: req.body.id}, {
+                    title: req.body.title,
+                    story: req.body.story_id,
+                    book: book_id,
+                    story_title: req.body.story_title,
+                    book_title: req.body.book_title,
+                    content: req.body.content,
+                    skill: req.body.skill,
+                    importance: req.body.importance
+                }, function(err, upWord) {
+                    if (err) { console.log(err); return next(err); }
+                });
+              
+                /*
+                var upYn = 'N';
+                for (let i = 0; i < theWord.user.length; i++) {
+                    if (theWord.user[i] == req.session.userId) {
+                        console.log('Word.update 1');
+                        Word.update({_id: req.body.id}, {
+                            title: req.body.title,
+                            story: req.body.story_id,
+                            book: book_id,
+                            story_title: req.body.story_title,
+                            book_title: req.body.book_title,
+                            content: req.body.content,
+                            skill: req.body.skill,
+                            importance: req.body.importance
+                        }, function(err, upWord) {
+                            if (err) { console.log(err); return next(err); }
+                        });
+                        upYn = 'Y';
+                        break;
+                    }
+                }
+                if (upYn == 'N') {
+                    console.log('Word.update 2');
+                    Word.update({_id: req.body.id}, {
+                        title: req.body.title,
+                        $push: {user: req.session.userId},
+                        story: req.body.story_id,
+                        book: book_id,
+                        story_title: req.body.story_title,
+                        book_title: req.body.book_title,
+                        content: req.body.content,
+                        skill: req.body.skill,
+                        importance: req.body.importance
+                    }, function(err, upWord) {
+                        if (err) { console.log(err); return next(err); }
+                    });
+                }
+                */
+                req.body.id = theWord._id;
+                res.send(req.body);
             } else {
                 console.log('word_update_post new insert');
                 newWord.save(function (err, theWord) {
