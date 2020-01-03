@@ -1039,7 +1039,16 @@ exports.story_oxford_ajax = function(req, res, next) {
         
                     lookup2.then(function(data2) {
                         console.log('parse result2 ->'+JSON.stringify(data2));
+                        var lexicalEntries = data2.results[0].lexicalEntries;
                         var lemmas_word = data2.results[0].lexicalEntries[0].inflectionOf[0].text;
+                        for (let i = 0; i < lexicalEntries.length; i++) {
+                            console.log('lexicalEntries[i].inflectionOf[0].text ->'+lexicalEntries[i].inflectionOf[0].text);
+                            if(req.body.word != lexicalEntries[i].inflectionOf[0].text) {
+                                lemmas_word = lexicalEntries[i].inflectionOf[0].text;
+                                break;
+                            }
+                        }
+                        
                         props = {
                             word: lemmas_word,
                             fields: req.body.fields
