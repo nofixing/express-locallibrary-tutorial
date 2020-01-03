@@ -148,25 +148,26 @@ block content
     div.form-group.row.boko
       div.col-sm-4
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Chapter}
-        input#chapter.form-control(type='text', placeholder='Chapter of story' name='chapter' value=(undefined===story ? '' : story.chapter) style='width:150px;float:left;margin-left:20px;' )
+        input#chapter.form-control(type='text', placeholder='Chapter of story' name='chapter' value=(undefined===story ? '' : story.chapter) style='width:400px;float:left;margin-left:20px;' )
     
     div.form-group.row.stro
       div.col-sm-4
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Author}
-        input#author.form-control(type='text', placeholder='Author of story' name='author' value=(undefined===story ? '' : story.author) style='width:150px;float:left;margin-left:20px;' )
+        input#author.form-control(type='text', placeholder='Author of story' name='author' value=(undefined===story ? '' : story.author) style='width:400px;float:left;margin-left:20px;' )
 
     div.form-group.row.stro
       div.col-sm-8
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Reference}
-        input#reference.form-control(type='text', placeholder='Reference of story' name='reference' value=(undefined===story ? '' : story.reference) style='width:200px;float:left;margin-left:20px;' )
+        input#reference.form-control(type='text', placeholder='Reference of story' name='reference' value=(undefined===story ? '' : story.reference) style='width:800px;float:left;margin-left:20px;' )
     
     div.form-group.stro
-      span( style='width: 60px; float:left; margin-top:2px;') #{translation.Genre}
-      div
-        for genre in genres
-          div(style='display: inline; padding-right:10px;')
-            input.checkbox-input(type='checkbox', class='gne', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
-            label(for=genre._id) #{genre.name}
+      div.col-sm-8
+        span( style='width: 60px; float:left; margin-top:2px;') #{translation.Genre}
+        div
+          for genre in genres
+            div(style='display: inline; padding-right:10px;')
+              input.checkbox-input(type='checkbox', class='gne', name='genre', id=genre._id, value=genre._id, checked=genre.checked )
+              label(for=genre._id) #{genre.name}
     
     div.form-group.row
       div.col-sm-8
