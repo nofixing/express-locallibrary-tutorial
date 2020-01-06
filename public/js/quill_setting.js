@@ -57,7 +57,7 @@ LinkBlot.blotName = 'tooltip';
 LinkBlot.tagName = 'a';
 
 Quill.register(LinkBlot, true);
-
+/*
 var BlockEmbed = Quill.import('blots/block/embed');
 class AudioBlot extends BlockEmbed {
   static create(url) {
@@ -74,7 +74,7 @@ class AudioBlot extends BlockEmbed {
 AudioBlot.blotName = 'audio';
 AudioBlot.tagName = 'audio';
 Quill.register(AudioBlot, true);
-
+*/
 var Parchment = Quill.import("parchment");
 /*
 let AudioClass = new Parchment.Attributor.Class('audio', 'ql-audio', {
