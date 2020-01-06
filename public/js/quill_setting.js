@@ -141,6 +141,7 @@ audioButton.addEventListener('click', function() {
     quill.insertEmbed(range.index + 1, 'audio', value, Quill.sources.USER);
     quill.setSelection(range.index + 2, Quill.sources.SILENT);
   }
+  return false;
 });
 
 var customButton = document.querySelector('.ql-omega');
