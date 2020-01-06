@@ -135,8 +135,9 @@ audioButton.addEventListener('click', function() {
   var range = quill.getSelection();
   var value = prompt('What is the audio src URL');
   if(value){
-    quill.insertEmbed(range.index, 'audio', value, Quill.sources.USER);
-    quill.setSelection(range.index + 1, Quill.sources.SILENT);
+    quill.insertText(range.index, '\n', Quill.sources.USER);
+    quill.insertEmbed(range.index + 1, 'audio', value, Quill.sources.USER);
+    quill.setSelection(range.index + 2, Quill.sources.SILENT);
   }
 });
 
