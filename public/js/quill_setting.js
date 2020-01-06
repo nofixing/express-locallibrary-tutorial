@@ -58,7 +58,7 @@ LinkBlot.tagName = 'a';
 
 Quill.register(LinkBlot, true);
 
-const BlockEmbed = Quill.import('blots/block/embed');
+var BlockEmbed = Quill.import('blots/block/embed');
 class AudioBlot extends BlockEmbed {
   static create(url) {
     let node = super.create();
