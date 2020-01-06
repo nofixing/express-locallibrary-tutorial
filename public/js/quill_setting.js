@@ -155,6 +155,7 @@ customButton.addEventListener('click', function() {
   } else {
     console.log('User cursor is not in editor');
   }
+  return false;
 });
 
 toolbar.addHandler('image', imageHandler);
