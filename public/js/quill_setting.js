@@ -76,13 +76,13 @@ AudioBlot.tagName = 'audio';
 Quill.register(AudioBlot, true);
 
 var Parchment = Quill.import("parchment");
-
+/*
 let AudioClass = new Parchment.Attributor.Class('audio', 'ql-audio', {
   scope: Parchment.Scope.BLOCK
 });
 
 Quill.register(AudioClass, true);
-
+*/
 let CustomClass = new Parchment.Attributor.Class('omega', 'ql-omega', {
   scope: Parchment.Scope.INLINE
 });
