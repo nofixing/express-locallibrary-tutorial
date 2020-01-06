@@ -548,6 +548,10 @@ ul.tite li {
     font-size: 10em;
 }
 
+.ql-audio:after {
+    content: "Audio";
+}
+
 .ql-omega:after {
     content: "Tooltip";
 }
