@@ -129,7 +129,7 @@ $('#InsertVideo').click(function(){
   quill.formatText(currentIdx, 1,'height', $('#video_height').val());
   $('#vcls')[0].click();
 });
-
+/*
 var audioButton = document.querySelector('.ql-audio');
 audioButton.addEventListener('click', function() {
   console.log('audioButton Clicked');
@@ -142,7 +142,7 @@ audioButton.addEventListener('click', function() {
     quill.setSelection(range.index + 2, Quill.sources.SILENT);
   }
 });
-
+*/
 var customButton = document.querySelector('.ql-omega');
 customButton.addEventListener('click', function() {
   var range = quill.getSelection();
