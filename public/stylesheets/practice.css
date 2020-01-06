@@ -548,7 +548,7 @@ ul.tite li {
     font-size: 10em;
 }
 
-.ql-audio:after {
+.audio:after {
     content: "Audio";
 }
 

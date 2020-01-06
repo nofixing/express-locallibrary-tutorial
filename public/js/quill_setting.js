@@ -57,7 +57,7 @@ LinkBlot.blotName = 'tooltip';
 LinkBlot.tagName = 'a';
 
 Quill.register(LinkBlot, true);
-/*
+
 var BlockEmbed = Quill.import('blots/block/embed');
 class AudioBlot extends BlockEmbed {
   static create(url) {
@@ -74,7 +74,7 @@ class AudioBlot extends BlockEmbed {
 AudioBlot.blotName = 'audio';
 AudioBlot.tagName = 'audio';
 Quill.register(AudioBlot, true);
-*/
+
 var Parchment = Quill.import("parchment");
 /*
 let AudioClass = new Parchment.Attributor.Class('audio', 'ql-audio', {
@@ -129,8 +129,8 @@ $('#InsertVideo').click(function(){
   quill.formatText(currentIdx, 1,'height', $('#video_height').val());
   $('#vcls')[0].click();
 });
-/*
-var audioButton = document.querySelector('.ql-audio');
+
+var audioButton = document.querySelector('.audio');
 audioButton.addEventListener('click', function() {
   console.log('audioButton Clicked');
   var range = quill.getSelection();
@@ -142,7 +142,7 @@ audioButton.addEventListener('click', function() {
     quill.setSelection(range.index + 2, Quill.sources.SILENT);
   }
 });
-*/
+
 var customButton = document.querySelector('.ql-omega');
 customButton.addEventListener('click', function() {
   var range = quill.getSelection();
@@ -179,7 +179,7 @@ for (let i = 0; i < videos.length; i++) {
   parent.insertBefore(embedContainer, videos[i]);
   embedContainer.appendChild(videos[i]);
 }
-
+/*
 var audios = document.querySelectorAll('.ql-audio');
 for (let i = 0; i < audios.length; i++) {
   var embedContainer = document.createElement('div');
@@ -188,7 +188,7 @@ for (let i = 0; i < audios.length; i++) {
   parent.insertBefore(embedContainer, audios[i]);
   embedContainer.appendChild(audios[i]);
 }
-
+*/
   /*
   var txtArea = document.createElement('textarea');
   txtArea.style.cssText = "width: 100%;height: 750px;margin: 0;background: rgb(255, 255, 255);box-sizing: border-box;color: rgb(0, 0, 0);"+
