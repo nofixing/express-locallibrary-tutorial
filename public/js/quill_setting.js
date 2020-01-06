@@ -78,7 +78,7 @@ Quill.register(AudioBlot, true);
 var Parchment = Quill.import("parchment");
 
 let AudioClass = new Parchment.Attributor.Class('audio', 'ql-audio', {
-  scope: Parchment.Scope.EMBED
+  scope: Parchment.Scope.BLOCK
 });
 
 Quill.register(AudioClass, true);
