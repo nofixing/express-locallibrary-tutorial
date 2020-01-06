@@ -132,7 +132,7 @@ $('#InsertVideo').click(function(){
 
 var audioButton = document.querySelector('.ql-audio');
 audioButton.addEventListener('click', function() {
-  console.log('audioButton Clicked ->:'+value);
+  console.log('audioButton Clicked');
   var range = quill.getSelection();
   var value = prompt('What is the audio src URL');
   if(value){
