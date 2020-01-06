@@ -176,6 +176,15 @@ for (let i = 0; i < videos.length; i++) {
   embedContainer.appendChild(videos[i]);
 }
 
+var audios = document.querySelectorAll('.ql-audio');
+for (let i = 0; i < audios.length; i++) {
+  var embedContainer = document.createElement('div');
+  embedContainer.setAttribute('class', 'embed-container');
+  var parent = audios[i].parentNode;
+  parent.insertBefore(embedContainer, audios[i]);
+  embedContainer.appendChild(audios[i]);
+}
+
   /*
   var txtArea = document.createElement('textarea');
   txtArea.style.cssText = "width: 100%;height: 750px;margin: 0;background: rgb(255, 255, 255);box-sizing: border-box;color: rgb(0, 0, 0);"+
