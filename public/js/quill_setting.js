@@ -145,7 +145,7 @@ audioButton.addEventListener('click', function(event) {
 });
 
 var customButton = document.querySelector('.ql-omega');
-customButton.addEventListener('click', function() {
+customButton.addEventListener('click', function(event) {
   var range = quill.getSelection();
   if (range) {
     if (range.length == 0) {
@@ -156,7 +156,7 @@ customButton.addEventListener('click', function() {
   } else {
     console.log('User cursor is not in editor');
   }
-  return false;
+  event.preventDefault();
 });
 
 toolbar.addHandler('image', imageHandler);
