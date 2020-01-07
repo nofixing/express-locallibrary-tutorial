@@ -131,7 +131,7 @@ $('#InsertVideo').click(function(){
 });
 
 var audioButton = document.querySelector('.audio');
-audioButton.addEventListener('click', function() {
+audioButton.addEventListener('click', function(event) {
   console.log('audioButton Clicked');
   var range = quill.getSelection();
   var value = prompt('What is the audio src URL');
@@ -141,7 +141,7 @@ audioButton.addEventListener('click', function() {
     quill.insertEmbed(range.index + 1, 'audio', value, Quill.sources.USER);
     quill.setSelection(range.index + 2, Quill.sources.SILENT);
   }
-  return false;
+  event.preventDefault();
 });
 
 var customButton = document.querySelector('.ql-omega');
