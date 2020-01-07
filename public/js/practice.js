@@ -690,6 +690,7 @@ function wordList() {
         }
     });
     if ( isThere ) return;
+    /*
     if (wordArray.length == 0 && $("#memo").val() == "") {
         document.querySelector('#snow-container').children[0].innerHTML = 
             "<p class='ql-font-PTSans' style='font-size:2em;'><strong>"+selectText+"&nbsp;&nbsp;&nbsp;"+selectContent+"</strong></p>";
@@ -697,6 +698,9 @@ function wordList() {
         document.querySelector('#snow-container').children[0].innerHTML = 
             html + "<br><p class='ql-font-PTSans' style='font-size:2em;'><strong>"+selectText+"&nbsp;&nbsp;&nbsp;"+selectContent+"</strong></p>";
     }
+    */
+    document.querySelector('#snow-container').children[0].innerHTML = 
+            html + "<br><p><span style='font-size: 1.5em;'><strong>"+selectText+"&nbsp;&nbsp;&nbsp;"+selectContent+"</strong></span></p>";
     wordArray.push(selectText);
 }
 
