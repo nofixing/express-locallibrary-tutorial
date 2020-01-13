@@ -316,6 +316,16 @@ $(function(){
     });
 
     $('#wordDelete').click(function(){
+        var checked = false;
+        $('.wList').each(function(idx) {
+            if ($(this).prop('checked')) {
+                checked = true;
+            }
+        });
+        if (!checked) {
+            alert($('#CheckWords').val());
+            return;
+        }
         var isDel = true;
         $('.wList').each(function(idx) {
             if ($(this).prop('checked')) {
@@ -349,6 +359,7 @@ $(function(){
         $('.wList:not(#checkall)').each(function () {
             $(this).prop('checked', false);
         });
+        $('#checkall').prop('checked', false);
         //location.reload();
     });
 
