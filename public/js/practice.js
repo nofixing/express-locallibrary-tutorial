@@ -267,6 +267,16 @@ $(function(){
     }
 
     $('#wordSave').click(function(){
+        var checked = false;
+        $('.wList').each(function(idx) {
+            if ($(this).prop('checked')) {
+                checked = true;
+            }
+        });
+        if (!checked) {
+            alert($('#CheckWords').val());
+            return;
+        }
         $('.wList').each(function(idx) {
             if ($(this).prop('checked')) {
                 var data = {};
@@ -292,14 +302,16 @@ $(function(){
                     async: false,
                     success : function(data) {
                         $(this).val(data.id);
-                        alert(data.result);
+                        //alert(data.result);
                     }
                 });
             }
         });
+        alert( $('#SAVED').val() );
         $('.wList:not(#checkall)').each(function () {
             $(this).prop('checked', false);
         });
+        $('#checkall').prop('checked', false);
         //location.reload();
     });
 
