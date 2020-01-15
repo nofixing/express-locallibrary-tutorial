@@ -955,7 +955,7 @@ function createOxfordWord(title, gubun, data, kdata) {
 }
 
 function updateOxfordWord(id, kdata) {
-    oxfordWord.update({_id: id}, {
+    OxfordWord.update({_id: id}, {
         kdata: kdata
     }, function(err, theOxfordWord) {
         if (err) { console.log('err:'+err); }
