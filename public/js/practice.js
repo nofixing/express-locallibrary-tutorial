@@ -697,7 +697,18 @@ function dicSearch() {
        url: httpType+$('#hostname').val()+'/catalog/story_oxford_ajax',
        async: false,
        success : function(data) {
-           processDicData(data.dic_content);
+            var kdata = '';
+            $.ajax({
+                type: 'POST',
+                data: {},
+                contentType: 'application/json',
+                url: 'http://tooltip.dic.naver.com/tooltip.nhn?wordString='+selectText+'romped&languageCode=4&nlp=false',
+                async: false,
+                success : function(result) {
+                    kdata = result;
+                }
+            });
+           processDicData(data.dic_content, kdata);
        }
    });
 }
@@ -1243,7 +1254,7 @@ function closeDic() {
 	$('#treeview1').css("display", "none");
 }
 
-function processDicData(dic_content) {
+function processDicData(dic_content, kdata) {
     var simpleData = [];
     /*
     var element = {text:'Parent 1'};
@@ -1261,13 +1272,24 @@ function processDicData(dic_content) {
     */
     console.log('==========================================================================DicData:\n'+dic_content);
     var voca = JSON.parse(dic_content);
+    var kvoca = JSON.parse(kdata);
+    var kmean = kvoca.mean;
+    var kword = '';
+    if (typeof kmean === 'object') {
+        for (let i = 0; i < kmean.length; i++) {
+            kword = kword + kmean[i];
+            if (i < (kmean.length - 1)) {
+                kword = kword + ', ';
+            }
+        }
+    }
     var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="CopyFilePath(\'';
     var cptxtb = '\');return false;" style="cursor: pointer;align:right;padding-right:30px;"><i class="fa">&#xf0c5;</i></a>';
     var word_id = voca.id;
     var results = voca.results;
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
-        simpleData.push({text:'<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>', selectable: false});
+        simpleData.push({text:'<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+kword, selectable: false});
         console.log('word: '+word);
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
