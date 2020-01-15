@@ -697,6 +697,7 @@ function dicSearch() {
        url: httpType+$('#hostname').val()+'/catalog/story_oxford_ajax',
        async: false,
        success : function(data) {
+            console.log('data.dic_kcontent:'+data.dic_kcontent+";");
             processDicData(data.dic_content, data.dic_kcontent);
        }
    });
@@ -1261,6 +1262,7 @@ function processDicData(dic_content, kdata) {
     */
     console.log('==========================================================================DicData:\n'+dic_content);
     var voca = JSON.parse(dic_content);
+    if (kdata.length == 0 || trim(kdata) == '') kdata = '{}';
     var kvoca = JSON.parse(kdata);
     var kmean = kvoca.mean;
     var kword = '';
