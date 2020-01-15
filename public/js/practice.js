@@ -702,9 +702,10 @@ function dicSearch() {
                 type: 'POST',
                 data: {},
                 contentType: 'application/json',
-                url: 'http://tooltip.dic.naver.com/tooltip.nhn?wordString='+selectText+'romped&languageCode=4&nlp=false',
+                url: 'http://tooltip.dic.naver.com/tooltip.nhn?wordString='+selectText+'&languageCode=4&nlp=false',
                 async: false,
                 success : function(result) {
+                    console.log('kdata:'+result);
                     kdata = result;
                 }
             });
