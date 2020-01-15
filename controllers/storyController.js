@@ -954,6 +954,14 @@ function createOxfordWord(title, gubun, data, kdata) {
     });
 }
 
+function updateOxfordWord(id, kdata) {
+    oxfordWord.update({_id: id}, {
+        kdata: kdata
+    }, function(err, theOxfordWord) {
+        if (err) { console.log('err:'+err); }
+    });
+}
+
 exports.story_oxford_ajax = function(req, res, next) {
     
     console.log('story_oxford_ajax start -> query:'+req.body.word);
@@ -967,6 +975,15 @@ exports.story_oxford_ajax = function(req, res, next) {
             console.log('theOxfordWord[0].kdata:'+theOxfordWord[0].kdata);
             if(typeof theOxfordWord[0].kdata !='undefined') {
                 req.body.dic_kcontent = theOxfordWord[0].kdata;
+            } else {
+                const request = require('request');
+                request('http://tooltip.dic.naver.com/tooltip.nhn?wordString='+req.body.word+'&languageCode=4&nlp=false', function (error, res, kdata) {
+                    if (error) { console.error(error); }
+                    console.log(`statusCode: ${res.statusCode}`);
+                    console.log(kdata);
+                    req.body.dic_kcontent = JSON.stringify(kdata);
+                });
+                updateOxfordWord(theOxfordWord._id, req.body.dic_kcontent);
             }
             res.send(req.body);
         } else {
