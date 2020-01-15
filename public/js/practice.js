@@ -1266,6 +1266,7 @@ function processDicData(dic_content, kdata) {
     var kvoca = JSON.parse(kdata);
     console.log('==========================================================================kvoca:\n'+kvoca);
     var kmean = kvoca.mean;
+    console.log('==========================================================================kmean:\n'+kmean);
     var kword = '';
     if (typeof kmean === 'object') {
         for (let i = 0; i < kmean.length; i++) {
