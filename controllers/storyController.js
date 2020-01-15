@@ -975,7 +975,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                 console.log(`statusCode: ${res.statusCode}`);
                 console.log(body);
                 req.body.dic_kcontent = JSON.stringify(kdata);
-            })
+            });
 
             var config = {
                 app_id : oxford_app_id,
