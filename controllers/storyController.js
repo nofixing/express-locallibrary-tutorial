@@ -973,7 +973,7 @@ exports.story_oxford_ajax = function(req, res, next) {
             request('http://tooltip.dic.naver.com/tooltip.nhn?wordString='+req.body.word+'&languageCode=4&nlp=false', function (error, res, kdata) {
                 if (error) { console.error(error); }
                 console.log(`statusCode: ${res.statusCode}`);
-                console.log(body);
+                console.log(kdata);
                 req.body.dic_kcontent = JSON.stringify(kdata);
             });
 
