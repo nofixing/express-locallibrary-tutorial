@@ -1262,7 +1262,7 @@ function processDicData(dic_content, kdata) {
     */
     console.log('==========================================================================DicData:\n'+dic_content);
     var voca = JSON.parse(dic_content);
-    if (typeof kdata == 'undefined' || trim(kdata) == '') kdata = '{}';
+    if (typeof kdata == 'undefined') kdata = '{}';
     var kvoca = JSON.parse(kdata);
     var kmean = kvoca.mean;
     var kword = '';
