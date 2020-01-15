@@ -697,19 +697,7 @@ function dicSearch() {
        url: httpType+$('#hostname').val()+'/catalog/story_oxford_ajax',
        async: false,
        success : function(data) {
-            var kdata = '';
-            $.ajax({
-                type: 'POST',
-                data: {},
-                contentType: 'application/json',
-                url: 'http://tooltip.dic.naver.com/tooltip.nhn?wordString='+selectText+'&languageCode=4&nlp=false',
-                async: false,
-                success : function(result) {
-                    console.log('kdata:'+result);
-                    kdata = result;
-                }
-            });
-           processDicData(data.dic_content, kdata);
+            processDicData(data.dic_content, data.dic_kcontent);
        }
    });
 }

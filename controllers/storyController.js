@@ -941,12 +941,13 @@ exports.story_oxford = function(req, res, next) {
     });
 };
 
-function createOxfordWord(title, gubun, data) {
+function createOxfordWord(title, gubun, data, kdata) {
     var oxfordWord = new OxfordWord(
         {
             title: title,
             gubun: gubun,
-            data: data
+            data: data,
+            kdata: kdata
         });
     oxfordWord.save(function (err, theOxfordWord) {
         if (err) { console.log(err); }
@@ -962,9 +963,20 @@ exports.story_oxford_ajax = function(req, res, next) {
         if (theOxfordWord.length > 0) {
             console.log('Retrieve from local DB');
             req.body.dic_content = theOxfordWord[0].data.replace(/\"/g, '"');
+            req.body.dic_kcontent = theOxfordWord[0].kdata.replace(/\"/g, '"');
             res.send(req.body);
         } else {
             console.log('Retrieve from Oxford');
+
+            const request = require('request');
+
+            request('http://tooltip.dic.naver.com/tooltip.nhn?wordString='+req.body.word+'&languageCode=4&nlp=false', function (error, res, kdata) {
+                if (error) { console.error(error); }
+                console.log(`statusCode: ${res.statusCode}`);
+                console.log(body);
+                req.body.dic_kcontent = JSON.stringify(kdata);
+            })
+
             var config = {
                 app_id : oxford_app_id,
                 app_key : oxford_app_key,
@@ -1008,7 +1020,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                     lookup4.then(function(data4) {
                         console.log('parse result4 ->'+JSON.stringify(data4));
                         req.body.dic_content = JSON.stringify(data4);
-                        createOxfordWord(req.body.word, 'word', req.body.dic_content);
+                        createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
                         res.send(req.body);
                     },
                     function(err4) {
@@ -1020,7 +1032,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                     });
                 } else {
                     req.body.dic_content = JSON.stringify(data);
-                    createOxfordWord(req.body.word, 'word', req.body.dic_content);
+                    createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
                     res.send(req.body);
                 }
         
@@ -1058,7 +1070,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                         lookup3.then(function(data3) {
                             console.log('parse result3 ->'+JSON.stringify(data3));
                             req.body.dic_content = JSON.stringify(data3);
-                            createOxfordWord(req.body.word, 'word', req.body.dic_content);
+                            createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
                             res.send(req.body);
                         },
                         function(err3) {
@@ -1110,7 +1122,7 @@ exports.story_oxford_ajaxt = function(req, res, next) {
             lookup.then(function(data) {
                 console.log('parse result ->'+JSON.stringify(data));
                 req.body.dic_content = JSON.stringify(data);
-                createOxfordWord(req.body.word, 'thesaurus', req.body.dic_content);
+                createOxfordWord(req.body.word, 'thesaurus', req.body.dic_content, '');
                 res.send(req.body);
             },
             function(err) {
@@ -1148,7 +1160,7 @@ exports.story_oxford_ajaxs = function(req, res, next) {
             lookup.then(function(data) {
                 console.log('parse result ->'+JSON.stringify(data));
                 req.body.dic_content = JSON.stringify(data);
-                createOxfordWord(req.body.word, 'sentences', req.body.dic_content);
+                createOxfordWord(req.body.word, 'sentences', req.body.dic_content, '');
                 res.send(req.body);
             },
             function(err) {
