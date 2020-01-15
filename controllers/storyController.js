@@ -963,8 +963,10 @@ exports.story_oxford_ajax = function(req, res, next) {
         if (theOxfordWord.length > 0) {
             console.log('Retrieve from local DB');
             req.body.dic_content = theOxfordWord[0].data.replace(/\"/g, '"');
-            if (typeof theOxfordWord[0].kdata === 'object') {
-                req.body.dic_kcontent = theOxfordWord[0].kdata.replace(/\"/g, '"');
+            req.body.dic_kcontent = '{}';
+            console.log('theOxfordWord[0].kdata:'+theOxfordWord[0].kdata);
+            if(typeof theOxfordWord[0].kdata !='undefined') {
+                req.body.dic_kcontent = theOxfordWord[0].kdata;
             }
             res.send(req.body);
         } else {
