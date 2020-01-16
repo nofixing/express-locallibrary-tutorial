@@ -978,9 +978,9 @@ exports.story_oxford_ajax = function(req, res, next) {
                 req.body.dic_kcontent = theOxfordWord[0].kdata;
             } else {
                 const request = require('request');
-                request('http://tooltip.dic.naver.com/tooltip.nhn?wordString='+req.body.word+'&languageCode=4&nlp=false', function (error, res, kdata) {
+                request('http://tooltip.dic.naver.com/tooltip.nhn?wordString='+req.body.word+'&languageCode=4&nlp=false', function (error, response, kdata) {
                     if (error) { console.error(error); }
-                    console.log(`statusCode: ${res.statusCode}`);
+                    console.log(`statusCode: ${response.statusCode}`);
                     console.log(kdata);
                     req.body.dic_kcontent = JSON.stringify(kdata);
                     console.log('req.body.dic_kcontent:'+req.body.dic_kcontent);
@@ -993,9 +993,9 @@ exports.story_oxford_ajax = function(req, res, next) {
 
             const request = require('request');
             req.body.dic_kcontent = '{}';
-            request('http://tooltip.dic.naver.com/tooltip.nhn?wordString='+req.body.word+'&languageCode=4&nlp=false', function (error, res, kdata) {
+            request('http://tooltip.dic.naver.com/tooltip.nhn?wordString='+req.body.word+'&languageCode=4&nlp=false', function (error, response, kdata) {
                 if (error) { console.error('tooltip dic error:'+error); }
-                console.log(`statusCode: ${res.statusCode}`);
+                console.log(`statusCode: ${response.statusCode}`);
                 console.log(kdata);
                 req.body.dic_kcontent = JSON.stringify(kdata);
 
