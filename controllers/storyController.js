@@ -346,11 +346,11 @@ exports.story_detail = function(req, res, next) {
                 if (typeof results.words[i].image_address != 'undefined' && typeof results.words[i].content != 'undefined') {
                     //console.log(results.words[i].image_address);
                     //console.log(results.words[i].content);
-                    sTag = '<span class="tpcontent"><img src="'+results.words[i].image_address+'"><p style="text-align:left;">'+results.words[i].content+'</p></span>';
+                    sTag = '<span class="tpcontent" style="text-align:left;"><img src="'+results.words[i].image_address+'"><br>'+results.words[i].content+'</span>';
                     highlightHtml = '<a href="#" target="_blank" class="tltp">$1'+sTag+'</a>';
                 } else if(typeof results.words[i].content != 'undefined') {
                     //console.log('content:'+results.words[i].content);
-                    sTag = '<span class="tpcontent"><p style="text-align:left;">'+results.words[i].content+'</p></span>';
+                    sTag = '<span class="tpcontent" style="text-align:left;">'+results.words[i].content+'</span>';
                     highlightHtml = '<a href="#" target="_blank" class="tltp">$1'+sTag+'</a>';
                 } else {
                     highlightHtml = results.words[i].title;
