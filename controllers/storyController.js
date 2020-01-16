@@ -976,6 +976,7 @@ exports.story_oxford_ajax = function(req, res, next) {
             console.log('theOxfordWord[0].kdata:'+theOxfordWord[0].kdata);
             if(typeof theOxfordWord[0].kdata !='undefined') {
                 req.body.dic_kcontent = theOxfordWord[0].kdata;
+                res.send(req.body);
             } else {
                 const request = require('request');
                 request('http://tooltip.dic.naver.com/tooltip.nhn?wordString='+req.body.word+'&languageCode=4&nlp=false', function (error, response, kdata) {
