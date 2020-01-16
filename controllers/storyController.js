@@ -346,12 +346,12 @@ exports.story_detail = function(req, res, next) {
                 if (typeof results.words[i].image_address != 'undefined' && typeof results.words[i].content != 'undefined') {
                     //console.log(results.words[i].image_address);
                     //console.log(results.words[i].content);
-                    sTag = "<img src="+results.words[i].image_address+"><h5>"+results.words[i].content+"</h5>";
-                    highlightHtml = '<a href="#" target="_blank" class="tltp" title="'+sTag+'">$1</a>';
+                    sTag = '<span class="tpcontent"><img src="'+results.words[i].image_address+'"><p style="text-align:left;">'+results.words[i].content+'</p></span>';
+                    highlightHtml = '<a href="#" target="_blank" class="tltp">$1</a>'+sTag;
                 } else if(typeof results.words[i].content != 'undefined') {
                     //console.log('content:'+results.words[i].content);
-                    sTag = "<h5>"+results.words[i].content+"</h5>";
-                    highlightHtml = '<a href="#" target="_blank" class="tltp" title="'+sTag+'">$1</a>';
+                    sTag = '<span class="tpcontent"><p style="text-align:left;">'+results.words[i].content+'</p></span>';
+                    highlightHtml = '<a href="#" target="_blank" class="tltp">$1</a>'+sTag;
                 } else {
                     highlightHtml = results.words[i].title;
                 }

@@ -561,6 +561,7 @@ ul.tite li {
 }
 
 .tltp {
+    width: 10px;
     color: blue !important;
     cursor: pointer !important;
 }
