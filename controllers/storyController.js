@@ -955,6 +955,7 @@ function createOxfordWord(title, gubun, data, kdata) {
 }
 
 function updateOxfordWord(id, kdata) {
+    console.log('updateOxfordWord start -> id:'+id+'; kdata:'+kdata);
     OxfordWord.update({_id: id}, {
         kdata: kdata
     }, function(err, theOxfordWord) {
@@ -983,6 +984,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                     console.log(kdata);
                     req.body.dic_kcontent = JSON.stringify(kdata);
                 });
+                console.log('req.body.dic_kcontent:'+req.body.dic_kcontent);
                 updateOxfordWord(theOxfordWord._id, req.body.dic_kcontent);
             }
             res.send(req.body);
