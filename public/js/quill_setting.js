@@ -83,12 +83,13 @@ let AudioClass = new Parchment.Attributor.Class('audio', 'ql-audio', {
 
 Quill.register(AudioClass, true);
 */
+/*
 let CustomClass = new Parchment.Attributor.Class('omega', 'ql-omega', {
   scope: Parchment.Scope.INLINE
 });
 
 Quill.register(CustomClass, true);
-
+*/
 var quill = new Quill('#snow-container', {
   modules: {
       syntax: true,
@@ -143,7 +144,7 @@ audioButton.addEventListener('click', function(event) {
   }
   event.preventDefault();
 });
-
+/*
 var customButton = document.querySelector('.ql-omega');
 customButton.addEventListener('click', function(event) {
   var range = quill.getSelection();
@@ -158,7 +159,7 @@ customButton.addEventListener('click', function(event) {
   }
   event.preventDefault();
 });
-
+*/
 toolbar.addHandler('image', imageHandler);
 
 $('#InsertTooltip').click(function(){
