@@ -52,7 +52,10 @@ $(function(){
     $( "#jb_content" ).bind('dblclick', function(e){
         search();
         imageSearch();
+        createWord();
+    });
 
+    function createWord() {
         var ldxx = 0;
         $('.wList').each(function(idx) {
             console.log("previous words:"+$('.ipt')[idx].value);
@@ -65,9 +68,6 @@ $(function(){
         ldxx += 1;
 
         if (selectText.length > 0) {
-
-            
-
             var data = {};
             data.title = selectText;
             data.story_id = $( "#story_id" ).val();
@@ -122,7 +122,7 @@ $(function(){
                 }
             });
         }
-    });
+    }
     
     $( "#jb_content" ).on("taphold", function(){
         //console.log("tapholdHandler");
@@ -170,8 +170,8 @@ $(function(){
     $( "#searchWordButton" ).click(function() {
         selectText = $("#searchWord").val();
         dicSearch();
-        wordList();
         imageSearch();
+        createWord();
     });
     $( "#translateButton" ).click(function() {
         var selection;
