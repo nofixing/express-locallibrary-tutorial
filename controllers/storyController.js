@@ -347,11 +347,11 @@ exports.story_detail = function(req, res, next) {
                     //console.log(results.words[i].image_address);
                     //console.log(results.words[i].content);
                     sTag = '<span class="tpcontent" style="text-align:left;"><img src="'+results.words[i].image_address+'"><br>'+results.words[i].content+'</span>';
-                    highlightHtml = '<a href="#" target="_blank" class="tltp">$1'+sTag+'</a>';
+                    highlightHtml = '<span class="tltp">$1'+sTag+'</span>';
                 } else if(typeof results.words[i].content != 'undefined') {
                     //console.log('content:'+results.words[i].content);
                     sTag = '<span class="tpcontent" style="text-align:left;">'+results.words[i].content+'</span>';
-                    highlightHtml = '<a href="#" target="_blank" class="tltp">$1'+sTag+'</a>';
+                    highlightHtml = '<span class="tltp">$1'+sTag+'</span>';
                 } else {
                     highlightHtml = results.words[i].title;
                 }
