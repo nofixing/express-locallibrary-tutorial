@@ -499,6 +499,41 @@ html(lang='en')
       </div>
     </div>
 
+    <a href="#" id="OpenVideo" data-toggle="modal" data-target="#videoModal"></a>
+
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="videoModalLabel">Youtube</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="video_src" class="col-form-label">URL:</label>
+                <input type="text" class="form-control" id="video_src">
+              </div>
+              <div class="form-group">
+                <label for="video_width" class="col-form-label">Width:</label>
+                <input type="text" class="form-control" id="video_width">
+              </div>
+              <div class="form-group">
+                <label for="video_height" class="col-form-label">Height:</label>
+                <input type="text" class="form-control" id="video_height">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="vcls">#{translation.Close}</button>
+            <button type="button" class="btn btn-primary" id="InsertVideo">Insert Youtube</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>

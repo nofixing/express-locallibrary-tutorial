@@ -508,6 +508,7 @@ $(function(){
         'autoClose': true,
         'side': 'bottom',
         'animation': 'fall',
+        'trigger': 'click',
         'delay': '200',
         functionInit: function(instance, helper){
             var $origin = $(helper.origin);
