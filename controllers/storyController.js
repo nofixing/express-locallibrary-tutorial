@@ -951,6 +951,7 @@ function createOxfordWord(title, gubun, data, kdata) {
         });
     oxfordWord.save(function (err, theOxfordWord) {
         if (err) { console.log(err); }
+        console.log('theOxfordWord._id:'+theOxfordWord._id);
         return theOxfordWord._id;
     });
 }
@@ -1047,6 +1048,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                             console.log('parse result4 ->'+JSON.stringify(data4));
                             req.body.dic_content = JSON.stringify(data4);
                             var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
+                            console.log('oxfordWord_id 1:'+oxfordWord_id);
                             req.body.oxfordWord_id = oxfordWord_id;
                             res.send(req.body);
                         },
@@ -1060,6 +1062,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                     } else {
                         req.body.dic_content = JSON.stringify(data);
                         var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
+                        console.log('oxfordWord_id 2:'+oxfordWord_id);
                         req.body.oxfordWord_id = oxfordWord_id;
                         res.send(req.body);
                     }
@@ -1099,6 +1102,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                                 console.log('parse result3 ->'+JSON.stringify(data3));
                                 req.body.dic_content = JSON.stringify(data3);
                                 var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
+                                console.log('oxfordWord_id 3:'+oxfordWord_id);
                                 req.body.oxfordWord_id = oxfordWord_id;
                                 res.send(req.body);
                             },
