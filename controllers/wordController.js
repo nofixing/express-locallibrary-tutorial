@@ -172,7 +172,8 @@ exports.word_create_post = [
                             content: translation,
                             skill: req.body.skill,
                             importance: req.body.importance,
-                            create_date: Date.now()
+                            create_date: Date.now(),
+                            oxford_word: req.body.oxfordWord_id
                             });
                         }else{
                           word = new Word(
@@ -183,7 +184,8 @@ exports.word_create_post = [
                             content: translation,
                             skill: req.body.skill,
                             importance: req.body.importance,
-                            create_date: Date.now()
+                            create_date: Date.now(),
+                            oxford_word: req.body.oxfordWord_id
                             });
                         }
                         console.log('word.content:'+word.content);
