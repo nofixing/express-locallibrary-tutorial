@@ -1058,7 +1058,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                             oxfordWord.save(function (err, theOxfordWord) {
                                 if (err) { console.log(err); }
                                 console.log('theOxfordWord._id 1:'+theOxfordWord._id);
-                                req.body.oxfordWord_id = oxfordWord_id;
+                                req.body.oxfordWord_id = theOxfordWord._id;
                                 res.send(req.body);
                             });
                         },
@@ -1082,7 +1082,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                         oxfordWord.save(function (err, theOxfordWord) {
                             if (err) { console.log(err); }
                             console.log('theOxfordWord._id 2:'+theOxfordWord._id);
-                            req.body.oxfordWord_id = oxfordWord_id;
+                            req.body.oxfordWord_id = theOxfordWord._id;
                             res.send(req.body);
                         });                        
                     }
@@ -1132,7 +1132,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                                 oxfordWord.save(function (err, theOxfordWord) {
                                     if (err) { console.log(err); }
                                     console.log('theOxfordWord._id 3:'+theOxfordWord._id);
-                                    req.body.oxfordWord_id = oxfordWord_id;
+                                    req.body.oxfordWord_id = theOxfordWord._id;
                                     res.send(req.body);
                                 });
                             },
