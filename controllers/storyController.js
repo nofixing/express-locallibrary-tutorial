@@ -1047,10 +1047,20 @@ exports.story_oxford_ajax = function(req, res, next) {
                         lookup4.then(function(data4) {
                             console.log('parse result4 ->'+JSON.stringify(data4));
                             req.body.dic_content = JSON.stringify(data4);
-                            var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
-                            console.log('oxfordWord_id 1:'+oxfordWord_id);
-                            req.body.oxfordWord_id = oxfordWord_id;
-                            res.send(req.body);
+                            //var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
+                            var oxfordWord = new OxfordWord(
+                                {
+                                    title: req.body.word,
+                                    gubun: 'word',
+                                    data: req.body.dic_content,
+                                    kdata: req.body.dic_kcontent
+                                });
+                            oxfordWord.save(function (err, theOxfordWord) {
+                                if (err) { console.log(err); }
+                                console.log('theOxfordWord._id 1:'+theOxfordWord._id);
+                                req.body.oxfordWord_id = oxfordWord_id;
+                                res.send(req.body);
+                            });
                         },
                         function(err4) {
                             console.log('req.query.word:'+derivative_word+'     story_oxford_ajax err4:'+err4); 
@@ -1061,10 +1071,20 @@ exports.story_oxford_ajax = function(req, res, next) {
                         });
                     } else {
                         req.body.dic_content = JSON.stringify(data);
-                        var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
-                        console.log('oxfordWord_id 2:'+oxfordWord_id);
-                        req.body.oxfordWord_id = oxfordWord_id;
-                        res.send(req.body);
+                        //var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
+                        var oxfordWord = new OxfordWord(
+                            {
+                                title: req.body.word,
+                                gubun: 'word',
+                                data: req.body.dic_content,
+                                kdata: req.body.dic_kcontent
+                            });
+                        oxfordWord.save(function (err, theOxfordWord) {
+                            if (err) { console.log(err); }
+                            console.log('theOxfordWord._id 2:'+theOxfordWord._id);
+                            req.body.oxfordWord_id = oxfordWord_id;
+                            res.send(req.body);
+                        });                        
                     }
             
                 },
@@ -1101,10 +1121,20 @@ exports.story_oxford_ajax = function(req, res, next) {
                             lookup3.then(function(data3) {
                                 console.log('parse result3 ->'+JSON.stringify(data3));
                                 req.body.dic_content = JSON.stringify(data3);
-                                var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
-                                console.log('oxfordWord_id 3:'+oxfordWord_id);
-                                req.body.oxfordWord_id = oxfordWord_id;
-                                res.send(req.body);
+                                //var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
+                                var oxfordWord = new OxfordWord(
+                                    {
+                                        title: req.body.word,
+                                        gubun: 'word',
+                                        data: req.body.dic_content,
+                                        kdata: req.body.dic_kcontent
+                                    });
+                                oxfordWord.save(function (err, theOxfordWord) {
+                                    if (err) { console.log(err); }
+                                    console.log('theOxfordWord._id 3:'+theOxfordWord._id);
+                                    req.body.oxfordWord_id = oxfordWord_id;
+                                    res.send(req.body);
+                                });
                             },
                             function(err3) {
                                 console.log('req.query.word:'+lemmas_word+'     story_oxford_ajax err3:'+err3); 
