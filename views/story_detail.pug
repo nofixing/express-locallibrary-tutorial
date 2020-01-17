@@ -356,8 +356,7 @@ html(lang='en')
                     option(value='2' selected=(word.skill==='2' ? 'selected' : false) ) #{translation.SawSeveralTime}
                     option(value='3' selected=(word.skill==='3' ? 'selected' : false) ) #{translation.BeUsedTo}
                     option(value='4' selected=(word.skill==='4' ? 'selected' : false) ) #{translation.RememberComplete}
-                  if word.oxford_word
-                    <button type="button" class="btn btn-primary" style="display: inline; float: right; margin-top: 8px; margin-right: 50px;" onclick="oxfordPopup('#{word.title}')">Oxford</button>
+                  <button type="button" class="btn btn-primary" style="display: inline; margin-left: 50px;" onclick="oxfordPopup('#{word.title}')">Oxford</button>
                   <button type="button" class="btn btn-primary" style="display: inline; float: right; margin-top: 8px;" onclick="imgAddress(#{i})">#{translation.ImageAddress}</button>
         <button type="button" class="btn btn-primary" id="wordAdd">#{translation.Add}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
       div#word_only_container.col-lg-12
