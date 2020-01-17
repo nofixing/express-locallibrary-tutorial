@@ -604,6 +604,11 @@ function imgAddress(i) {
         }
     });
 }
+
+function oxfordPopup(wd) {
+    selectText = wd;
+    dicSearch();
+}
   
 function search() {
 
