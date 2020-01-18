@@ -589,6 +589,7 @@ $(function(){
         $('body').css('padding-right', '');
     });
 
+    $('#loading').hide();
 });
 
 function imgAddress(i) {
