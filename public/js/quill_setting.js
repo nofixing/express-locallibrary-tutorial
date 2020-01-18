@@ -120,6 +120,10 @@ $('#InsertVideo').click(function(){
   var arr = spath.split("/");
   var lnum = spath.split("/").length -1;
   var vsrc = arr[lnum];
+  if(vsrc.indexOf('watch?v=') > -1) {
+    var arr2 = vsrc.split("=");
+    vsrc = arr2[1];
+  }
   vsrc = "https://www.youtube.com/embed/"+vsrc;
   if($('#video_width').val() == '' || $('#video_height').val() == '') {
     $('#video_width').val('560');

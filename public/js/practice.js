@@ -113,6 +113,7 @@ $(function(){
                         markup += "<option value='3'>"+$('#BeUsedTo').val()+"</option>";
                         markup += "<option value='4'>"+$('#RememberComplete').val()+"</option>";
                         markup += "</select>";
+                        markup += "<button type='button' class='btn btn-primary' style='display: inline; margin-left: 50px;' onclick='oxfordPopup(\""+data.title+"\")'>Oxford</button>";
                         markup += "<button type='button' class='btn btn-primary' style='display: inline; float: right; margin-top: 8px;' onclick='imgAddress("+ldxx+")'>";
                         markup += $('#ImageAddress').val();
                         markup += "</button></td></tr>";

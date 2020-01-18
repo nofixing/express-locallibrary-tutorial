@@ -346,7 +346,22 @@ exports.story_detail = function(req, res, next) {
                 if (typeof results.words[i].image_address != 'undefined' && typeof results.words[i].content != 'undefined') {
                     //console.log(results.words[i].image_address);
                     //console.log(results.words[i].content);
-                    sTag = '<span class="tpcontent" style="text-align:left;"><img src="'+results.words[i].image_address+'"><br>'+results.words[i].content+'</span>';
+                    var ssc = results.words[i].image_address;
+                    if(ssc.indexOf('youtu') > -1) {
+                        var arr = ssc.split("/");
+                        var lnum = ssc.split("/").length -1;
+                        var vsrc = arr[lnum];
+                        if(vsrc.indexOf('watch?v=') > -1) {
+                            var arr2 = vsrc.split("=");
+                            vsrc = arr2[1];
+                            vsrc = vsrc.substring(0, vsrc.indexOf('&'));
+                        }
+                        console.log('vsrc:'+vsrc);
+                        ssc = '<iframe width="640" height="360" src="//www.youtube.com/embed/'+vsrc+'" frameborder="0" allowfullscreen></iframe><br>';
+                    } else {
+                        ssc = '<img src="'+ssc+'"><br>';
+                    }
+                    sTag = '<span class="tpcontent" style="text-align:left;">'+ssc+results.words[i].content+'</span>';
                     highlightHtml = '<span class="tltp">$1'+sTag+'</span>';
                 } else if(typeof results.words[i].content != 'undefined') {
                     //console.log('content:'+results.words[i].content);
