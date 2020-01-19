@@ -83,6 +83,7 @@ $(function(){
             data.result = $('#SAVED').val();
             data.fail = $('#smm').val();
             data.oxfordWord_id = oxfordWord_id;
+            data.index_of = $('#st_content').text().indexOf(selectText);
             var httpType = 'https://';
             if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
             $.ajax({
@@ -295,6 +296,7 @@ $(function(){
                 data.skill = $('.skill')[idx].value;
                 data.result = $('#SAVED').val();
                 data.fail = $('#smm').val();
+                data.index_of = $('#st_content').text().indexOf(data.title);
                 var httpType = 'https://';
                 if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
                 $.ajax({

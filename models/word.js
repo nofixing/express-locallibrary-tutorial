@@ -16,7 +16,8 @@ var WordSchema = new Schema({
     importance: { type: String },
     create_date: {type: Date},
     image_address: { type: String },
-    oxford_word: { type: Schema.ObjectId, ref: 'OxfordWord' }
+    oxford_word: { type: Schema.ObjectId, ref: 'OxfordWord' },
+    index_of: {type: Number}
 });
 
 // Virtual for this word instance URL.

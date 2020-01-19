@@ -173,7 +173,8 @@ exports.word_create_post = [
                             skill: req.body.skill,
                             importance: req.body.importance,
                             create_date: Date.now(),
-                            oxford_word: req.body.oxfordWord_id
+                            oxford_word: req.body.oxfordWord_id,
+                            index_of: req.body.index_of
                             });
                         }else{
                           word = new Word(
@@ -185,7 +186,8 @@ exports.word_create_post = [
                             skill: req.body.skill,
                             importance: req.body.importance,
                             create_date: Date.now(),
-                            oxford_word: req.body.oxfordWord_id
+                            oxford_word: req.body.oxfordWord_id,
+                            index_of: req.body.index_of
                             });
                         }
                         console.log('word.content:'+word.content);
@@ -318,7 +320,8 @@ exports.word_update_post = function(req, res, next) {
             content: req.body.content,
             skill: req.body.skill,
             importance: req.body.importance,
-            create_date: Date.now()
+            create_date: Date.now(),
+            index_of: req.body.index_of
            });
       //console.log('word update start');
       Word.findById({_id: req.body.id})
@@ -334,7 +337,8 @@ exports.word_update_post = function(req, res, next) {
                     book_title: req.body.book_title,
                     content: req.body.content,
                     skill: req.body.skill,
-                    importance: req.body.importance
+                    importance: req.body.importance,
+                    index_of: req.body.index_of
                 }, function(err, upWord) {
                     if (err) { console.log(err); return next(err); }
                 });
