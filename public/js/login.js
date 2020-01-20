@@ -12,6 +12,8 @@ function onSignIn(googleUser) {
     // The ID token you need to pass to your backend:
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
+    id_token = id_token.substring(0, 10);
+    console.log("ID Token2: " + id_token);
     $('#email').val(profile.getEmail());
     $('#password').val(id_token);
     var frm = document.getElementById("userForm");

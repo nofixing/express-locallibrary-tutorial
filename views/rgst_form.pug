@@ -25,6 +25,8 @@ block content
     <input type="hidden" id="emailalreadyexists" name="emailalreadyexists" value="#{translation.emailalreadyexists}" />
     <input type="hidden" id="id_token" name="id_token" value="" />
     <button type="submit" class="btn btn-primary" onclick="userPost('#{translation.emailalreadyexists}', '#{translation.checkouremail}');return false;">#{translation.Submit}</button>
+    
+    <div class="g-signin2" style="margin-top: 30px;" data-onsuccess="onSignIn"></div>
     <br>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <a href="#" onclick="signOut();">Sign out</a>
   <script src="/js/rgst.js"></script>
