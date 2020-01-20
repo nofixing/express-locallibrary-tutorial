@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-signin-client_id"
-        content="829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com">
     <title>Google Sign In</title>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
@@ -16,6 +15,10 @@
             console.log('Name: ' + profile.getName());
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
         }
         function signOut() {
             var auth2 = gapi.auth2.getAuthInstance();

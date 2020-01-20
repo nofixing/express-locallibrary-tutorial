@@ -6,7 +6,7 @@ block content
   if errors 
     span(style='font-size: 1.2em; font-weight: bold; color: red;')!= errors
 
-  form(method='POST' action='')
+  form(method='POST' action='' id='userForm' name='userForm')
     div.form-group.row
       div.col-sm-4
         label(for='email') #{translation.Email}
@@ -17,4 +17,7 @@ block content
         input.form-control(type='password' id='password' placeholder='password' name='password')
     button.btn.btn-primary(type='submit') #{translation.LOGIN}
   br
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  br
   a(href='/user/forgot_password') #{translation.forgotPw}
+  <script src="/js/login.js"></script>

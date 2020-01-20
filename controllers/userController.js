@@ -183,7 +183,7 @@ exports.emailcheck = function (req, res, next) {
         res.send(req.body);
       } else {
         req.body.emailThere = 'N';
-
+        /*
         User.find({name: req.body.name})
           .exec(function (err, theUser) {
             if (err) { return next(err); }
@@ -197,7 +197,8 @@ exports.emailcheck = function (req, res, next) {
               res.send(req.body);
             }
           });
-
+        */
+       req.body.nameThere = 'N';
       }
     });
 
@@ -279,6 +280,87 @@ exports.registration_post = function (req, res, next) {
     return next(eor);
   }
   */
+};
+
+exports.rgst_post = function (req, res, next) {
+
+  console.log('rgst_post call');
+
+  var randomstring = require("randomstring");
+
+  if (req.body.name &&
+    req.body.email &&
+    req.body.password &&
+    req.body.confirmPassword) {
+      // confirm that user typed same password twice
+      if (req.body.password !== req.body.confirmPassword) {
+        var err = new Error('Passwords do not match.');
+        err.status = 400;
+        return next(err);
+      }
+
+    var certyn = 'N';
+    if (req.body.id_token == req.body.password) certyn = 'Y';
+    // create object with form input
+    var userData = new User({
+      email: req.body.email,
+      name: req.body.name,
+      password: req.body.password,
+      randomstring: randomstring.generate(),
+      certyn: certyn
+    });
+
+    // use schema's `create` method to insert document into Mongo
+    User.create(userData, function (error, user) {
+      if (error) {
+        console.log(error);
+        return next(error);
+      } else {
+        //req.session.userId = user._id;
+        
+        if (certyn == 'N') {
+          var nodemailer = require('nodemailer');
+
+          var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'nofixing@gmail.com',
+              pass: 'nlrgkuedjqopymvi'
+            }
+          });
+  
+          var emlCont = 'To complete the email verification process, click the following link.  ';
+          emlCont += 'https://'+req.headers.host+'/user/verifyemail?code='+user._id+'|'+user.randomstring;
+          
+          var mailOptions = {
+            from: 'nofixing@gmail.com',
+            to: req.body.email,
+            subject: 'infinitestorlet Email Verification',
+            text: emlCont
+          };
+  
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
+          
+          return res.redirect('/');
+        } else {
+          return res.redirect('/catalog?cert=OK');
+        }
+
+      }
+    });
+
+  } else {
+    var eor = new Error('All fields required.');
+    eor.status = 400;
+    return next(eor);
+  }
+  
 };
 
 exports.forgot_password = function (req, res, next) {

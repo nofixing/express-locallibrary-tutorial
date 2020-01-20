@@ -49,6 +49,12 @@ router.get('/registration', mid.loggedOut, function(req, res, next) {
 // POST request for registrating User.
 router.post('/registration', user_controller.registration_post);
 
+router.get('/vqmP5Qs9n2FwE5s7IB1m', mid.loggedOut, function(req, res, next) {
+  return res.render('rgst_form', { title: 'Sign Up', hostname: req.headers.host });
+});
+
+router.post('/vqmP5Qs9n2FwE5s7IB1m', user_controller.rgst_post);
+
 router.post('/emailcheck', user_controller.emailcheck);
 
 router.get('/verifyemail', user_controller.verifyemail);
