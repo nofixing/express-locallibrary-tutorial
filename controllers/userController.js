@@ -199,6 +199,7 @@ exports.emailcheck = function (req, res, next) {
           });
         */
        req.body.nameThere = 'N';
+       res.send(req.body);
       }
     });
 
