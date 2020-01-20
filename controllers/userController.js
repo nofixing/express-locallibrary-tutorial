@@ -301,7 +301,7 @@ exports.rgst_post = function (req, res, next) {
       }
 
     var certyn = 'N';
-    if (req.body.id_token == req.body.password) certyn = 'Y';
+    if (req.body.gid_token == req.body.password) certyn = 'Y';
     // create object with form input
     var userData = new User({
       email: req.body.email,

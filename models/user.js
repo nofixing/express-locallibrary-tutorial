@@ -32,7 +32,8 @@ var UserSchema = new mongoose.Schema({
   cfnt: {
     type: String,
     trim: true
-  }
+  },
+  gid_token: {type: String}
 });
 
 //authenticate input against database

@@ -1,5 +1,41 @@
 $( document ).ready(function() {
+    var auth2;
+    var googleUser; // The current user
     
+    gapi.load('auth2', function(){
+        auth2 = gapi.auth2.init({
+            client_id: '829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com'
+        });
+        auth2.attachClickHandler('signin_button', {}, onSuccess, onFailure);
+    
+        auth2.isSignedIn.listen(signinChanged);
+        auth2.currentUser.listen(userChanged); // This is what you use to listen for user changes
+    });  
+    
+    var signinChanged = function (val) {
+        console.log('Signin state changed to ', val);
+    };
+    
+    var onSuccess = function(user) {
+        console.log('Signed in as ' + user.getBasicProfile().getName());
+        // Redirect somewhere
+    };
+    
+    var onFailure = function(error) {
+        console.log(error);
+    };
+    
+    function signOut() {
+        auth2.signOut().then(function () {
+            console.log('User signed out.');
+        });
+    }        
+    
+    var userChanged = function (user) {
+        if(user.getId()){
+          // Do something here
+        }
+    };    
 });
 
 function onSignIn(googleUser) {
@@ -12,13 +48,13 @@ function onSignIn(googleUser) {
     // The ID token you need to pass to your backend:
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
-    id_token = id_token.substring(0, 10);
-    console.log("ID Token2: " + id_token);
+    //id_token = id_token.substring(0, 10);
+    //console.log("ID Token2: " + id_token);
     $('#name').val(profile.getName());
     $('#email').val(profile.getEmail());
     $('#pw').val(id_token);
     $('#pw2').val(id_token);
-    $('#id_token').val(id_token);
+    $('#gid_token').val(id_token);
     var frm = document.getElementById("userForm");
     var data = {};
     data.email = frm.email.value;
