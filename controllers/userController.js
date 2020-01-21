@@ -284,7 +284,7 @@ exports.registration_post = function (req, res, next) {
 };
 
 exports.gidcheck = function (req, res, next) {
-
+  console.log('gidcheck gid_token:'+req.body.gid_token);
   User.find({gid_token: req.body.gid_token})
     .exec(function (err, user) {
       if (err) { return next(err); }
