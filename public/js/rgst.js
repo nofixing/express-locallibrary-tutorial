@@ -6,7 +6,7 @@ $( document ).ready(function() {
         auth2 = gapi.auth2.init({
             client_id: '829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com'
         });
-        auth2.attachClickHandler('signin_button', {}, onSuccess, onFailure);
+        auth2.attachClickHandler('my-signin2', {}, onSuccess, onFailure);
     
         auth2.isSignedIn.listen(signinChanged);
         auth2.currentUser.listen(userChanged); // This is what you use to listen for user changes
