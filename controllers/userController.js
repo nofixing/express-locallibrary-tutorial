@@ -205,39 +205,6 @@ exports.emailcheck = function (req, res, next) {
 
 };
 
-exports.gidcheck = function (req, res, next) {
-
-  User.find({gid_token: req.body.gid_token})
-    .exec(function (err, user) {
-      if (err) { return next(err); }
-      if (user.length > 0){
-        console.log('gid_token:'+user[0].gid_token);
-        req.body.gidThere = 'Y';
-        res.send(req.body);
-      } else {
-        req.body.gidThere = 'N';
-        /*
-        User.find({name: req.body.name})
-          .exec(function (err, theUser) {
-            if (err) { return next(err); }
-            if (theUser.length > 0){
-              console.log('theUser:'+theUser);
-              console.log('name:'+theUser[0].name);
-              req.body.nameThere = 'Y';
-              res.send(req.body);
-            } else {
-              req.body.nameThere = 'N';
-              res.send(req.body);
-            }
-          });
-        */
-       req.body.nameThere = 'N';
-       res.send(req.body);
-      }
-    });
-
-};
-
 exports.registration_post = function (req, res, next) {
 
   console.log('registration_post call');
@@ -316,6 +283,39 @@ exports.registration_post = function (req, res, next) {
   */
 };
 
+exports.gidcheck = function (req, res, next) {
+
+  User.find({gid_token: req.body.gid_token})
+    .exec(function (err, user) {
+      if (err) { return next(err); }
+      if (user.length > 0){
+        console.log('gid_token:'+user[0].gid_token);
+        req.body.gidThere = 'Y';
+        res.send(req.body);
+      } else {
+        req.body.gidThere = 'N';
+        /*
+        User.find({name: req.body.name})
+          .exec(function (err, theUser) {
+            if (err) { return next(err); }
+            if (theUser.length > 0){
+              console.log('theUser:'+theUser);
+              console.log('name:'+theUser[0].name);
+              req.body.nameThere = 'Y';
+              res.send(req.body);
+            } else {
+              req.body.nameThere = 'N';
+              res.send(req.body);
+            }
+          });
+        */
+       req.body.nameThere = 'N';
+       res.send(req.body);
+      }
+    });
+
+};
+
 exports.rgst_post = function (req, res, next) {
 
   console.log('rgst_post call');
@@ -388,7 +388,14 @@ exports.rgst_post = function (req, res, next) {
           
           return res.redirect('/');
         } else {
-          return res.redirect('/catalog?cert=OK');
+          req.session.userId = user._id;
+          req.session.cfnt = user.cfnt;
+          req.session.clang = user.clang;
+          req.session.userName = user.name;
+          req.session.userEmail = user.email;
+          console.log("user.name:"+user.name);
+          console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
+          return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
         }
 
       }
