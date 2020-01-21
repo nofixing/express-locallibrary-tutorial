@@ -75,6 +75,7 @@ function onSuccess(googleUser) {
             success : function(data) {
 
                 if(data.gidThere == 'Y') {
+                    signOut();
                     alert($('#gidalreadyexists').val());
                 } else {
                     if(data.nameThere == 'Y') {
