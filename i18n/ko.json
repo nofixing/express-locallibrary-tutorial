@@ -18,6 +18,7 @@
   "Name": "닉네임",
   "ConfirmPassword": "비밀번호 확인",
   "emailalreadyexists": "악! 이메일이 이미 있네요.",
+  "gidalreadyexists": "이미 Google 계정으로 회원가입하셨습니다. Google 계정으로 로그인 하세요.",
   "nameThere": "악! 닉네임이 이미 있네요.",
   "checkouremail": "당신의 이메일이 유효한지 확인하기위해 메일을 보냅니다. 회원이 되기위해선 저희가 보낸 메일을 확인해 주세요.",
   "createStorynow": "이제 회원이 되셨습니다! 로그인하시고 지금 당장 이야기를 만드세요.",

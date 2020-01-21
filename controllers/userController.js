@@ -205,6 +205,39 @@ exports.emailcheck = function (req, res, next) {
 
 };
 
+exports.gidcheck = function (req, res, next) {
+
+  User.find({gid_token: req.body.gid_token})
+    .exec(function (err, user) {
+      if (err) { return next(err); }
+      if (user.length > 0){
+        console.log('gid_token:'+user[0].gid_token);
+        req.body.gidThere = 'Y';
+        res.send(req.body);
+      } else {
+        req.body.gidThere = 'N';
+        /*
+        User.find({name: req.body.name})
+          .exec(function (err, theUser) {
+            if (err) { return next(err); }
+            if (theUser.length > 0){
+              console.log('theUser:'+theUser);
+              console.log('name:'+theUser[0].name);
+              req.body.nameThere = 'Y';
+              res.send(req.body);
+            } else {
+              req.body.nameThere = 'N';
+              res.send(req.body);
+            }
+          });
+        */
+       req.body.nameThere = 'N';
+       res.send(req.body);
+      }
+    });
+
+};
+
 exports.registration_post = function (req, res, next) {
 
   console.log('registration_post call');
@@ -301,14 +334,19 @@ exports.rgst_post = function (req, res, next) {
       }
 
     var certyn = 'N';
-    if (req.body.gid_token == req.body.password) certyn = 'Y';
+    var gid_token = '';
+    if (req.body.gid_token == req.body.password) {
+      certyn = 'Y';
+      gid_token = req.body.gid_token;
+    }
     // create object with form input
     var userData = new User({
       email: req.body.email,
       name: req.body.name,
       password: req.body.password,
       randomstring: randomstring.generate(),
-      certyn: certyn
+      certyn: certyn,
+      gid_token: gid_token
     });
 
     // use schema's `create` method to insert document into Mongo

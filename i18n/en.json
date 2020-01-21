@@ -18,6 +18,7 @@
   "Name": "Nickname",
   "ConfirmPassword": "Confirm Password",
   "emailalreadyexists": "Oops email already exists.",
+  "gidalreadyexists": "You already signed up with Google account. Please sign in by Google account.",
   "nameThere": "Oops nickname already exists.",
   "checkouremail": "We will send email to your email address to authenticate your email. To be our member. you need to check our email.",
   "createStorynow": "Now you are our member! Log in and create Story now.",

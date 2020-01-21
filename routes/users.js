@@ -55,6 +55,8 @@ router.get('/vqmP5Qs9n2FwE5s7IB1m', mid.loggedOut, function(req, res, next) {
 
 router.post('/vqmP5Qs9n2FwE5s7IB1m', user_controller.rgst_post);
 
+router.post('/gidcheck', user_controller.gidcheck);
+
 router.post('/emailcheck', user_controller.emailcheck);
 
 router.get('/verifyemail', user_controller.verifyemail);

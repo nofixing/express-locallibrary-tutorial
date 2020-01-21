@@ -57,20 +57,20 @@ function onSignIn(googleUser) {
     $('#gid_token').val(id_token);
     var frm = document.getElementById("userForm");
     var data = {};
-    data.email = frm.email.value;
-    data.emailThere = '';
+    data.gid_token = $('#gid_token').val();
+    data.gidThere = '';
     var httpType = 'https://';
     if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
     $.ajax({
         type: 'POST',
         data: JSON.stringify(data),
         contentType: 'application/json',
-        url: httpType+$('#hostname').val()+'/user/emailcheck',
+        url: httpType+$('#hostname').val()+'/user/gidcheck',
         async: false,
         success : function(data) {
 
-            if(data.emailThere == 'Y') {
-                alert($('#emailalreadyexists').val());
+            if(data.gidThere == 'Y') {
+                alert($('#gidalreadyexists').val());
             } else {
                 if(data.nameThere == 'Y') {
                     alert($('#nameThere').val());
