@@ -287,9 +287,23 @@ exports.registration_post = function (req, res, next) {
   */
 };
 
-exports.gidcheck = function (req, res, next) {
-  console.log('gidcheck gid_token:'+req.body.gid_token);
-  User.find({gid_token: req.body.gid_token})
+exports.gidcheck = async (req, res, next) => {
+  const ticket = await client.verifyIdToken({
+    idToken: req.body.gid_token,
+    audience: CLIENT_ID,
+  });
+  const payload = ticket.getPayload();
+  const userid = payload['sub'];
+  const aud = payload['aud'];
+  console.log('userid:'+userid);
+  console.log('aud:'+aud);
+  var userid = '';
+  if (aud != CLIENT_ID) {
+    var err = new Error('Google Sign In Error.');
+    err.status = 400;
+    return next(err);
+  }
+  User.find({gid_token: userid})
     .exec(function (err, user) {
       if (err) { return next(err); }
       if (user.length > 0){
@@ -354,8 +368,11 @@ exports.rgst_post = async (req, res, next) => {
       if (aud == CLIENT_ID) {
         certyn = 'Y';
         gid_token = userid;
-      } 
-
+      } else {
+        var err = new Error('Google Sign In Error.');
+        err.status = 400;
+        return next(err);
+      }
     }
 
     // create object with form input
