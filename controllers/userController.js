@@ -320,7 +320,7 @@ exports.gidcheck = function (req, res, next) {
 
 };
 
-exports.rgst_post = function (req, res, next) {
+exports.rgst_post = async (req, res, next) => {
 
   console.log('rgst_post call');
 
