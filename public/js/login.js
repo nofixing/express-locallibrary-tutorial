@@ -13,6 +13,7 @@ function onSuccess(googleUser) {
     console.log("ID Token: " + id_token);
     $('#email').val(profile.getEmail());
     $('#password').val(id_token);
+    $('#gid_token').val(id_token);
     var frm = document.getElementById("userForm");
     frm.submit();
 }

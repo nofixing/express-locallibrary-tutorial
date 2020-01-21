@@ -33,39 +33,82 @@ exports.logout = function (req, res, next) {
 
 };
 
-exports.login_post = function (req, res, next) {
+exports.login_post = async (req, res, next) => {
 
-  if (req.body.email && req.body.password) {
-    User.authenticate(req.body.email, req.body.password, function (error, user) {
-      if (error || !user) {
-        var err = new Error('Wrong email or password.');
-        err.status = 401;
-        res.render('login_form', { title: 'Log In', errors: err });
-      } else {
-        if (user.certyn == 'N') {
-          var crr = new Error('Oops. you are not certified!');
-          crr.status = 401;
-          res.render('login_form', { title: 'Log In', errors: crr });
-        } else {
-          req.session.userId = user._id;
-          req.session.cfnt = user.cfnt;
-          req.session.clang = user.clang;
-          req.session.userName = user.name;
-          req.session.userEmail = user.email;
-          console.log("user.name:"+user.name);
-          console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
-          if (req.session.redirectUrl) {
-            return res.redirect(req.session.redirectUrl);
+  if (req.body.gid_token == req.body.password) {
+    const ticket = await client.verifyIdToken({
+      idToken: req.body.gid_token,
+      audience: CLIENT_ID,
+    });
+    const payload = ticket.getPayload();
+    const userid = payload['sub'];
+    const aud = payload['aud'];
+    console.log('userid:'+userid);
+    console.log('aud:'+aud);
+    
+    if (aud == CLIENT_ID) {
+      User.find({gid_token: userid})
+        .exec(function (err, user) {
+          if (err) { return next(err); }
+          if (user.length > 0){
+            req.session.userId = user._id;
+            req.session.cfnt = user.cfnt;
+            req.session.clang = user.clang;
+            req.session.userName = user.name;
+            req.session.userEmail = user.email;
+            console.log("user.name:"+user.name);
+            console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
+            if (req.session.redirectUrl) {
+              return res.redirect(req.session.redirectUrl);
+            } else {
+              return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
+            }
           } else {
-            return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
+            var err2 = new Error('You have to sign up first.');
+            err2.status = 401;
+            res.render('login_form', { title: 'Log In', errors: err2 });
+          }
+        });
+    } else {
+      var err = new Error('Google Sign In Error.');
+      err.status = 400;
+      return next(err);
+    }
+  } else {
+
+    if (req.body.email && req.body.password) {
+      User.authenticate(req.body.email, req.body.password, function (error, user) {
+        if (error || !user) {
+          var err = new Error('Wrong email or password.');
+          err.status = 401;
+          res.render('login_form', { title: 'Log In', errors: err });
+        } else {
+          if (user.certyn == 'N') {
+            var crr = new Error('Oops. you are not certified!');
+            crr.status = 401;
+            res.render('login_form', { title: 'Log In', errors: crr });
+          } else {
+            req.session.userId = user._id;
+            req.session.cfnt = user.cfnt;
+            req.session.clang = user.clang;
+            req.session.userName = user.name;
+            req.session.userEmail = user.email;
+            console.log("user.name:"+user.name);
+            console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
+            if (req.session.redirectUrl) {
+              return res.redirect(req.session.redirectUrl);
+            } else {
+              return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
+            }
           }
         }
-      }
-    });
-  } else {
-    var err = new Error('Email and password are required.');
-    err.status = 401;
-    res.render('login_form', { title: 'Log In', errors: err });
+      });
+    } else {
+      var err = new Error('Email and password are required.');
+      err.status = 401;
+      res.render('login_form', { title: 'Log In', errors: err });
+    }
+
   }
 
 };

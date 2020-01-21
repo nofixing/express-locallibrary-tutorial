@@ -7,6 +7,7 @@ block content
     span(style='font-size: 1.2em; font-weight: bold; color: red;')!= errors
 
   form(method='POST' action='' id='userForm' name='userForm')
+    <input type="hidden" id="gid_token" name="gid_token" value="" />
     div.form-group.row
       div.col-sm-4
         label(for='email') #{translation.Email}
