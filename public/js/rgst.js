@@ -42,7 +42,7 @@ function ClickLogin()
 {
     clicked=true;
 }
-function onSignIn(googleUser) {
+function onSuccess(googleUser) {
     if (clicked) {
         var profile = googleUser.getBasicProfile();
         console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -87,6 +87,20 @@ function onSignIn(googleUser) {
             }
         });
     }
+}
+function onFailure(error) {
+    console.log(error);
+}
+function renderButton() {
+    gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+    });
 }
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
