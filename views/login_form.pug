@@ -16,8 +16,8 @@ block content
         label(for='password') #{translation.Password}
         input.form-control(type='password' id='password' placeholder='password' name='password')
     button.btn.btn-primary(type='submit') #{translation.LOGIN}
-  br
-  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+  
+  <div id="my-signin2" style="margin-top: 30px;"></div>
   br
   a(href='/user/forgot_password') #{translation.forgotPw}
   <script src="/js/login.js"></script>
