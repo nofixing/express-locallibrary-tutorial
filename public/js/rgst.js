@@ -37,57 +37,50 @@ $( document ).ready(function() {
         }
     };    
 });
-var clicked=false;//Global Variable
-function ClickLogin()
-{
-    clicked=true;
-}
 function onSuccess(googleUser) {
-    if (clicked) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+    var profile = googleUser.getBasicProfile();
+    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log('Name: ' + profile.getName());
+    console.log('Image URL: ' + profile.getImageUrl());
+    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-        //id_token = id_token.substring(0, 10);
-        //console.log("ID Token2: " + id_token);
-        $('#name').val(profile.getName());
-        $('#email').val(profile.getEmail());
-        $('#pw').val(id_token);
-        $('#pw2').val(id_token);
-        $('#gid_token').val(id_token);
-        var frm = document.getElementById("userForm");
-        var data = {};
-        data.gid_token = $('#gid_token').val();
-        data.gidThere = '';
-        var httpType = 'https://';
-        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            url: httpType+$('#hostname').val()+'/user/gidcheck',
-            async: false,
-            success : function(data) {
+    // The ID token you need to pass to your backend:
+    var id_token = googleUser.getAuthResponse().id_token;
+    console.log("ID Token: " + id_token);
+    //id_token = id_token.substring(0, 10);
+    //console.log("ID Token2: " + id_token);
+    $('#name').val(profile.getName());
+    $('#email').val(profile.getEmail());
+    $('#pw').val(id_token);
+    $('#pw2').val(id_token);
+    $('#gid_token').val(id_token);
+    var frm = document.getElementById("userForm");
+    var data = {};
+    data.gid_token = $('#gid_token').val();
+    data.gidThere = '';
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/user/gidcheck',
+        async: false,
+        success : function(data) {
 
-                if(data.gidThere == 'Y') {
-                    signOut();
-                    alert($('#gidalreadyexists').val());
+            if(data.gidThere == 'Y') {
+                signOut();
+                alert($('#gidalreadyexists').val());
+            } else {
+                if(data.nameThere == 'Y') {
+                    alert($('#nameThere').val());
                 } else {
-                    if(data.nameThere == 'Y') {
-                        alert($('#nameThere').val());
-                    } else {
-                        frm.submit();
-                    }
+                    frm.submit();
                 }
-
             }
-        });
-    }
+
+        }
+    });
 }
 function onFailure(error) {
     console.log(error);
