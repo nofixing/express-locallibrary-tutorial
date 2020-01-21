@@ -297,7 +297,6 @@ exports.gidcheck = async (req, res, next) => {
   const aud = payload['aud'];
   console.log('userid:'+userid);
   console.log('aud:'+aud);
-  var userid = '';
   if (aud != CLIENT_ID) {
     var err = new Error('Google Sign In Error.');
     err.status = 400;
