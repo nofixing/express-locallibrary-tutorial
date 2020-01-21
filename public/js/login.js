@@ -51,7 +51,7 @@ function onSuccess(googleUser) {
     $('#password').val(id_token);
     $('#gid_token').val(id_token);
     var frm = document.getElementById("userForm");
-    //frm.submit();
+    frm.submit();
 }
 function onFailure(error) {
     console.log(error);
