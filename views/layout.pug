@@ -149,7 +149,7 @@ html(lang='en')
                   a.dropdown-item(href='/catalog?cfnt=Black+And+White+Picture' )
                     span(data-label='흑백사진' )
             li.nav-item
-              a.nav-link(href='/user/logout') #{translation.LOGOUT}
+              a.nav-link(href='#none' onclick='leave();return false;') #{translation.LOGOUT}
             li.nav-item
               a.nav-link(href='/catalog/alter_password') #{translation.AlterPassword}
             li.nav-item
