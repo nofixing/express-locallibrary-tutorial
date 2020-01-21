@@ -51,17 +51,17 @@ exports.login_post = async (req, res, next) => {
         .exec(function (err, user) {
           if (err) { return next(err); }
           if (user.length > 0){
-            req.session.userId = user._id;
-            req.session.cfnt = user.cfnt;
-            req.session.clang = user.clang;
-            req.session.userName = user.name;
-            req.session.userEmail = user.email;
-            console.log("user.name:"+user.name);
-            console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
+            req.session.userId = user[0]._id;
+            req.session.cfnt = user[0].cfnt;
+            req.session.clang = user[0].clang;
+            req.session.userName = user[0].name;
+            req.session.userEmail = user[0].email;
+            console.log("user.name:"+user[0].name);
+            console.log("user.cfnt:"+user[0].cfnt+"/:"+entities.decode(user[0].cfnt));
             if (req.session.redirectUrl) {
               return res.redirect(req.session.redirectUrl);
             } else {
-              return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
+              return res.redirect('/catalog?clang='+user[0].clang+'&cfnt='+entities.decode(user[0].cfnt));
             }
           } else {
             var err2 = new Error('You have to sign up first.');
