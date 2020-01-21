@@ -14,6 +14,10 @@ const {
 
 var async = require('async');
 
+const {OAuth2Client} = require('google-auth-library');
+const CLIENT_ID = "829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com";
+const client = new OAuth2Client(CLIENT_ID);
+
 exports.logout = function (req, res, next) {
 
   if (req.session) {
@@ -335,10 +339,25 @@ exports.rgst_post = function (req, res, next) {
 
     var certyn = 'N';
     var gid_token = '';
+
     if (req.body.gid_token == req.body.password) {
-      certyn = 'Y';
-      gid_token = req.body.gid_token;
+      const ticket = await client.verifyIdToken({
+        idToken: req.body.gid_token,
+        audience: CLIENT_ID,
+      });
+      const payload = ticket.getPayload();
+      const userid = payload['sub'];
+      const aud = payload['aud'];
+      console.log('userid:'+userid);
+      console.log('aud:'+aud);
+      
+      if (aud == CLIENT_ID) {
+        certyn = 'Y';
+        gid_token = userid;
+      } 
+
     }
+
     // create object with form input
     var userData = new User({
       email: req.body.email,
