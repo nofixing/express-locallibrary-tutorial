@@ -21,44 +21,6 @@ function failure(error) {
     console.log(error);
 }
 function renderButton() {
-    var auth2;
-    var googleUser; // The current user
-    
-    gapi.load('auth2', function(){
-        auth2 = gapi.auth2.init({
-            client_id: '829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com'
-        });
-        auth2.attachClickHandler('my-signin2', {}, onSuccess, onFailure);
-    
-        auth2.isSignedIn.listen(signinChanged);
-        auth2.currentUser.listen(userChanged); // This is what you use to listen for user changes
-    });  
-    console.log('gapi.load end');
-    var signinChanged = function (val) {
-        console.log('Signin state changed to ', val);
-    };
-    
-    var onSuccess = function(user) {
-        console.log('Signed in as ' + user.getBasicProfile().getName());
-        // Redirect somewhere
-    };
-    
-    var onFailure = function(error) {
-        console.log(error);
-    };
-    
-    function signOut() {
-        auth2.signOut().then(function () {
-            console.log('User signed out.');
-        });
-    }        
-    
-    var userChanged = function (user) {
-        if(user.getId()){
-          // Do something here
-        }
-    };    
-    
     gapi.signin2.render('my-signin2', {
         'scope': 'profile email',
         'width': 240,
@@ -68,7 +30,6 @@ function renderButton() {
         'onsuccess': success,
         'onfailure': failure
     });
-    console.log('gapi.signin2.render end');
 }
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
