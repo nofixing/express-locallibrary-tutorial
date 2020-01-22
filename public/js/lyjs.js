@@ -23,7 +23,6 @@ $( document ).ready(function() {
     
 });
 function leave() {
-  gapi.auth2.init({ client_id: '829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com' });
   var auth2 = gapi.auth2.getAuthInstance();
   if (auth2.isSignedIn.get()) {
     console.log('the user is signed in');
