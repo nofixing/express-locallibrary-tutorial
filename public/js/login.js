@@ -33,7 +33,7 @@ function renderButton() {
         auth2.isSignedIn.listen(signinChanged);
         auth2.currentUser.listen(userChanged); // This is what you use to listen for user changes
     });  
-    
+    console.log('gapi.load end');
     var signinChanged = function (val) {
         console.log('Signin state changed to ', val);
     };
@@ -68,6 +68,7 @@ function renderButton() {
         'onsuccess': onSuccess,
         'onfailure': onFailure
     });
+    console.log('gapi.signin2.render end');
 }
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
