@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 
 });
-function onSuccess(googleUser) {
+function success(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
@@ -17,7 +17,7 @@ function onSuccess(googleUser) {
     var frm = document.getElementById("userForm");
     frm.submit();
 }
-function onFailure(error) {
+function failure(error) {
     console.log(error);
 }
 function renderButton() {
@@ -65,8 +65,8 @@ function renderButton() {
         'height': 50,
         'longtitle': true,
         'theme': 'dark',
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
+        'onsuccess': success,
+        'onfailure': failure
     });
     console.log('gapi.signin2.render end');
 }
