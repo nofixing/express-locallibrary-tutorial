@@ -22,6 +22,13 @@ $( document ).ready(function() {
   }
     
 });
+function ginit() {
+  gapi.load('auth2', function(){
+    gapi.auth2.init({
+      client_id: '829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com'
+    });
+  });
+}
 function leave() {
   var auth2 = gapi.auth2.getAuthInstance();
   if (auth2.isSignedIn.get()) {
