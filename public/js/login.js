@@ -28,14 +28,14 @@ function renderButton() {
             auth2 = gapi.auth2.init({
               client_id: '829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com'
             });
+            if (auth2.isSignedIn.get()) {
+                console.log('the user is signed in');
+                auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                });
+                auth2.disconnect();
+            }
         });
-        if (auth2.isSignedIn.get()) {
-            console.log('the user is signed in');
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-            auth2.disconnect();
-        }
     } else {
         gapi.signin2.render('my-signin2', {
             'scope': 'profile email',
