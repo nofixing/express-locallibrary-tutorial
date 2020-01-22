@@ -21,15 +21,27 @@ function failure(error) {
     console.log(error);
 }
 function renderButton() {
-    gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 240,
-        'height': 50,
-        'longtitle': true,
-        'theme': 'dark',
-        'onsuccess': success,
-        'onfailure': failure
-    });
+    if ($('#sign_token').val() == 'unsign') {
+        alert('You have to sign up first.');
+        var auth2 = gapi.auth2.getAuthInstance();
+        if (auth2.isSignedIn.get()) {
+            console.log('the user is signed in');
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+            auth2.disconnect();
+        }
+    } else {
+        gapi.signin2.render('my-signin2', {
+            'scope': 'profile email',
+            'width': 240,
+            'height': 50,
+            'longtitle': true,
+            'theme': 'dark',
+            'onsuccess': success,
+            'onfailure': failure
+        });
+    }
 }
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();

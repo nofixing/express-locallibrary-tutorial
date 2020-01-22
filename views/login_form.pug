@@ -8,6 +8,7 @@ block content
 
   form(method='POST' action='' id='userForm' name='userForm')
     <input type="hidden" id="gid_token" name="gid_token" value="" />
+    <input type="hidden" id="sign_token" name="sign_token" value="#{sign_token}" />
     div.form-group.row
       div.col-sm-4
         label(for='email') #{translation.Email}

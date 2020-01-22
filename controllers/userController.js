@@ -66,7 +66,7 @@ exports.login_post = async (req, res, next) => {
           } else {
             var err2 = new Error('You have to sign up first.');
             err2.status = 401;
-            res.render('login_form', { title: 'Log In', errors: err2 });
+            res.render('login_form', { title: 'Log In', sign_token: 'unsign' });
           }
         });
     } else {
