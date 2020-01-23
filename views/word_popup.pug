@@ -1,22 +1,145 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Pen+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Brush+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Song+Myung" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jua" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cute+Font" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Stylish" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hi+Melody" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+And+White+Picture" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">    
 
-    <!-- Bootstrap CSS -->
+    link(rel='stylesheet', href='/stylesheets/practice.css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.bubble.css" />
+    <title>Word Popup Editor</title>
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  body(style=(undefined===cfnt ? '' : 'font-family:'+cfnt))
+    
+    <h1>Word Popup Editor</h1>
+    <div id="toolbar-container" class="ql-toolbar ql-bubble">
+      <span class="ql-formats">
+        <select class="ql-font" style="width: 150px;">
+          <option selected="">Sans Serif</option>
+          <option value="LibreFranklin">Libre Franklin</option>
+          <option value="inconsolata">Inconsolata</option>
+          <option value="roboto">Roboto</option>
+          <option value="mirza">Mirza</option>
+          <option value="arial">Arial</option>
+          <option value="Oswald">Oswald</option>
+          <option value="Caveat">Caveat</option>
+          <option value="Raleway">Raleway</option>
+          <option value="ShadowsIntoLight">Shadows Into Light</option>
+          <option value="AbrilFatface">Abril Fatface</option>
+          <option value="Teko">Teko</option>
+          <option value="Cormorant">Cormorant</option>
+          <option value="AlfaSlabOne">Alfa Slab One</option>
+          <option value="PTSans">PT Sans</option>
+          <option value="NanumPenScript">나눔 손글씨 펜</option>
+          <option value="NanumBrushScript">나눔 손글씨 붓</option>
+          <option value="SongMyung">송명</option>
+          <option value="Gaegu">개구쟁이</option>
+          <option value="Jua">주아</option>
+          <option value="GamjaFlower">감자꽃 마을</option>
+          <option value="CuteFont">귀여운 폰트</option>
+          <option value="Stylish">스타일리시</option>
+          <option value="YeonSung">연성</option>
+          <option value="HiMelody">하이멜로디</option>
+          <option value="Sunflower">해바라기</option>
+          <option value="BlackHanSans">검은고딕</option>
+          <option value="GothicA1">고딕 A1</option>
+          <option value="NanumGothic">나눔고딕</option>
+          <option value="NanumMyeongjo">나눔명조</option>
+          <option value="PoorStory">서툰이야기</option>
+          <option value="BlackAndWhitePicture">흑백사진</option>
+        </select>
+      </span>
+      <span class="ql-formats">
+        <select class="ql-header"></select>
+        <select class="ql-size">
+          <option value="1em">1em</option>
+          <option value="1.5em">1.5em</option>
+          <option value="2em">2em</option>
+          <option value="2.5em">2.5em</option>
+          <option value="3em">3em</option>
+          <option value="3.5em">3.5em</option>
+          <option value="4em">4em</option>
+          <option value="6em">6em</option>
+          <option value="8em">8em</option>
+          <option value="10em">10em</option>
+        </select>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-bold"></button>
+        <button class="ql-italic"></button>
+        <button class="ql-underline"></button>
+        <button class="ql-strike"></button>
+      </span>
+      <span class="ql-formats">
+        <select class="ql-color"></select>
+        <select class="ql-background"></select>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-script" value="sub"></button>
+        <button class="ql-script" value="super"></button>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-blockquote"></button>
+        <button class="ql-code-block"></button>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-list" value="ordered"></button>
+        <button class="ql-list" value="bullet"></button>
+        <select class="ql-align"></select>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-link"></button>
+        <button class="ql-image"></button>
+        <button class="ql-video"></button>
+        <button class="audio"></button>
+        <button class="ql-formula"></button>
+      </span>
+      <span class="ql-formats">
+        <button class="ql-indent" value="-1"></button>
+        <button class="ql-indent" value="+1"></button>
+        <button class="ql-direction" value="rtl"></button>
+        <button class="ql-clean"></button>
+      </span>
+  </div>        
+  div#bubble-container(spellcheck='false' style='width: 600px; height: 600px;')
+  input#content(type='hidden', name='content' value=word.content)
+  input#w_id(type='hidden', name='w_id' value=word._id)
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="/js/quill_setting_popup.js"></script>
+    <script src="/js/wordPopup.js"></script>
   </body>
 </html>

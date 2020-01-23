@@ -76,6 +76,26 @@ exports.word_detail = function(req, res, next) {
 
 };
 
+exports.word_popup = function(req, res, next) {
+
+    async.parallel({
+        word: function(callback) {
+
+            Word.findById(req.query.w_id)
+              .exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        if (results.word==null) { // No results.
+            var eor = new Error('Word not found');
+            eor.status = 404;
+            return next(eor);
+        }
+        res.render('word_popup', { word:  results.word } );
+    });
+
+};
+
 exports.word_iframe = function(req, res, next) {
 
     async.parallel({
