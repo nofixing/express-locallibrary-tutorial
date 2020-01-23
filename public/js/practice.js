@@ -613,6 +613,12 @@ function oxfordPopup(wd) {
     selectText = wd;
     dicSearch();
 }
+
+function wordPopup(w_id) {
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    window.open(httpType+$('#hostname').val()+"/catalog/word_popup?w_id="+w_id, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=250,left=200,width=550,height=550");
+}
   
 function search() {
 

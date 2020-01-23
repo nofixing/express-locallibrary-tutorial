@@ -76,6 +76,38 @@ exports.word_detail = function(req, res, next) {
 
 };
 
+exports.word_popup = function(req, res, next) {
+
+    async.parallel({
+        word: function(callback) {
+
+            Word.findById(req.query.w_id)
+              .exec(callback);
+        },
+    }, function(err, results) {
+        if (err) { return next(err); }
+        if (results.word==null) { // No results.
+            var eor = new Error('Word not found');
+            eor.status = 404;
+            return next(eor);
+        }
+        console.log('results.word:'+results.word);
+        res.render('word_popup', { word:  results.word } );
+    });
+
+};
+
+exports.word_popup_post = function(req, res, next) {
+
+    Word.update({_id: req.body.id}, {
+        content: req.body.content
+    }, function(err, upWord) {
+        if (err) { console.log(err); return next(err); }
+        res.send(req.body);
+    });
+
+};
+
 exports.word_iframe = function(req, res, next) {
 
     async.parallel({
@@ -945,3 +977,4 @@ exports.word_board_ajax = function(req, res, next) {
     }
   
 };
+

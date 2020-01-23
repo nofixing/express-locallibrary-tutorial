@@ -295,7 +295,7 @@ html(lang='en')
               <button class="ql-link"></button>
               <button class="ql-image"></button>
               <button class="ql-video"></button>
-              <button class="audio"></button>
+              <button class="ql-audio"></button>
               <button class="ql-formula"></button>
             </span>
             <span class="ql-formats">
@@ -357,7 +357,8 @@ html(lang='en')
                     option(value='2' selected=(word.skill==='2' ? 'selected' : false) ) #{translation.SawSeveralTime}
                     option(value='3' selected=(word.skill==='3' ? 'selected' : false) ) #{translation.BeUsedTo}
                     option(value='4' selected=(word.skill==='4' ? 'selected' : false) ) #{translation.RememberComplete}
-                  <button type="button" class="btn btn-primary" style="display: inline; margin-left: 50px;" onclick="oxfordPopup('#{word.title}')">Oxford</button>
+                  <button type="button" class="btn btn-primary" style="display: inline; margin-left: 30px;" onclick="wordPopup('#{word._id}')">Word</button>
+                  <button type="button" class="btn btn-primary" style="display: inline; margin-left: 30px;" onclick="oxfordPopup('#{word.title}')">Oxford</button>
                   <button type="button" class="btn btn-primary" style="display: inline; float: right; margin-top: 8px;" onclick="imgAddress(#{i})">#{translation.ImageAddress}</button>
         <button type="button" class="btn btn-primary" id="wordAdd">#{translation.Add}</button>&nbsp;&nbsp;&nbsp;#{translation.afteradd}
       div#word_only_container.col-lg-12
