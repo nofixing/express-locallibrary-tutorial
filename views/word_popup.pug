@@ -135,6 +135,7 @@
     input#content(type='hidden', name='content' value=word.content)
     input#w_id(type='hidden', name='w_id' value=word._id)
     <input type="hidden" id="SAVED" name="SAVED" value="#{translation.SAVED}" />
+    button.btn.btn-primary(type='button', onclick='wordPost();return false;') #{translation.Submit}
 
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

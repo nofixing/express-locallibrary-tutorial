@@ -7,10 +7,6 @@ $( document ).ready(function() {
 
 function wordPost() {
 
-  var frm = document.getElementById("wordForm");
-  frm.content.value = document.querySelector('#snow-container').children[0].innerHTML;
-  frm.submit();
-
   var data = {};
   data.content = document.querySelector('#bubble-container').children[0].innerHTML;
   data.id = $('#w_id').val();
