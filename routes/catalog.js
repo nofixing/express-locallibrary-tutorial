@@ -168,7 +168,7 @@ router.post('/word/updateImgAddr', word_controller.word_update_imgAddr_post);
 
 router.get('/word/:id', word_controller.word_detail);
 
-router.get('/word/word_popup', word_controller.word_popup);
+router.get('/word_popup', word_controller.word_popup);
 
 router.get('/word/:id/iframe', word_controller.word_iframe);
 
