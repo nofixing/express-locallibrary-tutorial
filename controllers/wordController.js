@@ -91,6 +91,7 @@ exports.word_popup = function(req, res, next) {
             eor.status = 404;
             return next(eor);
         }
+        console.log('results.word:'+results.word);
         res.render('word_popup', { word:  results.word } );
     });
 
