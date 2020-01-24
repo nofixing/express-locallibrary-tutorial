@@ -337,6 +337,7 @@ exports.story_detail = function(req, res, next) {
             }
         });
         results.story.content = entities.decode(results.story.content);
+        var ttp = '';
         if(req.body.tlp == 'y') {
             var txt = results.story.content;
             //var highlightHtml = '<span class="hgt" style="color:black;">$1</span>';
@@ -361,27 +362,20 @@ exports.story_detail = function(req, res, next) {
                     } else {
                         ssc = '<img src="'+ssc+'"><br>';
                     }
-                    sTag += '<div id="'+results.words[i].title+i+'">'+ssc+results.words[i].content+'</div>';
+                    sTag += '<div id="'+results.words[i].title+i+'">'+ssc+results.words[i].content+'</div>\n';
                     highlightHtml = '<span class="tltp" data-tooltip-content="#'+results.words[i].title+i+'">$1</span>';
                 } else if(typeof results.words[i].content != 'undefined') {
                     //console.log('content:'+results.words[i].content);
-                    sTag += '<div id="'+results.words[i].title+i+'">'+results.words[i].content+'</div>';
+                    sTag += '<div id="'+results.words[i].title+i+'">'+results.words[i].content+'</div>\n';
                     highlightHtml = '<span class="tltp" data-tooltip-content="#'+results.words[i].title+i+'">$1</span>';
                 } else {
                     highlightHtml = results.words[i].title;
                 }
-                
-                txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
-                
-            }
-            console.log('sTag:'+sTag);
-            txt = txt.replace('<div class=tooltip_templates></div>', '<div class="tooltip_templates">'+sTag+'</div>');
-            /*
-            for (let i = 0; i < results.words.length; i++) {
                 txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
             }
-            */
             results.story.content = txt;
+            console.log('sTag:'+sTag);
+            ttp = sTag;
         }
         /*
         for (let i = 0; i < results.files.length; i++) {
@@ -416,7 +410,7 @@ exports.story_detail = function(req, res, next) {
         res.render(vName, 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 
         word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, book_title: book_title, book_id: book_id,
-        tooltip:req.body.tlp, files: results.files } );
+        tooltip:req.body.tlp, files: results.files, ttp: ttp } );
     });
 
 };
