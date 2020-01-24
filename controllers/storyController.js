@@ -372,9 +372,10 @@ exports.story_detail = function(req, res, next) {
                 }
                 
                 txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
-                txt = txt.replace('<div class=tooltip_templates></div>', '<div class="tooltip_templates">'+sTag+'</div>');
                 
             }
+            console.log('sTag:'+sTag);
+            txt = txt.replace('<div class=tooltip_templates></div>', '<div class="tooltip_templates">'+sTag+'</div>');
             /*
             for (let i = 0; i < results.words.length; i++) {
                 txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
