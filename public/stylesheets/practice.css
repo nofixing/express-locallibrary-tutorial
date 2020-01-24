@@ -564,7 +564,7 @@ ul.tite li {
     font-size: 10em;
 }
 
-.audio:after {
+.ql-audio:after {
     content: "Audio";
 }
 
@@ -757,3 +757,5 @@ ul.tite li {
     -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
     box-shadow: 0 0 1px rgba(255,255,255,.5);
   }
+
+  .tooltip_templates { display: none; }

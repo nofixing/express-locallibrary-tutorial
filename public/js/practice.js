@@ -506,6 +506,7 @@ $(function(){
     });
 
     //$('.tltp').tooltip({html: true, placement: "right"});
+    /*
     $('.tltp').tooltipster({   
         'theme': 'tooltipster-shadow',
         'interactive': true,
@@ -518,8 +519,20 @@ $(function(){
         functionInit: function(instance, helper){
             var $origin = $(helper.origin);
             var content = $origin.find('.tpcontent').detach();
-            instance.content(content);         
+            instance.content(content);       
         }
+    });
+    */
+   $('.tltp').tooltipster({
+        theme: 'tooltipster-shadow',
+        interactive: true,
+        contentAsHTML: true,
+        autoClose: true,
+        side: 'bottom',
+        animation: 'fall',
+        trigger: 'click',
+        delay: '200',
+        maxWidth: 640
     });
 
     $('#InsertImgAddr').click(function(){

@@ -361,17 +361,19 @@ exports.story_detail = function(req, res, next) {
                     } else {
                         ssc = '<img src="'+ssc+'"><br>';
                     }
-                    sTag = '<span class="tpcontent" style="text-align:left;">'+ssc+results.words[i].content+'</span>';
-                    highlightHtml = '<span class="tltp">$1'+sTag+'</span>';
+                    sTag += '<div id="'+results.words[i].title+i+'">'+ssc+results.words[i].content+'</div>';
+                    highlightHtml = '<span class="tltp" data-tooltip-content="#'+results.words[i].title+i+'">$1</span>';
                 } else if(typeof results.words[i].content != 'undefined') {
                     //console.log('content:'+results.words[i].content);
-                    sTag = '<span class="tpcontent" style="text-align:left;">'+results.words[i].content+'</span>';
-                    highlightHtml = '<span class="tltp">$1'+sTag+'</span>';
+                    sTag += '<div id="'+results.words[i].title+i+'">'+results.words[i].content+'</div>';
+                    highlightHtml = '<span class="tltp" data-tooltip-content="#'+results.words[i].title+i+'">$1</span>';
                 } else {
                     highlightHtml = results.words[i].title;
                 }
                 
                 txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
+                txt = txt.replace('<div class=tooltip_templates></div>', '<div class="tooltip_templates">'+sTag+'</div>');
+                
             }
             /*
             for (let i = 0; i < results.words.length; i++) {

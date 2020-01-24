@@ -92,7 +92,7 @@ exports.word_popup = function(req, res, next) {
             return next(eor);
         }
         console.log('results.word:'+results.word);
-        res.render('word_popup', { word:  results.word } );
+        res.render('word_popup', { word:  results.word, hostname: req.headers.host } );
     });
 
 };

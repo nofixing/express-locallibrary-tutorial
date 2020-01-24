@@ -48,13 +48,21 @@ class AudioBlot extends BlockEmbed {
     return node.getAttribute('src');
   }
 }
-AudioBlot.blotName = 'audio';
+AudioBlot.blotName = 'ql-audio';
 AudioBlot.tagName = 'audio';
 Quill.register(AudioBlot, true);
 
+var Parchment = Quill.import("parchment");
+
+let AudioClass = new Parchment.Attributor.Class('audio', 'ql-audio', {
+  scope: Parchment.Scope.BLOCK
+});
+
+Quill.register(AudioClass, true);
+
 var quill = new Quill('#bubble-container', {
   modules: {
-      syntax: true,
+      syntax: false,
       toolbar: '#toolbar-container'
   },
   theme: 'bubble'
@@ -97,7 +105,7 @@ $('#InsertVideo').click(function(){
   $('#vcls')[0].click();
 });
 
-var audioButton = document.querySelector('.audio');
+var audioButton = document.querySelector('.ql-audio');
 audioButton.addEventListener('click', function(event) {
   console.log('audioButton Clicked');
   var range = quill.getSelection();
@@ -105,7 +113,7 @@ audioButton.addEventListener('click', function(event) {
   if(value){
     console.log('audioButton audio src Entered ->:'+value);
     quill.insertText(range.index, '\n', Quill.sources.USER);
-    quill.insertEmbed(range.index + 1, 'audio', value, Quill.sources.USER);
+    quill.insertEmbed(range.index + 1, 'ql-audio', value, Quill.sources.USER);
     quill.setSelection(range.index + 2, Quill.sources.SILENT);
   }
   event.preventDefault();
