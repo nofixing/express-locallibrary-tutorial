@@ -345,17 +345,21 @@ exports.story_detail = function(req, res, next) {
             var sTag = '';
             for (let i = 0; i < results.words.length; i++) {
                 if (typeof results.words[i].image_address != 'undefined' && typeof results.words[i].content != 'undefined') {
-                    //console.log(results.words[i].image_address);
+                    console.log(results.words[i].image_address);
                     //console.log(results.words[i].content);
                     var ssc = results.words[i].image_address;
                     if(ssc.indexOf('youtu') > -1) {
                         var arr = ssc.split("/");
                         var lnum = ssc.split("/").length -1;
                         var vsrc = arr[lnum];
+                        console.log('vsrc0:'+vsrc);
                         if(vsrc.indexOf('watch?v=') > -1) {
                             var arr2 = vsrc.split("=");
                             vsrc = arr2[1];
-                            vsrc = vsrc.substring(0, vsrc.indexOf('&'));
+                            console.log('vsrc1:'+vsrc);
+                            if(vsrc.indexOf('&') > -1) {
+                                vsrc = vsrc.substring(0, vsrc.indexOf('&'));
+                            }
                         }
                         console.log('vsrc:'+vsrc);
                         ssc = '<iframe width="640" height="360" src="//www.youtube.com/embed/'+vsrc+'" frameborder="0" allowfullscreen></iframe><br>';

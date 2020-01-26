@@ -122,6 +122,9 @@ $('#InsertVideo').click(function(){
   if(vsrc.indexOf('watch?v=') > -1) {
     var arr2 = vsrc.split("=");
     vsrc = arr2[1];
+    if(vsrc.indexOf('&') > -1) {
+      vsrc = vsrc.substring(0, vsrc.indexOf('&'));
+    }
   }
   vsrc = "https://www.youtube.com/embed/"+vsrc;
   if($('#video_width').val() == '' || $('#video_height').val() == '') {
