@@ -1351,7 +1351,7 @@ function processDicData(dic_content, kdata) {
                     var audioFile = pronunciations[k].audioFile;
                     if (typeof audioFile !== 'undefined') {
                         console.log('audioFile: '+audioFile);
-                        simpleData[i].nodes[j].text = simpleData[i].nodes[j].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+audioFile+'"></a>';
+                        simpleData[i].nodes[j].text = simpleData[i].nodes[j].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fas fa-volume-up" src="'+audioFile+'"></a>';
                     }
                     var dialects = pronunciations[k].dialects;
                     //console.log('dialects: '+dialects);
@@ -1404,7 +1404,7 @@ function processDicData(dic_content, kdata) {
                             console.log('entries_audioFile: '+entries_audioFile);
                             if (typeof simpleData[i].nodes[j].nodes !== 'object') {
                                 simpleData[i].nodes[j].nodes = [];
-                                simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>', selectable: false});
+                                simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fas fa-volume-up" src="'+entries_audioFile+'"></a>', selectable: false});
                             } else {
                                 var isExists = false;
                                 var isIdx = 0;
@@ -1415,9 +1415,9 @@ function processDicData(dic_content, kdata) {
                                     }
                                 }
                                 if (isExists) {
-                                    simpleData[i].nodes[j].nodes[isIdx].text = simpleData[i].nodes[j].nodes[isIdx].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>';
+                                    simpleData[i].nodes[j].nodes[isIdx].text = simpleData[i].nodes[j].nodes[isIdx].text + '&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fas fa-volume-up" src="'+entries_audioFile+'"></a>';
                                 } else {
-                                    simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fa fa-play" src="'+entries_audioFile+'"></a>', selectable: false});
+                                    simpleData[i].nodes[j].nodes.push({text:'&nbsp;<a onclick="playAudio(this);" style="cursor: pointer;" class="fas fa-volume-up" src="'+entries_audioFile+'"></a>', selectable: false});
                                 }
                             }
                         }
