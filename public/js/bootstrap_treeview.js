@@ -1260,21 +1260,21 @@ var $aubtn;
 function playAudio(elem) {
   saudio.src = $(elem).attr('src');
   $aubtn = $(elem);
-  if($(elem).hasClass('fa-play'))
+  if($(elem).hasClass('fa-volume-up'))
    {
-     $(elem).removeClass('fa-play');
+     $(elem).removeClass('fa-volume-up');
      $(elem).addClass('fa-pause');
      saudio.play();
    }
   else
    {
      $(elem).removeClass('fa-pause');
-     $(elem).addClass('fa-play');
+     $(elem).addClass('fa-volume-up');
      saudio.pause();
    }
 }
 
 saudio.onended = function() {
      $aubtn.removeClass('fa-pause');
-     $aubtn.addClass('fa-play');
+     $aubtn.addClass('fa-volume-up');
 };
