@@ -134,9 +134,17 @@ html(lang='en')
               p #{story.author}<br/><br/>
           if story.reference 
             if story.title_font
-              p(class=story.title_font) #{story.reference}<br/><br/>
+              p(class=story.title_font)
+                a(href=story.reference) #{story.reference}
             else
-              p #{story.reference}<br/><br/>
+              p 
+                a(href=story.reference) #{story.reference}
+            <br/>
+          if story.genre
+            span(style='margin-left: 20px;')
+            for gnr in story.genre
+              a(href=gnr.url) #{gnr.name} &nbsp;&nbsp;&nbsp;&nbsp;
+            <br><br>
           if anchor 
             if story.title_font
               <a href="none" class="#{story.title_font}" onclick="goBokM('#{anchor}');return false;">#{translation.BookMark}</a><br/><br/>
