@@ -143,7 +143,8 @@ html(lang='en')
           if story.genre
             span(style='margin-left: 20px;')
             for gnr in story.genre
-              a(href=gnr.url) #{gnr.name} &nbsp;&nbsp;&nbsp;&nbsp;
+              a(href=gnr.url) #{gnr.name}
+              span(style='margin-left: 20px;')
             <br><br>
           if anchor 
             if story.title_font
