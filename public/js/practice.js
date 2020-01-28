@@ -747,6 +747,7 @@ function dicSearch() {
        success : function(data) {
             console.log('data.dic_kcontent:'+data.dic_kcontent+";");
             if (typeof data.oxfordWord_id != 'undefined') oxfordWord_id = data.oxfordWord_id;
+            kword = '';
             processDicData(data.dic_content, data.dic_kcontent);
        }
    });
