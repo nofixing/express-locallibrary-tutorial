@@ -366,12 +366,16 @@ exports.story_detail = function(req, res, next) {
                     } else {
                         ssc = '<img src="'+ssc+'"><br>';
                     }
-                    sTag += '<div id="'+results.words[i].title+i+'">'+ssc+results.words[i].content+'</div>\n';
-                    highlightHtml = '<span class="tltp" data-tooltip-content="#'+results.words[i].title+i+'">$1</span>';
+                    var ttl = results.words[i].title+i;
+                    ttl = ttl.replace(/ /g, "_");
+                    sTag += '<div id="'+ttl+'">'+ssc+results.words[i].content+'</div>\n';
+                    highlightHtml = '<span class="tltp" data-tooltip-content="#'+ttl+'">$1</span>';
                 } else if(typeof results.words[i].content != 'undefined') {
                     //console.log('content:'+results.words[i].content);
-                    sTag += '<div id="'+results.words[i].title+i+'">'+results.words[i].content+'</div>\n';
-                    highlightHtml = '<span class="tltp" data-tooltip-content="#'+results.words[i].title+i+'">$1</span>';
+                    var ttl = results.words[i].title+i;
+                    ttl = ttl.replace(/ /g, "_");
+                    sTag += '<div id="'+ttl+'">'+results.words[i].content+'</div>\n';
+                    highlightHtml = '<span class="tltp" data-tooltip-content="#'+ttl+'">$1</span>';
                 } else {
                     highlightHtml = results.words[i].title;
                 }
