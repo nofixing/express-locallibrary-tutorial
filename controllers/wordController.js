@@ -229,7 +229,7 @@ exports.word_create_post = [
                                 // Successful - redirect to new word record.
                                 //res.redirect(word.url);
                                 req.body.word_id = theWord._id;
-                                req.body.content = translation;
+                                req.body.content = word.content;
                                 res.send(req.body);
                             });                   
 
