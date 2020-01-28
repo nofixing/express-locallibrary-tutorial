@@ -530,7 +530,7 @@ $(function(){
         theme: 'tooltipster-shadow',
         interactive: true,
         contentAsHTML: true,
-        autoClose: true,
+        //autoClose: true,
         side: 'bottom',
         animation: 'fall',
         //trigger: 'click',
