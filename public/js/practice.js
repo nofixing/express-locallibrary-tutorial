@@ -3,7 +3,7 @@ var selectContent = "";
 var wordArray = [];
 var dicAddr = "https://c.merriam-webster.com/coredictionary/";
 var oxfordWord_id = "";
-var dic_kcontent = "";
+var kword = '';
 $(function(){
     var showData = $('#show_img');
     var tooltip = $('#tooltip').val();
@@ -80,7 +80,8 @@ $(function(){
             data.word_id = '';
             data.skill = '1';
             data.importance = '1';
-            data.content = dic_kcontent;
+            data.content = kword;
+            console.log('before word save, data.content:'+data.content);
             data.result = $('#SAVED').val();
             data.fail = $('#smm').val();
             data.oxfordWord_id = oxfordWord_id;
@@ -746,7 +747,6 @@ function dicSearch() {
        success : function(data) {
             console.log('data.dic_kcontent:'+data.dic_kcontent+";");
             if (typeof data.oxfordWord_id != 'undefined') oxfordWord_id = data.oxfordWord_id;
-            dic_kcontent = data.dic_kcontent;
             processDicData(data.dic_content, data.dic_kcontent);
        }
    });
@@ -1313,10 +1313,8 @@ function processDicData(dic_content, kdata) {
     kvoca = kvoca.replace(/\\\"/g, "'");
     kvoca = kvoca.replace(/\"/g, '"');
     kvoca = JSON.parse(kvoca);
-    console.log('==========================================================================kvoca:\n'+kvoca);
     var kmean = kvoca.mean;
     console.log('==========================================================================kmean:\n'+kmean);
-    var kword = '';
     if (typeof kmean === 'object') {
         for (let i = 0; i < kmean.length; i++) {
             kword = kword + kmean[i];
@@ -1325,6 +1323,7 @@ function processDicData(dic_content, kdata) {
             }
         }
     }
+    console.log('==========================================================================kword:'+kword);
     var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="CopyFilePath(\'';
     var cptxtb = '\');return false;" style="cursor: pointer;align:right;padding-right:30px;"><i class="fa">&#xf0c5;</i></a>';
     var word_id = voca.id;
