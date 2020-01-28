@@ -11,6 +11,7 @@ var WordSchema = new Schema({
     story: { type: Schema.ObjectId, ref: 'Story', required: true },
     story_title: {type: String},
     content: {type: String},
+    add_content: {type: String},
     references: [{type: String}],
     skill: { type: String },
     importance: { type: String },

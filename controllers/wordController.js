@@ -100,7 +100,8 @@ exports.word_popup = function(req, res, next) {
 exports.word_popup_post = function(req, res, next) {
 
     Word.update({_id: req.body.id}, {
-        content: req.body.content
+        content: req.body.content,
+        add_content: req.body.add_content
     }, function(err, upWord) {
         if (err) { console.log(err); return next(err); }
         res.send(req.body);
@@ -201,7 +202,7 @@ exports.word_create_post = [
                             book: req.body.book_id,
                             story_title: req.body.story_title,
                             book_title: req.body.book_title,
-                            content: translation,
+                            content: req.body.content+', '+translation,
                             skill: req.body.skill,
                             importance: req.body.importance,
                             create_date: Date.now(),
@@ -214,7 +215,7 @@ exports.word_create_post = [
                             user: req.session.userId,
                             story: req.body.story_id,
                             story_title: req.body.story_title,
-                            content: translation,
+                            content: req.body.content+', '+translation,
                             skill: req.body.skill,
                             importance: req.body.importance,
                             create_date: Date.now(),

@@ -3,6 +3,7 @@ var selectContent = "";
 var wordArray = [];
 var dicAddr = "https://c.merriam-webster.com/coredictionary/";
 var oxfordWord_id = "";
+var dic_kcontent = "";
 $(function(){
     var showData = $('#show_img');
     var tooltip = $('#tooltip').val();
@@ -79,7 +80,7 @@ $(function(){
             data.word_id = '';
             data.skill = '1';
             data.importance = '1';
-            data.content = '';
+            data.content = dic_kcontent;
             data.result = $('#SAVED').val();
             data.fail = $('#smm').val();
             data.oxfordWord_id = oxfordWord_id;
@@ -745,6 +746,7 @@ function dicSearch() {
        success : function(data) {
             console.log('data.dic_kcontent:'+data.dic_kcontent+";");
             if (typeof data.oxfordWord_id != 'undefined') oxfordWord_id = data.oxfordWord_id;
+            dic_kcontent = data.dic_kcontent;
             processDicData(data.dic_content, data.dic_kcontent);
        }
    });
