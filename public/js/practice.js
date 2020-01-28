@@ -531,10 +531,10 @@ $(function(){
         interactive: true,
         contentAsHTML: true,
         //autoClose: true,
-        side: 'bottom',
-        animation: 'fall',
+        position: 'bottom',
+        animation: 'grow',
         //trigger: 'click',
-        delay: '200',
+        //delay: '200',
         maxWidth: 640
     });
 
