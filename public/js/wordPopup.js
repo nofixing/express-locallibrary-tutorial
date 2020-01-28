@@ -28,9 +28,3 @@ function wordPost() {
   });
 
 }
-
-function close() {
-
-    self.close();
-  
-}
