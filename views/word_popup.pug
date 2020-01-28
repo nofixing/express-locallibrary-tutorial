@@ -146,7 +146,8 @@
         input#w_id(type='hidden', name='w_id' value=word._id)
         <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
         <input type="hidden" id="SAVED" name="SAVED" value="#{translation.SAVED}" />
-        button.btn.btn-primary(type='button', onclick='wordPost();return false;' style='margin: 10px 0;') #{translation.Submit}
+        button.btn.btn-outline-primary(type='button', onclick='wordPost();return false;' style='margin: 10px;') #{translation.Submit}
+        button.btn.btn-outline-dark(type='button', onclick='close();return false;' style='margin: 10px;') #{translation.Close}
 
     <a href="#" id="OpenVideo" data-toggle="modal" data-target="#videoModal"></a>
 
