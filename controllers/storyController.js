@@ -368,13 +368,17 @@ exports.story_detail = function(req, res, next) {
                     }
                     var ttl = results.words[i].title+i;
                     ttl = ttl.replace(/ /g, "_");
-                    sTag += '<div id="'+ttl+'">'+ssc+results.words[i].content+results.words[i].add_content+'</div>\n';
+                    var add_cnt = '';
+                    if(typeof results.words[i].add_content != 'undefined') add_cnt = results.words[i].add_content;
+                    sTag += '<div id="'+ttl+'">'+ssc+results.words[i].content+add_cnt+'</div>\n';
                     highlightHtml = '<span class="tltp" data-tooltip-content="#'+ttl+'">$1</span>';
                 } else if(typeof results.words[i].content != 'undefined') {
                     //console.log('content:'+results.words[i].content);
                     var ttl = results.words[i].title+i;
                     ttl = ttl.replace(/ /g, "_");
-                    sTag += '<div id="'+ttl+'">'+results.words[i].content+results.words[i].add_content+'</div>\n';
+                    var add_cnt = '';
+                    if(typeof results.words[i].add_content != 'undefined') add_cnt = results.words[i].add_content;
+                    sTag += '<div id="'+ttl+'">'+results.words[i].content+add_cnt+'</div>\n';
                     highlightHtml = '<span class="tltp" data-tooltip-content="#'+ttl+'">$1</span>';
                 } else {
                     highlightHtml = results.words[i].title;
