@@ -533,7 +533,7 @@ $(function(){
         autoClose: true,
         side: 'bottom',
         animation: 'fall',
-        trigger: 'click',
+        //trigger: 'click',
         delay: '200',
         maxWidth: 640
     });
