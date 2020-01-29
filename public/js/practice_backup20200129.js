@@ -98,11 +98,29 @@ $(function(){
                     console.log("jb_content dblclick");
                     if (data.result != data.fail) {
                         selectContent = data.content;
-                        var markup = "<li>"+data.title;
-                        markup += "<i class='fas fa-book-open' style='margin-left: 30px;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
-                        markup += "<i class='fas fa-graduation-cap' style='margin-left: 30px;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
-                        markup += "<i class='fas fa-photo-video' style='margin-left: 30px;' onclick='imgAddress("+ldxx+")'></i>";
-                        markup += "</li>";
+                        var markup = "<tr><td style='text-align: center;'><div class='checkbox'><input type='checkbox' class='wList' value='"+data.word_id+"'></div></td>";
+                        markup += "<td><input type='text' size='15' maxlength='30' class='form-control ipt' value='"+data.title+"'>";
+                        markup += "<input type='hidden' class='form-control iph' value=''>";
+
+                        markup += "<select class='importance form-control' style='margin-top: 10px;'>";
+                        markup += "<option value='1'>"+$('#NotImportance').val()+"</option>";
+                        markup += "<option value='2'>"+$('#Important').val()+"</option>";
+                        markup += "<option value='3'>"+$('#VeryImportance').val()+"</option>";
+                        markup += "<option value='4'>"+$('#Indispensable').val()+"</option></td>";
+
+                        markup += "<td><textarea class='form-control txt' rows='1' cols='45'>"+data.content+"</textarea>";
+
+                        markup += "<select class='skill form-control' style='display: inline; width: 200px; margin-top: 10px;'>";
+                        markup += "<option value='1'>"+$('#NotKnow').val()+"</option>";
+                        markup += "<option value='2'>"+$('#SawSeveralTime').val()+"</option>";
+                        markup += "<option value='3'>"+$('#BeUsedTo').val()+"</option>";
+                        markup += "<option value='4'>"+$('#RememberComplete').val()+"</option>";
+                        markup += "</select>";
+                        markup += "<button type='button' class='btn btn-primary' style='display: inline; margin-left: 30px;' onclick='wordPopup(\""+data.word_id+"\")'>Word</button>";
+                        markup += "<button type='button' class='btn btn-primary' style='display: inline; margin-left: 50px;' onclick='oxfordPopup(\""+data.title+"\")'>Oxford</button>";
+                        markup += "<button type='button' class='btn btn-primary' style='display: inline; float: right; margin-top: 8px;' onclick='imgAddress("+ldxx+")'>";
+                        markup += $('#ImageAddress').val();
+                        markup += "</button></td></tr>";
 
                         $(".wtd").append(markup);
 
