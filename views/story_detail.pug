@@ -334,11 +334,11 @@ html(lang='en')
           </div>
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div#word_container.col-lg-6
-        table.wtd(style='border: none;')
+        table.table.table-borderless.table-hover.table-sm.wtd(style='border: none;')
           each word, i in word_list
             tr(style='min-height: 30px; vertical-align: top;') 
               td(style='width: 120px; text-align: left;') #{word.title}
-              td(style='width: 400px; text-align: left;') #{word.content}
+              td #{word.content}
               td(style='width: 30px; text-align: left;')
                 <i class="fas fa-book-open" style="margin-left: 20px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
               td(style='width: 30px; text-align: left;')
