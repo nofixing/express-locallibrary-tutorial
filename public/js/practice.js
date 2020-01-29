@@ -103,6 +103,7 @@ $(function(){
                         markup += "<i class='fas fa-book-open' style='margin-left: 20px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-graduation-cap' style='margin-left: 20px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
                         markup += "<i class='fas fa-photo-video' style='margin-left: 20px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
+                        markup += "<input type='hidden' class='wList' value='"+data.word_id+"'>";
                         markup += "</li>";
 
                         $(".wtd").append(markup);

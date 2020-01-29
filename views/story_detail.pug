@@ -334,14 +334,18 @@ html(lang='en')
           </div>
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div#word_container.col-lg-6
-        ul.wtd(style='list-style-type: none;')
+        table.wtd(style='border: none;')
           each word, i in word_list
-            li(style='line-height: 30px;') 
-              span(style='width: 120px; float: left;') #{word.title}
-              span(style='width: 400px; float: left;') #{word.content}
-              <i class="fas fa-book-open" style="margin-left: 20px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
-              <i class="fas fa-graduation-cap" style="margin-left: 20px; cursor: pointer;" onclick="oxfordPopup('#{word.title}')"></i>
-              <i class="fas fa-photo-video" style="margin-left: 20px; cursor: pointer;" onclick="imgAddress(#{i})"></i>
+            tr(style='min-height: 30px;') 
+              td(style='width: 120px; text-align: left;') #{word.title}
+              td(style='width: 400px; text-align: left;') #{word.content}
+              td(style='width: 30px; text-align: left;')
+                <i class="fas fa-book-open" style="margin-left: 20px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
+              td(style='width: 30px; text-align: left;')
+                <i class="fas fa-graduation-cap" style="margin-left: 20px; cursor: pointer;" onclick="oxfordPopup('#{word.title}')"></i>
+              td(style='width: 30px; text-align: left;')
+                <i class="fas fa-photo-video" style="margin-left: 20px; cursor: pointer;" onclick="imgAddress(#{i})"></i>
+                input(type='hidden' class='wList' value=word._id)
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
         ul.wsd
