@@ -337,7 +337,7 @@ html(lang='en')
         ul.wtd(style='list-style-type: none;')
           each word, i in word_list
             li(style='line-height: 30px;') 
-              span(style='width: 100px;') #{word.title}
+              span(style='width: 120px; float: left;') #{word.title}
               <i class="fas fa-book-open" style="margin-left: 20px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
               <i class="fas fa-graduation-cap" style="margin-left: 20px; cursor: pointer;" onclick="oxfordPopup('#{word.title}')"></i>
               <i class="fas fa-photo-video" style="margin-left: 20px; cursor: pointer;" onclick="imgAddress(#{i})"></i>

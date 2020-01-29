@@ -98,7 +98,7 @@ $(function(){
                     console.log("jb_content dblclick");
                     if (data.result != data.fail) {
                         selectContent = data.content;
-                        var markup = "<li style='line-height: 30px;'><span style='width: 100px;')"+data.title+"</span>";
+                        var markup = "<li style='line-height: 30px;'><span style='width: 120px; float: left;')"+data.title+"</span>";
                         markup += "<i class='fas fa-book-open' style='margin-left: 20px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-graduation-cap' style='margin-left: 20px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
                         markup += "<i class='fas fa-photo-video' style='margin-left: 20px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
