@@ -98,10 +98,10 @@ $(function(){
                     console.log("jb_content dblclick");
                     if (data.result != data.fail) {
                         selectContent = data.content;
-                        var markup = "<li>"+data.title;
-                        markup += "<i class='fas fa-book-open' style='margin-left: 30px;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
-                        markup += "<i class='fas fa-graduation-cap' style='margin-left: 30px;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
-                        markup += "<i class='fas fa-photo-video' style='margin-left: 30px;' onclick='imgAddress("+ldxx+")'></i>";
+                        var markup = "<li style='line-height: 30px;'><span style='width: 100px;')"+data.title+"</span>";
+                        markup += "<i class='fas fa-book-open' style='margin-left: 20px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
+                        markup += "<i class='fas fa-graduation-cap' style='margin-left: 20px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
+                        markup += "<i class='fas fa-photo-video' style='margin-left: 20px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
                         markup += "</li>";
 
                         $(".wtd").append(markup);

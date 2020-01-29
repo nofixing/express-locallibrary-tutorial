@@ -336,10 +336,11 @@ html(lang='en')
       div#word_container.col-lg-6
         ul.wtd(style='list-style-type: none;')
           each word, i in word_list
-            li #{word.title}
-              <i class="fas fa-book-open" style="margin-left: 30px;" onclick="wordPopup('#{word._id}')"></i>
-              <i class="fas fa-graduation-cap" style="margin-left: 30px;" onclick="oxfordPopup('#{word.title}')"></i>
-              <i class="fas fa-photo-video" style="margin-left: 30px;" onclick="imgAddress(#{i})"></i>
+            li(style='line-height: 30px;') 
+              span(style='width: 100px;') #{word.title}
+              <i class="fas fa-book-open" style="margin-left: 20px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
+              <i class="fas fa-graduation-cap" style="margin-left: 20px; cursor: pointer;" onclick="oxfordPopup('#{word.title}')"></i>
+              <i class="fas fa-photo-video" style="margin-left: 20px; cursor: pointer;" onclick="imgAddress(#{i})"></i>
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
         ul.wsd
