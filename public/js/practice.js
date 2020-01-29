@@ -98,13 +98,15 @@ $(function(){
                     console.log("jb_content dblclick");
                     if (data.result != data.fail) {
                         selectContent = data.content;
-                        var markup = "<li style='line-height: 30px;'><span style='width: 120px; float: left;')"+data.title+"</span>";
-                        markup += "<span style='width: 400px; float: left;')"+data.content+"</span>";
-                        markup += "<i class='fas fa-book-open' style='margin-left: 20px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
-                        markup += "<i class='fas fa-graduation-cap' style='margin-left: 20px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
-                        markup += "<i class='fas fa-photo-video' style='margin-left: 20px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
+                        var markup = "<tr style='min-height: 30px; vertical-align: top;'><td style='width: 120px; text-align: left;'>"+data.title+"</td>";
+                        markup += "<td style='width: 400px; text-align: left;'>"+data.content+"</td>";
+                        markup += "<td style='width: 30px; text-align: left;'><i class='fas fa-book-open' style='margin-left: 20px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i></td>";
+                        markup += "<td style='width: 30px; text-align: left;'><i class='fas fa-graduation-cap' style='margin-left: 20px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i></td>";
+                        markup += "<td style='width: 30px; text-align: left;'><i class='fas fa-photo-video' style='margin-left: 20px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
                         markup += "<input type='hidden' class='wList' value='"+data.word_id+"'>";
-                        markup += "</li>";
+                        markup += "<input type='hidden' class='ipt' value='"+data.title+"'>";
+                        markup += "<input type='hidden' class='iph' value='"+data.image_address+"'></td>";
+                        markup += "</tr>";
 
                         $(".wtd").append(markup);
 
