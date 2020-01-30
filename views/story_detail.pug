@@ -334,19 +334,28 @@ html(lang='en')
           </div>
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div#word_container.col-lg-6
-        table#wdtb.table.table-borderless.table-hover.table-sm.wtd(style='border: none;')
-          each word, i in word_list
-            tr(style='min-height: 30px; vertical-align: top;') 
-              td(style='width: 120px; text-align: left;') #{word.title}
-              td #{word.content}
-              td(style='width: 80px; text-align: left;')
-                span(style='display: none;')
-                  <i class="fas fa-book-open" style="margin-left: 20px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
-                  <i class="fas fa-graduation-cap" style="margin-left: 20px; cursor: pointer;" onclick="oxfordPopup('#{word.title}')"></i>
-                  <i class="fas fa-photo-video" style="margin-left: 20px; cursor: pointer;" onclick="imgAddress(#{i})"></i>
-                input(type='hidden' class='wList' value=word._id)
-                input(type='hidden' class='ipt' value=word.title)
-                input(type='hidden' class='iph' value=word.image_address)
+        table#wdtb.table.table-borderless.table-hover.table-sm.wtd(style='border: none; margin-top: 30px;')
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#{translation.Word}</th>
+              <th scope="col">#{translation.Meaning}</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            each word, i in word_list
+              tr(style='min-height: 30px; vertical-align: top;') 
+                td(style='width: 120px; text-align: left;') #{word.title}
+                td #{word.content}
+                td(style='width: 100px; text-align: left;')
+                  span(style='display: none;')
+                    <i class="fas fa-book-open" style="margin-left: 20px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
+                    <i class="fas fa-graduation-cap" style="margin-left: 20px; cursor: pointer;" onclick="oxfordPopup('#{word.title}')"></i>
+                    <i class="fas fa-photo-video" style="margin-left: 20px; cursor: pointer;" onclick="imgAddress(#{i})"></i>
+                  input(type='hidden' class='wList' value=word._id)
+                  input(type='hidden' class='ipt' value=word.title)
+                  input(type='hidden' class='iph' value=word.image_address)
+          </tbody>
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
         ul.wsd
