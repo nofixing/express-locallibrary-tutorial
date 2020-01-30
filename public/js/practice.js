@@ -116,6 +116,12 @@ $(function(){
             });
         }
     }
+
+    $('#wdtb tr').hover(function() {
+        $(this).find("span").show();
+    }, function() {
+        $(this).find("span").hide();
+    });
     
     $( "#jb_content" ).on("taphold", function(){
         //console.log("tapholdHandler");
