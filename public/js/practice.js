@@ -99,10 +99,10 @@ $(function(){
                     if (data.result != data.fail) {
                         selectContent = data.content;
                         var markup = "<tr style='min-height: 30px; vertical-align: top;'><td style='width: 120px; text-align: left;'>"+data.title+"</td>";
-                        markup += "<td style='width: 400px; text-align: left;'>"+data.content+"</td>";
-                        markup += "<td style='width: 30px; text-align: left;'><i class='fas fa-book-open' style='margin-left: 20px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i></td>";
-                        markup += "<td style='width: 30px; text-align: left;'><i class='fas fa-graduation-cap' style='margin-left: 20px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i></td>";
-                        markup += "<td style='width: 30px; text-align: left;'><i class='fas fa-photo-video' style='margin-left: 20px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
+                        markup += "<td>"+data.content+"</td>";
+                        markup += "<td style='width: 120px; text-align: left;'><span style='display: none;'><i class='fas fa-book-open' style='margin-left: 20px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
+                        markup += "<i class='fas fa-graduation-cap' style='margin-left: 20px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
+                        markup += "<i class='fas fa-photo-video' style='margin-left: 20px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i></span>";
                         markup += "<input type='hidden' class='wList' value='"+data.word_id+"'>";
                         markup += "<input type='hidden' class='ipt' value='"+data.title+"'>";
                         markup += "<input type='hidden' class='iph' value='"+data.image_address+"'></td>";
