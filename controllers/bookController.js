@@ -526,20 +526,24 @@ exports.book_datatable_list = function (req, res, next) {
             });
         });
     } else if (req.body.action == 'edit') {
-        console.log('req.body.data:'+JSON.stringify(req.body.data));
+        //console.log('req.body.data:'+JSON.stringify(req.body.data));
         var obj = req.body.data, kyz = Object.keys(obj);
-        console.log('key:'+kyz[0]);
+        //console.log('key:'+kyz[0]);
         //console.log('req.body.data.title:'+JSON.stringify(obj[kyz[0]]));
-        console.log('req.body.data.title:'+obj[kyz[0]].title);
+        //console.log('req.body.data.title:'+obj[kyz[0]].title);
+        var sDt = obj[kyz[0]].start_date.trim() == '' ? '':new Date(obj[kyz[0]].start_date);
+        var eDt = obj[kyz[0]].end_date.trim() == '' ? '':new Date(obj[kyz[0]].end_date);
+        var cDt = obj[kyz[0]].create_date.trim() == '' ? '':new Date(obj[kyz[0]].create_date);
+        console.log('eDt['+eDt+']');
         Book.update({_id: kyz}, {
             wcnt: obj[kyz[0]].wcnt,
             lexile: obj[kyz[0]].lexile,
             level: obj[kyz[0]].level,
             progress: obj[kyz[0]].progress,
             rcnt: obj[kyz[0]].rcnt,
-            start_date: new Date(obj[kyz[0]].start_date),
-            end_date: new Date(obj[kyz[0]].end_date),
-            create_date: new Date(obj[kyz[0]].create_date)
+            start_date: sDt,
+            end_date: eDt,
+            create_date: cDt
         }, function(err, upBook) {
             if (err) { console.log(err); return next(err); }
             var theBook = [{
