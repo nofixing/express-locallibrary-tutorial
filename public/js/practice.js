@@ -100,9 +100,11 @@ $(function(){
                         selectContent = data.content;
                         var markup = "<tr style='min-height: 30px; vertical-align: top;'><td style='width: 120px; text-align: left;'>"+data.title+"</td>";
                         markup += "<td>"+data.content+"</td>";
-                        markup += "<td style='width: 150px; text-align: left;'><span style='display: none;'><i class='fas fa-book-open' style='margin-left: 20px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
-                        markup += "<i class='fas fa-graduation-cap' style='margin-left: 20px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
-                        markup += "<i class='fas fa-photo-video' style='margin-left: 20px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i></span>";
+                        markup += "<td style='width: 150px; text-align: left;'><span style='display: none;'>";
+                        markup += "<i class='fas fa-book-open' style='margin-left: 10px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
+                        markup += "<i class='fas fa-graduation-cap' style='margin-left: 10px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
+                        markup += "<i class='fas fa-photo-video' style='margin-left: 10px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
+                        markup += "<i class='fas fa-trash-alt' style='margin-left: 10px; cursor: pointer;' onclick='wordDelete(this, \""+data.word_id+"\")'></i></span>";
                         markup += "<input type='hidden' class='wList' value='"+data.word_id+"'>";
                         markup += "<input type='hidden' class='ipt' value='"+data.title+"'>";
                         markup += "<input type='hidden' class='iph' value='"+data.image_address+"'></td>";
@@ -601,6 +603,29 @@ $(function(){
 
     $('#loading').hide();
 });
+
+function wordDelete(o, id) {
+    var data = {};
+    data.id = id;
+    data.story_user = $( "#stusr" ).val();
+    data.result = $('#DELETED').val();
+    data.fail = $('#smm').val();
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/catalog/word/delete',
+        async: false,
+        success : function(data) {
+            if (typeof(o) == "object") {
+                $(o).closest("tr").remove();
+            }
+            alert($('#DELETED').val());
+        }
+    });
+}
 
 function imgAddress(i) {
     if(i == -1){

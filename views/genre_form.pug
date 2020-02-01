@@ -8,8 +8,8 @@ block content
     div.form-group.row
       div.col-sm-2
         label(for='name') #{translation.Genre}:
-        input#name.form-control(type='text', placeholder='Fantasy, Poetry etc.' name='name' required='true' value=(undefined===genre ? '' : genre.name) )
-    button.btn.btn-primary(type='submit') #{translation.Submit}
+        input#name.form-control.form-control-sm(type='text', placeholder='Fantasy, Poetry etc.' name='name' required='true' value=(undefined===genre ? '' : genre.name) )
+    button.btn.btn-primary.btn-sm(type='submit') #{translation.Submit}
 
   if errors 
     ul

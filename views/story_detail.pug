@@ -153,7 +153,7 @@ html(lang='en')
               <a href="none" onclick="goBokM('#{anchor}');return false;">#{translation.BookMark}</a><br/><br/>
           div#st_content !{story.content}
         if story.open == 'Y'
-          <div style="text-align: center; margin: 30px;"><button id="favs" type="submit" class="btn btn-primary">#{translation.favs}</button></div>
+          <div style="text-align: center; margin: 30px;"><button id="favs" type="submit" class="btn btn-primary btn-sm">#{translation.favs}</button></div>
           <input type="hidden" id="facnt" name="facnt" value="#{story.favs}" />
           <input type="hidden" id="favy" name="favy" value="#{translation.favy}" />
           <input type="hidden" id="favn" name="favn" value="#{translation.favn}" />
@@ -163,10 +163,10 @@ html(lang='en')
           <input type="hidden" id="cmm3" name="cmm3" value="#{translation.cmm3}" />
           <form id="cmf" method="post" action="/catalog/story/#{story._id}/comments/replies">
             <div class="form-group">
-              <textarea name="content" class="form-control" id="reply-content" placeholder="Reply"></textarea>
+              <textarea name="content" class="form-control form-control-sm" id="reply-content" placeholder="Reply"></textarea>
             </div>
             <div class='text-right'>
-              <button onclick="smf();return false;" class="btn btn-primary">#{translation.Save}</button>
+              <button onclick="smf();return false;" class="btn btn-primary btn-sm">#{translation.Save}</button>
             </div>
             <input type="hidden" id="sfkb" name="sfkb" value="#{story._id}" />
           </form>
@@ -185,10 +185,10 @@ html(lang='en')
               <div id="d_#{comment._id}" style="display: none;">
                 <form id="cmf_#{comment._id}" method="post" action="/catalog/story/#{story._id}/comments/#{comment._id}/replies">
                   <div class="form-group">
-                    <textarea name="content" class="form-control" id="r_#{comment._id}" placeholder="Reply"></textarea>
+                    <textarea name="content" class="form-control form-control-sm" id="r_#{comment._id}" placeholder="Reply"></textarea>
                   </div>
                   <div class='text-right'>
-                    <button id="b_#{comment._id}" onclick="smf2('#{comment._id}');return false;" class="btn btn-primary">#{translation.Save}</button>
+                    <button id="b_#{comment._id}" onclick="smf2('#{comment._id}');return false;" class="btn btn-primary btn-sm">#{translation.Save}</button>
                   </div>
                   <input type="hidden" id="sfkb" name="sfkb" value="#{story._id}" />
                   <input type="hidden" id="cyn_#{comment._id}" name="cyn" value="#{cyn}" />
@@ -318,7 +318,7 @@ html(lang='en')
           div#snow-container
           <!--<br><span>파일명: </span><input type="text" id="fileName">-->
           <br/>
-          <button type="button" style="float: left;margin-left: 10px;" class="btn btn-primary" value="save" id="save" onclick="saveMemo();return false;">#{translation.Save}</button>
+          <button type="button" style="float: left;margin-left: 10px;" class="btn btn-primary btn-sm" value="save" id="save" onclick="saveMemo();return false;">#{translation.Save}</button>
           <span style="float: left; margin-left: 20px;margin-top: 5px;">#{translation.afteradd}</span>
           <div style="display: block; height: 30px; margin-top: 10px;">
             if files
@@ -327,7 +327,7 @@ html(lang='en')
                   for file in files
                     tr
                       td
-                        <button class="btn btn-primary" onclick="cs_change_music('#{file.file_path}');return false;">#{file.file_name}</button>
+                        <button class="btn btn-primary btn-sm" onclick="cs_change_music('#{file.file_path}');return false;">#{file.file_name}</button>
             <input type="file" name="file" id="file" class="inputfile">
             <label for="file" style="line-height: 30px; float: left;text-indent: 0;width: fit-content;margin-top:5px;margin-left: 10px; margin-right:10px;" class="btn btn-primary" title="#{translation.AudioDesc}">#{translation.Audio}</label>
             <audio controls id="myAudio" style="line-height: 30px; float: left;" autoplay></audio>
@@ -349,9 +349,10 @@ html(lang='en')
                 td #{word.content}
                 td(style='width: 150px; text-align: left;')
                   span(style='display: none;')
-                    <i class="fas fa-book-open" style="margin-left: 20px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
-                    <i class="fas fa-graduation-cap" style="margin-left: 20px; cursor: pointer;" onclick="oxfordPopup('#{word.title}')"></i>
-                    <i class="fas fa-photo-video" style="margin-left: 20px; cursor: pointer;" onclick="imgAddress(#{i})"></i>
+                    <i class="fas fa-book-open" style="margin-left: 10px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
+                    <i class="fas fa-graduation-cap" style="margin-left: 10px; cursor: pointer;" onclick="oxfordPopup('#{word.title}')"></i>
+                    <i class="fas fa-photo-video" style="margin-left: 10px; cursor: pointer;" onclick="imgAddress(#{i})"></i>
+                    <i class="fas fa-trash-alt" style="margin-left: 10px; cursor: pointer;" onclick="wordDelete(this, '#{word._id}')"></i>
                   input(type='hidden' class='wList' value=word._id)
                   input(type='hidden' class='ipt' value=word.title)
                   input(type='hidden' class='iph' value=word.image_address)
@@ -366,11 +367,11 @@ html(lang='en')
         div !{memo}
       div#jb_sidebar.col-lg-6
         <span style="float:left;margin-top:7px;">#{translation.dictionary}</span>
-        <input type="text" id="searchWord" name="searchWord" class="form-control" style="width:150px;float:left;margin-left:20px;" />
-        <input type="button" style="float:left;margin-left:20px;" class="btn btn-primary" id="searchWordButton" value="#{translation.Search}"/>
+        <input type="text" id="searchWord" name="searchWord" class="form-control form-control-sm" style="width:150px;float:left;margin-left:20px;" />
+        <input type="button" style="float:left;margin-left:20px;" class="btn btn-primary btn-sm" id="searchWordButton" value="#{translation.Search}"/>
         <input type="checkbox" style="float:left;margin-left:13px;margin-top:10px;" id="myCheck"> 
         <span style="float:left;margin-left:20px;margin-top:7px;">#{translation.ImageSearch}</span>  
-        <input type="button" style="float:left;margin-left:20px;" class="btn btn-primary" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" style="float:left;margin-left:20px;" class="btn btn-primary btn-sm" id="translateButton" value="#{translation.Translation}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <div id="treeview1" class=""></div>
     <input type="hidden" id="story_id" name="story_id" value="#{story._id}" />
     <input type="hidden" id="book_id" name="book_id" value="#{book_id}" />
@@ -405,9 +406,9 @@ html(lang='en')
     </form>
     
     <div id="img_layer" style="display:none;position:fixed;left:50%;top:120px;width:500px;height:80%;overflow:auto;background:#fff;z-index: 110;">
-      <button type="button" class="btn btn-primary" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">#{translation.Close}</button>
+      <button type="button" class="btn btn-primary btn-sm" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">#{translation.Close}</button>
       <div id="show_img"></div>
-      <button type="button" class="btn btn-primary" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">#{translation.Close}</button>
+      <button type="button" class="btn btn-primary btn-sm" style="position:relative;left:230px;width:50px; "onclick="javascript:$('#img_layer').css('display','none');">#{translation.Close}</button>
     </div>
 
     <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
@@ -427,17 +428,17 @@ html(lang='en')
             <form>
               <div class="form-group">
                 <label for="recipient-name" class="col-form-label">#{translation.ImageAddress}:</label>
-                <input type="text" class="form-control" id="recipient-name">
+                <input type="text" class="form-control form-control-sm" id="recipient-name">
               </div>
               <div class="form-group">
                 <label for="message-text" class="col-form-label">#{translation.Definition}:</label>
-                <textarea class="form-control" id="message-text"></textarea>
+                <textarea class="form-control form-control-sm" id="message-text"></textarea>
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="tcls">#{translation.Close}</button>
-            <button type="button" class="btn btn-primary" id="InsertTooltip">#{translation.InsertTooltip}</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="tcls">#{translation.Close}</button>
+            <button type="button" class="btn btn-primary btn-sm" id="InsertTooltip">#{translation.InsertTooltip}</button>
           </div>
         </div>
       </div>
@@ -458,19 +459,19 @@ html(lang='en')
             <form>
               <div class="form-group">
                 <label for="w_name" class="col-form-label">#{translation.Word}:</label>
-                <input type="text" class="form-control" id="w_name" readOnly>
+                <input type="text" class="form-control form-control-sm" id="w_name" readOnly>
               </div>
               <div class="form-group">
                 <label for="iddr_name" class="col-form-label">#{translation.ImageAddress}:</label>
-                <input type="text" class="form-control" id="iddr_name">
+                <input type="text" class="form-control form-control-sm" id="iddr_name">
               </div>
             <input type="hidden" id="w_id" name="w_id" value=""/>
             <input type="hidden" id="widx" name="widx" value=""/>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="tcs">#{translation.Close}</button>
-            <button type="button" class="btn btn-primary" id="InsertImgAddr">#{translation.InsertTooltip}</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="tcs">#{translation.Close}</button>
+            <button type="button" class="btn btn-primary btn-sm" id="InsertImgAddr">#{translation.InsertTooltip}</button>
           </div>
         </div>
       </div>
@@ -491,7 +492,7 @@ html(lang='en')
             p#translatedText
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary tts">#{translation.Close}</button>
+            <button type="button" class="btn btn-secondary btn-sm tts">#{translation.Close}</button>
           </div>
         </div>
       </div>
@@ -512,21 +513,21 @@ html(lang='en')
             <form>
               <div class="form-group">
                 <label for="video_src" class="col-form-label">URL:</label>
-                <input type="text" class="form-control" id="video_src">
+                <input type="text" class="form-control form-control-sm" id="video_src">
               </div>
               <div class="form-group">
                 <label for="video_width" class="col-form-label">Width:</label>
-                <input type="text" class="form-control" id="video_width">
+                <input type="text" class="form-control form-control-sm" id="video_width">
               </div>
               <div class="form-group">
                 <label for="video_height" class="col-form-label">Height:</label>
-                <input type="text" class="form-control" id="video_height">
+                <input type="text" class="form-control form-control-sm" id="video_height">
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="vcls">#{translation.Close}</button>
-            <button type="button" class="btn btn-primary" id="InsertVideo">Insert Youtube</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="vcls">#{translation.Close}</button>
+            <button type="button" class="btn btn-primary btn-sm" id="InsertVideo">Insert Youtube</button>
           </div>
         </div>
       </div>

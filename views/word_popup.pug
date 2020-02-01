@@ -47,10 +47,10 @@
   body(style=(undefined===cfnt ? '' : 'font-family: '+cfnt+'; text-align: center;'))
     
     <div style="height: 40px; text-align: center;">
-      <h3 style="display: inline;">#{word.title}</h3>
-      <button style="margin-left: 30px;" class="btn btn-outline-dark"><i class="fas fa-image" id="img"></i></button>
-      <button style="margin-left: 30px;" class="btn btn-outline-dark"><i class="fas fa-volume-up" id="ado"></i></button>
-      <button style="margin-left: 30px;" class="btn btn-outline-dark"><i class="fab fa-youtube" id="youtu"></i></button>
+      <h3 style="display: inline; line-height: 45px;">#{word.title}</h3>
+      <button style="margin-left: 30px; margin-bottom: 5px;" class="btn btn-outline-dark btn-sm"><i class="fas fa-image" id="img"></i></button>
+      <button style="margin-left: 30px; margin-bottom: 5px;" class="btn btn-outline-dark btn-sm"><i class="fas fa-volume-up" id="ado"></i></button>
+      <button style="margin-left: 30px; margin-bottom: 5px;" class="btn btn-outline-dark btn-sm"><i class="fab fa-youtube" id="youtu"></i></button>
     </div>
     <div style="text-align: center;">
       <div style="display: inline-block; vertical-align: middle;">
@@ -140,14 +140,14 @@
             <button class="ql-clean"></button>
           </span>
         </div>        
-        input#wtitle(type='text' maxlength='100' style='margin: 10px 0; width: 600px;' class='form-control' value=word.content)
+        input#wtitle(type='text' maxlength='100' style='margin: 10px 0; width: 600px;' class='form-control form-control-sm' value=word.content)
         div#bubble-container(spellcheck='false' style='margin: 10px 0; width: 600px; height: 420px; border: 1px solid #bcbcbc;')
         input#add_content(type='hidden', name='add_content' value=word.add_content)
         input#w_id(type='hidden', name='w_id' value=word._id)
         <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
         <input type="hidden" id="SAVED" name="SAVED" value="#{translation.SAVED}" />
-        button.btn.btn-outline-primary(type='button', onclick='wordPost();return false;' style='margin: 10px;') #{translation.Submit}
-        button.btn.btn-outline-dark(type='button', onclick='self.close();return false;' style='margin: 10px;') #{translation.Close}
+        button.btn.btn-outline-primary.btn-sm(type='button', onclick='wordPost();return false;' style='margin: 10px;') #{translation.Submit}
+        button.btn.btn-outline-dark.btn-sm(type='button', onclick='self.close();return false;' style='margin: 10px;') #{translation.Close}
 
     <a href="#" id="OpenVideo" data-toggle="modal" data-target="#videoModal"></a>
 
@@ -164,13 +164,13 @@
             <form>
               <div class="form-group">
                 <label for="video_src" class="col-form-label" style="text-align: left;">URL:</label>
-                <input type="text" class="form-control" id="video_src">
+                <input type="text" class="form-control form-control-sm" id="video_src">
               </div>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="vcls">#{translation.Close}</button>
-            <button type="button" class="btn btn-primary" id="InsertVideo">Insert Youtube</button>
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="vcls">#{translation.Close}</button>
+            <button type="button" class="btn btn-primary btn-sm" id="InsertVideo">Insert Youtube</button>
           </div>
         </div>
       </div>

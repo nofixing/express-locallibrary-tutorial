@@ -7,25 +7,25 @@ block content
     div.form-group.row
       div.col-sm-2
         label(for='name') #{translation.Name}:
-        input#name.form-control(type='text', placeholder='Nickname' name='name')
+        input#name.form-control.form-control-sm(type='text', placeholder='Nickname' name='name')
     div.form-group.row
       div.col-sm-2
         label(for='email') #{translation.Email}:
-        input#email.form-control(type='email', placeholder='name@email.com' name='email')
+        input#email.form-control.form-control-sm(type='email', placeholder='name@email.com' name='email')
     div.form-group.row
       div.col-sm-2
         label(for='pw') #{translation.Password}:
-        input#pw.form-control(type='password' name='password')
+        input#pw.form-control.form-control-sm(type='password' name='password')
     div.form-group.row
       div.col-sm-2
         label(for='pw2') #{translation.ConfirmPassword}:
-        input#pw2.form-control(type='password' name='confirmPassword')
+        input#pw2.form-control.form-control-sm(type='password' name='confirmPassword')
     <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
     <input type="hidden" id="nameThere" name="nameThere" value="#{translation.nameThere}" />
     <input type="hidden" id="emailalreadyexists" name="emailalreadyexists" value="#{translation.emailalreadyexists}" />
     <input type="hidden" id="gidalreadyexists" name="gidalreadyexists" value="#{translation.gidalreadyexists}" />
     <input type="hidden" id="gid_token" name="gid_token" value="" />
-    <button type="submit" class="btn btn-primary" onclick="userPost('#{translation.emailalreadyexists}', '#{translation.checkouremail}');return false;">#{translation.Submit}</button>
+    <button type="submit" class="btn btn-primary btn-sm" onclick="userPost('#{translation.emailalreadyexists}', '#{translation.checkouremail}');return false;">#{translation.Submit}</button>
     
     <div id="my-signin2" style="margin-top: 30px;"></div>
     <br>

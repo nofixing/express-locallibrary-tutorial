@@ -419,7 +419,10 @@ exports.story_detail = function(req, res, next) {
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         var vName = 'story_detail';
         if (pc == '') vName = 'story_mdtl';
-        console.log('story.genre:'+results.story.genre);
+        //console.log('story.genre:'+results.story.genre);
+        for (let i = 0; i < results.story.genre.length; i++) {
+            results.story.genre[i].name = entities.decode(results.story.genre[i].name);
+        }
         res.render(vName, 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 
         word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, book_title: book_title, book_id: book_id,

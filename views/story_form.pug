@@ -13,7 +13,7 @@ block content
     div.form-group.row
       div.col-sm-4
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Book}
-        select#book.form-control(type='select', placeholder='Select book' name='book' style='width:400px;float:left;margin-left:20px;' )
+        select#book.form-control.form-control-sm(type='select', placeholder='Select book' name='book' style='width:400px;float:left;margin-left:20px;' )
           if !story
             option(value='') #{translation.storyonly}
           else
@@ -36,7 +36,7 @@ block content
     div.form-group.row
       div.col-sm-8
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Title}
-        input#title.form-control(type='text', style='display: inline; float: left; width: 400px; margin-left: 20px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
+        input#title.form-control.form-control-sm(type='text', style='display: inline; float: left; width: 400px; margin-left: 20px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
         if story
           if story.title_font
             input#title_font.form-control(type='hidden', name='title_font', value=story.title_font)
@@ -143,22 +143,22 @@ block content
     div.form-group.row.boko
       div.col-sm-2
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Order}
-        input#order.form-control(type='text', placeholder='Order of story' name='order' value=(undefined===story ? '' : story.order) style='width:100px;float:left;margin-left:20px;' )
+        input#order.form-control.form-control-sm(type='text', placeholder='Order of story' name='order' value=(undefined===story ? '' : story.order) style='width:100px;float:left;margin-left:20px;' )
 
     div.form-group.row.boko
       div.col-sm-4
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Chapter}
-        input#chapter.form-control(type='text', placeholder='Chapter of story' name='chapter' value=(undefined===story ? '' : story.chapter) style='width:400px;float:left;margin-left:20px;' )
+        input#chapter.form-control.form-control-sm(type='text', placeholder='Chapter of story' name='chapter' value=(undefined===story ? '' : story.chapter) style='width:400px;float:left;margin-left:20px;' )
     
     div.form-group.row.stro
       div.col-sm-4
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Author}
-        input#author.form-control(type='text', placeholder='Author of story' name='author' value=(undefined===story ? '' : story.author) style='width:400px;float:left;margin-left:20px;' )
+        input#author.form-control.form-control-sm(type='text', placeholder='Author of story' name='author' value=(undefined===story ? '' : story.author) style='width:400px;float:left;margin-left:20px;' )
 
     div.form-group.row.stro
       div.col-sm-8
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Reference}
-        input#reference.form-control(type='text', placeholder='Reference of story' name='reference' value=(undefined===story ? '' : story.reference) style='width:800px;float:left;margin-left:20px;' )
+        input#reference.form-control.form-control-sm(type='text', placeholder='Reference of story' name='reference' value=(undefined===story ? '' : story.reference) style='width:800px;float:left;margin-left:20px;' )
     
     div.form-group.stro
       div.col-sm-8
@@ -267,13 +267,13 @@ block content
     div.form-group.row.stro
       div.col-sm-1
         label(for='open') #{translation.Open}:
-        select#open.form-control(type='select', placeholder='Select Open' name='open')
+        select#open.form-control.form-control-sm(type='select', placeholder='Select Open' name='open')
           option(value='N' selected=(undefined===story ? 'selected' : story.open=='N' ? 'selected' : false) ) N
           option(value='Y' selected=(undefined===story ? false : story.open=='Y' ? 'selected' : false) ) Y
         <br><br>
-    button.btn.btn-primary(type='button', onclick='preview();return false;' style='margin-top: 20px;') #{translation.Preview}
+    button.btn.btn-primary.btn-sm(type='button', onclick='preview();return false;' style='margin-top: 20px;') #{translation.Preview}
     <br><br>
-    button.btn.btn-primary(type='button', onclick='storyPost();return false;') #{translation.Submit}
+    button.btn.btn-primary.btn-sm(type='button', onclick='storyPost();return false;') #{translation.Submit}
     <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
     <input type="hidden" id="btitle" name="btitle" value="" />
     <input type="hidden" id="cptr" name="cptr" value="#{translation.Copy}" />
@@ -290,11 +290,11 @@ block content
             tr
               td
                 <span id="#{file._id}">#{file.file_name}</span>
-                <button class="btn btn-primary" onclick="CopyFilePath('#{file.file_path}');return false;">#{translation.Copy}</button>
-                <button class="btn btn-primary" onclick="DeleteFile('#{file._id}','#{file.file_path}');return false;">#{translation.Delete}</button>
+                <button class="btn btn-primary btn-sm" onclick="CopyFilePath('#{file.file_path}');return false;">#{translation.Copy}</button>
+                <button class="btn btn-primary btn-sm" onclick="DeleteFile('#{file._id}','#{file.file_path}');return false;">#{translation.Delete}</button>
     <div style="display: inline-block; float: left; height: 25px; margin-top: 10px; margin-bottom: 30px;">
       form#fileUpload(method="POST", enctype="multipart/form-data")
-        <label for="file_upload" style="line-height: 25px; float: left;text-indent: 0;width: auto;" class="btn btn-primary" title="#{translation.FileDesc}">#{translation.FileSelect}</label>
+        <label for="file_upload" style="line-height: 25px; float: left;text-indent: 0;width: auto;" class="btn btn-primary btn-sm" title="#{translation.FileDesc}">#{translation.FileSelect}</label>
         <input type="file" name="file_upload" id="file_upload" class="inputfile">
         input(type='hidden' name='storyId' value=story._id)
         button.btn.btn-primary(type='submit' style="line-height: 25px; float: left; margin-left: 20px;") #{translation.FileUpload}
@@ -314,17 +314,17 @@ block content
           <form>
             <div class="form-group">
               <label for="recipient-name" class="col-form-label">#{translation.ImageAddress}:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <input type="text" class="form-control form-control-sm" id="recipient-name">
             </div>
             <div class="form-group">
               <label for="message-text" class="col-form-label">#{translation.Definition}:</label>
-              <textarea class="form-control" id="message-text"></textarea>
+              <textarea class="form-control form-control-sm" id="message-text"></textarea>
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="tcls">#{translation.Close}</button>
-          <button type="button" class="btn btn-primary" id="InsertTooltip">#{translation.InsertTooltip}</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="tcls">#{translation.Close}</button>
+          <button type="button" class="btn btn-primary btn-sm" id="InsertTooltip">#{translation.InsertTooltip}</button>
         </div>
       </div>
     </div>
@@ -345,21 +345,21 @@ block content
           <form>
             <div class="form-group">
               <label for="video_src" class="col-form-label">URL:</label>
-              <input type="text" class="form-control" id="video_src">
+              <input type="text" class="form-control form-control-sm" id="video_src">
             </div>
             <div class="form-group">
               <label for="video_width" class="col-form-label">Width:</label>
-              <input type="text" class="form-control" id="video_width">
+              <input type="text" class="form-control form-control-sm" id="video_width">
             </div>
             <div class="form-group">
               <label for="video_height" class="col-form-label">Height:</label>
-              <input type="text" class="form-control" id="video_height">
+              <input type="text" class="form-control form-control-sm" id="video_height">
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="vcls">#{translation.Close}</button>
-          <button type="button" class="btn btn-primary" id="InsertVideo">Insert Youtube</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal" id="vcls">#{translation.Close}</button>
+          <button type="button" class="btn btn-primary btn-sm" id="InsertVideo">Insert Youtube</button>
         </div>
       </div>
     </div>
