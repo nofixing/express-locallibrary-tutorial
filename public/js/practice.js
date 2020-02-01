@@ -1346,9 +1346,12 @@ function processDicData(dic_content, kdata) {
     var cptxtb = '\');return false;" style="cursor: pointer;align:right;padding-right:30px;"><i class="fa">&#xf0c5;</i></a>';
     var word_id = voca.id;
     var results = voca.results;
+    var headWord = '';
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
-        simpleData.push({text:'<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+kword, selectable: true});
+        if (i == 0) headWord = '<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>&nbsp;&nbsp;&nbsp;&nbsp;'+kword;
+        else headWord = '<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
+        simpleData.push({text: headWord, selectable: true});
         console.log('word: '+word);
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
