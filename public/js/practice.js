@@ -100,7 +100,7 @@ $(function(){
                         selectContent = data.content;
                         var markup = "<tr style='min-height: 30px; vertical-align: top;'><td style='width: 120px; text-align: left;'>"+data.title+"</td>";
                         markup += "<td>"+data.content+"</td>";
-                        markup += "<td style='width: 150px; text-align: left;'><span style='display: none;'>";
+                        markup += "<td style='width: 150px; text-align: left;'><span>";
                         markup += "<i class='fas fa-book-open' style='margin-left: 10px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-graduation-cap' style='margin-left: 10px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
                         markup += "<i class='fas fa-photo-video' style='margin-left: 10px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
