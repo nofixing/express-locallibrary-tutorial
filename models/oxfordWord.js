@@ -7,7 +7,8 @@ var OxfordWordSchema = new Schema({
     gubun: {type: String, required: true},
     data: {type: String, required: true},
     word: {type: String},
-    kdata: {type: String}
+    kdata: {type: String},
+    create_date: {type: Date, default: Date.now}
 });
 
 // Export model.
