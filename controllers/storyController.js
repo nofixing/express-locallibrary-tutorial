@@ -1135,7 +1135,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                             for (let i = 0; i < lexicalEntries.length; i++) {
                                 console.log('lexicalEntries[i].inflectionOf[0].text ->'+lexicalEntries[i].inflectionOf[0].text);
                                 if(req.body.word != lexicalEntries[i].inflectionOf[0].text) {
-                                    lemmas_word = lexicalEntries[i].inflectionOf[0].text;
+                                    lemmas_word = lexicalEntries[i].inflectionOf[0].text.replace(/-/g, '');
                                     break;
                                 }
                             }
