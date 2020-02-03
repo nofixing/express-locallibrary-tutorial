@@ -216,7 +216,7 @@ exports.word_create_post = [
                                         skill: req.body.skill,
                                         importance: req.body.importance,
                                         create_date: Date.now(),
-                                        oxford_word: req.body.oxfordWord_id,
+                                        oxford_word: req.body.oxfordWord_id == '' ? null: req.body.oxfordWord_id,
                                         index_of: req.body.index_of
                                         });
                                 }else{
@@ -229,7 +229,7 @@ exports.word_create_post = [
                                         skill: req.body.skill,
                                         importance: req.body.importance,
                                         create_date: Date.now(),
-                                        oxford_word: req.body.oxfordWord_id,
+                                        oxford_word: req.body.oxfordWord_id == '' ? null: req.body.oxfordWord_id,
                                         index_of: req.body.index_of
                                         });
                                 }
