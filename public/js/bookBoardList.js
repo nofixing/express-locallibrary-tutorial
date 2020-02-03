@@ -103,17 +103,18 @@ $( document ).ready(function() {
 		],
 		initComplete : function() {
 				$('#example_filter input').addClass('form-control');
+				$('#example_filter input').addClass('form-control-sm');
 				//$('.dataTables_filter input').addClass("form-control");
 				$('.dataTables_filter input').css("width", "300px");
 				$('.dataTables_filter input').css("margin-right", "10px");
 				var input = $('.dataTables_filter input').unbind(),
 						self = this.api(),
-						$searchButton = $('<button type="submit" class="btn btn-primary" style="margin-right:15px;">')
+						$searchButton = $('<button type="submit" class="btn btn-primary btn-sm" style="margin-right:15px;">')
 											.text('search')
 											.click(function() {
 													self.search(input.val()).draw();
 											}),
-						$clearButton = $('<button type="submit" class="btn btn-primary" style="margin-right:15px;">')
+						$clearButton = $('<button type="submit" class="btn btn-primary btn-sm" style="margin-right:15px;">')
 											.text('clear')
 											.click(function() {
 													input.val('');
