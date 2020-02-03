@@ -190,8 +190,17 @@ exports.word_create_post = [
                                 console.log(`NTranslation: ${json.message.result.translatedText}`);
                                 translation = json.message.result.translatedText;
 
-                                if (req.body.content.indexOf(translation) < 0) req.body.content += ', '+translation;
-                                if (req.body.content.indexOf(gtranslation) < 0) req.body.content += ', '+gtranslation;
+                                if (req.body.content.trim() == '') {
+                                    if (req.body.content.indexOf(translation) < 0) req.body.content += translation;
+                                    if (req.body.content.trim() == '') {
+                                        if (req.body.content.indexOf(gtranslation) < 0) req.body.content += gtranslation;
+                                    } else {
+                                        if (req.body.content.indexOf(gtranslation) < 0) req.body.content += ', '+gtranslation;
+                                    }
+                                } else {
+                                    if (req.body.content.indexOf(translation) < 0) req.body.content += ', '+translation;
+                                    if (req.body.content.indexOf(gtranslation) < 0) req.body.content += ', '+gtranslation;
+                                }
 
                                 var word; 
                                 var book_id = req.body.book_id;
