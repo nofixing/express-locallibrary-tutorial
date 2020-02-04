@@ -1411,9 +1411,9 @@ function processDicData(dic_content, kdata) {
                     
                     if (typeof simpleData[i].nodes[j].nodes !== 'object') {
                         simpleData[i].nodes[j].nodes = [];
-                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies).replace(/'/g, "\'")+cptxtb, selectable: true});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies).replace(/'/g, "")+cptxtb, selectable: true});
                     } else {
-                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies).replace(/'/g, "\'")+cptxtb, selectable: true});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies).replace(/'/g, "")+cptxtb, selectable: true});
                     }
                 
                 }
