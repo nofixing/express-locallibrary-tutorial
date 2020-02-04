@@ -1223,6 +1223,7 @@ function saveMemo() {
 
 function CopyFilePath(path) {
     var textArea = document.createElement("textarea");
+    path = path.replace(/'/g, "\'");
     textArea.value = path;
     document.body.appendChild(textArea);
     textArea.select();
