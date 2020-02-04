@@ -240,7 +240,7 @@ exports.story_detail = function(req, res, next) {
                 .exec(callback);
             }
             */
-           Word.find({story: req.params.id}).collation({locale: 'en' }).sort({index_of: 1, order: 1})
+           Word.find({story: req.params.id}).collation({locale: 'en' }).sort({index_of: 1, create_date: 1})
                 .exec(callback);
         },
         memo: function(callback) {
