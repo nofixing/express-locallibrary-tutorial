@@ -1223,7 +1223,6 @@ function saveMemo() {
 
 function CopyFilePath(path) {
     var textArea = document.createElement("textarea");
-    path.replace(/'/g, '\'');
     textArea.value = path;
     document.body.appendChild(textArea);
     textArea.select();
@@ -1343,8 +1342,8 @@ function processDicData(dic_content, kdata) {
         }
     }
     console.log('==========================================================================kword:'+kword);
-    var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\'#\' onclick=\'CopyFilePath("';
-    var cptxtb = '");return false;\' style=\'cursor: pointer;align:right;padding-right:30px;\'><i class=\'fa\'>&#xf0c5;</i></a>';
+    var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\'#\' onclick=\'CopyFilePath(`';
+    var cptxtb = '`);return false;\' style=\'cursor: pointer;align:right;padding-right:30px;\'><i class=\'fa\'>&#xf0c5;</i></a>';
     var word_id = voca.id;
     var results = voca.results;
     var headWord = '';
