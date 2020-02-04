@@ -1466,7 +1466,7 @@ function processDicData(dic_content, kdata) {
                     var definitions = senses[l].definitions;
                     if (typeof definitions !== 'undefined') {
                         console.log('definitions: '+definitions);
-                        simpleData[i].nodes[j].nodes.push({text:'<b>'+definitions+'</b>'+cptxtf+JSON.stringify(definitions).replace(/'/g, '‡')+cptxtb, selectable: true});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>'+definitions+'</b>'+cptxtf+JSON.stringify(definitions[0]).replace(/\"/g, '').replace(/'/g, '‡')+cptxtb, selectable: true});
                         ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                     }
                     var crossReferenceMarkers = senses[l].crossReferenceMarkers;
@@ -1494,7 +1494,7 @@ function processDicData(dic_content, kdata) {
                             }
                             var examples_text = examples[m].text;
                             console.log('examples_text: '+examples_text);
-                            simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'+cptxtf+JSON.stringify(examples[m].text).replace(/'/g, '‡')+cptxtb, selectable: true});
+                            simpleData[i].nodes[j].nodes.push({text:'<i>'+examples[m].text+'</i>'+cptxtf+JSON.stringify(examples[m].text).replace(/\"/g, '').replace(/'/g, '‡')+cptxtb, selectable: true});
                             ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
@@ -1507,7 +1507,7 @@ function processDicData(dic_content, kdata) {
                     var shortDefinitions = senses[l].shortDefinitions;
                     if (typeof shortDefinitions !== 'undefined') {
                         console.log('shortDefinitions: '+shortDefinitions);
-                        simpleData[i].nodes[j].nodes.push({text:'<b>shortDefinitions:</b> '+shortDefinitions+cptxtf+JSON.stringify(shortDefinitions).replace(/'/g, '‡')+cptxtb, selectable: true});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>shortDefinitions:</b> '+shortDefinitions+cptxtf+JSON.stringify(shortDefinitions[0]).replace(/\"/g, '').replace(/'/g, '‡')+cptxtb, selectable: true});
                         ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                     }
                     var regions = senses[l].regions;
@@ -1516,7 +1516,7 @@ function processDicData(dic_content, kdata) {
                         var notes_text = notes[0].text;
                         var notes_type = notes[0].type;
                         for (let m = 0; m < notes.length; m++) {
-                            simpleData[i].nodes[j].nodes.push({text:'<b>notes:</b> '+notes[m].text+' ('+notes[m].type+')'+cptxtf+JSON.stringify(notes[m].text).replace(/'/g, '‡')+' ('+JSON.stringify(notes[m].type).replace(/'/g, '‡')+')'+cptxtb, selectable: true});
+                            simpleData[i].nodes[j].nodes.push({text:'<b>notes:</b> '+notes[m].text+' ('+notes[m].type+')'+cptxtf+JSON.stringify(notes[m].text).replace(/\"/g, '').replace(/'/g, '‡')+' ('+JSON.stringify(notes[m].type).replace(/\"/g, '').replace(/'/g, '‡')+')'+cptxtb, selectable: true});
                             ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
@@ -1527,7 +1527,7 @@ function processDicData(dic_content, kdata) {
                             var subsenses_definitions = subsenses[m].definitions;
                             if (typeof definitions !== 'undefined') {
                                 console.log('subsenses_definitions: '+subsenses_definitions);
-                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions+cptxtf+JSON.stringify(subsenses_definitions).replace(/'/g, '‡')+cptxtb, selectable: true});
+                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions+cptxtf+JSON.stringify(subsenses_definitions[0]).replace(/\"/g, '').replace(/'/g, '‡')+cptxtb, selectable: true});
                             }
                             var subsenses_domains = subsenses[m].domains;
                             var subsenses_examples = subsenses[m].examples;
@@ -1539,7 +1539,7 @@ function processDicData(dic_content, kdata) {
                                 }
                                 var subsenses_examples_text = subsenses_examples[n].text;
                                 console.log('subsenses_examples_text: '+subsenses_examples_text);
-                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'<i>'+subsenses_examples[n].text+'</i>'+cptxtf+JSON.stringify(subsenses_examples[n].text).replace(/'/g, '‡')+cptxtb, selectable: true});
+                                simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'<i>'+subsenses_examples[n].text+'</i>'+cptxtf+JSON.stringify(subsenses_examples[n].text).replace(/\"/g, '').replace(/'/g, '‡')+cptxtb, selectable: true});
                                 }
                             }
                             var subsenses_id = subsenses[m].id;
