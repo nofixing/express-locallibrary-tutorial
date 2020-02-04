@@ -1342,8 +1342,8 @@ function processDicData(dic_content, kdata) {
         }
     }
     console.log('==========================================================================kword:'+kword);
-    var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\'#\' onclick=\'CopyFilePath("';
-    var cptxtb = '");return false;\' style=\'cursor: pointer;align:right;padding-right:30px;\'><i class=\'fa\'>&#xf0c5;</i></a>';
+    var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\'#\' onclick=\'CopyFilePath(\"';
+    var cptxtb = '\");return false;\' style=\'cursor: pointer;align:right;padding-right:30px;\'><i class=\'fa\'>&#xf0c5;</i></a>';
     var word_id = voca.id;
     var results = voca.results;
     var headWord = '';
