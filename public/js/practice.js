@@ -1223,7 +1223,7 @@ function saveMemo() {
 
 function CopyFilePath(path) {
     var textArea = document.createElement("textarea");
-    path = path.replace(/'/g, "\\'");
+    path = path.replace(/#/g, "'");
     console.log("path:"+path);
     textArea.value = path;
     document.body.appendChild(textArea);
@@ -1413,9 +1413,9 @@ function processDicData(dic_content, kdata) {
                     
                     if (typeof simpleData[i].nodes[j].nodes !== 'object') {
                         simpleData[i].nodes[j].nodes = [];
-                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies[0]).replace(/\"/g, '')+cptxtb, selectable: true});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies[0]).replace(/\"/g, '').replace(/'/g, '#')+cptxtb, selectable: true});
                     } else {
-                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies[0]).replace(/\"/g, '')+cptxtb, selectable: true});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies[0]).replace(/\"/g, '').replace(/'/g, '#')+cptxtb, selectable: true});
                     }
                 
                 }
