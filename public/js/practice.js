@@ -1342,8 +1342,8 @@ function processDicData(dic_content, kdata) {
         }
     }
     console.log('==========================================================================kword:'+kword);
-    var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\'#\' onclick=\'CopyFilePath(`';
-    var cptxtb = '`);return false;\' style=\'cursor: pointer;align:right;padding-right:30px;\'><i class=\'fa\'>&#xf0c5;</i></a>';
+    var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onclick="CopyFilePath(\'';
+    var cptxtb = '\');return false;" style="cursor: pointer;align:right;padding-right:30px;"><i class="fa">&#xf0c5;</i></a>';
     var word_id = voca.id;
     var results = voca.results;
     var headWord = '';
@@ -1411,9 +1411,9 @@ function processDicData(dic_content, kdata) {
                     
                     if (typeof simpleData[i].nodes[j].nodes !== 'object') {
                         simpleData[i].nodes[j].nodes = [];
-                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+etymologies.replace(/'/g, "\'")+cptxtb, selectable: true});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies).replace(/'/g, "\'")+cptxtb, selectable: true});
                     } else {
-                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+etymologies.replace(/'/g, "\'")+cptxtb, selectable: true});
+                        simpleData[i].nodes[j].nodes.push({text:'<b>etymologies:</b> '+etymologies+cptxtf+JSON.stringify(etymologies).replace(/'/g, "\'")+cptxtb, selectable: true});
                     }
                 
                 }
