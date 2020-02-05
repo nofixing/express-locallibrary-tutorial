@@ -41,9 +41,8 @@ app.use(session({
     return uuid(); // use UUIDs for session IDs
   },
   secret: 'I love you',
-  resave: false,
-  saveUninitialized: true,
-  cookie: {path: '/catalog', secure: true, maxAge: 10000},
+  resave: true,
+  saveUninitialized: false,
   store: new MongoStore({
     mongooseConnection: db
   })
