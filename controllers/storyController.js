@@ -1198,6 +1198,8 @@ exports.story_oxford_ajax = function(req, res, next) {
                         }
                         return next(err2);
                     });
+                } else {
+                    return next(err);
                 }
             });
 
