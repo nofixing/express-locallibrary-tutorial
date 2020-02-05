@@ -43,6 +43,7 @@ app.use(session({
   secret: 'I love you',
   resave: true,
   saveUninitialized: false,
+  cookie: {path: '/catalog', secure: true, maxAge: 10000},
   store: new MongoStore({
     mongooseConnection: db
   })
