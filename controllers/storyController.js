@@ -1129,7 +1129,7 @@ exports.story_oxford_ajax = function(req, res, next) {
             },
             function(err) {
                 console.log('req.query.word:'+req.body.word+'     story_oxford_ajax err:'+err); 
-                if(err.indexOf('No such entry found.') > -1) {
+                if(JSON.stringify(err).indexOf('No such entry found.') > -1) {
                     console.log('lemmas start');
                     var config2 = {
                         app_id : oxford_app_id,
