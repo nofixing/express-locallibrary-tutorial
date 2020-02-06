@@ -774,8 +774,16 @@ function dicSearch() {
        async: false,
        success : function(data) {
             console.log('data.dic_kcontent:'+data.dic_kcontent+";");
-            if (typeof data.oxfordWord_id != 'undefined') oxfordWord_id = data.oxfordWord_id;
-            if (typeof data.oxfordWord_word != 'undefined') oxfordWord_word = data.oxfordWord_word;
+            if (typeof data.oxfordWord_id != 'undefined') {
+                oxfordWord_id = data.oxfordWord_id;
+            } else {
+                oxfordWord_id = '';
+            }
+            if (typeof data.oxfordWord_word != 'undefined') {
+                oxfordWord_word = data.oxfordWord_word;
+            } else {
+                oxfordWord_word = '';
+            }
             processDicData(data.dic_content, data.dic_kcontent);
        }
    });
