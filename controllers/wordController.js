@@ -91,10 +91,11 @@ exports.word_popup = function(req, res, next) {
             eor.status = 404;
             return next(eor);
         }
-        if (typeof results.word.oxford_word != 'undefined' && typeof results.word.oxford_word.word != 'undefined') {
-            results.word.title = results.word.oxford_word.word;
+        if (typeof results.word.oxford_word != 'undefined' && results.word.oxford_word != null) {
+            f (typeof results.word.oxford_word.word != 'undefined' && results.word.oxford_word.word != null) {
+                results.word.title = results.word.oxford_word.word;
+            }
         }
-        console.log('results.word:'+results.word);
         res.render('word_popup', { word:  results.word, hostname: req.headers.host } );
     });
 
