@@ -22,7 +22,7 @@ function wordPost() {
       success : function(data) {
 
           alert($('#SAVED').val());
-          window.parent.setWContent(data.id, data.content);
+          opener.CallParent();
           self.close();
 
       }
