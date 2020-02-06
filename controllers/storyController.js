@@ -341,7 +341,9 @@ exports.story_detail = function(req, res, next) {
         results.story.content = entities.decode(results.story.content);
         
         for (let i = 0; i < results.words.length; i++) {
-            if (typeof results.words[i].oxford_word.word != 'undefined') results.words[i].title = results.words[i].oxford_word.word;
+            if (typeof results.words[i].oxford_word != 'undefined' && typeof results.words[i].oxford_word.word != 'undefined') {
+                results.words[i].title = results.words[i].oxford_word.word;
+            }
         }
 
         var ttp = '';
