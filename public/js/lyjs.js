@@ -22,12 +22,14 @@ $( document ).ready(function() {
   }
     
 });
+var googleAuth;
 function ginit() {
   gapi.load('auth2', function(){
     gapi.auth2.init({
       client_id: '829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com'
     });
   });
+  googleAuth = gapi.auth2.getAuthInstance();
 }
 function leave() {
   var auth2 = gapi.auth2.getAuthInstance();
