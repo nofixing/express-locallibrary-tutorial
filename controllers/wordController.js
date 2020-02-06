@@ -92,7 +92,7 @@ exports.word_popup = function(req, res, next) {
             return next(eor);
         }
         if (typeof results.word.oxford_word != 'undefined' && results.word.oxford_word != null) {
-            f (typeof results.word.oxford_word.word != 'undefined' && results.word.oxford_word.word != null) {
+            if (typeof results.word.oxford_word.word != 'undefined' && results.word.oxford_word.word != null) {
                 results.word.title = results.word.oxford_word.word;
             }
         }
