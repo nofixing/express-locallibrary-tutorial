@@ -342,7 +342,8 @@ exports.story_detail = function(req, res, next) {
         
         for (let i = 0; i < results.words.length; i++) {
             if (typeof results.words[i].oxford_word != 'undefined') {
-                if (results.words[i].oxford_word.word) {
+                console.log('results.words[i].oxford_word:'+results.words[i].oxford_word);
+                if (results.words[i].oxford_word.word !== null) {
                     results.words[i].title = results.words[i].oxford_word.word;
                 }
             }
