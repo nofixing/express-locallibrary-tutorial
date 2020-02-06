@@ -240,7 +240,7 @@ exports.story_detail = function(req, res, next) {
                 .exec(callback);
             }
             */
-           Word.find({story: req.params.id}).populate({ path: 'oxfordWord', select: '_id word' }).collation({locale: 'en' }).sort({index_of: 1, create_date: 1})
+           Word.find({story: req.params.id}).populate('oxfordWord', 'word' ).collation({locale: 'en' }).sort({index_of: 1, create_date: 1})
                 .exec(callback);
         },
         memo: function(callback) {
