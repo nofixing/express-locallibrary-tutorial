@@ -785,7 +785,11 @@ function dicSearch() {
                 oxfordWord_word = '';
             }
             processDicData(data.dic_content, data.dic_kcontent);
-       }
+       },
+       error: function(xhr, status, error) {
+        oxfordWord_id = '';
+        oxfordWord_word = '';
+      }
    });
 }
 
