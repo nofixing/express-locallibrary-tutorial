@@ -119,8 +119,8 @@ $(function(){
         }
     }
 
-    window.CallParent = function() {
-        alert(" Parent window Alert");
+    window.CallParent = function(id, cntn) {
+        document.getElementById('wrd_'+id).innerHTML = cntn;
     }
 
     function setWContent(id, cntn) {
