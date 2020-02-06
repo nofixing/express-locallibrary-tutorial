@@ -81,7 +81,7 @@ exports.word_popup = function(req, res, next) {
     async.parallel({
         word: function(callback) {
 
-            Word.findById(req.query.w_id)
+            Word.findById(req.query.w_id).populate('oxford_word', 'word')
               .exec(callback);
         },
     }, function(err, results) {
@@ -90,6 +90,9 @@ exports.word_popup = function(req, res, next) {
             var eor = new Error('Word not found');
             eor.status = 404;
             return next(eor);
+        }
+        if (typeof results.word.oxford_word != 'undefined' && typeof results.word.oxford_word.word != 'undefined') {
+            results.word.title = results.word.oxford_word.word;
         }
         console.log('results.word:'+results.word);
         res.render('word_popup', { word:  results.word, hostname: req.headers.host } );
