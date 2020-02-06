@@ -240,7 +240,7 @@ exports.story_detail = function(req, res, next) {
                 .exec(callback);
             }
             */
-           Word.find({story: req.params.id}).collation({locale: 'en' }).sort({index_of: 1, create_date: 1})
+           Word.find({story: req.params.id}).populate({ path: 'oxfordWord', select: '_id word' }).collation({locale: 'en' }).sort({index_of: 1, create_date: 1})
                 .exec(callback);
         },
         memo: function(callback) {
@@ -346,6 +346,7 @@ exports.story_detail = function(req, res, next) {
             var highlightHtml = '';
             var sTag = '';
             for (let i = 0; i < results.words.length; i++) {
+                if (typeof results.words[i].oxfordWord.word != 'undefined') results.words[i].title = results.words[i].oxfordWord.word;
                 if (typeof results.words[i].image_address != 'undefined' && typeof results.words[i].content != 'undefined') {
                     console.log(results.words[i].image_address);
                     //console.log(results.words[i].content);
