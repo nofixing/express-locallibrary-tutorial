@@ -339,6 +339,11 @@ exports.story_detail = function(req, res, next) {
             }
         });
         results.story.content = entities.decode(results.story.content);
+        
+        for (let i = 0; i < results.words.length; i++) {
+            if (typeof results.words[i].oxfordWord.word != 'undefined') results.words[i].title = results.words[i].oxfordWord.word;
+        }
+
         var ttp = '';
         if(req.body.tlp == 'y') {
             var txt = results.story.content;
@@ -346,7 +351,6 @@ exports.story_detail = function(req, res, next) {
             var highlightHtml = '';
             var sTag = '';
             for (let i = 0; i < results.words.length; i++) {
-                if (typeof results.words[i].oxfordWord.word != 'undefined') results.words[i].title = results.words[i].oxfordWord.word;
                 if (typeof results.words[i].image_address != 'undefined' && typeof results.words[i].content != 'undefined') {
                     console.log(results.words[i].image_address);
                     //console.log(results.words[i].content);
