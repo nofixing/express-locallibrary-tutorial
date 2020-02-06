@@ -1014,6 +1014,7 @@ exports.story_oxford_ajax = function(req, res, next) {
             if(typeof theOxfordWord[0].kdata !='undefined') {
                 req.body.dic_kcontent = theOxfordWord[0].kdata;
                 req.body.oxfordWord_id = theOxfordWord[0]._id;
+                req.body.oxfordWord_word = theOxfordWord[0].word;
                 res.send(req.body);
             } else {
                 const request = require('request');
@@ -1023,6 +1024,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                     console.log(kdata);
                     req.body.dic_kcontent = JSON.stringify(kdata);
                     req.body.oxfordWord_id = theOxfordWord[0]._id;
+                    req.body.oxfordWord_word = theOxfordWord[0].word;
                     console.log('req.body.dic_kcontent:'+req.body.dic_kcontent);
                     updateOxfordWord(theOxfordWord[0]._id, req.body.dic_kcontent);
                     res.send(req.body);
@@ -1095,6 +1097,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                                 if (err) { console.log(err); }
                                 console.log('theOxfordWord._id 1:'+theOxfordWord._id);
                                 req.body.oxfordWord_id = theOxfordWord._id;
+                                req.body.oxfordWord_word = theOxfordWord.word;
                                 res.send(req.body);
                             });
                         });
@@ -1126,6 +1129,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                             if (err) { console.log(err); }
                             console.log('theOxfordWord._id 1:'+theOxfordWord._id);
                             req.body.oxfordWord_id = theOxfordWord._id;
+                            req.body.oxfordWord_word = theOxfordWord.word;
                             res.send(req.body);
                         });
                     });
@@ -1183,6 +1187,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                                     if (err) { console.log(err); }
                                     console.log('theOxfordWord._id 1:'+theOxfordWord._id);
                                     req.body.oxfordWord_id = theOxfordWord._id;
+                                    req.body.oxfordWord_word = theOxfordWord.word;
                                     res.send(req.body);
                                 });
                             });

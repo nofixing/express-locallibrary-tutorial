@@ -3,6 +3,7 @@ var selectContent = "";
 var wordArray = [];
 var dicAddr = "https://c.merriam-webster.com/coredictionary/";
 var oxfordWord_id = "";
+var oxfordWord_word = "";
 var kword = '';
 $(function(){
     var showData = $('#show_img');
@@ -98,6 +99,7 @@ $(function(){
                     console.log("jb_content dblclick");
                     if (data.result != data.fail) {
                         selectContent = data.content;
+                        if (oxfordWord_word != '') data.title = oxfordWord_word;
                         var markup = "<tr style='min-height: 30px; vertical-align: top;'><td style='width: 120px; text-align: left;'>"+data.title+"</td>";
                         markup += "<td id='wrd_"+data.word_id+"'>"+data.content+"</td>";
                         markup += "<td style='width: 150px; text-align: left;'><span>";
@@ -773,6 +775,7 @@ function dicSearch() {
        success : function(data) {
             console.log('data.dic_kcontent:'+data.dic_kcontent+";");
             if (typeof data.oxfordWord_id != 'undefined') oxfordWord_id = data.oxfordWord_id;
+            if (typeof data.oxfordWord_word != 'undefined') oxfordWord_word = data.oxfordWord_word;
             processDicData(data.dic_content, data.dic_kcontent);
        }
    });
