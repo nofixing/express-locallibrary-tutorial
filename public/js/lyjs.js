@@ -33,7 +33,7 @@ function onSignIn(googleUser) {
 
       var frm = document.createElement("form");
       frm.setAttribute("method", "post");
-      frm.setAttribute("action", "/catalog/login");
+      frm.setAttribute("action", "/user/login");
       frm.setAttribute("target", "_self");
       
       var hiddenField = document.createElement("input"); 
