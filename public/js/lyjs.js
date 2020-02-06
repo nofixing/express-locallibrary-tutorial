@@ -24,14 +24,18 @@ $( document ).ready(function() {
 });
 
 function ginit() {
+  console.log('ginit start');
   var googleAuth;
   gapi.load('auth2', function(){
+    console.log('gapi load start');
     googleAuth = gapi.auth2.init({
       client_id: '829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com'
     });
-
+    console.log('gapi load end');
     if ($('#userEmail').length) {
+      console.log('userEmail id exists');
       if (googleAuth.isSignedIn.get()) {
+        console.log('googleAuth.isSignedIn.get() true');
         var googleUser = googleAuth.currentUser.get();
         var id_token = googleUser.getAuthResponse().id_token;
         var profile = googleUser.getBasicProfile();
@@ -62,7 +66,11 @@ function ginit() {
   
           frm.submit();
         }
+      } else {
+        console.log('googleAuth.isSignedIn.get() false');
       }
+    } else {
+      console.log('userEmail id not exists');
     }
 
   });
