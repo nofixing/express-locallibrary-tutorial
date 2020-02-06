@@ -346,7 +346,7 @@ html(lang='en')
             each word, i in word_list
               tr(style='min-height: 30px; vertical-align: top;') 
                 td(style='width: 120px; text-align: left;') #{word.title}
-                td #{word.content}
+                <td id="wrd_#{word._id}">#{word.content}</td>
                 td(style='width: 150px; text-align: left;')
                   span(style='display: none;')
                     <i class="fas fa-book-open" style="margin-left: 10px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>

@@ -99,7 +99,7 @@ $(function(){
                     if (data.result != data.fail) {
                         selectContent = data.content;
                         var markup = "<tr style='min-height: 30px; vertical-align: top;'><td style='width: 120px; text-align: left;'>"+data.title+"</td>";
-                        markup += "<td>"+data.content+"</td>";
+                        markup += "<td id='wrd_"+data.word_id+"'>"+data.content+"</td>";
                         markup += "<td style='width: 150px; text-align: left;'><span>";
                         markup += "<i class='fas fa-book-open' style='margin-left: 10px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-graduation-cap' style='margin-left: 10px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
@@ -117,6 +117,10 @@ $(function(){
                 }
             });
         }
+    }
+
+    function setWContent(id, cntn) {
+        document.getElementById('wrd_'+id).innerHTML = cntn;
     }
 
     $('#wdtb tr').hover(function() {
