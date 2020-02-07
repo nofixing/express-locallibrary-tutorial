@@ -699,7 +699,7 @@ exports.word_board_list = function(req, res, next) {
         });
         Word.find({user: { $in: [req.session.userId]}, $or:[ {title: { $regex: '.*' + req.body.stle + '.*' }}, {content: { $regex: '.*' + req.body.stle + '.*' }}]})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, title: 1})
-            .lean().populate({ path: 'story', select: '_id title' })
+            .lean().populate({ path: 'story', select: '_id title' }).populate('oxford_word', 'word')
             .exec(function (err, list_words) {
             if (err) { return next(err); }
             for (let i = 0; i < list_words.length; i++) {
@@ -714,6 +714,9 @@ exports.word_board_list = function(req, res, next) {
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+                if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
+                    list_words[i].title = list_words[i].oxford_word.word;
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
@@ -726,7 +729,7 @@ exports.word_board_list = function(req, res, next) {
         });
         Word.find({user: { $in: [req.session.userId]}, importance: req.body.importance})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, title: 1})
-            .lean().populate({ path: 'story', select: '_id title' })
+            .lean().populate({ path: 'story', select: '_id title' }).populate('oxford_word', 'word')
             .exec(function (err, list_words) {
             if (err) { return next(err); }
             for (let i = 0; i < list_words.length; i++) {
@@ -741,6 +744,9 @@ exports.word_board_list = function(req, res, next) {
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+                if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
+                    list_words[i].title = list_words[i].oxford_word.word;
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
@@ -753,7 +759,7 @@ exports.word_board_list = function(req, res, next) {
         });
         Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, title: 1})
-            .lean().populate({ path: 'story', select: '_id title' })
+            .lean().populate({ path: 'story', select: '_id title' }).populate('oxford_word', 'word')
             .exec(function (err, list_words) {
             if (err) { return next(err); }
             for (let i = 0; i < list_words.length; i++) {
@@ -768,6 +774,9 @@ exports.word_board_list = function(req, res, next) {
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+                if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
+                    list_words[i].title = list_words[i].oxford_word.word;
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
@@ -780,7 +789,7 @@ exports.word_board_list = function(req, res, next) {
         });
         Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill, importance: req.body.importance})
             .skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, title: 1})
-            .lean().populate({ path: 'story', select: '_id title' })
+            .lean().populate({ path: 'story', select: '_id title' }).populate('oxford_word', 'word')
             .exec(function (err, list_words) {
             if (err) { return next(err); }
             for (let i = 0; i < list_words.length; i++) {
@@ -796,6 +805,9 @@ exports.word_board_list = function(req, res, next) {
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
                 }
+                if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
+                    list_words[i].title = list_words[i].oxford_word.word;
+                }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
             res.render('word_board_list', {skill: req.body.skill, importance: req.body.importance, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
@@ -805,7 +817,7 @@ exports.word_board_list = function(req, res, next) {
             ct =count;
         });
         Word.find({user: { $in: [req.session.userId]}}).skip(mxcnt).limit(mxcnt+100).sort({create_date: -1, title: 1})
-            .lean().populate({ path: 'story', select: '_id title' })
+            .lean().populate({ path: 'story', select: '_id title' }).populate('oxford_word', 'word')
             .exec(function (err, list_words) {
             if (err) { return next(err); }
             //console.log(list_words);
@@ -821,6 +833,9 @@ exports.word_board_list = function(req, res, next) {
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
                     list_words[i].story.title = entities.decode(list_words[i].story.title);
+                }
+                if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
+                    list_words[i].title = list_words[i].oxford_word.word;
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
