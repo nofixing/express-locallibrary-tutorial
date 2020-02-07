@@ -539,7 +539,7 @@ exports.word_datatable_list = function (req, res, next) {
                     if(length == -1) length = 1000000;
                     Word.find(searchStr)
                         .skip(start).limit(length).sort(sortables)
-                        .lean().populate({ path: 'story', select: '_id title' }).populate({ path: 'book', select: '_id title' })
+                        .lean().populate({ path: 'story', select: '_id title' }).populate({ path: 'book', select: '_id title' }).populate('oxford_word', 'word')
                         .exec(function (err, list_words) {
                             if (err) { return next(err); }
                             for (let i = 0; i < list_words.length; i++) {
@@ -555,6 +555,9 @@ exports.word_datatable_list = function (req, res, next) {
                                 }
                                 if (list_words[i].book_title != null && list_words[i].book_title != null) {
                                     list_words[i].book_title = entities.decode(list_words[i].book_title);
+                                }
+                                if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
+                                    list_words[i].title = list_words[i].oxford_word.word;
                                 }
                             }
                             //console.log('list_words:'+JSON.stringify(list_words));
@@ -600,7 +603,7 @@ exports.word_datatable_list = function (req, res, next) {
                     if(length == -1) length = 1000000;
                     Word.find(searchStr)
                         .skip(start).limit(length).sort(sortables)
-                        .lean().populate({ path: 'story', select: '_id title' }).populate({ path: 'book', select: '_id title' })
+                        .lean().populate({ path: 'story', select: '_id title' }).populate({ path: 'book', select: '_id title' }).populate('oxford_word', 'word')
                         .exec(function (err, list_words) {
                             if (err) { return next(err); }
                             for (let i = 0; i < list_words.length; i++) {
@@ -616,6 +619,9 @@ exports.word_datatable_list = function (req, res, next) {
                                 }
                                 if (list_words[i].book_title != null && list_words[i].book_title != null) {
                                     list_words[i].book_title = entities.decode(list_words[i].book_title);
+                                }
+                                if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
+                                    list_words[i].title = list_words[i].oxford_word.word;
                                 }
                             }
                             //console.log('list_words:'+JSON.stringify(list_words));
