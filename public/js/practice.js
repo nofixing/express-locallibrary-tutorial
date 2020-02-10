@@ -613,7 +613,7 @@ $(function(){
 
 function wrdSave(id) {
     var data = {};
-    data.content = document.getElementById('wrd_'+id).val();
+    data.content = $(eval('#wrd_'+id)).val();
     data.id = id;
     var httpType = 'https://';
     if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
