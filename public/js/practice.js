@@ -122,26 +122,6 @@ $(function(){
         }
     }
 
-    function wrdSave(id) {
-        var data = {};
-        data.content = document.getElementById('wrd_'+id).val();
-        data.id = id;
-        var httpType = 'https://';
-        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-        $.ajax({
-            type: 'POST',
-            data: JSON.stringify(data),
-            contentType: 'application/json',
-            url: httpType+$('#hostname').val()+'/catalog/wrdSave',
-            async: false,
-            success : function(data) {
-
-                alert($('#SAVED').val());
-
-            }
-        });
-    }
-
     window.CallParent = function(id, cntn) {
         document.getElementById('wrd_'+id).val(cntn);
     }
@@ -630,6 +610,26 @@ $(function(){
 
     $('#loading').hide();
 });
+
+function wrdSave(id) {
+    var data = {};
+    data.content = document.getElementById('wrd_'+id).val();
+    data.id = id;
+    var httpType = 'https://';
+    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+    $.ajax({
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        url: httpType+$('#hostname').val()+'/catalog/wrdSave',
+        async: false,
+        success : function(data) {
+
+            alert($('#SAVED').val());
+
+        }
+    });
+}
 
 function wordDelete(o, id) {
     var data = {};
