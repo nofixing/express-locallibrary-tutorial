@@ -172,6 +172,8 @@ router.get('/word_popup', word_controller.word_popup);
 
 router.post('/word_popup', word_controller.word_popup_post);
 
+router.post('/wrdSave', word_controller.wrdSave);
+
 router.get('/word/:id/iframe', word_controller.word_iframe);
 
 // GET request for list of all Book.

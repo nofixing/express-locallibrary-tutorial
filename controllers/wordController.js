@@ -113,6 +113,17 @@ exports.word_popup_post = function(req, res, next) {
 
 };
 
+exports.wrdSave = function(req, res, next) {
+
+    Word.update({_id: req.body.id}, {
+        content: req.body.content
+    }, function(err, upWord) {
+        if (err) { console.log(err); return next(err); }
+        res.send(req.body);
+    });
+
+};
+
 exports.word_iframe = function(req, res, next) {
 
     async.parallel({

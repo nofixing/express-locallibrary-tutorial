@@ -101,11 +101,12 @@ $(function(){
                         selectContent = data.content;
                         if (oxfordWord_word != '') data.title = oxfordWord_word;
                         var markup = "<tr style='min-height: 30px; vertical-align: top;'><td style='width: 120px; text-align: left;'>"+data.title+"</td>";
-                        markup += "<td id='wrd_"+data.word_id+"'>"+data.content+"</td>";
-                        markup += "<td style='width: 150px; text-align: left;'><span>";
+                        markup += "<td><input type='text' id='wrd_#{word._id}' class='form-control form-control-sm' value='"+data.content+"' /></td>";
+                        markup += "<td style='width: 180px; text-align: left;'><span>";
                         markup += "<i class='fas fa-book-open' style='margin-left: 10px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-graduation-cap' style='margin-left: 10px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
                         markup += "<i class='fas fa-photo-video' style='margin-left: 10px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
+                        markup += "<i class='fas fa-save' style='margin-left: 10px; cursor: pointer;' onclick='wrdSave(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-trash-alt' style='margin-left: 10px; cursor: pointer;' onclick='wordDelete(this, \""+data.word_id+"\")'></i></span>";
                         markup += "<input type='hidden' class='wList' value='"+data.word_id+"'>";
                         markup += "<input type='hidden' class='ipt' value='"+data.title+"'>";
@@ -121,12 +122,28 @@ $(function(){
         }
     }
 
-    window.CallParent = function(id, cntn) {
-        document.getElementById('wrd_'+id).innerHTML = cntn;
+    function wrdSave(id) {
+        var data = {};
+        data.content = document.getElementById('wrd_'+id).val();
+        data.id = id;
+        var httpType = 'https://';
+        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: httpType+$('#hostname').val()+'/catalog/wrdSave',
+            async: false,
+            success : function(data) {
+
+                alert($('#SAVED').val());
+
+            }
+        });
     }
 
-    function setWContent(id, cntn) {
-        document.getElementById('wrd_'+id).innerHTML = cntn;
+    window.CallParent = function(id, cntn) {
+        document.getElementById('wrd_'+id).val(cntn);
     }
 
     $('#wdtb tr').hover(function() {
