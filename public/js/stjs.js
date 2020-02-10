@@ -18,6 +18,9 @@ $( document ).ready(function() {
       }
     }
   }
+
+  var myEditor = document.querySelector('#snow-container');
+  myEditor.children[0].innerHTML = $('#memo').val();
     
 });
 function ginit() {

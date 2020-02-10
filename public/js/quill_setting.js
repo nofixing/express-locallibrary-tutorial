@@ -174,12 +174,12 @@ $('#InsertTooltip').click(function(){
   console.log(quill.root.innerHTML);
   $('#tcls')[0].click();
 });
-
+/*
 var memo = $('#memo').val();
 if(typeof memo != 'undefined') {
   quill.clipboard.dangerouslyPasteHTML(memo);
 }
-
+*/
 var videos = document.querySelectorAll('.ql-video');
 for (let i = 0; i < videos.length; i++) {
   var embedContainer = document.createElement('div');
