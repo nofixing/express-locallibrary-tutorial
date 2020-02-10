@@ -349,10 +349,10 @@ html(lang='en')
                 <td><input type="text" id="wrd_#{word._id}" class="form-control form-control-sm" value="#{word.content}" /></td>
                 td(style='width: 180px; text-align: left;')
                   span(style='display: none;')
+                    <i class="fas fa-save" style="margin-left: 10px; cursor: pointer;" onclick="wrdSave('#{word._id}')"></i>
                     <i class="fas fa-book-open" style="margin-left: 10px; cursor: pointer;" onclick="wordPopup('#{word._id}')"></i>
                     <i class="fas fa-graduation-cap" style="margin-left: 10px; cursor: pointer;" onclick="oxfordPopup('#{word.title}')"></i>
                     <i class="fas fa-photo-video" style="margin-left: 10px; cursor: pointer;" onclick="imgAddress(#{i})"></i>
-                    <i class="fas fa-save" style="margin-left: 10px; cursor: pointer;" onclick="wrdSave('#{word._id}')"></i>
                     <i class="fas fa-trash-alt" style="margin-left: 10px; cursor: pointer;" onclick="wordDelete(this, '#{word._id}')"></i>
                   input(type='hidden' class='wList' value=word._id)
                   input(type='hidden' class='ipt' value=word.title)

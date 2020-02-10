@@ -103,10 +103,10 @@ $(function(){
                         var markup = "<tr style='min-height: 30px; vertical-align: top;'><td style='width: 120px; text-align: left;'>"+data.title+"</td>";
                         markup += "<td><input type='text' id='wrd_#{word._id}' class='form-control form-control-sm' value='"+data.content+"' /></td>";
                         markup += "<td style='width: 180px; text-align: left;'><span>";
+                        markup += "<i class='fas fa-save' style='margin-left: 10px; cursor: pointer;' onclick='wrdSave(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-book-open' style='margin-left: 10px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-graduation-cap' style='margin-left: 10px; cursor: pointer;' onclick='oxfordPopup(\""+data.title+"\")'></i>";
                         markup += "<i class='fas fa-photo-video' style='margin-left: 10px; cursor: pointer;' onclick='imgAddress("+ldxx+")'></i>";
-                        markup += "<i class='fas fa-save' style='margin-left: 10px; cursor: pointer;' onclick='wrdSave(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-trash-alt' style='margin-left: 10px; cursor: pointer;' onclick='wordDelete(this, \""+data.word_id+"\")'></i></span>";
                         markup += "<input type='hidden' class='wList' value='"+data.word_id+"'>";
                         markup += "<input type='hidden' class='ipt' value='"+data.title+"'>";
