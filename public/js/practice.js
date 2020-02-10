@@ -123,7 +123,7 @@ $(function(){
     }
 
     window.CallParent = function(id, cntn) {
-        document.getElementById('wrd_'+id).val(cntn);
+        document.getElementById('wrd_'+id).value = cntn;
     }
 
     $('#wdtb tr').hover(function() {
@@ -613,7 +613,7 @@ $(function(){
 
 function wrdSave(id) {
     var data = {};
-    data.content = $(eval('#wrd_'+id)).val();
+    data.content = document.getElementById('wrd_'+id).value;
     data.id = id;
     var httpType = 'https://';
     if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
