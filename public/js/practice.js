@@ -1369,7 +1369,9 @@ function processDicData(dic_content, kdata) {
     console.log('==========================================================================DicData:\n'+dic_content);
     var voca = JSON.parse(dic_content);
     if (typeof kdata == 'undefined') kdata = '{}';
+    console.log('==========================================================================kdata['+kdata+']');
     var kvoca = JSON.parse(kdata);
+    console.log('==========================================================================kvoca['+kvoca+']');
     kvoca = kvoca.replace(/\\\"/g, "'");
     kvoca = kvoca.replace(/\"/g, '"');
     kvoca = JSON.parse(kvoca);
