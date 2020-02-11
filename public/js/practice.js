@@ -101,7 +101,7 @@ $(function(){
                         selectContent = data.content;
                         if (oxfordWord_word != '') data.title = oxfordWord_word;
                         var markup = "<tr style='min-height: 30px; vertical-align: top;'><td style='width: 120px; text-align: left;'>"+data.title+"</td>";
-                        markup += "<td><input type='text' id='wrd_#{word._id}' class='form-control form-control-sm' value='"+data.content+"' /></td>";
+                        markup += "<td><input type='text' id='wrd_"+data.word_id+"' class='form-control form-control-sm' value='"+data.content+"' /></td>";
                         markup += "<td style='width: 180px; text-align: left;'><span>";
                         markup += "<i class='fas fa-save' style='margin-left: 10px; cursor: pointer;' onclick='wrdSave(\""+data.word_id+"\")'></i>";
                         markup += "<i class='fas fa-book-open' style='margin-left: 10px; cursor: pointer;' onclick='wordPopup(\""+data.word_id+"\")'></i>";
