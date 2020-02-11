@@ -345,7 +345,7 @@ html(lang='en')
           <tbody>
             each word, i in word_list
               tr(style='min-height: 30px; vertical-align: top;') 
-                td(style='width: 120px; text-align: left;') #{word.title}
+                td(style='width: 120px; text-align: left;') #{word.orgTitle}
                 <td><input type="text" id="wrd_#{word._id}" class="form-control form-control-sm" value="#{word.content}" /></td>
                 td(style='width: 180px; text-align: left;')
                   span(style='display: none;')

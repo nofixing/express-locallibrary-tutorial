@@ -341,10 +341,10 @@ exports.story_detail = function(req, res, next) {
         results.story.content = entities.decode(results.story.content);
         
         for (let i = 0; i < results.words.length; i++) {
-            if (typeof results.words[i].oxford_word != 'undefined' && results.words[i].oxford_word != null) {
-                if (typeof results.words[i].oxford_word.word != 'undefined' && results.words[i].oxford_word.word != null) {
-                    results.words[i].title = results.words[i].oxford_word.word;
-                }
+            if (results.words[i].oxford_word != null && results.words[i].oxford_word.word != null) {
+                results.words[i].orgTitle = results.words[i].oxford_word.word;
+            } else {
+                results.words[i].orgTitle = results.words[i].title;
             }
         }
 
