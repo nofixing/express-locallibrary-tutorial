@@ -1020,11 +1020,11 @@ exports.story_oxford_ajax = function(req, res, next) {
                 res.send(req.body);
             } else {
                 const request = require('request');
-                request(tooltip_naver_url+req.body.word.replace(/_/g, '%20'), function (error, response, kdata) {
+                request(tooltip_naver_url+req.body.word, function (error, response, kdata) {
                     if (error) { console.error(error); }
                     console.log(`statusCode: ${response.statusCode}`);
                     console.log(kdata);
-                    req.body.dic_kcontent = JSON.stringify(kdata);
+                    if (req.body.word.indexOf('_') < 0) req.body.dic_kcontent = JSON.stringify(kdata);
                     req.body.oxfordWord_id = theOxfordWord[0]._id;
                     req.body.oxfordWord_word = theOxfordWord[0].word;
                     console.log('req.body.dic_kcontent:'+req.body.dic_kcontent);
@@ -1067,6 +1067,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                         if (typeof derivativeOf === 'object') {
                             derivative_word = derivativeOf[0].text;
                             isDerivativeOf = true;
+                            if (req.body.word.indexOf('_') > -1) isDerivativeOf = false;
                         }
                     }
                 }
@@ -1114,11 +1115,11 @@ exports.story_oxford_ajax = function(req, res, next) {
                 } else {
                     req.body.dic_content = JSON.stringify(data);
                     //var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
-                    request(tooltip_naver_url+req.body.word.replace(/_/g, '%20'), function (error, response, kdata) {
+                    request(tooltip_naver_url+req.body.word, function (error, response, kdata) {
                         if (error) { console.error(error); }
                         console.log(`statusCode: ${response.statusCode}`);
                         console.log(kdata);
-                        req.body.dic_kcontent = JSON.stringify(kdata);
+                        if (req.body.word.indexOf('_') < 0) req.body.dic_kcontent = JSON.stringify(kdata);
                         var oxfordWord = new OxfordWord(
                             {
                                 title: req.body.word,
