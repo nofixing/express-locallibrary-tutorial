@@ -1369,19 +1369,21 @@ function processDicData(dic_content, kdata) {
     console.log('==========================================================================DicData:\n'+dic_content);
     var voca = JSON.parse(dic_content);
     if (typeof kdata == 'undefined') kdata = '{}';
-    console.log('==========================================================================kdata['+kdata+']');
-    var kvoca = JSON.parse(kdata);
-    console.log('==========================================================================kvoca['+kvoca+']');
-    kvoca = kvoca.replace(/\\\"/g, "'");
-    kvoca = kvoca.replace(/\"/g, '"');
-    kvoca = JSON.parse(kvoca);
-    var kmean = kvoca.mean;
-    console.log('==========================================================================kmean:\n'+kmean);
-    if (typeof kmean === 'object') {
-        for (let i = 0; i < kmean.length; i++) {
-            kword = kword + kmean[i];
-            if (i < (kmean.length - 1)) {
-                kword = kword + ', ';
+    if (kdata != '{}') {
+        console.log('==========================================================================kdata['+kdata+']');
+        var kvoca = JSON.parse(kdata);
+        console.log('==========================================================================kvoca['+kvoca+']');
+        kvoca = kvoca.replace(/\\\"/g, "'");
+        kvoca = kvoca.replace(/\"/g, '"');
+        kvoca = JSON.parse(kvoca);
+        var kmean = kvoca.mean;
+        console.log('==========================================================================kmean:\n'+kmean);
+        if (typeof kmean === 'object') {
+            for (let i = 0; i < kmean.length; i++) {
+                kword = kword + kmean[i];
+                if (i < (kmean.length - 1)) {
+                    kword = kword + ', ';
+                }
             }
         }
     }
