@@ -342,7 +342,7 @@ exports.story_detail = function(req, res, next) {
         
         for (let i = 0; i < results.words.length; i++) {
             if (results.words[i].oxford_word != null && results.words[i].oxford_word.word != null) {
-                results.words[i].orgTitle = results.words[i].oxford_word.word;
+                results.words[i].orgTitle = results.words[i].oxford_word.word.replace(/_/g, ' ');
             } else {
                 results.words[i].orgTitle = results.words[i].title;
             }
@@ -1020,7 +1020,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                 res.send(req.body);
             } else {
                 const request = require('request');
-                request(tooltip_naver_url+req.body.word, function (error, response, kdata) {
+                request(tooltip_naver_url+req.body.word.replace(/_/g, '%20'), function (error, response, kdata) {
                     if (error) { console.error(error); }
                     console.log(`statusCode: ${response.statusCode}`);
                     console.log(kdata);
@@ -1114,7 +1114,7 @@ exports.story_oxford_ajax = function(req, res, next) {
                 } else {
                     req.body.dic_content = JSON.stringify(data);
                     //var oxfordWord_id = createOxfordWord(req.body.word, 'word', req.body.dic_content, req.body.dic_kcontent);
-                    request(tooltip_naver_url+req.body.word, function (error, response, kdata) {
+                    request(tooltip_naver_url+req.body.word.replace(/_/g, '%20'), function (error, response, kdata) {
                         if (error) { console.error(error); }
                         console.log(`statusCode: ${response.statusCode}`);
                         console.log(kdata);

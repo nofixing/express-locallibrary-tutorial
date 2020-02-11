@@ -779,7 +779,7 @@ function dicSearch() {
     $('#dic_frame').attr('src', dicAddr);
     */
    var data = {};
-   data.word = selectText;
+   data.word = selectText.replace(/ /g, '_');
    var httpType = 'https://';
    if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
    kword = '';
@@ -797,7 +797,7 @@ function dicSearch() {
                 oxfordWord_id = '';
             }
             if (typeof data.oxfordWord_word != 'undefined') {
-                oxfordWord_word = data.oxfordWord_word;
+                oxfordWord_word = data.oxfordWord_word.replace(/_/g, ' ');
             } else {
                 oxfordWord_word = '';
             }
