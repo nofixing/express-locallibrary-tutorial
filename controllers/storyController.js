@@ -16,6 +16,24 @@ const entities = new Entities();
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');
+const {Translate} = require('@google-cloud/translate');
+
+// Your Google Cloud Platform project ID
+const projectId = 'infinitestorlet';
+
+// Instantiates a client
+
+const translate = new Translate({
+  projectId: projectId,
+  credentials: {
+    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    client_email: process.env.GOOGLE_CLIENT_EMAIL
+  }
+});
+
+
+var client_id = 'BdLjzx4yosbmSqFb4feb';
+var client_secret = process.env.NAVER_TRANSLATE_CLIENT_SECRET;
 
 var async = require('async');
 
@@ -1088,21 +1106,67 @@ exports.story_oxford_ajax = function(req, res, next) {
                             console.log(`statusCode: ${response.statusCode}`);
                             console.log(kdata);
                             req.body.dic_kcontent = JSON.stringify(kdata);
-                            var oxfordWord = new OxfordWord(
-                                {
-                                    title: req.body.word,
-                                    gubun: 'word',
-                                    data: req.body.dic_content,
-                                    word: derivative_word,
-                                    kdata: req.body.dic_kcontent
+
+                            var gtranslation = '';
+                            var ntranslation = '';
+                            var translation = '';
+                            
+                            translate.translate(derivative_word, 'ko').then(results => {
+                                gtranslation = results[0];
+                                console.log(`GTranslation: ${gtranslation}`);
+                            
+                                var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
+                                var options = {
+                                    url: api_url,
+                                    form: {'source':'en', 'target':'ko', 'text':derivative_word},
+                                    headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+                                    };
+                                request.post(options, function (er, rsp, body) {
+                                    if (!er && rsp.statusCode == 200) {
+                                        //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
+                                        //res.end(body);
+                                        //console.log(`Translation json: ${body}`);
+                                        var json = JSON.parse(body);
+                                        console.log(`NTranslation: ${json.message.result.translatedText}`);
+                                        ntranslation = json.message.result.translatedText;
+        
+                                        translation = gtranslation;
+                                        if (translation.trim() == '') {
+                                            translation = ntranslation;
+                                        } else {
+                                            if (translation.indexOf(ntranslation) < 0) translation += ', '+ntranslation;
+                                        }
+        
+                                        var oxfordWord = new OxfordWord(
+                                            {
+                                                title: req.body.word,
+                                                gubun: 'word',
+                                                data: req.body.dic_content,
+                                                word: derivative_word,
+                                                kdata: req.body.dic_kcontent,
+                                                translation: translation
+                                            });
+                                        oxfordWord.save(function (err, theOxfordWord) {
+                                            if (err) { console.log(err); }
+                                            console.log('theOxfordWord._id 1:'+theOxfordWord._id);
+                                            req.body.oxfordWord_id = theOxfordWord._id;
+                                            req.body.oxfordWord_word = theOxfordWord.word;
+                                            req.body.translation = translation;
+                                            res.send(req.body);
+                                        });                   
+        
+                                    } else {
+                                        console.log('er = ' + rsp.statusCode);
+                                        res.send(req.body);
+                                    }
                                 });
-                            oxfordWord.save(function (err, theOxfordWord) {
-                                if (err) { console.log(err); }
-                                console.log('theOxfordWord._id 1:'+theOxfordWord._id);
-                                req.body.oxfordWord_id = theOxfordWord._id;
-                                req.body.oxfordWord_word = theOxfordWord.word;
+        
+                            
+                            }).catch(err => {
+                                console.error('ERROR:', err);
                                 res.send(req.body);
                             });
+
                         });
                     },
                     function(err4) {
@@ -1120,19 +1184,62 @@ exports.story_oxford_ajax = function(req, res, next) {
                         console.log(`statusCode: ${response.statusCode}`);
                         console.log(kdata);
                         if (req.body.word.indexOf('_') < 0) req.body.dic_kcontent = JSON.stringify(kdata);
-                        var oxfordWord = new OxfordWord(
-                            {
-                                title: req.body.word,
-                                gubun: 'word',
-                                data: req.body.dic_content,
-                                word: req.body.word,
-                                kdata: req.body.dic_kcontent
+                        var gtranslation = '';
+                        var ntranslation = '';
+                        var translation = '';
+                        
+                        translate.translate(req.body.word, 'ko').then(results => {
+                            gtranslation = results[0];
+                            console.log(`GTranslation: ${gtranslation}`);
+                        
+                            var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
+                            var options = {
+                                url: api_url,
+                                form: {'source':'en', 'target':'ko', 'text':req.body.word},
+                                headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+                                };
+                            request.post(options, function (er, rsp, body) {
+                                if (!er && rsp.statusCode == 200) {
+                                    //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
+                                    //res.end(body);
+                                    //console.log(`Translation json: ${body}`);
+                                    var json = JSON.parse(body);
+                                    console.log(`NTranslation: ${json.message.result.translatedText}`);
+                                    ntranslation = json.message.result.translatedText;
+    
+                                    translation = gtranslation;
+                                    if (translation.trim() == '') {
+                                        translation = ntranslation;
+                                    } else {
+                                        if (translation.indexOf(ntranslation) < 0) translation += ', '+ntranslation;
+                                    }
+    
+                                    var oxfordWord = new OxfordWord(
+                                        {
+                                            title: req.body.word,
+                                            gubun: 'word',
+                                            data: req.body.dic_content,
+                                            word: req.body.word,
+                                            kdata: req.body.dic_kcontent,
+                                            translation: translation
+                                        });
+                                    oxfordWord.save(function (err, theOxfordWord) {
+                                        if (err) { console.log(err); }
+                                        console.log('theOxfordWord._id 1:'+theOxfordWord._id);
+                                        req.body.oxfordWord_id = theOxfordWord._id;
+                                        req.body.oxfordWord_word = theOxfordWord.word;
+                                        req.body.translation = translation;
+                                        res.send(req.body);
+                                    });                   
+    
+                                } else {
+                                    console.log('er = ' + rsp.statusCode);
+                                    res.send(req.body);
+                                }
                             });
-                        oxfordWord.save(function (err, theOxfordWord) {
-                            if (err) { console.log(err); }
-                            console.log('theOxfordWord._id 1:'+theOxfordWord._id);
-                            req.body.oxfordWord_id = theOxfordWord._id;
-                            req.body.oxfordWord_word = theOxfordWord.word;
+                        
+                        }).catch(err => {
+                            console.error('ERROR:', err);
                             res.send(req.body);
                         });
                     });
@@ -1178,21 +1285,67 @@ exports.story_oxford_ajax = function(req, res, next) {
                                 console.log(`statusCode: ${response.statusCode}`);
                                 console.log(kdata);
                                 req.body.dic_kcontent = JSON.stringify(kdata);
-                                var oxfordWord = new OxfordWord(
-                                    {
-                                        title: req.body.word,
-                                        gubun: 'word',
-                                        data: req.body.dic_content,
-                                        word: lemmas_word,
-                                        kdata: req.body.dic_kcontent
+
+                                var gtranslation = '';
+                                var ntranslation = '';
+                                var translation = '';
+                                
+                                translate.translate(lemmas_word, 'ko').then(results => {
+                                    gtranslation = results[0];
+                                    console.log(`GTranslation: ${gtranslation}`);
+                                
+                                    var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
+                                    var options = {
+                                        url: api_url,
+                                        form: {'source':'en', 'target':'ko', 'text':lemmas_word},
+                                        headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
+                                        };
+                                    request.post(options, function (er, rsp, body) {
+                                        if (!er && rsp.statusCode == 200) {
+                                            //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
+                                            //res.end(body);
+                                            //console.log(`Translation json: ${body}`);
+                                            var json = JSON.parse(body);
+                                            console.log(`NTranslation: ${json.message.result.translatedText}`);
+                                            ntranslation = json.message.result.translatedText;
+            
+                                            translation = gtranslation;
+                                            if (translation.trim() == '') {
+                                                translation = ntranslation;
+                                            } else {
+                                                if (translation.indexOf(ntranslation) < 0) translation += ', '+ntranslation;
+                                            }
+            
+                                            var oxfordWord = new OxfordWord(
+                                                {
+                                                    title: req.body.word,
+                                                    gubun: 'word',
+                                                    data: req.body.dic_content,
+                                                    word: lemmas_word,
+                                                    kdata: req.body.dic_kcontent,
+                                                    translation: translation
+                                                });
+                                            oxfordWord.save(function (err, theOxfordWord) {
+                                                if (err) { console.log(err); }
+                                                console.log('theOxfordWord._id 1:'+theOxfordWord._id);
+                                                req.body.oxfordWord_id = theOxfordWord._id;
+                                                req.body.oxfordWord_word = theOxfordWord.word;
+                                                req.body.translation = translation;
+                                                res.send(req.body);
+                                            });                   
+            
+                                        } else {
+                                            console.log('er = ' + rsp.statusCode);
+                                            res.send(req.body);
+                                        }
                                     });
-                                oxfordWord.save(function (err, theOxfordWord) {
-                                    if (err) { console.log(err); }
-                                    console.log('theOxfordWord._id 1:'+theOxfordWord._id);
-                                    req.body.oxfordWord_id = theOxfordWord._id;
-                                    req.body.oxfordWord_word = theOxfordWord.word;
+            
+                                
+                                }).catch(err => {
+                                    console.error('ERROR:', err);
                                     res.send(req.body);
                                 });
+
                             });
                         },
                         function(err3) {

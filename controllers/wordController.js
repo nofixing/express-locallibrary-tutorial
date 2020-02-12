@@ -180,96 +180,48 @@ exports.word_create_post = [
                     req.body.result = req.body.fail;
                     res.send(req.body);
                  } else {
-                     console.log('word_create_post');
+                    console.log('word_create_post');
 
-                    var gtranslation = '';
-                    var translation = '';
-
-                    translate.translate(req.body.title, 'ko').then(results => {
-                        gtranslation = results[0];
-                        console.log(`GTranslation: ${gtranslation}`);
-                    
-                        var api_url = 'https://openapi.naver.com/v1/papago/n2mt';
-                        var request = require('request');
-                        var options = {
-                            url: api_url,
-                            form: {'source':'en', 'target':'ko', 'text':req.body.title},
-                            headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
-                            };
-                        request.post(options, function (error, response, body) {
-                            if (!error && response.statusCode == 200) {
-                                //res.writeHead(200, {'Content-Type': 'text/json;charset=utf-8'});
-                                //res.end(body);
-                                //console.log(`Translation json: ${body}`);
-                                var json = JSON.parse(body);
-                                console.log(`NTranslation: ${json.message.result.translatedText}`);
-                                translation = json.message.result.translatedText;
-
-                                if (req.body.content.trim() == '') {
-                                    if (req.body.content.indexOf(translation) < 0) req.body.content += translation;
-                                    if (req.body.content.trim() == '') {
-                                        if (req.body.content.indexOf(gtranslation) < 0) req.body.content += gtranslation;
-                                    } else {
-                                        if (req.body.content.indexOf(gtranslation) < 0) req.body.content += ', '+gtranslation;
-                                    }
-                                } else {
-                                    if (req.body.content.indexOf(translation) < 0) req.body.content += ', '+translation;
-                                    if (req.body.content.indexOf(gtranslation) < 0) req.body.content += ', '+gtranslation;
-                                }
-
-                                var word; 
-                                var book_id = req.body.book_id;
-                                if (book_id.match(/^[0-9a-fA-F]{24}$/)) {
-                                    word = new Word(
-                                        { title: req.body.title,
-                                        user: req.session.userId,
-                                        story: req.body.story_id,
-                                        book: req.body.book_id,
-                                        story_title: req.body.story_title,
-                                        book_title: req.body.book_title,
-                                        content: req.body.content,
-                                        skill: req.body.skill,
-                                        importance: req.body.importance,
-                                        create_date: Date.now(),
-                                        oxford_word: req.body.oxfordWord_id == '' ? null: req.body.oxfordWord_id,
-                                        index_of: req.body.index_of
-                                        });
-                                }else{
-                                    word = new Word(
-                                        { title: req.body.title,
-                                        user: req.session.userId,
-                                        story: req.body.story_id,
-                                        story_title: req.body.story_title,
-                                        content: req.body.content,
-                                        skill: req.body.skill,
-                                        importance: req.body.importance,
-                                        create_date: Date.now(),
-                                        oxford_word: req.body.oxfordWord_id == '' ? null: req.body.oxfordWord_id,
-                                        index_of: req.body.index_of
-                                        });
-                                }
-                                console.log('word.content:'+word.content);
-                                word.save(function (err, theWord) {
-                                    if (err) { console.log(err); return next(err); }
-                                    // Successful - redirect to new word record.
-                                    //res.redirect(word.url);
-                                    req.body.word_id = theWord._id;
-                                    req.body.content = word.content;
-                                    res.send(req.body);
-                                });                   
-
-                            } else {
-                                console.log('error = ' + response.statusCode);
-                                res.send(req.body);
-                            }
-                        });
-
-                    
-                    }).catch(err => {
-                        console.error('ERROR:', err);
+                    var word; 
+                    var book_id = req.body.book_id;
+                    if (book_id.match(/^[0-9a-fA-F]{24}$/)) {
+                        word = new Word(
+                            { title: req.body.title,
+                            user: req.session.userId,
+                            story: req.body.story_id,
+                            book: req.body.book_id,
+                            story_title: req.body.story_title,
+                            book_title: req.body.book_title,
+                            content: req.body.content,
+                            skill: req.body.skill,
+                            importance: req.body.importance,
+                            create_date: Date.now(),
+                            oxford_word: req.body.oxfordWord_id == '' ? null: req.body.oxfordWord_id,
+                            index_of: req.body.index_of
+                            });
+                    }else{
+                        word = new Word(
+                            { title: req.body.title,
+                            user: req.session.userId,
+                            story: req.body.story_id,
+                            story_title: req.body.story_title,
+                            content: req.body.content,
+                            skill: req.body.skill,
+                            importance: req.body.importance,
+                            create_date: Date.now(),
+                            oxford_word: req.body.oxfordWord_id == '' ? null: req.body.oxfordWord_id,
+                            index_of: req.body.index_of
+                            });
+                    }
+                    console.log('word.content:'+word.content);
+                    word.save(function (err, theWord) {
+                        if (err) { console.log(err); return next(err); }
+                        // Successful - redirect to new word record.
+                        //res.redirect(word.url);
+                        req.body.word_id = theWord._id;
+                        req.body.content = word.content;
                         res.send(req.body);
                     });
-                    
 
                  }
                });

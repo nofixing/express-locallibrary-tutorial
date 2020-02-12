@@ -801,7 +801,7 @@ function dicSearch() {
             } else {
                 oxfordWord_word = '';
             }
-            processDicData(data.dic_content, data.dic_kcontent);
+            processDicData(data.dic_content, data.dic_kcontent, data.translation);
        },
        error: function(xhr, status, error) {
         oxfordWord_id = '';
@@ -1350,7 +1350,7 @@ function closeDic() {
 	$('#treeview1').css("display", "none");
 }
 
-function processDicData(dic_content, kdata) {
+function processDicData(dic_content, kdata, translation) {
     var simpleData = [];
     /*
     var element = {text:'Parent 1'};
@@ -1388,6 +1388,11 @@ function processDicData(dic_content, kdata) {
         }
     }
     console.log('==========================================================================kword:'+kword);
+    if (kword.trim() == '') {
+        kword = translation;
+    } else {
+        if (kword.indexOf(translation) < 0) kword += ', '+translation;
+    }
     var cptxtf = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\'#\' onclick=\'CopyFilePath(`';
     var cptxtb = '`);return false;\' style=\'cursor: pointer;align:right;padding-right:30px;\'><i class=\'fa\'>&#xf0c5;</i></a>';
     var word_id = voca.id;

@@ -8,6 +8,7 @@ var OxfordWordSchema = new Schema({
     data: {type: String, required: true},
     word: {type: String},
     kdata: {type: String},
+    translation: {type: String},
     create_date: {type: Date, default: Date.now}
 });
 
