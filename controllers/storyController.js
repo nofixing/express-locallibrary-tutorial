@@ -1035,6 +1035,11 @@ exports.story_oxford_ajax = function(req, res, next) {
                 req.body.dic_kcontent = theOxfordWord[0].kdata;
                 req.body.oxfordWord_id = theOxfordWord[0]._id;
                 req.body.oxfordWord_word = theOxfordWord[0].word;
+                if (typeof theOxfordWord[0].translation !='undefined') {
+                    req.body.translation = theOxfordWord[0].translation;
+                } else {
+                    req.body.translation = '';
+                }
                 res.send(req.body);
             } else {
                 const request = require('request');
@@ -1047,6 +1052,11 @@ exports.story_oxford_ajax = function(req, res, next) {
                     req.body.oxfordWord_word = theOxfordWord[0].word;
                     console.log('req.body.dic_kcontent:'+req.body.dic_kcontent);
                     updateOxfordWord(theOxfordWord[0]._id, req.body.dic_kcontent);
+                    if (typeof theOxfordWord[0].translation !='undefined') {
+                        req.body.translation = theOxfordWord[0].translation;
+                    } else {
+                        req.body.translation = '';
+                    }
                     res.send(req.body);
                 });
             }
