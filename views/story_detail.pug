@@ -135,10 +135,10 @@ html(lang='en')
           if story.reference 
             if story.title_font
               p(class=story.title_font)
-                a(href=story.reference) #{story.reference}
+                a(href=story.reference target='_blank') #{story.reference}
             else
               p 
-                a(href=story.reference) #{story.reference}
+                a(href=story.reference target='_blank') #{story.reference}
             <br/>
           if story.genre
             span(style='margin-left: 20px;')
