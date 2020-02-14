@@ -110,7 +110,7 @@ $(function(){
                         markup += "<i class='fas fa-trash-alt' style='margin-left: 10px; cursor: pointer;' onclick='wordDelete(this, \""+data.word_id+"\")'></i></span>";
                         markup += "<input type='hidden' class='wList' value='"+data.word_id+"'>";
                         markup += "<input type='hidden' class='ipt' value='"+data.title+"'>";
-                        markup += "<input type='hidden' class='iph' value='"+data.image_address+"'></td>";
+                        markup += "<input type='hidden' class='iph' value=''></td>";
                         markup += "</tr>";
 
                         $(".wtd").append(markup);
