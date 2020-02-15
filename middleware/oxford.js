@@ -37,11 +37,11 @@ OxfordDictionary.prototype.sentences = function(props) {
 var validate = function(path, props, $this, dtype) {
         
         if ( !($this.config.app_id) || !($this.config.app_key) ) {
-            throw Error('API_ID or API_KEY is undefined or NULL.');
+            next('API_ID or API_KEY is undefined or NULL.');
         }        
 
         if (typeof props != 'object' && typeof props != 'string') {
-            throw Error('Argument is not of proper type');
+            next('Argument is not of proper type');
         }
 
         if (typeof props != 'undefined' && typeof props === 'object') {
@@ -49,7 +49,7 @@ var validate = function(path, props, $this, dtype) {
             if ( props.hasOwnProperty('word') && (typeof props.word === 'string') ) {
                 path += $this.config.source_lang + '/' + props.word.toLowerCase();
             } else {
-                throw Error('Word argument not found');
+                next('Word argument not found');
             }
 
             if (props.hasOwnProperty('fields') && (typeof props.fields === 'string') ) {
