@@ -16,7 +16,7 @@ const entities = new Entities();
 
 const { body,validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
-const Translate = require('@google-cloud/translate');
+const Translate = require('@google-cloud/translate').v2;
 
 // Your Google Cloud Platform project ID
 const projectId = 'infinitestorlet';
