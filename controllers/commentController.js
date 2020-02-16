@@ -1,9 +1,6 @@
 var Story = require('../models/story');
 var Comment = require('../models/comment');
 
-const { body,validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
-
 var async = require('async');
 
 exports.comment_create_post = [
