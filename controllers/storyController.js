@@ -16,14 +16,14 @@ const entities = new Entities();
 
 const { body,validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
-const Translate = require('@google-cloud/translate');
+const {Translate} = require('@google-cloud/translate').v2;
 
 // Your Google Cloud Platform project ID
 const projectId = 'infinitestorlet';
 
 // Instantiates a client
 
-const translate = new Translate.Translate({
+const translate = new Translate({
   projectId: projectId,
   credentials: {
     private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
