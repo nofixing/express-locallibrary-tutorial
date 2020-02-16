@@ -27,7 +27,7 @@ app.use(helmet());
 // Set up mongoose connection
 var mongoose = require('mongoose');
 //var db_url = 'mongodb://infinite:'+process.env.DB_URI+'@ds153081-a0.mlab.com:53081,ds153081-a1.mlab.com:53081/infinitestorlet?replicaSet=rs-ds153081';
-var db_url = 'mongodb+srv://infinite:'+process.env.DB_URI+'@cluster0-kgygz.mongodb.net/infinitestorlet?w=majority';
+var db_url = 'mongodb+srv://infinite:'+process.env.DB_URI+'@cluster0-kgygz.mongodb.net/infinitestorlet?retryWrites=true&w=majority';
 var mongoDB = process.env.MONGODB_URI || db_url;
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
