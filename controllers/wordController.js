@@ -1,9 +1,9 @@
 var Word = require('../models/word');
 var moment = require('moment');
 
-const { body,validationResult } = require('express-validator/check');
-const { sanitizeBody } = require('express-validator/filter');
-const {Translate} = require('@google-cloud/translate');
+const { body,validationResult } = require('express-validator');
+const { sanitizeBody } = require('express-validator');
+const {Translate} = require('@google-cloud/translate').v2;
 
 // Your Google Cloud Platform project ID
 const projectId = 'infinitestorlet';
