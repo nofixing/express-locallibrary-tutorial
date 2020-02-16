@@ -1459,3 +1459,81 @@ exports.story_oxford_ajaxs = function(req, res, next) {
     });
     
 };
+
+exports.story_word_datatable = function (req, res, next) {
+    var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
+    res.render('story_word_list', { title: 'Story Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt });
+
+};
+
+function getSorts(query) {
+    var sortables;
+    if (query.order[0].column == '2') {
+        sortables = { book_title: query.order[0].dir };
+    } else if (query.order[0].column == '3') {
+        sortables = { title: query.order[0].dir };
+    } else {
+        sortables = { create_date: 'desc' };
+    }
+    
+    return sortables;
+}
+
+exports.story_word_datatable_list = function (req, res, next) {
+    console.log('req.body.action:'+req.body.action);
+    console.log('req.body:'+JSON.stringify(req.body));
+    var sortables = getSorts(req.body);
+    console.log('sortables:'+JSON.stringify(sortables));
+    var searchStr = req.body.search.value;
+    
+    var recordsTotal = 0;
+    var recordsFiltered = 0;
+    if (req.body.search.value) {
+        var regex = new RegExp(req.body.search.value, "i");
+        searchStr = {
+            user: { $in: [req.session.userId]},
+            $or: [{
+                'content': { $regex: '.*' + req.body.search.value + '.*' }
+            }]
+        };
+    } else {
+        searchStr = {user: { $in: [req.session.userId]}};
+    }
+
+    Story.count({user: { $in: [req.session.userId]}}, function (err, c) {
+        recordsTotal = c;
+        console.log('recordsTotal:'+c);
+        Story.count(searchStr, function (err, c) {
+            if (err) { console.log(err); return next(err); }
+            recordsFiltered = c;
+            //console.log('recordsFiltered:'+c);console.log('start:'+req.body.start);console.log('length:'+req.body.length);
+            var start = Number(req.body.start);
+            var length = Number(req.body.length);
+            if(length == -1) length = 1000000;
+            Story.find(searchStr)
+                .skip(start).limit(length).sort(sortables)
+                .lean().populate({ path: 'book', select: '_id title' })
+                .exec(function (err, list_stories) {
+                    if (err) { return next(err); }
+                    for (let i = 0; i < list_stories.length; i++) {
+                        list_stories[i].rownum = start + i + 1;
+                        if(list_stories[i].create_date != null){
+                            list_stories[i].create_date = moment(list_stories[i].create_date).format('YYYY-MM-DD');
+                        }
+                        list_stories[i].title = entities.decode(list_stories[i].title);
+                        if (list_stories[i].book_title != null && list_stories[i].book_title != null) {
+                            list_stories[i].book_title = entities.decode(list_stories[i].book_title);
+                        }
+                    }
+                    //console.log('list_stories:'+JSON.stringify(list_stories));
+                    var data = JSON.stringify({
+                        "draw": req.body.draw,
+                        "recordsFiltered": recordsFiltered,
+                        "recordsTotal": recordsTotal,
+                        "data": list_stories
+                    });
+                    res.send(data);
+            });
+        });
+    });
+};
