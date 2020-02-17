@@ -7,28 +7,21 @@ block content
 		<thead>
 			<tr>
 				th(width='3%') #{translation.Rownum}
-				th(width='15%') #{translation.Word}
-				th(width='31%') #{translation.Meaning}
+				th(width='60%') #{translation.Sentence}
 				th(width='15%') #{translation.Book}
 				th(width='15%') #{translation.Story}
-				th(width='7%') #{translation.Skill}
-				th(width='7%') #{translation.Importance}
 				th(width='7%') #{translation.CreateDate}
 			</tr>
 		</thead>
 		<tfoot>
 			<tr>
 				th(width='3%') #{translation.Rownum}
-				th(width='15%') #{translation.Word}
-				th(width='31%') #{translation.Meaning}
+				th(width='60%') #{translation.Sentence}
 				th(width='15%') #{translation.Book}
 				th(width='15%') #{translation.Story}
-				th(width='7%') #{translation.Skill}
-				th(width='7%') #{translation.Importance}
 				th(width='7%') #{translation.CreateDate}
 			</tr>
 		</tfoot>
 	</table>
-	<input type="hidden" id="book_id" name="book_id" value="#{book_id}" />	
 	<script src="/js/storyWordList.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=ginit" async defer></script>
