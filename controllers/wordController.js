@@ -587,7 +587,7 @@ exports.word_datatable_list = function (req, res, next) {
                                     list_words[i].title = list_words[i].oxford_word.word;
                                 }
                             }
-                            //console.log('list_words:'+JSON.stringify(list_words));
+                            console.log('list_words:'+JSON.stringify(list_words));
                             var data = JSON.stringify({
                                 "draw": req.body.draw,
                                 "recordsFiltered": recordsFiltered,

@@ -1499,7 +1499,7 @@ exports.story_word_datatable_list = function (req, res, next) {
     } else {
         searchStr = {user: { $in: [req.session.userId]}};
     }
-
+    var list_words = [];
     Story.count({user: { $in: [req.session.userId]}}, function (err, c) {
         recordsTotal = c;
         console.log('recordsTotal:'+c);
@@ -1521,7 +1521,7 @@ exports.story_word_datatable_list = function (req, res, next) {
                             list_stories[i].create_date = moment(list_stories[i].create_date).format('YYYY-MM-DD');
                         }
                         list_stories[i].title = entities.decode(list_stories[i].title);
-                        if (list_stories[i].book_title != null && list_stories[i].book_title != null) {
+                        if (list_stories[i].book_title != null) {
                             list_stories[i].book_title = entities.decode(list_stories[i].book_title);
                         }
                     }
