@@ -1469,7 +1469,7 @@ exports.story_word_datatable = function (req, res, next) {
 function getSorts(query) {
     var sortables;
     if (query.order[0].column == '2') {
-        sortables = { book_title: query.order[0].dir };
+        sortables = { btitle: query.order[0].dir };
     } else if (query.order[0].column == '3') {
         sortables = { title: query.order[0].dir };
     } else {
@@ -1521,16 +1521,23 @@ exports.story_word_datatable_list = function (req, res, next) {
                             list_stories[i].create_date = moment(list_stories[i].create_date).format('YYYY-MM-DD');
                         }
                         list_stories[i].title = entities.decode(list_stories[i].title);
-                        if (list_stories[i].book_title != null) {
-                            list_stories[i].book_title = entities.decode(list_stories[i].book_title);
+                        if (list_stories[i].btitle != null) {
+                            list_stories[i].btitle = entities.decode(list_stories[i].btitle);
                         }
+                        var book;
+                        if (list_stories[i].book != null && list_stories[i].book.title != null) {
+                            book.push({_id: list_stories[i].book._id, title: list_stories[i].book.title});
+                        }
+                        list_words.push({_id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle});
+                        //string-strip-html
                     }
+                    
                     //console.log('list_stories:'+JSON.stringify(list_stories));
                     var data = JSON.stringify({
                         "draw": req.body.draw,
                         "recordsFiltered": recordsFiltered,
                         "recordsTotal": recordsTotal,
-                        "data": list_stories
+                        "data": list_words
                     });
                     res.send(data);
             });

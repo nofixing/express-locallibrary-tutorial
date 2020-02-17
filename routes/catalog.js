@@ -137,6 +137,10 @@ router.post('/story_oxford_ajaxt', story_controller.story_oxford_ajaxt);
 
 router.post('/story_oxford_ajaxs', story_controller.story_oxford_ajaxs);
 
+router.get('/story_word_datatable', story_controller.story_word_datatable);
+
+router.post('/story_word_datatable_list', story_controller.story_word_datatable_list);
+
 router.get('/stories/withdrawal', story_controller.withdrawal);
 
 router.get('/privacy_policy', story_controller.privacy_policy);
