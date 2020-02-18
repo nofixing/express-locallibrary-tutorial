@@ -65,7 +65,7 @@ $( document ).ready(function() {
 		select: true,
 		buttons: [],
 		initComplete : function() {
-        //$(".dt-buttons").hide();
+        $(".dt-buttons").hide();
         $('#searchResults_filter input').addClass('form-control');
 				$('#searchResults_filter input').addClass('form-control-sm');
 				//$('.dataTables_filter input').addClass("form-control");
