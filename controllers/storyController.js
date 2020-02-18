@@ -1539,7 +1539,7 @@ exports.story_word_datatable_list = function (req, res, next) {
                         //string-strip-html
                     }
                     
-                    //console.log('list_stories:'+JSON.stringify(list_stories));
+                    console.log('list_words:\n'+JSON.stringify(list_words)+'\n\n');
                     var data = JSON.stringify({
                         "draw": req.body.draw,
                         "recordsFiltered": recordsFiltered,
