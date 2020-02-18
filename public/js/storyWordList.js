@@ -64,7 +64,8 @@ $( document ).ready(function() {
 		} ],
 		select: true,
 		initComplete : function() {
-				$('#searchResults_filter input').addClass('form-control');
+        $("#searchResults_wrapper").removeClass("dt-buttons");
+        $('#searchResults_filter input').addClass('form-control');
 				$('#searchResults_filter input').addClass('form-control-sm');
 				//$('.dataTables_filter input').addClass("form-control");
 				$('.dataTables_filter input').css("width", "300px");
