@@ -3,7 +3,7 @@ extends layout2
 block content
 	h1(style='margin-top:100px;') #{translation.WordList}
 	h5(style='margin-top:20px; color:#800080;') #{translation.OpenTipWords}
-	<table id="example" class="table table-striped table-bordered" style="width:100%">
+	<table id="searchResults" class="table table-striped table-bordered" style="width:100%">
 		<thead>
 			<tr>
 				th(width='3%') #{translation.Rownum}
@@ -23,5 +23,6 @@ block content
 			</tr>
 		</tfoot>
 	</table>
+	<input type="hidden" id="searchWord" name="searchWord" value="#{searchWord}" />
 	<script src="/js/storyWordList.js"></script>
 	<script src="https://apis.google.com/js/platform.js?onload=ginit" async defer></script>

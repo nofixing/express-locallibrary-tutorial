@@ -1461,9 +1461,12 @@ exports.story_oxford_ajaxs = function(req, res, next) {
 };
 
 exports.story_word_datatable = function (req, res, next) {
+    var searchWord = '';
+    if(typeof req.query.searchWord != 'undefined') {
+        searchWord = req.query.searchWord;
+    }
     var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-    res.render('story_word_list', { title: 'Story Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt });
-
+    res.render('story_word_list', { title: 'Story Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, searchWord: searchWord });
 };
 
 function getSorts(query) {
@@ -1482,6 +1485,11 @@ function getSorts(query) {
 exports.story_word_datatable_list = function (req, res, next) {
     console.log('req.body.action:'+req.body.action);
     console.log('req.body:'+JSON.stringify(req.body));
+    var searchWord = '';
+    if(req.body.searchWord != '') {
+        var regex = new RegExp(req.body.searchWord, "i");
+        searchWord = { user: { $in: [req.session.userId]}, content: { $regex: '.*' + req.body.searchWord + '.*' } };
+    }
     var sortables = getSorts(req.body);
     console.log('sortables:'+JSON.stringify(sortables));
     var searchStr = req.body.search.value;
@@ -1490,14 +1498,9 @@ exports.story_word_datatable_list = function (req, res, next) {
     var recordsFiltered = 0;
     if (req.body.search.value) {
         var regex = new RegExp(req.body.search.value, "i");
-        searchStr = {
-            user: { $in: [req.session.userId]},
-            $or: [{
-                'content': { $regex: '.*' + req.body.search.value + '.*' }
-            }]
-        };
+        searchStr = { user: { $in: [req.session.userId]}, content: { $regex: '.*' + req.body.search.value + '.*' } };
     } else {
-        searchStr = {user: { $in: [req.session.userId]}};
+        searchStr = searchWord;
     }
     var list_words = [];
     Story.count({user: { $in: [req.session.userId]}}, function (err, c) {
@@ -1528,7 +1531,7 @@ exports.story_word_datatable_list = function (req, res, next) {
                         if (list_stories[i].book != null && list_stories[i].book.title != null) {
                             book.push({_id: list_stories[i].book._id, title: list_stories[i].book.title});
                         }
-                        list_words.push({_id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle});
+                        list_words.push({_id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle, sentence: 'sample sentence'});
                         //string-strip-html
                     }
                     
