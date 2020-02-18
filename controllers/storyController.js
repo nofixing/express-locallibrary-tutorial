@@ -1534,7 +1534,7 @@ exports.story_word_datatable_list = function (req, res, next) {
                         } else {
                             book = {};
                         }
-                        var feed = {_id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle, sentence: 'sample sentence'};
+                        var feed = {rownum: list_stories[i].rownum, _id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle, sentence: 'sample sentence'};
                         list_words.push(feed);
                         //string-strip-html
                     }
