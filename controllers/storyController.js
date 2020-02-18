@@ -1530,7 +1530,9 @@ exports.story_word_datatable_list = function (req, res, next) {
                         }
                         var book;
                         if (list_stories[i].book != null && list_stories[i].book.title != null) {
-                            book.push({_id: list_stories[i].book._id, title: list_stories[i].book.title});
+                            book = {_id: list_stories[i].book._id, title: list_stories[i].book.title};
+                        } else {
+                            book = {};
                         }
                         var feed = {_id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle, sentence: 'sample sentence'};
                         list_words.push(feed);
