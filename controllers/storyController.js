@@ -1508,6 +1508,15 @@ exports.story_word_datatable_list = function (req, res, next) {
         searchStr = searchWord;
     }
     var list_words = [];
+    if (sword == '') {
+        var data = JSON.stringify({
+            "draw": req.body.draw,
+            "recordsFiltered": recordsFiltered,
+            "recordsTotal": recordsTotal,
+            "data": list_words
+        });
+        res.send(data);
+    }
     Story.count({user: { $in: [req.session.userId]}}, function (err, c) {
         recordsTotal = c;
         console.log('recordsTotal:'+c);
@@ -1563,8 +1572,6 @@ exports.story_word_datatable_list = function (req, res, next) {
                             var feed = {rownum: list_stories[i].rownum, _id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle, sentence: sts.trim()};
                             list_words.push(feed);
                         }
-                        
-                        //string-strip-html
                     }
                     
                     console.log('list_words:\n'+JSON.stringify(list_words)+'\n\n');
