@@ -11,6 +11,7 @@ var OxfordWord = require('../models/oxfordWord');
 var fs = require('fs');
 var path = require('path');
 var moment = require('moment');
+const stripHtml = require("string-strip-html");
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -1538,10 +1539,12 @@ exports.story_word_datatable_list = function (req, res, next) {
                         } else {
                             book = {};
                         }
+                        /*
                         var feed = {rownum: list_stories[i].rownum, _id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle, sentence: 'sample sentence'};
                         list_words.push(feed);
-                        /*
-                        var wrd = list_stories[i].content;
+                        */
+                        
+                        var wrd = stripHtml(list_stories[i].content);
                         var rwrd = wrd.toLowerCase();
                         var gs = sword;
                         var rgs = gs.toLowerCase();
@@ -1561,7 +1564,7 @@ exports.story_word_datatable_list = function (req, res, next) {
                             var feed = {rownum: list_stories[i].rownum, _id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle, sentence: sts.trim()};
                             list_words.push(feed);
                         }
-                        */
+                        
                         //string-strip-html
                     }
                     
