@@ -1490,7 +1490,7 @@ exports.story_word_datatable_list = function (req, res, next) {
     var regex;
     if(req.body.searchWord != '') {
         regex = new RegExp("^.*" + req.body.searchWord.toLowerCase() + '.*', "i");
-        searchWord = { user: { $in: [req.session.userId]}, content: $regex };
+        searchWord = { user: { $in: [req.session.userId]}, content: regex };
     }
     var sortables = getSorts(req.body);
     console.log('sortables:'+JSON.stringify(sortables));
@@ -1500,7 +1500,7 @@ exports.story_word_datatable_list = function (req, res, next) {
     var recordsFiltered = 0;
     if (req.body.search.value) {
         regex = new RegExp("^.*" + req.body.search.value.toLowerCase() + '.*', "i");
-        searchStr = { user: { $in: [req.session.userId]}, content: $regex };
+        searchStr = { user: { $in: [req.session.userId]}, content: regex };
     } else {
         searchStr = searchWord;
     }
