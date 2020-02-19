@@ -467,23 +467,23 @@ exports.word_datatable_list = function (req, res, next) {
         console.log('sortables:'+JSON.stringify(sortables));
         var searchStr = req.body.search.value;
         
-
+        var regex;
         var recordsTotal = 0;
         var recordsFiltered = 0;
         if(book_id != '') {
             console.log('We are here:');
             if (req.body.search.value) {
-                var regex = new RegExp(req.body.search.value, "i");
+                regex = new RegExp("^.*" + req.body.search.value.toLowerCase() + ".*", "i");
                 searchStr = {
                     user: { $in: [req.session.userId]}, book: req.body.book_id,
                     $or: [{
-                        'title': { $regex: '.*' + req.body.search.value + '.*' }
+                        'title': regex
                     }, {
-                        'content': { $regex: '.*' + req.body.search.value + '.*' }
+                        'content': regex
                     }, {
-                        'book_title': { $regex: '.*' + req.body.search.value + '.*' }
+                        'book_title': regex
                     }, {
-                        'story_title': { $regex: '.*' + req.body.search.value + '.*' }
+                        'story_title': regex
                     }]
                 };
             } else {
@@ -537,17 +537,17 @@ exports.word_datatable_list = function (req, res, next) {
         } else {
 
             if (req.body.search.value) {
-                var regex = new RegExp(req.body.search.value, "i");
+                regex = new RegExp("^.*" + req.body.search.value.toLowerCase() + ".*", "i");
                 searchStr = {
                     user: { $in: [req.session.userId]},
                     $or: [{
-                        'title': { $regex: '.*' + req.body.search.value + '.*' }
+                        'title': regex
                     }, {
-                        'content': { $regex: '.*' + req.body.search.value + '.*' }
+                        'content': regex
                     }, {
-                        'book_title': { $regex: '.*' + req.body.search.value + '.*' }
+                        'book_title': regex
                     }, {
-                        'story_title': { $regex: '.*' + req.body.search.value + '.*' }
+                        'story_title': regex
                     }]
                 };
             } else {
