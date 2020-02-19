@@ -1487,8 +1487,9 @@ exports.story_word_datatable_list = function (req, res, next) {
     console.log('req.body.action:'+req.body.action);
     console.log('req.body:'+JSON.stringify(req.body));
     var searchWord = '';
+    var regex;
     if(req.body.searchWord != '') {
-        var regex = new RegExp(req.body.searchWord, "i");
+        regex = new RegExp(req.body.searchWord, "i");
         searchWord = { user: { $in: [req.session.userId]}, content: { $regex: '.*' + req.body.searchWord + '.*' } };
     }
     var sortables = getSorts(req.body);
@@ -1498,7 +1499,7 @@ exports.story_word_datatable_list = function (req, res, next) {
     var recordsTotal = 0;
     var recordsFiltered = 0;
     if (req.body.search.value) {
-        var regex = new RegExp(req.body.search.value, "i");
+        regex = new RegExp(req.body.search.value, "i");
         searchStr = { user: { $in: [req.session.userId]}, content: { $regex: '.*' + req.body.search.value + '.*' } };
     } else {
         searchStr = searchWord;
@@ -1536,6 +1537,24 @@ exports.story_word_datatable_list = function (req, res, next) {
                         }
                         var feed = {rownum: list_stories[i].rownum, _id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle, sentence: 'sample sentence'};
                         list_words.push(feed);
+                        /*
+                        var wrd = list_stories[i].content;
+                        var gs = "son";
+                        var idx = 0;
+                        for (j = wrd.indexOf(gs);
+                            j >= 0;
+                            j = wrd.indexOf(gs, j + 1))
+                        {
+                        var pprg = wrd.substring(idx, j);
+                        var plg = wrd.substring(0, j);
+                        var pst = pprg.substring(pprg.lastIndexOf('.')+1);
+                        var nprg = wrd.substring(j);
+                        var nst = nprg.substring(0, nprg.indexOf('.')+1);
+                        idx = plg.length + nprg.indexOf('.') + 2;
+                        var sts = pst + nst;
+                        console.log(sts.trim());
+                        }
+                        */
                         //string-strip-html
                     }
                     

@@ -5,10 +5,12 @@ $( document ).ready(function() {
 		idSrc: "_id",
 		fields: [ {
 				label: "Sentence:",
-				name: "sentence"
+				name: "sentence",
+				type: "readonly"
 			}, {
 				label: "Title:",
-				name: "title"
+				name: "title",
+				type: "readonly"
 			}, {
 				label: "Book:",
 				name: "btitle",
@@ -38,7 +40,7 @@ $( document ).ready(function() {
 		order: [4, 'desc'],
 		columns: [
 			{ data: "rownum", orderable: false },
-      { data: "sentence", defaultContent: "" },
+      { data: "sentence", defaultContent: "", orderable: false },
 			{ data: "title", defaultContent: "" },
 			{ data: "btitle", defaultContent: "" },
 			{ data: "create_date", defaultContent: "" }
@@ -48,9 +50,7 @@ $( document ).ready(function() {
 			"data": "title",
 			"render": function ( data, type, row, meta ) {
         return '<a href="/catalog/story/'+row._id+'">'+data+'</a>';
-        
-        
-			}
+      }
 		},{
 			"targets": 3,
 			"data": "btitle",
