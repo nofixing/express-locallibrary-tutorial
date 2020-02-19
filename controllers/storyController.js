@@ -1488,7 +1488,9 @@ exports.story_word_datatable_list = function (req, res, next) {
     console.log('req.body:'+JSON.stringify(req.body));
     var searchWord = '';
     var regex;
+    var sword = '';
     if(req.body.searchWord != '') {
+        sword = req.body.searchWord;
         regex = new RegExp("^.*" + req.body.searchWord.toLowerCase() + ".*", "i");
         searchWord = { user: { $in: [req.session.userId]}, content: regex };
     }
@@ -1499,6 +1501,7 @@ exports.story_word_datatable_list = function (req, res, next) {
     var recordsTotal = 0;
     var recordsFiltered = 0;
     if (req.body.search.value) {
+        sword = req.body.search.value;
         regex = new RegExp("^.*" + req.body.search.value.toLowerCase() + ".*", "i");
         searchStr = { user: { $in: [req.session.userId]}, content: regex };
     } else {
@@ -1539,20 +1542,24 @@ exports.story_word_datatable_list = function (req, res, next) {
                         list_words.push(feed);
                         /*
                         var wrd = list_stories[i].content;
-                        var gs = "son";
+                        var rwrd = wrd.toLowerCase();
+                        var gs = sword;
+                        var rgs = gs.toLowerCase();
                         var idx = 0;
-                        for (j = wrd.indexOf(gs);
+                        for (let j = rwrd.indexOf(rgs);
                             j >= 0;
-                            j = wrd.indexOf(gs, j + 1))
+                            j = rwrd.indexOf(rgs, j + 1))
                         {
-                        var pprg = wrd.substring(idx, j);
-                        var plg = wrd.substring(0, j);
-                        var pst = pprg.substring(pprg.lastIndexOf('.')+1);
-                        var nprg = wrd.substring(j);
-                        var nst = nprg.substring(0, nprg.indexOf('.')+1);
-                        idx = plg.length + nprg.indexOf('.') + 2;
-                        var sts = pst + nst;
-                        console.log(sts.trim());
+                            var pprg = wrd.substring(idx, j);
+                            var plg = wrd.substring(0, j);
+                            var pst = pprg.substring(pprg.lastIndexOf('.')+1);
+                            var nprg = wrd.substring(j);
+                            var nst = nprg.substring(0, nprg.indexOf('.')+1);
+                            idx = plg.length + nprg.indexOf('.') + 2;
+                            var sts = pst + nst;
+                            console.log(sts.trim());
+                            var feed = {rownum: list_stories[i].rownum, _id: list_stories[i]._id, title: list_stories[i].title, create_date: list_stories[i].create_date, book: book, btitle: list_stories[i].btitle, sentence: sts.trim()};
+                            list_words.push(feed);
                         }
                         */
                         //string-strip-html
