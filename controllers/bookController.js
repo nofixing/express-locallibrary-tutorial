@@ -195,11 +195,11 @@ exports.book_create_post = [
     body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('author', 'Author must not be empty.').isLength({ min: 1 }).trim(),
     body('summary', 'Summary must not be empty.').isLength({ min: 1 }).trim(),
-    //body('genre', 'Genre must be choose.').isLength({ min: 1 }),
+    body('genre', 'Genre must be choose.').isLength({ min: 1 }),
 
     // Sanitize fields.
-    sanitizeBody('*').trim().escape(),
-    sanitizeBody('genre.*').trim().escape(),
+    //sanitizeBody('*').trim().escape(),
+    //sanitizeBody('genre.*').trim().escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
         
