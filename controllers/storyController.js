@@ -826,6 +826,9 @@ exports.story_update_post = [
             req.body.genre=[];
             else
             req.body.genre=new Array(req.body.genre);
+            console.log('req.body.genre first:'+req.body.genre);
+        } else {
+            console.log('req.body.genre second:'+req.body.genre);
         }
         next();
     },
