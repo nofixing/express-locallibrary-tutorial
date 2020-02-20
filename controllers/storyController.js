@@ -299,7 +299,7 @@ exports.story_detail = function(req, res, next) {
         results.story.title = entities.decode(results.story.title);
         var book_title = '';
         var book_id = '';
-        if (typeof results.story.book != 'undefined' && results.story.book != ''){
+        if (typeof results.story.book != 'undefined'){
             book_title = entities.decode(results.story.book.title);
             book_id = results.story.book._id;
         }
@@ -893,24 +893,43 @@ exports.story_update_post = [
             return;
         }
         else {
-            Story.update({_id: req.params.id}, {
-                title: req.body.title,
-                author: req.body.author,
-                content: req.body.content,
-                reference: req.body.reference,
-                book: req.body.book == '' ? null: req.body.book,
-                btitle: req.body.btitle,
-                open: req.body.open,
-                order: req.body.order,
-                chapter: req.body.chapter,
-                title_font: req.body.title_font,
-                title_size: req.body.title_size
-            }, function(err, theStory) {
-                if (err) { return next(err); }
-                // Successful - redirect to story detail page.
-                console.log("story updated:"+theStory);
-                res.redirect("/catalog/story/"+req.params.id);
-            });
+            if(req.body.book == '') {
+                Story.update({_id: req.params.id}, {
+                    title: req.body.title,
+                    author: req.body.author,
+                    content: req.body.content,
+                    reference: req.body.reference,
+                    genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
+                    open: req.body.open,
+                    title_font: req.body.title_font,
+                    title_size: req.body.title_size
+                }, function(err, theStory) {
+                    if (err) { return next(err); }
+                    // Successful - redirect to story detail page.
+                    res.redirect("/catalog/story/"+req.params.id);
+                });
+            } else {
+                Story.update({_id: req.params.id}, {
+                    title: req.body.title,
+                    author: req.body.author,
+                    content: req.body.content,
+                    reference: req.body.reference,
+                    book: req.body.book,
+                    btitle: req.body.btitle,
+                    open: req.body.open,
+                    order: req.body.order,
+                    chapter: req.body.chapter,
+                    title_font: req.body.title_font,
+                    title_size: req.body.title_size
+                }, function(err, theStory) {
+                    if (err) { return next(err); }
+                    // Successful - redirect to story detail page.
+                    console.log("story updated:"+theStory);
+                    res.redirect("/catalog/story/"+req.params.id);
+                });
+            }
+            
+            
             
             // Data from form is valid. Update the record.
             /*
