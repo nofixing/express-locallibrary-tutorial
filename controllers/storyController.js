@@ -613,7 +613,7 @@ exports.story_create_post = [
     // Validate fields.
     body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
-    body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
+    //body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
   
     // Sanitize fields.
     //sanitizeBody('genre.*').trim().escape(),
@@ -833,7 +833,7 @@ exports.story_update_post = [
     // Validate fields.
     body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
-    body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
+    //body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
   
     // Sanitize fields.
     //sanitizeBody('genre.*').trim().escape(),
