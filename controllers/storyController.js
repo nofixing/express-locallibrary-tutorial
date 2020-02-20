@@ -819,17 +819,6 @@ exports.story_update_get = function(req, res, next) {
 // Handle story update on POST.
 exports.story_update_post = [
 
-    // Validate fields.
-    body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
-    body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
-    body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
-
-    // Sanitize fields.
-    sanitizeBody('title').trim().escape(),
-    sanitizeBody('content').trim().escape(),
-    sanitizeBody('genre.*').trim().escape(),
-
-    // Process request after validation and sanitization.
     (req, res, next) => {
         if(!(req.body.genre instanceof Array)){
             if(typeof req.body.genre==='undefined')
