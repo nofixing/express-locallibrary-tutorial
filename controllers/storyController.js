@@ -819,20 +819,6 @@ exports.story_update_get = function(req, res, next) {
 // Handle story update on POST.
 exports.story_update_post = [
 
-    // Convert the genre to an array.
-    (req, res, next) => {
-        if(!(req.body.genre instanceof Array)){
-            if(typeof req.body.genre==='undefined')
-            req.body.genre=[];
-            else
-            req.body.genre=new Array(req.body.genre);
-            console.log('req.body.genre first:'+req.body.genre);
-        } else {
-            console.log('req.body.genre second:'+req.body.genre);
-        }
-        next();
-    },
-   
     // Validate fields.
     body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
