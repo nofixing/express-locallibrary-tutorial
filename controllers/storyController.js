@@ -1463,8 +1463,14 @@ exports.story_oxford_ajaxs = function(req, res, next) {
 
 exports.story_word_datatable = function (req, res, next) {
     var searchWord = '';
-    if(typeof req.query.searchWord != 'undefined') {
-        searchWord = req.query.searchWord;
+    if (req.method === "GET") {
+        if(typeof req.query.searchWord != 'undefined') {
+            searchWord = req.query.searchWord;
+        }
+    } else {
+        if(typeof req.body.searchWord != 'undefined') {
+            searchWord = req.body.searchWord;
+        }
     }
     var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
     res.render('story_word_list', { title: 'Story Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, searchWord: searchWord });
