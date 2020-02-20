@@ -616,7 +616,7 @@ exports.story_create_post = [
     body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
   
     // Sanitize fields.
-    sanitizeBody('genre.*').trim().escape(),
+    //sanitizeBody('genre.*').trim().escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
         
@@ -818,17 +818,27 @@ exports.story_update_get = function(req, res, next) {
 
 // Handle story update on POST.
 exports.story_update_post = [
-
+    // Convert the genre to an array.
     (req, res, next) => {
         if(!(req.body.genre instanceof Array)){
             if(typeof req.body.genre==='undefined')
             req.body.genre=[];
             else
             req.body.genre=new Array(req.body.genre);
-            console.log('req.body.genre third:'+req.body.genre);
-        } else {
-            console.log('req.body.genre forth:'+req.body.genre);
         }
+        console.log(req.body.genre);
+        next();
+    },
+    
+    // Validate fields.
+    body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
+    body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
+    body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
+  
+    // Sanitize fields.
+    //sanitizeBody('genre.*').trim().escape(),
+    // Process request after validation and sanitization.
+    (req, res, next) => {
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
@@ -885,7 +895,7 @@ exports.story_update_post = [
                     author: req.body.author,
                     content: req.body.content,
                     reference: req.body.reference,
-                    $push: {genre: { $each: req.body.genre }},
+                    genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
                     open: req.body.open,
                     title_font: req.body.title_font,
                     title_size: req.body.title_size
