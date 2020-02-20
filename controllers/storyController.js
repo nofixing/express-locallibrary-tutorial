@@ -299,7 +299,7 @@ exports.story_detail = function(req, res, next) {
         results.story.title = entities.decode(results.story.title);
         var book_title = '';
         var book_id = '';
-        if (typeof results.story.book != 'undefined'){
+        if (typeof results.story.book != 'undefined' && results.story.book != ''){
             book_title = entities.decode(results.story.book.title);
             book_id = results.story.book._id;
         }
