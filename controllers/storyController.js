@@ -899,7 +899,7 @@ exports.story_update_post = [
                     author: req.body.author,
                     content: req.body.content,
                     reference: req.body.reference,
-                    $push: {genre: req.body.genr},
+                    $push: {genre: { $each: req.body.genre }},
                     open: req.body.open,
                     title_font: req.body.title_font,
                     title_size: req.body.title_size
