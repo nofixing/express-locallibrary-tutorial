@@ -845,7 +845,15 @@ exports.story_update_post = [
 
     // Process request after validation and sanitization.
     (req, res, next) => {
-
+        if(!(req.body.genre instanceof Array)){
+            if(typeof req.body.genre==='undefined')
+            req.body.genre=[];
+            else
+            req.body.genre=new Array(req.body.genre);
+            console.log('req.body.genre third:'+req.body.genre);
+        } else {
+            console.log('req.body.genre forth:'+req.body.genre);
+        }
         // Extract the validation errors from a request.
         const errors = validationResult(req);
 
