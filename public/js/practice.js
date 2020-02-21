@@ -53,7 +53,7 @@ $(function(){
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
     
     $( "#jb_content" ).bind('dblclick', function(e){
-        search();
+        dicSearch();
         imageSearch();
         createWord();
     });
@@ -778,36 +778,47 @@ function dicSearch() {
     }
     $('#dic_frame').attr('src', dicAddr);
     */
-   var data = {};
-   data.word = selectText.replace(/ /g, '_');
-   var httpType = 'https://';
-   if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
-   kword = '';
-   $.ajax({
-       type: 'POST',
-       data: JSON.stringify(data),
-       contentType: 'application/json',
-       url: httpType+$('#hostname').val()+'/catalog/story_oxford_ajax',
-       async: false,
-       success : function(data) {
-            console.log('data.dic_kcontent:'+data.dic_kcontent+";");
-            if (typeof data.oxfordWord_id != 'undefined') {
-                oxfordWord_id = data.oxfordWord_id;
-            } else {
+    var selection;
+    
+    if (window.getSelection) {
+      selection = window.getSelection();
+    } else if (document.selection) {
+      selection = document.selection.createRange();
+    }
+    selectText = selection.toString().trim();
+    
+    if (selectText.length > 0) {
+        var data = {};
+        data.word = selectText.replace(/ /g, '_');
+        var httpType = 'https://';
+        if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
+        kword = '';
+        $.ajax({
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            url: httpType+$('#hostname').val()+'/catalog/story_oxford_ajax',
+            async: false,
+            success : function(data) {
+                console.log('data.dic_kcontent:'+data.dic_kcontent+";");
+                if (typeof data.oxfordWord_id != 'undefined') {
+                    oxfordWord_id = data.oxfordWord_id;
+                } else {
+                    oxfordWord_id = '';
+                }
+                if (typeof data.oxfordWord_word != 'undefined') {
+                    oxfordWord_word = data.oxfordWord_word.replace(/_/g, ' ');
+                } else {
+                    oxfordWord_word = '';
+                }
+                processDicData(data.dic_content, data.dic_kcontent, data.translation);
+            },
+            error: function(xhr, status, error) {
                 oxfordWord_id = '';
-            }
-            if (typeof data.oxfordWord_word != 'undefined') {
-                oxfordWord_word = data.oxfordWord_word.replace(/_/g, ' ');
-            } else {
                 oxfordWord_word = '';
             }
-            processDicData(data.dic_content, data.dic_kcontent, data.translation);
-       },
-       error: function(xhr, status, error) {
-        oxfordWord_id = '';
-        oxfordWord_word = '';
-      }
-   });
+        });
+    }
 }
 
 function wordList() {
