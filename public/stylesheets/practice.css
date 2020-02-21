@@ -564,31 +564,31 @@ ul.tite li {
     font-size: 10em;
 }
 
-#toolbar-container .ql-bold span[data-label="100"]::before {
+#toolbar-container .ql-weight span[data-label="100"]::before {
     font-weight: 100;
 }
-#toolbar-container .ql-bold span[data-label="200"]::before {
+#toolbar-container .ql-weight span[data-label="200"]::before {
     font-weight: 200;
 }
-#toolbar-container .ql-bold span[data-label="300"]::before {
+#toolbar-container .ql-weight span[data-label="300"]::before {
     font-weight: 300;
 }
-#toolbar-container .ql-bold span[data-label="normal"]::before {
+#toolbar-container .ql-weight span[data-label="normal"]::before {
     font-weight: normal;
 }
-#toolbar-container .ql-bold span[data-label="500"]::before {
+#toolbar-container .ql-weight span[data-label="500"]::before {
     font-weight: 500;
 }
-#toolbar-container .ql-bold span[data-label="600"]::before {
+#toolbar-container .ql-weight span[data-label="600"]::before {
     font-weight: 600;
 }
-#toolbar-container .ql-bold span[data-label="bold"]::before {
+#toolbar-container .ql-weight span[data-label="bold"]::before {
     font-weight: bold;
 }
-#toolbar-container .ql-bold span[data-label="800"]::before {
+#toolbar-container .ql-weight span[data-label="800"]::before {
     font-weight: 800;
 }
-#toolbar-container .ql-bold span[data-label="900"]::before {
+#toolbar-container .ql-weight span[data-label="900"]::before {
     font-weight: 900;
 }
 
