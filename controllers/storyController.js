@@ -412,7 +412,7 @@ exports.story_detail = function(req, res, next) {
                 } else {
                     highlightHtml = results.words[i].title;
                 }
-                txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'gi'), highlightHtml);
+                txt = txt.replace(new RegExp('(' + '\\b' + results.words[i].title + '\\b' + ')', 'i'), highlightHtml);
             }
             results.story.content = txt;
             console.log('sTag:'+sTag);
