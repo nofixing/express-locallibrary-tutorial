@@ -32,10 +32,6 @@ var toolbarOptions = [
   Size.whitelist = ['1em', '1.5em', '2em', '2.5em', '3em', '3.5em', '4em', '6em', '8em', '10em'];
   Quill.register(Size, true);
 
-  var Weight = Quill.import('formats/bold');
-  Weight.whitelist = ['100', '200', '300', 'normal', '500', '600', 'bold', '800', '900'];
-  Quill.register(Weight, true);
-
 var Inline = Quill.import('blots/inline');
 
 class LinkBlot extends Inline {
