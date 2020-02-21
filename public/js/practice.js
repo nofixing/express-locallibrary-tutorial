@@ -60,6 +60,7 @@ $(function(){
 
     function createWord() {
         var ldxx = 0;
+        var isNot = true;
         $('.wList').each(function(idx) {
             console.log("previous words:"+$('.ipt')[idx].value);
             if (selectText.toLowerCase() == $('.ipt')[idx].value.toLowerCase()) {
@@ -67,8 +68,10 @@ $(function(){
                 selectText = '';
             }
             ldxx = idx;
+            isNot = false;
         });
         ldxx += 1;
+        if (isNot) ldxx = 0;
 
         if (selectText.length > 0) {
             var data = {};
