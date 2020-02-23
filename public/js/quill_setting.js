@@ -211,6 +211,10 @@ $('.ql-weight').on('change', function() {
   if (range) {
     //quill.format('pan', 'fw'+this.value);
     quill.format('color', 'red');
+    console.log('range.index'+range.index);
+  } else {
+    console.log('not range.index');
+    quill.format('color', 'red');
   }
 });
 /*
