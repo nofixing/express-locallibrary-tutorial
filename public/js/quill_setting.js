@@ -209,7 +209,8 @@ $('.ql-weight').on('change', function() {
   console.log('ql-weight changed');
   var range = quill.getSelection();
   if (range) {
-    quill.format('pan', 'fw'+this.value);
+    //quill.format('pan', 'fw'+this.value);
+    quill.format('color', 'red');
   }
 });
 /*
