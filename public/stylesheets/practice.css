@@ -564,6 +564,25 @@ ul.tite li {
     font-size: 10em;
 }
 
+#toolbar-container .ql-weight span[data-label="100"]::after { content: "100"; font-weight: 100; }
+#toolbar-container .ql-weight span[data-label="200"]::after { content: "200"; font-weight: 200; }
+#toolbar-container .ql-weight span[data-label="300"]::after { content: "300"; font-weight: 300; }
+#toolbar-container .ql-weight span[data-label="normal"]::after { content: "normal"; font-weight: normal; }
+#toolbar-container .ql-weight span[data-label="500"]::after { content: "500"; font-weight: 500; }
+#toolbar-container .ql-weight span[data-label="600"]::after { content: "600"; font-weight: 600; }
+#toolbar-container .ql-weight span[data-label="bold"]::after { content: "bold"; font-weight: bold; }
+#toolbar-container .ql-weight span[data-label="800"]::after { content: "800"; font-weight: 800; }
+#toolbar-container .ql-weight span[data-label="900"]::after { content: "900"; font-weight: 900; }
+.fw100 {font-weight: 100;}
+.fw200 {font-weight: 200;}
+.fw300 {font-weight: 300;}
+.fwnormal {font-weight: normal;}
+.fw500 {font-weight: 500;}
+.fw600 {font-weight: 600;}
+.fwbold {font-weight: bold;}
+.fw800 {font-weight: 800;}
+.fw900 {font-weight: 900;}
+
 .ql-audio:after {
     content: "Audio";
 }

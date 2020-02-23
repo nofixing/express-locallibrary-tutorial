@@ -31,7 +31,11 @@ var toolbarOptions = [
   var Size = Quill.import('attributors/style/size');
   Size.whitelist = ['1em', '1.5em', '2em', '2.5em', '3em', '3.5em', '4em', '6em', '8em', '10em'];
   Quill.register(Size, true);
-
+/*
+  var weight = Quill.import('formats/bold');
+  weight.whitelist = ['100', '200', '300', 'normal', '500', '600', 'bold', '800', '900'];
+  Quill.register(weight, true);
+*/
 var Inline = Quill.import('blots/inline');
 
 class LinkBlot extends Inline {
@@ -57,6 +61,18 @@ LinkBlot.blotName = 'tooltip';
 LinkBlot.tagName = 'a';
 
 Quill.register(LinkBlot, true);
+
+class TagBlot extends Inline {
+  static create(url) {
+    var node = super.create();
+    node.setAttribute('class', url);
+    return node;
+  }
+}
+TagBlot.blotName = 'pan';
+TagBlot.tagName = 'span';
+
+Quill.register(TagBlot, true);
 
 var BlockEmbed = Quill.import('blots/block/embed');
 class AudioBlot extends BlockEmbed {
@@ -141,6 +157,7 @@ var audioButton = document.querySelector('.ql-audio');
 audioButton.addEventListener('click', function(event) {
   console.log('audioButton Clicked');
   var range = quill.getSelection();
+  
   var value = prompt('What is the audio src URL');
   if(value){
     console.log('audioButton audio src Entered ->:'+value);
@@ -149,6 +166,20 @@ audioButton.addEventListener('click', function(event) {
     quill.setSelection(range.index + 2, Quill.sources.SILENT);
   }
   event.preventDefault();
+  
+  //quill.formatText(range.index, range.length, 'font-weight', 'bold');
+  /*
+  quill.updateContents(
+    {
+      ops: [
+        { retain: range.index },
+        { retain: range.length, attributes: { style: 'fontWeight: 900' } }
+      ]
+    }
+    , Quill.sources.USER
+  );
+  */
+  //  $('#snow-container').css('font-weight', '900');
 });
 /*
 var customButton = document.querySelector('.ql-omega');
@@ -173,6 +204,13 @@ $('#InsertTooltip').click(function(){
   quill.format('tooltip', sTag);
   console.log(quill.root.innerHTML);
   $('#tcls')[0].click();
+});
+$('.ql-weight').on('change', function() {
+  console.log('ql-weight changed');
+  var range = quill.getSelection();
+  if (range) {
+    quill.format('pan', 'fw'+this.value);
+  }
 });
 /*
 var memo = $('#memo').val();
