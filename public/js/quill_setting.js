@@ -207,7 +207,7 @@ $('#InsertTooltip').click(function(){
   $('#tcls')[0].click();
 });
 quill.on('selection-change', function(range, oldRange, source) {
-  /*
+  
   if (range) {
     if (range.length == 0) {
       console.log('User cursor is on', range.index);
@@ -218,7 +218,7 @@ quill.on('selection-change', function(range, oldRange, source) {
   } else {
     console.log('Cursor not in the editor');
   }
-  */
+  
   if (oldRange) {
     if (oldRange.length == 0) {
       console.log('User old cursor is on', oldRange.index);
@@ -250,7 +250,7 @@ weight.addEventListener('click', function(event) {
 });
 */
 $('.ql-weight').on('change', function() {
-    console.log('ql-weight change');
+    console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
     quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
     quill.format('pan', 'fw'+this.value);
   });
