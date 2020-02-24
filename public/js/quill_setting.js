@@ -256,7 +256,8 @@ $('.ql-weight').on('change', function() {
       if (!quill.getSelection()) console.log('quill is not selected');
       quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
       if (quill.getSelection()) console.log('quill is selected');
-      quill.formatText(currentIdx, currentLgh, 'pan', 'fw'+this.value, Quill.sources.USER);
+      //quill.formatText(currentIdx, currentLgh, 'pan', 'fw'+this.value, Quill.sources.USER);
+      quill.format('pan', 'fw'+this.value);
   }
 });
 /*
