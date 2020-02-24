@@ -223,8 +223,8 @@ quill.on('selection-change', function(range, oldRange, source) {
     if (oldRange.length == 0) {
       console.log('User old cursor is on', oldRange.index);
     } else {
-      currentIdx = range.index;
-      currentLgh = range.length;
+      currentIdx = oldRange.index;
+      currentLgh = oldRange.length;
       /*
       var text = quill.getText(oldRange.index, oldRange.length);
       console.log('User old has highlighted', text);
