@@ -168,6 +168,10 @@ ul.tite li {
     font-family: "Sans Serif";
 }
 
+#toolbar-container .ql-font span[data-label="Work Sans"]::before {
+    font-family: "Work Sans";
+}
+
 #toolbar-container .ql-font span[data-label="Libre Franklin"]::before {
     font-family: "Libre Franklin";
 }
@@ -288,6 +292,9 @@ ul.tite li {
 .dropdown-menu .dropdown-item span[data-label="Sans Serif"]::before {
     font-family: "Sans Serif";
 }
+.dropdown-menu .dropdown-item span[data-label="Work Sans"]::before {
+    font-family: "Work Sans";
+}
 .dropdown-menu .dropdown-item span[data-label="Libre Franklin"]::before {
     font-family: "Libre Franklin";
 }
@@ -387,6 +394,10 @@ ul.tite li {
 
 .ql-font-SansSerif {
     font-family: "Sans Serif";
+}
+
+.ql-font-WorkSans {
+    font-family: "Work Sans";
 }
 
 .ql-font-LibreFranklin {

@@ -213,25 +213,25 @@ quill.on('selection-change', function(range, oldRange, source) {
   
   if (range) {
     if (range.length == 0) {
-      console.log('User cursor is on', range.index);
+      //console.log('User cursor is on', range.index);
     } else {
       var text = quill.getText(range.index, range.length);
-      console.log('User has highlighted', text);
+      //console.log('User has highlighted', text);
     }
   } else {
-    console.log('Cursor not in the editor');
+    //console.log('Cursor not in the editor');
   }
   
   if (oldRange) {
     if (oldRange.length == 0) {
-      console.log('User old cursor is on', oldRange.index);
+      //console.log('User old cursor is on', oldRange.index);
     } else {
       currentIdx = oldRange.index;
       currentLgh = oldRange.length;
-      console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
+      //console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
     }
   } else {
-    console.log('old Cursor not in the editor');
+    //console.log('old Cursor not in the editor');
   }
 });
 /*

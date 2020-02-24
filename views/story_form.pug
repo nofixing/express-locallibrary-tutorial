@@ -47,6 +47,8 @@ block content
         div.dropdown(style='display: inline; float: left; width: 150px; margin-left: 20px; margin-right: 10px')
           a#tfnt.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.FONT}
           div.dropdown-menu(aria-labelledby='tfnt')
+            a.dropdown-item(href='#', onclick='toggleSurface("Work Sans","WorkSans");' )
+              span(data-label='Work Sans' )
             a.dropdown-item(href='#', onclick='toggleSurface("Libre Franklin","LibreFranklin");' )
               span(data-label='Libre Franklin' )
             a.dropdown-item(href='#', onclick='toggleSurface("Inconsolata","inconsolata");' )
@@ -176,6 +178,7 @@ block content
             <span class="ql-formats">
                 <select class="ql-font" style="width: 150px;">
                     <option selected="">Sans Serif</option>
+                    <option value="WorkSans">Work Sans</option>
                     <option value="LibreFranklin">Libre Franklin</option>
                     <option value="inconsolata">Inconsolata</option>
                     <option value="roboto">Roboto</option>

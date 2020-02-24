@@ -5,6 +5,7 @@ html(lang='en')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     <meta name="google-signin-client_id" content="829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
@@ -86,6 +87,8 @@ html(lang='en')
             li.nav-item.dropdown
                 a#fnt.nav-link.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.FONT}
                 div.dropdown-menu(aria-labelledby='fnt')
+                  a.dropdown-item(href='/catalog?cfnt=Work+Sans' )
+                    span(data-label='Work Sans' )
                   a.dropdown-item(href='/catalog?cfnt=Libre+Franklin' )
                     span(data-label='Libre Franklin' )
                   a.dropdown-item(href='/catalog?cfnt=inconsolata' )

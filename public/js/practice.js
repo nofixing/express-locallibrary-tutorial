@@ -433,7 +433,7 @@ $(function(){
     var tft = $("#title_font").val();
     if(typeof tft != 'undefined' && tft != '') {
          
-        var fary = {LibreFranklin:"Libre Franklin",inconsolata:"Inconsolata",roboto:"Roboto",
+        var fary = {WorkSans:"Work Sans",LibreFranklin:"Libre Franklin",inconsolata:"Inconsolata",roboto:"Roboto",
                     mirza:"Mirza",arial:"Arial",Oswald:"Oswald",Caveat:"Caveat",
                     Raleway:"Raleway",
                     ShadowsIntoLight:"Shadows Into Light",AbrilFatface:"Abril Fatface",
