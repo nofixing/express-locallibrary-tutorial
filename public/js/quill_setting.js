@@ -63,7 +63,6 @@ LinkBlot.tagName = 'a';
 Quill.register(LinkBlot, true);
 
 class TagBlot extends Inline {
-  static tagName = 'pan';
   static create(url) {
     var node = super.create();
     node.setAttribute('class', url);
@@ -73,6 +72,7 @@ class TagBlot extends Inline {
     return node.tagName;
   }
 }
+TagBlot.tagName = 'pan';
 TagBlot.blotName = 'pan';
 
 Quill.register(TagBlot, true);
