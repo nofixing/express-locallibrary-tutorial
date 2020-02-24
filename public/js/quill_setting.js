@@ -253,6 +253,7 @@ $('.ql-weight').on('change', function() {
     console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
     quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
     quill.format('pan', 'fw'+this.value);
+    quill.format('color', 'red');
   });
 /*
 var memo = $('#memo').val();
