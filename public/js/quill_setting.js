@@ -208,7 +208,7 @@ $('#InsertTooltip').click(function(){
 });
 $('.ql-weight').click(function(){
   console.log('ql-weight click');
-  var range = this.quill.getSelection();
+  var range = quill.getSelection();
   currentIdx = range.index;
   currentLgh = range.length;
   console.log('currentLgh'+currentLgh);
