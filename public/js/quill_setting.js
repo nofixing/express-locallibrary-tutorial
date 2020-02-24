@@ -255,7 +255,7 @@ weight.addEventListener('click', function(event) {
 $('.ql-weight').on('change', function() {
     console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
     quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
-    quill.format('pan', 'fw'+this.value);
+    quill.formatText(currentIdx, currentLgh, 'pan', 'fw'+this.value, Quill.sources.USER);
     quill.format('color', 'red');
   });
 /*
