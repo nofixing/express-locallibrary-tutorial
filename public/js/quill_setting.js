@@ -206,12 +206,18 @@ $('#InsertTooltip').click(function(){
   console.log(quill.root.innerHTML);
   $('#tcls')[0].click();
 });
-$('.ql-weight').click(function(){
+var weight = document.querySelector('.ql-weight');
+weight.addEventListener('click', function(event) {
   console.log('ql-weight click');
   var range = quill.getSelection();
-  currentIdx = range.index;
-  currentLgh = range.length;
-  console.log('currentLgh'+currentLgh);
+  if(range){
+    currentIdx = range.index;
+    currentLgh = range.length;
+    console.log('currentLgh'+currentLgh);
+  } else {
+    console.log('range is not setting');
+  }
+  
 });
 $('.ql-weight').on('change', function() {
     console.log('ql-weight change');
