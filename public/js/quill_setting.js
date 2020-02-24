@@ -124,6 +124,7 @@ function imageHandler() {
 var toolbar = quill.getModule('toolbar');
   
 var currentIdx = 0;
+var currentLgh = 0;
 toolbar.addHandler('video', function() {
   var range = this.quill.getSelection();
   currentIdx = range.index;
@@ -205,18 +206,18 @@ $('#InsertTooltip').click(function(){
   console.log(quill.root.innerHTML);
   $('#tcls')[0].click();
 });
-$('.ql-weight').on('change', function() {
-  console.log('ql-weight changed');
-  var range = quill.getSelection();
-  if (range) {
-    //quill.format('pan', 'fw'+this.value);
-    quill.format('color', 'red');
-    console.log('range.index'+range.index);
-  } else {
-    console.log('not range.index');
-    quill.format('color', 'red');
-  }
+$('.ql-weight').click(function(){
+  console.log('ql-weight click');
+  var range = this.quill.getSelection();
+  currentIdx = range.index;
+  currentLgh = range.length;
+  console.log('currentLgh'+currentLgh);
 });
+$('.ql-weight').on('change', function() {
+    console.log('ql-weight change');
+    quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
+    quill.format('pan', 'fw'+this.value);
+  });
 /*
 var memo = $('#memo').val();
 if(typeof memo != 'undefined') {
