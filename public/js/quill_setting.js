@@ -251,10 +251,13 @@ weight.addEventListener('click', function(event) {
 });
 */
 $('.ql-weight').on('change', function() {
-    if (currentLgh > 0) {
+  if (currentLgh > 0) {
+      console.log('.ql-weight changed');
+      if (!quill.getSelection()) console.log('quill is not selected');
       quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
+      if (quill.getSelection()) console.log('quill is selected');
       quill.formatText(currentIdx, currentLgh, 'pan', 'fw'+this.value, Quill.sources.USER);
-    }
+  }
 });
 /*
 var memo = $('#memo').val();
