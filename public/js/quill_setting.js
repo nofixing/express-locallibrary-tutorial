@@ -254,9 +254,14 @@ weight.addEventListener('click', function(event) {
 */
 $('.ql-weight').on('change', function() {
     console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
+    /*
     quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
     quill.formatText(currentIdx, currentLgh, 'pan', 'fw'+this.value, Quill.sources.USER);
-    quill.format('color', 'red');
+    */
+    var range = quill.getSelection();
+    if(range){
+      quill.format('pan', 'fw'+this.value);
+    }
   });
 /*
 var memo = $('#memo').val();
