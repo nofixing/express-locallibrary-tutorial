@@ -31,11 +31,11 @@ var toolbarOptions = [
   var Size = Quill.import('attributors/style/size');
   Size.whitelist = ['1em', '1.5em', '2em', '2.5em', '3em', '3.5em', '4em', '6em', '8em', '10em'];
   Quill.register(Size, true);
-  
+/*
   var weight = Quill.import('formats/bold');
   weight.whitelist = ['100', '200', '300', 'normal', '500', '600', 'bold', '800', '900'];
   Quill.register(weight, true);
-
+*/
 var Inline = Quill.import('blots/inline');
 
 class LinkBlot extends Inline {
@@ -63,6 +63,7 @@ LinkBlot.tagName = 'a';
 Quill.register(LinkBlot, true);
 
 class TagBlot extends Inline {
+  static tagName = 'pan';
   static create(url) {
     var node = super.create();
     node.setAttribute('class', url);
@@ -72,7 +73,7 @@ class TagBlot extends Inline {
     return node.tagName;
   }
 }
-TagBlot.tagName = 'pan';
+
 TagBlot.blotName = 'pan';
 
 Quill.register(TagBlot, true);
