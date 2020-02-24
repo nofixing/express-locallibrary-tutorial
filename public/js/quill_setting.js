@@ -206,6 +206,28 @@ $('#InsertTooltip').click(function(){
   console.log(quill.root.innerHTML);
   $('#tcls')[0].click();
 });
+quill.on('selection-change', function(range, oldRange, source) {
+  if (range) {
+    if (range.length == 0) {
+      console.log('User cursor is on', range.index);
+    } else {
+      var text = quill.getText(range.index, range.length);
+      console.log('User has highlighted', text);
+    }
+  } else {
+    console.log('Cursor not in the editor');
+  }
+  if (oldRange) {
+    if (oldRange.length == 0) {
+      console.log('User old cursor is on', oldRange.index);
+    } else {
+      var text = quill.getText(oldRange.index, oldRange.length);
+      console.log('User old has highlighted', text);
+    }
+  } else {
+    console.log('old Cursor not in the editor');
+  }
+});
 var weight = document.querySelector('.ql-weight');
 weight.addEventListener('click', function(event) {
   console.log('ql-weight click');
