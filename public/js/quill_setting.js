@@ -228,10 +228,7 @@ quill.on('selection-change', function(range, oldRange, source) {
     } else {
       currentIdx = oldRange.index;
       currentLgh = oldRange.length;
-      /*
-      var text = quill.getText(oldRange.index, oldRange.length);
-      console.log('User old has highlighted', text);
-      */
+      console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
     }
   } else {
     console.log('old Cursor not in the editor');
@@ -253,16 +250,11 @@ weight.addEventListener('click', function(event) {
 });
 */
 $('.ql-weight').on('change', function() {
-    console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
-    /*
-    quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
-    quill.formatText(currentIdx, currentLgh, 'pan', 'fw'+this.value, Quill.sources.USER);
-    */
-    var range = quill.getSelection();
-    if(range){
-      quill.format('pan', 'fw'+this.value);
+    if (currentLgh > 0) {
+      quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
+      quill.formatText(currentIdx, currentLgh, 'pan', 'fw'+this.value, Quill.sources.USER);
     }
-  });
+});
 /*
 var memo = $('#memo').val();
 if(typeof memo != 'undefined') {
