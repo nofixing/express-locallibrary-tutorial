@@ -69,8 +69,8 @@ class TagBlot extends Inline {
     node.setAttribute('class', url);
     return node;
   }
-  formats() {
-    return TagBlot.tagName;
+  static formats(node) {
+    return node.tagName;
   }
 }
 TagBlot.blotName = 'pan';
