@@ -217,7 +217,7 @@ quill.on('selection-change', function(range, oldRange, source) {
       //console.log('User cursor is on', range.index);
     } else {
       var text = quill.getText(range.index, range.length);
-      //console.log('User has highlighted', text);
+      console.log('User has highlighted', text);
     }
   } else {
     //console.log('Cursor not in the editor');
@@ -229,7 +229,7 @@ quill.on('selection-change', function(range, oldRange, source) {
     } else {
       currentIdx = oldRange.index;
       currentLgh = oldRange.length;
-      //console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
+      console.log('currentIdx:'+currentIdx+"/currentLgh:"+currentLgh);
     }
   } else {
     //console.log('old Cursor not in the editor');
