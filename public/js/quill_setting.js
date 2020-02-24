@@ -63,14 +63,17 @@ LinkBlot.tagName = 'a';
 Quill.register(LinkBlot, true);
 
 class TagBlot extends Inline {
+  static tagName = 'span';
   static create(url) {
     var node = super.create();
     node.setAttribute('class', url);
     return node;
   }
+  formats() {
+    return TagBlot.tagName;
+  }
 }
 TagBlot.blotName = 'pan';
-TagBlot.tagName = 'span';
 
 Quill.register(TagBlot, true);
 
