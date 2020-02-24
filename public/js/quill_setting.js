@@ -70,7 +70,7 @@ class TagBlot extends Inline {
     return node;
   }
   static formats(node) {
-    return node.tagName;
+    return super.formats(node);
   }
 }
 TagBlot.blotName = 'pan';
