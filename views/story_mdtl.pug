@@ -85,14 +85,26 @@ html(lang='en')
               p(style='font-weight:bold;font-size: 2em') #{story.chapter}<br/><br/>
           if story.title_font
             if story.title_size
-              <p style='font-weight:bold;font-size: #{story.title_size}' class='#{story.title_font}'>#{story.title}</p><br/><br/>
+              if story.title_weight
+                <p style='font-weight: #{story.title_weight};font-size: #{story.title_size}' class='#{story.title_font}'>#{story.title}</p><br/><br/>
+              else
+                <p style='font-weight:bold;font-size: #{story.title_size}' class='#{story.title_font}'>#{story.title}</p><br/><br/>
             else
-              p(style='font-weight:bold;font-size: 2.5em', class=story.title_font) #{story.title}<br/><br/>
+              if story.title_weight
+                <p style='font-weight: #{story.title_weight};font-size:  2.5em' class='#{story.title_font}'>#{story.title}</p><br/><br/>
+              else
+                <p style='font-weight:bold;font-size:  2.5em' class='#{story.title_font}'>#{story.title}</p><br/><br/>
           else
             if story.title_size
-              <p style='font-weight:bold;font-size: #{story.title_size}'>#{story.title}</p><br/><br/>
+              if story.title_weight
+                <p style='font-weight: #{story.title_weight};font-size: #{story.title_size}'>#{story.title}</p><br/><br/>
+              else
+                <p style='font-weight:bold;font-size: #{story.title_size}'>#{story.title}</p><br/><br/>
             else
-              p(style='font-weight:bold;font-size: 2.5em') #{story.title}<br/><br/>
+              if story.title_weight
+                <p style='font-weight: #{story.title_weight};font-size: 2.5em'>#{story.title}</p><br/><br/>
+              else
+                <p style='font-weight:bold;font-size: 2.5em'>#{story.title}</p><br/><br/>
           if story.author 
             if story.title_font
               p(class=story.title_font) #{story.author}<br/><br/>
