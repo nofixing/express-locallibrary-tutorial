@@ -575,7 +575,7 @@ ul.tite li {
     font-size: 10em;
 }
 
-#toolbar-container .ql-weight span[data-label=""]::after { content: "font weight"; font-weight: normal; }
+#toolbar-container .ql-weight span[data-label="0"]::after { content: "font weight"; font-weight: normal; }
 #toolbar-container .ql-weight span[data-label="100"]::after { content: "100"; font-weight: 100; }
 #toolbar-container .ql-weight span[data-label="200"]::after { content: "200"; font-weight: 200; }
 #toolbar-container .ql-weight span[data-label="300"]::after { content: "300"; font-weight: 300; }
