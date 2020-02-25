@@ -251,7 +251,7 @@ weight.addEventListener('click', function(event) {
 });
 */
 $('.ql-weight').on('change', function() {
-  if (currentLgh > 0 && this.value != '0') {
+  if (currentLgh > 0 && this.value != '') {
       console.log('.ql-weight changed');
       if (!quill.getSelection()) console.log('quill is not selected');
       quill.setSelection(currentIdx, currentLgh, Quill.sources.USER);
