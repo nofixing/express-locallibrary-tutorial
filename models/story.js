@@ -23,7 +23,8 @@ var StorySchema = new Schema({
     create_date: {type: Date, default: Date.now},
     file_path: {type: String},
     title_font: {type: String},
-    title_size: {type: String}
+    title_size: {type: String},
+    title_weight: {type: String}
 });
 
 // Virtual for this story instance URL.

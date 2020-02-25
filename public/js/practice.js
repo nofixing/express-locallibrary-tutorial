@@ -453,6 +453,10 @@ $(function(){
     if(typeof sft != 'undefined' && sft != '') {
         $('#sfnt').text(sft);
     }
+    var wft = $("#title_weight").val();
+    if(typeof wft != 'undefined' && wft != '') {
+        $('#wfnt').text(wft);
+    }
 
     $('#favs').click(function(){
         var data = {};
@@ -1358,6 +1362,12 @@ function toggleSurface2(sfnt) {
     $('#sfnt').text(sfnt);
     var frm = document.getElementById("storyForm");
     frm.title_size.value = sfnt;
+}
+
+function toggleSurface3(wfnt) {
+    $('#wfnt').text(wfnt);
+    var frm = document.getElementById("storyForm");
+    frm.title_weight.value = wfnt;
 }
 
 function closeDic() {

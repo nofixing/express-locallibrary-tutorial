@@ -34,9 +34,9 @@ block content
               else
                 option(value=book._id) #{book.title}
     div.form-group.row
-      div.col-sm-8
+      div.col-sm-12
         span( style='width: 60px; float:left; margin-top:7px;') #{translation.Title}
-        input#title.form-control.form-control-sm(type='text', style='display: inline; float: left; width: 400px; margin-left: 20px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
+        input#title.form-control.form-control-sm(type='text', style='display: inline; float: left; width: 600px; margin-left: 20px; margin-right: 10px', placeholder='Name of story' name='title' required='true' value=(undefined===story ? '' : story.title) )
         if story
           if story.title_font
             input#title_font.form-control(type='hidden', name='title_font', value=story.title_font)
@@ -141,6 +141,34 @@ block content
               span(data-label='8em' )
             a.dropdown-item(href='#', onclick='toggleSurface2("10em");' )
               span(data-label='10em' )
+        if story
+          if story.title_weight
+            input#title_weight.form-control(type='hidden', name='title_weight', value=story.title_weight)
+          else
+            input#title_weight.form-control(type='hidden', name='title_weight')
+        else
+          input#title_weight.form-control(type='hidden', name='title_weight')
+        div.dropdown(style='display: inline; float: left; width: 150px; margin-left: 20px; margin-right: 10px')
+          a#wfnt.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false') #{translation.WEIGHT}
+          div.dropdown-menu(aria-labelledby='wfnt')
+            a.dropdown-item(href='#', onclick='toggleSurface3("100");' )
+              span(data-label='100' )
+            a.dropdown-item(href='#', onclick='toggleSurface3("200");' )
+              span(data-label='200' )
+            a.dropdown-item(href='#', onclick='toggleSurface3("300");' )
+              span(data-label='300' )
+            a.dropdown-item(href='#', onclick='toggleSurface3("normal");' )
+              span(data-label='normal' )
+            a.dropdown-item(href='#', onclick='toggleSurface3("500");' )
+              span(data-label='500' )
+            a.dropdown-item(href='#', onclick='toggleSurface3("600");' )
+              span(data-label='600' )
+            a.dropdown-item(href='#', onclick='toggleSurface3("bold");' )
+              span(data-label='bold' )
+            a.dropdown-item(href='#', onclick='toggleSurface3("800");' )
+              span(data-label='800' )
+            a.dropdown-item(href='#', onclick='toggleSurface3("900");' )
+              span(data-label='900' )
     
     div.form-group.row.boko
       div.col-sm-2
@@ -228,7 +256,7 @@ block content
                 </select>
             </span>
             <span class="ql-formats">
-                <select class="ql-weight" style="width: 70px;">
+                <select class="ql-weight" style="width: 100px;">
                     <option value="">fontWeight</option>
                     <option value="100">100</option>
                     <option value="200">200</option>

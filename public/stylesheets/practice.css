@@ -585,6 +585,15 @@ ul.tite li {
 #toolbar-container .ql-weight span[data-label="bold"]::after { content: "bold"; font-weight: bold; }
 #toolbar-container .ql-weight span[data-label="800"]::after { content: "800"; font-weight: 800; }
 #toolbar-container .ql-weight span[data-label="900"]::after { content: "900"; font-weight: 900; }
+.dropdown-menu .dropdown-item span[data-label="100"]::before { font-weight: 100; }
+.dropdown-menu .dropdown-item span[data-label="200"]::before { font-weight: 200; }
+.dropdown-menu .dropdown-item span[data-label="300"]::before { font-weight: 300; }
+.dropdown-menu .dropdown-item span[data-label="normal"]::before { font-weight: normal; }
+.dropdown-menu .dropdown-item span[data-label="500"]::before { font-weight: 500; }
+.dropdown-menu .dropdown-item span[data-label="600"]::before { font-weight: 600; }
+.dropdown-menu .dropdown-item span[data-label="bold"]::before { font-weight: bold; }
+.dropdown-menu .dropdown-item span[data-label="800"]::before { font-weight: 800; }
+.dropdown-menu .dropdown-item span[data-label="900"]::before { font-weight: 900; }
 .fw100 {font-weight: 100;}
 .fw200 {font-weight: 200;}
 .fw300 {font-weight: 300;}
