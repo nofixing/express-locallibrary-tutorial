@@ -241,7 +241,7 @@ $(function(){
                     showData.empty();
                     $.each(data.items, function (i, item) {
                         if(i == 0) showData.append('<ul />');
-                        showData.append('<li><a href="'+item.image.contextLink+'"><img src="'+item.link+'" alt="'+item.title+'"></a><br/>'+item.title+'<br/>'+item.snippet + '</li>');
+                        showData.append('<li><a href="'+item.image.contextLink+'" target="_blank"><img src="'+item.link+'" alt="'+item.title+'"></a><br/>'+item.title+'<br/>'+item.snippet + '</li>');
                     });
                  }
             });
