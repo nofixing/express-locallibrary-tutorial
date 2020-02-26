@@ -30,7 +30,10 @@ block content
         ul.tite
           each his in data.history
             li 
-              a(href=his.url) #{his.story.title}          
+              if his.book
+                a(href=his.url) #{his.story.title} (#{his.book.title})
+              else
+                a(href=his.url) #{his.story.title}  
 
       p #{translation.firstGenreCreate}
       br

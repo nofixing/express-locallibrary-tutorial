@@ -37,7 +37,7 @@ exports.index = function(req, res, next) {
             Story.find({$and:[{user: req.session.userId}, {book: null}, {$or: [{open: null}, {open: 'N'}]}] }).count(callback);
         },
         history: function(callback) {
-            History.find({user: req.session.userId}).populate('story','title').skip(0).limit(5).sort({create_date: -1}).exec(callback);
+            History.find({user: req.session.userId}).populate('story','title').populate('book','title').skip(0).limit(5).sort({create_date: -1}).exec(callback);
         },
     }, function(err, results) {
         console.log('Inside the homepage callback function');
@@ -55,6 +55,9 @@ exports.index = function(req, res, next) {
             var name = req.session.userName;
             for (let i = 0; i < results.history.length; i++) {
                 results.history[i].story.title = entities.decode(results.history[i].story.title);
+                if (results.history[i].book != null) {
+                    results.history[i].book.title = entities.decode(results.history[i].book.title);
+                }
             }
             if ( (clang != '' && clang != 'undefined' && typeof clang != 'undefined' && clang == 'en') || req.session.clang == 'en' ) {
                 name += ",";

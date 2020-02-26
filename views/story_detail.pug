@@ -88,6 +88,11 @@ html(lang='en')
     div(class='container-fluid' style='padding: 0 0 0 0;')
       div#jb_content.col-lg-12
         div.ql-editor(style='padding: 50px 0 0 0; overflow-y: hidden;')
+          if book_title
+            if story.title_font
+              p(class=story.title_font, style='font-weight:bold;font-size: 2em') #{book_title}<br/><br/>
+            else
+              p(style='font-weight:bold;font-size: 2em') #{book_title}<br/><br/>
           if story.chapter 
             if story.title_font
               p(class=story.title_font, style='font-weight:bold;font-size: 2em') #{story.chapter}<br/><br/>

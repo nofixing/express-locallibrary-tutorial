@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 var HistorySchema = new Schema({
     story: { type: Schema.ObjectId, ref: 'Story' },
+    book: { type: Schema.ObjectId, ref: 'Book' },
     user: { type: Schema.ObjectId, ref: 'User', required: true },
     create_date: Date
 });

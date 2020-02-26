@@ -331,12 +331,25 @@ exports.story_detail = function(req, res, next) {
             if (err) { console.log(err); return next(err); }
             if (theHistory.length == 0) {
                 console.log("history not exists");
-                var history = new History(
-                    { title: results.story.title,
-                      story: req.params.id,
-                      user: req.session.userId,
-                      create_date: Date.now()
-                     });
+                var history;
+                if (book_id != '') {
+                    history = new History(
+                        {
+                            title: results.story.title,
+                            story: req.params.id,
+                            book: book_id,
+                            user: req.session.userId,
+                            create_date: Date.now()
+                        });
+                } else {
+                    history = new History(
+                        {
+                            title: results.story.title,
+                            story: req.params.id,
+                            user: req.session.userId,
+                            create_date: Date.now()
+                        });
+                }
                 history.save(function (err) {
                     if (err) { console.log(err); return next(err); }
                     //console.log("history saved");
