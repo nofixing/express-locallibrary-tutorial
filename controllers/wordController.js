@@ -427,7 +427,7 @@ exports.word_datatable = function (req, res, next) {
         book_id = req.query.book_id;
     }
     var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-    res.render('word_board_list', { title: 'Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, book_id: book_id });
+    res.render('word_board_list', { title: 'Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt, book_id: book_id });
 
 };
 
@@ -689,7 +689,7 @@ exports.word_board_list = function(req, res, next) {
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('word_board_list', { title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+            res.render('word_board_list', { title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
         });
     } else if(typeof req.body.importance !='undefined' && req.body.importance != '' && (typeof req.body.skill =='undefined' || req.body.skill == '')) {
         Word.find({user: { $in: [req.session.userId]}, importance: req.body.importance})
@@ -719,7 +719,7 @@ exports.word_board_list = function(req, res, next) {
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('word_board_list', {importance: req.body.importance, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+            res.render('word_board_list', {importance: req.body.importance, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
         });
     } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance =='undefined' || req.body.importance == '')) {
         Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill})
@@ -749,7 +749,7 @@ exports.word_board_list = function(req, res, next) {
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('word_board_list', {skill: req.body.skill, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+            res.render('word_board_list', {skill: req.body.skill, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
         });
     } else if(typeof req.body.skill !='undefined' && req.body.skill != '' && (typeof req.body.importance !='undefined' && req.body.importance != '')) {
         Word.find({user: { $in: [req.session.userId]}, skill: req.body.skill, importance: req.body.importance})
@@ -779,7 +779,7 @@ exports.word_board_list = function(req, res, next) {
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('word_board_list', {skill: req.body.skill, importance: req.body.importance, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+            res.render('word_board_list', {skill: req.body.skill, importance: req.body.importance, title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
         });
     } else {
         Word.find({user: { $in: [req.session.userId]}}).count().exec(function (err, count) {
@@ -808,7 +808,7 @@ exports.word_board_list = function(req, res, next) {
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('word_board_list', { title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt });
+            res.render('word_board_list', { title: 'Word List', word_board_list:  list_words, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+100, ct: ct, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
         });
     }
   

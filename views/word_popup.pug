@@ -15,7 +15,7 @@
 
     <title>Word Popup Editor</title>
   </head>
-  body(style=(undefined===cfnt ? '' : 'font-family: '+cfnt+'; text-align: center;'))
+  body(style=(undefined===cfnt ? (undefined===cfwt ? 'text-align: center;' : 'font-weight:'+cfwt+'; text-align: center;') : (undefined===cfwt ? 'font-family:'+cfnt+'; text-align: center;' : 'font-family:'+cfnt+';font-weight:'+cfwt+'; text-align: center;')))
     
     <div style="height: 40px; text-align: center;">
       <h3 style="display: inline; line-height: 45px;">#{word.title}</h3>

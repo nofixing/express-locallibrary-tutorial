@@ -33,6 +33,10 @@ var UserSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  cfwt: {
+    type: String,
+    trim: true
+  },
   gid_token: {type: String}
 });
 

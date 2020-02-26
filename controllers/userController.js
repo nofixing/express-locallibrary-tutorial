@@ -53,15 +53,17 @@ exports.login_post = async (req, res, next) => {
           if (user.length > 0){
             req.session.userId = user[0]._id;
             req.session.cfnt = user[0].cfnt;
+            req.session.cfwt = user[0].cfwt;
             req.session.clang = user[0].clang;
             req.session.userName = user[0].name;
             req.session.userEmail = user[0].email;
             console.log("user.name:"+user[0].name);
             console.log("user.cfnt:"+user[0].cfnt+"/:"+entities.decode(user[0].cfnt));
+            console.log("user.cfwt:"+user[0].cfwt+"/:"+user[0].cfwt);
             if (req.session.redirectUrl) {
               return res.redirect(req.session.redirectUrl);
             } else {
-              return res.redirect('/catalog?clang='+user[0].clang+'&cfnt='+entities.decode(user[0].cfnt));
+              return res.redirect('/catalog?clang='+user[0].clang+'&cfnt='+entities.decode(user[0].cfnt)+'&cfwt='+user[0].cfwt);
             }
           } else {
             var err2 = new Error('You have to sign up first.');
@@ -90,15 +92,17 @@ exports.login_post = async (req, res, next) => {
           } else {
             req.session.userId = user._id;
             req.session.cfnt = user.cfnt;
+            req.session.cfwt = user.cfwt;
             req.session.clang = user.clang;
             req.session.userName = user.name;
             req.session.userEmail = user.email;
             console.log("user.name:"+user.name);
             console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
+            console.log("user.cfwt:"+user.cfwt+"/:"+user.cfwt);
             if (req.session.redirectUrl) {
               return res.redirect(req.session.redirectUrl);
             } else {
-              return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
+              return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt)+'&cfwt='+user.cfwt);
             }
           }
         }
@@ -115,7 +119,7 @@ exports.login_post = async (req, res, next) => {
 
 exports.alter_password_get = function (req, res, next) {
 
-  res.render('alter_password', { hostname: req.headers.host, cfnt: req.session.cfnt });
+  res.render('alter_password', { hostname: req.headers.host, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
 
 };
 
@@ -468,12 +472,13 @@ exports.rgst_post = async (req, res, next) => {
         } else {
           req.session.userId = user._id;
           req.session.cfnt = user.cfnt;
+          req.session.cfwt = user.cfwt;
           req.session.clang = user.clang;
           req.session.userName = user.name;
           req.session.userEmail = user.email;
           console.log("user.name:"+user.name);
           console.log("user.cfnt:"+user.cfnt+"/:"+entities.decode(user.cfnt));
-          return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt));
+          return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decode(user.cfnt)+'&cfwt='+user.cfwt);
         }
 
       }
