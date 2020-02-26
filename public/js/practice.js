@@ -53,6 +53,16 @@ $(function(){
     $( "#docTitle" ).html( document.getElementsByTagName('title')[0].innerHTML );
     
     $( "#jb_content" ).bind('dblclick', function(e){
+        
+        var selection;
+    
+        if (window.getSelection) {
+        selection = window.getSelection();
+        } else if (document.selection) {
+        selection = document.selection.createRange();
+        }
+        if (selection.length > 0) selectText = selection.toString().trim();
+
         dicSearch();
         imageSearch();
         createWord();
@@ -763,6 +773,7 @@ function goBokM(url) {
 }
 
 function dicSearch() {
+    
     /*
     if ($("#dicType").val() == "1") {
         if (selectText == "") {
@@ -785,14 +796,6 @@ function dicSearch() {
     }
     $('#dic_frame').attr('src', dicAddr);
     */
-    var selection;
-    
-    if (window.getSelection) {
-      selection = window.getSelection();
-    } else if (document.selection) {
-      selection = document.selection.createRange();
-    }
-    selectText = selection.toString().trim();
     
     if (selectText.length > 0) {
         var data = {};
