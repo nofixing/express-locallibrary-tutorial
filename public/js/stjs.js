@@ -21,6 +21,11 @@ $( document ).ready(function() {
 
   var myEditor = document.querySelector('#snow-container');
   myEditor.children[0].innerHTML = $('#memo').val();
+
+  $('#file_upload').change(function() {
+      var file = $('#file_upload')[0].files[0].name;
+      $(this).prev('label').text(file);
+  });
     
 });
 function ginit() {
