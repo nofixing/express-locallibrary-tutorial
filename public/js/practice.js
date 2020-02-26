@@ -61,7 +61,7 @@ $(function(){
         } else if (document.selection) {
         selection = document.selection.createRange();
         }
-        if (selection.length > 0) selectText = selection.toString().trim();
+        if (selection.toString().trim() > 0) selectText = selection.toString().trim();
 
         dicSearch();
         imageSearch();
