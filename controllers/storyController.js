@@ -285,11 +285,17 @@ exports.story_detail = function(req, res, next) {
                 .exec(callback);
         },
         files: function(callback) {
+            File.find({user: req.session.userId, story: req.params.id})
+                .exec(callback);
+        },
+        /*
+        files: function(callback) {
             File.find({user: req.session.userId, story: req.params.id, 
                 $or:[ {file_name: { $regex: '.*' + 'mp3' }}, {file_name: { $regex: '.*' + 'ogg' }},
                 {file_name: { $regex: '.*' + 'wav' }}]}).select('file_path file_name file_size')
                 .exec(callback);
         },
+        */
     }, function(err, results) {
         if (err) { return next(err); }
         if (results.story==null) { // No results.
@@ -465,6 +471,9 @@ exports.story_detail = function(req, res, next) {
         //console.log('story.genre:'+results.story.genre);
         for (let i = 0; i < results.story.genre.length; i++) {
             results.story.genre[i].name = entities.decode(results.story.genre[i].name);
+        }
+        for (var i = 0; i < results.files.length; i++) {
+            results.files[i].file_name = results.files[i].file_name.substring(14);
         }
         res.render(vName, 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 

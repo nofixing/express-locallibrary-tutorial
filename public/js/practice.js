@@ -590,7 +590,7 @@ $(function(){
                 markup += "&nbsp;<button class='btn btn-primary' onclick=CopyFilePath('"+arr[0]+"')>"+$("#cptr").val()+"</button>";
                 markup += "&nbsp;<button class='btn btn-primary' onclick=DeleteFile('"+arr[1]+"','"+arr[0]+"')>"+$("#Delete").val()+"</button>";
                 markup += "</td></tr>";
-                $(".ftd").append(markup);
+                $(".fts").append(markup);
                 alert($("#Uploaded").val());
               } else {
                 console.log('oReq.status:'+oReq.status);

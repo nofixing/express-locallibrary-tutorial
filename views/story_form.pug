@@ -327,22 +327,6 @@ block content
     <input type="hidden" id="Delete" name="Delete" value="#{translation.Delete}" />
     <input type="hidden" id="DELETED" name="DELETED" value="#{translation.DELETED}" />
     input#story_id.form-control(type='hidden', name='story_id' value=(undefined===story ? '' : story._id) )
-  if story
-    if files
-      table(class='table table-striped table-bordered table-hover table-condensed' style='margin-top: 20px;')
-        tbody.ftd
-          for file in files
-            tr
-              td
-                <span id="#{file._id}">#{file.file_name}</span>
-                <button class="btn btn-primary btn-sm" onclick="CopyFilePath('#{file.file_path}');return false;">#{translation.Copy}</button>
-                <button class="btn btn-primary btn-sm" onclick="DeleteFile('#{file._id}','#{file.file_path}');return false;">#{translation.Delete}</button>
-    <div style="display: inline-block; float: left; height: 25px; margin-top: 10px; margin-bottom: 30px;">
-      form#fileUpload(method="POST", enctype="multipart/form-data")
-        <label for="file_upload" style="line-height: 25px; float: left;text-indent: 0;width: auto;" class="btn btn-primary btn-sm" title="#{translation.FileDesc}">#{translation.FileSelect}</label>
-        <input type="file" name="file_upload" id="file_upload" class="inputfile">
-        input(type='hidden' name='storyId' value=story._id)
-        button.btn.btn-primary(type='submit' style="line-height: 25px; float: left; margin-left: 20px;") #{translation.FileUpload}
 
   <a href="#" id="OpenModal" data-toggle="modal" data-target="#exampleModal"></a>
 
@@ -410,12 +394,6 @@ block content
     </div>
   </div>
   
-  <div class="overlay"></div>
-  <div class="spanner">
-    <div class="loader"></div>
-    <p>#{translation.UploadingFile}</p>
-  </div>
-
   div(style='margin-bottom: 50px;')
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
