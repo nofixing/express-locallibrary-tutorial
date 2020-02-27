@@ -57,11 +57,11 @@ $(function(){
         var selection;
     
         if (window.getSelection) {
-        selection = window.getSelection();
+            selection = window.getSelection();
         } else if (document.selection) {
-        selection = document.selection.createRange();
+            selection = document.selection.createRange();
         }
-        if (selection.toString().trim() > 0) selectText = selection.toString().trim();
+        selectText = selection.toString().trim();
 
         dicSearch();
         imageSearch();
