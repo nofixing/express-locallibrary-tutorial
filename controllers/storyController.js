@@ -636,7 +636,7 @@ exports.story_create_post = [
     },
     
     // Validate fields.
-    body('title', i18n.__(translation.TitleRequire)).isLength({ min: 1 }).trim(),
+    body('title', i18n.__('TitleRequire')).isLength({ min: 1 }).trim(),
     body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
     body('genre', 'Genre must be choose.').isLength({ min: 1 }),
   
