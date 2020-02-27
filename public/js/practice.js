@@ -1601,7 +1601,7 @@ function processDicData(dic_content, kdata, translation) {
                         if (typeof simpleData[i].nodes[j].nodes[ssIdx].nodes !== 'object') simpleData[i].nodes[j].nodes[ssIdx].nodes = [];
                         for (let m = 0; m < subsenses.length; m++) {
                             var subsenses_definitions = subsenses[m].definitions;
-                            if (typeof definitions !== 'undefined') {
+                            if (typeof subsenses_definitions !== 'undefined') {
                                 console.log('subsenses_definitions: '+subsenses_definitions);
                                 simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:subsenses_definitions+cptxtf+JSON.stringify(subsenses_definitions[0]).replace(/\"/g, '').replace(/'/g, '‡')+cptxtb, selectable: true});
                             }
