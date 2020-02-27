@@ -46,6 +46,8 @@ var oxford_app_key = process.env.OXFORD_ACCOUNT_APP_KEY;
 
 var tooltip_naver_url = 'http://tooltip.dic.naver.com/tooltip.nhn?languageCode=4&nlp=false&wordString=';
 
+var i18n=require("i18n-express");
+
 exports.download_get = function(req, res, next) {
     console.log('Root directory is '+req.app.get('rootDir'));
     var rtd = req.app.get('rootDir');
