@@ -46,8 +46,6 @@ var oxford_app_key = process.env.OXFORD_ACCOUNT_APP_KEY;
 
 var tooltip_naver_url = 'http://tooltip.dic.naver.com/tooltip.nhn?languageCode=4&nlp=false&wordString=';
 
-var i18n=require("i18n-express");
-
 exports.download_get = function(req, res, next) {
     console.log('Root directory is '+req.app.get('rootDir'));
     var rtd = req.app.get('rootDir');
@@ -636,7 +634,7 @@ exports.story_create_post = [
     },
     
     // Validate fields.
-    body('title', i18n.__('TitleRequire')).isLength({ min: 1 }).trim(),
+    body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
     body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
     body('genre', 'Genre must be choose.').isLength({ min: 1 }),
   
