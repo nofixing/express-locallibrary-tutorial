@@ -96,6 +96,7 @@
   "storyonly": "story only",
   "Rownum": "Number",
   "Title": "Title",
+  "TitleRequire": "Title must not be empty.",
   "Word": "Word",
   "WordCount": "Word Count",
   "Sentence": "Sentence",

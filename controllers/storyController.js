@@ -634,12 +634,12 @@ exports.story_create_post = [
     },
     
     // Validate fields.
-    body('title', 'Title must not be empty.').isLength({ min: 1 }).trim(),
+    body('title', translation.TitleRequire).isLength({ min: 1 }).trim(),
     body('content', 'Content must not be empty.').isLength({ min: 1 }).trim(),
-    //body('genre', 'Genre must be choose.').isLength({ min: 1 }).trim(),
+    body('genre', 'Genre must be choose.').isLength({ min: 1 }),
   
     // Sanitize fields.
-    //sanitizeBody('genre.*').trim().escape(),
+    sanitizeBody('genre.*').escape(),
     // Process request after validation and sanitization.
     (req, res, next) => {
         
