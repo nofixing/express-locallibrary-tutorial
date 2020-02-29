@@ -601,7 +601,7 @@ exports.story_create_get = function(req, res, next) {
                 .exec(callback);
         },
         genres: function(callback) {
-            Genre.find({user: req.session.userId}, 'name ')
+            Genre.find({user: req.session.userId}, 'name ').sort({name: 1})
                 .exec(callback);
         },
     }, function(err, results) {
@@ -802,7 +802,7 @@ exports.story_update_get = function(req, res, next) {
             Story.findById(req.params.id).populate('genre').exec(callback);
         },
         genres: function(callback) {
-            Genre.find({user: req.session.userId}, 'name ')
+            Genre.find({user: req.session.userId}, 'name ').sort({name: 1})
                 .exec(callback);
         },
         files: function(callback) {
