@@ -189,7 +189,7 @@ $(function(){
     $( ".ui-loader-header" ).text( "" );
 
     $( "#searchWordButton" ).click(function() {
-        selectText = $("#searchWord").val();
+        selectText = $("#searchStoryWord").val();
         dicSearch();
         imageSearch();
         createWord();
