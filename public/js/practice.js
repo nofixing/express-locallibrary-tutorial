@@ -1427,8 +1427,13 @@ function processDicData(dic_content, kdata, translation) {
     var headWord = '';
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
-        if (i == 0) headWord = '<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>&nbsp;&nbsp;&nbsp;&nbsp;'+kword;
-        else headWord = '<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
+        if (i == 0) {
+            headWord = '<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>&nbsp;&nbsp;&nbsp;&nbsp;'+kword;
+            headWord += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+            headWord += '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>';
+        } else {
+            headWord = '<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
+        }
         simpleData.push({text: headWord, selectable: true});
         console.log('word: '+word);
         var id = results[i].id;
