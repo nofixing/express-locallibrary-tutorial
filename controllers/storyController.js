@@ -420,14 +420,14 @@ exports.story_detail = function(req, res, next) {
                     var ttl = 'ttwrd'+i;
                     var add_cnt = '';
                     if(typeof results.words[i].add_content != 'undefined') add_cnt = results.words[i].add_content;
-                    sTag += '<div id="'+ttl+'">'+ssc+results.words[i].content+add_cnt+'</div>\n';
+                    sTag += '<div id="'+ttl+'" style="line-height: 1.1;">'+ssc+results.words[i].content+add_cnt+'</div>\n';
                     highlightHtml = '<span class="tltp" data-tooltip-content="#'+ttl+'">$1</span>';
                 } else if(typeof results.words[i].content != 'undefined') {
                     console.log('content:'+results.words[i].content);
                     var ttl = 'ttwrd'+i;
                     var add_cnt = '';
                     if(typeof results.words[i].add_content != 'undefined') add_cnt = results.words[i].add_content;
-                    sTag += '<div id="'+ttl+'">'+results.words[i].content+add_cnt+'</div>\n';
+                    sTag += '<div id="'+ttl+'" style="line-height: 1.1;">'+results.words[i].content+add_cnt+'</div>\n';
                     highlightHtml = '<span class="tltp" data-tooltip-content="#'+ttl+'">$1</span>';
                 } else {
                     highlightHtml = results.words[i].title;
