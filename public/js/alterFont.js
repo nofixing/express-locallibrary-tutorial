@@ -61,12 +61,12 @@ $( document ).ready(function() {
 
   });
 
-    function atoggleSurface(sfnt, ffmt) {
-        $('#atfnt').text(sfnt);
-    }
-
-    function atoggleSurface2(sfnt, ffmt) {
-        $('#atfnt2').text(sfnt);
-    }
-    
 });
+
+function atoggleSurface(sfnt, ffmt) {
+    $('#atfnt').text(sfnt);
+}
+
+function atoggleSurface2(sfnt, ffmt) {
+    $('#atfnt2').text(sfnt);
+}
