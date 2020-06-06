@@ -21,6 +21,8 @@ router.post('/alter_password_post', user_controller.alter_password_post);
 
 router.post('/alter_name_post', user_controller.alter_name_post);
 
+router.post('/alter_font_post', user_controller.alter_font_post);
+
 router.get('/forgot_password', function(req, res, next) {
   return res.render('forgot_password', { hostname: req.headers.host });
 });
