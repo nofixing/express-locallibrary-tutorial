@@ -196,6 +196,30 @@ exports.alter_name_post = function (req, res, next) {
 
 };
 
+exports.alter_font_get = function (req, res, next) {
+
+  User.findById(req.session.userId)
+    .exec(function (err, user) {
+      if (err) { return next(err); }
+      res.render('alter_font', { hostname: req.headers.host, user: user });
+    });
+
+};
+
+exports.alter_font_post = function (req, res, next) {
+  
+  User.update({_id: req.session.userId}, {
+    cfnt: req.body.cfnt,
+    cfnt2: req.body.cfnt2
+  }, function(err, theUser) {
+      if (err) { return next(err); }
+      console.log("Success");
+      req.body.rcode = '000';
+      res.send(req.body);
+  });
+
+};
+
 exports.login_app = function (req, res, next) {
 
   if (req.body.email && req.body.password) {
