@@ -17,7 +17,7 @@ $( document ).ready(function() {
                     NanumMyeongjo:"나눔명조",PoorStory:"서툰이야기",
                     BlackAndWhitePicture:"흑백사진"};
         
-        $('#atfnt').text(fary[atft.substring(8)]);
+        $('#atfnt').text(fary[atft]);
     }
 
     var atft2 = $("#cfnt2").val();
@@ -37,7 +37,7 @@ $( document ).ready(function() {
                     NanumMyeongjo:"나눔명조",PoorStory:"서툰이야기",
                     BlackAndWhitePicture:"흑백사진"};
         
-        $('#atfnt2').text(fary[atft2.substring(8)]);
+        $('#atfnt2').text(fary[atft2]);
     }
   
   $( "#alterFtBtn" ).click(function() {
