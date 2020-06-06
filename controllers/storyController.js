@@ -477,7 +477,7 @@ exports.story_detail = function(req, res, next) {
         }
         res.render(vName, 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 
-        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, cfwt: req.session.cfwt, book_title: book_title, book_id: book_id,
+        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, cfwt: req.session.cfwt, cfnt2: req.session.cfnt2, book_title: book_title, book_id: book_id,
         tooltip:req.body.tlp, files: results.files, ttp: ttp } );
     });
 

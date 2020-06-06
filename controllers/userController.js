@@ -54,6 +54,7 @@ exports.login_post = async (req, res, next) => {
             req.session.userId = user[0]._id;
             req.session.cfnt = user[0].cfnt;
             req.session.cfwt = user[0].cfwt;
+            req.session.cfnt2 = user[0].cfnt2;
             req.session.clang = user[0].clang;
             req.session.userName = user[0].name;
             req.session.userEmail = user[0].email;
@@ -93,6 +94,7 @@ exports.login_post = async (req, res, next) => {
             req.session.userId = user._id;
             req.session.cfnt = user.cfnt;
             req.session.cfwt = user.cfwt;
+            req.session.cfnt2 = user.cfnt2;
             req.session.clang = user.clang;
             req.session.userName = user.name;
             req.session.userEmail = user.email;
@@ -497,6 +499,7 @@ exports.rgst_post = async (req, res, next) => {
           req.session.userId = user._id;
           req.session.cfnt = user.cfnt;
           req.session.cfwt = user.cfwt;
+          req.session.cfnt2 = user.cfnt2;
           req.session.clang = user.clang;
           req.session.userName = user.name;
           req.session.userEmail = user.email;
