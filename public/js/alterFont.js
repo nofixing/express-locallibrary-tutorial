@@ -41,9 +41,7 @@ $( document ).ready(function() {
     }
   
   $( "#alterFtBtn" ).click(function() {
-    $("#cfnt").val($('#atfnt').text());
-    $("#cfnt2").val($('#atfnt2').text());
-
+    
       var httpType = 'https://';
       if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
       $.ajax({
@@ -65,8 +63,10 @@ $( document ).ready(function() {
 
 function atoggleSurface(sfnt, ffmt) {
     $('#atfnt').text(sfnt);
+    $("#cfnt").val(ffmt);
 }
 
 function atoggleSurface2(sfnt, ffmt) {
     $('#atfnt2').text(sfnt);
+    $("#cfnt2").val(ffmt);
 }
