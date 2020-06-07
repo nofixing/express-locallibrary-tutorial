@@ -857,6 +857,7 @@ function wordList() {
     document.querySelector('#snow-container').children[0].innerHTML = 
             html + "<br><p><span style='font-size: 1.5em;'><strong>"+selectedW+"&nbsp;&nbsp;&nbsp;"+selectedC+"</strong></span></p>";
     wordArray.push(selectText);
+    saveMemo('Y');
 }
 
 function ReadingOnly() {
@@ -1209,7 +1210,7 @@ function smf2(comment_id) {
     frm.submit();		
 }
 
-function saveMemo() {
+function saveMemo(autoYN) {
         
     var data = {};
     data.story_id = $( "#story_id" ).val();
@@ -1225,10 +1226,9 @@ function saveMemo() {
         data: JSON.stringify(data),
         contentType: 'application/json',
         url: httpType+$('#hostname').val()+'/catalog/memo/create',
-        async: false,
         success : function(data) {
             $('#memo_id').val(data.memo_id);
-            alert($('#SAVED').val());
+            if(autoYN == 'N') alert($('#SAVED').val());
         }
     });
     /*
