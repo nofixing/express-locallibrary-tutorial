@@ -853,7 +853,7 @@ function wordList() {
     */
     var selectedW = "<span class='ql-font-"+$('#cfnt').val()+"'>"+selectText+"</span>";
     var selectedC = selectContent;
-    if ($('#cfnt2').val() != '') selectedC = "<span class='ql-font-"+$('#cfnt2').val()+"'>"+selectedC+"</span>";
+    if ($('#cfnt2').val() != '') selectedC = "<span style='font-size: 2em;' class='ql-font-"+$('#cfnt2').val()+"'>"+selectedC+"</span>";
     document.querySelector('#snow-container').children[0].innerHTML = 
             html + "<br><p><span style='font-size: 1.5em;'><strong>"+selectedW+"&nbsp;&nbsp;&nbsp;"+selectedC+"</strong></span></p>";
     wordArray.push(selectText);
