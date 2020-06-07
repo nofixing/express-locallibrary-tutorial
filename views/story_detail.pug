@@ -194,7 +194,7 @@ html(lang='en')
                   include pets-partial
                   +petslist(cmt)
       div#jb_memo.col-lg-6
-        div.ql-editor(style='height: 90%; overflow-y: auto; font-family:'+cfnt+' '+cfnt2+'; font-weight:'+cfwt)
+        div.ql-editor
           div !{memo}
         <div style="display: inline-block; width: 600px; float: left; height: 30px; margin-top: 10px;">
           <input type="file" name="file2" id="file2" class="inputfile">
@@ -427,6 +427,8 @@ html(lang='en')
     <input type="hidden" id="CheckWords" name="CheckWords" value="#{translation.CheckWords}" />
     <input type="hidden" id="Uploaded" name="Uploaded" value="#{translation.Uploaded}" />
     <input type="hidden" id="UploadFailed" name="UploadFailed" value="#{translation.UploadFailed}" />
+    <input type="hidden" id="cfnt" name="cfnt" value="#{cfnt}" />
+    <input type="hidden" id="cfnt2" name="cfnt2" value="#{cfnt2}" />
     <form id="ftlp" method="post" action="/catalog/story/#{story._id}">
       <input type="hidden" name="tlp" value="y" />
     </form>

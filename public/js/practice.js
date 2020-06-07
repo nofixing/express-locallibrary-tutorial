@@ -851,8 +851,11 @@ function wordList() {
             html + "<br><p class='ql-font-PTSans' style='font-size:2em;'><strong>"+selectText+"&nbsp;&nbsp;&nbsp;"+selectContent+"</strong></p>";
     }
     */
+    var selectedW = "<span class='ql-font-"+$('#cfnt').val()+"'>"+selectText+"</span>";
+    var selectedC = selectContent;
+    if ($('#cfnt2').val() != '') selectedC = "<span class='ql-font-"+$('#cfnt2').val()+"'>"+selectedC+"</span>";
     document.querySelector('#snow-container').children[0].innerHTML = 
-            html + "<br><p><span style='font-size: 1.5em;'><strong>"+selectText+"&nbsp;&nbsp;&nbsp;"+selectContent+"</strong></span></p>";
+            html + "<br><p><span style='font-size: 1.5em;'><strong>"+selectedW+"&nbsp;&nbsp;&nbsp;"+selectedC+"</strong></span></p>";
     wordArray.push(selectText);
 }
 
