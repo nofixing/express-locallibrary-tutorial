@@ -1437,7 +1437,7 @@ function processDicData(dic_content, kdata, translation) {
         } else {
             headWord = '<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
         }
-        simpleData.push({text: headWord, selectable: true});
+        simpleData.push({text: headWord, selectable: true, backColor: '#FFFFFF'});
         console.log('word: '+word);
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
@@ -1702,7 +1702,7 @@ function processDicDatat(dic_content) {
         } else {
             headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
         }
-        simpleData.push({text: headWord});
+        simpleData.push({text: headWord, backColor: '#FFFFFF'});
 
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
@@ -1815,7 +1815,7 @@ function processDicDatas(dic_content) {
         } else {
             headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
         }
-        simpleData.push({text: headWord});
+        simpleData.push({text: headWord, backColor: '#FFFFFF'});
         
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
