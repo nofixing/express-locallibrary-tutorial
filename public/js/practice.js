@@ -1691,10 +1691,19 @@ function processDicDatat(dic_content) {
     
     var word_id = voca.id;
     var results = voca.results;
+
+    var headWord = '';
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
-        simpleData.push({text:word});
-        console.log('word: '+word);
+        if (i == 0) {
+            headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>&nbsp;&nbsp;&nbsp;&nbsp;'+kword;
+            headWord += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+            headWord += '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>';
+        } else {
+            headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
+        }
+        simpleData.push({text: headWord, selectable: true});
+
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
         var language = results[i].language;
@@ -1721,7 +1730,7 @@ function processDicDatat(dic_content) {
                     var antonyms = senses[l].antonyms;
                     if (typeof antonyms === 'object') {
                         for (let m = 0; m < antonyms.length; m++) {
-                            simpleData[i].nodes[j].nodes.push({text:'antonym: '+antonyms[m].text});
+                            simpleData[i].nodes[j].nodes.push({text:'antonym: '+'<b>'+antonyms[m].text+'</b>'});
                             ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
@@ -1746,7 +1755,7 @@ function processDicDatat(dic_content) {
                             var subsenses_synonyms = subsenses[m].synonyms;
                             if (typeof subsenses_synonyms === 'object') {
                                 for (let n = 0; n < subsenses_synonyms.length; n++) {
-                                    simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'synonym: '+subsenses_synonyms[n].text});
+                                    simpleData[i].nodes[j].nodes[ssIdx].nodes.push({text:'synonym: '+'<b>'+subsenses_synonyms[n].text+'</b>'});
                                 }
                             }
                         }
@@ -1755,7 +1764,7 @@ function processDicDatat(dic_content) {
                     var synonyms = senses[l].synonyms;
                     if (typeof synonyms === 'object') {
                         for (let m = 0; m < synonyms.length; m++) {
-                            simpleData[i].nodes[j].nodes.push({text:'synonym: '+synonyms[m].text});
+                            simpleData[i].nodes[j].nodes.push({text:'synonym: '+'<b>'+synonyms[m].text+'</b>'});
                             ssIdx = simpleData[i].nodes[j].nodes.length - 1;
                         }
                     }
@@ -1795,10 +1804,19 @@ function processDicDatas(dic_content) {
     
     var word_id = voca.id;
     var results = voca.results;
+    
+    var headWord = '';
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
-        simpleData.push({text:word});
-        console.log('word: '+word);
+        if (i == 0) {
+            headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>&nbsp;&nbsp;&nbsp;&nbsp;'+kword;
+            headWord += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+            headWord += '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>';
+        } else {
+            headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
+        }
+        simpleData.push({text: headWord, selectable: true});
+        
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
         var language = results[i].language;
@@ -1819,9 +1837,9 @@ function processDicDatas(dic_content) {
                 var regions = sentences[k].regions;
                 var text = sentences[k].text;
                 if(typeof regions === 'object') {
-                    simpleData[i].nodes[j].nodes.push({text:regions[0].text+': '+text});
+                    simpleData[i].nodes[j].nodes.push({text:regions[0].text+': '+'<b><i>'+text+'</i></b>'});
                 } else {
-                    simpleData[i].nodes[j].nodes.push({text:text});
+                    simpleData[i].nodes[j].nodes.push({text:'<b><i>'+text+'</i></b>'});
                 }
             }
         }
