@@ -1696,13 +1696,13 @@ function processDicDatat(dic_content) {
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
         if (i == 0) {
-            headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>&nbsp;&nbsp;&nbsp;&nbsp;'+kword;
+            headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
             headWord += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
             headWord += '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>';
         } else {
             headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
         }
-        simpleData.push({text: headWord, selectable: true});
+        simpleData.push({text: headWord});
 
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
@@ -1809,13 +1809,13 @@ function processDicDatas(dic_content) {
     for (let i = 0; i < results.length; i++) {
         var word = results[i].word;
         if (i == 0) {
-            headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>&nbsp;&nbsp;&nbsp;&nbsp;'+kword;
+            headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
             headWord += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
             headWord += '<a href="#" onclick="closeDic();return false;" style="cursor: pointer;align:right;padding-right:30px;">'+$('#close').val()+'</a>';
         } else {
             headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
         }
-        simpleData.push({text: headWord, selectable: true});
+        simpleData.push({text: headWord});
         
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
