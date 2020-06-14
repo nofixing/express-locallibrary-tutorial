@@ -1437,7 +1437,7 @@ function processDicData(dic_content, kdata, translation) {
         } else {
             headWord = '<a onclick="sentence(\''+word+'\');" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
         }
-        simpleData.push({text: headWord, selectable: true, backColor: '#FFFFFF'});
+        simpleData.push({text: headWord, selectable: true});
         console.log('word: '+word);
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
@@ -1664,6 +1664,7 @@ function processDicData(dic_content, kdata, translation) {
     $('#treeview1').css("display", "block");
     $('#treeview1').treeview({
         levels: 99,
+        highlightSelected: false,
         data: simpleData
     });
 }
@@ -1702,7 +1703,7 @@ function processDicDatat(dic_content) {
         } else {
             headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
         }
-        simpleData.push({text: headWord, backColor: '#FFFFFF'});
+        simpleData.push({text: headWord});
 
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
@@ -1777,6 +1778,7 @@ function processDicDatat(dic_content) {
     $('#treeview1').css("display", "block");
     $('#treeview1').treeview({
         levels: 99,
+        highlightSelected: false,
         data: simpleData
     });
 }
@@ -1815,7 +1817,7 @@ function processDicDatas(dic_content) {
         } else {
             headWord = '<a onclick="dicSearch();" style="color: hotpink; text-decoration: underline; cursor: pointer;">'+word+'</a>';
         }
-        simpleData.push({text: headWord, backColor: '#FFFFFF'});
+        simpleData.push({text: headWord});
         
         var id = results[i].id;
         //console.log('results['+i+'].id: '+results[i].id);
@@ -1849,6 +1851,7 @@ function processDicDatas(dic_content) {
     $('#treeview1').css("display", "block");
     $('#treeview1').treeview({
         levels: 99,
+        highlightSelected: false,
         data: simpleData
     });
 }
