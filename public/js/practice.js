@@ -221,7 +221,7 @@ $(function(){
                     console.log('translatedText:'+data.content);
                     $('#translatedText').html(data.content);
                     //$('#TranslationModal')[0].click();
-                    
+                    selectContent = data.content;
                     $('#translateModal').addClass("show");
                     $('#translateModal').css('display', 'block');
                     $('#translateModal').attr('aria-hidden', 'false');
@@ -229,7 +229,7 @@ $(function(){
                     $('body').addClass("modal-open");
                     $('body').css('padding-right', '10px');
                     $( '<div class="modal-backdrop fade show"></div>' ).appendTo( 'body' );
-
+                    wordList();
                 }
             });
         }
@@ -853,7 +853,7 @@ function wordList() {
     */
     var selectedW = "<span class='ql-font-"+$('#cfnt').val()+"'>"+selectText+"</span>";
     var selectedC = selectContent;
-    if ($('#cfnt2').val() != '') selectedC = "<span style='font-size: 2em;' class='ql-font-"+$('#cfnt2').val()+"'>"+selectedC+"</span>";
+    if ($('#cfnt2').val() != '') selectedC = "<span style='font-size: 1.5em;' class='ql-font-"+$('#cfnt2').val()+"'>"+selectedC+"</span>";
     document.querySelector('#snow-container').children[0].innerHTML = 
             html + "<br><p><span style='font-size: 1.5em;'><strong>"+selectedW+"&nbsp;&nbsp;&nbsp;"+selectedC+"</strong></span></p>";
     wordArray.push(selectText);
