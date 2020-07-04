@@ -209,7 +209,7 @@ $(function(){
             var data = {};
             data.title = selectText;
             const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-            if(korean.test(string)) {
+            if(korean.test(selectText)) {
                 data.src = 'ko';
                 data.tgt = 'en';
             } else {
