@@ -235,7 +235,7 @@ exports.word_translate_post = function(req, res, next) {
     var request = require('request');
     var options = {
         url: api_url,
-        form: {'source':'en', 'target':'ko', 'text':req.body.title},
+        form: {'source':req.body.src, 'target':req.body.tgt, 'text':req.body.title},
         headers: {'X-Naver-Client-Id':client_id, 'X-Naver-Client-Secret': client_secret}
      };
     request.post(options, function (error, response, body) {

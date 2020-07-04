@@ -208,6 +208,14 @@ $(function(){
     
             var data = {};
             data.title = selectText;
+            const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+            if(korean.test(string)) {
+                data.src = 'ko';
+                data.tgt = 'en';
+            } else {
+                data.src = 'en';
+                data.tgt = 'ko';
+            }
             data.content = '';
             var httpType = 'https://';
             if ( $('#hostname').val().indexOf('localhost') > -1 ) httpType = 'http://';
