@@ -248,6 +248,11 @@ $(function(){
     $("#dicType").change(function() {
         dicSearch();
     });
+
+    $( "#nextImageButton" ).click(function() {
+        startImagNum += 10;
+        imageSearch();
+    });
     
     function imageSearch() {
 
@@ -269,10 +274,6 @@ $(function(){
         }			
     
     }
-
-    $( "#nextImageButton" ).click(function() {
-        imageSearch();
-    });
 
     $("#checkall").click(function(){
         $('.wList').not(this).prop('checked', this.checked);
