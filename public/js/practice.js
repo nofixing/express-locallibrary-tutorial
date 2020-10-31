@@ -195,6 +195,7 @@ $(function(){
         imageSearch();
         createWord();
     });
+
     $( "#translateButton" ).click(function() {
         var selection;
     
@@ -243,6 +244,7 @@ $(function(){
             });
         }
     });
+    
     $("#dicType").change(function() {
         dicSearch();
     });
@@ -267,6 +269,11 @@ $(function(){
         }			
     
     }
+
+    $( "#nextImageButton" ).click(function() {
+        startImagNum += 10;
+        imageSearch();
+    });
 
     $("#checkall").click(function(){
         $('.wList').not(this).prop('checked', this.checked);
@@ -636,11 +643,6 @@ $(function(){
 
     $('#loading').hide();
 });
-
-function nextImages() {
-    startImagNum += 10;
-    imageSearch();
-}
 
 function wrdSave(id) {
     var data = {};
