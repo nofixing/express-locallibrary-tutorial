@@ -5,6 +5,7 @@ var dicAddr = "https://c.merriam-webster.com/coredictionary/";
 var oxfordWord_id = "";
 var oxfordWord_word = "";
 var kword = '';
+var startImagNum = 1;
 $(function(){
     var showData = $('#show_img');
     var tooltip = $('#tooltip').val();
@@ -246,8 +247,6 @@ $(function(){
         dicSearch();
     });
     
-    var startImagNum = 1;
-    
     function imageSearch() {
 
         if (document.getElementById("myCheck").checked) {
@@ -267,11 +266,6 @@ $(function(){
             });
         }			
     
-    }
-
-    function nextImages() {
-        startImagNum += 10;
-        imageSearch();
     }
 
     $("#checkall").click(function(){
@@ -642,6 +636,11 @@ $(function(){
 
     $('#loading').hide();
 });
+
+function nextImages() {
+    startImagNum += 10;
+    imageSearch();
+}
 
 function wrdSave(id) {
     var data = {};
