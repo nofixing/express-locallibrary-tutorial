@@ -271,7 +271,6 @@ $(function(){
     }
 
     $( "#nextImageButton" ).click(function() {
-        startImagNum += 1;
         imageSearch();
     });
 
