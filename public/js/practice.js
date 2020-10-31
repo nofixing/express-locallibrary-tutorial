@@ -246,6 +246,8 @@ $(function(){
         dicSearch();
     });
     
+    var startImagNum = 1;
+    
     function imageSearch() {
 
         if (document.getElementById("myCheck").checked) {
@@ -253,7 +255,7 @@ $(function(){
             $.ajax({
                 url: 'https://www.googleapis.com/customsearch/v1',
                  type: 'GET',
-                 data: "key=AIzaSyCBr1dGpg2bB-eTAXKFgnvpKL6vdSYQTSI&cx=012222057275105284918:2fhqptrxpgk&q="+selectText+"&num=10&start=1&imgSize=medium&searchType=image",
+                 data: "key=AIzaSyCBr1dGpg2bB-eTAXKFgnvpKL6vdSYQTSI&cx=012222057275105284918:2fhqptrxpgk&q="+selectText+"&num=10&start="+startImagNum+"&imgSize=medium&searchType=image",
                  dataType: 'JSON',
                  success: function(data){
                     showData.empty();
@@ -265,6 +267,11 @@ $(function(){
             });
         }			
     
+    }
+
+    function nextImages() {
+        startImagNum += 10;
+        imageSearch();
     }
 
     $("#checkall").click(function(){
