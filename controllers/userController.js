@@ -58,12 +58,12 @@ exports.login_post = async (req, res, next) => {
             req.session.userName = user[0].name;
             req.session.userEmail = user[0].email;
             console.log("user.name:"+user[0].name);
-            console.log("user.cfnt:"+user[0].cfnt+"/:"+entities.decodehtml(user[0].cfnt));
+            console.log("user.cfnt:"+user[0].cfnt+"/:"+entities.decodeHTML(user[0].cfnt));
             console.log("user.cfwt:"+user[0].cfwt+"/:"+user[0].cfwt);
             if (req.session.redirectUrl) {
               return res.redirect(req.session.redirectUrl);
             } else {
-              return res.redirect('/catalog?clang='+user[0].clang+'&cfnt='+entities.decodehtml(user[0].cfnt)+'&cfwt='+user[0].cfwt);
+              return res.redirect('/catalog?clang='+user[0].clang+'&cfnt='+entities.decodeHTML(user[0].cfnt)+'&cfwt='+user[0].cfwt);
             }
           } else {
             var err2 = new Error('You have to sign up first.');
@@ -98,12 +98,12 @@ exports.login_post = async (req, res, next) => {
             req.session.userName = user.name;
             req.session.userEmail = user.email;
             console.log("user.name:"+user.name);
-            console.log("user.cfnt:"+user.cfnt+"/:"+entities.decodehtml(user.cfnt));
+            console.log("user.cfnt:"+user.cfnt+"/:"+entities.decodeHTML(user.cfnt));
             console.log("user.cfwt:"+user.cfwt+"/:"+user.cfwt);
             if (req.session.redirectUrl) {
               return res.redirect(req.session.redirectUrl);
             } else {
-              return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decodehtml(user.cfnt)+'&cfwt='+user.cfwt);
+              return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decodeHTML(user.cfnt)+'&cfwt='+user.cfwt);
             }
           }
         }
@@ -503,8 +503,8 @@ exports.rgst_post = async (req, res, next) => {
           req.session.userName = user.name;
           req.session.userEmail = user.email;
           console.log("user.name:"+user.name);
-          console.log("user.cfnt:"+user.cfnt+"/:"+entities.decodehtml(user.cfnt));
-          return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decodehtml(user.cfnt)+'&cfwt='+user.cfwt);
+          console.log("user.cfnt:"+user.cfnt+"/:"+entities.decodeHTML(user.cfnt));
+          return res.redirect('/catalog?clang='+user.clang+'&cfnt='+entities.decodeHTML(user.cfnt)+'&cfwt='+user.cfwt);
         }
 
       }

@@ -17,7 +17,7 @@ exports.genre_list = function(req, res, next) {
       if (err) { return next(err); }
       // Successful, so render.
       for (let i = 0; i < list_genres.length; i++) {
-        list_genres[i].name = entities.decodehtml(list_genres[i].name);
+        list_genres[i].name = entities.decodeHTML(list_genres[i].name);
       }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
       res.render('genre_list', { title: 'Genre List', list_genres:  list_genres, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
@@ -52,13 +52,13 @@ exports.genre_detail = function(req, res, next) {
             ere.status = 404;
             return next(ere);
         }
-        results.genre.name = entities.decodehtml(results.genre.name);
+        results.genre.name = entities.decodeHTML(results.genre.name);
         for (let i = 0; i < results.genre_books.length; i++) {
-            results.genre_books[i].summary = entities.decodehtml(results.genre_books[i].summary);
-            results.genre_books[i].title = entities.decodehtml(results.genre_books[i].title);
+            results.genre_books[i].summary = entities.decodeHTML(results.genre_books[i].summary);
+            results.genre_books[i].title = entities.decodeHTML(results.genre_books[i].title);
         }
         for (let i = 0; i < results.genre_stories.length; i++) {
-            results.genre_stories[i].title = entities.decodehtml(results.genre_stories[i].title);
+            results.genre_stories[i].title = entities.decodeHTML(results.genre_stories[i].title);
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('genre_detail', { title: 'Genre Detail', genre: results.genre, genre_books: results.genre_books, genre_stories: results.genre_stories, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
@@ -141,7 +141,7 @@ exports.genre_delete_get = function(req, res, next) {
             res.redirect('/catalog/genres');
         }
         // Successful, so render.
-        results.genre.name = entities.decodehtml(results.genre.name);
+        results.genre.name = entities.decodeHTML(results.genre.name);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('genre_delete', { title: 'Delete Genre', genre: results.genre, genre_books: results.genre_books, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
     });
@@ -191,7 +191,7 @@ exports.genre_update_get = function(req, res, next) {
             return next(ere);
         }
         // Success.
-        genre.name = entities.decodehtml(genre.name);
+        genre.name = entities.decodeHTML(genre.name);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('genre_form', { title: 'Update Genre', genre: genre, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
     });
