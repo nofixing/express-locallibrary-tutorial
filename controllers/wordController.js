@@ -22,7 +22,7 @@ const translate = new Translate({
 var client_id = 'BdLjzx4yosbmSqFb4feb';
 var client_secret = process.env.NAVER_TRANSLATE_CLIENT_SECRET;
 
-const { decode } = require('html-entities');
+const { AllHtmlEntities: decode } = require('html-entities');
 
 var async = require('async');
 

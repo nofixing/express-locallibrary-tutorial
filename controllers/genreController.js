@@ -3,7 +3,7 @@ var Book = require('../models/book');
 var Story = require('../models/story');
 var async = require('async');
 
-const { decode } = require('html-entities');
+const { AllHtmlEntities: decode } = require('html-entities');
 
 const { body,validationResult } = require('express-validator/check');
 const { sanitizeBody } = require('express-validator/filter');

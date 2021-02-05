@@ -14,7 +14,7 @@ var moment = require('moment');
 const stripHtml = require("string-strip-html");
 
 //const Entities = require('html-entities').AllHtmlEntities;
-const { decode } = require('html-entities');
+const { AllHtmlEntities: decode } = require('html-entities');
 //const entities = new Entities();
 
 const { body,validationResult } = require('express-validator');

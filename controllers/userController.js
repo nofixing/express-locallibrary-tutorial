@@ -2,7 +2,7 @@ var User = require('../models/user');
 var bcrypt = require('bcrypt');
 
 //const Entities = require('html-entities').AllHtmlEntities;
-const { decode } = require('html-entities');
+const { AllHtmlEntities: decode } = require('html-entities');
 //const entities = new Entities();
 
 const {

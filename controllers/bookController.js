@@ -8,7 +8,7 @@ var History = require('../models/history');
 var moment = require('moment');
 
 //const Entities = require('html-entities').AllHtmlEntities;
-const { decode } = require('html-entities');
+const { AllHtmlEntities: decode } = require('html-entities');
 //const entities = new Entities();
 
 const { body,validationResult } = require('express-validator');
