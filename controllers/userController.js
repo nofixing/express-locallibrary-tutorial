@@ -1,7 +1,8 @@
 var User = require('../models/user');
 var bcrypt = require('bcrypt');
 
-const Entities = require('html-entities').AllHtmlEntities;
+//const Entities = require('html-entities').AllHtmlEntities;
+const { AllHtmlEntities: Entities } = require('html-entities');
 const entities = new Entities();
 
 const {
