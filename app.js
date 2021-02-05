@@ -25,6 +25,11 @@ app.use(device.capture());
 
 app.use(helmet());
 
+app.use(function(req, res, next) {
+  res.setHeader("content-security-policy-report-only", "default-src 'self'; script-src 'report-sample' 'self' https://apis.google.com/js/platform.js https://cdn.jsdelivr.net/jquery.tooltipster/4.0.5/js/tooltipster.bundle.min.js https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js https://code.jquery.com/jquery-3.4.1.min.js https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js; style-src 'report-sample' 'self' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com; object-src 'none'; base-uri 'self'; connect-src 'self'; font-src 'self' https://cdnjs.cloudflare.com; frame-src 'self' https://accounts.google.com; img-src 'self'; manifest-src 'self'; media-src 'self'; report-uri https://601cfe0c74246c4998ba0ebe.endpoint.csper.io/; worker-src 'none';");
+  next();
+});
+
 // Set up mongoose connection
 var mongoose = require('mongoose');
 //var db_url = 'mongodb://infinite:'+process.env.DB_URI+'@ds153081-a0.mlab.com:53081,ds153081-a1.mlab.com:53081/infinitestorlet?replicaSet=rs-ds153081';
