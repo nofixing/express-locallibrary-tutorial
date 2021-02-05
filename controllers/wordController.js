@@ -22,7 +22,7 @@ const translate = new Translate({
 var client_id = 'BdLjzx4yosbmSqFb4feb';
 var client_secret = process.env.NAVER_TRANSLATE_CLIENT_SECRET;
 
-const { AllHtmlEntities: decode } = require('html-entities');
+const entities = require('entities');
 
 var async = require('async');
 
@@ -510,13 +510,13 @@ exports.word_datatable_list = function (req, res, next) {
                                     list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                                 }
                                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                                 }
                                 if (list_words[i].story_title != null && list_words[i].story_title != null) {
-                                    list_words[i].story_title = decode.decode(list_words[i].story_title);
+                                    list_words[i].story_title = entities.decodehtml(list_words[i].story_title);
                                 }
                                 if (list_words[i].book_title != null && list_words[i].book_title != null) {
-                                    list_words[i].book_title = decode.decode(list_words[i].book_title);
+                                    list_words[i].book_title = entities.decodehtml(list_words[i].book_title);
                                 }
                                 if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
                                     list_words[i].title = list_words[i].oxford_word.word;
@@ -574,13 +574,13 @@ exports.word_datatable_list = function (req, res, next) {
                                     list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                                 }
                                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                                 }
                                 if (list_words[i].story_title != null && list_words[i].story_title != null) {
-                                    list_words[i].story_title = decode.decode(list_words[i].story_title);
+                                    list_words[i].story_title = entities.decodehtml(list_words[i].story_title);
                                 }
                                 if (list_words[i].book_title != null && list_words[i].book_title != null) {
-                                    list_words[i].book_title = decode.decode(list_words[i].book_title);
+                                    list_words[i].book_title = entities.decodehtml(list_words[i].book_title);
                                 }
                                 if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
                                     list_words[i].title = list_words[i].oxford_word.word;
@@ -681,7 +681,7 @@ exports.word_board_list = function(req, res, next) {
                     //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                 }
                 if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
                     list_words[i].title = list_words[i].oxford_word.word;
@@ -711,7 +711,7 @@ exports.word_board_list = function(req, res, next) {
                     //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                 }
                 if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
                     list_words[i].title = list_words[i].oxford_word.word;
@@ -741,7 +741,7 @@ exports.word_board_list = function(req, res, next) {
                     //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                 }
                 if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
                     list_words[i].title = list_words[i].oxford_word.word;
@@ -771,7 +771,7 @@ exports.word_board_list = function(req, res, next) {
                     //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                 }
                 if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
                     list_words[i].title = list_words[i].oxford_word.word;
@@ -800,7 +800,7 @@ exports.word_board_list = function(req, res, next) {
                     //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                 }
                 if (list_words[i].oxford_word != null && list_words[i].oxford_word.word != null) {
                     list_words[i].title = list_words[i].oxford_word.word;
@@ -847,7 +847,7 @@ exports.word_board_ajax = function(req, res, next) {
                         //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                     }
                     if (list_words[i].story != null && list_words[i].story.title != null) {
-                        list_words[i].story.title = decode.decode(list_words[i].story.title);
+                        list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                     }
                 }
                 list_words.mxcnt = mxcnt+100;
@@ -876,7 +876,7 @@ exports.word_board_ajax = function(req, res, next) {
                     //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                 }
             }
             list_words.mxcnt = mxcnt+100;
@@ -905,7 +905,7 @@ exports.word_board_ajax = function(req, res, next) {
                     //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                 }
             }
             list_words.mxcnt = mxcnt+100;
@@ -934,7 +934,7 @@ exports.word_board_ajax = function(req, res, next) {
                     //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                 }
                 if (list_words[i].story != null && list_words[i].story.title != null) {
-                    list_words[i].story.title = decode.decode(list_words[i].story.title);
+                    list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                 }
             }
             list_words.mxcnt = mxcnt+100;
@@ -964,7 +964,7 @@ exports.word_board_ajax = function(req, res, next) {
                         //list_words[i].create_date = moment(list_words[i].create_date).format('YYYY-MM-DD');
                     }
                     if (list_words[i].story != null && list_words[i].story.title != null) {
-                        list_words[i].story.title = decode.decode(list_words[i].story.title);
+                        list_words[i].story.title = entities.decodehtml(list_words[i].story.title);
                     }
                 }
                 list_words.mxcnt = mxcnt+100;
