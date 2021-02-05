@@ -13,8 +13,9 @@ var path = require('path');
 var moment = require('moment');
 const stripHtml = require("string-strip-html");
 
-const Entities = require('html-entities').AllHtmlEntities;
-const entities = new Entities();
+//const Entities = require('html-entities').AllHtmlEntities;
+const { decode } = require('html-entities');
+//const entities = new Entities();
 
 const { body,validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
@@ -55,9 +56,9 @@ exports.download_get = function(req, res, next) {
 		fs.readFile(rtd+'/public/download_template.html', 'utf8', function (err,data) {
 			if (err) { return next(err); }
 
-			theStory.content = entities.decode(theStory.content);
-			theStory.reference = entities.decode(theStory.reference);
-			theStory.title = entities.decode(theStory.title);
+			theStory.content = decode.decode(theStory.content);
+			theStory.reference = decode.decode(theStory.reference);
+			theStory.title = decode.decode(theStory.title);
 
 			var result = data.replace(/tsfgkpmhr/g, theStory.title);
             result = result.replace(/tgbyhnujb/g, req.session.cfnt);
@@ -142,7 +143,7 @@ exports.story_open_list = function(req, res, next) {
                 var str = list_stories[i].content;
                 var len = str.split(" ").length;
                 list_stories[i].len = len;
-                list_stories[i].btitle = entities.decode(list_stories[i].btitle);
+                list_stories[i].btitle = decode.decode(list_stories[i].btitle);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
             res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+50, ct: ct, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
@@ -160,7 +161,7 @@ exports.story_open_list = function(req, res, next) {
                 var str = list_stories[i].content;
                 var len = str.split(" ").length;
                 list_stories[i].len = len;
-                list_stories[i].btitle = entities.decode(list_stories[i].btitle);
+                list_stories[i].btitle = decode.decode(list_stories[i].btitle);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
             res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+50, ct: ct, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
@@ -229,7 +230,7 @@ exports.story_list_ajax = function(req, res, next) {
             } else {
                 list_stories[i].chapter += ', ';
             }
-            list_stories[i].title = entities.decode(list_stories[i].title);
+            list_stories[i].title = decode.decode(list_stories[i].title);
         }
         res.send(list_stories);
       });
@@ -303,11 +304,11 @@ exports.story_detail = function(req, res, next) {
             eor.status = 404;
             return next(eor);
         }
-        results.story.title = entities.decode(results.story.title);
+        results.story.title = decode.decode(results.story.title);
         var book_title = '';
         var book_id = '';
         if (typeof results.story.book != 'undefined'){
-            book_title = entities.decode(results.story.book.title);
+            book_title = decode.decode(results.story.book.title);
             book_id = results.story.book._id;
         }
         if (results.story.user != req.session.userId) {
@@ -378,7 +379,7 @@ exports.story_detail = function(req, res, next) {
                 */
             }
         });
-        results.story.content = entities.decode(results.story.content);
+        results.story.content = decode.decode(results.story.content);
         
         for (let i = 0; i < results.words.length; i++) {
             if (results.words[i].oxford_word != null && results.words[i].oxford_word.word != null) {
@@ -451,11 +452,11 @@ exports.story_detail = function(req, res, next) {
             }
         }
         */
-        results.story.reference = entities.decode(results.story.reference);
+        results.story.reference = decode.decode(results.story.reference);
         var memo = '';
         var memo_id = '';
         if(results.memo.length > 0) {
-            memo = entities.decode(results.memo[0].content);
+            memo = decode.decode(results.memo[0].content);
             memo_id = results.memo[0]._id;
         }
         //console.log("memo:"+memo);
@@ -470,7 +471,7 @@ exports.story_detail = function(req, res, next) {
         if (pc == '') vName = 'story_mdtl';
         //console.log('story.genre:'+results.story.genre);
         for (let i = 0; i < results.story.genre.length; i++) {
-            results.story.genre[i].name = entities.decode(results.story.genre[i].name);
+            results.story.genre[i].name = decode.decode(results.story.genre[i].name);
         }
         for (var i = 0; i < results.files.length; i++) {
             results.files[i].file_name = results.files[i].file_name.substring(14);
@@ -584,7 +585,7 @@ exports.story_iframe = function(req, res, next) {
             return next(eor);
         }
         // Successful, so render.
-        results.story.content = entities.decode(results.story.content);
+        results.story.content = decode.decode(results.story.content);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_iframe', { story:  results.story, pc: pc } );
     });
@@ -607,10 +608,10 @@ exports.story_create_get = function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err); }
         for (let i = 0; i < results.genres.length; i++) {
-            results.genres[i].name = entities.decode(results.genres[i].name);
+            results.genres[i].name = decode.decode(results.genres[i].name);
         }
         for (var i = 0; i < results.books.length; i++) {
-            results.books[i].title = entities.decode(results.books[i].title);
+            results.books[i].title = decode.decode(results.books[i].title);
         }
         var bok = req.query.book;
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
@@ -698,12 +699,12 @@ exports.story_create_post = [
 
                 // Mark our selected genres as checked.
                 for (let i = 0; i < results.genres.length; i++) {
-                    results.genres[i].name = entities.decode(results.genres[i].name);
+                    results.genres[i].name = decode.decode(results.genres[i].name);
                     if (story.genre.indexOf(results.genres[i]._id) > -1) {
                         results.genres[i].checked='true';
                     }
                 }
-                story.content = entities.decode(story.content);
+                story.content = decode.decode(story.content);
                 var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
                 res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, story: story, hostname: req.headers.host, errors: errors.array(), pc: pc });
             });
@@ -747,11 +748,11 @@ exports.story_delete_get = function(req, res, next) {
             res.redirect('/catalog/stories');
         }
         for (var i = 0; i < results.story.genre.length; i++) {
-            results.story.genre[i].name = entities.decode(results.story.genre[i].name);
+            results.story.genre[i].name = decode.decode(results.story.genre[i].name);
         }
         // Successful, so render.
-        results.story.content = entities.decode(results.story.content);
-        results.story.title = entities.decode(results.story.title);
+        results.story.content = decode.decode(results.story.content);
+        results.story.title = decode.decode(results.story.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_delete', { title: 'Delete Story', story: results.story, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
     });
@@ -819,7 +820,7 @@ exports.story_update_get = function(req, res, next) {
         // Success.
         // Mark our selected genres as checked.
         for (var all_g_iter = 0; all_g_iter < results.genres.length; all_g_iter++) {
-            results.genres[all_g_iter].name = entities.decode(results.genres[all_g_iter].name);
+            results.genres[all_g_iter].name = decode.decode(results.genres[all_g_iter].name);
             for (var story_g_iter = 0; story_g_iter < results.story.genre.length; story_g_iter++) {
                 if (results.genres[all_g_iter]._id.toString()==results.story.genre[story_g_iter]._id.toString()) {
                     results.genres[all_g_iter].checked='true';
@@ -827,13 +828,13 @@ exports.story_update_get = function(req, res, next) {
             }
         }
         for (var i = 0; i < results.books.length; i++) {
-            results.books[i].title = entities.decode(results.books[i].title);
+            results.books[i].title = decode.decode(results.books[i].title);
         }
 		for (var i = 0; i < results.files.length; i++) {
             results.files[i].file_name = results.files[i].file_name.substring(14);
         }      
-        results.story.content = entities.decode(results.story.content);
-        results.story.title = entities.decode(results.story.title);
+        results.story.content = decode.decode(results.story.content);
+        results.story.title = decode.decode(results.story.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story , hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt, files:results.files });
     });
@@ -903,12 +904,12 @@ exports.story_update_post = [
 
                 // Mark our selected genres as checked.
                 for (let i = 0; i < results.genres.length; i++) {
-                    results.genres[i].name = entities.decode(results.genres[i].name);
+                    results.genres[i].name = decode.decode(results.genres[i].name);
                     if (story.genre.indexOf(results.genres[i]._id) > -1) {
                         results.genres[i].checked='true';
                     }
                 }
-                story.content = entities.decode(story.content);
+                story.content = decode.decode(story.content);
                 var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
                 res.render('story_form', { title: 'Update Story',books:results.books,genres:results.genres, story: story, errors: errors.array(), pc: pc });
             });
@@ -1567,9 +1568,9 @@ exports.story_word_datatable_list = function (req, res, next) {
                         if(list_stories[i].create_date != null){
                             list_stories[i].create_date = moment(list_stories[i].create_date).format('YYYY-MM-DD');
                         }
-                        list_stories[i].title = entities.decode(list_stories[i].title);
+                        list_stories[i].title = decode.decode(list_stories[i].title);
                         if (list_stories[i].btitle != null) {
-                            list_stories[i].btitle = entities.decode(list_stories[i].btitle);
+                            list_stories[i].btitle = decode.decode(list_stories[i].btitle);
                         }
                         var book;
                         if (list_stories[i].book != null && list_stories[i].book.title != null) {
