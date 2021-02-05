@@ -1,5 +1,6 @@
 var express = require('express');
-const uuid = require('uuid/v4');
+//const uuid = require('uuid/v4');
+const { v4: uuid } = require('uuid');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
