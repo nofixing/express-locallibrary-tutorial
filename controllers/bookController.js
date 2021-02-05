@@ -7,8 +7,9 @@ var User = require('../models/user');
 var History = require('../models/history');
 var moment = require('moment');
 
-const Entities = require('html-entities').AllHtmlEntities;
-const entities = new Entities();
+//const Entities = require('html-entities').AllHtmlEntities;
+const { decode } = require('html-entities');
+//const entities = new Entities();
 
 const { body,validationResult } = require('express-validator');
 const { sanitizeBody } = require('express-validator');
@@ -54,9 +55,9 @@ exports.index = function(req, res, next) {
             console.log("req.session.clang:"+req.session.clang);
             var name = req.session.userName;
             for (let i = 0; i < results.history.length; i++) {
-                results.history[i].story.title = entities.decode(results.history[i].story.title);
+                results.history[i].story.title = decode.decode(results.history[i].story.title);
                 if (results.history[i].book != null) {
-                    results.history[i].book.title = entities.decode(results.history[i].book.title);
+                    results.history[i].book.title = decode.decode(results.history[i].book.title);
                 }
             }
             if ( (clang != '' && clang != 'undefined' && typeof clang != 'undefined' && clang == 'en') || req.session.clang == 'en' ) {
@@ -111,7 +112,7 @@ exports.book_list = function(req, res, next) {
       if (err) { return next(err); }
       // Successful, so render
         for (let i = 0; i < list_books.length; i++) {
-            list_books[i].title = entities.decode(list_books[i].title);
+            list_books[i].title = decode.decode(list_books[i].title);
         }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
       res.render('book_list', { title: 'Book List', book_list:  list_books, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
@@ -151,7 +152,7 @@ exports.book_detail = function(req, res, next) {
             return next(eor);
         }
         for (let i = 0; i < results.book.genre.length; i++) {
-            results.book.genre[i].name = entities.decode(results.book.genre[i].name);
+            results.book.genre[i].name = decode.decode(results.book.genre[i].name);
         }
         for (let i = 0; i < results.stories.length; i++) {
             var str = results.stories[i].content;
@@ -163,8 +164,8 @@ exports.book_detail = function(req, res, next) {
                 results.stories[i].chapter += ',';
             }
         }
-        results.book.summary = entities.decode(results.book.summary);
-        results.book.title = entities.decode(results.book.title);
+        results.book.summary = decode.decode(results.book.summary);
+        results.book.title = decode.decode(results.book.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('book_detail', { title: 'Title', book:  results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
     });
@@ -183,7 +184,7 @@ exports.book_create_get = function(req, res, next) {
     }, function(err, results) {
         if (err) { console.log(err); return next(err); }
         for (let i = 0; i < results.genres.length; i++) {
-            results.genres[i].name = entities.decode(results.genres[i].name);
+            results.genres[i].name = decode.decode(results.genres[i].name);
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('book_form', { title: 'Create Book',genres:results.genres, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
@@ -246,7 +247,7 @@ exports.book_create_post = [
                     if (book.genre.indexOf(results.genres[i]._id) > -1) {
                         results.genres[i].checked='true';
                     }
-                    results.genres[i].name = entities.decode(results.genres[i].name);
+                    results.genres[i].name = decode.decode(results.genres[i].name);
                 }
                 var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
                 res.render('book_form', { title: 'Create Book', genres:results.genres, book: book, errors: errors.array(), pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
@@ -281,10 +282,10 @@ exports.book_delete_get = function(req, res, next) {
         if (results.book==null) { // No results.
             res.redirect('/catalog/books');
         }
-        results.book.summary = entities.decode(results.book.summary);
-        results.book.title = entities.decode(results.book.title);
+        results.book.summary = decode.decode(results.book.summary);
+        results.book.title = decode.decode(results.book.title);
         for (let i = 0; i < results.book.genre.length; i++) {
-            results.book.genre[i].name = entities.decode(results.book.genre[i].name);
+            results.book.genre[i].name = decode.decode(results.book.genre[i].name);
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
         res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
@@ -308,7 +309,7 @@ exports.book_delete_post = function(req, res, next) {
         if (results.stories.length > 0) {
             // Book has book_instances. Render in same way as for GET route.
             for (let i = 0; i < results.book.genre.length; i++) {
-                results.book.genre[i].name = entities.decode(results.book.genre[i].name);
+                results.book.genre[i].name = decode.decode(results.book.genre[i].name);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
             res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
@@ -345,12 +346,12 @@ exports.book_update_get = function(req, res, next) {
                 eor.status = 404;
                 return next(eor);
             }
-            results.book.summary = entities.decode(results.book.summary);
-            results.book.title = entities.decode(results.book.title);
+            results.book.summary = decode.decode(results.book.summary);
+            results.book.title = decode.decode(results.book.title);
             // Success.
             // Mark our selected genres as checked.
             for (var all_g_iter = 0; all_g_iter < results.genres.length; all_g_iter++) {
-                results.genres[all_g_iter].name = entities.decode(results.genres[all_g_iter].name);
+                results.genres[all_g_iter].name = decode.decode(results.genres[all_g_iter].name);
                 for (var book_g_iter = 0; book_g_iter < results.book.genre.length; book_g_iter++) {
                     if (results.genres[all_g_iter]._id.toString()==results.book.genre[book_g_iter]._id.toString()) {
                         results.genres[all_g_iter].checked='true';
@@ -516,7 +517,7 @@ exports.book_datatable_list = function (req, res, next) {
                         if (err) { return next(err); }
                         for (let i = 0; i < list_books.length; i++) {
                             list_books[i].rownum = start + i + 1;
-                            list_books[i].title = entities.decode(list_books[i].title);
+                            list_books[i].title = decode.decode(list_books[i].title);
                             if(list_books[i].start_date != null){
                                 list_books[i].start_date = moment(list_books[i].start_date).format('YYYY-MM-DD');
                             }
