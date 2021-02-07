@@ -25,12 +25,6 @@ app.use(device.capture());
 
 app.use(helmet());
 
-app.use(function(req, res, next) {
-  res.setHeader("content-security-policy-report-only", "base-uri 'self'; connect-src 'self' https://ka-f.fontawesome.com; default-src 'self'; font-src 'self' https://cdnjs.cloudflare.com https://ka-f.fontawesome.com https://maxcdn.bootstrapcdn.com; frame-src 'self' https://accounts.google.com https://www.youtube.com; img-src 'self' https://1.bp.blogspot.com https://cristinamarconi.files.wordpress.com https://cropwatch.unl.edu https://i.ebayimg.com https://i.pinimg.com https://images-na.ssl-images-amazon.com https://upload.wikimedia.org https://vignette.wikia.nocookie.net https://www.tampabayvets.net; manifest-src 'self'; media-src 'self'; object-src 'none'; report-uri https://601d57d921f7215e9f47da08.endpoint.csper.io/; script-src 'report-sample' 'self' https://apis.google.com/js/platform.js https://cdn.jsdelivr.net/jquery.tooltipster/4.0.5/js/tooltipster.bundle.min.js https://cdn.quilljs.com/1.3.6/quill.js https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js https://code.jquery.com/jquery-3.4.1.min.js https://kit.fontawesome.com/e5e4a7b53c.js https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js; style-src 'report-sample' 'self' https://cdn.jsdelivr.net https://cdn.quilljs.com https://cdnjs.cloudflare.com https://maxcdn.bootstrapcdn.com https://stackpath.bootstrapcdn.com; worker-src 'none';");
-  next();
-});
-
-
 // Set up mongoose connection
 var mongoose = require('mongoose');
 //var db_url = 'mongodb://infinite:'+process.env.DB_URI+'@ds153081-a0.mlab.com:53081,ds153081-a1.mlab.com:53081/infinitestorlet?replicaSet=rs-ds153081';
