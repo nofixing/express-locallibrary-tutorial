@@ -26,7 +26,7 @@ app.use(device.capture());
 app.use(helmet());
 
 app.use(function(req, res, next) {
-  res.setHeader("content-security-policy-report-only", "base-uri 'self'; connect-src 'self'; default-src 'self'; font-src 'self'; frame-src 'self'; img-src 'self' data: https:; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'report-sample' 'self'; style-src 'report-sample' 'self'; worker-src 'none';");
+  res.setHeader("content-security-policy-report-only", "base-uri 'self'; connect-src 'self'; default-src 'self'; font-src 'self'; frame-src 'self'; img-src 'self' data: https; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'report-sample' 'self'; style-src 'report-sample' 'self'; worker-src 'none';");
   next();
 });
 
