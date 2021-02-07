@@ -25,6 +25,12 @@ app.use(device.capture());
 
 app.use(helmet());
 
+app.use(function(req, res, next) {
+  res.setHeader("content-security-policy-report-only", "base-uri 'self'; connect-src 'self'; default-src 'self'; font-src 'self'; frame-src 'self'; img-src 'self' data: https:; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'report-sample' 'self'; style-src 'report-sample' 'self'; worker-src 'none';");
+  next();
+});
+
+
 // Set up mongoose connection
 var mongoose = require('mongoose');
 //var db_url = 'mongodb://infinite:'+process.env.DB_URI+'@ds153081-a0.mlab.com:53081,ds153081-a1.mlab.com:53081/infinitestorlet?replicaSet=rs-ds153081';
