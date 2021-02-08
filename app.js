@@ -25,11 +25,31 @@ app.use(device.capture());
 
 app.use(helmet());
 
-app.use(function(req, res, next) {
-  res.setHeader("content-security-policy-report-only", "base-uri 'self'; connect-src 'self'; default-src 'self'; font-src 'self'; frame-src 'self'; img-src 'self' data: https; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src 'report-sample' 'self'; style-src 'report-sample' 'self'; worker-src 'none';");
-  next();
+app.use(function (req, res, next) {
+  res.setHeader(
+    'Report-To',
+    '{"group":"csp-endpoint","max_age":10886400,"endpoints":[{"url":"http://infinitestorlet.com/__cspreport__"}],"include_subdomains":true}'
+  );
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self' https://www.youtube.com https://youtube.com; report-to csp-endpoint; report-uri /__cspreport__;"
+  );
+  next();
 });
 
+app.use(
+  bodyParser.json({
+    type: [
+      'application/json',
+      'application/csp-report',
+      'application/reports+json',
+    ],
+  })
+);
+
+app.post('/__cspreport__', (req, res) => {
+  console.log(req.body);
+});
 
 // Set up mongoose connection
 var mongoose = require('mongoose');
