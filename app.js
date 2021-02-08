@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
   );
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self'; connect-src 'self' https://ka-f.fontawesome.com; font-src 'self' https://ka-f.fontawesome.com; img-src 'self'; script-src 'self'; script-src-elem 'self' https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.en.86MLdKEg0Ug.O/m=auth2/rt=j/sv=1/d=1/ed=1/am=wQE/rs=AGLTcCNVMDBrJcVLxr_OXSrhwhVXLtLCsQ/cb=gapi.loaded_0; style-src 'self' 'unsafe-inline'; frame-src 'self' https://www.youtube.com https://youtube.com; report-to csp-endpoint; report-uri /__cspreport__;"
+    "default-src 'self'; connect-src 'self' https://ka-f.fontawesome.com; font-src 'self' https://ka-f.fontawesome.com; img-src 'self'; script-src 'self'; script-src-elem 'self' https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.en.86MLdKEg0Ug.O/m=auth2/rt=j/sv=1/d=1/ed=1/am=wQE/rs=AGLTcCNVMDBrJcVLxr_OXSrhwhVXLtLCsQ/cb=gapi.loaded_0; style-src 'self' 'unsafe-inline'; frame-src 'self' https://accounts.google.com https://www.youtube.com https://youtube.com; report-to csp-endpoint; report-uri /__cspreport__;"
   );
   next();
 });
