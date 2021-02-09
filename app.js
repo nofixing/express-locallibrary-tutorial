@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
   );
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self'; connect-src 'self' https://ka-f.fontawesome.com; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self' https://www.youtube.com https://youtube.com; report-to csp-endpoint; report-uri /__cspreport__;"
+    "default-src 'self'; connect-src https://ka-f.fontawesome.com; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self' https://www.youtube.com https://youtube.com; report-to csp-endpoint; report-uri /__cspreport__;"
   );
   next();
 });
