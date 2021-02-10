@@ -1,6 +1,7 @@
 $( document ).ready(function() {
     
     var atft = $("#cfnt").val();
+    atft = atft.replace(" ", "");
     if(typeof atft != 'undefined' && atft != '') {
          
         var fary = {WorkSans:"Work Sans",LibreFranklin:"Libre Franklin",Inconsolata:"Inconsolata",roboto:"Roboto",
@@ -21,6 +22,7 @@ $( document ).ready(function() {
     }
 
     var atft2 = $("#cfnt2").val();
+    atft2 = atft2.replace(" ", "");
     if(typeof atft2 != 'undefined' && atft2 != '') {
          
         var fary = {WorkSans:"Work Sans",LibreFranklin:"Libre Franklin",Inconsolata:"Inconsolata",roboto:"Roboto",
