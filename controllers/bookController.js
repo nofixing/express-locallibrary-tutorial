@@ -53,6 +53,8 @@ exports.index = function(req, res, next) {
         if (req.session.userId) {
             console.log("req.session exists");
             console.log("req.session.clang:"+req.session.clang);
+            console.log("req.session.cfnt:"+req.session.cfnt);
+            console.log("req.session.cfnt2:"+req.session.cfnt2);
             var name = req.session.userName;
             for (let i = 0; i < results.history.length; i++) {
                 results.history[i].story.title = entities.decodeHTML(results.history[i].story.title);
