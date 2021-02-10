@@ -59,6 +59,7 @@ exports.login_post = async (req, res, next) => {
             req.session.userEmail = user[0].email;
             console.log("user.name:"+user[0].name);
             console.log("user.cfnt:"+user[0].cfnt+"/:"+entities.decodeHTML(user[0].cfnt));
+            console.log("user.cfnt2:"+user[0].cfnt2+"/:"+entities.decodeHTML(user[0].cfnt2));
             console.log("user.cfwt:"+user[0].cfwt+"/:"+user[0].cfwt);
             if (req.session.redirectUrl) {
               return res.redirect(req.session.redirectUrl);
@@ -99,6 +100,7 @@ exports.login_post = async (req, res, next) => {
             req.session.userEmail = user.email;
             console.log("user.name:"+user.name);
             console.log("user.cfnt:"+user.cfnt+"/:"+entities.decodeHTML(user.cfnt));
+            console.log("user.cfnt2:"+user[0].cfnt2+"/:"+entities.decodeHTML(user[0].cfnt2));
             console.log("user.cfwt:"+user.cfwt+"/:"+user.cfwt);
             if (req.session.redirectUrl) {
               return res.redirect(req.session.redirectUrl);
