@@ -64,11 +64,15 @@ $( document ).ready(function() {
 });
 
 function atoggleSurface(sfnt, ffmt) {
+    
     $('#atfnt').text(sfnt);
     $("#cfnt").val(ffmt);
+
 }
 
 function atoggleSurface2(sfnt, ffmt) {
+    
     $('#atfnt2').text(sfnt);
     $("#cfnt2").val(ffmt);
+    
 }
