@@ -72,7 +72,7 @@ exports.index = function(req, res, next) {
                     if (err) { return next(err); }
                     req.session.cfnt = cfnt;
                     console.log("update cfnt:"+cfnt+"/update to:"+req.session.cfnt);
-                    res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt, name: name, userEmail: req.session.userEmail });
+                    res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt, name: name, userEmail: req.session.userEmail });
                 });
             } else if (clang != '' && clang != 'undefined' && typeof clang != 'undefined' && req.session.clang != clang) {
                 User.update({_id: req.session.userId}, {
@@ -81,7 +81,7 @@ exports.index = function(req, res, next) {
                     if (err) { return next(err); }
                     req.session.clang = clang;
                     console.log("update clang:"+clang);
-                    res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt, name: name, userEmail: req.session.userEmail });
+                    res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt, name: name, userEmail: req.session.userEmail });
                 });
             } else if (cfwt != '' && cfwt != 'undefined' && typeof cfwt != 'undefined' && req.session.cfwt != cfwt) {
                 User.update({_id: req.session.userId}, {
@@ -90,11 +90,11 @@ exports.index = function(req, res, next) {
                     if (err) { return next(err); }
                     req.session.cfwt = cfwt;
                     console.log("update cfwt:"+cfwt+"/update to:"+req.session.cfwt);
-                    res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt, name: name, userEmail: req.session.userEmail });
+                    res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt, name: name, userEmail: req.session.userEmail });
                 });
             } else {
                 console.log("normal access");
-                res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt, name: name, userEmail: req.session.userEmail });
+                res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt, name: name, userEmail: req.session.userEmail });
             }
         } else {
             res.render('index', { title: 'Welcome to Infinite Storlet', error: err, data: results, cert: cert, pc: pc, userEmail: req.session.userEmail });
@@ -115,7 +115,7 @@ exports.book_list = function(req, res, next) {
             list_books[i].title = entities.decodeHTML(list_books[i].title);
         }
       var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-      res.render('book_list', { title: 'Book List', book_list:  list_books, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+      res.render('book_list', { title: 'Book List', book_list:  list_books, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
     });
 
 };
@@ -167,7 +167,7 @@ exports.book_detail = function(req, res, next) {
         results.book.summary = entities.decodeHTML(results.book.summary);
         results.book.title = entities.decodeHTML(results.book.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('book_detail', { title: 'Title', book:  results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
+        res.render('book_detail', { title: 'Title', book:  results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt } );
     });
 
 };
@@ -187,7 +187,7 @@ exports.book_create_get = function(req, res, next) {
             results.genres[i].name = entities.decodeHTML(results.genres[i].name);
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('book_form', { title: 'Create Book',genres:results.genres, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+        res.render('book_form', { title: 'Create Book',genres:results.genres, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
     });
 
 };
@@ -250,7 +250,7 @@ exports.book_create_post = [
                     results.genres[i].name = entities.decodeHTML(results.genres[i].name);
                 }
                 var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-                res.render('book_form', { title: 'Create Book', genres:results.genres, book: book, errors: errors.array(), pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+                res.render('book_form', { title: 'Create Book', genres:results.genres, book: book, errors: errors.array(), pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
             });
             return;
         }
@@ -288,7 +288,7 @@ exports.book_delete_get = function(req, res, next) {
             results.book.genre[i].name = entities.decodeHTML(results.book.genre[i].name);
         }
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
+        res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt } );
     });
 
 };
@@ -312,7 +312,7 @@ exports.book_delete_post = function(req, res, next) {
                 results.book.genre[i].name = entities.decodeHTML(results.book.genre[i].name);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
+            res.render('book_delete', { title: 'Delete Book', book: results.book, stories: results.stories, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt } );
             return;
         }
         else {
@@ -359,7 +359,7 @@ exports.book_update_get = function(req, res, next) {
                 }
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('book_form', { title: 'Update Book', genres:results.genres, book: results.book, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+            res.render('book_form', { title: 'Update Book', genres:results.genres, book: results.book, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
         });
 
 };
@@ -448,7 +448,7 @@ exports.book_update_post = [
 exports.book_datatable = function (req, res, next) {
 
     var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-    res.render('book_board_list', { title: 'Book List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+    res.render('book_board_list', { title: 'Book List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
 
 };
 

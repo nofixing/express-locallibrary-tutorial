@@ -101,20 +101,20 @@ exports.story_list = function(req, res, next) {
         var len = str.split(" ").length;
         list_stories[i].len = len;
       }
-      res.render('story_list', { title: 'Story List', story_list:  list_stories, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+      res.render('story_list', { title: 'Story List', story_list:  list_stories, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
     });
 
 };
 
 exports.withdrawal = function(req, res, next) {
     console.log('withdrawal start');
-	res.render('withdrawal', { hostname: req.headers.host, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+	res.render('withdrawal', { hostname: req.headers.host, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
 
 };
 
 exports.privacy_policy = function(req, res, next) {
 
-	res.render('privacyPolicy', { cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+	res.render('privacyPolicy', { cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
 
 };
 
@@ -144,7 +144,7 @@ exports.story_open_list = function(req, res, next) {
                 list_stories[i].btitle = entities.decodeHTML(list_stories[i].btitle);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+50, ct: ct, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+50, ct: ct, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
         });
     } else {
         Story.find({open: 'Y'}).count().exec(function (err, count) {
@@ -162,7 +162,7 @@ exports.story_open_list = function(req, res, next) {
                 list_stories[i].btitle = entities.decodeHTML(list_stories[i].btitle);
             }
             var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+50, ct: ct, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+            res.render('story_open_list', { title: 'Story List', story_list:  list_stories, hostname: req.headers.host, pc: pc, mxcnt: mxcnt+50, ct: ct, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
         });
     }
   
@@ -476,7 +476,7 @@ exports.story_detail = function(req, res, next) {
         }
         res.render(vName, 
         { title: 'Title', story:  results.story, comments: results.comments, memo: memo, memo_id: memo_id, anchor: anchor, bookMark_id: bookMark_id, 
-        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, cfwt: req.session.cfwt, cfnt2: req.session.cfnt2, book_title: book_title, book_id: book_id,
+        word_list:results.words, hostname: req.headers.host, pc: pc, userId: req.session.userId, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt, cfnt2: req.session.cfnt2, book_title: book_title, book_id: book_id,
         tooltip:req.body.tlp, files: results.files, ttp: ttp } );
     });
 
@@ -613,7 +613,7 @@ exports.story_create_get = function(req, res, next) {
         }
         var bok = req.query.book;
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, bok: bok, hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+        res.render('story_form', { title: 'Create Story',books:results.books,genres:results.genres, bok: bok, hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
     });
 
 };
@@ -752,7 +752,7 @@ exports.story_delete_get = function(req, res, next) {
         results.story.content = entities.decodeHTML(results.story.content);
         results.story.title = entities.decodeHTML(results.story.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_delete', { title: 'Delete Story', story: results.story, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
+        res.render('story_delete', { title: 'Delete Story', story: results.story, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt } );
     });
 
 };
@@ -834,7 +834,7 @@ exports.story_update_get = function(req, res, next) {
         results.story.content = entities.decodeHTML(results.story.content);
         results.story.title = entities.decodeHTML(results.story.title);
         var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story , hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt, files:results.files });
+        res.render('story_form', { title: 'Update Story', books:results.books, genres:results.genres, story: results.story , hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt, files:results.files });
     });
 
 };
@@ -968,13 +968,13 @@ exports.story_update_post = [
 
 exports.story_preview = function(req, res, next) {
     console.log("story story_preview");
-    res.render('preview', { content: req.body.content, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
+    res.render('preview', { content: req.body.content, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt } );
 
 };
 
 exports.story_update_preview = function(req, res, next) {
     console.log("story story_update_preview");
-    res.render('preview', { content: req.body.content, cfnt: req.session.cfnt, cfwt: req.session.cfwt } );
+    res.render('preview', { content: req.body.content, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt } );
 
 };
 
@@ -1496,7 +1496,7 @@ exports.story_word_datatable = function (req, res, next) {
         }
     }
     var pc = req.device.type.toUpperCase() == 'DESKTOP' ? 'DESKTOP':'';
-    res.render('story_word_list', { title: 'Story Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfwt: req.session.cfwt, searchWord: searchWord });
+    res.render('story_word_list', { title: 'Story Word List', hostname: req.headers.host, pc: pc, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt, searchWord: searchWord });
 };
 
 function getSorts(query) {

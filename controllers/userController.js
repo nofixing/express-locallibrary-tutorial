@@ -120,7 +120,7 @@ exports.login_post = async (req, res, next) => {
 
 exports.alter_password_get = function (req, res, next) {
 
-  res.render('alter_password', { hostname: req.headers.host, cfnt: req.session.cfnt, cfwt: req.session.cfwt });
+  res.render('alter_password', { hostname: req.headers.host, cfnt: req.session.cfnt, cfnt2: req.session.cfnt2, cfwt: req.session.cfwt });
 
 };
 
