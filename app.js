@@ -32,7 +32,7 @@ app.use(function (req, res, next) {
   );
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self'; connect-src 'self' https://ka-f.fontawesome.com; font-src 'self' https://ka-f.fontawesome.com; img-src data: https:; script-src 'self' 'unsafe-inline' https://apis.google.com https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com https://kit.fontawesome.com https://cdn.quilljs.com; style-src 'self' 'unsafe-inline' https://stackpath.bootstrapcdn.com https://maxcdn.bootstrapcdn.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.quilljs.com https://cdn.datatables.net; frame-src 'self' https://accounts.google.com https://www.youtube.com https://youtube.com; report-to csp-endpoint; report-uri /__cspreport__;"
+    "default-src 'self'; connect-src 'self' https://ka-f.fontawesome.com; font-src 'self' https://ka-f.fontawesome.com; img-src data: https:; script-src 'self' 'unsafe-inline' https://apis.google.com https://cdn.jsdelivr.net https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com https://kit.fontawesome.com https://cdn.quilljs.com; script-src-elem 'self'; style-src 'self' 'unsafe-inline' https://stackpath.bootstrapcdn.com https://maxcdn.bootstrapcdn.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.quilljs.com https://cdn.datatables.net; frame-src 'self' https://accounts.google.com https://www.youtube.com https://youtube.com; report-to csp-endpoint; report-uri /__cspreport__;"
   );
   next();
 });
