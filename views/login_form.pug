@@ -6,18 +6,20 @@ block content
   if errors 
     span(style='font-size: 1.2em; font-weight: bold; color: red;')!= errors
 
-  form(method='POST' action='' id='userForm' name='userForm')
+  form(method='POST' action='#' onsubmit="return validateFormOnSubmit(this);" id='userForm' name='userForm')
     <input type="hidden" id="gid_token" name="gid_token" value="" />
     <input type="hidden" id="sign_token" name="sign_token" value="#{sign_token}" />
     <input type="hidden" id="havetosignup" name="havetosignup" value="#{translation.havetosignup}" />
+    <input type="hidden" id="email" name="email"/>
+    <input type="hidden" id="password" name="password"/>
     div.form-group.row
       div.col-sm-4
-        label(for='email') #{translation.Email}
-        input.form-control.form-control-sm(type='text' id='email' placeholder='email' name='email')
+        label(for='email_view') #{translation.Email}
+        input.form-control.form-control-sm(type='text' id='email_view' placeholder='email' name='email_view')
     div.form-group.row
       div.col-sm-4
-        label(for='password') #{translation.Password}
-        input.form-control.form-control-sm(type='password' id='password' placeholder='password' name='password')
+        label(for='password_view') #{translation.Password}
+        input.form-control.form-control-sm(type='password' id='password_view' placeholder='password' name='password_view')
     button.btn.btn-primary.btn-sm(type='submit') #{translation.LOGIN}
   
   <div id="my-signin2" style="margin-top: 30px;"></div>

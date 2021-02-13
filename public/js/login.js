@@ -1,6 +1,12 @@
-$( document ).ready(function() {
-
+$(function () {
+    
 });
+function validateFormOnSubmit(theForm) {
+    $('#email').val($('#email_view').val());
+    $('#password').val($('#password_view').val());
+    
+    return false;
+}
 function success(googleUser) {
     var profile = googleUser.getBasicProfile();
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
