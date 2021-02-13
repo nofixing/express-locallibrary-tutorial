@@ -5,7 +5,8 @@ function validateFormOnSubmit(theForm) {
     $('#email').val($('#email_view').val());
     $('#password').val($('#password_view').val());
     
-    return false;
+    var frm = document.getElementById("userForm");
+    frm.submit();
 }
 function success(googleUser) {
     var profile = googleUser.getBasicProfile();
