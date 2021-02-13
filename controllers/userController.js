@@ -78,7 +78,8 @@ exports.login_post = async (req, res, next) => {
       return next(err);
     }
   } else {
-
+    console.log("req.body.email:"+req.body.email);
+    console.log("req.body.password:"+req.body.password);
     if (req.body.email && req.body.password) {
       User.authenticate(req.body.email, req.body.password, function (error, user) {
         if (error || !user) {
