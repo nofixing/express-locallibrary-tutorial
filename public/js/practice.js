@@ -840,7 +840,8 @@ function dicSearch() {
                 processDicData(data.dic_content, data.dic_kcontent, data.translation);
             },
             error: function(xhr, status, error) {
-                oxfordWord_id = '';
+                console.log('dic search error:'+error.message);
+		oxfordWord_id = '';
                 oxfordWord_word = '';
             }
         });
