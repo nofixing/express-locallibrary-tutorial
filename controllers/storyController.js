@@ -1281,7 +1281,7 @@ exports.story_oxford_ajax = function(req, res, next) {
         
             },
             function(err) {
-                console.log('storyController.js story_oxford_ajax req.query.word:'+req.body.word+' story_oxford_ajax err:'+JSON.stringify(err));
+                console.log('헤이 storyController.js story_oxford_ajax req.query.word:'+req.body.word+' story_oxford_ajax err:'+JSON.stringify(err));
                 if(JSON.stringify(err).indexOf('No such entry found.') > -1) {
                     console.log('lemmas start');
                     var config2 = {
