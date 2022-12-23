@@ -1106,9 +1106,9 @@ exports.story_oxford_ajax = function(req, res, next) {
             };
             
             var lookup = dict.find(props);
-        
+            console.log('자자 봅시다.');
             lookup.then(function(data) {
-                console.log('parse result ->'+JSON.stringify(data));
+                console.log('여기 여기 parse result ->'+JSON.stringify(data.results));
                 var results = data.results;
                 var derivative_word = '';
                 var isDerivativeOf = false;
