@@ -13,6 +13,7 @@ const CLIENT_ID = "829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleuser
 const client = new OAuth2Client(CLIENT_ID);
 
 const nodemailer = require("nodemailer");
+const nodemailerSendgrid = require("nodemailer-sendgrid");
 
 const options = {
   apiKey: process.env.sendGrid_api,
