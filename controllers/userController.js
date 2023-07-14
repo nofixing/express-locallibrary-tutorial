@@ -12,13 +12,13 @@ const { OAuth2Client } = require("google-auth-library");
 const CLIENT_ID = "829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com";
 const client = new OAuth2Client(CLIENT_ID);
 
-const nodemailer = require("nodemailer");
-const nodemailerSendgrid = require("nodemailer-sendgrid");
+// const nodemailer = require("nodemailer");
+// const nodemailerSendgrid = require("nodemailer-sendgrid");
 
-const options = {
-  apiKey: process.env.sendGrid_api,
-};
-const transporter = nodemailer.createTransport(nodemailerSendgrid(options));
+// const options = {
+//   apiKey: process.env.sendGrid_api,
+// };
+// const transporter = nodemailer.createTransport(nodemailerSendgrid(options));
 
 exports.logout = function (req, res, next) {
   if (req.session) {
@@ -505,18 +505,18 @@ exports.rgst_post = async (req, res, next) => {
           //   }
           // });
 
-          const href = "https://" + req.headers.host + "/user/verifyemail?code=" + user._id + "|" + user.randomstring;
+          // const href = "https://" + req.headers.host + "/user/verifyemail?code=" + user._id + "|" + user.randomstring;
 
-          const mailOptions = {
-            to: req.body.email,
-            from: "nofixing@gmail.com",
-            subject: "저기요! 이메일 인증이 요청되었어요.",
-            html: `<p>여보세요 ${req.body.name}, 이메일 인증이 요청되었어요. <a href=${href}>여기를 클릭해서 회원가입을 완료하세요. </a>`,
-          };
+          // const mailOptions = {
+          //   to: req.body.email,
+          //   from: "nofixing@gmail.com",
+          //   subject: "저기요! 이메일 인증이 요청되었어요.",
+          //   html: `<p>여보세요 ${req.body.name}, 이메일 인증이 요청되었어요. <a href=${href}>여기를 클릭해서 회원가입을 완료하세요. </a>`,
+          // };
           // console.log(
           //   `signup post email => ${email}, username => ${username}, href => ${href}`
           // );
-          transporter.sendMail(mailOptions, (err, info) => err && console.log(err));
+          // transporter.sendMail(mailOptions, (err, info) => err && console.log(err));
 
           return res.redirect("/");
         } else {
@@ -568,30 +568,30 @@ exports.forgot_password = function (req, res, next) {
           console.log("theUser:" + theUser);
           // var nodemailer = require("nodemailer");
 
-          var transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-              user: "nofixing@gmail.com",
-              pass: "nlrgkuedjqopymvi",
-            },
-          });
+          // var transporter = nodemailer.createTransport({
+          //   service: "gmail",
+          //   auth: {
+          //     user: "nofixing@gmail.com",
+          //     pass: "nlrgkuedjqopymvi",
+          //   },
+          // });
 
-          var emlCont = "Your  temporary password is " + new_password + " You should change your password";
+          // var emlCont = "Your  temporary password is " + new_password + " You should change your password";
 
-          var mailOptions = {
-            from: "nofixing@gmail.com",
-            to: req.body.email,
-            subject: "infinitestorlet notice",
-            text: emlCont,
-          };
+          // var mailOptions = {
+          //   from: "nofixing@gmail.com",
+          //   to: req.body.email,
+          //   subject: "infinitestorlet notice",
+          //   text: emlCont,
+          // };
 
-          transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-              console.log(error);
-            } else {
-              console.log("Email sent: " + info.response);
-            }
-          });
+          // transporter.sendMail(mailOptions, function (error, info) {
+          //   if (error) {
+          //     console.log(error);
+          //   } else {
+          //     console.log("Email sent: " + info.response);
+          //   }
+          // });
 
           console.log("Success");
           req.body.rcode = "000";
