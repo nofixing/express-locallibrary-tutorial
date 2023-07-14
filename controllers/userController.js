@@ -12,6 +12,13 @@ const { OAuth2Client } = require("google-auth-library");
 const CLIENT_ID = "829220596871-tkcc5nujoge6trq2ls28rsc0bge9cp5q.apps.googleusercontent.com";
 const client = new OAuth2Client(CLIENT_ID);
 
+const nodemailer = require("nodemailer");
+
+const options = {
+  apiKey: process.env.sendGrid_api,
+};
+const transporter = nodemailer.createTransport(nodemailerSendgrid(options));
+
 exports.logout = function (req, res, next) {
   if (req.session) {
     // delete session object
@@ -469,33 +476,46 @@ exports.rgst_post = async (req, res, next) => {
         //req.session.userId = user._id;
 
         if (certyn == "N") {
-          var nodemailer = require("nodemailer");
+          // var nodemailer = require("nodemailer");
 
-          var transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-              user: "nofixing@gmail.com",
-              pass: "nlrgkuedjqopymvi",
-            },
-          });
+          // var transporter = nodemailer.createTransport({
+          //   service: "gmail",
+          //   auth: {
+          //     user: "nofixing@gmail.com",
+          //     pass: "nlrgkuedjqopymvi",
+          //   },
+          // });
 
-          var emlCont = "To complete the email verification process, click the following link.  ";
-          emlCont += "https://" + req.headers.host + "/user/verifyemail?code=" + user._id + "|" + user.randomstring;
+          // var emlCont = "To complete the email verification process, click the following link.  ";
+          // emlCont += "https://" + req.headers.host + "/user/verifyemail?code=" + user._id + "|" + user.randomstring;
 
-          var mailOptions = {
-            from: "nofixing@gmail.com",
+          // var mailOptions = {
+          //   from: "nofixing@gmail.com",
+          //   to: req.body.email,
+          //   subject: "infinitestorlet Email Verification",
+          //   text: emlCont,
+          // };
+
+          // transporter.sendMail(mailOptions, function (error, info) {
+          //   if (error) {
+          //     console.log(error);
+          //   } else {
+          //     console.log("Email sent: " + info.response);
+          //   }
+          // });
+
+          const href = "https://" + req.headers.host + "/user/verifyemail?code=" + user._id + "|" + user.randomstring;
+
+          const mailOptions = {
             to: req.body.email,
-            subject: "infinitestorlet Email Verification",
-            text: emlCont,
+            from: "nofixing@gmail.com",
+            subject: "저기요! 이메일 인증이 요청되었어요.",
+            html: `<p>여보세요 ${req.body.name}, 이메일 인증이 요청되었어요. <a href=${href}>여기를 클릭해서 회원가입을 완료하세요. </a>`,
           };
-
-          transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-              console.log(error);
-            } else {
-              console.log("Email sent: " + info.response);
-            }
-          });
+          // console.log(
+          //   `signup post email => ${email}, username => ${username}, href => ${href}`
+          // );
+          transporter.sendMail(mailOptions, (err, info) => err && console.log(err));
 
           return res.redirect("/");
         } else {
@@ -545,7 +565,7 @@ exports.forgot_password = function (req, res, next) {
             return next(err);
           }
           console.log("theUser:" + theUser);
-          var nodemailer = require("nodemailer");
+          // var nodemailer = require("nodemailer");
 
           var transporter = nodemailer.createTransport({
             service: "gmail",
