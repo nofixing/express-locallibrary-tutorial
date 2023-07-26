@@ -565,7 +565,7 @@ exports.rgst_post = async (req, res, next) => {
             html: `<p>여보세요 ${req.body.name}, 이메일 인증이 요청되었어요. <a href=${href}>여기를 클릭해서 회원가입을 완료하세요. </a>`,
           };
           console.log(
-            `signup post email => ${email}, username => ${username}, href => ${href}`
+            `signup post email => ${req.body.email}, username => ${req.body.name}, href => ${href}`
           );
           transporter.sendMail(
             mailOptions,
