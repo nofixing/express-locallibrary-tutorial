@@ -627,34 +627,28 @@ exports.forgot_password = function (req, res, next) {
             return next(err);
           }
           console.log('theUser:' + theUser);
-          // var nodemailer = require("nodemailer");
 
-          // var transporter = nodemailer.createTransport({
-          //   service: "gmail",
-          //   auth: {
-          //     user: "nofixing@gmail.com",
-          //     pass: "nlrgkuedjqopymvi",
-          //   },
-          // });
+          var emlCont =
+            'Your  temporary password is ' +
+            new_password +
+            ' You should change your password';
 
-          // var emlCont = "Your  temporary password is " + new_password + " You should change your password";
+          var mailOptions = {
+            from: 'nofixing@gmail.com',
+            to: req.body.email,
+            subject: 'infinitestorlet notice',
+            html: emlCont,
+          };
 
-          // var mailOptions = {
-          //   from: "nofixing@gmail.com",
-          //   to: req.body.email,
-          //   subject: "infinitestorlet notice",
-          //   text: emlCont,
-          // };
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
 
-          // transporter.sendMail(mailOptions, function (error, info) {
-          //   if (error) {
-          //     console.log(error);
-          //   } else {
-          //     console.log("Email sent: " + info.response);
-          //   }
-          // });
-
-          console.log('Success');
+          // console.log('Success');
           req.body.rcode = '000';
           res.send(req.body);
         });
