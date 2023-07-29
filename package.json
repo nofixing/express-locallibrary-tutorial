@@ -41,7 +41,7 @@
     "randomstring": "^1.1.5",
     "request": "^2.88.2",
     "serve-favicon": "^2.5.0",
-    "string-strip-html": "^8.1.0",
+    "string-strip-html": "^8.5.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
