@@ -1838,10 +1838,16 @@ exports.story_word_datatable_list = function (req, res, next) {
                         list_words.push(feed);
                         */
 
-            var wrd = stripHtml(list_stories[i].content);
+            var wrd = stripHtml(list_stories[i].content).result;
             console.log(`typeof wrd => ${typeof wrd}`);
-            if (typeof wrd === "object") wrd = wrd.toString();
-            if (typeof wrd === "undefined") continue;
+            if (typeof wrd === "object") {
+              console.log(`wrd is object`);
+              wrd = wrd.toString();
+            }
+            if (typeof wrd === "undefined") {
+              console.log(`wrd is undefined`);
+              continue;
+            }
             var rwrd = wrd.toLowerCase();
             var gs = sword;
             var rgs = gs.toLowerCase();
