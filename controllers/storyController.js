@@ -1839,7 +1839,7 @@ exports.story_word_datatable_list = function (req, res, next) {
                         */
 
             var wrd = stripHtml(list_stories[i].content);
-            if (typeof wrd === "undefined" || wrd.trim() === "") continue;
+            if (typeof wrd === "undefined") continue;
             var rwrd = wrd.toLowerCase();
             var gs = sword;
             var rgs = gs.toLowerCase();
