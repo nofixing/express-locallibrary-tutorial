@@ -1839,6 +1839,8 @@ exports.story_word_datatable_list = function (req, res, next) {
                         */
 
             var wrd = stripHtml(list_stories[i].content);
+            console.log(`typeof wrd => ${typeof wrd}`);
+            if (typeof wrd === "object") wrd = wrd.toString();
             if (typeof wrd === "undefined") continue;
             var rwrd = wrd.toLowerCase();
             var gs = sword;
