@@ -284,37 +284,42 @@ $(function () {
 
   function imageSearch() {
     if (document.getElementById("myCheck").checked) {
-      $("#img_layer").css("display", "block");
-      $.ajax({
-        url: "https://www.googleapis.com/customsearch/v1",
-        type: "GET",
-        data:
-          "key=AIzaSyCBr1dGpg2bB-eTAXKFgnvpKL6vdSYQTSI&cx=012222057275105284918:2fhqptrxpgk&q=" +
-          selectText +
-          "&num=10&start=" +
-          startImagNum +
-          "&imgSize=medium&searchType=image",
-        dataType: "JSON",
-        success: function (data) {
-          showData.empty();
-          $.each(data.items, function (i, item) {
-            if (i == 0) showData.append("<ul />");
-            showData.append(
-              '<li><a href="' +
-                item.image.contextLink +
-                '" target="_blank"><img src="' +
-                item.link +
-                '" alt="' +
-                item.title +
-                '"></a><br/>' +
-                item.title +
-                "<br/>" +
-                item.snippet +
-                "</li>"
-            );
-          });
-        },
-      });
+      if (selectText === "") {
+        selectText = $("#searchStoryWord").val();
+      }
+      if (selectText.length > 0) {
+        $("#img_layer").css("display", "block");
+        $.ajax({
+          url: "https://www.googleapis.com/customsearch/v1",
+          type: "GET",
+          data:
+            "key=AIzaSyCBr1dGpg2bB-eTAXKFgnvpKL6vdSYQTSI&cx=012222057275105284918:2fhqptrxpgk&q=" +
+            selectText +
+            "&num=10&start=" +
+            startImagNum +
+            "&imgSize=medium&searchType=image",
+          dataType: "JSON",
+          success: function (data) {
+            showData.empty();
+            $.each(data.items, function (i, item) {
+              if (i == 0) showData.append("<ul />");
+              showData.append(
+                '<li><a href="' +
+                  item.image.contextLink +
+                  '" target="_blank"><img src="' +
+                  item.link +
+                  '" alt="' +
+                  item.title +
+                  '"></a><br/>' +
+                  item.title +
+                  "<br/>" +
+                  item.snippet +
+                  "</li>"
+              );
+            });
+          },
+        });
+      }
     }
   }
 
