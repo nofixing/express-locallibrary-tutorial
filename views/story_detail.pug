@@ -337,8 +337,8 @@ html(lang='en')
                     tr
                       td
                         <button class="btn btn-primary btn-sm" onclick="cs_change_music('#{file.file_path}');return false;">#{file.file_name}</button>
-            <input id="audio-upload" type="file" class="inputfile" />
-            <label for="audio-upload" style="line-height: 30px; float: left;text-indent: 0;width: fit-content;margin-top:5px;margin-left: 10px; margin-right:10px;" class="btn btn-primary" title="#{translation.AudioDesc}">#{translation.Audio}</label>
+            <button class="btn btn-primary btn-sm" style="line-height: 30px; float: left;text-indent: 0;width: fit-content;margin-top:5px;margin-left: 10px; margin-right:10px;" onclick="javascript:navigator.clipboard.readText().then(clipboardText => {  document.getElementById('myAudio').setAttribute('src', clipboardText); });">#{translation.pasteAudioSrc}</button>
+            <audio controls id="myAudio" style="line-height: 30px; float: left;"></audio>
           </div>
           <!--<span>예시) 파일명이 englishow 이면 englishow.html로 저장됨.</span>-->
       div#word_container.col-lg-6
