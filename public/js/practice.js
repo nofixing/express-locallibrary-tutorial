@@ -607,7 +607,7 @@ $(function () {
     const audio = document.createElement("audio");
 
     // Clean up the URL Object after we are done with it
-    audio.addEventListener("load", () => {
+    audio.on("load", () => {
       URL.revokeObjectURL(urlObj);
     });
 
@@ -621,7 +621,7 @@ $(function () {
     audio.src = urlObj;
   }
 
-  document.getElementById("audio-upload").addEventListener("change", changeHandler);
+  document.getElementById("audio-upload").on("change", changeHandler);
 
   var $audio2 = $("#myAudio2");
   $("#file2").on("change", function (e) {
