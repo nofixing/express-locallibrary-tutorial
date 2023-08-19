@@ -596,6 +596,33 @@ $(function () {
     }
   });
 
+  function changeHandler({ target }) {
+    // Make sure we have files to use
+    if (!target.files.length) return;
+
+    // Create a blob that we can use as an src for our audio element
+    const urlObj = URL.createObjectURL(target.files[0]);
+
+    // Create an audio element
+    const audio = document.createElement("audio");
+
+    // Clean up the URL Object after we are done with it
+    audio.addEventListener("load", () => {
+      URL.revokeObjectURL(urlObj);
+    });
+
+    // Append the audio element
+    document.body.appendChild(audio);
+
+    // Allow us to control the audio
+    audio.controls = "true";
+
+    // Set the src and start loading the audio from the file
+    audio.src = urlObj;
+  }
+
+  document.getElementById("audio-upload").addEventListener("change", changeHandler);
+
   var $audio2 = $("#myAudio2");
   $("#file2").on("change", function (e) {
     var target = e.currentTarget;
