@@ -1860,7 +1860,7 @@ exports.story_word_datatable_list = function (req, res, next) {
               var nst = nprg.substring(0, nprg.indexOf(".") + 1);
               idx = plg.length + nprg.indexOf(".") + 2;
               var sts = pst + nst;
-              var rsts = sts.replace(sword, "<b>" + sword + "</b>");
+              var rsts = sts.replace(sword, "<span style='color: blue;'>" + sword + "</span>");
               // console.log(`sts ==========> ${sts.trim()}, rsts => ${rsts}`);
               var feed = {
                 rownum: list_stories[i].rownum,
