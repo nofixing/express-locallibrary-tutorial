@@ -1839,7 +1839,7 @@ exports.story_word_datatable_list = function (req, res, next) {
                         */
 
             var wrd = stripHtml(list_stories[i].content).result;
-            console.log(`typeof wrd => ${typeof wrd}`);
+            // console.log(`typeof wrd => ${typeof wrd}`);
             if (typeof wrd === "object") {
               console.log(`wrd is object`);
               wrd = wrd.toString();
@@ -1860,7 +1860,8 @@ exports.story_word_datatable_list = function (req, res, next) {
               var nst = nprg.substring(0, nprg.indexOf(".") + 1);
               idx = plg.length + nprg.indexOf(".") + 2;
               var sts = pst + nst;
-              console.log(sts.trim());
+              var rsts = sts.replace(sword, "<b>" + sword + "</b>");
+              // console.log(`sts ==========> ${sts.trim()}, rsts => ${rsts}`);
               var feed = {
                 rownum: list_stories[i].rownum,
                 _id: list_stories[i]._id,
@@ -1868,7 +1869,7 @@ exports.story_word_datatable_list = function (req, res, next) {
                 create_date: list_stories[i].create_date,
                 book: book,
                 btitle: list_stories[i].btitle,
-                sentence: sts.trim(),
+                sentence: rsts.trim(),
               };
               list_words.push(feed);
             }
