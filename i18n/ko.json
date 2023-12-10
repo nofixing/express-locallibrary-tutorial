@@ -48,7 +48,6 @@
   "HowToUseStory9": "이야기를 읽는 도중 나갈때는 북마크를 해두세요. 단어를 선택한 후 상단의 북마크 버튼을 누르면 됩니다.",
   "HowToUseStory10": "가장 최근에 읽은 이야기는 홈 페이지의 최근읽은 목록에 있습니다. 사이트에 접속하셔서 바로 가세요!.",
   "HowToUseStory11": "메인메뉴의 단어장에는 그동안 저장한 단어목록이 있습니다. 능숙도 중요도로 검색해서 학습하세요.",
-
   "Reading": "읽기",
   "LearnReading": "학습읽기",
   "DicSearch": "사전검색",
@@ -65,12 +64,10 @@
   "OpenTip": "오픈된 이야기들은 글쓴이와 상관없이 자유롭게 그 이야기들의 단어나 메모를 작성할 수 있습니다.",
   "OpenTipWords": "그동안 배웠던 어휘들.",
   "Top": "상단",
-
   "Makeyourownstories": "당신만의 이야기를 만드세요. 그 이야기를 통해 언어를 배우세요.",
   "Mycontents": "나의 서재",
   "recordcounts": "당신의 서재에는 다음과 같은 갯수의 책과 이야기들이 있습니다.",
   "firstGenreCreate": "이야기나 책을 만들기 위해서는 장르부터 먼저 생성해 주세요. 예를 들어 기사, 환타지, 연설문 등.",
-
   "BookList": "책 목록",
   "DeleteBook": "책 삭제",
   "UpdateBook": "책 수정",
@@ -90,7 +87,6 @@
   "Deletethefollowingstories": "이 책을 삭제하기전에 다음의 이야기들을 먼저 삭제하세요.",
   "Doyoureallywanttodeletebook": "정말 이 책을 삭제하시겠습니까?",
   "Doyoureallywanttodeletestory": "정말 이 이야기를 삭제하시겠습니까?",
-
   "Book": "책",
   "Story": "이야기",
   "storyonly": "이야기 단독",
@@ -232,5 +228,6 @@
   "PrivacyPolicy26": "사이트 전체의 수집된 데이터 백업본은 사이트 관리를 위하여 8일간 보관됩니다.",
   "CheckWords": "저장하거나 삭제할 단어를 선택해주세요.",
   "Next": "다음",
-  "pasteAudioSrc": "오디오파일 붙여넣기"
+  "pasteAudioSrc": "오디오파일 붙여넣기",
+  "ChatAI": "챗봇"
 }

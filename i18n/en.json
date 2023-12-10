@@ -48,7 +48,6 @@
   "HowToUseStory9": "Use the bookmark when you are leaving, select a word and use the BookMark menu button on the top menu.",
   "HowToUseStory10": "The most recent read story is on the first page 'Story History' list. Go that story directly!",
   "HowToUseStory11": "The Words menu on the main menu, There is word list that you have saved in this site. Search words by skill or importance.",
-
   "Reading": "Reading",
   "LearnReading": "LearnReading",
   "DicSearch": "DicSearch",
@@ -65,12 +64,10 @@
   "OpenTip": "The stories that are opened are free to write or modify their's words or memos regardless of the writers.",
   "OpenTipWords": "The words that you have learned.",
   "Top": "Top",
-
   "Makeyourownstories": "Make your own stories. Practice on that stories.",
   "Mycontents": "My contents",
   "recordcounts": "Your library has the following record counts:",
   "firstGenreCreate": "To create your first story or book, create genre first. for example, Article, Address, Fantasy.",
-
   "BookList": "Book List",
   "DeleteBook": "Delete Book",
   "UpdateBook": "Update Book",
@@ -90,7 +87,6 @@
   "Deletethefollowingstories": "Delete the following stories before attempting to delete this book.",
   "Doyoureallywanttodeletebook": "Do you really want to delete this book?",
   "Doyoureallywanttodeletestory": "Do you really want to delete this story?",
-
   "Book": "Book",
   "Story": "Story",
   "storyonly": "story only",
@@ -232,5 +228,6 @@
   "PrivacyPolicy26": "Backups of the collected data throughout the site are kept for eight days for site management.",
   "CheckWords": "Check words that will be saved or deleted.",
   "Next": "Next",
-  "pasteAudioSrc": "Paste Audio File"
+  "pasteAudioSrc": "Paste Audio File",
+  "ChatAI": "ChatAI"
 }

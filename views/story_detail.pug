@@ -48,6 +48,8 @@ html(lang='en')
             li.nav-item
               a.nav-link(href='#none' onclick='showWordLayer();return false;') #{translation.Words}
             li.nav-item
+              a.nav-link(href='#none' onclick='chatAIPractice();return false;') #{translation.ChatAI}
+            li.nav-item
               a.nav-link(href='#none' onclick='CreateStory();return false;') #{translation.Create}
             li.nav-item
               <a class="nav-link" href="#none" onclick="UpdateStory('#{story.user}', '#{userId}');return false;">#{translation.Update}</a>
@@ -381,6 +383,13 @@ html(lang='en')
             <input type="file" name="file_upload" id="file_upload" class="inputfile">
             input(type='hidden' name='storyId' value=story._id)
             button.btn.btn-primary.btn-sm(type='submit' style="line-height: 25px; float: left; margin-left: 20px;") #{translation.FileUpload}
+        </div>
+      div#chat-container.col-lg-6
+        div#chat-messages(style="width:90%; margin-right:20px;") !{chatGPT}
+        div#user-input(style="display: flex")
+          <textarea name="message-input" id="message-input" onInput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Type your message..."  class="form-control" style="width:90% ; margin-right:10px;" rows="4"></textarea>
+          button(type="button", id="send-button") Send
+      script(src="/js/chat-api-library.js")
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>
         ul.wsd
@@ -404,6 +413,8 @@ html(lang='en')
     <input type="hidden" id="book_title" name="book_title" value="#{book_title}" />
     <input type="hidden" id="memo" name="memo" value="#{memo}" />
     <input type="hidden" id="memo_id" name="memo_id" value="#{memo_id}" />
+    <input type="hidden" id="chatGPT" name="chatGPT" value="#{chatGPT}" />
+    <input type="hidden" id="chatGPT_id" name="chatGPT_id" value="#{chatGPT_id}" />
     <input type="hidden" id="bookMark_id" name="bookMark_id" value="#{bookMark_id}" />
     <input type="hidden" id="hostname" name="hostname" value="#{hostname}" />
     <input type="hidden" id="stusr" name="stusr" value="#{story.user}" />
@@ -429,6 +440,7 @@ html(lang='en')
     <input type="hidden" id="UploadFailed" name="UploadFailed" value="#{translation.UploadFailed}" />
     <input type="hidden" id="cfnt" name="cfnt" value="#{cfnt}" />
     <input type="hidden" id="cfnt2" name="cfnt2" value="#{cfnt2}" />
+    <input type="hidden" id="chat_gpt_api_key" name="chat_gpt_api_key" value="#{chat_gpt_api_key}" />
     <form id="ftlp" method="post" action="/catalog/story/#{story._id}">
       <input type="hidden" name="tlp" value="y" />
     </form>

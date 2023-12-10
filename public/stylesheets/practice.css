@@ -1,801 +1,890 @@
 body {
-    font-family: 'Libre Franklin', 'Jua';
+  font-family: 'Libre Franklin', 'Jua';
 }
 #loading {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    display: block;
-    opacity: 1;
-    background-color: #fff;
-    z-index: 99;
-    text-align: center;
- }
- #loading-image {
-    display: inline-block;
-    margin-top: 300px;
- }
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  opacity: 1;
+  background-color: #fff;
+  z-index: 99;
+  text-align: center;
+}
+#loading-image {
+  display: inline-block;
+  margin-top: 300px;
+}
 #jb_content {
-    height: 100%;
-    top: 70px;
-    margin-bottom: 100px;
-    float: left;
-    border: 0px solid #ffffff;
-    overflow-x: hidden;
-    overflow-y: auto; /* prevents scroll bar flash */
-    text-indent: 20px;
-    text-align: justify;
+  height: 100%;
+  top: 70px;
+  margin-bottom: 100px;
+  float: left;
+  border: 0px solid #ffffff;
+  overflow-x: hidden;
+  overflow-y: auto; /* prevents scroll bar flash */
+  text-indent: 20px;
+  text-align: justify;
 }
 #jb_content_mb {
-    height: 100%;
-    top: 70px;
-    margin-bottom: 100px;
-    float: left;
-    border: 0px solid #ffffff;
-    overflow-x: hidden;
-    overflow-y: auto; /* prevents scroll bar flash */
-    text-indent: 20px;
-    text-align: justify;
+  height: 100%;
+  top: 70px;
+  margin-bottom: 100px;
+  float: left;
+  border: 0px solid #ffffff;
+  overflow-x: hidden;
+  overflow-y: auto; /* prevents scroll bar flash */
+  text-indent: 20px;
+  text-align: justify;
 }
 p {
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
-.hgt {color: black;}
+.hgt {
+  color: black;
+}
 #jb_memo {
-    height: 80%;
-    position: fixed;
-    top: 120px;
-    left: 50%;
-    margin-bottom: 100px;
-    float: left;
-    border: 0px solid #ffffff;
-    overflow-x: hidden;
-    overflow-y: hidden; /* prevents scroll bar flash */
-    text-indent: 20px;
-    text-align: justify;
-    display: none;
+  height: 80%;
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  margin-bottom: 100px;
+  float: left;
+  border: 0px solid #ffffff;
+  overflow-x: hidden;
+  overflow-y: hidden; /* prevents scroll bar flash */
+  text-indent: 20px;
+  text-align: justify;
+  display: none;
 }
 #jb_txtEditor {
-    height: 83%;
-    position: fixed;
-    top: 120px;
-    left: 50%;
-    padding: 0;
-    margin-bottom: 20px;
-    float: left;
-    border: 0px solid #bcbcbc;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    z-index: 1;
-    display: none;
+  height: 83%;
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  padding: 0;
+  margin-bottom: 20px;
+  float: left;
+  border: 0px solid #bcbcbc;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  z-index: 1;
+  display: none;
 }
 #jb_only_txtEditor {
-    height: 80%;
-    top: 120px;
-    margin-bottom: 20px;
-    float: left;
-    border: 0px solid #bcbcbc;
-    overflow-x: hidden;
-    overflow-y: auto; /* prevents scroll bar flash */
-    text-indent: 10px;
-    text-align: justify;
-    display: none;
+  height: 80%;
+  top: 120px;
+  margin-bottom: 20px;
+  float: left;
+  border: 0px solid #bcbcbc;
+  overflow-x: hidden;
+  overflow-y: auto; /* prevents scroll bar flash */
+  text-indent: 10px;
+  text-align: justify;
+  display: none;
 }
 #word_container {
-    height: 80%;
-    position: fixed;
-    top: 120px;
-    left: 50%;
-    padding: 0;
-    margin-bottom: 20px;
-    float: left;
-    border: 0px solid #bcbcbc;
-    overflow-x: hidden;
-    overflow-y: auto; /* prevents scroll bar flash */
-    z-index: 0;
-    display: none;
+  height: 80%;
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  padding: 0;
+  margin-bottom: 20px;
+  float: left;
+  border: 0px solid #bcbcbc;
+  overflow-x: hidden;
+  overflow-y: auto; /* prevents scroll bar flash */
+  z-index: 0;
+  display: none;
+}
+
+#chat-container {
+  height: 80%;
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  padding: 0;
+  margin-bottom: 20px;
+  float: left;
+  border: 0px solid #bcbcbc;
+  overflow-x: hidden;
+  overflow-y: auto; /* prevents scroll bar flash */
+  z-index: 0;
+  display: none;
+}
+#message {
+  padding: 0.5rem;
+  margin-bottom: 20px;
 }
 #word_only_container {
-    height: 90%;
-    top: 120px;
-    margin-bottom: 20px;
-    float: left;
-    border: 0px solid #bcbcbc;
-    overflow-x: hidden;
-    overflow-y: auto; /* prevents scroll bar flash */
-    text-indent: 10px;
-    text-align: justify;
-    display: none;
+  height: 90%;
+  top: 120px;
+  margin-bottom: 20px;
+  float: left;
+  border: 0px solid #bcbcbc;
+  overflow-x: hidden;
+  overflow-y: auto; /* prevents scroll bar flash */
+  text-indent: 10px;
+  text-align: justify;
+  display: none;
 }
 #jb_sidebar {
-    height: 40px;
-    position: fixed;
-    top: 70px;
-    left: 50%;
-    padding: 0;
-    float: left;
-    z-index: 100;
-    display: none;
+  height: 40px;
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  padding: 0;
+  float: left;
+  z-index: 100;
+  display: none;
 }
 .standalone-container {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 #snow-container {
-    height: 650px;
+  height: 650px;
 }
 .ql-showHtml:after {
-    content: "[SRC]";
+  content: '[SRC]';
 }
 .ql-clearContents:after {
-    content: "[Clear]";
+  content: '[Clear]';
 }
 .ql-opnFile:after {
-    content: "[File]";
+  content: '[File]';
 }
 #dic_frame {
-    width: 100%;
-    min-height: 800px;
-    border: 0px solid black;
+  width: 100%;
+  min-height: 800px;
+  border: 0px solid black;
 }
 #dicType {
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 12px;
+  font-family: 'Libre Franklin', sans-serif;
+  font-size: 12px;
 }
 
 #navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: top 0.5s ease-in-out;
-    z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: top 0.5s ease-in-out;
+  z-index: 2;
 }
 
 ul.tite li {
-    padding-top: 15px;
-    font-size: 1.3em;
-    text-decoration: none;
+  padding-top: 15px;
+  font-size: 1.3em;
+  text-decoration: none;
 }
 
-.boko { display: none; }
-
-#toolbar-container .ql-font span[data-label="Sans Serif"]::before {
-    font-family: "Sans Serif";
+.boko {
+  display: none;
 }
 
-#toolbar-container .ql-font span[data-label="Work Sans"]::before {
-    font-family: "Work Sans";
+#toolbar-container .ql-font span[data-label='Sans Serif']::before {
+  font-family: 'Sans Serif';
 }
 
-#toolbar-container .ql-font span[data-label="Libre Franklin"]::before {
-    font-family: "Libre Franklin";
+#toolbar-container .ql-font span[data-label='Work Sans']::before {
+  font-family: 'Work Sans';
 }
 
-#toolbar-container .ql-font span[data-label="Inconsolata"]::before {
-    font-family: "Inconsolata";
+#toolbar-container .ql-font span[data-label='Libre Franklin']::before {
+  font-family: 'Libre Franklin';
 }
 
-#toolbar-container .ql-font span[data-label="Roboto"]::before {
-    font-family: "Roboto";
+#toolbar-container .ql-font span[data-label='Inconsolata']::before {
+  font-family: 'Inconsolata';
 }
 
-#toolbar-container .ql-font span[data-label="Mirza"]::before {
-    font-family: "Mirza";
+#toolbar-container .ql-font span[data-label='Roboto']::before {
+  font-family: 'Roboto';
 }
 
-#toolbar-container .ql-font span[data-label="Arial"]::before {
-    font-family: "Arial";
+#toolbar-container .ql-font span[data-label='Mirza']::before {
+  font-family: 'Mirza';
 }
 
-#toolbar-container .ql-font span[data-label="나눔 손글씨 펜"]::before {
-    font-family: "Nanum Pen Script";
+#toolbar-container .ql-font span[data-label='Arial']::before {
+  font-family: 'Arial';
 }
 
-#toolbar-container .ql-font span[data-label="나눔 손글씨 붓"]::before {
-    font-family: "Nanum Brush Script";
+#toolbar-container .ql-font span[data-label='나눔 손글씨 펜']::before {
+  font-family: 'Nanum Pen Script';
 }
 
-#toolbar-container .ql-font span[data-label="송명"]::before {
-    font-family: "Song Myung";
+#toolbar-container .ql-font span[data-label='나눔 손글씨 붓']::before {
+  font-family: 'Nanum Brush Script';
 }
 
-#toolbar-container .ql-font span[data-label="개구쟁이"]::before {
-    font-family: "Gaegu";
+#toolbar-container .ql-font span[data-label='송명']::before {
+  font-family: 'Song Myung';
 }
 
-#toolbar-container .ql-font span[data-label="주아"]::before {
-    font-family: "Jua";
+#toolbar-container .ql-font span[data-label='개구쟁이']::before {
+  font-family: 'Gaegu';
 }
 
-#toolbar-container .ql-font span[data-label="감자꽃 마을"]::before {
-    font-family: "Gamja Flower";
-}
-#toolbar-container .ql-font span[data-label="귀여운 폰트"]::before {
-    font-family: "Cute Font";
-}
-#toolbar-container .ql-font span[data-label="스타일리시"]::before {
-    font-family: "Stylish";
-}
-#toolbar-container .ql-font span[data-label="연성"]::before {
-    font-family: "Yeon Sung";
-}
-#toolbar-container .ql-font span[data-label="하이멜로디"]::before {
-    font-family: "Hi Melody";
-}
-#toolbar-container .ql-font span[data-label="해바라기"]::before {
-    font-family: "Sunflower";
-}
-#toolbar-container .ql-font span[data-label="검은고딕"]::before {
-    font-family: "Black Han Sans";
-}
-#toolbar-container .ql-font span[data-label="고딕 A1"]::before {
-    font-family: "Gothic A1";
-}
-#toolbar-container .ql-font span[data-label="나눔고딕"]::before {
-    font-family: "Nanum Gothic";
-}
-#toolbar-container .ql-font span[data-label="나눔명조"]::before {
-    font-family: "Nanum Myeongjo";
-}
-#toolbar-container .ql-font span[data-label="서툰이야기"]::before {
-    font-family: "Poor Story";
-}
-#toolbar-container .ql-font span[data-label="흑백사진"]::before {
-    font-family: "Black And White Picture";
-}
-#toolbar-container .ql-font span[data-label="PT Sans"]::before {
-    font-family: "PT Sans";
+#toolbar-container .ql-font span[data-label='주아']::before {
+  font-family: 'Jua';
 }
 
-#toolbar-container .ql-font span[data-label="Oswald"]::before {
-    font-family: "Oswald";
+#toolbar-container .ql-font span[data-label='감자꽃 마을']::before {
+  font-family: 'Gamja Flower';
+}
+#toolbar-container .ql-font span[data-label='귀여운 폰트']::before {
+  font-family: 'Cute Font';
+}
+#toolbar-container .ql-font span[data-label='스타일리시']::before {
+  font-family: 'Stylish';
+}
+#toolbar-container .ql-font span[data-label='연성']::before {
+  font-family: 'Yeon Sung';
+}
+#toolbar-container .ql-font span[data-label='하이멜로디']::before {
+  font-family: 'Hi Melody';
+}
+#toolbar-container .ql-font span[data-label='해바라기']::before {
+  font-family: 'Sunflower';
+}
+#toolbar-container .ql-font span[data-label='검은고딕']::before {
+  font-family: 'Black Han Sans';
+}
+#toolbar-container .ql-font span[data-label='고딕 A1']::before {
+  font-family: 'Gothic A1';
+}
+#toolbar-container .ql-font span[data-label='나눔고딕']::before {
+  font-family: 'Nanum Gothic';
+}
+#toolbar-container .ql-font span[data-label='나눔명조']::before {
+  font-family: 'Nanum Myeongjo';
+}
+#toolbar-container .ql-font span[data-label='서툰이야기']::before {
+  font-family: 'Poor Story';
+}
+#toolbar-container .ql-font span[data-label='흑백사진']::before {
+  font-family: 'Black And White Picture';
+}
+#toolbar-container .ql-font span[data-label='PT Sans']::before {
+  font-family: 'PT Sans';
 }
 
-#toolbar-container .ql-font span[data-label="Caveat"]::before {
-    font-family: "Caveat";
+#toolbar-container .ql-font span[data-label='Oswald']::before {
+  font-family: 'Oswald';
 }
 
-#toolbar-container .ql-font span[data-label="Raleway"]::before {
-    font-family: "Raleway";
+#toolbar-container .ql-font span[data-label='Caveat']::before {
+  font-family: 'Caveat';
 }
 
-#toolbar-container .ql-font span[data-label="Shadows Into Light"]::before {
-    font-family: "Shadows Into Light";
+#toolbar-container .ql-font span[data-label='Raleway']::before {
+  font-family: 'Raleway';
 }
 
-#toolbar-container .ql-font span[data-label="Abril Fatface"]::before {
-    font-family: "Abril Fatface";
+#toolbar-container .ql-font span[data-label='Shadows Into Light']::before {
+  font-family: 'Shadows Into Light';
 }
 
-#toolbar-container .ql-font span[data-label="Teko"]::before {
-    font-family: "Teko";
+#toolbar-container .ql-font span[data-label='Abril Fatface']::before {
+  font-family: 'Abril Fatface';
 }
 
-#toolbar-container .ql-font span[data-label="Cormorant"]::before {
-    font-family: "Cormorant";
+#toolbar-container .ql-font span[data-label='Teko']::before {
+  font-family: 'Teko';
 }
 
-#toolbar-container .ql-font span[data-label="Alfa Slab One"]::before {
-    font-family: "Alfa Slab One";
+#toolbar-container .ql-font span[data-label='Cormorant']::before {
+  font-family: 'Cormorant';
 }
 
+#toolbar-container .ql-font span[data-label='Alfa Slab One']::before {
+  font-family: 'Alfa Slab One';
+}
 
 .dropdown-menu .dropdown-item span[data-label]::before {
-    content: attr(data-label);
+  content: attr(data-label);
 }
 
-.dropdown-menu .dropdown-item span[data-label="Sans Serif"]::before {
-    font-family: "Sans Serif";
+.dropdown-menu .dropdown-item span[data-label='Sans Serif']::before {
+  font-family: 'Sans Serif';
 }
-.dropdown-menu .dropdown-item span[data-label="Work Sans"]::before {
-    font-family: "Work Sans";
+.dropdown-menu .dropdown-item span[data-label='Work Sans']::before {
+  font-family: 'Work Sans';
 }
-.dropdown-menu .dropdown-item span[data-label="Libre Franklin"]::before {
-    font-family: "Libre Franklin";
+.dropdown-menu .dropdown-item span[data-label='Libre Franklin']::before {
+  font-family: 'Libre Franklin';
 }
-.dropdown-menu .dropdown-item span[data-label="Inconsolata"]::before {
-    font-family: "Inconsolata";
+.dropdown-menu .dropdown-item span[data-label='Inconsolata']::before {
+  font-family: 'Inconsolata';
 }
-.dropdown-menu .dropdown-item span[data-label="Roboto"]::before {
-    font-family: "Roboto";
+.dropdown-menu .dropdown-item span[data-label='Roboto']::before {
+  font-family: 'Roboto';
 }
-.dropdown-menu .dropdown-item span[data-label="Mirza"]::before {
-    font-family: "Mirza";
+.dropdown-menu .dropdown-item span[data-label='Mirza']::before {
+  font-family: 'Mirza';
 }
-.dropdown-menu .dropdown-item span[data-label="Arial"]::before {
-    font-family: "Arial";
+.dropdown-menu .dropdown-item span[data-label='Arial']::before {
+  font-family: 'Arial';
 }
-.dropdown-menu .dropdown-item span[data-label="나눔 손글씨 펜"]::before {
-    font-family: "Nanum Pen Script";
+.dropdown-menu .dropdown-item span[data-label='나눔 손글씨 펜']::before {
+  font-family: 'Nanum Pen Script';
 }
-.dropdown-menu .dropdown-item span[data-label="나눔 손글씨 붓"]::before {
-    font-family: "Nanum Brush Script";
+.dropdown-menu .dropdown-item span[data-label='나눔 손글씨 붓']::before {
+  font-family: 'Nanum Brush Script';
 }
-.dropdown-menu .dropdown-item span[data-label="송명"]::before {
-    font-family: "Song Myung";
+.dropdown-menu .dropdown-item span[data-label='송명']::before {
+  font-family: 'Song Myung';
 }
-.dropdown-menu .dropdown-item span[data-label="개구쟁이"]::before {
-    font-family: "Gaegu";
+.dropdown-menu .dropdown-item span[data-label='개구쟁이']::before {
+  font-family: 'Gaegu';
 }
-.dropdown-menu .dropdown-item span[data-label="주아"]::before {
-    font-family: "Jua";
+.dropdown-menu .dropdown-item span[data-label='주아']::before {
+  font-family: 'Jua';
 }
-.dropdown-menu .dropdown-item span[data-label="감자꽃 마을"]::before {
-    font-family: "Gamja Flower";
+.dropdown-menu .dropdown-item span[data-label='감자꽃 마을']::before {
+  font-family: 'Gamja Flower';
 }
-.dropdown-menu .dropdown-item span[data-label="귀여운 폰트"]::before {
-    font-family: "Cute Font";
+.dropdown-menu .dropdown-item span[data-label='귀여운 폰트']::before {
+  font-family: 'Cute Font';
 }
-.dropdown-menu .dropdown-item span[data-label="스타일리시"]::before {
-    font-family: "Stylish";
+.dropdown-menu .dropdown-item span[data-label='스타일리시']::before {
+  font-family: 'Stylish';
 }
-.dropdown-menu .dropdown-item span[data-label="연성"]::before {
-    font-family: "Yeon Sung";
+.dropdown-menu .dropdown-item span[data-label='연성']::before {
+  font-family: 'Yeon Sung';
 }
-.dropdown-menu .dropdown-item span[data-label="하이멜로디"]::before {
-    font-family: "Hi Melody";
+.dropdown-menu .dropdown-item span[data-label='하이멜로디']::before {
+  font-family: 'Hi Melody';
 }
-.dropdown-menu .dropdown-item span[data-label="해바라기"]::before {
-    font-family: "Sunflower";
+.dropdown-menu .dropdown-item span[data-label='해바라기']::before {
+  font-family: 'Sunflower';
 }
-.dropdown-menu .dropdown-item span[data-label="검은고딕"]::before {
-    font-family: "Black Han Sans";
+.dropdown-menu .dropdown-item span[data-label='검은고딕']::before {
+  font-family: 'Black Han Sans';
 }
-.dropdown-menu .dropdown-item span[data-label="고딕 A1"]::before {
-    font-family: "Gothic A1";
+.dropdown-menu .dropdown-item span[data-label='고딕 A1']::before {
+  font-family: 'Gothic A1';
 }
-.dropdown-menu .dropdown-item span[data-label="나눔고딕"]::before {
-    font-family: "Nanum Gothic";
+.dropdown-menu .dropdown-item span[data-label='나눔고딕']::before {
+  font-family: 'Nanum Gothic';
 }
-.dropdown-menu .dropdown-item span[data-label="나눔명조"]::before {
-    font-family: "Nanum Myeongjo";
+.dropdown-menu .dropdown-item span[data-label='나눔명조']::before {
+  font-family: 'Nanum Myeongjo';
 }
-.dropdown-menu .dropdown-item span[data-label="서툰이야기"]::before {
-    font-family: "Poor Story";
+.dropdown-menu .dropdown-item span[data-label='서툰이야기']::before {
+  font-family: 'Poor Story';
 }
-.dropdown-menu .dropdown-item span[data-label="흑백사진"]::before {
-    font-family: "Black And White Picture";
+.dropdown-menu .dropdown-item span[data-label='흑백사진']::before {
+  font-family: 'Black And White Picture';
 }
-.dropdown-menu .dropdown-item span[data-label="PT Sans"]::before {
-    font-family: "PT Sans";
+.dropdown-menu .dropdown-item span[data-label='PT Sans']::before {
+  font-family: 'PT Sans';
 }
-.dropdown-menu .dropdown-item span[data-label="Oswald"]::before {
-    font-family: "Oswald";
+.dropdown-menu .dropdown-item span[data-label='Oswald']::before {
+  font-family: 'Oswald';
 }
-.dropdown-menu .dropdown-item span[data-label="Caveat"]::before {
-    font-family: "Caveat";
+.dropdown-menu .dropdown-item span[data-label='Caveat']::before {
+  font-family: 'Caveat';
 }
-.dropdown-menu .dropdown-item span[data-label="Raleway"]::before {
-    font-family: "Raleway";
+.dropdown-menu .dropdown-item span[data-label='Raleway']::before {
+  font-family: 'Raleway';
 }
-.dropdown-menu .dropdown-item span[data-label="Shadows Into Light"]::before {
-    font-family: "Shadows Into Light";
+.dropdown-menu .dropdown-item span[data-label='Shadows Into Light']::before {
+  font-family: 'Shadows Into Light';
 }
-.dropdown-menu .dropdown-item span[data-label="Abril Fatface"]::before {
-    font-family: "Abril Fatface";
+.dropdown-menu .dropdown-item span[data-label='Abril Fatface']::before {
+  font-family: 'Abril Fatface';
 }
-.dropdown-menu .dropdown-item span[data-label="Teko"]::before {
-    font-family: "Teko";
+.dropdown-menu .dropdown-item span[data-label='Teko']::before {
+  font-family: 'Teko';
 }
-.dropdown-menu .dropdown-item span[data-label="Cormorant"]::before {
-    font-family: "Cormorant";
+.dropdown-menu .dropdown-item span[data-label='Cormorant']::before {
+  font-family: 'Cormorant';
 }
-.dropdown-menu .dropdown-item span[data-label="Alfa Slab One"]::before {
-    font-family: "Alfa Slab One";
+.dropdown-menu .dropdown-item span[data-label='Alfa Slab One']::before {
+  font-family: 'Alfa Slab One';
 }
-
 
 /* Set content font-families */
 
 .ql-font-SansSerif {
-    font-family: "Sans Serif";
+  font-family: 'Sans Serif';
 }
 
 .ql-font-WorkSans {
-    font-family: "Work Sans";
+  font-family: 'Work Sans';
 }
 
 .ql-font-LibreFranklin {
-    font-family: "Libre Franklin";
+  font-family: 'Libre Franklin';
 }
 
 .ql-font-Inconsolata {
-    font-family: "Inconsolata";
+  font-family: 'Inconsolata';
 }
 
 .ql-font-roboto {
-    font-family: "Roboto";
+  font-family: 'Roboto';
 }
 
 .ql-font-mirza {
-    font-family: "Mirza";
+  font-family: 'Mirza';
 }
 
 .ql-font-arial {
-    font-family: "Arial";
+  font-family: 'Arial';
 }
 
 .ql-font-NanumPenScript {
-    font-family: "Nanum Pen Script";            
+  font-family: 'Nanum Pen Script';
 }
 
 .ql-font-NanumBrushScript {
-    font-family: "Nanum Brush Script";            
+  font-family: 'Nanum Brush Script';
 }
 
 .ql-font-SongMyung {
-    font-family: "Song Myung";            
+  font-family: 'Song Myung';
 }
 
 .ql-font-Gaegu {
-    font-family: "Gaegu";            
+  font-family: 'Gaegu';
 }
 
 .ql-font-Jua {
-    font-family: "Jua";            
+  font-family: 'Jua';
 }
-
 
 .ql-font-GamjaFlower {
-    font-family: "Gamja Flower";            
+  font-family: 'Gamja Flower';
 }
 .ql-font-CuteFont {
-    font-family: "Cute Font";            
+  font-family: 'Cute Font';
 }
 .ql-font-Stylish {
-    font-family: "Stylish";            
+  font-family: 'Stylish';
 }
 .ql-font-YeonSung {
-    font-family: "Yeon Sung";            
+  font-family: 'Yeon Sung';
 }
 .ql-font-HiMelody {
-    font-family: "Hi Melody";            
+  font-family: 'Hi Melody';
 }
 .ql-font-Sunflower {
-    font-family: "Sunflower";            
+  font-family: 'Sunflower';
 }
 .ql-font-BlackHanSans {
-    font-family: "Black Han Sans";            
+  font-family: 'Black Han Sans';
 }
 .ql-font-GothicA1 {
-    font-family: "Gothic A1";            
+  font-family: 'Gothic A1';
 }
 .ql-font-NanumGothic {
-    font-family: "Nanum Gothic";            
+  font-family: 'Nanum Gothic';
 }
 .ql-font-NanumMyeongjo {
-    font-family: "Nanum Myeongjo";            
+  font-family: 'Nanum Myeongjo';
 }
 .ql-font-PoorStory {
-    font-family: "Poor Story";            
+  font-family: 'Poor Story';
 }
 .ql-font-BlackAndWhitePicture {
-    font-family: "Black And White Picture";            
+  font-family: 'Black And White Picture';
 }
 .ql-font-PTSans {
-    font-family: "PT Sans";       
+  font-family: 'PT Sans';
 }
 
-
 .ql-font-Oswald {
-    font-family: "Oswald";            
+  font-family: 'Oswald';
 }
 
 .ql-font-Caveat {
-    font-family: "Caveat";            
+  font-family: 'Caveat';
 }
 
 .ql-font-Raleway {
-    font-family: "Raleway";            
+  font-family: 'Raleway';
 }
 
 .ql-font-ShadowsIntoLight {
-    font-family: "Shadows Into Light";
+  font-family: 'Shadows Into Light';
 }
 
 .ql-font-AbrilFatface {
-    font-family: "Abril Fatface";            
+  font-family: 'Abril Fatface';
 }
 
 .ql-font-Teko {
-    font-family: "Teko";            
+  font-family: 'Teko';
 }
 
 .ql-font-Cormorant {
-    font-family: "Cormorant";            
+  font-family: 'Cormorant';
 }
 
 .ql-font-AlfaSlabOne {
-    font-family: "Alfa Slab One";            
+  font-family: 'Alfa Slab One';
 }
 
-#toolbar-container .ql-size span[data-label="1em"]::before {
-    font-size: 1em;
+#toolbar-container .ql-size span[data-label='1em']::before {
+  font-size: 1em;
 }
-#toolbar-container .ql-size span[data-label="1.5em"]::before {
-    font-size: 1.5em;
+#toolbar-container .ql-size span[data-label='1.5em']::before {
+  font-size: 1.5em;
 }
-#toolbar-container .ql-size span[data-label="2em"]::before {
-    font-size: 2em;
+#toolbar-container .ql-size span[data-label='2em']::before {
+  font-size: 2em;
 }
-#toolbar-container .ql-size span[data-label="2.5em"]::before {
-    font-size: 2.5em;
+#toolbar-container .ql-size span[data-label='2.5em']::before {
+  font-size: 2.5em;
 }
-#toolbar-container .ql-size span[data-label="3em"]::before {
-    font-size: 3em;
+#toolbar-container .ql-size span[data-label='3em']::before {
+  font-size: 3em;
 }
-#toolbar-container .ql-size span[data-label="3.5em"]::before {
-    font-size: 3.5em;
+#toolbar-container .ql-size span[data-label='3.5em']::before {
+  font-size: 3.5em;
 }
-#toolbar-container .ql-size span[data-label="4em"]::before {
-    font-size: 4em;
+#toolbar-container .ql-size span[data-label='4em']::before {
+  font-size: 4em;
 }
-#toolbar-container .ql-size span[data-label="6em"]::before {
-    font-size: 6em;
+#toolbar-container .ql-size span[data-label='6em']::before {
+  font-size: 6em;
 }
-#toolbar-container .ql-size span[data-label="8em"]::before {
-    font-size: 8em;
+#toolbar-container .ql-size span[data-label='8em']::before {
+  font-size: 8em;
 }
-#toolbar-container .ql-size span[data-label="10em"]::before {
-    font-size: 10em;
+#toolbar-container .ql-size span[data-label='10em']::before {
+  font-size: 10em;
 }
-.dropdown-menu .dropdown-item span[data-label="1em"]::before {
-    font-size: 1em;
+.dropdown-menu .dropdown-item span[data-label='1em']::before {
+  font-size: 1em;
 }
-.dropdown-menu .dropdown-item span[data-label="1.5em"]::before {
-    font-size: 1.5em;
+.dropdown-menu .dropdown-item span[data-label='1.5em']::before {
+  font-size: 1.5em;
 }
-.dropdown-menu .dropdown-item span[data-label="2em"]::before {
-    font-size: 2em;
+.dropdown-menu .dropdown-item span[data-label='2em']::before {
+  font-size: 2em;
 }
-.dropdown-menu .dropdown-item span[data-label="2.5em"]::before {
-    font-size: 2.5em;
+.dropdown-menu .dropdown-item span[data-label='2.5em']::before {
+  font-size: 2.5em;
 }
-.dropdown-menu .dropdown-item span[data-label="3em"]::before {
-    font-size: 3em;
+.dropdown-menu .dropdown-item span[data-label='3em']::before {
+  font-size: 3em;
 }
-.dropdown-menu .dropdown-item span[data-label="3.5em"]::before {
-    font-size: 3.5em;
+.dropdown-menu .dropdown-item span[data-label='3.5em']::before {
+  font-size: 3.5em;
 }
-.dropdown-menu .dropdown-item span[data-label="4em"]::before {
-    font-size: 4em;
+.dropdown-menu .dropdown-item span[data-label='4em']::before {
+  font-size: 4em;
 }
-.dropdown-menu .dropdown-item span[data-label="6em"]::before {
-    font-size: 6em;
+.dropdown-menu .dropdown-item span[data-label='6em']::before {
+  font-size: 6em;
 }
-.dropdown-menu .dropdown-item span[data-label="8em"]::before {
-    font-size: 8em;
+.dropdown-menu .dropdown-item span[data-label='8em']::before {
+  font-size: 8em;
 }
-.dropdown-menu .dropdown-item span[data-label="10em"]::before {
-    font-size: 10em;
+.dropdown-menu .dropdown-item span[data-label='10em']::before {
+  font-size: 10em;
 }
 
-#toolbar-container .ql-weight span[data-label="fontWeight"]::after { content: "font weight"; font-weight: normal; }
-#toolbar-container .ql-weight span[data-label="100"]::after { content: "100"; font-weight: 100; }
-#toolbar-container .ql-weight span[data-label="200"]::after { content: "200"; font-weight: 200; }
-#toolbar-container .ql-weight span[data-label="300"]::after { content: "300"; font-weight: 300; }
-#toolbar-container .ql-weight span[data-label="normal"]::after { content: "normal"; font-weight: normal; }
-#toolbar-container .ql-weight span[data-label="500"]::after { content: "500"; font-weight: 500; }
-#toolbar-container .ql-weight span[data-label="600"]::after { content: "600"; font-weight: 600; }
-#toolbar-container .ql-weight span[data-label="bold"]::after { content: "bold"; font-weight: bold; }
-#toolbar-container .ql-weight span[data-label="800"]::after { content: "800"; font-weight: 800; }
-#toolbar-container .ql-weight span[data-label="900"]::after { content: "900"; font-weight: 900; }
-.dropdown-menu .dropdown-item span[data-label="100"]::before { font-weight: 100; }
-.dropdown-menu .dropdown-item span[data-label="200"]::before { font-weight: 200; }
-.dropdown-menu .dropdown-item span[data-label="300"]::before { font-weight: 300; }
-.dropdown-menu .dropdown-item span[data-label="normal"]::before { font-weight: normal; }
-.dropdown-menu .dropdown-item span[data-label="500"]::before { font-weight: 500; }
-.dropdown-menu .dropdown-item span[data-label="600"]::before { font-weight: 600; }
-.dropdown-menu .dropdown-item span[data-label="bold"]::before { font-weight: bold; }
-.dropdown-menu .dropdown-item span[data-label="800"]::before { font-weight: 800; }
-.dropdown-menu .dropdown-item span[data-label="900"]::before { font-weight: 900; }
-.fw100 {font-weight: 100;}
-.fw200 {font-weight: 200;}
-.fw300 {font-weight: 300;}
-.fwnormal {font-weight: normal;}
-.fw500 {font-weight: 500;}
-.fw600 {font-weight: 600;}
-.fwbold {font-weight: bold;}
-.fw800 {font-weight: 800;}
-.fw900 {font-weight: 900;}
+#toolbar-container .ql-weight span[data-label='fontWeight']::after {
+  content: 'font weight';
+  font-weight: normal;
+}
+#toolbar-container .ql-weight span[data-label='100']::after {
+  content: '100';
+  font-weight: 100;
+}
+#toolbar-container .ql-weight span[data-label='200']::after {
+  content: '200';
+  font-weight: 200;
+}
+#toolbar-container .ql-weight span[data-label='300']::after {
+  content: '300';
+  font-weight: 300;
+}
+#toolbar-container .ql-weight span[data-label='normal']::after {
+  content: 'normal';
+  font-weight: normal;
+}
+#toolbar-container .ql-weight span[data-label='500']::after {
+  content: '500';
+  font-weight: 500;
+}
+#toolbar-container .ql-weight span[data-label='600']::after {
+  content: '600';
+  font-weight: 600;
+}
+#toolbar-container .ql-weight span[data-label='bold']::after {
+  content: 'bold';
+  font-weight: bold;
+}
+#toolbar-container .ql-weight span[data-label='800']::after {
+  content: '800';
+  font-weight: 800;
+}
+#toolbar-container .ql-weight span[data-label='900']::after {
+  content: '900';
+  font-weight: 900;
+}
+.dropdown-menu .dropdown-item span[data-label='100']::before {
+  font-weight: 100;
+}
+.dropdown-menu .dropdown-item span[data-label='200']::before {
+  font-weight: 200;
+}
+.dropdown-menu .dropdown-item span[data-label='300']::before {
+  font-weight: 300;
+}
+.dropdown-menu .dropdown-item span[data-label='normal']::before {
+  font-weight: normal;
+}
+.dropdown-menu .dropdown-item span[data-label='500']::before {
+  font-weight: 500;
+}
+.dropdown-menu .dropdown-item span[data-label='600']::before {
+  font-weight: 600;
+}
+.dropdown-menu .dropdown-item span[data-label='bold']::before {
+  font-weight: bold;
+}
+.dropdown-menu .dropdown-item span[data-label='800']::before {
+  font-weight: 800;
+}
+.dropdown-menu .dropdown-item span[data-label='900']::before {
+  font-weight: 900;
+}
+.fw100 {
+  font-weight: 100;
+}
+.fw200 {
+  font-weight: 200;
+}
+.fw300 {
+  font-weight: 300;
+}
+.fwnormal {
+  font-weight: normal;
+}
+.fw500 {
+  font-weight: 500;
+}
+.fw600 {
+  font-weight: 600;
+}
+.fwbold {
+  font-weight: bold;
+}
+.fw800 {
+  font-weight: 800;
+}
+.fw900 {
+  font-weight: 900;
+}
 
 .ql-audio:after {
-    content: "Audio";
+  content: 'Audio';
 }
 
 .ql-omega:after {
-    content: "Tooltip";
+  content: 'Tooltip';
 }
 
 .tooltip-inner {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
 
 .tltp {
-    width: 10px;
-    color: blue !important;
-    cursor: pointer !important;
+  width: 10px;
+  color: blue !important;
+  cursor: pointer !important;
 }
 
 .comment-indent {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 .replyB {
-    text-align: left;
-    color: blue;
-    cursor: pointer;
+  text-align: left;
+  color: blue;
+  cursor: pointer;
 }
 
 #back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    width: 52px;
-    height: 52px;
-    text-align: center;
-    line-height: 50px;
-    background: #f5f5f5;
-    color: #444;
-    cursor: pointer;
-    border: 0;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: opacity 0.2s ease-out;
-    opacity: 0;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  width: 52px;
+  height: 52px;
+  text-align: center;
+  line-height: 50px;
+  background: #f5f5f5;
+  color: #444;
+  cursor: pointer;
+  border: 0;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+  opacity: 0;
 }
 #back-to-top:hover {
-    background: #e9ebec;
+  background: #e9ebec;
 }
 #back-to-top.show {
-    opacity: 1;
+  opacity: 1;
 }
 .inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 .inputfile + label {
-    font-size: 1.25em;
-    font-weight: 700;
-    color: white;
-    background-color: black;
-    display: inline-block;
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
 }
 .inputfile:focus + label,
 .inputfile + label:hover {
-    background-color: red;
+  background-color: red;
 }
 .word_header {
-    position: fixed;
-    padding: 10px 16px;
-    background: #555;
-    color: #f1f1f1;
-    width: 100%;
-  }
+  position: fixed;
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+  width: 100%;
+}
 
-  .spanner{
-    position:absolute;
-    top: 45%;
-    left: 0;
-    background: #2a2a2a;
-    width: 100%;
-    display:block;
-    text-align:center;
-    height: 300px;
-    color: #FFF;
-    transform: translateY(-50%);
-    z-index: 1000;
-    visibility: hidden;
-  }
-  
-  .overlay{
-    position: fixed;
-      width: 100%;
-      height: 100vh;
-    background: rgba(0,0,0,0.5);
-    visibility: hidden;
-  }
-  
-  .loader,
-  .loader:before,
-  .loader:after {
-    border-radius: 50%;
-    width: 2.5em;
-    height: 2.5em;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation: load7 1.8s infinite ease-in-out;
-    animation: load7 1.8s infinite ease-in-out;
-  }
-  .loader {
-    color: #ffffff;
-    font-size: 10px;
-    margin: 80px auto;
-    position: relative;
-    text-indent: -9999em;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-animation-delay: -0.16s;
-    animation-delay: -0.16s;
-  }
-  .loader:before,
-  .loader:after {
-    content: '';
-    position: absolute;
-    top: 0;
-  }
-  .loader:before {
-    left: -3.5em;
-    -webkit-animation-delay: -0.32s;
-    animation-delay: -0.32s;
-  }
-  .loader:after {
-    left: 3.5em;
-  }
-  @-webkit-keyframes load7 {
-    0%,
-    80%,
-    100% {
-      box-shadow: 0 2.5em 0 -1.3em;
-    }
-    40% {
-      box-shadow: 0 2.5em 0 0;
-    }
-  }
-  @keyframes load7 {
-    0%,
-    80%,
-    100% {
-      box-shadow: 0 2.5em 0 -1.3em;
-    }
-    40% {
-      box-shadow: 0 2.5em 0 0;
-    }
-  }
-  
-  .show{
-    visibility: visible;
-  }
-  
-  .spanner, .overlay{
-      opacity: 0;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
-  }
-  
-  .spanner.show, .overlay.show {
-      opacity: 1
-  }
+.spanner {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  background: #2a2a2a;
+  width: 100%;
+  display: block;
+  text-align: center;
+  height: 300px;
+  color: #fff;
+  transform: translateY(-50%);
+  z-index: 1000;
+  visibility: hidden;
+}
 
-  .treeview {
-      text-align: left;
-      height: 700px;
-      overflow-y: scroll;
-      margin-top: 20px;
-  }
-  
-  ::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    border-radius: 5px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
-    box-shadow: 0 0 1px rgba(255,255,255,.5);
-  }
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+}
 
-  .tooltip_templates { display: none; }
+.loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out;
+}
+.loader {
+  color: #ffffff;
+  font-size: 10px;
+  margin: 80px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.loader:before,
+.loader:after {
+  content: '';
+  position: absolute;
+  top: 0;
+}
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.loader:after {
+  left: 3.5em;
+}
+@-webkit-keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+@keyframes load7 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 2.5em 0 -1.3em;
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0;
+  }
+}
+
+.show {
+  visibility: visible;
+}
+
+.spanner,
+.overlay {
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.spanner.show,
+.overlay.show {
+  opacity: 1;
+}
+
+.treeview {
+  text-align: left;
+  height: 700px;
+  overflow-y: scroll;
+  margin-top: 20px;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.tooltip_templates {
+  display: none;
+}

@@ -8,39 +8,39 @@ var story_controller = require('../controllers/storyController');
 var comment_controller = require('../controllers/commentController');
 var word_controller = require('../controllers/wordController');
 var memo_controller = require('../controllers/memoController');
+var chatGPT_controller = require('../controllers/chatGPTController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
 var user_controller = require('../controllers/userController');
 
-
-router.all('/story/*', mid.requiresLogin, function(req, res, next) {
-    next();
+router.all('/story/*', mid.requiresLogin, function (req, res, next) {
+  next();
 });
 
-router.all('/stories/*', mid.requiresLogin, function(req, res, next) {
-    next();
+router.all('/stories/*', mid.requiresLogin, function (req, res, next) {
+  next();
 });
 
-router.all('/book/*', mid.requiresLogin, function(req, res, next) {
-    next();
+router.all('/book/*', mid.requiresLogin, function (req, res, next) {
+  next();
 });
 
-router.all('/genre/*', mid.requiresLogin, function(req, res, next) {
-    next();
+router.all('/genre/*', mid.requiresLogin, function (req, res, next) {
+  next();
 });
 
-router.all('/*', function(req, res, next) {
-    if (req.session && req.session.userId) {
-        res.locals.user = true;
-    }
-    next();
+router.all('/*', function (req, res, next) {
+  if (req.session && req.session.userId) {
+    res.locals.user = true;
+  }
+  next();
 });
 
 /// BOOK ROUTES ///
 
 // GET catalog home page.
-router.get('/', book_controller.index); 
+router.get('/', book_controller.index);
 
 router.get('/alter_password', user_controller.alter_password_get);
 
@@ -86,6 +86,9 @@ router.get('/story/create', story_controller.story_create_get);
 // POST request for creating Book.
 router.post('/story/create', story_controller.story_create_post);
 
+// POST request for chat api
+router.post('/story/chatWithAI', story_controller.sendMessage);
+
 // GET request to delete Book.
 router.get('/story/:id/delete', story_controller.story_delete_get);
 
@@ -125,11 +128,20 @@ router.post('/preview', story_controller.story_preview);
 
 router.post('/story/:id/preview', story_controller.story_update_preview);
 
-router.post('/story/:id/comments/replies', comment_controller.comment_create_post);
+router.post(
+  '/story/:id/comments/replies',
+  comment_controller.comment_create_post
+);
 
-router.post('/story/:id/comments/:commentId/replies', comment_controller.comment_create_post2);
+router.post(
+  '/story/:id/comments/:commentId/replies',
+  comment_controller.comment_create_post2
+);
 
-router.post('/story/:id/comments/:commentId/replies_update', comment_controller.comment_update_post);
+router.post(
+  '/story/:id/comments/:commentId/replies_update',
+  comment_controller.comment_update_post
+);
 
 router.get('/story_oxford', story_controller.story_oxford);
 
@@ -143,7 +155,10 @@ router.get('/story_word_datatable', story_controller.story_word_datatable);
 
 router.post('/story_word_datatable', story_controller.story_word_datatable);
 
-router.post('/story_word_datatable_list', story_controller.story_word_datatable_list);
+router.post(
+  '/story_word_datatable_list',
+  story_controller.story_word_datatable_list
+);
 
 router.get('/stories/withdrawal', story_controller.withdrawal);
 
@@ -228,6 +243,34 @@ router.get('/memo/:id/iframe', memo_controller.memo_iframe);
 // GET request for list of all Book.
 router.get('/memos', memo_controller.memo_list);
 
+/// CHATGPT ROUTES ///
+
+// GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
+router.get('/chatGPT/create', chatGPT_controller.chatGPT_create_get);
+
+// POST request for creating Book.
+router.post('/chatGPT/create', chatGPT_controller.chatGPT_create_post);
+
+// GET request to delete Book.
+router.get('/chatGPT/:id/delete', chatGPT_controller.chatGPT_delete_get);
+
+// POST request to delete Book.
+router.post('/chatGPT/:id/delete', chatGPT_controller.chatGPT_delete_post);
+
+// GET request to update Book.
+router.get('/chatGPT/:id/update', chatGPT_controller.chatGPT_update_get);
+
+// POST request to update Book.
+router.post('/chatGPT/:id/update', chatGPT_controller.chatGPT_update_post);
+
+// GET request for one Book.
+router.get('/chatGPT/:id', chatGPT_controller.chatGPT_detail);
+
+router.get('/chatGPT/:id/iframe', chatGPT_controller.chatGPT_iframe);
+
+// GET request for list of all Book.
+router.get('/chatGPTs', chatGPT_controller.chatGPT_list);
+
 /// AUTHOR ROUTES ///
 
 // GET request for creating Author. NOTE This must come before route for id (i.e. display author).
@@ -253,7 +296,6 @@ router.get('/author/:id', author_controller.author_detail);
 
 // GET request for list of all Authors.
 router.get('/authors', author_controller.author_list);
-
 
 /// GENRE ROUTES ///
 
@@ -281,32 +323,48 @@ router.get('/genre/:id', genre_controller.genre_detail);
 // GET request for list of all Genre.
 router.get('/genres', genre_controller.genre_list);
 
-
 /// BOOKINSTANCE ROUTES ///
 
 // GET request for creating a BookInstance. NOTE This must come before route that displays BookInstance (uses id).
-router.get('/bookinstance/create', book_instance_controller.bookinstance_create_get);
+router.get(
+  '/bookinstance/create',
+  book_instance_controller.bookinstance_create_get
+);
 
 // POST request for creating BookInstance.
-router.post('/bookinstance/create', book_instance_controller.bookinstance_create_post);
+router.post(
+  '/bookinstance/create',
+  book_instance_controller.bookinstance_create_post
+);
 
 // GET request to delete BookInstance.
-router.get('/bookinstance/:id/delete', book_instance_controller.bookinstance_delete_get);
+router.get(
+  '/bookinstance/:id/delete',
+  book_instance_controller.bookinstance_delete_get
+);
 
 // POST request to delete BookInstance.
-router.post('/bookinstance/:id/delete', book_instance_controller.bookinstance_delete_post);
+router.post(
+  '/bookinstance/:id/delete',
+  book_instance_controller.bookinstance_delete_post
+);
 
 // GET request to update BookInstance.
-router.get('/bookinstance/:id/update', book_instance_controller.bookinstance_update_get);
+router.get(
+  '/bookinstance/:id/update',
+  book_instance_controller.bookinstance_update_get
+);
 
 // POST request to update BookInstance.
-router.post('/bookinstance/:id/update', book_instance_controller.bookinstance_update_post);
+router.post(
+  '/bookinstance/:id/update',
+  book_instance_controller.bookinstance_update_post
+);
 
 // GET request for one BookInstance.
 router.get('/bookinstance/:id', book_instance_controller.bookinstance_detail);
 
 // GET request for list of all BookInstance.
 router.get('/bookinstances', book_instance_controller.bookinstance_list);
-
 
 module.exports = router;

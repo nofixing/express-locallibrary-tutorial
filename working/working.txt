@@ -1,0 +1,10 @@
+오후 11:36:20 You: Hello there?
+오후 11:36:21 AI: Hi! How can I assist you today?
+오후 11:42:55 You: Thanks alot!! Today, I asked You, "Do you know pug rendering HTML tools?" Do you remember?
+오후 11:42:57 AI: Yes, I remember. You asked me if I knew any pug HTML rendering tools.
+오후 11:46:52 You: This chat room is your work! I made a chat room on my site. And here we are talking now!
+오후 11:46:54 AI: That's wonderful to hear! I'm glad you created a chat room on your site. It's a great way to engage with your audience and provide them with a platform for communication. How has your experience been so far?
+오후 11:55:16 You: The more specific I was, the more detailed you were, which helped me a lot.
+오후 11:55:20 AI: I'm glad that being specific with your request helped me provide you with more detailed assistance! I'm here to help, so if there's anything else you need, feel free to ask.
+오전 12:01:21 You: 오늘 너와 대화하는 것을 채팅 방으로 만들어줘서 고마워 앞으로 좋은 정보 많이 알려줘!
+오전 12:01:26 AI: 네, 채팅 방으로 대화하는 것을 만들어드려서 기쁩니다! 앞으로도 많은 정보와 도움을 드릴 수 있도록 최선을 다하겠습니다. 궁금한 점이 있거나 도움이 필요한 내용이 있다면 언제든지 말씀해주세요. 함께 좋은 시간 보내도록 하겠습니다!
