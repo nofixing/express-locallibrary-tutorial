@@ -386,9 +386,14 @@ html(lang='en')
         </div>
       div#chat-container.col-lg-6
         div#chat-messages(style="width:90%; margin-right:20px;") !{chatGPT}
+        div#chatDeleteId(style="display: block;")
+          <input type="button" style="float:left" class="btn btn-primary btn-sm" id="chatDeleteButton" value="#{translation.Delete}"/>
+        <br/><br/>
         div#user-input(style="display: flex")
-          <textarea name="message-input" id="message-input" onInput="this.parentNode.dataset.replicatedValue = this.value" placeholder="Type your message..."  class="form-control" style="width:90% ; margin-right:10px;" rows="4"></textarea>
-          button(type="button", id="send-button") Send
+          <div class="input-group" style="margin-right:20px;" >
+            <textarea name="message-input" id="message-input" onInput="this.parentNode.dataset.replicatedValue = this.value" placeholder="#{translation.AIMESSAGE}"  class="form-control" style="width:85% ; margin-right:10px;" rows="4"></textarea>
+            button(type="button", id="send-button") #{translation.SEND}
+          </div>
       script(src="/js/chat-api-library.js")
       div#word_only_container.col-lg-12
         p(style='font-weight:bold;font-size: 2.5em;margin-top:30px;') #{story.title}<br/><br/>

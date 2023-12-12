@@ -229,5 +229,7 @@
   "CheckWords": "저장하거나 삭제할 단어를 선택해주세요.",
   "Next": "다음",
   "pasteAudioSrc": "오디오파일 붙여넣기",
-  "ChatAI": "챗봇"
+  "ChatAI": "챗봇",
+  "SEND": "보내기",
+  "AIMESSAGE": "AI에게 말걸기..."
 }

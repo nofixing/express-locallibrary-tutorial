@@ -164,29 +164,12 @@ exports.chatGPT_delete_get = function (req, res, next) {
 
 // Handle chatGPT delete on POST.
 exports.chatGPT_delete_post = function (req, res, next) {
-  // Assume the post has valid id (ie no validation/sanitization).
-
-  async.parallel(
-    {
-      chatGPT: function (callback) {
-        ChatGPT.findById(req.params.id).exec(callback);
-      },
-    },
-    function (err, results) {
-      if (err) {
-        return next(err);
-      }
-      // Success
-      // Delete object and redirect to the list of chatGPTs.
-      ChatGPT.findByIdAndRemove(req.body.id, function deleteChatGPT(err) {
-        if (err) {
-          return next(err);
-        }
-        // Success - got to chatGPTs list.
-        res.redirect('/catalog/chatGPTs');
-      });
+  ChatGPT.findByIdAndRemove(req.params.id, function deleteChatGPT(err) {
+    if (err) {
+      return next(err);
     }
-  );
+    res.send(req.body);
+  });
 };
 
 // Display chatGPT update form on GET.

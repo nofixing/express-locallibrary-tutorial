@@ -2,8 +2,39 @@
 
 const messageInput = document.getElementById('message-input');
 const sendButton = document.getElementById('send-button');
+const chatDeleteButton = document.getElementById('chatDeleteButton');
 const chatMessages = document.getElementById('chat-messages');
 let previoutChat = '';
+
+$(function () {
+  if (chatMessages.innerHTML !== '') {
+    $('#chatDeleteId').css('display', 'block');
+  } else {
+    $('#chatDeleteId').css('display', 'none');
+  }
+});
+
+// $('#chatDeleteId').css('display', 'none');
+chatDeleteButton.addEventListener('click', () => {
+  var httpType = 'https://';
+  if ($('#hostname').val().indexOf('localhost') > -1) httpType = 'http://';
+  $.ajax({
+    type: 'POST',
+    contentType: 'application/json',
+    url:
+      httpType +
+      $('#hostname').val() +
+      '/catalog/chatGPT/' +
+      $('#chatGPT_id').val() +
+      '/delete',
+    async: false,
+    success: () => {
+      chatMessages.innerHTML = '';
+      alert($('#DELETED').val());
+      $('#chatDeleteId').css('display', 'none');
+    },
+  });
+});
 
 messageInput.addEventListener('keypress', function (event) {
   // If the user presses the "Enter" key on the keyboard
@@ -93,4 +124,5 @@ function displayMessage(sender, text, timestamp) {
   wordList2(chatMessage);
   var saveChatMessage = document.querySelector('#chat-messages').innerHTML;
   saveChatGPT(saveChatMessage);
+  $('#chatDeleteId').css('display', 'block');
 }

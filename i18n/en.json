@@ -229,5 +229,7 @@
   "CheckWords": "Check words that will be saved or deleted.",
   "Next": "Next",
   "pasteAudioSrc": "Paste Audio File",
-  "ChatAI": "ChatAI"
+  "ChatAI": "ChatAI",
+  "SEND": "Send",
+  "AIMESSAGE": "Talking to AI..."
 }
