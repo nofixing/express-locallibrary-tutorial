@@ -89,6 +89,9 @@ router.post('/story/create', story_controller.story_create_post);
 // POST request for chat api
 router.post('/story/chatWithAI', story_controller.sendMessage);
 
+// request for google image search
+router.post('/story/googleImageSearch', story_controller.googleImageSearch);
+
 // GET request to delete Book.
 router.get('/story/:id/delete', story_controller.story_delete_get);
 

@@ -2139,3 +2139,39 @@ exports.sendMessage = async (req, res, next) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
+exports.googleImageSearch = async (req, res, next) => {
+  try {
+    const GOOGLE_CUSTOM_SEARCH_URL =
+      'https://www.googleapis.com/customsearch/v1';
+    const GOOGLE_CUSTOM_SEARCH_KEY = process.env.GOOGLE_CUSTOM_SEARCH_KEY;
+
+    const SEARCH_URL =
+      GOOGLE_CUSTOM_SEARCH_URL +
+      '?key=' +
+      GOOGLE_CUSTOM_SEARCH_KEY +
+      '&cx=012222057275105284918:2fhqptrxpgk&q=' +
+      req.body.selectText +
+      '&num=10&start=' +
+      req.body.startImagNum +
+      '&imgSize=medium&searchType=image';
+
+    const response = await fetch(SEARCH_URL);
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to send message to GOOGLE image search. Status: ${response.status}`
+      );
+    }
+
+    const data = await response.json();
+    console.log(`GOOGLE image search data => ${JSON.stringify(data)}`);
+    res.json(data);
+  } catch (error) {
+    console.error(
+      'Error sending message to GOOGLE image search:',
+      error.message
+    );
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};

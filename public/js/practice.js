@@ -299,18 +299,20 @@ $(function () {
       }
       if (selectText.length > 0) {
         $('#img_layer').css('display', 'block');
+        var data = {};
+        data.selectText = selectText;
+        data.startImagNum = startImagNum;
+        var httpType = 'https://';
+        if ($('#hostname').val().indexOf('localhost') > -1)
+          httpType = 'http://';
         $.ajax({
-          url: 'https://www.googleapis.com/customsearch/v1',
-          type: 'GET',
-          data:
-            'key=' +
-            process.env.GOOGLE_CUSTOM_SEARCH_KEY +
-            '&cx=012222057275105284918:2fhqptrxpgk&q=' +
-            selectText +
-            '&num=10&start=' +
-            startImagNum +
-            '&imgSize=medium&searchType=image',
-          dataType: 'JSON',
+          url:
+            httpType +
+            $('#hostname').val() +
+            '/catalog/story/googleImageSearch',
+          type: 'POST',
+          data: JSON.stringify(data),
+          contentType: 'application/json',
           success: function (data) {
             showData.empty();
             $.each(data.items, function (i, item) {
