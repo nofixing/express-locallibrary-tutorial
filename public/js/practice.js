@@ -1640,7 +1640,7 @@ function processDicData(dic_content, kdata, translation) {
   if (kword.trim() == '') {
     kword = translation;
   } else {
-    if (kword.indexOf(translation) < 0) kword += ', ' + translation;
+    // if (kword.indexOf(translation) < 0) kword += ', ' + translation;
   }
   var cptxtf =
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' onclick='CopyFilePath(`";
