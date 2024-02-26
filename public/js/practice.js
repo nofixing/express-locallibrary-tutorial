@@ -303,7 +303,9 @@ $(function () {
           url: 'https://www.googleapis.com/customsearch/v1',
           type: 'GET',
           data:
-            'key=AIzaSyCBr1dGpg2bB-eTAXKFgnvpKL6vdSYQTSI&cx=012222057275105284918:2fhqptrxpgk&q=' +
+            'key=' +
+            process.env.GOOGLE_CUSTOM_SEARCH_KEY +
+            '&cx=012222057275105284918:2fhqptrxpgk&q=' +
             selectText +
             '&num=10&start=' +
             startImagNum +
