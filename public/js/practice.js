@@ -82,9 +82,9 @@ $(function () {
     var ldxx = 0;
     var isNot = true;
     $('.wList').each(function (idx) {
-      console.log('previous words:' + $('.ipt')[idx].value);
+      // console.log('previous words:' + $('.ipt')[idx].value);
       if (selectText.toLowerCase() == $('.ipt')[idx].value.toLowerCase()) {
-        console.log('front already exists');
+        // console.log('front already exists');
         selectText = '';
       }
       ldxx = idx;
@@ -105,7 +105,7 @@ $(function () {
       data.skill = '1';
       data.importance = '1';
       data.content = kword;
-      console.log('before word save, data.content:' + data.content);
+      // console.log('before word save, data.content:' + data.content);
       data.result = $('#SAVED').val();
       data.fail = $('#smm').val();
       data.oxfordWord_id = oxfordWord_id;
@@ -119,7 +119,7 @@ $(function () {
         url: httpType + $('#hostname').val() + '/catalog/word/create',
         async: false,
         success: function (data) {
-          console.log('jb_content dblclick');
+          // console.log('jb_content dblclick');
           if (data.result != data.fail) {
             selectContent = data.content;
             if (oxfordWord_word != '') data.title = oxfordWord_word;
@@ -266,7 +266,7 @@ $(function () {
         url: httpType + $('#hostname').val() + '/catalog/word/translate',
         async: false,
         success: function (data) {
-          console.log('translatedText:' + data.content);
+          // console.log('translatedText:' + data.content);
           $('#translatedText').html(data.content);
           //$('#TranslationModal')[0].click();
           selectContent = data.content;
@@ -623,7 +623,7 @@ $(function () {
     var file = target.files[0];
     var reader = new FileReader();
 
-    console.log($audio2[0]);
+    // console.log($audio2[0]);
     if (target.files && file) {
       reader.onload = function (e) {
         $audio2.attr('src', e.target.result);
@@ -690,7 +690,7 @@ $(function () {
     fileForm.addEventListener(
       'submit',
       function (ev) {
-        console.log('fileUpload started.');
+        // console.log('fileUpload started.');
         $('div.spanner').addClass('show');
         $('div.overlay').addClass('show');
 
@@ -725,7 +725,7 @@ $(function () {
             $('.fts').append(markup);
             alert($('#Uploaded').val());
           } else {
-            console.log('oReq.status:' + oReq.status);
+            // console.log('oReq.status:' + oReq.status);
             $('div.spanner').removeClass('show');
             $('div.overlay').removeClass('show');
             alert($('#UploadFailed').val());
@@ -931,7 +931,7 @@ function dicSearch() {
       url: httpType + $('#hostname').val() + '/catalog/story_oxford_ajax',
       async: false,
       success: function (data) {
-        console.log('data.dic_kcontent:' + data.dic_kcontent + ';');
+        // console.log('data.dic_kcontent:' + data.dic_kcontent + ';');
         if (typeof data.oxfordWord_id != 'undefined') {
           oxfordWord_id = data.oxfordWord_id;
         } else {
@@ -1008,8 +1008,8 @@ function saveChatGPT(saveChatMessage) {
   data.story_user = $('#stusr').val();
   data.content = saveChatMessage;
   data.chatGPT_id = $('#chatGPT_id').val();
-  console.log('save click');
-  console.log(data.content);
+  // console.log('save click');
+  // console.log(data.content);
   var httpType = 'https://';
   if ($('#hostname').val().indexOf('localhost') > -1) httpType = 'http://';
   $.ajax({
@@ -1256,7 +1256,7 @@ function storyTooltip() {
 }
 
 function preview() {
-  console.log('preview start');
+  // console.log('preview start');
   var content = document.querySelector('#snow-container').children[0].innerHTML;
 
   var form = document.createElement('form');
@@ -1423,8 +1423,8 @@ function saveMemo(autoYN) {
   data.content =
     document.querySelector('#snow-container').children[0].innerHTML;
   data.memo_id = $('#memo_id').val();
-  console.log('save click');
-  console.log(data.content);
+  // console.log('save click');
+  // console.log(data.content);
   var httpType = 'https://';
   if ($('#hostname').val().indexOf('localhost') > -1) httpType = 'http://';
   $.ajax({
@@ -1494,7 +1494,7 @@ function saveMemo(autoYN) {
 function CopyFilePath(path) {
   var textArea = document.createElement('textarea');
   path = path.replace(/‡/g, "'");
-  console.log('path:' + path);
+  // console.log('path:' + path);
   textArea.value = path;
   document.body.appendChild(textArea);
   textArea.select();
@@ -1837,12 +1837,12 @@ function processDicData(dic_content, kdata, translation) {
 
           var constructions = senses[l].constructions;
           if (typeof constructions === 'object') {
-            console.log('constructions: ' + constructions[0].text);
+            // console.log('constructions: ' + constructions[0].text);
           }
 
           var definitions = senses[l].definitions;
           if (typeof definitions !== 'undefined') {
-            console.log('definitions: ' + definitions);
+            // console.log('definitions: ' + definitions);
             simpleData[i].nodes[j].nodes.push({
               text:
                 '<b>' +
@@ -1859,7 +1859,7 @@ function processDicData(dic_content, kdata, translation) {
           }
           var crossReferenceMarkers = senses[l].crossReferenceMarkers;
           if (typeof crossReferenceMarkers !== 'undefined') {
-            console.log('crossReferenceMarkers: ' + crossReferenceMarkers);
+            // console.log('crossReferenceMarkers: ' + crossReferenceMarkers);
             simpleData[i].nodes[j].nodes.push({
               text: crossReferenceMarkers,
               selectable: true,
@@ -1867,14 +1867,14 @@ function processDicData(dic_content, kdata, translation) {
           }
           var crossReferences = senses[l].crossReferences;
           if (typeof crossReferences === 'object') {
-            console.log('crossReferences[0].id: ' + crossReferences[0].id);
-            console.log('crossReferences[0].text: ' + crossReferences[0].text);
-            console.log('crossReferences[0].type: ' + crossReferences[0].type);
+            // console.log('crossReferences[0].id: ' + crossReferences[0].id);
+            // console.log('crossReferences[0].text: ' + crossReferences[0].text);
+            // console.log('crossReferences[0].type: ' + crossReferences[0].type);
           }
           var domains = senses[l].domains;
           if (typeof domains === 'object') {
-            console.log('domains[0].id: ' + domains[0].id);
-            console.log('domains[0].text: ' + domains[0].text);
+            // console.log('domains[0].id: ' + domains[0].id);
+            // console.log('domains[0].text: ' + domains[0].text);
           }
           var examples = senses[l].examples;
           if (typeof examples === 'object') {
@@ -1884,7 +1884,7 @@ function processDicData(dic_content, kdata, translation) {
                 //console.log('examples_registers[0].text: '+examples_registers[0].text);
               }
               var examples_text = examples[m].text;
-              console.log('examples_text: ' + examples_text);
+              // console.log('examples_text: ' + examples_text);
               simpleData[i].nodes[j].nodes.push({
                 text:
                   '<i>' +
@@ -1903,12 +1903,12 @@ function processDicData(dic_content, kdata, translation) {
           var senses_id = senses[l].id;
           var registers = senses[l].registers;
           if (typeof registers === 'object') {
-            console.log('registers[0].id: ' + registers[0].id);
-            console.log('registers[0].text: ' + registers[0].text);
+            // console.log('registers[0].id: ' + registers[0].id);
+            // console.log('registers[0].text: ' + registers[0].text);
           }
           var shortDefinitions = senses[l].shortDefinitions;
           if (typeof shortDefinitions !== 'undefined') {
-            console.log('shortDefinitions: ' + shortDefinitions);
+            // console.log('shortDefinitions: ' + shortDefinitions);
             simpleData[i].nodes[j].nodes.push({
               text:
                 '<b>shortDefinitions:</b> ' +
@@ -1957,7 +1957,7 @@ function processDicData(dic_content, kdata, translation) {
             for (let m = 0; m < subsenses.length; m++) {
               var subsenses_definitions = subsenses[m].definitions;
               if (typeof subsenses_definitions !== 'undefined') {
-                console.log('subsenses_definitions: ' + subsenses_definitions);
+                // console.log('subsenses_definitions: ' + subsenses_definitions);
                 simpleData[i].nodes[j].nodes[ssIdx].nodes.push({
                   text:
                     '<b>' +
@@ -1981,9 +1981,9 @@ function processDicData(dic_content, kdata, translation) {
                     //console.log('subsenses_examples_registers[0].text: '+subsenses_examples_registers[0].text);
                   }
                   var subsenses_examples_text = subsenses_examples[n].text;
-                  console.log(
-                    'subsenses_examples_text: ' + subsenses_examples_text
-                  );
+                  // console.log(
+                  //   'subsenses_examples_text: ' + subsenses_examples_text
+                  // );
                   simpleData[i].nodes[j].nodes[ssIdx].nodes.push({
                     text:
                       '<i>' +
@@ -2111,7 +2111,7 @@ function processDicDatat(dic_content) {
       if (typeof lexicalCategory === 'object') {
         var lexicalCategory_id = lexicalCategory.id;
         var lexicalCategory_text = lexicalCategory.text;
-        console.log('lexicalCategory.text:' + lexicalCategory.text);
+        // console.log('lexicalCategory.text:' + lexicalCategory.text);
         simpleData[i].nodes.push({ text: lexicalCategory.text });
       }
       var entries = lexicalEntries[j].entries;
@@ -2145,8 +2145,8 @@ function processDicDatat(dic_content) {
           var senses_id = senses[l].id;
           var registers = senses[l].registers;
           if (typeof registers === 'object') {
-            console.log('registers[0].id: ' + registers[0].id);
-            console.log('registers[0].text: ' + registers[0].text);
+            // console.log('registers[0].id: ' + registers[0].id);
+            // console.log('registers[0].text: ' + registers[0].text);
           }
           var subsenses = senses[l].subsenses;
           if (typeof subsenses === 'object') {
@@ -2184,7 +2184,7 @@ function processDicDatat(dic_content) {
       $('#close').val() +
       '</a>',
   });
-  console.log(JSON.stringify(simpleData));
+  // console.log(JSON.stringify(simpleData));
   $('#treeview1').css('display', 'block');
   $('#treeview1').treeview({
     levels: 99,
@@ -2249,7 +2249,7 @@ function processDicDatas(dic_content) {
       if (typeof lexicalCategory === 'object') {
         var lexicalCategory_id = lexicalCategory.id;
         var lexicalCategory_text = lexicalCategory.text;
-        console.log('lexicalCategory.text:' + lexicalCategory.text);
+        // console.log('lexicalCategory.text:' + lexicalCategory.text);
         simpleData[i].nodes.push({ text: lexicalCategory.text });
       }
       var sentences = lexicalEntries[j].sentences;
@@ -2276,7 +2276,7 @@ function processDicDatas(dic_content) {
       $('#close').val() +
       '</a>',
   });
-  console.log(JSON.stringify(simpleData));
+  // console.log(JSON.stringify(simpleData));
   $('#treeview1').css('display', 'block');
   $('#treeview1').treeview({
     levels: 99,
