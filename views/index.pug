@@ -31,7 +31,7 @@ block content
           each his in data.history
             li 
               if his.book
-                a(href=his.url) #{his.story.title} (#{his.book.title})
+                a(href=his.url) #{his.story.chapter}, #{his.story.title} (#{his.book.title})
               else
                 a(href=his.url) #{his.story.title}  
 
