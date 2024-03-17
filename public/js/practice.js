@@ -1602,10 +1602,10 @@ function processDicData(dic_content, kdata, translation) {
     simpleData[0].nodes[0].nodes.push({text:'Grandchild 1'});
     simpleData[0].nodes[0].nodes.push({text:'Grandchild 2'});
     */
-  //   console.log(
-  //     '==========================================================================DicData:\n' +
-  //       dic_content
-  //   );
+  console.log(
+    '==========================================================================DicData:\n' +
+      dic_content
+  );
   var voca = JSON.parse(dic_content);
   if (typeof kdata == 'undefined') kdata = '{}';
   if (kdata != '{}') {
