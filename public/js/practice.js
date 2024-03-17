@@ -1655,6 +1655,19 @@ function processDicData(dic_content, kdata, translation) {
   var headWord = '';
   for (let i = 0; i < results.length; i++) {
     var word = results[i].word;
+    var lexicalEntriess = results[i].lexicalEntries;
+    for (let j = 0; j < lexicalEntriess.length; j++) {
+      var entriess = lexicalEntriess[j].entries;
+      for (let k = 0; k < entriess.length; k++) {
+        var sensess = entriess[k].senses;
+        for (let l = 0; l < sensess.length; l++) {
+          var shortDefinitionss = sensess[l].shortDefinitions;
+          if (typeof shortDefinitionss !== 'undefined') {
+            kword = '<b>' + shortDefinitionss[0] + '</b>' + ', ' + kword;
+          }
+        }
+      }
+    }
     if (i == 0) {
       headWord =
         '<a onclick="sentence(\'' +
