@@ -1667,7 +1667,7 @@ function processDicData(dic_content, kdata, translation) {
           var shortDefinitionss = sensess[l].shortDefinitions;
           if (typeof shortDefinitionss !== 'undefined') {
             if (i == 0 && j == 0 && k == 0 && l == 0) {
-              if (kword === '') {
+              if (kword.trim() == '' || typeof kword === 'undefined') {
                 kword = shortDefinitionss[0];
               } else {
                 kword = shortDefinitionss[0] + ', ' + kword;
