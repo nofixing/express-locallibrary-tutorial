@@ -1665,7 +1665,11 @@ function processDicData(dic_content, kdata, translation) {
           var shortDefinitionss = sensess[l].shortDefinitions;
           if (typeof shortDefinitionss !== 'undefined') {
             if (i == 0 && j == 0 && k == 0 && l == 0) {
-              kword = shortDefinitionss[0] + ', ' + kword;
+              if (kword === '') {
+                kword = shortDefinitionss[0];
+              } else {
+                kword = shortDefinitionss[0] + ', ' + kword;
+              }
             }
           }
         }
