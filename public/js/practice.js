@@ -1649,6 +1649,11 @@ function processDicData(dic_content, kdata, translation) {
       kword = '';
     }
   }
+  if (typeof kword === 'undefined') {
+    console.log(`kword is undefined`);
+  } else {
+    console.log(`kword is |${kword}|`);
+  }
   var cptxtf =
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' onclick='CopyFilePath(`";
   var cptxtb =
@@ -1667,7 +1672,10 @@ function processDicData(dic_content, kdata, translation) {
           var shortDefinitionss = sensess[l].shortDefinitions;
           if (typeof shortDefinitionss !== 'undefined') {
             if (i == 0 && j == 0 && k == 0 && l == 0) {
-              if (kword.trim() == '' || typeof kword === 'undefined') {
+              if (
+                typeof kword === 'undefined' ||
+                kword.indexOf('undefined') > -1
+              ) {
                 kword = shortDefinitionss[0];
               } else {
                 kword = shortDefinitionss[0] + ', ' + kword;
