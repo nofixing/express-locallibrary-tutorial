@@ -1645,6 +1645,7 @@ function processDicData(dic_content, kdata, translation) {
     kword = translation;
   } else {
     // if (kword.indexOf(translation) < 0) kword += ', ' + translation;
+    if (kword.indexOf('undefined') > -1) kword = '';
   }
   var cptxtf =
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='#' onclick='CopyFilePath(`";
