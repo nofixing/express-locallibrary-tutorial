@@ -2,7 +2,7 @@ var express = require('express');
 //const uuid = require('uuid/v4');
 const { v4: uuid } = require('uuid');
 var path = require('path');
-// var favicon = require('serve-favicon');
+var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -89,7 +89,7 @@ app.set('view engine', 'pug');
 app.set('rootDir', path.resolve(__dirname));
 
 // Uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
