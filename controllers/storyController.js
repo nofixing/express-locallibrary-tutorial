@@ -1916,11 +1916,17 @@ exports.story_oxford_ajaxs = function (req, res, next) {
           res.send(req.body);
         },
         function (err) {
+          let errString = '';
+          if (typeof err === 'object') {
+            errString = JSON.stringify(err);
+          } else {
+            errString = err;
+          }
           console.log(
             'req.query.word:' +
               req.body.word +
               '     story_oxford_ajaxs err:' +
-              err
+              errString
           );
           return next(err);
         }
