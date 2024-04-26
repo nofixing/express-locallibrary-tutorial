@@ -384,7 +384,7 @@ html(lang='en')
             input(type='hidden' name='storyId' value=story._id)
             button.btn.btn-primary.btn-sm(type='submit' style="line-height: 25px; float: left; margin-left: 20px;") #{translation.FileUpload}
         </div>
-      div#chat-container.col-lg-6
+      div#chat-container.col-lg-6.ql-editor
         div#chat-messages.ql-font-Raleway.fw300(style="width:90%; margin-right:20px; font-size: 1.5em;") !{chatGPT}
         div#chatDeleteId(style="display: block;")
           <input type="button" style="float:left" class="btn btn-primary btn-sm" id="chatDeleteButton" value="#{translation.Delete}"/>
