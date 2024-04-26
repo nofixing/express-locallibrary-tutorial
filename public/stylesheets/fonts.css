@@ -677,6 +677,152 @@
 }
 
 
+/* Kanit-100 - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 100;
+  src: local('Kanit Thin'), local('Kanit-Thin'),
+       url('../fonts/Kanit-Thin.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-200 - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Kanit ExtraLight'), local('Kanit-ExtraLight'),
+       url('../fonts/Kanit-ExtraLight.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-100italic - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 100;
+  src: local('Kanit Thin Italic'), local('Kanit-ThinItalic'),
+       url('../fonts/Kanit-ThinItalic.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-200italic - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 200;
+  src: local('Kanit ExtraLight Italic'), local('Kanit-ExtraLightItalic'),
+       url('../fonts/Kanit-ExtraLightItalic.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-300 - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Kanit Light'), local('Kanit-Light'),
+       url('../fonts/Kanit-Light.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-300italic - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 300;
+  src: local('Kanit Light Italic'), local('Kanit-LightItalic'),
+       url('../fonts/Kanit-LightItalic.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-regular - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kanit'), local('Kanit-Regular'),
+       url('../fonts/Kanit-Regular.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-italic - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Kanit Italic'), local('Kanit-RegularItalic'),
+       url('../fonts/Kanit-RegularItalic.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-500 - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Kanit Medium'), local('Kanit-Medium'),
+       url('../fonts/Kanit-Medium.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-500italic - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Kanit Medium Italic'), local('Kanit-MediumItalic'),
+       url('../fonts/Kanit-MediumItalic.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-600 - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Kanit SemiBold'), local('Kanit-SemiBold'),
+       url('../fonts/Kanit-SemiBold.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-700 - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Kanit Bold'), local('Kanit-Bold'),
+       url('../fonts/Kanit-Bold.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-600italic - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Kanit SemiBold Italic'), local('Kanit-SemiBoldItalic'),
+       url('../fonts/Kanit-SemiBoldItalic.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-700italic - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Kanit Bold Italic'), local('Kanit-BoldItalic'),
+       url('../fonts/Kanit-BoldItalic.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-800 - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Kanit ExtraBold'), local('Kanit-ExtraBold'),
+       url('../fonts/Kanit-ExtraBold.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-900 - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 900;
+  src: local('Kanit Black'), local('Kanit-Black'),
+       url('../fonts/Kanit-Black.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-800italic - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 800;
+  src: local('Kanit ExtraBold Italic'), local('Kanit-ExtraBoldItalic'),
+       url('../fonts/Kanit-ExtraBoldItalic.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+/* Kanit-900italic - latin */
+@font-face {
+  font-family: 'Kanit';
+  font-style: italic;
+  font-weight: 900;
+  src: local('Kanit Black Italic'), local('Kanit-BlackItalic'),
+       url('../fonts/Kanit-BlackItalic.ttf') format('ttf'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+}
+
+
 /* shadows-into-light-regular - latin */
 @font-face {
   font-family: 'Shadows Into Light';
