@@ -385,13 +385,13 @@ html(lang='en')
             button.btn.btn-primary.btn-sm(type='submit' style="line-height: 25px; float: left; margin-left: 20px;") #{translation.FileUpload}
         </div>
       div#chat-container.col-lg-6
-        div#chat-messages(style="width:90%; margin-right:20px;") !{chatGPT}
+        div#chat-messages.ql-font-Raleway.fw300(style="width:90%; margin-right:20px; font-size: 1.5em;") !{chatGPT}
         div#chatDeleteId(style="display: block;")
           <input type="button" style="float:left" class="btn btn-primary btn-sm" id="chatDeleteButton" value="#{translation.Delete}"/>
         <br/><br/>
         div#user-input(style="display: flex")
           <div class="input-group" style="margin-right:20px;" >
-            <textarea name="message-input" id="message-input" onInput="this.parentNode.dataset.replicatedValue = this.value" placeholder="#{translation.AIMESSAGE}"  class="form-control" style="width:85% ; margin-right:10px;" rows="4"></textarea>
+            <textarea name="message-input" id="message-input" onInput="this.parentNode.dataset.replicatedValue = this.value" placeholder="#{translation.AIMESSAGE}"  class="form-control" style="width:85% ; margin-right:10px;" rows="20"></textarea>
             button(type="button", id="send-button") #{translation.SEND}
           </div>
       script(src="/js/chat-api-library.js")
