@@ -2127,7 +2127,8 @@ exports.sendMessage = async (req, res, next) => {
         Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'gpt-4-turbo-preview',
+        // model: 'gpt-4-turbo-preview',
+        model: 'gpt-4o',
         messages: req.body.messages,
       }),
     });
